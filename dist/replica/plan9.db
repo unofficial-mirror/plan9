@@ -2287,7 +2287,7 @@ lib/tftpd - 20000000775 sys sys 944944178 0
 lib/unicode - 664 sys sys 958440028 223312
 lib/unicode.notice - 664 sys sys 958504386 1398
 lib/units - 664 sys sys 1071415518 9997
-lib/vgadb - 664 sys sys 1097607554 28686
+lib/vgadb - 664 sys sys 1105192978 28703
 lib/volcanoes - 664 sys sys 944944024 119831
 lib/words - 664 sys sys 1014923442 247097
 lp - 20000000775 sys sys 958199268 0
@@ -4828,7 +4828,7 @@ sys/src/9/pc/devlpt.c - 664 sys sys 1015014514 4420
 sys/src/9/pc/devpccard.c - 664 sys sys 1089299187 40138
 sys/src/9/pc/devrtc.c - 664 sys sys 1015014515 7167
 sys/src/9/pc/devtv.c - 664 sys sys 1091734484 45725
-sys/src/9/pc/devusb.c - 664 sys sys 1099760881 18371
+sys/src/9/pc/devusb.c - 664 sys sys 1105193103 18364
 sys/src/9/pc/devvga.c - 664 sys sys 1063857412 8714
 sys/src/9/pc/dma.c - 664 sys sys 1015014515 4736
 sys/src/9/pc/errstr.h - 664 sys sys 1075069582 2137
