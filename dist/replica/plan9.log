@@ -12497,3 +12497,9 @@
 1050760984 0 a sys/src/9/ip/nudp.c - 664 sys sys 1050756592 13069
 1050760984 1 c sys/src/cmd/ip/rip.c - 664 sys sys 1050760698 12424
 1050760984 2 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1050757241 15358
+1051032752 0 c lib/namespace - 664 sys sys 1051022248 606
+1051032752 1 c rc/bin/ups - 775 sys sys 1051028686 889
+1051032752 2 c sys/include/memlayer.h - 664 sys sys 1051031022 1851
+1051032752 3 c sys/src/cmd/ip/ipconfig.c - 664 sys sys 1051023520 27439
+1051032752 4 c sys/src/libmemlayer/lalloc.c - 664 sys sys 1051031021 1781
+1051032752 5 c sys/src/libmemlayer/ltofront.c - 664 sys sys 1051031021 1307
