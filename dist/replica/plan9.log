@@ -13089,3 +13089,11 @@
 1063072945 3 c sys/src/cmd/cb/cb.h - 664 sys sys 1063023989 3404
 1063238595 0 c lib/vgadb - 664 sys sys 1063237366 27747
 1063306964 0 c sys/src/cmd/ip/snoopy/main.c - 664 sys sys 1063306798 14371
+1063660697 0 a lib/dict - 20000000775 sys sys 1063656980 0
+1063660697 1 a lib/dict/README.pgw - 664 sys sys 1063660179 147
+1063660697 2 c sys/src/cmd/cc/macbody - 664 sys sys 1063639694 11108
+1063660697 3 c sys/src/cmd/dict/dict.c - 664 sys sys 1063660142 12040
+1063660697 4 c sys/src/cmd/dict/dict.h - 664 sys sys 1063656965 4087
+1063660697 5 c sys/src/cmd/dict/mkfile - 664 sys sys 1063656964 385
+1063660697 6 a sys/src/cmd/dict/pgw.c - 664 sys sys 1063656967 29729
+1063660697 7 c sys/src/cmd/dict/utils.c - 664 sys sys 1063656968 14200
