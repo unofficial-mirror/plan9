@@ -16236,3 +16236,13 @@
 1103391084 0 c rc/bin/replica/defs - 664 sys sys 1103390458 778
 1103391084 1 c sys/src/cmd/usb/lib/dump.c - 664 sys sys 1103381265 12921
 1103391084 2 c sys/src/cmd/usb/lib/usb.h - 664 sys sys 1103381265 7036
+1103603524 0 c sys/include/ip.h - 664 sys sys 1103554773 2989
+1103603524 1 c sys/man/2/ip - 664 sys sys 1103554773 7276
+1103603524 2 c sys/man/3/ip - 664 sys sys 1103554774 21677
+1103603524 3 c sys/src/9/ip/arp.c - 664 sys sys 1103554772 11345
+1103603524 4 c sys/src/cmd/acme/acme.c - 664 sys sys 1103565436 19635
+1103603524 5 c sys/src/cmd/acme/rows.c - 664 sys sys 1103565437 14702
+1103603524 6 c sys/src/cmd/ip/ftpfs/proto.c - 664 sys sys 1103565527 29470
+1103603524 7 c sys/src/lib9p/post.c - 664 sys sys 1103565871 356
+1103603524 8 c sys/src/lib9p/tpost.c - 664 sys sys 1103565872 316
+1103603524 9 c sys/src/libip/equivip.c - 664 sys sys 1103554773 285
