@@ -16313,3 +16313,8 @@
 1103862778 52 a sys/src/games/music/playlistfs/playplumb.c - 664 sys sys 1103793924 280
 1103862778 53 a sys/src/games/music/playlistfs/volume.c - 664 sys sys 1103793924 2065
 1103862778 54 a sys/src/games/music/readcd - 775 sys sys 1103793915 996
+1103949068 0 c sys/src/cmd/auth/secstore/aescbc.c - 664 sys sys 1103929625 4334
+1103949068 1 c sys/src/cmd/auth/secstore/secstore.c - 664 sys sys 1103929625 12531
+1103949068 2 c sys/src/cmd/auth/secstore/secstore.h - 664 sys sys 1103929624 830
+1103949068 3 c sys/src/cmd/auth/secstore/secuser.c - 664 sys sys 1103929625 5128
+1103949068 4 c sys/src/cmd/auth/secstore/util.c - 664 sys sys 1103929624 1478
