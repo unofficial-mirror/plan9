@@ -15108,3 +15108,6 @@
 1080592369 8 c sys/src/cmd/fossil/fs.h - 664 sys sys 1080586883 1503
 1080838982 0 c sys/games/lib/fortunes - 664 sys sys 1080838116 248410
 1080923525 0 c sys/man/4/exportfs - 664 sys sys 1080922547 4454
+1081083685 0 c sys/src/cmd/exportfs/exportfs.c - 664 sys sys 1081082332 16169
+1081083685 1 c sys/src/cmd/exportfs/exportsrv.c - 664 sys sys 1081082332 11914
+1081083685 2 c sys/src/cmd/import.c - 664 sys sys 1081082324 6711
