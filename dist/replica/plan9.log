@@ -15923,3 +15923,5 @@
 1095186687 1 c sys/src/cmd/unix/u9fs/plan9.h - 664 sys sys 1095185027 5748
 1095186687 2 c sys/src/cmd/unix/u9fs/print.c - 664 sys sys 1095185028 1329
 1095186687 3 c sys/src/cmd/unix/u9fs/u9fs.c - 664 sys sys 1095185027 30960
+1095478342 0 c sys/src/cmd/8c/div.c - 664 sys sys 1095443855 3297
+1095478342 1 c sys/src/cmd/vnc/exportfs.c - 664 sys sys 1095444302 13667

@@ -6147,7 +6147,7 @@ sys/src/cmd/8c/bound.c - 664 sys sys 1084472146 16274
 sys/src/cmd/8c/bound.h - 664 sys sys 1084472146 903
 sys/src/cmd/8c/cgen.c - 664 sys sys 1089299180 32120
 sys/src/cmd/8c/cgen64.c - 664 sys sys 1089299182 45852
-sys/src/cmd/8c/div.c - 664 sys sys 1089382812 3313
+sys/src/cmd/8c/div.c - 664 sys sys 1095443855 3297
 sys/src/cmd/8c/enam.c - 664 sys sys 1089299181 3227
 sys/src/cmd/8c/gc.h - 664 sys sys 1089299181 6418
 sys/src/cmd/8c/list.c - 664 sys sys 1067720660 3975
@@ -10538,7 +10538,7 @@ sys/src/cmd/vnc/draw.c - 664 sys sys 1044880749 6974
 sys/src/cmd/vnc/error.h - 664 sys sys 1044880749 2482
 sys/src/cmd/vnc/errstr.h - 664 sys sys 1044880749 2018
 sys/src/cmd/vnc/exporter.c - 664 sys sys 1044880749 1312
-sys/src/cmd/vnc/exportfs.c - 664 sys sys 1045529366 13666
+sys/src/cmd/vnc/exportfs.c - 664 sys sys 1095444302 13667
 sys/src/cmd/vnc/kbd.h - 664 sys sys 1044880749 301
 sys/src/cmd/vnc/kbds.c - 664 sys sys 1082221522 3379
 sys/src/cmd/vnc/kbdv.c - 664 sys sys 1082221523 3735
