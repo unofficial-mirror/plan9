@@ -12889,3 +12889,5 @@
 1057354361 2 c sys/src/9/port/unthwack.c - 664 sys sys 1057323394 5249
 1057797172 0 c sys/man/8/snoopy - 664 sys sys 1057752980 3802
 1057797172 1 c sys/src/libauth/newns.c - 664 sys sys 1057795439 6286
+1057869145 0 c sys/lib/lp/process/hpost - 775 sys sys 1057868801 3247
+1057869145 1 c sys/src/9/port/master - 664 sys sys 1057838456 479
