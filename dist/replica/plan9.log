@@ -16449,3 +16449,9 @@
 1107232366 6 c sys/src/cmd/acme/fsys.c - 664 sys sys 1107154482 12881
 1107232366 7 c sys/src/cmd/acme/util.c - 664 sys sys 1107154483 7984
 1107232366 8 c sys/src/cmd/acme/xfid.c - 664 sys sys 1107154483 19555
+1107405083 0 c sys/games/lib/fortunes - 664 sys sys 1107321348 252719
+1107405083 1 c sys/man/1/2c - 664 sys sys 1107365037 8034
+1107405083 2 c sys/src/cmd/auth/login.c - 664 sys sys 1107370153 3977
+1107405083 3 c sys/src/cmd/cc/dpchk.c - 664 sys sys 1107365037 7152
+1107405083 4 c sys/src/cmd/cc/mkfile - 664 sys sys 1107365240 563
+1107405083 5 c sys/src/cmd/upas/fs/pop3.c - 664 sys sys 1107358653 12930
