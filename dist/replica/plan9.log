@@ -11318,3 +11318,5 @@
 1041197545 0 c sys/src/cmd/unix/u9fs/u9fs.c - 664 sys sys 1041139559 29984
 1041197545 1 a sys/src/cmd/upas/filterkit/pipefrom.sample - 775 sys sys 1041184939 380
 1041197545 2 c sys/src/libregexp/regcomp.h - 664 sys sys 1041196492 1986
+1041262320 0 a sys/man/3/fs - 664 sys sys 1041261485 2707
+1041262320 1 a sys/src/9/port/devfs.c - 664 sys sys 1041261474 11170
