@@ -15097,3 +15097,12 @@
 1080505999 1 c sys/man/1/2c - 664 sys sys 1080485731 7341
 1080505999 2 c sys/src/cmd/ndb/cs.c - 664 sys sys 1080504975 33075
 1080505999 3 c sys/src/libc/9sys/dial.c - 664 sys sys 1080498909 3837
+1080592369 0 c sys/man/8/fossilcons - 664 sys sys 1080590977 16286
+1080592369 1 c sys/src/9/pc/i8253.c - 664 sys sys 1080572900 6240
+1080592369 2 c sys/src/cmd/ndb/cs.c - 664 sys sys 1080572749 32985
+1080592369 3 c sys/src/cmd/fossil/9fsys.c - 664 sys sys 1080586882 30218
+1080592369 4 c sys/src/cmd/fossil/Ccmd.c - 664 sys sys 1080586882 7982
+1080592369 5 c sys/src/cmd/fossil/flfmt.c - 664 sys sys 1080586881 10753
+1080592369 6 c sys/src/cmd/fossil/flfmt9660.c - 664 sys sys 1080586883 12314
+1080592369 7 c sys/src/cmd/fossil/fs.c - 664 sys sys 1080586883 21525
+1080592369 8 c sys/src/cmd/fossil/fs.h - 664 sys sys 1080586883 1503
