@@ -13007,3 +13007,8 @@
 1060270460 9 c sys/src/9/port/portfns.h - 664 sys sys 1060266745 10822
 1060360456 0 c lib/namespace - 664 sys sys 1060354451 590
 1060360456 1 c sys/games/lib/fortunes - 664 sys sys 1060359152 244377
+1060652044 0 c sys/src/cmd/ndb/convDNS2M.c - 664 sys sys 1060612175 6862
+1060652044 1 c sys/src/cmd/ndb/convM2DNS.c - 664 sys sys 1060612175 7248
+1060652044 2 c sys/src/cmd/ndb/dblookup.c - 664 sys sys 1060612175 17896
+1060652044 3 c sys/src/cmd/ndb/dn.c - 664 sys sys 1060651816 26571
+1060652044 4 c sys/src/cmd/ndb/dns.h - 664 sys sys 1060612174 8957
