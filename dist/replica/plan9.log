@@ -12464,3 +12464,5 @@
 1050521491 8 c sys/src/cmd/fossil/dat.h - 664 sys sys 1050518981 7855
 1050521491 9 c sys/src/cmd/fossil/fs.c - 664 sys sys 1050518980 16944
 1050521491 10 c sys/src/cmd/fossil/fs.h - 664 sys sys 1050518982 1258
+1050624198 0 c sys/doc/fossil.ms - 664 sys sys 1050623502 31400
+1050624198 1 c sys/src/lib9p/srv.c - 664 sys sys 1050583820 16705
