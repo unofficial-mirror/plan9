@@ -14055,3 +14055,8 @@
 1071621171 2 c sys/lib/mimetype - 664 sys sys 1071573310 5589
 1071621171 3 c sys/src/9/pc/sdata.c - 664 sys sys 1071615236 50538
 1071621171 4 c sys/src/boot/pc/sdata.c - 664 sys sys 1071615664 35424
+1071720176 0 c sys/src/9/bitsy/mkfile - 664 sys sys 1071671673 2466
+1071720176 1 c sys/src/9/port/mul64fract.c - 664 sys sys 1071671674 867
+1071720176 2 c sys/src/cmd/file.c - 664 sys sys 1071719684 20614
+1071720176 3 c sys/src/cmd/upas/fs/imap4.c - 664 sys sys 1071689378 16021
+1071720176 4 c sys/src/libdraw/init.c - 664 sys sys 1071692552 9082
