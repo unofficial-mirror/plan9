@@ -12545,3 +12545,10 @@
 1054391656 1 c sys/src/9/ip/ip.h - 664 sys sys 1054391400 16066
 1054479830 0 c sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1054479635 12043
 1054800215 0 c sys/src/9/bitsy/Booting101 - 664 sys sys 1054798506 8841
+1055091769 0 a sys/src/9/pc/etherigbe.c - 664 sys sys 1055090142 42055
+1055091769 1 c sys/src/9/pc/pc - 664 sys sys 1055090302 1340
+1055091769 2 c sys/src/9/pc/pccd - 664 sys sys 1055090302 1302
+1055091769 3 c sys/src/9/pc/pccpu - 664 sys sys 1055090302 803
+1055091769 4 c sys/src/9/pc/sdata.c - 664 sys sys 1055087706 49704
+1055091769 5 c sys/src/9/pc/vganvidia.c - 664 sys sys 1055090312 6543
+1055091769 6 d sys/src/9/pc/ether82543.c - 664 sys sys 1039803177 0
