@@ -16611,3 +16611,8 @@
 1109219567 20 d sys/src/9/alphapc/ether2114x.c - 664 sys sys 1015012784 0
 1109219567 21 d sys/src/9/alphapc/devfloppy.c - 664 sys sys 1015012784 0
 1109219567 22 d sys/src/9/alphapc/devether.c - 664 sys sys 1055701009 0
+1109304388 0 c rc/bin/dosmnt - 775 sys sys 1109288224 303
+1109304388 1 c sys/man/1/2c - 664 sys sys 1109303821 8237
+1109304388 2 c sys/src/9/pc/pcmkfile - 664 sys sys 1109303822 101
+1109304388 3 c sys/src/cmd/cc/lex.c - 664 sys sys 1109303822 23826
+1109304388 4 c sys/src/libc/port/malloc.c - 664 sys sys 1109250219 5713
