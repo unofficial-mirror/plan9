@@ -15693,3 +15693,7 @@
 1089860487 1 c sys/src/boot/pc/ip.h - 664 sys sys 1089814405 2435
 1089948704 0 c sys/man/1/2l - 664 sys sys 1089903786 3992
 1089948704 1 c sys/src/cmd/ip/ftpfs/proto.c - 664 sys sys 1089920400 29348
+1090467139 0 c lib/vgadb - 664 sys sys 1090440147 28518
+1090467139 1 c sys/src/9/pc/vgas3.c - 664 sys sys 1090439162 12189
+1090467139 2 c sys/src/cmd/aux/vga/virge.c - 664 sys sys 1090439328 18587
+1090467139 3 c sys/src/cmd/ndb/dn.c - 664 sys sys 1090409399 26970
