@@ -4138,7 +4138,7 @@ sys/man/1/history - 664 sys sys 1044909169 1709
 sys/man/1/hoc - 664 sys sys 944959676 2357
 sys/man/1/idiff - 664 sys sys 1018386774 927
 sys/man/1/join - 664 sys sys 957920006 2562
-sys/man/1/jpg - 664 sys sys 1072106983 4789
+sys/man/1/jpg - 664 sys sys 1074280543 4758
 sys/man/1/kill - 664 sys sys 1018369246 1193
 sys/man/1/ktrace - 664 sys sys 957920006 1330
 sys/man/1/leak - 664 sys sys 1017423522 2871
