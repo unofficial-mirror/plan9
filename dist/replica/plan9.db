@@ -4904,7 +4904,7 @@ sys/src/9/pc/screen.h - 664 sys sys 1060267144 3797
 sys/src/9/pc/sd53c8xx.c - 664 sys sys 1112461125 52220
 sys/src/9/pc/sd53c8xx.i - 664 sys sys 1045063730 27355
 sys/src/9/pc/sd53c8xx.n - 664 sys sys 1032059019 12455
-sys/src/9/pc/sdata.c - 664 sys sys 1112382836 51083
+sys/src/9/pc/sdata.c - 664 sys sys 1112727807 51105
 sys/src/9/pc/sdmylex.c - 664 sys sys 1071245460 27812
 sys/src/9/pc/sdscsi.c - 664 sys sys 1077033661 7487
 sys/src/9/pc/trap.c - 664 sys sys 1105109602 20537
@@ -5073,7 +5073,7 @@ sys/src/ape/9src/tty.h - 664 sys sys 1014921996 2407
 sys/src/ape/cmd - 20000000775 sys sys 1014921977 0
 sys/src/ape/cmd/README - 664 sys sys 1014921974 2953
 sys/src/ape/cmd/basename.c - 664 sys sys 1014921974 729
-sys/src/ape/cmd/cc.c - 664 sys sys 1023741702 7363
+sys/src/ape/cmd/cc.c - 664 sys sys 1112707823 7362
 sys/src/ape/cmd/diff - 20000000775 sys sys 1046198752 0
 sys/src/ape/cmd/diff/COPYING - 664 sys sys 1046198741 17982
 sys/src/ape/cmd/diff/ChangeLog - 664 sys sys 1046198741 66704
@@ -6031,7 +6031,7 @@ sys/src/boot/pc/queue.c - 664 sys sys 1015007954 566
 sys/src/boot/pc/sd.h - 664 sys sys 1094674489 2271
 sys/src/boot/pc/sd53c8xx.c - 664 sys sys 1077033951 52135
 sys/src/boot/pc/sd53c8xx.i - 664 sys sys 1015007955 27245
-sys/src/boot/pc/sdata.c - 664 sys sys 1112382847 38084
+sys/src/boot/pc/sdata.c - 664 sys sys 1112727812 38106
 sys/src/boot/pc/sdmylex.c - 664 sys sys 1015007955 28743
 sys/src/boot/pc/sdscsi.c - 664 sys sys 1077033682 7022
 sys/src/boot/pc/trap.c - 664 sys sys 1018462833 7098
@@ -9287,7 +9287,7 @@ sys/src/cmd/paqfs/mkpaqfs.c - 664 sys sys 1072729575 8836
 sys/src/cmd/paqfs/paqfs.c - 664 sys sys 1084470285 19571
 sys/src/cmd/paqfs/paqfs.h - 664 sys sys 1072729575 1016
 sys/src/cmd/pbd.c - 664 sys sys 944961351 247
-sys/src/cmd/pcc.c - 664 sys sys 1048644546 5994
+sys/src/cmd/pcc.c - 664 sys sys 1112744693 5937
 sys/src/cmd/pic - 20000000775 sys sys 954037275 0
 sys/src/cmd/pic/arcgen.c - 664 sys sys 944961042 5999
 sys/src/cmd/pic/blockgen.c - 664 sys sys 944961042 5209
