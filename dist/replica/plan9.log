@@ -12541,3 +12541,5 @@
 1053839014 0 c sys/src/9/pc/sdata.c - 664 sys sys 1053837290 46979
 1054089145 0 c sys/games/lib/fortunes - 664 sys sys 1054049159 243650
 1054089145 1 c sys/src/9/pc/sdata.c - 664 sys sys 1054088388 46387
+1054391656 0 c sys/src/9/ip/devip.c - 664 sys sys 1054391399 24207
+1054391656 1 c sys/src/9/ip/ip.h - 664 sys sys 1054391400 16066
