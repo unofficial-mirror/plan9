@@ -16555,3 +16555,7 @@
 1108441920 0 c sys/src/cmd/aux/gps/gpsfs.c - 664 sys sys 1108397331 17433
 1108441920 1 c sys/src/cmd/aux/gps/mkfile - 664 sys sys 1108397331 219
 1108441920 2 c sys/src/cmd/cc/lex.c - 664 sys sys 1108397267 23807
+1108488736 0 c sys/games/lib/fortunes - 664 sys sys 1108487635 252847
+1108488736 1 c sys/man/6/ndb - 664 sys sys 1108476850 6113
+1108488736 2 c sys/man/8/ndb - 664 sys sys 1108476849 9939
+1108488736 3 c sys/src/cmd/mkfile - 664 sys sys 1108476348 2414
