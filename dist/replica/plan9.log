@@ -16380,3 +16380,12 @@
 1105504324 0 c lib/ndb/local.complicated - 664 sys sys 1105461604 2976
 1105504324 1 c sys/src/cmd/jpg/bmp.h - 664 sys sys 1105455271 1034
 1105504324 2 c sys/src/cmd/jpg/readbmp.c - 664 sys sys 1105455271 13691
+1105590707 0 a rc/bin/juke - 775 sys sys 1105565140 1131
+1105590707 1 c sys/man/4/exportfs - 664 sys sys 1105574692 4692
+1105590707 2 c sys/man/4/iostats - 664 sys sys 1105574383 1621
+1105590707 3 c sys/src/cmd/troff2html/chars.h - 644 sys sys 1105584129 3957
+1105590707 4 c sys/src/cmd/troff2html/mkfile - 664 sys sys 1105584066 111
+1105590707 5 m sys/src/cmd/troff2html/mkfile - 664 sys sys 1105584066 111
+1105590707 6 c sys/src/cmd/troff2html/troff2html.c - 664 sys sys 1105584129 14152
+1105590707 7 c sys/src/games/music/jukebox/client.c - 664 sys sys 1105531439 2737
+1105590707 8 c sys/src/games/music/playlistfs/boilerplate.c - 664 sys sys 1105531426 1362
