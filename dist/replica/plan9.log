@@ -13952,3 +13952,5 @@
 1070417003 5 c sys/src/libdraw/arith.c - 664 sys sys 1070394447 2628
 1070417003 6 a sys/src/libdraw/fmt.c - 664 sys sys 1070344369 270
 1070417003 7 c sys/src/libdraw/mkfile - 664 sys sys 1070394450 1022
+1070460150 0 c sys/man/1/test - 664 sys sys 1070459150 3475
+1070460150 1 c sys/src/cmd/test.c - 664 sys sys 1070459150 5319
