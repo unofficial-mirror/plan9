@@ -15879,3 +15879,8 @@
 1093491115 5 c sys/src/cmd/ip/ftpfs/ftpfs.c - 664 sys sys 1093452873 13584
 1093491115 6 c sys/src/cmd/ip/tftpd.c - 664 sys sys 1093453000 7604
 1093491115 7 c sys/src/cmd/upas/ned/nedmail.c - 664 sys sys 1093453042 44171
+1093980693 0 c sys/include/ape/sys/resource.h - 664 sys sys 1093980308 932
+1093980693 1 c sys/include/ape/sys/wait.h - 664 sys sys 1093980308 672
+1093980693 2 c sys/src/ape/lib/ap/plan9/wait.c - 664 sys sys 1093980308 2378
+1093980693 3 c sys/src/cmd/comm.c - 664 sys sys 1093979717 2140
+1093980693 4 c sys/src/cmd/venti/syncarena.c - 664 sys sys 1093980087 4198
