@@ -4569,6 +4569,7 @@ sys/src/9/ip/ipv6.h - 664 sys sys 1022588099 4304
 sys/src/9/ip/loopbackmedium.c - 664 sys sys 1045063513 1651
 sys/src/9/ip/netdevmedium.c - 664 sys sys 1045063517 2675
 sys/src/9/ip/netlog.c - 664 sys sys 1026847568 4003
+sys/src/9/ip/nudp.c - 664 sys sys 1050756592 13069
 sys/src/9/ip/nullmedium.c - 664 sys sys 1022588099 491
 sys/src/9/ip/pktmedium.c - 664 sys sys 1045063516 1355
 sys/src/9/ip/ptclbsum.c - 664 sys sys 1022588099 1243
@@ -8580,7 +8581,7 @@ sys/src/cmd/ip/pptp.c - 664 sys sys 1050360938 16575
 sys/src/cmd/ip/pptpd.c - 664 sys sys 1015701128 23548
 sys/src/cmd/ip/rarpd.c - 664 sys sys 1031510476 3347
 sys/src/cmd/ip/rexexec.c - 664 sys sys 1025393126 740
-sys/src/cmd/ip/rip.c - 664 sys sys 1015701126 12315
+sys/src/cmd/ip/rip.c - 664 sys sys 1050760698 12424
 sys/src/cmd/ip/rlogind.c - 664 sys sys 1015013113 755
 sys/src/cmd/ip/snoopy - 20000000775 sys sys 1015090062 0
 sys/src/cmd/ip/snoopy/arp.c - 664 sys sys 1032059928 1902
@@ -8818,7 +8819,7 @@ sys/src/cmd/ndb/csgetval.c - 664 sys sys 957402051 1051
 sys/src/cmd/ndb/csquery.c - 664 sys sys 1014926159 1062
 sys/src/cmd/ndb/dblookup.c - 664 sys sys 1049249333 18409
 sys/src/cmd/ndb/dn.c - 664 sys sys 1049408473 25198
-sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1050714836 15288
+sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1050757241 15358
 sys/src/cmd/ndb/dns.c - 664 sys sys 1049249331 15051
 sys/src/cmd/ndb/dns.h - 664 sys sys 1032060499 8082
 sys/src/cmd/ndb/dnsdebug.c - 664 sys sys 1049249332 8333

@@ -12494,3 +12494,6 @@
 1050717801 25 c sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1050714835 5133
 1050717801 26 c sys/src/cmd/pr.c - 664 sys sys 1050689592 11172
 1050717801 27 c sys/src/libsunrpc/udp.c - 664 sys sys 1050717777 2193
+1050760984 0 a sys/src/9/ip/nudp.c - 664 sys sys 1050756592 13069
+1050760984 1 c sys/src/cmd/ip/rip.c - 664 sys sys 1050760698 12424
+1050760984 2 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1050757241 15358
