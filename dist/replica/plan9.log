@@ -12391,3 +12391,14 @@
 1048822412 9 c sys/src/libc/fmt/runevsmprint.c - 664 sys sys 1048801035 1031
 1048822412 10 c sys/src/libc/fmt/vsmprint.c - 664 sys sys 1048801042 997
 1048822412 11 c sys/src/libsec/port/tlshand.c - 664 sys sys 1048777088 53926
+1048912397 0 c rc/bin/fedex - 775 sys sys 1048862253 1122
+1048912397 1 c sys/src/9/pc/vganvidia.c - 664 sys sys 1048858211 6296
+1048912397 2 c sys/src/9/port/dev.c - 664 sys sys 1048912316 8379
+1048912397 3 c sys/src/9/port/devroot.c - 664 sys sys 1048912313 4015
+1048912397 4 c sys/src/cmd/fossil/9fsys.c - 664 sys sys 1048859381 27349
+1048912397 5 c sys/src/cmd/fossil/cache.c - 664 sys sys 1048859382 42848
+1048912397 6 c sys/src/cmd/fossil/flchk.c - 664 sys sys 1048859380 14275
+1048912397 7 c sys/src/cmd/fossil/flfmt.c - 664 sys sys 1048859380 10368
+1048912397 8 c sys/src/cmd/fossil/fns.h - 664 sys sys 1048859327 3022
+1048912397 9 c sys/src/cmd/fossil/fs.c - 664 sys sys 1048859383 16614
+1048912397 10 c sys/src/cmd/fossil/mkfile - 664 sys sys 1048859379 1551
