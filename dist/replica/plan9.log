@@ -14074,3 +14074,9 @@
 1071885877 5 d sys/man/1/lsof - 664 sys sys 1071802922 0
 1071927203 0 c sys/lib/mimetype - 664 sys sys 1071926670 5633
 1072020698 0 c sys/src/cmd/acme/look.c - 664 sys sys 1072019591 14096
+1072146713 0 c sys/lib/man/mkhtmlindex - 775 sys sys 1072129593 1235
+1072146713 1 c sys/man/1/jpg - 664 sys sys 1072106983 4789
+1072146713 2 c sys/src/cmd/cmp.c - 664 sys sys 1072145760 2379
+1072146713 3 a sys/src/cmd/jpg/ico.c - 664 sys sys 1072107030 8799
+1072146713 4 c sys/src/cmd/jpg/mkfile - 664 sys sys 1072107030 1014
+1072146713 5 a sys/src/cmd/jpg/toico.c - 664 sys sys 1072107030 5638
