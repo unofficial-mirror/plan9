@@ -15871,3 +15871,11 @@
 1092195107 1 c sys/src/cmd/aux/acidleak.c - 664 sys sys 1092148212 5940
 1092540713 0 c sys/src/cmd/ssh/msg.c - 664 sys sys 1092516579 8102
 1092540713 1 c sys/src/cmd/ssh/smsg.c - 664 sys sys 1092516575 6374
+1093491115 0 c usr/glenda/bin/rc/pull - 775 glenda glenda 1093453255 224
+1093491115 1 c sys/games/lib/fortunes - 664 sys sys 1093455199 249409
+1093491115 2 c sys/man/3/proc - 664 sys sys 1093452918 12027
+1093491115 3 c sys/src/cmd/aux/listen.c - 664 sys sys 1093452954 8142
+1093491115 4 c sys/src/cmd/aux/listen1.c - 664 sys sys 1093452955 2018
+1093491115 5 c sys/src/cmd/ip/ftpfs/ftpfs.c - 664 sys sys 1093452873 13584
+1093491115 6 c sys/src/cmd/ip/tftpd.c - 664 sys sys 1093453000 7604
+1093491115 7 c sys/src/cmd/upas/ned/nedmail.c - 664 sys sys 1093453042 44171
