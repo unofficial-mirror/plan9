@@ -15377,3 +15377,4 @@
 1087875132 6 c sys/src/cmd/gview.c - 664 sys sys 1087829737 50641
 1087875132 7 c sys/src/cmd/tlssrv.c - 664 sys sys 1087829606 3411
 1087875132 8 c sys/src/cmd/upas/vf/vf.c - 664 sys sys 1087829630 17442
+1088002957 0 a sys/lib/kbmap/jp - 664 sys sys 1088002290 317
