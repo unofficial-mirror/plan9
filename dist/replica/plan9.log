@@ -14368,3 +14368,8 @@
 1077508910 33 c sys/src/cmd/unix/drawterm/qio.c - 664 sys sys 1077480279 14729
 1077508910 34 c sys/src/cmd/unix/drawterm/sys.h - 664 sys sys 1077480280 13888
 1077595330 0 c sys/man/6/font - 664 sys sys 1077594184 2528
+1077670940 0 c sys/include/ndb.h - 664 sys sys 1077632684 4009
+1077670940 1 c sys/lib/lp/process/generic - 775 sys sys 1077634895 4849
+1077670940 2 a sys/lib/lp/process/gspipeijs - 775 sys sys 1077670465 949
+1077670940 3 a sys/lib/lp/process/pdfgsijs - 775 sys sys 1077634892 1687
+1077670940 4 c sys/man/2/ndb - 664 sys sys 1077632681 8901
