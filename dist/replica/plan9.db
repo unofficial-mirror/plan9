@@ -42,7 +42,7 @@
 386/include - 20000000775 sys sys 953243048 0
 386/include/ape - 20000000775 sys sys 944946041 0
 386/include/ape/float.h - 664 sys sys 969656988 1643
-386/include/ape/math.h - 664 sys sys 1022624465 1902
+386/include/ape/math.h - 664 sys sys 1046282351 2123
 386/include/ape/stdarg.h - 664 sys sys 944946040 276
 386/include/ape/ureg.h - 664 sys sys 944946041 812
 386/include/u.h - 664 sys sys 1042604326 1450
@@ -76,7 +76,7 @@
 68020/include - 20000000775 sys sys 944946363 0
 68020/include/ape - 20000000775 sys sys 944946347 0
 68020/include/ape/float.h - 664 sys sys 969656988 1639
-68020/include/ape/math.h - 664 sys sys 1022624466 1901
+68020/include/ape/math.h - 664 sys sys 1046282351 2123
 68020/include/ape/stdarg.h - 664 sys sys 944946347 324
 68020/include/ape/ureg.h - 664 sys sys 944946347 741
 68020/include/dac.h - 664 sys sys 944946363 154
@@ -292,7 +292,7 @@ alpha/conf/10.0.0.2 - 644 sys sys 954267393 128
 alpha/include - 20000000775 sys sys 944946362 0
 alpha/include/ape - 20000000775 sys sys 944946346 0
 alpha/include/ape/float.h - 664 sys sys 969656988 1674
-alpha/include/ape/math.h - 664 sys sys 1022624467 1900
+alpha/include/ape/math.h - 664 sys sys 1046282352 2123
 alpha/include/ape/stdarg.h - 664 sys sys 958591172 413
 alpha/include/ape/ureg.h - 664 sys sys 944946346 1241
 alpha/include/u.h - 664 sys sys 1042604328 1536
@@ -319,7 +319,7 @@ arm/bin/venti - 20000000775 sys sys 1019679272 0
 arm/include - 20000000775 sys sys 985642212 0
 arm/include/ape - 20000000775 sys sys 985642227 0
 arm/include/ape/float.h - 664 sys sys 985642226 1643
-arm/include/ape/math.h - 664 sys sys 1022624468 1902
+arm/include/ape/math.h - 664 sys sys 1046282352 2123
 arm/include/ape/stdarg.h - 664 sys sys 985642227 276
 arm/include/ape/ureg.h - 664 sys sys 985642227 617
 arm/include/u.h - 664 sys sys 1042604329 1419
@@ -2289,7 +2289,7 @@ mips/bin/venti - 20000000775 sys sys 1019679272 0
 mips/include - 20000000775 sys sys 953243035 0
 mips/include/ape - 20000000775 sys sys 944946346 0
 mips/include/ape/float.h - 664 sys sys 969656988 1608
-mips/include/ape/math.h - 664 sys sys 1022624469 1900
+mips/include/ape/math.h - 664 sys sys 1046282353 2123
 mips/include/ape/stdarg.h - 664 sys sys 944946346 324
 mips/include/ape/ureg.h - 664 sys sys 944946346 991
 mips/include/mips2ureg.h - 664 sys sys 952879416 886
@@ -2384,7 +2384,7 @@ power/bin/venti - 20000000775 sys sys 1019679272 0
 power/include - 20000000775 sys sys 945275835 0
 power/include/ape - 20000000775 sys sys 944946355 0
 power/include/ape/float.h - 664 sys sys 969656988 1608
-power/include/ape/math.h - 644 sys sys 1032057792 1900
+power/include/ape/math.h - 644 sys sys 1046282353 2123
 power/include/ape/stdarg.h - 664 sys sys 944946355 324
 power/include/ape/ureg.h - 664 sys sys 944946362 1025
 power/include/u.h - 664 sys sys 1042604330 2764
@@ -2544,7 +2544,7 @@ sparc/bin/venti - 20000000775 sys sys 1019679272 0
 sparc/include - 20000000775 sys sys 944946363 0
 sparc/include/ape - 20000000775 sys sys 944946348 0
 sparc/include/ape/float.h - 664 sys sys 969656988 1624
-sparc/include/ape/math.h - 664 sys sys 1022624470 1901
+sparc/include/ape/math.h - 664 sys sys 1046282354 2123
 sparc/include/ape/stdarg.h - 664 sys sys 944946348 324
 sparc/include/ape/ureg.h - 664 sys sys 944946348 1048
 sparc/include/u.h - 664 sys sys 1042604330 1423
