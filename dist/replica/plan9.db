@@ -4677,7 +4677,7 @@ sys/src/9/bitsy/Booting101 - 664 sys sys 1054798506 8841
 sys/src/9/bitsy/bitsy - 664 sys sys 1067722592 424
 sys/src/9/bitsy/bitsyreset.s - 664 sys sys 1017695510 2352
 sys/src/9/bitsy/clock.c - 664 sys sys 1037028998 4835
-sys/src/9/bitsy/dat.h - 664 sys sys 1091904418 5790
+sys/src/9/bitsy/dat.h - 664 sys sys 1099805278 5857
 sys/src/9/bitsy/defont.c - 664 sys sys 1017695511 21570
 sys/src/9/bitsy/devether.c - 664 sys sys 1037029002 10675
 sys/src/9/bitsy/devflash.c - 664 sys sys 1018386999 16832
