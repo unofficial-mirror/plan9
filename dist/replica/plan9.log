@@ -13627,3 +13627,12 @@
 1068159823 15 c sys/src/cmd/auth/factotum/secstore.c - 664 sys sys 1068129501 14932
 1068159823 16 c sys/src/cmd/fossil/9.h - 664 sys sys 1068129294 4165
 1068159823 17 c sys/src/cmd/fossil/9proc.c - 664 sys sys 1068129294 15100
+1068246218 0 c sys/man/1/jpg - 664 sys sys 1068209494 4003
+1068246218 1 c sys/man/2/getfields - 664 sys sys 1068209043 1605
+1068246218 2 c sys/src/9/pc/trap.c - 664 sys sys 1068237910 20045
+1068246218 3 a sys/src/9/pc/etherrhine.c - 664 sys sys 1068244865 13437
+1068246218 4 c sys/src/9/port/devproc.c - 664 sys sys 1068237926 28403
+1068246218 5 c sys/src/9/port/edf.c - 664 sys sys 1068215525 12348
+1068246218 6 c sys/src/9/port/portfns.h - 664 sys sys 1068215525 11376
+1068246218 7 c sys/src/9/port/proc.c - 664 sys sys 1068215525 24867
+1068246218 8 c sys/src/9/port/taslock.c - 664 sys sys 1068209643 3532
