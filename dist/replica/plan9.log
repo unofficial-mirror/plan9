@@ -15093,3 +15093,7 @@
 1080223427 4 c sys/src/cmd/disk/mbr.c - 664 sys sys 1080218150 4325
 1080401518 0 c sys/src/cmd/aux/timesync.c - 664 sys sys 1080399717 24797
 1080401518 1 c sys/src/libdraw/stringwidth.c - 664 sys sys 1080400060 1589
+1080505999 0 c sys/games/lib/fortunes - 664 sys sys 1080495629 248306
+1080505999 1 c sys/man/1/2c - 664 sys sys 1080485731 7341
+1080505999 2 c sys/src/cmd/ndb/cs.c - 664 sys sys 1080504975 33075
+1080505999 3 c sys/src/libc/9sys/dial.c - 664 sys sys 1080498909 3837
