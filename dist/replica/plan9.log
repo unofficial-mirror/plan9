@@ -12896,3 +12896,5 @@
 1058013180 0 c sys/man/8/pop3 - 664 sys sys 1058012143 2444
 1058130160 0 c sys/src/libregexp/regexec.c - 664 sys sys 1058129054 4975
 1058130160 1 c sys/src/libregexp/rregexec.c - 664 sys sys 1058129062 4671
+1058223801 0 c lib/face/48x48x4/.dict - 664 sys sys 1058223097 2005
+1058223801 1 a lib/face/48x48x4/p/plan9.1 - 664 sys sys 1058223140 993
