@@ -12139,3 +12139,4 @@
 1046817166 2 c sys/src/ape/lib/ap/stdio/fseek.c - 664 sys sys 1046815860 416
 1046817166 3 c sys/src/cmd/fossil/9p.c - 664 sys sys 1046782756 21345
 1046817166 4 c sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1046783570 24124
+1046887357 0 c sys/man/2/9p - 664 sys sys 1046886431 15221
