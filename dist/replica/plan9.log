@@ -16391,3 +16391,6 @@
 1105590707 8 c sys/src/games/music/playlistfs/boilerplate.c - 664 sys sys 1105531426 1362
 1105677096 0 c sys/src/cmd/troff2html/mkfile - 664 sys sys 1105631961 242
 1105677096 1 c sys/src/cmd/troff2html/troff2html.c - 664 sys sys 1105631971 14160
+1105799523 0 c sys/src/9/port/devfs.c - 664 sys sys 1105799131 10783
+1105799523 1 c sys/src/cmd/kl/asm.c - 664 sys sys 1105798985 26122
+1105799523 2 c sys/src/cmd/kl/optab.c - 664 sys sys 1105798985 7369
