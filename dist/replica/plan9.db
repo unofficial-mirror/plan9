@@ -2829,7 +2829,7 @@ sys/include/ape/errno.h - 664 sys sys 1070327359 1525
 sys/include/ape/error.h - 664 sys sys 944948759 356
 sys/include/ape/event.h - 664 sys sys 1070327358 117
 sys/include/ape/fcntl.h - 664 sys sys 969500385 1231
-sys/include/ape/fmt.h - 664 sys sys 1070327361 3276
+sys/include/ape/fmt.h - 664 sys sys 1070377332 3277
 sys/include/ape/grp.h - 664 sys sys 944948759 389
 sys/include/ape/inttypes.h - 664 sys sys 1038237535 452
 sys/include/ape/keyboard.h - 664 sys sys 1070327358 120
@@ -4198,12 +4198,12 @@ sys/man/1/sum - 664 sys sys 984772442 1390
 sys/man/1/syscall - 664 sys sys 1016466457 1439
 sys/man/1/tail - 664 sys sys 1017679307 1413
 sys/man/1/tapefs - 664 sys sys 944959675 1731
-sys/man/1/tar - 664 sys sys 1070287474 2363
+sys/man/1/tar - 664 sys sys 1070371922 2538
 sys/man/1/tbl - 664 sys sys 944959674 4308
 sys/man/1/tcs - 664 sys sys 952627441 2575
 sys/man/1/tee - 664 sys sys 969499886 351
 sys/man/1/tel - 664 sys sys 1045501423 941
-sys/man/1/test - 664 sys sys 1015024741 2871
+sys/man/1/test - 664 sys sys 1070415988 3302
 sys/man/1/thesaurus - 664 sys sys 1068121775 222
 sys/man/1/time - 664 sys sys 944959673 380
 sys/man/1/touch - 664 sys sys 1018369246 461
@@ -6867,7 +6867,7 @@ sys/src/cmd/disk/kfs/sub.c - 664 sys sys 1022008488 10804
 sys/src/cmd/disk/kfs/uid.c - 664 sys sys 1022008489 6719
 sys/src/cmd/disk/kfscmd.c - 664 sys sys 1015009135 1109
 sys/src/cmd/disk/mbr.c - 664 sys sys 1063855285 4325
-sys/src/cmd/disk/mkext.c - 664 sys sys 1070287646 5506
+sys/src/cmd/disk/mkext.c - 664 sys sys 1070377355 5716
 sys/src/cmd/disk/mkfile - 664 sys sys 1022385851 500
 sys/src/cmd/disk/mkfs.c - 664 sys sys 1032059493 14298
 sys/src/cmd/disk/prep - 20000000775 sys sys 988249968 0
@@ -9936,7 +9936,7 @@ sys/src/cmd/telco/mkfile - 664 sys sys 944961290 201
 sys/src/cmd/telco/telco.c - 664 sys sys 1021579996 26253
 sys/src/cmd/telco/telcodata - 775 sys sys 944961290 95
 sys/src/cmd/telco/telcofax - 664 sys sys 944961289 30
-sys/src/cmd/test.c - 664 sys sys 1014926662 4156
+sys/src/cmd/test.c - 664 sys sys 1070416286 4823
 sys/src/cmd/time.c - 664 sys sys 1014926662 1546
 sys/src/cmd/tlsclient.c - 664 sys sys 1024375149 1631
 sys/src/cmd/tlssrv.c - 664 sys sys 1018720167 3254
@@ -11222,7 +11222,7 @@ sys/src/libdisk/test.c - 664 sys sys 960347152 275
 sys/src/libdraw - 20000000775 sys sys 1014927873 0
 sys/src/libdraw/alloc.c - 664 sys sys 1014927873 4095
 sys/src/libdraw/allocimagemix.c - 664 sys sys 1014927873 924
-sys/src/libdraw/arith.c - 664 sys sys 1014927873 2846
+sys/src/libdraw/arith.c - 664 sys sys 1070394447 2628
 sys/src/libdraw/bezier.c - 664 sys sys 1040442969 4948
 sys/src/libdraw/border.c - 664 sys sys 984709663 554
 sys/src/libdraw/buildfont.c - 664 sys sys 984709663 2709
@@ -11239,6 +11239,7 @@ sys/src/libdraw/egetrect.c - 664 sys sys 1014927874 2612
 sys/src/libdraw/ellipse.c - 664 sys sys 1040442971 1936
 sys/src/libdraw/emenuhit.c - 664 sys sys 1014927874 7136
 sys/src/libdraw/event.c - 664 sys sys 1014927875 8985
+sys/src/libdraw/fmt.c - 664 sys sys 1070344369 270
 sys/src/libdraw/font.c - 664 sys sys 1014927875 7542
 sys/src/libdraw/freesubfont.c - 664 sys sys 984709664 259
 sys/src/libdraw/getdefont.c - 664 sys sys 944961724 1082
@@ -11252,7 +11253,7 @@ sys/src/libdraw/line.c - 664 sys sys 1040442973 731
 sys/src/libdraw/loadimage.c - 664 sys sys 1014927876 983
 sys/src/libdraw/makefile - 664 sys sys 944961725 648
 sys/src/libdraw/menuhit.c - 664 sys sys 1014927876 7263
-sys/src/libdraw/mkfile - 664 sys sys 1035389777 1013
+sys/src/libdraw/mkfile - 664 sys sys 1070394450 1022
 sys/src/libdraw/mkfont.c - 664 sys sys 944961725 1283
 sys/src/libdraw/mouse.c - 664 sys sys 1030970092 2559
 sys/src/libdraw/newwindow.c - 664 sys sys 1035232036 424

@@ -13944,3 +13944,11 @@
 1070330970 94 c sys/src/cmd/ratfs/misc.c - 664 sys sys 1070288056 8563
 1070330970 95 c sys/src/cmd/tar.c - 664 sys sys 1070287474 15531
 1070330970 96 c sys/src/cmd/upas/common/libsys.c - 664 sys sys 1070287921 14107
+1070417003 0 c sys/include/ape/fmt.h - 664 sys sys 1070377332 3277
+1070417003 1 c sys/man/1/tar - 664 sys sys 1070371922 2538
+1070417003 2 c sys/man/1/test - 664 sys sys 1070415988 3302
+1070417003 3 c sys/src/cmd/disk/mkext.c - 664 sys sys 1070377355 5716
+1070417003 4 c sys/src/cmd/test.c - 664 sys sys 1070416286 4823
+1070417003 5 c sys/src/libdraw/arith.c - 664 sys sys 1070394447 2628
+1070417003 6 a sys/src/libdraw/fmt.c - 664 sys sys 1070344369 270
+1070417003 7 c sys/src/libdraw/mkfile - 664 sys sys 1070394450 1022
