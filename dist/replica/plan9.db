@@ -4262,7 +4262,7 @@ sys/man/1/yacc - 664 sys sys 944959676 3273
 sys/man/1/yesterday - 664 sys sys 1070288431 2348
 sys/man/2 - 20000000775 sys sys 1017423721 0
 sys/man/2/0intro - 664 sys sys 1044724217 11574
-sys/man/2/9p - 664 sys sys 1046886431 15221
+sys/man/2/9p - 664 sys sys 1089084170 15221
 sys/man/2/9pcmdbuf - 664 sys sys 1044430197 2057
 sys/man/2/9pfid - 664 sys sys 1048637158 3626
 sys/man/2/9pfile - 664 sys sys 1048637158 4408
@@ -4830,7 +4830,7 @@ sys/src/9/pc/ethersink.c - 664 sys sys 1048644103 1076
 sys/src/9/pc/ethersmc.c - 664 sys sys 1071245461 15103
 sys/src/9/pc/etherwavelan.c - 664 sys sys 1026847642 3722
 sys/src/9/pc/floppy.h - 664 sys sys 1055700609 3835
-sys/src/9/pc/fns.h - 664 sys sys 1086987325 4352
+sys/src/9/pc/fns.h - 664 sys sys 1089046996 4372
 sys/src/9/pc/hcwAMC.h - 664 sys sys 1026860163 166004
 sys/src/9/pc/i8253.c - 664 sys sys 1084475127 6272
 sys/src/9/pc/i8259.c - 664 sys sys 1015014519 4423
@@ -4838,8 +4838,8 @@ sys/src/9/pc/init9.c - 664 sys sys 1040002518 94
 sys/src/9/pc/initcode.s - 664 sys sys 1015014519 282
 sys/src/9/pc/io.h - 664 sys sys 1087657448 8029
 sys/src/9/pc/kbd.c - 664 sys sys 1079617269 11655
-sys/src/9/pc/l.s - 664 sys sys 1086960172 22732
-sys/src/9/pc/main.c - 664 sys sys 1084475127 14675
+sys/src/9/pc/l.s - 664 sys sys 1089046996 23078
+sys/src/9/pc/main.c - 664 sys sys 1089046997 14677
 sys/src/9/pc/mem.h - 664 sys sys 1018553448 4573
 sys/src/9/pc/memory.c - 664 sys sys 1071245460 13028
 sys/src/9/pc/mkfile - 664 sys sys 1067810339 3219
@@ -6434,7 +6434,7 @@ sys/src/cmd/auth/secstore/secacct.c - 644 sys sys 1015008431 755
 sys/src/cmd/auth/secstore/secchk.c - 664 sys sys 1055698993 560
 sys/src/cmd/auth/secstore/secstore.c - 664 sys sys 1062277640 12269
 sys/src/cmd/auth/secstore/secstore.h - 664 sys sys 1041890053 841
-sys/src/cmd/auth/secstore/secstored.c - 664 sys sys 1074559798 7998
+sys/src/cmd/auth/secstore/secstored.c - 664 sys sys 1089058000 8328
 sys/src/cmd/auth/secstore/secuser.c - 664 sys sys 1064667494 4971
 sys/src/cmd/auth/secstore/util.c - 664 sys sys 1021579985 1498
 sys/src/cmd/auth/secureidcheck.c - 664 sys sys 1078840013 9007
@@ -6619,7 +6619,7 @@ sys/src/cmd/aux/vga/main.c - 664 sys sys 1014925010 8154
 sys/src/cmd/aux/vga/mga2164w.c - 664 sys sys 1014925010 13196
 sys/src/cmd/aux/vga/mga4xx.c - 664 sys sys 1014925010 35895
 sys/src/cmd/aux/vga/mkfile - 664 sys sys 1048636613 905
-sys/src/cmd/aux/vga/neomagic.c - 664 sys sys 1014925010 8801
+sys/src/cmd/aux/vga/neomagic.c - 664 sys sys 1089055692 8888
 sys/src/cmd/aux/vga/notes.txt - 664 sys sys 1028334647 14376
 sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1088204577 23412
 sys/src/cmd/aux/vga/palette.c - 664 sys sys 1014925010 2201
@@ -6645,7 +6645,7 @@ sys/src/cmd/aux/vga/tvp3026.c - 664 sys sys 1014925013 3580
 sys/src/cmd/aux/vga/tvp3026clock.c - 664 sys sys 1014925013 1960
 sys/src/cmd/aux/vga/vga.c - 664 sys sys 1014925013 9305
 sys/src/cmd/aux/vga/vga.h - 664 sys sys 1025416295 10154
-sys/src/cmd/aux/vga/virge.c - 664 sys sys 1061565169 18440
+sys/src/cmd/aux/vga/virge.c - 664 sys sys 1089055693 18540
 sys/src/cmd/aux/vga/vision864.c - 664 sys sys 1014925014 2325
 sys/src/cmd/aux/vga/vision964.c - 664 sys sys 1014925014 3426
 sys/src/cmd/aux/vga/vision968.c - 664 sys sys 1014925014 3959

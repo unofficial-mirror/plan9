@@ -15400,3 +15400,10 @@
 1088825472 9 c sys/src/libcontrol/text.c - 664 sys sys 1088784891 12316
 1088825472 10 c sys/src/libcontrol/textbutton.c - 664 sys sys 1088784891 7486
 1088825472 11 a sys/src/libcontrol/textbutton3.c - 664 sys sys 1088784891 9104
+1089084719 0 c sys/man/2/9p - 664 sys sys 1089084170 15221
+1089084719 1 c sys/src/9/pc/fns.h - 664 sys sys 1089046996 4372
+1089084719 2 c sys/src/9/pc/l.s - 664 sys sys 1089046996 23078
+1089084719 3 c sys/src/9/pc/main.c - 664 sys sys 1089046997 14677
+1089084719 4 c sys/src/cmd/auth/secstore/secstored.c - 664 sys sys 1089058000 8328
+1089084719 5 c sys/src/cmd/aux/vga/neomagic.c - 664 sys sys 1089055692 8888
+1089084719 6 c sys/src/cmd/aux/vga/virge.c - 664 sys sys 1089055693 18540
