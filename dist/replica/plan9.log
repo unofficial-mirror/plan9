@@ -11982,3 +11982,6 @@
 1045778023 14 c sys/src/cmd/vnc/vncs.c - 664 sys sys 1045758533 20939
 1045778023 15 c sys/src/cmd/vnc/wsys.c - 664 sys sys 1045758533 4049
 1045855949 0 m cron - 20000000777 sys sys 1039727915 0
+1045941664 0 c sys/lib/mimetype - 664 sys sys 1045933187 5318
+1045941664 1 c sys/src/libmemlayer/draw.c - 664 sys sys 1045933975 4082
+1045941664 2 c sys/src/libsunrpc/client.c - 664 sys sys 1045941140 8862
