@@ -11477,3 +11477,11 @@
 1042857112 3 c sys/src/9/port/netif.h - 664 sys sys 1042855799 2908
 1042941787 0 c sys/src/cmd/hget.c - 664 sys sys 1042940715 21870
 1042941787 1 c sys/src/cmd/webcookies.c - 664 sys sys 1042940803 23411
+1043177557 0 c sys/src/cmd/upas/smtp/smtp.c - 664 sys sys 1043171649 18267
+1043177557 1 c sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1043171952 22068
+1043177557 2 c sys/src/cmd/upas/smtp/smtpd.h - 664 sys sys 1043171647 1031
+1043177557 3 c sys/src/cmd/upas/smtp/smtpd.y - 664 sys sys 1043171647 6911
+1043177557 4 c sys/src/cmd/venti/buildindex.c - 664 sys sys 1043176098 3169
+1043177557 5 c sys/src/cmd/venti/checkindex.c - 664 sys sys 1043176099 4110
+1043177557 6 c sys/src/cmd/venti/dat.h - 664 sys sys 1043176100 15228
+1043177557 7 c sys/src/cmd/venti/dump.c - 664 sys sys 1043176101 1565
