@@ -15290,3 +15290,5 @@
 1084501966 71 c sys/src/libventi/fatal.c - 664 sys sys 1084468118 225
 1084501966 72 d sys/src/9/port/realtimesub.c - 664 sys sys 1055688540 0
 1084501966 73 d sys/src/9/port/nulledf.c - 664 sys sys 1037669300 0
+1084543376 0 c sys/src/cmd/acme/rows.c - 664 sys sys 1084542482 14664
+1084543376 1 c sys/src/cmd/acme/text.c - 664 sys sys 1084542489 27383

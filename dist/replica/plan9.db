@@ -6308,9 +6308,9 @@ sys/src/cmd/acme/fsys.c - 664 sys sys 1079102915 12799
 sys/src/cmd/acme/look.c - 664 sys sys 1077376257 14213
 sys/src/cmd/acme/mkfile - 664 sys sys 1058463682 543
 sys/src/cmd/acme/regx.c - 664 sys sys 1014926094 16057
-sys/src/cmd/acme/rows.c - 664 sys sys 1068140772 14637
+sys/src/cmd/acme/rows.c - 664 sys sys 1084542482 14664
 sys/src/cmd/acme/scrl.c - 664 sys sys 1014926095 3072
-sys/src/cmd/acme/text.c - 664 sys sys 1081200110 27335
+sys/src/cmd/acme/text.c - 664 sys sys 1084542489 27383
 sys/src/cmd/acme/time.c - 664 sys sys 1014926095 1783
 sys/src/cmd/acme/util.c - 664 sys sys 1079102916 7412
 sys/src/cmd/acme/wind.c - 664 sys sys 1082924470 11115
