@@ -14166,3 +14166,4 @@
 1073061185 0 c sys/src/mkfile - 664 sys sys 1073061130 1006
 1073151184 0 c sys/src/cmd/history.c - 664 sys sys 1073079763 6117
 1073151184 1 c sys/src/cmd/fossil/file.c - 664 sys sys 1073140359 30215
+1073270007 0 c sys/src/cmd/rio/wind.c - 664 sys sys 1073268477 32704
