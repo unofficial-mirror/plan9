@@ -13844,3 +13844,4 @@
 1069819299 125 c sys/src/cmd/fossil/9p.c - 664 sys sys 1069818231 21498
 1069819299 126 c sys/src/cmd/unix/u9fs/u9fs.c - 664 sys sys 1069814541 30917
 1069819299 127 c sys/src/libip/myipaddr.c - 664 sys sys 1069766545 841
+1069885924 0 c sys/man/8/fossilcons - 664 sys sys 1069884636 15073
