@@ -15091,3 +15091,5 @@
 1080223427 2 c sys/man/2/errstr - 664 sys sys 1080218022 1705
 1080223427 3 c sys/man/5/error - 664 sys sys 1080218022 513
 1080223427 4 c sys/src/cmd/disk/mbr.c - 664 sys sys 1080218150 4325
+1080401518 0 c sys/src/cmd/aux/timesync.c - 664 sys sys 1080399717 24797
+1080401518 1 c sys/src/libdraw/stringwidth.c - 664 sys sys 1080400060 1589
