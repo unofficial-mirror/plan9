@@ -13,7 +13,7 @@
 386/bin/aux/isvmware - 775 sys sys 1032486791 23997
 386/bin/aux/vmmousepoll - 775 sys sys 1032480572 41434
 386/bin/aux/vmware - 775 sys sys 1049428256 453
-386/bin/aux/vmwarefs - 775 sys sys 1045537962 102172
+386/bin/aux/vmwarefs - 775 sys sys 1095563640 99117
 386/bin/bitsy - 20000000775 sys sys 1018721039 0
 386/bin/bitsy/light - 775 sys sys 1020319072 242
 386/bin/dial - 20000000775 sys sys 1058790015 0
@@ -2819,7 +2819,7 @@ sys/doc/venti/venti.pdf - 755 sys sys 1020384352 139090
 sys/doc/venti/venti.ps - 664 sys sys 1019852320 2012620
 sys/games - 20000000775 sys sys 952648872 0
 sys/games/lib - 20000000775 sys sys 952648879 0
-sys/games/lib/fortunes - 664 sys sys 1094570700 249644
+sys/games/lib/fortunes - 664 sys sys 1095516221 249755
 sys/include - 20000000775 sys sys 1016902416 0
 sys/include/9p.h - 664 sys sys 1091904420 4392
 sys/include/String.h - 664 sys sys 1091904425 1319
