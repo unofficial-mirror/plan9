@@ -167,8 +167,8 @@ acme/mail/readme - 664 sys sys 1017166342 2725
 acme/mail/src - 20000000775 sys sys 1015364010 0
 acme/mail/src/dat.h - 664 sys sys 1033936953 3857
 acme/mail/src/html.c - 664 sys sys 1034016085 1333
-acme/mail/src/mail.c - 664 sys sys 1037034918 10909
-acme/mail/src/mesg.c - 664 sys sys 1037034919 26017
+acme/mail/src/mail.c - 664 sys sys 1041481453 10994
+acme/mail/src/mesg.c - 664 sys sys 1041481453 26236
 acme/mail/src/mkfile - 664 sys sys 1037034918 364
 acme/mail/src/reply.c - 664 sys sys 1041137203 11326
 acme/mail/src/util.c - 664 sys sys 1022112164 1391
@@ -4626,7 +4626,7 @@ sys/src/9/pc/initcode.s - 664 sys sys 1015014519 282
 sys/src/9/pc/io.h - 664 sys sys 1015014519 7956
 sys/src/9/pc/kbd.c - 664 sys sys 1039753498 9134
 sys/src/9/pc/l.s - 664 sys sys 1026847645 20867
-sys/src/9/pc/main.c - 664 sys sys 1034202255 14255
+sys/src/9/pc/main.c - 664 sys sys 1041431178 14272
 sys/src/9/pc/mem.h - 664 sys sys 1018553448 4573
 sys/src/9/pc/memory.c - 664 sys sys 1032303986 12994
 sys/src/9/pc/mkfile - 664 sys sys 1040002514 2995
@@ -4707,7 +4707,7 @@ sys/src/9/port/devenv.c - 664 sys sys 1019762849 6562
 sys/src/9/port/devfs.c - 664 sys sys 1041350175 11171
 sys/src/9/port/devkprof.c - 664 sys sys 1014931173 3111
 sys/src/9/port/devloopback.c - 664 sys sys 1018721201 14968
-sys/src/9/port/devmnt.c - 664 sys sys 1039743586 21096
+sys/src/9/port/devmnt.c - 664 sys sys 1041443399 21588
 sys/src/9/port/devmntstats.c - 664 sys sys 1014931173 4039
 sys/src/9/port/devmouse.c - 664 sys sys 1036827459 11420
 sys/src/9/port/devnmouse.c - 664 sys sys 1036812999 3738
@@ -11096,7 +11096,7 @@ sys/src/libthread/channel.c - 664 sys sys 1018387005 8517
 sys/src/libthread/chanprint.c - 664 sys sys 1014928156 328
 sys/src/libthread/create.c - 664 sys sys 1014928156 2829
 sys/src/libthread/debug.c - 664 sys sys 1014928157 832
-sys/src/libthread/example.c - 664 sys sys 1014928157 1419
+sys/src/libthread/example.c - 664 sys sys 1041440306 1402
 sys/src/libthread/exec.c - 664 sys sys 1014928157 1844
 sys/src/libthread/exit.c - 664 sys sys 1015701273 1209
 sys/src/libthread/id.c - 664 sys sys 1014928157 1121

@@ -11332,3 +11332,8 @@
 1041365010 9 c sys/src/fs/sony/9sonyfs.c - 664 sys sys 1041361261 2962
 1041365010 10 c sys/src/libc/9sys/dirfstat.c - 664 sys sys 1041363499 676
 1041365010 11 c sys/src/libc/9sys/dirstat.c - 664 sys sys 1041363499 688
+1041481763 0 c acme/mail/src/mail.c - 664 sys sys 1041481453 10994
+1041481763 1 c acme/mail/src/mesg.c - 664 sys sys 1041481453 26236
+1041481763 2 c sys/src/9/pc/main.c - 664 sys sys 1041431178 14272
+1041481763 3 c sys/src/9/port/devmnt.c - 664 sys sys 1041443399 21588
+1041481763 4 c sys/src/libthread/example.c - 664 sys sys 1041440306 1402
