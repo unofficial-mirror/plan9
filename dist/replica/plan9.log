@@ -14291,3 +14291,15 @@
 1076990541 9 c sys/src/cmd/qc/cgen.c - 664 sys sys 1076969803 18282
 1076990541 10 c sys/src/cmd/vc/cgen.c - 664 sys sys 1076969812 20070
 1076990541 11 c sys/src/libauth/newns.c - 664 sys sys 1076977148 6284
+1077076956 0 c rc/bin/dircp - 775 sys sys 1077038698 192
+1077076956 1 c sys/log/mail - 666 sys sys 1077042805 473
+1077076956 2 c sys/src/9/ip/devip.c - 664 sys sys 1077055047 24188
+1077076956 3 c sys/src/9/pc/sdscsi.c - 664 sys sys 1077033661 7487
+1077076956 4 c sys/src/9/port/devpipe.c - 664 sys sys 1077055016 5825
+1077076956 5 c sys/src/9/port/devuart.c - 664 sys sys 1077055016 11683
+1077076956 6 c sys/src/9/port/sysfile.c - 664 sys sys 1077064173 22127
+1077076956 7 c sys/src/boot/pc/devsd.c - 664 sys sys 1077033681 11262
+1077076956 8 c sys/src/boot/pc/mkfile - 664 sys sys 1077033680 3061
+1077076956 9 c sys/src/boot/pc/sd53c8xx.c - 664 sys sys 1077033951 52135
+1077076956 10 c sys/src/boot/pc/sdscsi.c - 664 sys sys 1077033682 7022
+1077076956 11 c sys/src/cmd/tail.c - 664 sys sys 1077054929 6004
