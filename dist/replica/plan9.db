@@ -4168,7 +4168,7 @@ sys/man/1/db - 664 sys sys 1015024738 17862
 sys/man/1/dc - 664 sys sys 944959674 4834
 sys/man/1/dd - 664 sys sys 1055693436 3346
 sys/man/1/deroff - 664 sys sys 1017423524 1826
-sys/man/1/diff - 664 sys sys 969499884 2793
+sys/man/1/diff - 664 sys sys 1106723601 2907
 sys/man/1/doc2txt - 664 sys sys 1105020018 2077
 sys/man/1/doctype - 664 sys sys 944959673 849
 sys/man/1/du - 664 sys sys 1017166323 1410
@@ -6344,7 +6344,7 @@ sys/src/cmd/auth/factotum/chap.c - 664 sys sys 1103818824 8942
 sys/src/cmd/auth/factotum/confirm.c - 664 sys sys 1044829586 3103
 sys/src/cmd/auth/factotum/dat.h - 664 sys sys 1099176466 4809
 sys/src/cmd/auth/factotum/fgui.c - 664 sys sys 1044829587 15948
-sys/src/cmd/auth/factotum/fs.c - 664 sys sys 1099176467 10365
+sys/src/cmd/auth/factotum/fs.c - 664 sys sys 1106750760 10385
 sys/src/cmd/auth/factotum/log.c - 664 sys sys 1046655068 1781
 sys/src/cmd/auth/factotum/mkfile - 664 sys sys 1099176466 493
 sys/src/cmd/auth/factotum/p9any.c - 664 sys sys 1048614972 8219
@@ -6834,10 +6834,10 @@ sys/src/cmd/dict/thesaurus.c - 664 sys sys 944960881 1273
 sys/src/cmd/dict/utils.c - 664 sys sys 1100894437 14345
 sys/src/cmd/dict/world.c - 664 sys sys 944960882 4264
 sys/src/cmd/diff - 20000000775 sys sys 944960882 0
-sys/src/cmd/diff/diff.h - 664 sys sys 1014925333 769
+sys/src/cmd/diff/diff.h - 664 sys sys 1106723609 794
 sys/src/cmd/diff/diffdir.c - 664 sys sys 1014925333 1791
-sys/src/cmd/diff/diffio.c - 664 sys sys 1106063669 5272
-sys/src/cmd/diff/diffreg.c - 664 sys sys 1014925334 8825
+sys/src/cmd/diff/diffio.c - 664 sys sys 1106723609 6378
+sys/src/cmd/diff/diffreg.c - 664 sys sys 1106723609 8842
 sys/src/cmd/diff/main.c - 664 sys sys 1106151067 4325
 sys/src/cmd/diff/mkfile - 664 sys sys 944960882 141
 sys/src/cmd/disk - 20000000775 sys sys 1018468546 0

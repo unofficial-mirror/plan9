@@ -16426,3 +16426,8 @@
 1106627569 6 c sys/src/cmd/ip/tftpd.c - 664 sys sys 1106624712 7642
 1106627569 7 d sys/src/cmd/auth/secstore/secacct.c - 644 sys sys 1015008431 0
 1106667180 0 c sys/src/libdraw/font.c - 664 sys sys 1106665816 7574
+1106800281 0 c sys/man/1/diff - 664 sys sys 1106723601 2907
+1106800281 1 c sys/src/cmd/auth/factotum/fs.c - 664 sys sys 1106750760 10385
+1106800281 2 c sys/src/cmd/diff/diff.h - 664 sys sys 1106723609 794
+1106800281 3 c sys/src/cmd/diff/diffio.c - 664 sys sys 1106723609 6378
+1106800281 4 c sys/src/cmd/diff/diffreg.c - 664 sys sys 1106723609 8842
