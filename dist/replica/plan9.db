@@ -4705,7 +4705,7 @@ sys/src/9/pc/devusb.c - 664 sys sys 1063857423 18352
 sys/src/9/pc/devvga.c - 664 sys sys 1063857412 8714
 sys/src/9/pc/dma.c - 664 sys sys 1015014515 4736
 sys/src/9/pc/ether2000.c - 664 sys sys 1017854323 2839
-sys/src/9/pc/ether2114x.c - 664 sys sys 1034021961 38762
+sys/src/9/pc/ether2114x.c - 664 sys sys 1066618082 41227
 sys/src/9/pc/ether589.c - 664 sys sys 1015014516 4644
 sys/src/9/pc/ether79c970.c - 664 sys sys 1018386992 14056
 sys/src/9/pc/ether8003.c - 664 sys sys 1015014516 6665
@@ -5772,7 +5772,7 @@ sys/src/boot/pc/eoffs - 664 sys sys 1015007950 0
 sys/src/boot/pc/error.h - 664 sys sys 1015007950 3081
 sys/src/boot/pc/ether.c - 664 sys sys 1056073258 4670
 sys/src/boot/pc/ether2000.c - 664 sys sys 1015007950 2609
-sys/src/boot/pc/ether2114x.c - 664 sys sys 1015007950 34538
+sys/src/boot/pc/ether2114x.c - 664 sys sys 1066618033 37048
 sys/src/boot/pc/ether589.c - 664 sys sys 1015007950 4628
 sys/src/boot/pc/ether79c970.c - 664 sys sys 1015007950 11717
 sys/src/boot/pc/ether8003.c - 664 sys sys 1015007950 6446
@@ -9453,7 +9453,7 @@ sys/src/cmd/rtstats/resproc.c - 664 sys sys 1037669163 2287
 sys/src/cmd/rtstats/rtstats.c - 664 sys sys 1048644563 13224
 sys/src/cmd/rtstats/time.c - 664 sys sys 1038425433 2094
 sys/src/cmd/rtstats/time.h - 664 sys sys 1038425434 164
-sys/src/cmd/rx.c - 664 sys sys 1053223080 3374
+sys/src/cmd/rx.c - 664 sys sys 1066572585 3657
 sys/src/cmd/sam - 20000000775 sys sys 944961629 0
 sys/src/cmd/sam/address.c - 664 sys sys 944961628 3985
 sys/src/cmd/sam/buff.c - 664 sys sys 1014926937 5161
@@ -9485,10 +9485,10 @@ sys/src/cmd/samterm/flayer.c - 664 sys sys 1014926592 9863
 sys/src/cmd/samterm/flayer.h - 664 sys sys 956946464 1147
 sys/src/cmd/samterm/icons.c - 664 sys sys 1014926592 1627
 sys/src/cmd/samterm/io.c - 664 sys sys 952627627 4226
-sys/src/cmd/samterm/main.c - 664 sys sys 947099637 9949
+sys/src/cmd/samterm/main.c - 664 sys sys 1066572812 10009
 sys/src/cmd/samterm/menu.c - 664 sys sys 1045502822 6528
 sys/src/cmd/samterm/mesg.c - 664 sys sys 1014926592 12558
-sys/src/cmd/samterm/mkfile - 664 sys sys 944961350 544
+sys/src/cmd/samterm/mkfile - 664 sys sys 1066572811 595
 sys/src/cmd/samterm/plan9.c - 664 sys sys 1014926592 4675
 sys/src/cmd/samterm/rasp.c - 664 sys sys 944961350 4433
 sys/src/cmd/samterm/samterm.h - 664 sys sys 1045502822 3730
