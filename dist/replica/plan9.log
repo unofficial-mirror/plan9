@@ -12859,3 +12859,5 @@
 1056573160 6 c sys/src/9/pc/pccpu - 664 sys sys 1056568059 803
 1056573160 7 c sys/src/cmd/ip/ping.c - 664 sys sys 1056550715 5076
 1056636237 0 a sys/src/cmd/aux/zerotrunc.c - 664 sys sys 1056634403 300
+1056857571 0 c LICENSE - 444 sys sys 1056856036 12895
+1056857571 1 a LICENSE.afpl - 664 sys sys 1056855682 14333
