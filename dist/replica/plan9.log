@@ -12833,3 +12833,12 @@
 1056215063 1 c sys/src/9/alphapc/apccpu - 664 sys sys 1056171198 510
 1056215063 2 c sys/src/cmd/ndb/cs.c - 664 sys sys 1056171180 32752
 1056215063 3 c sys/src/cmd/ndb/dnstcp.c - 664 sys sys 1056171180 7066
+1056339153 0 c sys/src/9/mtx/mtx - 664 sys sys 1056336297 416
+1056339153 1 c sys/src/9/pc/fns.h - 664 sys sys 1056299506 4215
+1056339153 2 c sys/src/9/pc/mkfile - 664 sys sys 1056336303 3092
+1056339153 3 c sys/src/9/pc/trap.c - 664 sys sys 1056299507 19012
+1056339153 4 c sys/src/9/pc/uarti8250.c - 664 sys sys 1056299508 12605
+1056339153 5 c sys/src/9/pc/wavelan.c - 664 sys sys 1056299581 27253
+1056339153 6 c sys/src/cmd/mk/plan9.c - 664 sys sys 1056337347 6921
+1056339153 7 c sys/src/libString/mkfile - 664 sys sys 1056299302 432
+1056339153 8 c sys/src/libc/9sys/tm2sec.c - 664 sys sys 1056331608 3059
