@@ -11985,3 +11985,4 @@
 1045941664 0 c sys/lib/mimetype - 664 sys sys 1045933187 5318
 1045941664 1 c sys/src/libmemlayer/draw.c - 664 sys sys 1045933975 4082
 1045941664 2 c sys/src/libsunrpc/client.c - 664 sys sys 1045941140 8862
+1046043125 0 c sys/man/2/sechash - 664 sys sys 1046042040 3016
