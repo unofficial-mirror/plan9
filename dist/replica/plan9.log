@@ -15889,3 +15889,7 @@
 1094095910 2 c sys/src/cmd/unix/u9fs/doprint.c - 664 sys sys 1094068304 8685
 1094095910 3 c sys/src/cmd/unix/u9fs/plan9.h - 664 sys sys 1094068304 5568
 1094095910 4 c sys/src/cmd/upas/ned/nedmail.c - 664 sys sys 1094056330 44502
+1094182331 0 c sys/man/8/trampoline - 664 sys sys 1094150519 1073
+1094182331 1 c sys/src/cmd/lnfs.c - 664 sys sys 1094156765 13332
+1094182331 2 c sys/src/cmd/nntpfs.c - 664 sys sys 1094156765 18904
+1094182331 3 c sys/src/cmd/ssh/scp.c - 664 sys sys 1094156297 13889
