@@ -16417,3 +16417,11 @@
 1106454742 2 c sys/src/cmd/faces/main.c - 664 sys sys 1106409986 13643
 1106454742 3 c sys/src/cmd/mntgen.c - 664 sys sys 1106410349 3630
 1106454742 4 c sys/src/libmach/sym.c - 664 sys sys 1106409575 26581
+1106627569 0 c sys/src/9/port/devproc.c - 664 sys sys 1106585362 28465
+1106627569 1 c sys/src/cmd/auth/secstore/mkfile - 664 sys sys 1106577499 836
+1106627569 2 c sys/src/cmd/auth/secstore/password.c - 664 sys sys 1106577427 2929
+1106627569 3 c sys/src/cmd/auth/secstore/secstore.h - 664 sys sys 1106575526 859
+1106627569 4 c sys/src/cmd/auth/secstore/secstored.c - 664 sys sys 1106575527 8065
+1106627569 5 c sys/src/cmd/auth/secstore/util.c - 664 sys sys 1106575527 1819
+1106627569 6 c sys/src/cmd/ip/tftpd.c - 664 sys sys 1106624712 7642
+1106627569 7 d sys/src/cmd/auth/secstore/secacct.c - 644 sys sys 1015008431 0
