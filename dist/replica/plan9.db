@@ -6168,7 +6168,7 @@ sys/src/cmd/8l/list.c - 664 sys sys 1045503947 4185
 sys/src/cmd/8l/mkfile - 664 sys sys 1032102046 363
 sys/src/cmd/8l/obj.c - 664 sys sys 1089299184 25826
 sys/src/cmd/8l/optab.c - 664 sys sys 1071778472 16231
-sys/src/cmd/8l/pass.c - 664 sys sys 1089299184 13655
+sys/src/cmd/8l/pass.c - 664 sys sys 1095107668 13675
 sys/src/cmd/8l/span.c - 664 sys sys 1089299184 23295
 sys/src/cmd/9660srv - 20000000775 sys sys 944960735 0
 sys/src/cmd/9660srv/9660srv.c - 664 sys sys 1014924873 17018
