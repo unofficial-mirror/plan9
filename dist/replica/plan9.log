@@ -16767,3 +16767,6 @@
 1112157177 10 c sys/src/cmd/file.c - 664 sys sys 1112038848 23285
 1112157177 11 c sys/src/cmd/usb/audio/usbaudio.c - 664 sys sys 1112038987 9845
 1112157177 12 c sys/src/cmd/usb/misc/usbmouse.c - 664 sys sys 1112038987 3468
+1112239994 0 c rc/bin/patch/move - 775 sys sys 1112166652 643
+1112239994 1 c sys/games/lib/fortunes - 664 sys sys 1112166661 253478
+1112239994 2 c sys/man/8/snoopy - 664 sys sys 1112238597 3809
