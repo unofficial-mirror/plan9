@@ -11286,3 +11286,10 @@
 1040522570 3 c sys/man/2/memdraw - 664 sys sys 1040484074 10144
 1040522570 4 c sys/man/2/memlayer - 664 sys sys 1040484074 6963
 1040567536 0 c sys/src/fs/dev/juke.c - 664 sys sys 1040567254 22891
+1040698976 0 c rc/bin/man - 775 sys sys 1040698721 2088
+1040698976 1 c rc/bin/srvssh - 775 sys sys 1040696716 2289
+1040698976 2 m rc/bin/srvssh - 775 sys sys 1040696716 2289
+1040698976 3 c sys/man/1/cpu - 664 sys sys 1040673168 3226
+1040698976 4 c sys/man/8/boot - 664 sys sys 1040698789 6482
+1040698976 5 c sys/man/8/plan9.ini - 664 sys sys 1040698791 20588
+1040698976 6 c sys/src/cmd/unix/drawterm/drawterm.c - 664 sys sys 1040672905 11492
