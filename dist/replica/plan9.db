@@ -4083,7 +4083,7 @@ sys/man/1/yacc - 664 sys sys 944959676 3273
 sys/man/1/yesterday - 664 sys sys 959299265 2045
 sys/man/2 - 20000000775 sys sys 1017423721 0
 sys/man/2/0intro - 664 sys sys 958249500 11777
-sys/man/2/9p - 664 sys sys 1032632905 14553
+sys/man/2/9p - 664 sys sys 1044050898 14553
 sys/man/2/9pfid - 664 sys sys 1030451710 3644
 sys/man/2/9pfile - 664 sys sys 1017423719 4426
 sys/man/2/abort - 664 sys sys 944959693 331
@@ -4488,7 +4488,7 @@ sys/src/9/bitsy/fpiarm.c - 664 sys sys 1017695513 9328
 sys/src/9/bitsy/fpimem.c - 664 sys sys 1017695513 2229
 sys/src/9/bitsy/gamma.c - 664 sys sys 1017695513 646
 sys/src/9/bitsy/gamma.h - 664 sys sys 1017695514 540718
-sys/src/9/bitsy/init9.s - 444 sys sys 1043922398 183
+sys/src/9/bitsy/init9.s - 664 sys sys 1043922398 183
 sys/src/9/bitsy/io.h - 664 sys sys 1037029022 8008
 sys/src/9/bitsy/l.s - 664 sys sys 1037029024 18182
 sys/src/9/bitsy/main.c - 664 sys sys 1039753387 8929
@@ -4510,8 +4510,8 @@ sys/src/9/bitsy/sa1110dma.c - 664 sys sys 1017695520 4666
 sys/src/9/bitsy/sa1110dma.h - 664 sys sys 1017695520 381
 sys/src/9/bitsy/screen.c - 664 sys sys 1039753380 10145
 sys/src/9/bitsy/screen.h - 664 sys sys 1017695520 260
-sys/src/9/bitsy/sd.h - 464 sys sys 1037029038 0
-sys/src/9/bitsy/sdata.c - 464 sys sys 1037029041 44666
+sys/src/9/bitsy/sd.h - 664 sys sys 1037029038 0
+sys/src/9/bitsy/sdata.c - 664 sys sys 1037029041 44666
 sys/src/9/bitsy/tar.c - 664 sys sys 1017695521 1375
 sys/src/9/bitsy/trap.c - 664 sys sys 1037029044 18951
 sys/src/9/bitsy/uartsa1110.c - 664 sys sys 1037029045 8530

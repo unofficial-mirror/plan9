@@ -11509,3 +11509,7 @@
 1043933501 2 c sys/src/9/bitsy/mkfile - 664 sys sys 1043922405 2438
 1043933501 3 c sys/src/9/bitsy/wavelan.c - 664 sys sys 1043922422 25684
 1043933501 4 d sys/src/9/bitsy/initcode - 664 sys sys 1017695514 0
+1044052302 0 c sys/man/2/9p - 664 sys sys 1044050898 14553
+1044052302 1 m sys/src/9/bitsy/init9.s - 664 sys sys 1043922398 183
+1044052302 2 m sys/src/9/bitsy/sd.h - 664 sys sys 1037029038 0
+1044052302 3 m sys/src/9/bitsy/sdata.c - 664 sys sys 1037029041 44666
