@@ -12430,3 +12430,7 @@
 1049428943 10 c sys/src/libc/9sys/qlock.c - 664 sys sys 1049426327 5060
 1049509952 0 c sys/src/9/pc/mmu.c - 664 sys sys 1049509456 10014
 1049581983 0 c sys/lib/acid/port - 664 sys sys 1049580489 8902
+1049841168 0 c sys/man/1/ls - 664 sys sys 1049813576 2791
+1049841168 1 c sys/man/4/nfs - 664 sys sys 1049776970 4475
+1049841168 2 c sys/src/cmd/aux/portmap.c - 664 sys sys 1049776133 3617
+1049841168 3 c sys/src/cmd/nfs.c - 664 sys sys 1049839711 31052
