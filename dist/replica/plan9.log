@@ -14989,3 +14989,9 @@
 1079055207 23 c sys/src/cmd/fossil/9proc.c - 664 sys sys 1079034426 14680
 1079055207 24 d lib/face/48x48x1/u/unknown.babsy.mpifr-bonn.mpg.de - 644 sys sys 944941670 0
 1079055207 25 d lib/face/48x48x1/u/unknown.aibn54.mpifr-bonn.mpg.de - 644 sys sys 944941670 0
+1079116296 0 c lib/face/48x48x8/.dict - 664 sys sys 1079103826 2117
+1079116296 1 c sys/src/cmd/acme/cols.c - 664 sys sys 1079102914 11126
+1079116296 2 c sys/src/cmd/acme/fns.h - 664 sys sys 1079102913 2883
+1079116296 3 c sys/src/cmd/acme/fsys.c - 664 sys sys 1079102915 12799
+1079116296 4 c sys/src/cmd/acme/text.c - 664 sys sys 1079115968 27284
+1079116296 5 c sys/src/cmd/acme/util.c - 664 sys sys 1079102916 7412
