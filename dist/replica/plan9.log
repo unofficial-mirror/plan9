@@ -13088,3 +13088,4 @@
 1063072945 2 c sys/src/cmd/cb/cb.c - 664 sys sys 1063039630 18439
 1063072945 3 c sys/src/cmd/cb/cb.h - 664 sys sys 1063023989 3404
 1063238595 0 c lib/vgadb - 664 sys sys 1063237366 27747
+1063306964 0 c sys/src/cmd/ip/snoopy/main.c - 664 sys sys 1063306798 14371
