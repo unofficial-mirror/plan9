@@ -12903,3 +12903,16 @@
 1058475764 2 c sys/src/cmd/acme/mkfile - 664 sys sys 1058463682 543
 1058475764 3 c sys/src/cmd/aux/timesync.c - 664 sys sys 1058474964 24413
 1058659366 0 a sys/src/9/pc/pcf.c - 664 sys sys 1058659039 5110
+1058792640 0 a 386/bin/dial - 20000000775 sys sys 1058790015 0
+1058792640 1 a rc/bin/ipconf - 20000000775 sys sys 1058791152 0
+1058792640 2 a rc/bin/ipconf/inside - 775 sys sys 1058790955 427
+1058792640 3 a rc/bin/ipconf/lra - 775 sys sys 1058791152 1558
+1058792640 4 a rc/bin/ipconf/outside - 775 sys sys 1058790951 550
+1058792640 5 a rc/bin/ipconf/theworld - 775 sys sys 1058790940 1212
+1058792640 6 a sys/man/1/expect - 664 sys sys 1058791094 3023
+1058792640 7 a sys/src/cmd/dial - 20000000775 sys sys 1058789955 0
+1058792640 8 a sys/src/cmd/dial/at.c - 664 sys sys 1058789951 2011
+1058792640 9 a sys/src/cmd/dial/drain.c - 664 sys sys 1058789952 241
+1058792640 10 a sys/src/cmd/dial/expect.c - 664 sys sys 1058789952 1595
+1058792640 11 a sys/src/cmd/dial/mkfile - 664 sys sys 1058789952 191
+1058792640 12 a sys/src/cmd/dial/pass.c - 664 sys sys 1058789955 891
