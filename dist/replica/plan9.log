@@ -13328,3 +13328,5 @@
 1065398600 0 c sys/src/cmd/aux/pcmcia.c - 664 sys sys 1065397225 8366
 1065576707 0 c lib/ndb/common - 664 sys sys 1065569740 5261
 1065576707 1 c sys/src/libip/mkfile - 664 sys sys 1065576347 320
+1065647022 0 c sys/man/8/httpd - 664 sys sys 1065640802 6426
+1065647022 1 c sys/src/cmd/ip/httpd/webls.c - 664 sys sys 1065646625 7233
