@@ -16233,3 +16233,6 @@
 1103257978 0 a sys/src/9/pc/ether8169.c - 664 sys sys 1103232343 22378
 1103257978 1 c sys/src/cmd/rio/xfid.c - 664 sys sys 1103205531 17446
 1103257978 2 c sys/src/cmd/fossil/source.c - 664 sys sys 1103225456 20229
+1103391084 0 c rc/bin/replica/defs - 664 sys sys 1103390458 778
+1103391084 1 c sys/src/cmd/usb/lib/dump.c - 664 sys sys 1103381265 12921
+1103391084 2 c sys/src/cmd/usb/lib/usb.h - 664 sys sys 1103381265 7036
