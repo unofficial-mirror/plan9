@@ -16479,3 +16479,16 @@
 1107577916 0 c sys/man/4/tapefs - 664 sys sys 1107543772 1811
 1107577916 1 c sys/src/9/pc/devpccard.c - 664 sys sys 1107531947 40194
 1107577916 2 d sys/man/1/tapefs - 664 sys sys 1097900346 0
+1107664338 0 c sys/man/4/factotum - 664 sys sys 1107633798 14773
+1107664338 1 c sys/man/8/timesync - 664 sys sys 1107606876 1717
+1107664338 2 c sys/src/cmd/auth/factotum/dat.h - 664 sys sys 1107633792 4809
+1107664338 3 c sys/src/cmd/auth/factotum/fs.c - 664 sys sys 1107633793 10409
+1107664338 4 c sys/src/cmd/auth/factotum/p9cr.c - 664 sys sys 1107633793 6648
+1107664338 5 c sys/src/cmd/auth/factotum/p9sk1.c - 664 sys sys 1107633793 9876
+1107664338 6 c sys/src/cmd/auth/factotum/rpc.c - 664 sys sys 1107633794 11167
+1107664338 7 c sys/src/cmd/auth/factotum/rsa.c - 664 sys sys 1107633793 3482
+1107664338 8 c sys/src/cmd/auth/factotum/secstore.c - 664 sys sys 1107633794 14935
+1107664338 9 c sys/src/cmd/auth/factotum/sshrsa.c - 664 sys sys 1107633793 3416
+1107664338 10 c sys/src/cmd/auth/factotum/util.c - 664 sys sys 1107633794 17188
+1107664338 11 c sys/src/libmach/elf.h - 664 sys sys 1107634043 2262
+1107664338 12 c sys/src/libmach/executable.c - 664 sys sys 1107621932 13917
