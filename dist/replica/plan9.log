@@ -13682,3 +13682,5 @@
 1068591852 7 c sys/src/cmd/fossil/disk.c - 664 sys sys 1068526661 6336
 1068591852 8 c sys/src/cmd/fossil/fns.h - 664 sys sys 1068526660 3077
 1068591852 9 c sys/src/cmd/fossil/source.c - 664 sys sys 1068591358 18771
+1068660236 0 c sys/src/cmd/jpg/readpng.c - 664 sys sys 1068658904 5130
+1068660236 1 c sys/src/cmd/jpg/writepng.c - 664 sys sys 1068658904 4313
