@@ -12517,3 +12517,6 @@
 1052328774 0 c lib/ndb/common - 664 sys sys 1052327139 5263
 1052409731 0 c lib/vgadb - 664 sys sys 1052409026 27589
 1052778772 0 c sys/src/cmd/unix/u9fs/u9fs.c - 664 sys sys 1052777926 30784
+1053021707 0 c sys/src/9/bitsy/Booting101 - 664 sys sys 1053021020 6879
+1053021707 1 c sys/src/9/bitsy/errstr.h - 664 sys sys 1053021020 2137
+1053021707 2 c sys/src/9/bitsy/wavelan.c - 664 sys sys 1053021020 27267
