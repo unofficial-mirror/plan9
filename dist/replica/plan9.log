@@ -12842,3 +12842,6 @@
 1056339153 6 c sys/src/cmd/mk/plan9.c - 664 sys sys 1056337347 6921
 1056339153 7 c sys/src/libString/mkfile - 664 sys sys 1056299302 432
 1056339153 8 c sys/src/libc/9sys/tm2sec.c - 664 sys sys 1056331608 3059
+1056398555 0 a 386/bin/venti/conf - 775 sys sys 1056364399 1506
+1056398555 1 a 386/bin/fossil/conf - 775 sys sys 1056364255 1497
+1056398555 2 c sys/man/3/usb - 664 sys sys 1056364534 6670

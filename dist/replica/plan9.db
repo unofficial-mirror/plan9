@@ -26,6 +26,7 @@
 386/bin/disk/ksync - 775 sys sys 1020319074 302
 386/bin/disk/mk9660 - 775 sys sys 1020319074 144
 386/bin/fossil - 20000000775 sys sys 1042005470 0
+386/bin/fossil/conf - 775 sys sys 1056364255 1497
 386/bin/fs - 20000000775 sys sys 954380769 0
 386/bin/ip - 20000000775 sys sys 1016920851 0
 386/bin/ip/httpd - 20000000775 sys sys 1016920846 0
@@ -39,6 +40,7 @@
 386/bin/upas - 20000000775 sys sys 1016857390 0
 386/bin/usb - 20000000775 sys sys 1019538890 0
 386/bin/venti - 20000000775 sys sys 947360466 0
+386/bin/venti/conf - 775 sys sys 1056364399 1506
 386/include - 20000000775 sys sys 953243048 0
 386/include/ape - 20000000775 sys sys 944946041 0
 386/include/ape/float.h - 664 sys sys 969656988 1643
@@ -4262,7 +4264,7 @@ sys/man/3/srv - 664 sys sys 958419690 1470
 sys/man/3/ssl - 664 sys sys 1018386776 3413
 sys/man/3/tls - 664 sys sys 1045501496 7018
 sys/man/3/uart - 664 sys sys 1017679309 1398
-sys/man/3/usb - 664 sys sys 1019866708 6648
+sys/man/3/usb - 664 sys sys 1056364534 6670
 sys/man/3/vga - 664 sys sys 1020356225 4827
 sys/man/4 - 20000000775 sys sys 1018581459 0
 sys/man/4/0intro - 664 sys sys 944959699 472
