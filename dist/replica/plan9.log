@@ -16439,3 +16439,4 @@
 1106973127 5 c sys/src/cmd/ip/tftpd.c - 664 sys sys 1106943821 7646
 1106973127 6 d sys/lib/kbmap/bgmap - 664 sys sys 1079475826 0
 1107057735 0 c sys/games/lib/fortunes - 664 sys sys 1107057489 252216
+1107072140 0 c sys/games/lib/fortunes - 664 sys sys 1107071255 252431
