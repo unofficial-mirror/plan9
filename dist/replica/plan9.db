@@ -2562,6 +2562,7 @@ sys/doc/acme/acme.fig1 - 664 sys sys 944959632 164559
 sys/doc/acme/acme.fig2 - 664 sys sys 944959632 56026
 sys/doc/acme/acme.html - 664 sys sys 1020013936 51769
 sys/doc/acme/acme.ms - 664 sys sys 952880782 49851
+sys/doc/acme/acme.pdf - 664 sys sys 1020384351 117006
 sys/doc/acme/acme.ps - 664 sys sys 960837907 611301
 sys/doc/acme/bs - 664 sys sys 944959634 556
 sys/doc/acme/mkfile - 664 sys sys 961259926 304
@@ -2588,6 +2589,7 @@ sys/doc/docfonts - 664 sys sys 1038117516 208
 sys/doc/fonts - 664 sys sys 944959649 137
 sys/doc/fs - 20000000775 sys sys 945616779 0
 sys/doc/fs/fs.html - 664 sys sys 1020013937 21345
+sys/doc/fs/fs.pdf - 664 sys sys 1020384351 47177
 sys/doc/fs/fs.ps - 664 sys sys 960837905 276918
 sys/doc/fs/mkfile - 664 sys sys 961259926 282
 sys/doc/fs/p0 - 664 sys sys 953844580 652
@@ -2603,6 +2605,7 @@ sys/doc/fs/xx - 664 sys sys 944959592 65957
 sys/doc/il - 20000000775 sys sys 945616779 0
 sys/doc/il/il.html - 664 sys sys 1020013937 12278
 sys/doc/il/il.ms - 664 sys sys 952880783 11367
+sys/doc/il/il.pdf - 664 sys sys 1020384351 44630
 sys/doc/il/il.ps - 664 sys sys 960837905 258028
 sys/doc/il/mkfile - 664 sys sys 961259927 214
 sys/doc/il/transition.art - 664 sys sys 944959591 4463
@@ -2634,6 +2637,7 @@ sys/doc/net - 20000000775 sys sys 954033300 0
 sys/doc/net/mkfile - 664 sys sys 961259927 345
 sys/doc/net/net.html - 664 sys sys 1020013937 43449
 sys/doc/net/net.ms - 664 sys sys 952880783 41191
+sys/doc/net/net.pdf - 664 sys sys 1020384351 82603
 sys/doc/net/net.ps - 664 sys sys 960837908 350053
 sys/doc/net/tree - 664 sys sys 944959636 866
 sys/doc/net/tree.pout - 664 sys sys 944959636 1755
@@ -2676,6 +2680,7 @@ sys/doc/sam/mkfile - 664 sys sys 961259927 574
 sys/doc/sam/refs - 464 sys sys 944959644 2652
 sys/doc/sam/sam.html - 664 sys sys 1020013938 100660
 sys/doc/sam/sam.ms - 464 sys sys 954266468 94536
+sys/doc/sam/sam.pdf - 664 sys sys 1020384352 156123
 sys/doc/sam/sam.ps - 664 sys sys 960837910 707546
 sys/doc/sam/sam.tut - 464 sys sys 944959644 40481
 sys/doc/sleep.html - 664 sys sys 1019922810 16618
@@ -2706,6 +2711,7 @@ sys/doc/venti/emelie2.gif - 664 sys sys 1019852317 4357
 sys/doc/venti/mkfile - 664 sys sys 1019965454 79
 sys/doc/venti/probablity.gif - 664 sys sys 1019852317 1244
 sys/doc/venti/venti.html - 664 sys sys 1019852317 55272
+sys/doc/venti/venti.pdf - 755 sys sys 1020384352 139090
 sys/doc/venti/venti.ps - 664 sys sys 1019852320 2012620
 sys/games - 20000000775 sys sys 952648872 0
 sys/games/lib - 20000000775 sys sys 952648879 0

@@ -11337,3 +11337,9 @@
 1041481763 2 c sys/src/9/pc/main.c - 664 sys sys 1041431178 14272
 1041481763 3 c sys/src/9/port/devmnt.c - 664 sys sys 1041443399 21588
 1041481763 4 c sys/src/libthread/example.c - 664 sys sys 1041440306 1402
+1041554068 0 a sys/doc/acme/acme.pdf - 664 sys sys 1020384351 117006
+1041554068 1 a sys/doc/fs/fs.pdf - 664 sys sys 1020384351 47177
+1041554068 2 a sys/doc/il/il.pdf - 664 sys sys 1020384351 44630
+1041554068 3 a sys/doc/net/net.pdf - 664 sys sys 1020384351 82603
+1041554068 4 a sys/doc/sam/sam.pdf - 664 sys sys 1020384352 156123
+1041554068 5 a sys/doc/venti/venti.pdf - 755 sys sys 1020384352 139090
