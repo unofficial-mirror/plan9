@@ -15385,3 +15385,6 @@
 1088220679 2 c sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1088204577 23412
 1088560940 0 c sys/man/3/pnp - 664 sys sys 1088560895 4547
 1088560940 1 c sys/src/9/port/devpnp.c - 664 sys sys 1088560907 13624
+1088739175 0 c sys/src/cmd/ls.c - 664 sys sys 1088735544 5400
+1088739175 1 c sys/src/libmach/8db.c - 664 sys sys 1088653064 39144
+1088739175 2 c sys/src/libmach/sym.c - 664 sys sys 1088653081 26582
