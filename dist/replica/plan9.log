@@ -13601,3 +13601,7 @@
 1067911370 1 c sys/src/9/pc/ether2114x.c - 664 sys sys 1067891102 41253
 1067911370 2 c sys/src/9/port/devproc.c - 664 sys sys 1067880146 28269
 1067911370 3 c dist/replica/network - 664 sys sys 1067910574 466
+1067992358 0 a rc/bin/fshalt - 775 sys sys 1067991211 958
+1067992358 1 c sys/src/9/port/devmnt.c - 664 sys sys 1067953214 21594
+1067992358 2 c sys/src/9/port/qio.c - 664 sys sys 1067953182 23406
+1067992358 3 c sys/src/cmd/cpu.c - 664 sys sys 1067953662 20525
