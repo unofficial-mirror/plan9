@@ -4373,7 +4373,7 @@ sys/man/2/quaternion - 664 sys sys 950892867 3421
 sys/man/2/quote - 664 sys sys 1067719062 3072
 sys/man/2/rand - 664 sys sys 1035836606 2881
 sys/man/2/rc4 - 664 sys sys 1032058674 1138
-sys/man/2/read - 664 sys sys 1017423721 1879
+sys/man/2/read - 664 sys sys 1088107191 1883
 sys/man/2/readcolmap - 664 sys sys 950892803 1529
 sys/man/2/readv - 664 sys sys 1017423721 1454
 sys/man/2/regexp - 664 sys sys 988225293 3548
@@ -5931,7 +5931,7 @@ sys/src/boot/pc/boot.c - 664 sys sys 1021579983 3353
 sys/src/boot/pc/bootld.c - 664 sys sys 1015007948 1801
 sys/src/boot/pc/bootp.c - 664 sys sys 1015007948 9417
 sys/src/boot/pc/cga.c - 664 sys sys 1015007948 1362
-sys/src/boot/pc/clock.c - 664 sys sys 1015007948 5648
+sys/src/boot/pc/clock.c - 664 sys sys 1088089722 5783
 sys/src/boot/pc/conf.c - 664 sys sys 1063855536 10128
 sys/src/boot/pc/console.c - 664 sys sys 1068158999 3487
 sys/src/boot/pc/dat.h - 664 sys sys 1056073257 3432
