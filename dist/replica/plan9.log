@@ -11315,3 +11315,6 @@
 1041137646 12 c sys/src/cmd/upas/ned/nedmail.c - 664 sys sys 1041137519 40289
 1041137646 13 c sys/src/cmd/vnc/screen.c - 664 sys sys 1041115189 7434
 1041137646 14 c sys/src/cmd/vnc/vncs.c - 664 sys sys 1041115188 20831
+1041197545 0 c sys/src/cmd/unix/u9fs/u9fs.c - 664 sys sys 1041139559 29984
+1041197545 1 a sys/src/cmd/upas/filterkit/pipefrom.sample - 775 sys sys 1041184939 380
+1041197545 2 c sys/src/libregexp/regcomp.h - 664 sys sys 1041196492 1986
