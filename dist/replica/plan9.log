@@ -16349,3 +16349,9 @@
 1104899594 5 c sys/src/cmd/fossil/9fsys.c - 664 sys sys 1104858629 33296
 1104899594 6 c sys/src/cmd/usb/usbd/hub.c - 664 sys sys 1104849419 4296
 1104899594 7 c dist/replica/plan9.proto - 664 sys sys 1104813012 2497
+1104986011 0 c sys/man/1/calendar - 664 sys sys 1104939769 1249
+1104986011 1 c sys/man/1/cpu - 664 sys sys 1104939775 3540
+1104986011 2 c sys/man/4/exportfs - 664 sys sys 1104939769 4540
+1104986011 3 c sys/src/cmd/calendar.c - 664 sys sys 1104939757 4205
+1104986011 4 c sys/src/cmd/fossil/9p.c - 664 sys sys 1104940048 21862
+1104986011 5 c sys/src/cmd/fossil/fossil-acid - 664 sys sys 1104940044 3991
