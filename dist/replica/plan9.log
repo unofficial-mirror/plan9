@@ -12858,3 +12858,4 @@
 1056573160 5 c sys/lib/postscript/font/NOTICE - 444 sys sys 1056572331 816
 1056573160 6 c sys/src/9/pc/pccpu - 664 sys sys 1056568059 803
 1056573160 7 c sys/src/cmd/ip/ping.c - 664 sys sys 1056550715 5076
+1056636237 0 a sys/src/cmd/aux/zerotrunc.c - 664 sys sys 1056634403 300
