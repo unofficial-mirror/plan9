@@ -16341,3 +16341,11 @@
 1104431564 14 c sys/src/cmd/aux/vga/neomagic.c - 664 sys sys 1104430499 8975
 1104431564 15 c sys/src/mkfile.proto - 664 sys sys 1104430482 266
 1104640403 0 c sys/man/1/pwd - 664 sys sys 1104639653 744
+1104899594 0 c sys/src/cmd/acme/dat.h - 664 sys sys 1104874643 11144
+1104899594 1 c sys/src/cmd/acme/wind.c - 664 sys sys 1104874643 11201
+1104899594 2 c sys/src/cmd/acme/xfid.c - 664 sys sys 1104874643 19219
+1104899594 3 c sys/src/cmd/file.c - 664 sys sys 1104849659 22939
+1104899594 4 c sys/src/cmd/ndb/cs.c - 664 sys sys 1104854491 33070
+1104899594 5 c sys/src/cmd/fossil/9fsys.c - 664 sys sys 1104858629 33296
+1104899594 6 c sys/src/cmd/usb/usbd/hub.c - 664 sys sys 1104849419 4296
+1104899594 7 c dist/replica/plan9.proto - 664 sys sys 1104813012 2497
