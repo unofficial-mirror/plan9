@@ -2483,7 +2483,7 @@ rc/bin/dosmnt - 775 sys sys 958526437 285
 rc/bin/eject - 775 sys sys 945617207 123
 rc/bin/fax - 775 sys sys 1015701359 2390
 rc/bin/fedex - 775 sys sys 1060187356 1244
-rc/bin/fshalt - 775 sys sys 1068087338 1092
+rc/bin/fshalt - 775 sys sys 1068425226 1092
 rc/bin/homespool - 775 sys sys 945617207 339
 rc/bin/ipconf - 20000000775 sys sys 1058791152 0
 rc/bin/ipconf/inside - 775 sys sys 1058790955 427
@@ -2907,7 +2907,7 @@ sys/include/stdio.h - 664 sys sys 1055700381 4199
 sys/include/sunrpc.h - 664 sys sys 1046367129 7219
 sys/include/thread.h - 664 sys sys 1045504289 3562
 sys/include/tos.h - 664 sys sys 1067718947 562
-sys/include/trace.h - 664 sys sys 1067722708 576
+sys/include/trace.h - 664 sys sys 1068393680 585
 sys/include/venti.h - 664 sys sys 1045504293 6956
 sys/lib - 20000000775 sys sys 1018580948 0
 sys/lib/acid - 20000000775 sys sys 1016926088 0
@@ -4353,7 +4353,7 @@ sys/man/3/segment - 664 sys sys 1017423721 2378
 sys/man/3/srv - 664 sys sys 958419690 1470
 sys/man/3/ssl - 664 sys sys 1018386776 3413
 sys/man/3/tls - 664 sys sys 1045501496 7018
-sys/man/3/uart - 664 sys sys 1064028248 1398
+sys/man/3/uart - 664 sys sys 1068393771 1651
 sys/man/3/usb - 664 sys sys 1063855746 6727
 sys/man/3/vga - 664 sys sys 1020356225 4827
 sys/man/4 - 20000000775 sys sys 1018581459 0
@@ -4580,7 +4580,7 @@ sys/src/9/bitsy/devflash.c - 664 sys sys 1018386999 16832
 sys/src/9/bitsy/devpcmcia.c - 664 sys sys 1037029005 12962
 sys/src/9/bitsy/devpenmouse.c - 664 sys sys 1067722592 9296
 sys/src/9/bitsy/devuda1341.c - 664 sys sys 1037029011 30326
-sys/src/9/bitsy/devµc.c - 664 sys sys 1037029014 8141
+sys/src/9/bitsy/devµc.c - 664 sys sys 1068393562 8125
 sys/src/9/bitsy/etherif.h - 664 sys sys 1045501788 913
 sys/src/9/bitsy/etherwavelan.c - 664 sys sys 1037029016 869
 sys/src/9/bitsy/fns.h - 664 sys sys 1067722591 3366
@@ -4706,7 +4706,7 @@ sys/src/9/pc/apmjump.s - 664 sys sys 1032058947 1527
 sys/src/9/pc/archmp.c - 664 sys sys 1067722683 2323
 sys/src/9/pc/audio.h - 664 sys sys 1015014513 343
 sys/src/9/pc/cga.c - 664 sys sys 1015014513 1843
-sys/src/9/pc/dat.h - 664 sys sys 1067722637 6119
+sys/src/9/pc/dat.h - 664 sys sys 1068393384 6124
 sys/src/9/pc/devarch.c - 664 sys sys 1055689884 17647
 sys/src/9/pc/devether.c - 664 sys sys 1048644042 10178
 sys/src/9/pc/devfloppy.c - 664 sys sys 1055689885 20024
@@ -4745,7 +4745,7 @@ sys/src/9/pc/ethersink.c - 664 sys sys 1048644103 1076
 sys/src/9/pc/ethersmc.c - 664 sys sys 1015014518 15079
 sys/src/9/pc/etherwavelan.c - 664 sys sys 1026847642 3722
 sys/src/9/pc/floppy.h - 664 sys sys 1055700609 3835
-sys/src/9/pc/fns.h - 664 sys sys 1067722685 4271
+sys/src/9/pc/fns.h - 664 sys sys 1068393346 4299
 sys/src/9/pc/hcwAMC.h - 664 sys sys 1026860163 166004
 sys/src/9/pc/i8253.c - 664 sys sys 1067722684 6217
 sys/src/9/pc/i8259.c - 664 sys sys 1015014519 4423
@@ -4753,7 +4753,7 @@ sys/src/9/pc/init9.c - 664 sys sys 1040002518 94
 sys/src/9/pc/initcode.s - 664 sys sys 1015014519 282
 sys/src/9/pc/io.h - 664 sys sys 1067722633 7991
 sys/src/9/pc/kbd.c - 664 sys sys 1039753498 9134
-sys/src/9/pc/l.s - 664 sys sys 1067722634 23586
+sys/src/9/pc/l.s - 664 sys sys 1068394843 23295
 sys/src/9/pc/main.c - 664 sys sys 1067722634 14685
 sys/src/9/pc/mem.h - 664 sys sys 1018553448 4573
 sys/src/9/pc/memory.c - 664 sys sys 1032303986 12994
@@ -4772,7 +4772,7 @@ sys/src/9/pc/pcf - 664 sys sys 1067722637 1431
 sys/src/9/pc/pcf.c - 664 sys sys 1058659039 5110
 sys/src/9/pc/pcfl - 664 sys sys 1042004821 1563
 sys/src/9/pc/pcflop - 664 sys sys 1067722894 1383
-sys/src/9/pc/pci.c - 664 sys sys 1065815722 23867
+sys/src/9/pc/pci.c - 664 sys sys 1068393407 24094
 sys/src/9/pc/pcmciamodem.c - 664 sys sys 1048635123 1545
 sys/src/9/pc/piix4smbus.c - 664 sys sys 1067722684 5273
 sys/src/9/pc/plan9l.s - 664 sys sys 1015014521 910
@@ -4846,7 +4846,7 @@ sys/src/9/port/devmouse.c - 664 sys sys 1067722758 12203
 sys/src/9/port/devnmouse.c - 664 sys sys 1036812999 3738
 sys/src/9/port/devpipe.c - 664 sys sys 1032640439 5825
 sys/src/9/port/devpnp.c - 664 sys sys 1055688361 13021
-sys/src/9/port/devproc.c - 664 sys sys 1068237926 28403
+sys/src/9/port/devproc.c - 664 sys sys 1068393158 28387
 sys/src/9/port/devrealtime.c - 664 sys sys 1055688366 16209
 sys/src/9/port/devroot.c - 664 sys sys 1067722764 4254
 sys/src/9/port/devsd.c - 664 sys sys 1055688396 28669
@@ -4857,7 +4857,7 @@ sys/src/9/port/devssl.c - 664 sys sys 1045063590 26100
 sys/src/9/port/devtinyfs.c - 664 sys sys 1015278339 15347
 sys/src/9/port/devtls.c - 664 sys sys 1066737478 45222
 sys/src/9/port/devuart.c - 664 sys sys 1067722718 11683
-sys/src/9/port/edf.c - 664 sys sys 1068215525 12348
+sys/src/9/port/edf.c - 664 sys sys 1068393229 12343
 sys/src/9/port/edf.h - 664 sys sys 1067722760 1124
 sys/src/9/port/error.h - 664 sys sys 1055700517 2630
 sys/src/9/port/fault.c - 664 sys sys 1067722722 6628
@@ -4889,7 +4889,7 @@ sys/src/9/port/portdat.h - 664 sys sys 1067722763 22621
 sys/src/9/port/portfns.h - 664 sys sys 1068215525 11376
 sys/src/9/port/portmkfile - 664 sys sys 1067722766 2098
 sys/src/9/port/print.c - 664 sys sys 1014931178 227
-sys/src/9/port/proc.c - 664 sys sys 1068215525 24867
+sys/src/9/port/proc.c - 664 sys sys 1068393121 24882
 sys/src/9/port/qio.c - 664 sys sys 1067953182 23406
 sys/src/9/port/qlock.c - 664 sys sys 1067722765 3196
 sys/src/9/port/rdb.c - 664 sys sys 1018721202 1698
@@ -9441,7 +9441,7 @@ sys/src/cmd/rdbfs.c - 664 sys sys 1049426950 7952
 sys/src/cmd/read.c - 664 sys sys 1022047660 1278
 sys/src/cmd/replica - 20000000775 sys sys 1018321113 0
 sys/src/cmd/replica/all.h - 664 sys sys 1018323474 1181
-sys/src/cmd/replica/applychanges.c - 664 sys sys 1032060505 5858
+sys/src/cmd/replica/applychanges.c - 664 sys sys 1068417165 6123
 sys/src/cmd/replica/applylog.c - 664 sys sys 1053210813 17189
 sys/src/cmd/replica/avl.c - 664 sys sys 1018321111 6202
 sys/src/cmd/replica/compactdb.c - 664 sys sys 1018323475 652
@@ -10336,11 +10336,11 @@ sys/src/cmd/vt/mkfile - 664 sys sys 944961620 159
 sys/src/cmd/vt/termcap - 664 sys sys 944961620 278
 sys/src/cmd/vt/vt.c - 664 sys sys 1014926857 16841
 sys/src/cmd/wc.c - 664 sys sys 984717764 12652
-sys/src/cmd/webcookies.c - 664 sys sys 1042940803 23411
+sys/src/cmd/webcookies.c - 664 sys sys 1068411571 23687
 sys/src/cmd/webfs - 20000000775 sys sys 1015015823 0
 sys/src/cmd/webfs/buf.c - 664 sys sys 1032665987 1198
 sys/src/cmd/webfs/client.c - 664 sys sys 1045503603 6504
-sys/src/cmd/webfs/cookies.c - 664 sys sys 1045503603 21597
+sys/src/cmd/webfs/cookies.c - 664 sys sys 1068412965 21874
 sys/src/cmd/webfs/dat.h - 664 sys sys 1045503604 1600
 sys/src/cmd/webfs/fns.h - 664 sys sys 1032665987 1453
 sys/src/cmd/webfs/fs.c - 664 sys sys 1036000101 10942
@@ -10351,6 +10351,7 @@ sys/src/cmd/webfs/mkfile - 664 sys sys 1032665986 340
 sys/src/cmd/webfs/plumb.c - 664 sys sys 1015090008 2761
 sys/src/cmd/webfs/url.c - 664 sys sys 1019240175 24238
 sys/src/cmd/webfs/util.c - 664 sys sys 1015015823 1211
+sys/src/cmd/webfsget.c - 664 sys sys 1068413017 1595
 sys/src/cmd/wikifs - 20000000775 sys sys 1018211094 0
 sys/src/cmd/wikifs/fs.c - 664 sys sys 1019678648 15353
 sys/src/cmd/wikifs/io.c - 664 sys sys 1018387004 11469
