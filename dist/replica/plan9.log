@@ -16535,3 +16535,7 @@
 1108009898 3 c sys/src/cmd/disk/mkext.c - 664 sys sys 1107957513 5806
 1108009898 4 c sys/src/cmd/disk/mkfs.c - 664 sys sys 1108000852 14697
 1108009898 5 c sys/src/libmach/executable.c - 664 sys sys 1107963442 13918
+1108096312 0 c sys/include/a.out.h - 664 sys sys 1108077276 1209
+1108096312 1 c sys/man/1/tar - 664 sys sys 1108059323 3380
+1108096312 2 c sys/src/9/pc/l.s - 664 sys sys 1108068066 23574
+1108096312 3 c sys/src/cmd/strip.c - 664 sys sys 1108077276 3350

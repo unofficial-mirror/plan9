@@ -2857,7 +2857,7 @@ sys/games/lib/sokoban/levels/hard.slc - 644 sys sys 1095792098 17051
 sys/include - 20000000775 sys sys 1016902416 0
 sys/include/9p.h - 664 sys sys 1091904420 4392
 sys/include/String.h - 664 sys sys 1091904425 1319
-sys/include/a.out.h - 664 sys sys 1089314110 1168
+sys/include/a.out.h - 664 sys sys 1108077276 1209
 sys/include/ape - 20000000775 sys sys 1014927784 0
 sys/include/ape/Plan9libnet.h - 664 sys sys 944948760 487
 sys/include/ape/ar.h - 664 sys sys 944948759 354
@@ -4260,7 +4260,7 @@ sys/man/1/strip - 664 sys sys 958580250 448
 sys/man/1/sum - 664 sys sys 984772442 1390
 sys/man/1/syscall - 664 sys sys 1016466457 1439
 sys/man/1/tail - 664 sys sys 1017679307 1413
-sys/man/1/tar - 664 sys sys 1107879863 3375
+sys/man/1/tar - 664 sys sys 1108059323 3380
 sys/man/1/tbl - 664 sys sys 944959674 4308
 sys/man/1/tcs - 664 sys sys 952627441 2575
 sys/man/1/tee - 664 sys sys 969499886 351
@@ -4868,7 +4868,7 @@ sys/src/9/pc/init9.c - 664 sys sys 1040002518 94
 sys/src/9/pc/initcode.s - 664 sys sys 1015014519 282
 sys/src/9/pc/io.h - 664 sys sys 1099761152 8095
 sys/src/9/pc/kbd.c - 664 sys sys 1079617269 11655
-sys/src/9/pc/l.s - 664 sys sys 1091733374 23055
+sys/src/9/pc/l.s - 664 sys sys 1108068066 23574
 sys/src/9/pc/main.c - 664 sys sys 1089046997 14677
 sys/src/9/pc/mem.h - 664 sys sys 1018553448 4573
 sys/src/9/pc/memory.c - 664 sys sys 1071245460 13028
@@ -9901,7 +9901,7 @@ sys/src/cmd/ssh/sshserve.c - 664 sys sys 1062091020 5786
 sys/src/cmd/ssh/util.c - 664 sys sys 1063858753 4478
 sys/src/cmd/stats.c - 664 sys sys 1097899820 27862
 sys/src/cmd/strings.c - 664 sys sys 944961364 1216
-sys/src/cmd/strip.c - 664 sys sys 1014926661 3306
+sys/src/cmd/strip.c - 664 sys sys 1108077276 3350
 sys/src/cmd/sum.c - 664 sys sys 1014926615 5548
 sys/src/cmd/swap.c - 664 sys sys 1014926662 1141
 sys/src/cmd/syscall - 20000000775 sys sys 944961236 0
