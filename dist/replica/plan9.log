@@ -14199,3 +14199,15 @@
 1074735241 0 a rc/bin/uptime - 775 sys sys 1074730712 234
 1074735241 1 a sys/man/1/uptime - 664 sys sys 1074733782 380
 1074735241 2 c sys/src/cmd/ssh/authsrvtis.c - 664 sys sys 1074731315 928
+1074828857 0 a rc/bin/service/tcp993 - 775 sys sys 1018720071 151
+1074828857 1 c sys/include/trace.h - 664 sys sys 1074827800 647
+1074828857 2 c sys/man/3/proc - 664 sys sys 1074785156 12026
+1074828857 3 c sys/src/9/pc/devarch.c - 664 sys sys 1074785125 18549
+1074828857 4 c sys/src/9/pc/fns.h - 664 sys sys 1074785127 4299
+1074828857 5 c sys/src/9/pc/i8253.c - 664 sys sys 1074785126 6179
+1074828857 6 c sys/src/9/pc/l.s - 664 sys sys 1074785126 22699
+1074828857 7 c sys/src/9/pc/main.c - 664 sys sys 1074785126 14644
+1074828857 8 c sys/src/9/pc/trap.c - 664 sys sys 1074785126 20668
+1074828857 9 c sys/src/9/pc/etherga620.c - 664 sys sys 1074785126 28754
+1074828857 10 c sys/src/9/port/devproc.c - 664 sys sys 1074785145 28636
+1074828857 11 d rc/bin/service.auth/tcp993 - 775 sys sys 1018720071 0
