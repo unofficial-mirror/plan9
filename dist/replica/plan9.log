@@ -11486,3 +11486,4 @@
 1043177557 6 c sys/src/cmd/venti/dat.h - 664 sys sys 1043176100 15228
 1043177557 7 c sys/src/cmd/venti/dump.c - 664 sys sys 1043176101 1565
 1043465571 0 c acme/mail/src/mesg.c - 664 sys sys 1043463888 26266
+1043517727 0 c sys/src/cmd/p.c - 664 sys sys 1043516305 1497

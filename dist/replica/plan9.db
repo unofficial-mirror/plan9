@@ -8734,7 +8734,7 @@ sys/src/cmd/news.c - 664 sys sys 1014926614 3778
 sys/src/cmd/nm.c - 664 sys sys 1014926696 4908
 sys/src/cmd/nntpfs.c - 664 sys sys 1037404000 18808
 sys/src/cmd/ns.c - 664 sys sys 984717934 3558
-sys/src/cmd/p.c - 664 sys sys 1014926696 1463
+sys/src/cmd/p.c - 664 sys sys 1043516305 1497
 sys/src/cmd/page - 20000000775 sys sys 956344628 0
 sys/src/cmd/page/filter.c - 664 sys sys 1014926743 2008
 sys/src/cmd/page/gfx.c - 664 sys sys 1032060334 6631
