@@ -23,6 +23,7 @@
 386/bin/fossil - 20000000775 sys sys 1042005470 0
 386/bin/fossil/conf - 775 sys sys 1085077052 1506
 386/bin/fs - 20000000775 sys sys 954380769 0
+386/bin/games - 20000000775 sys sys 1096298711 0
 386/bin/ip - 20000000775 sys sys 1016920851 0
 386/bin/ip/httpd - 20000000775 sys sys 1016920846 0
 386/bin/ndb - 20000000775 sys sys 985743147 0
@@ -4174,7 +4175,7 @@ sys/man/1/filter - 664 sys sys 1041108741 4403
 sys/man/1/fmt - 664 sys sys 1070032221 1557
 sys/man/1/fortune - 664 sys sys 944959673 449
 sys/man/1/freq - 664 sys sys 944959673 735
-sys/man/1/games - 664 sys sys 1095792424 1853
+sys/man/1/games - 664 sys sys 1096308821 2280
 sys/man/1/grap - 664 sys sys 944959675 6417
 sys/man/1/graph - 664 sys sys 944959673 2858
 sys/man/1/grep - 664 sys sys 969512677 2224
@@ -10744,6 +10745,7 @@ sys/src/fs/sony/mem.h - 664 sys sys 1015110103 2865
 sys/src/fs/sony/mkfile - 664 sys sys 1091803623 1594
 sys/src/fs/worms - 664 sys sys 1015110031 2806
 sys/src/games - 20000000775 sys sys 1095792091 0
+sys/src/games/juggle.c - 664 sys sys 1096307525 4105
 sys/src/games/mahjongg - 20000000775 sys sys 1095792293 0
 sys/src/games/mahjongg/graphics.c - 644 sys sys 1095792293 5794
 sys/src/games/mahjongg/level.c - 644 sys sys 1095792293 2522
