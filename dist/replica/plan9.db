@@ -4815,6 +4815,7 @@ sys/src/9/pc/ether82557.c - 664 sys sys 1081706477 29736
 sys/src/9/pc/ether83815.c - 664 sys sys 1081706477 23479
 sys/src/9/pc/ether8390.c - 664 sys sys 1071245462 17557
 sys/src/9/pc/ether8390.h - 664 sys sys 1015014517 1511
+sys/src/9/pc/etherdp83820.c - 664 sys sys 1083430754 29134
 sys/src/9/pc/etherec2t.c - 664 sys sys 1020284820 4038
 sys/src/9/pc/etherelnk3.c - 664 sys sys 1081706477 48724
 sys/src/9/pc/etherga620.c - 664 sys sys 1074785126 28754
