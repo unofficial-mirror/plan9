@@ -12995,3 +12995,13 @@
 1060191162 5 c sys/man/8/ipconfig - 664 sys sys 1060189415 5050
 1060191162 6 c sys/src/cmd/ip/ipconfig.c - 664 sys sys 1060189236 29311
 1060191162 7 c sys/src/cmd/ndb/cs.c - 664 sys sys 1060173544 32903
+1060270460 0 a sys/man/8/pem - 664 sys sys 1060263669 1189
+1060270460 1 c sys/src/9/alphapc/screen.h - 664 sys sys 1060267151 3584
+1060270460 2 c sys/src/9/pc/fns.h - 664 sys sys 1060266613 4268
+1060270460 3 c sys/src/9/pc/mouse.c - 664 sys sys 1060266650 6625
+1060270460 4 c sys/src/9/pc/screen.h - 664 sys sys 1060267144 3797
+1060270460 5 c sys/src/9/pc/uarti8250.c - 664 sys sys 1060266726 12826
+1060270460 6 c sys/src/9/pc/vganvidia.c - 664 sys sys 1060269772 6545
+1060270460 7 c sys/src/9/port/devmouse.c - 664 sys sys 1060266767 12196
+1060270460 8 c sys/src/9/port/devuart.c - 664 sys sys 1060267239 11762
+1060270460 9 c sys/src/9/port/portfns.h - 664 sys sys 1060266745 10822
