@@ -15076,3 +15076,13 @@
 1079971354 9 c sys/src/cmd/wikifs/parse.c - 664 sys sys 1079969446 4989
 1080059573 0 c lib/vgadb - 664 sys sys 1080049879 27670
 1080059573 1 c sys/src/cmd/ip/telnet.c - 664 sys sys 1080058033 8535
+1080180195 0 c rc/bin/ap - 775 sys sys 1080159225 665
+1080180195 1 c sys/log/mail - 666 sys sys 1080177666 1426
+1080180195 2 c sys/log/runq - 666 sys sys 1080134438 512
+1080180195 3 c sys/log/smtp - 666 sys sys 1080134438 221
+1080180195 4 c sys/man/2/mach - 664 sys sys 1080179298 7995
+1080180195 5 c sys/src/cmd/rio/rio.c - 664 sys sys 1080159097 21977
+1080180195 6 c sys/src/cmd/rio/wind.c - 664 sys sys 1080159143 32788
+1080180195 7 c sys/src/cmd/unix/drawterm/keyboard.h - 664 sys sys 1080159172 380
+1080180195 8 c sys/src/cmd/unix/drawterm/mkfile-Linux - 664 sys sys 1080159060 539
+1080180195 9 c sys/src/cmd/upas/fs/pop3.c - 664 sys sys 1080159334 12445
