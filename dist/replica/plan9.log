@@ -16069,3 +16069,4 @@
 1099193533 3 c sys/src/cmd/auth/factotum/dat.h - 664 sys sys 1099176466 4809
 1099193533 4 c sys/src/cmd/auth/factotum/fs.c - 664 sys sys 1099176467 10365
 1099193533 5 c sys/src/cmd/auth/factotum/mkfile - 664 sys sys 1099176466 493
+1099369958 0 c sys/src/cmd/acme/exec.c - 664 sys sys 1099329953 28183
