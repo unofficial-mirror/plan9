@@ -16223,3 +16223,5 @@
 1102480290 7 a sys/src/games/sokoban/route.c - 664 sys sys 1102439103 3684
 1102480290 8 c sys/src/games/sokoban/sokoban.c - 664 sys sys 1102439104 5540
 1102480290 9 c sys/src/games/sokoban/sokoban.h - 664 sys sys 1102439105 1876
+1102595519 0 c lib/keyboard - 664 sys sys 1102595267 26057
+1102595519 1 c sys/lib/newuser - 775 sys sys 1102595253 1200
