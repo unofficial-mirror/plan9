@@ -4101,7 +4101,7 @@ sys/man/1 - 20000000775 sys sys 1018897631 0
 sys/man/1/0intro - 664 sys sys 958249499 9623
 sys/man/1/2a - 664 sys sys 1089299164 1188
 sys/man/1/2c - 664 sys sys 1089299164 7193
-sys/man/1/2l - 664 sys sys 1089299164 4000
+sys/man/1/2l - 664 sys sys 1089903786 3992
 sys/man/1/acid - 664 sys sys 1082404958 9725
 sys/man/1/acme - 664 sys sys 1019828741 17587
 sys/man/1/ap - 664 sys sys 1068471657 364
@@ -8866,7 +8866,7 @@ sys/src/cmd/ip/ftpfs/file.c - 664 sys sys 1014925642 4208
 sys/src/cmd/ip/ftpfs/ftpfs.c - 664 sys sys 1048285493 13555
 sys/src/cmd/ip/ftpfs/ftpfs.h - 664 sys sys 1048312051 2328
 sys/src/cmd/ip/ftpfs/mkfile - 664 sys sys 1048312050 173
-sys/src/cmd/ip/ftpfs/proto.c - 664 sys sys 1048285496 29321
+sys/src/cmd/ip/ftpfs/proto.c - 664 sys sys 1089920400 29348
 sys/src/cmd/ip/glob.c - 664 sys sys 1015013111 2968
 sys/src/cmd/ip/glob.h - 664 sys sys 1015090252 270
 sys/src/cmd/ip/gping.c - 664 sys sys 1015013112 20476
