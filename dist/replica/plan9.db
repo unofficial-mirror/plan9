@@ -9852,7 +9852,7 @@ sys/src/cmd/ssh/cmsg.c - 664 sys sys 1071095546 8351
 sys/src/cmd/ssh/mkfile - 664 sys sys 1048179592 1045
 sys/src/cmd/ssh/msg.c - 664 sys sys 1062091016 8023
 sys/src/cmd/ssh/pubkey.c - 664 sys sys 1019928902 3974
-sys/src/cmd/ssh/scp.c - 664 sys sys 1048644598 13757
+sys/src/cmd/ssh/scp.c - 664 sys sys 1075130172 13886
 sys/src/cmd/ssh/smsg.c - 664 sys sys 1062091015 6135
 sys/src/cmd/ssh/ssh.c - 664 sys sys 1066515693 9667
 sys/src/cmd/ssh/ssh.h - 664 sys sys 1048179595 6054
