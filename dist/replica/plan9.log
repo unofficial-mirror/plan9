@@ -14213,3 +14213,16 @@
 1074828857 11 d rc/bin/service.auth/tcp993 - 775 sys sys 1018720071 0
 1074884522 0 c sys/src/9/port/edf.h - 664 sys sys 1074883055 1145
 1074884522 1 a sys/src/cmd/trace.c - 664 sys sys 1074883076 17752
+1075080743 0 c sys/src/9/pc/devarch.c - 664 sys sys 1075072880 18432
+1075080743 1 a sys/src/9/pc/errstr.h - 664 sys sys 1075069582 2137
+1075080743 2 a sys/src/cmd/upas/common/appendfiletombox.c - 664 sys sys 1075064534 2154
+1075080743 3 c sys/src/cmd/upas/common/common.h - 664 sys sys 1075069143 2021
+1075080743 4 c sys/src/cmd/upas/common/mkfile - 664 sys sys 1075069142 273
+1075080743 5 c sys/src/cmd/upas/filterkit/deliver.c - 664 sys sys 1075069156 1075
+1075080743 6 c sys/src/cmd/upas/fs/imap4.c - 664 sys sys 1075069146 16233
+1075080743 7 c sys/src/cmd/upas/mkfile - 664 sys sys 1075069142 1910
+1075080743 8 c sys/src/cmd/upas/ned/nedmail.c - 664 sys sys 1075069148 43120
+1075080743 9 a sys/src/cmd/upas/unesc - 20000000775 sys sys 1075080255 0
+1075080743 10 a sys/src/cmd/upas/unesc/mkfile - 664 sys sys 1075080255 164
+1075080743 11 a sys/src/cmd/upas/unesc/unesc.c - 664 sys sys 1075080255 789
+1075080743 12 d sys/src/9/pc/pcf.c - 664 sys sys 1058659039 0
