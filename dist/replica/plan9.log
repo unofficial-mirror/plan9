@@ -11297,3 +11297,6 @@
 1040970772 1 c sys/src/cmd/9nfs/portmapper.c - 664 sys sys 1040952456 3179
 1040970772 2 c sys/src/cmd/9nfs/server.c - 664 sys sys 1040952456 11027
 1040970772 3 c sys/src/cmd/9nfs/unixnames.c - 664 sys sys 1040952457 5974
+1041013890 0 a n/sourcesdump - 20000000775 sys sys 1041013207 0
+1041013890 1 a n/sourcessnap - 20000000775 sys sys 1041013207 0
+1041013890 2 c rc/bin/9fs - 775 sys sys 1041013198 709
