@@ -11487,3 +11487,6 @@
 1043177557 7 c sys/src/cmd/venti/dump.c - 664 sys sys 1043176101 1565
 1043465571 0 c acme/mail/src/mesg.c - 664 sys sys 1043463888 26266
 1043517727 0 c sys/src/cmd/p.c - 664 sys sys 1043516305 1497
+1043697833 0 c sys/games/lib/fortunes - 664 sys sys 1043697004 238254
+1043697833 1 c sys/man/4/mntgen - 664 sys sys 1043680799 473
+1043697833 2 c sys/src/ape/lib/ap/plan9/wait.c - 664 sys sys 1043681702 1133
