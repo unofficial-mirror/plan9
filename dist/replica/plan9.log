@@ -15894,3 +15894,5 @@
 1094182331 2 c sys/src/cmd/nntpfs.c - 664 sys sys 1094156765 18904
 1094182331 3 c sys/src/cmd/ssh/scp.c - 664 sys sys 1094156297 13889
 1094293951 0 c sys/src/9/port/proc.c - 664 sys sys 1094293852 28200
+1094614291 0 c sys/games/lib/fortunes - 664 sys sys 1094570700 249644
+1094614291 1 c sys/src/cmd/tar.c - 664 sys sys 1094598836 15585
