@@ -14385,3 +14385,15 @@
 1077986004 0 c sys/src/9/pc/etherigbe.c - 664 sys sys 1077985913 42824
 1078281136 0 c sys/games/lib/fortunes - 664 sys sys 1078279900 247772
 1078455727 0 c sys/games/lib/fortunes - 664 sys sys 1078453847 248109
+1078497127 0 c 386/include/ape/math.h - 664 sys sys 1078495286 2176
+1078497127 1 c 68020/include/ape/math.h - 664 sys sys 1078495286 2176
+1078497127 2 c alpha/include/ape/math.h - 664 sys sys 1078495286 2176
+1078497127 3 c arm/include/ape/math.h - 664 sys sys 1078495287 2176
+1078497127 4 c mips/include/ape/math.h - 664 sys sys 1078495287 2176
+1078497127 5 c power/include/ape/math.h - 644 sys sys 1078495287 2176
+1078497127 6 c sparc/include/ape/math.h - 664 sys sys 1078495288 2176
+1078497127 7 m sys/lib/lp/log - 20000000777 sys sys 1071620128 0
+1078497127 8 c sys/src/cmd/acme/util.c - 664 sys sys 1078466661 7312
+1078497127 9 c sys/src/libdraw/font.c - 664 sys sys 1078466654 7542
+1078497127 10 c sys/src/libdraw/stringwidth.c - 664 sys sys 1078466654 1587
+1078497127 11 c sys/src/libframe/frbox.c - 664 sys sys 1078466650 3028
