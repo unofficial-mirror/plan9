@@ -16399,3 +16399,9 @@
 1106022769 1 c sys/man/4/usb - 664 sys sys 1105992038 4295
 1106022769 2 c sys/src/9/boot/local.c - 664 sys sys 1105976808 5619
 1106022769 3 c sys/src/boot/pc/ether8169.c - 664 sys sys 1106018997 18687
+1106109188 0 c acme/wiki/src/wiki.c - 664 sys sys 1106096758 10631
+1106109188 1 c sys/lib/kbmap/jp - 664 sys sys 1106107712 317
+1106109188 2 c sys/man/2/9p - 664 sys sys 1106072437 15235
+1106109188 3 c sys/man/2/9pfid - 664 sys sys 1106072437 3663
+1106109188 4 c sys/src/cmd/diff/diffio.c - 664 sys sys 1106063669 5272
+1106109188 5 c sys/src/libauthsrv/readnvram.c - 664 sys sys 1106063383 8622

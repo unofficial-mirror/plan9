@@ -200,7 +200,7 @@ acme/wiki/src/awiki.h - 664 sys sys 1018288159 2140
 acme/wiki/src/main.c - 664 sys sys 1018387015 848
 acme/wiki/src/mkfile - 664 sys sys 1015011266 138
 acme/wiki/src/util.c - 664 sys sys 1016901956 1176
-acme/wiki/src/wiki.c - 664 sys sys 1018288160 10644
+acme/wiki/src/wiki.c - 664 sys sys 1106096758 10631
 acme/wiki/src/win.c - 664 sys sys 1016901957 5106
 acme/wiki/wiki.diff - 775 sys sys 1015011266 283
 adm - 20000000775 adm adm 1017438729 0
@@ -3392,7 +3392,7 @@ sys/lib/kbmap/de - 664 sys sys 1100894012 6265
 sys/lib/kbmap/ee - 644 sys sys 1080222237 429
 sys/lib/kbmap/es - 664 sys sys 1079535430 1360
 sys/lib/kbmap/fi - 664 sys sys 1079617317 369
-sys/lib/kbmap/jp - 664 sys sys 1088002290 317
+sys/lib/kbmap/jp - 664 sys sys 1106107712 317
 sys/lib/kbmap/uk - 664 sys sys 1079473812 55
 sys/lib/kbmap/us - 664 sys sys 1082221421 6248
 sys/lib/lex - 20000000775 sys sys 945136651 0
@@ -4287,9 +4287,9 @@ sys/man/1/yacc - 664 sys sys 944959676 3273
 sys/man/1/yesterday - 664 sys sys 1070288431 2348
 sys/man/2 - 20000000775 sys sys 1017423721 0
 sys/man/2/0intro - 664 sys sys 1044724217 11574
-sys/man/2/9p - 664 sys sys 1089084170 15221
+sys/man/2/9p - 664 sys sys 1106072437 15235
 sys/man/2/9pcmdbuf - 664 sys sys 1044430197 2057
-sys/man/2/9pfid - 664 sys sys 1048637158 3626
+sys/man/2/9pfid - 664 sys sys 1106072437 3663
 sys/man/2/9pfile - 664 sys sys 1048637158 4408
 sys/man/2/abort - 664 sys sys 944959693 331
 sys/man/2/abs - 664 sys sys 944959693 461
@@ -6837,7 +6837,7 @@ sys/src/cmd/dict/world.c - 664 sys sys 944960882 4264
 sys/src/cmd/diff - 20000000775 sys sys 944960882 0
 sys/src/cmd/diff/diff.h - 664 sys sys 1014925333 769
 sys/src/cmd/diff/diffdir.c - 664 sys sys 1014925333 1791
-sys/src/cmd/diff/diffio.c - 664 sys sys 1014925334 5031
+sys/src/cmd/diff/diffio.c - 664 sys sys 1106063669 5272
 sys/src/cmd/diff/diffreg.c - 664 sys sys 1014925334 8825
 sys/src/cmd/diff/main.c - 664 sys sys 1099755545 4312
 sys/src/cmd/diff/mkfile - 664 sys sys 944960882 141
@@ -10903,7 +10903,7 @@ sys/src/libauthsrv/mkfile - 664 sys sys 1035389776 409
 sys/src/libauthsrv/nvcsum.c - 664 sys sys 1015091654 192
 sys/src/libauthsrv/opasstokey.c - 664 sys sys 1015091654 448
 sys/src/libauthsrv/passtokey.c - 664 sys sys 1015091654 517
-sys/src/libauthsrv/readnvram.c - 664 sys sys 1055718668 8534
+sys/src/libauthsrv/readnvram.c - 664 sys sys 1106063383 8622
 sys/src/libbin - 20000000775 sys sys 984777332 0
 sys/src/libbin/bin.c - 664 sys sys 1045502972 1811
 sys/src/libbin/mkfile - 664 sys sys 1035389776 197
