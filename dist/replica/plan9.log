@@ -15302,3 +15302,10 @@
 1085628737 0 c sys/src/cmd/upas/ned/nedmail.c - 664 sys sys 1085599621 44170
 1085715113 0 c sys/src/libmp/port/mkfile - 664 sys sys 1085667604 620
 1085778150 0 c sys/src/9/pc/devarch.c - 664 sys sys 1085777737 18478
+1086408181 0 c sys/src/9/ip/nullmedium.c - 664 sys sys 1086406910 492
+1086408181 1 c sys/src/9/pc/devi82365.c - 664 sys sys 1086406910 19989
+1086408181 2 c sys/src/9/pc/usbuhci.c - 664 sys sys 1086406909 30740
+1086408181 3 c sys/src/9/port/devdraw.c - 664 sys sys 1086406909 41991
+1086408181 4 c sys/src/9/port/devmnt.c - 664 sys sys 1086406908 21595
+1086408181 5 c sys/src/9/port/devsrv.c - 664 sys sys 1086406908 5198
+1086408181 6 c sys/src/9/port/devtls.c - 664 sys sys 1086406907 45225
