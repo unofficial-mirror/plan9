@@ -16700,3 +16700,13 @@
 1110947518 0 c sys/src/9/pc/ether8169.c - 664 sys sys 1110882037 22704
 1110947518 1 c sys/src/cmd/aux/gps/gpsfs.c - 664 sys sys 1110882109 17951
 1110947518 2 c sys/src/libmemdraw/line.c - 664 sys sys 1110918933 11040
+1111033896 0 c rc/bin/replica/pull - 775 sys sys 1110990531 1447
+1111033896 1 c sys/games/lib/fortunes - 664 sys sys 1111012774 253406
+1111033896 2 c sys/lib/acid/leak - 664 sys sys 1110989276 2185
+1111033896 3 a sys/lib/kbmap/no - 664 sys sys 1110991440 367
+1111033896 4 a sys/lib/kbmap/ru - 664 sys sys 1110991440 6380
+1111033896 5 a sys/lib/kbmap/ua - 664 sys sys 1110991440 6380
+1111033896 6 c sys/src/cmd/mkmany - 664 sys sys 1110990445 1283
+1111033896 7 c sys/src/cmd/mkone - 664 sys sys 1110990445 898
+1111033896 8 c sys/src/cmd/replica/applylog.c - 664 sys sys 1110990530 18079
+1111033896 9 a sys/src/libc/port/pool.acid - 664 sys sys 1110989242 12026
