@@ -15161,3 +15161,6 @@
 1082327580 0 c sys/src/cmd/vnc/ksym2utf.h - 664 sys sys 1082326667 18402
 1082327580 1 c sys/src/cmd/vnc/utf2ksym.h - 664 sys sys 1082326667 18024
 1082406821 0 c sys/man/1/acid - 664 sys sys 1082404958 9725
+1082604791 0 c sys/man/1/mkdir - 664 sys sys 1082593141 717
+1082604791 1 c sys/src/9/ip/ipv6.h - 664 sys sys 1082604125 4260
+1082604791 2 c sys/src/cmd/mkdir.c - 664 sys sys 1082593106 1026

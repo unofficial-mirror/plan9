@@ -4184,7 +4184,7 @@ sys/man/1/man - 664 sys sys 1059484724 1740
 sys/man/1/marshal - 664 sys sys 1079970326 3150
 sys/man/1/mc - 664 sys sys 1045501392 508
 sys/man/1/mk - 664 sys sys 964455061 13154
-sys/man/1/mkdir - 664 sys sys 1081621073 597
+sys/man/1/mkdir - 664 sys sys 1082593141 717
 sys/man/1/mlmgr - 664 sys sys 1045501403 2427
 sys/man/1/ms2html - 664 sys sys 960001562 856
 sys/man/1/nedmail - 664 sys sys 1055704205 11322
@@ -4739,7 +4739,7 @@ sys/src/9/ip/ipifc.c - 664 sys sys 1079538100 34297
 sys/src/9/ip/ipmux.c - 664 sys sys 1047260566 15362
 sys/src/9/ip/iproute.c - 664 sys sys 1049423192 14763
 sys/src/9/ip/ipv6.c - 664 sys sys 1047951328 14433
-sys/src/9/ip/ipv6.h - 664 sys sys 1079538100 4259
+sys/src/9/ip/ipv6.h - 664 sys sys 1082604125 4260
 sys/src/9/ip/loopbackmedium.c - 664 sys sys 1055701769 1671
 sys/src/9/ip/netdevmedium.c - 664 sys sys 1045063517 2675
 sys/src/9/ip/netlog.c - 664 sys sys 1026847568 4003
@@ -9227,7 +9227,7 @@ sys/src/cmd/mk/symtab.c - 664 sys sys 944961025 1581
 sys/src/cmd/mk/var.c - 664 sys sys 944961025 539
 sys/src/cmd/mk/varsub.c - 664 sys sys 944961025 4438
 sys/src/cmd/mk/word.c - 664 sys sys 944961025 2595
-sys/src/cmd/mkdir.c - 664 sys sys 1081621076 868
+sys/src/cmd/mkdir.c - 664 sys sys 1082593106 1026
 sys/src/cmd/mkfile - 664 sys sys 1045534751 2205
 sys/src/cmd/mklib - 664 sys sys 1022112159 599
 sys/src/cmd/mkmany - 664 sys sys 1022112160 1196
