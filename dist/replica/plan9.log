@@ -16063,3 +16063,9 @@
 1099107109 0 c adm/timezone/GB-Eire - 664 adm adm 1099058034 1170
 1099107109 1 c sys/games/lib/fortunes - 664 sys sys 1099093340 250751
 1099107109 2 a sys/log/smtpd.mx - 666 sys sys 1099090672 0
+1099193533 0 a rc/bin/ape/ranlib - 755 sys sys 1099176402 18
+1099193533 1 c sys/src/9/port/devmouse.c - 664 sys sys 1099176878 12404
+1099193533 2 c sys/src/cmd/auth/factotum/chap.c - 664 sys sys 1099176467 8774
+1099193533 3 c sys/src/cmd/auth/factotum/dat.h - 664 sys sys 1099176466 4809
+1099193533 4 c sys/src/cmd/auth/factotum/fs.c - 664 sys sys 1099176467 10365
+1099193533 5 c sys/src/cmd/auth/factotum/mkfile - 664 sys sys 1099176466 493
