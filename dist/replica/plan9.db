@@ -6248,7 +6248,7 @@ sys/src/cmd/9l/sched.c - 664 sys sys 1014936054 9790
 sys/src/cmd/9l/span.c - 664 sys sys 1045503966 11787
 sys/src/cmd/9nfs - 20000000775 sys sys 1015090374 0
 sys/src/cmd/9nfs/9auth.c - 664 sys sys 1017337812 1454
-sys/src/cmd/9nfs/9p.c - 664 sys sys 1017337813 3291
+sys/src/cmd/9nfs/9p.c - 664 sys sys 1083772192 3365
 sys/src/cmd/9nfs/all.h - 664 sys sys 1017337813 322
 sys/src/cmd/9nfs/auth.c - 664 sys sys 1017337813 424
 sys/src/cmd/9nfs/authhostowner.c - 664 sys sys 1071498519 4190
@@ -6267,7 +6267,7 @@ sys/src/cmd/9nfs/pcnfsd.c - 664 sys sys 1017337815 3964
 sys/src/cmd/9nfs/portmapper.c - 664 sys sys 1040952456 3179
 sys/src/cmd/9nfs/rpc.c - 664 sys sys 1017337815 5293
 sys/src/cmd/9nfs/rpc.h - 664 sys sys 1017337815 1996
-sys/src/cmd/9nfs/server.c - 664 sys sys 1078839960 10996
+sys/src/cmd/9nfs/server.c - 664 sys sys 1083771826 10980
 sys/src/cmd/9nfs/string.c - 664 sys sys 1017337815 1659
 sys/src/cmd/9nfs/strparse.c - 664 sys sys 1015090373 506
 sys/src/cmd/9nfs/system.c - 664 sys sys 1017337815 437
@@ -6360,7 +6360,7 @@ sys/src/cmd/auth/convbio.c - 664 sys sys 1015008432 2212
 sys/src/cmd/auth/convkeys.c - 664 sys sys 1015008430 2347
 sys/src/cmd/auth/convkeys2.c - 664 sys sys 1015008432 2401
 sys/src/cmd/auth/cron.c - 664 sys sys 1063858528 11410
-sys/src/cmd/auth/debug.c - 664 sys sys 1078839961 7339
+sys/src/cmd/auth/debug.c - 664 sys sys 1083771270 7356
 sys/src/cmd/auth/disable - 775 sys sys 1015008431 146
 sys/src/cmd/auth/enable - 775 sys sys 1015008430 134
 sys/src/cmd/auth/factotum - 20000000775 sys sys 1017165894 0
@@ -6675,7 +6675,7 @@ sys/src/cmd/bitsy/keyboard.c - 664 sys sys 1014926253 9509
 sys/src/cmd/bitsy/light.rc - 775 sys sys 985466176 242
 sys/src/cmd/bitsy/mkfile - 664 sys sys 985559341 237
 sys/src/cmd/bitsy/params.c - 664 sys sys 1014926253 1124
-sys/src/cmd/bitsy/pencal.c - 664 sys sys 1079016904 4589
+sys/src/cmd/bitsy/pencal.c - 664 sys sys 1083770967 4604
 sys/src/cmd/bitsy/prompter.c - 664 sys sys 1014926253 5888
 sys/src/cmd/bzip2 - 20000000775 sys sys 969500958 0
 sys/src/cmd/bzip2/CHANGES - 664 sys sys 964847954 6251
@@ -8955,7 +8955,7 @@ sys/src/cmd/ip/httpd/save.c - 664 sys sys 1015090172 3175
 sys/src/cmd/ip/httpd/sendfd.c - 664 sys sys 1017679317 12134
 sys/src/cmd/ip/httpd/webls.c - 664 sys sys 1070288192 7269
 sys/src/cmd/ip/httpd/webls.denied - 664 sys sys 1064887847 3
-sys/src/cmd/ip/httpd/wikipost.c - 664 sys sys 1019678647 5917
+sys/src/cmd/ip/httpd/wikipost.c - 664 sys sys 1083771074 5913
 sys/src/cmd/ip/imap4d - 20000000775 sys sys 988249981 0
 sys/src/cmd/ip/imap4d/auth.c - 664 sys sys 1015013075 3510
 sys/src/cmd/ip/imap4d/copy.c - 664 sys sys 1062298855 4597

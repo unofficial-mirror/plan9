@@ -15181,3 +15181,8 @@
 1083555199 1 c sys/src/9/pc/etherdp83820.c - 664 sys sys 1083469193 29134
 1083555199 2 c sys/src/libthread/id.c - 664 sys sys 1083523466 1840
 1083726231 0 c sys/src/cmd/aux/timesync.c - 664 sys sys 1083697436 24772
+1083812651 0 c sys/src/cmd/9nfs/9p.c - 664 sys sys 1083772192 3365
+1083812651 1 c sys/src/cmd/9nfs/server.c - 664 sys sys 1083771826 10980
+1083812651 2 c sys/src/cmd/auth/debug.c - 664 sys sys 1083771270 7356
+1083812651 3 c sys/src/cmd/bitsy/pencal.c - 664 sys sys 1083770967 4604
+1083812651 4 c sys/src/cmd/ip/httpd/wikipost.c - 664 sys sys 1083771074 5913
