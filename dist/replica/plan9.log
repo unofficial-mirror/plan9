@@ -13605,3 +13605,7 @@
 1067992358 1 c sys/src/9/port/devmnt.c - 664 sys sys 1067953214 21594
 1067992358 2 c sys/src/9/port/qio.c - 664 sys sys 1067953182 23406
 1067992358 3 c sys/src/cmd/cpu.c - 664 sys sys 1067953662 20525
+1068087784 0 c rc/bin/fshalt - 775 sys sys 1068087338 1092
+1068087784 1 c rc/bin/iwhois - 775 sys sys 1068053163 584
+1068087784 2 a rc/bin/thesaurus - 775 sys sys 1068054167 246
+1068087784 3 c sys/src/9/ip/icmp.c - 664 sys sys 1068049000 9438
