@@ -15697,3 +15697,7 @@
 1090467139 1 c sys/src/9/pc/vgas3.c - 664 sys sys 1090439162 12189
 1090467139 2 c sys/src/cmd/aux/vga/virge.c - 664 sys sys 1090439328 18587
 1090467139 3 c sys/src/cmd/ndb/dn.c - 664 sys sys 1090409399 26970
+1091071936 0 c rc/bin/ups - 775 sys sys 1091021981 806
+1091071936 1 c sys/games/lib/fortunes - 664 sys sys 1091022704 248857
+1091071936 2 c sys/src/9/ppc/mem.h - 664 sys sys 1091021860 7002
+1091071936 3 c sys/src/cmd/usb/audio/main.c - 664 sys sys 1091021907 9533
