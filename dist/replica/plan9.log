@@ -13672,3 +13672,13 @@
 1068521625 15 c sys/src/libmach/8db.c - 664 sys sys 1068478077 39071
 1068521625 16 c sys/src/libmach/access.c - 664 sys sys 1068478065 4309
 1068521625 17 c sys/src/libmach/sym.c - 664 sys sys 1068478065 26516
+1068591852 0 c sys/games/lib/fortunes - 664 sys sys 1068558042 246774
+1068591852 1 c sys/lib/dist/logcompress.awk - 664 sys sys 1068558028 298
+1068591852 2 c sys/man/8/fossilcons - 664 sys sys 1068591368 14975
+1068591852 3 c sys/man/8/kfscmd - 664 sys sys 1068569797 4515
+1068591852 4 c sys/src/cmd/disk/kfs/chk.c - 664 sys sys 1068569643 10339
+1068591852 5 c sys/src/cmd/fossil/9fsys.c - 664 sys sys 1068591358 29979
+1068591852 6 c sys/src/cmd/fossil/cache.c - 664 sys sys 1068526660 43049
+1068591852 7 c sys/src/cmd/fossil/disk.c - 664 sys sys 1068526661 6336
+1068591852 8 c sys/src/cmd/fossil/fns.h - 664 sys sys 1068526660 3077
+1068591852 9 c sys/src/cmd/fossil/source.c - 664 sys sys 1068591358 18771
