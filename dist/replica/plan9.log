@@ -11250,3 +11250,10 @@
 1039915984 2 a sys/src/9/pc/ethermii.h - 664 sys sys 1039895684 3259
 1039915984 3 c sys/src/cmd/cc/dcl.c - 664 sys sys 1039910271 25755
 1039915984 4 c sys/src/cmd/vnc/kbd_vwr.c - 664 sys sys 1039889837 2389
+1040006413 0 c lib/face/48x48x4/.dict - 664 sys sys 1039965405 1750
+1040006413 1 c sys/games/lib/fortunes - 664 sys sys 1040004323 237819
+1040006413 2 c sys/src/9/pc/mkfile - 664 sys sys 1040002514 2995
+1040006413 3 c sys/src/9/pc/trap.c - 664 sys sys 1040002517 19364
+1040006413 4 a sys/src/9/pc/init9.c - 664 sys sys 1040002518 94
+1040006413 5 c sys/src/9/port/initcode.c - 664 sys sys 1040002543 465
+1040006413 6 c sys/src/libventi/plan9.c - 664 sys sys 1039964807 8481
