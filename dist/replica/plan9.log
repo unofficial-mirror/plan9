@@ -14177,3 +14177,15 @@
 1073567052 3 c sys/src/cmd/acme/wind.c - 664 sys sys 1073566950 11094
 1073660665 0 c sys/src/cmd/usb/mkfile - 664 sys sys 1073660279 211
 1073660665 1 c sys/src/cmd/usb/print/mkfile - 664 sys sys 1073660166 195
+1073854971 0 c sys/lib/mimetype - 664 sys sys 1073826820 5674
+1073854971 1 c sys/man/4/fossil - 664 sys sys 1073853397 9333
+1073854971 2 c sys/src/9/pc/pc - 664 sys sys 1073852088 1360
+1073854971 3 c sys/src/9/pc/pcauth - 664 sys sys 1073851852 657
+1073854971 4 c sys/src/9/pc/pccpu - 664 sys sys 1073852088 802
+1073854971 5 c sys/src/9/pc/pcdisk - 664 sys sys 1073851851 1427
+1073854971 6 c sys/src/9/pc/pcf - 664 sys sys 1073851852 1455
+1073854971 7 c sys/src/9/pc/pccpuf - 664 sys sys 1073851852 1315
+1073854971 8 c sys/src/cmd/aux/disksim.c - 664 sys sys 1073852076 10914
+1073854971 9 c sys/src/cmd/fossil/cache.c - 664 sys sys 1073851928 42849
+1073854971 10 c sys/src/cmd/fossil/error.c - 664 sys sys 1073851927 1450
+1073854971 11 c sys/src/cmd/fossil/error.h - 664 sys sys 1073851928 796
