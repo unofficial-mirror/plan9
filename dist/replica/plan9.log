@@ -16552,3 +16552,6 @@
 1108269081 5 a sys/src/games/mkfile - 664 sys sys 1108184131 526
 1108355502 0 c sys/src/cmd/cc/macbody - 664 sys sys 1108281581 11703
 1108355502 1 c sys/src/libc/9sys/fcallfmt.c - 664 sys sys 1108319655 5740
+1108441920 0 c sys/src/cmd/aux/gps/gpsfs.c - 664 sys sys 1108397331 17433
+1108441920 1 c sys/src/cmd/aux/gps/mkfile - 664 sys sys 1108397331 219
+1108441920 2 c sys/src/cmd/cc/lex.c - 664 sys sys 1108397267 23807

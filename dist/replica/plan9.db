@@ -6534,8 +6534,8 @@ sys/src/cmd/aux/flashfs/utils.c - 664 sys sys 1019498850 1097
 sys/src/cmd/aux/gps - 20000000775 sys sys 1107448949 0
 sys/src/cmd/aux/gps/dat.h - 664 sys sys 1107448949 287
 sys/src/cmd/aux/gps/gpsevermore.c - 664 sys sys 1107448815 4501
-sys/src/cmd/aux/gps/gpsfs.c - 664 sys sys 1107448815 16152
-sys/src/cmd/aux/gps/mkfile - 664 sys sys 1107448949 234
+sys/src/cmd/aux/gps/gpsfs.c - 664 sys sys 1108397331 17433
+sys/src/cmd/aux/gps/mkfile - 664 sys sys 1108397331 219
 sys/src/cmd/aux/gps/util.c - 664 sys sys 1107448815 2795
 sys/src/cmd/aux/lines.c - 664 sys sys 1015008782 546
 sys/src/cmd/aux/lis - 775 sys sys 944960794 45
@@ -6718,7 +6718,7 @@ sys/src/cmd/cc/compat.c - 664 sys sys 1084472048 417
 sys/src/cmd/cc/dcl.c - 664 sys sys 1089299183 26723
 sys/src/cmd/cc/dpchk.c - 664 sys sys 1107365037 7152
 sys/src/cmd/cc/funct.c - 664 sys sys 984718510 6167
-sys/src/cmd/cc/lex.c - 664 sys sys 1089299182 23826
+sys/src/cmd/cc/lex.c - 664 sys sys 1108397267 23807
 sys/src/cmd/cc/lexbody - 664 sys sys 1098499731 9014
 sys/src/cmd/cc/mac.c - 664 sys sys 944960808 36
 sys/src/cmd/cc/macbody - 664 sys sys 1108281581 11703
