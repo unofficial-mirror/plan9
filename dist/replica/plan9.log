@@ -15380,3 +15380,6 @@
 1088002957 0 a sys/lib/kbmap/jp - 664 sys sys 1088002290 317
 1088107377 0 c sys/man/2/read - 664 sys sys 1088107191 1883
 1088107377 1 c sys/src/boot/pc/clock.c - 664 sys sys 1088089722 5783
+1088220679 0 c sys/src/9/pc/etherif.h - 664 sys sys 1088178711 961
+1088220679 1 c sys/src/ape/lib/ap/plan9/wait.c - 664 sys sys 1088204173 2147
+1088220679 2 c sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1088204577 23412
