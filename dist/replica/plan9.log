@@ -12972,3 +12972,5 @@
 1059496358 43 a sys/src/9/ppc/uartsmc.c - 664 sys sys 1059490754 11713
 1059496358 44 a sys/src/9/ppc/ucu - 664 sys sys 1059490754 715
 1059496358 45 a sys/src/9/ppc/ucu.h - 664 sys sys 1059490754 531
+1059597160 0 c sys/src/9/ppc/ucu - 664 sys sys 1059595927 706
+1059597160 1 d sys/src/9/ppc/rcmain - 664 sys sys 1059490838 0
