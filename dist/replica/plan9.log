@@ -11634,3 +11634,5 @@
 1044932645 45 d sys/src/cmd/vnc/region.c - 664 sys sys 1014925999 0
 1044932645 46 d sys/src/cmd/vnc/kbd_vwr.c - 664 sys sys 1039889837 0
 1044932645 47 d sys/src/cmd/vnc/kbd.c - 664 sys sys 1014925998 0
+1045017151 0 c sys/man/1/hget - 664 sys sys 1045015493 1286
+1045017151 1 c sys/src/cmd/hget.c - 664 sys sys 1045015305 21966
