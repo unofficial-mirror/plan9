@@ -11471,3 +11471,7 @@
 1042605176 11 c sys/src/cmd/cpu.c - 664 sys sys 1042571397 20349
 1042605176 12 c sys/src/cmd/ip/httpd/redirect.c - 664 sys sys 1042522766 2978
 1042641241 0 c sys/src/cmd/pcc.c - 664 sys sys 1042640611 5937
+1042857112 0 c sys/src/9/pc/wavelan.c - 664 sys sys 1042855781 27095
+1042857112 1 c sys/src/9/pc/wavelan.h - 664 sys sys 1042855780 6228
+1042857112 2 c sys/src/9/port/netif.c - 664 sys sys 1042855805 13131
+1042857112 3 c sys/src/9/port/netif.h - 664 sys sys 1042855799 2908
