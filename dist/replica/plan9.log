@@ -13330,3 +13330,9 @@
 1065576707 1 c sys/src/libip/mkfile - 664 sys sys 1065576347 320
 1065647022 0 c sys/man/8/httpd - 664 sys sys 1065640802 6426
 1065647022 1 c sys/src/cmd/ip/httpd/webls.c - 664 sys sys 1065646625 7233
+1065753130 0 c sys/games/lib/fortunes - 664 sys sys 1065751340 245757
+1065753130 1 c sys/src/9/pc/devpccard.c - 664 sys sys 1065717606 39976
+1065753130 2 c sys/src/9/pc/mouse.c - 664 sys sys 1065717607 6625
+1065753130 3 c sys/src/cmd/upas/send/dest.c - 664 sys sys 1065717617 4732
+1065753130 4 c sys/src/cmd/upas/send/main.c - 664 sys sys 1065717618 11856
+1065753130 5 c sys/src/cmd/upas/send/message.c - 664 sys sys 1065717617 11064
