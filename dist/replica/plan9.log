@@ -15992,3 +15992,4 @@
 1097119890 1 c sys/src/9/ppc/dat.h - 664 sys sys 1097073353 4712
 1097119890 2 c sys/src/9/ppc/m8260.c - 664 sys sys 1097073366 14480
 1097119890 3 c sys/src/9/ppc/main.c - 664 sys sys 1097073343 9041
+1097256760 0 c sys/games/lib/fortunes - 664 sys sys 1097256226 250017
