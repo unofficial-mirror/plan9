@@ -16744,3 +16744,13 @@
 1111638721 0 c sys/src/cmd/acme/dat.h - 664 sys sys 1111606459 11106
 1111638721 1 c sys/src/cmd/acme/ecmd.c - 664 sys sys 1111606460 24205
 1111638721 2 c sys/src/cmd/acme/elog.c - 664 sys sys 1111607796 7294
+1111811632 0 c rc/bin/patch/list - 775 sys sys 1111765301 729
+1111811632 1 c sys/lib/dist/pc/inst/defs - 664 sys sys 1111771991 2743
+1111811632 2 c sys/lib/dist/pc/inst/fmtfossil - 775 sys sys 1111771991 1982
+1111811632 3 c sys/lib/dist/pc/inst/main - 775 sys sys 1111771992 1941
+1111811632 4 c sys/lib/dist/pc/inst/mountfs - 775 sys sys 1111771992 182
+1111811632 5 c sys/lib/dist/pc/inst/partdisk - 775 sys sys 1111771992 1820
+1111811632 6 c sys/lib/dist/pc/inst/prepdisk - 775 sys sys 1111771992 1462
+1111811632 7 c sys/man/4/wikifs - 664 sys sys 1111765301 7505
+1111811632 8 a sys/src/9/pc/uartisa.c - 664 sys sys 1111725178 1775
+1111811632 9 c sys/src/cmd/file.c - 664 sys sys 1111784964 22934
