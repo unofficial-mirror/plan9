@@ -15062,3 +15062,5 @@
 1079748105 4 c sys/src/cmd/ndb/dns.h - 664 sys sys 1079747686 8980
 1079748105 5 c sys/src/cmd/ndb/dnsdebug.c - 664 sys sys 1079747685 8488
 1079811104 0 c sys/src/cmd/vnc/kbds.c - 664 sys sys 1079809881 3256
+1079919151 0 c sys/src/cmd/ndb/dn.c - 664 sys sys 1079918815 26961
+1079919151 1 c sys/src/cmd/ramfs.c - 664 sys sys 1079877660 15377
