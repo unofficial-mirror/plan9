@@ -4258,7 +4258,6 @@ sys/man/1/strip - 664 sys sys 958580250 448
 sys/man/1/sum - 664 sys sys 984772442 1390
 sys/man/1/syscall - 664 sys sys 1016466457 1439
 sys/man/1/tail - 664 sys sys 1017679307 1413
-sys/man/1/tapefs - 664 sys sys 1097900346 1811
 sys/man/1/tar - 664 sys sys 1070371922 2538
 sys/man/1/tbl - 664 sys sys 944959674 4308
 sys/man/1/tcs - 664 sys sys 952627441 2575
@@ -4496,7 +4495,7 @@ sys/man/4/rio - 664 sys sys 1023206844 8660
 sys/man/4/sacfs - 664 sys sys 964886843 907
 sys/man/4/snap - 664 sys sys 1017251244 1833
 sys/man/4/srv - 664 sys sys 1045236157 4649
-sys/man/4/tapefs - 664 sys sys 944959699 1731
+sys/man/4/tapefs - 664 sys sys 1107543772 1811
 sys/man/4/telco - 664 sys sys 1015024814 4359
 sys/man/4/u9fs - 664 sys sys 1043769139 4748
 sys/man/4/upasfs - 664 sys sys 1034348505 6212
@@ -4826,7 +4825,7 @@ sys/src/9/pc/devlm78.c - 664 sys sys 1091129037 6255
 sys/src/9/pc/devlml.c - 664 sys sys 1026847636 7486
 sys/src/9/pc/devlml.h - 664 sys sys 1026847636 2948
 sys/src/9/pc/devlpt.c - 664 sys sys 1015014514 4420
-sys/src/9/pc/devpccard.c - 664 sys sys 1089299187 40138
+sys/src/9/pc/devpccard.c - 664 sys sys 1107531947 40194
 sys/src/9/pc/devrtc.c - 664 sys sys 1015014515 7167
 sys/src/9/pc/devtv.c - 664 sys sys 1091734484 45725
 sys/src/9/pc/devusb.c - 664 sys sys 1105193103 18364

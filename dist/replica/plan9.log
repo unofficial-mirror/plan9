@@ -16476,3 +16476,6 @@
 1107491530 18 c sys/src/cmd/upas/marshal/marshal.c - 664 sys sys 1107435333 32664
 1107491530 19 c sys/src/games/music/playlistfs/fs.c - 664 sys sys 1107436434 17485
 1107491530 20 c sys/src/games/music/playlistfs/playlist.h - 664 sys sys 1107436453 2579
+1107577916 0 c sys/man/4/tapefs - 664 sys sys 1107543772 1811
+1107577916 1 c sys/src/9/pc/devpccard.c - 664 sys sys 1107531947 40194
+1107577916 2 d sys/man/1/tapefs - 664 sys sys 1097900346 0
