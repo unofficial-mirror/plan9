@@ -12916,3 +12916,4 @@
 1058792640 10 a sys/src/cmd/dial/expect.c - 664 sys sys 1058789952 1595
 1058792640 11 a sys/src/cmd/dial/mkfile - 664 sys sys 1058789952 191
 1058792640 12 a sys/src/cmd/dial/pass.c - 664 sys sys 1058789955 891
+1059066191 0 c sys/src/9/pc/etherelnk3.c - 664 sys sys 1059064966 48481
