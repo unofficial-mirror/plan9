@@ -150,8 +150,8 @@ acme/bin/source/spout.c - 664 sys sys 1015011255 1868
 acme/bin/source/win - 20000000775 sys sys 1015011255 0
 acme/bin/source/win/dat.h - 664 sys sys 1017679345 1992
 acme/bin/source/win/fs.c - 664 sys sys 1045503982 2713
-acme/bin/source/win/main.c - 664 sys sys 1037256658 12536
-acme/bin/source/win/mkfile - 664 sys sys 1030450915 283
+acme/bin/source/win/main.c - 664 sys sys 1046654935 12544
+acme/bin/source/win/mkfile - 664 sys sys 1046654934 309
 acme/bin/source/win/pipe.c - 664 sys sys 1017679345 2807
 acme/bin/source/win/util.c - 664 sys sys 1017679346 1169
 acme/bin/source/win/win.c - 664 sys sys 1015011255 4240
@@ -4093,7 +4093,7 @@ sys/man/2/9pfid - 664 sys sys 1030451710 3644
 sys/man/2/9pfile - 664 sys sys 1017423719 4426
 sys/man/2/abort - 664 sys sys 944959693 331
 sys/man/2/abs - 664 sys sys 944959693 461
-sys/man/2/access - 664 sys sys 984709630 1251
+sys/man/2/access - 664 sys sys 1046657167 1102
 sys/man/2/addpt - 664 sys sys 958249501 2964
 sys/man/2/aes - 664 sys sys 1032058672 997
 sys/man/2/allocimage - 664 sys sys 984709630 7300
@@ -4186,7 +4186,7 @@ sys/man/2/plumb - 664 sys sys 1015091524 4816
 sys/man/2/pool - 664 sys sys 1017423720 8134
 sys/man/2/postnote - 664 sys sys 944959695 790
 sys/man/2/prime - 664 sys sys 1017251165 2018
-sys/man/2/print - 664 sys sys 1039759892 8890
+sys/man/2/print - 664 sys sys 1046620831 8889
 sys/man/2/privalloc - 664 sys sys 984709633 651
 sys/man/2/proto - 664 sys sys 969499889 2948
 sys/man/2/pushssl - 664 sys sys 958249503 1032
@@ -5373,7 +5373,7 @@ sys/src/ape/lib/ap/plan9/pipe.c - 664 sys sys 1014921984 476
 sys/src/ape/lib/ap/plan9/profile.c - 664 sys sys 1014921985 2521
 sys/src/ape/lib/ap/plan9/raise.c - 664 sys sys 1014921985 120
 sys/src/ape/lib/ap/plan9/read.c - 664 sys sys 1014921984 767
-sys/src/ape/lib/ap/plan9/rename.c - 664 sys sys 1014921985 1259
+sys/src/ape/lib/ap/plan9/rename.c - 664 sys sys 1046643006 1282
 sys/src/ape/lib/ap/plan9/rmdir.c - 664 sys sys 1014921985 188
 sys/src/ape/lib/ap/plan9/setgid.c - 664 sys sys 1014921985 145
 sys/src/ape/lib/ap/plan9/setpgid.c - 664 sys sys 1014921985 463
@@ -5396,7 +5396,7 @@ sys/src/ape/lib/ap/plan9/ttyname.c - 664 sys sys 1014921985 133
 sys/src/ape/lib/ap/plan9/umask.c - 664 sys sys 1014921985 182
 sys/src/ape/lib/ap/plan9/uname.c - 664 sys sys 1014921985 408
 sys/src/ape/lib/ap/plan9/unlink.c - 664 sys sys 1038237528 1505
-sys/src/ape/lib/ap/plan9/utime.c - 664 sys sys 1014921985 526
+sys/src/ape/lib/ap/plan9/utime.c - 664 sys sys 1046643007 469
 sys/src/ape/lib/ap/plan9/wait.c - 664 sys sys 1043681702 1133
 sys/src/ape/lib/ap/plan9/write.c - 664 sys sys 1038237529 348
 sys/src/ape/lib/ap/posix - 20000000775 sys sys 1014921981 0
@@ -5997,7 +5997,7 @@ sys/src/cmd/acme/ecmd.c - 664 sys sys 1045504838 23562
 sys/src/cmd/acme/edit.c - 664 sys sys 1015701171 12055
 sys/src/cmd/acme/edit.h - 664 sys sys 969500816 2466
 sys/src/cmd/acme/elog.c - 664 sys sys 1045504839 6830
-sys/src/cmd/acme/exec.c - 664 sys sys 1044626079 26945
+sys/src/cmd/acme/exec.c - 664 sys sys 1046620931 27023
 sys/src/cmd/acme/file.c - 664 sys sys 1044626079 5717
 sys/src/cmd/acme/fns.h - 664 sys sys 1044626080 2920
 sys/src/cmd/acme/fsys.c - 664 sys sys 1022512648 12727
@@ -6011,7 +6011,7 @@ sys/src/cmd/acme/time.c - 664 sys sys 1014926095 1783
 sys/src/cmd/acme/util.c - 664 sys sys 1045546057 6435
 sys/src/cmd/acme/wind.c - 664 sys sys 1016833877 11063
 sys/src/cmd/acme/xfid.c - 664 sys sys 1044626081 19191
-sys/src/cmd/ar.c - 664 sys sys 1014926693 23801
+sys/src/cmd/ar.c - 664 sys sys 1046643027 23717
 sys/src/cmd/archfs.c - 664 sys sys 1014925694 3871
 sys/src/cmd/ascii.c - 664 sys sys 964457138 3989
 sys/src/cmd/astro - 20000000775 sys sys 964456342 0
@@ -6066,7 +6066,7 @@ sys/src/cmd/auth/factotum/confirm.c - 664 sys sys 1044829586 3103
 sys/src/cmd/auth/factotum/dat.h - 664 sys sys 1044829587 4814
 sys/src/cmd/auth/factotum/fgui.c - 664 sys sys 1044829587 15948
 sys/src/cmd/auth/factotum/fs.c - 664 sys sys 1044829588 10363
-sys/src/cmd/auth/factotum/log.c - 664 sys sys 1015008431 1767
+sys/src/cmd/auth/factotum/log.c - 664 sys sys 1046655068 1781
 sys/src/cmd/auth/factotum/mkfile - 664 sys sys 1044829592 512
 sys/src/cmd/auth/factotum/p9any.c - 664 sys sys 1044829588 8207
 sys/src/cmd/auth/factotum/p9cr.c - 664 sys sys 1044829589 6618
@@ -6101,6 +6101,7 @@ sys/src/cmd/auth/lib/wrbio.c - 664 sys sys 1015008430 755
 sys/src/cmd/auth/login.c - 664 sys sys 1045524275 3959
 sys/src/cmd/auth/mkfile - 664 sys sys 1035833798 1737
 sys/src/cmd/auth/netkey.c - 664 sys sys 1015008431 741
+sys/src/cmd/auth/newns.c - 664 sys sys 1046644507 421
 sys/src/cmd/auth/passwd.c - 664 sys sys 1022163987 2902
 sys/src/cmd/auth/printnetkey.c - 664 sys sys 1015008430 732
 sys/src/cmd/auth/respond.c - 664 sys sys 1015008432 472
@@ -6130,7 +6131,7 @@ sys/src/cmd/aux/9pcon.c - 664 sys sys 1032059259 6283
 sys/src/cmd/aux/X509gen.c - 664 sys sys 1037575307 1763
 sys/src/cmd/aux/accupoint.c - 664 sys sys 985124882 2166
 sys/src/cmd/aux/acidleak.c - 664 sys sys 1014925120 5664
-sys/src/cmd/aux/apm.c - 664 sys sys 1045504910 20260
+sys/src/cmd/aux/apm.c - 664 sys sys 1046654953 20263
 sys/src/cmd/aux/astarld.c - 664 sys sys 1015008684 4638
 sys/src/cmd/aux/cddb.c - 664 sys sys 1032059267 4303
 sys/src/cmd/aux/clog.c - 664 sys sys 1014925109 1000
@@ -6368,9 +6369,9 @@ sys/src/cmd/cmp.c - 664 sys sys 1019525053 2098
 sys/src/cmd/colors.c - 664 sys sys 951763912 3186
 sys/src/cmd/comm.c - 664 sys sys 944961350 2140
 sys/src/cmd/con - 20000000775 sys sys 944961996 0
-sys/src/cmd/con/con.c - 664 sys sys 1032059372 15523
+sys/src/cmd/con/con.c - 664 sys sys 1046654774 15214
 sys/src/cmd/con/hayes.c - 664 sys sys 1014925263 3865
-sys/src/cmd/con/mkfile - 664 sys sys 1022049384 214
+sys/src/cmd/con/mkfile - 664 sys sys 1046654774 204
 sys/src/cmd/con/rufilio.h - 664 sys sys 944960877 595
 sys/src/cmd/con/rusignal.h - 664 sys sys 944960877 1659
 sys/src/cmd/con/rustream.h - 664 sys sys 944960877 2758
@@ -6585,7 +6586,7 @@ sys/src/cmd/faces - 20000000775 sys sys 952888246 0
 sys/src/cmd/faces/dblook.c - 664 sys sys 944961084 359
 sys/src/cmd/faces/facedb.c - 664 sys sys 1021579994 8976
 sys/src/cmd/faces/faces.h - 664 sys sys 1045419243 1071
-sys/src/cmd/faces/main.c - 664 sys sys 1045419249 13505
+sys/src/cmd/faces/main.c - 664 sys sys 1046643825 13572
 sys/src/cmd/faces/mkfile - 664 sys sys 1035698248 378
 sys/src/cmd/faces/plumb.c - 664 sys sys 1045505116 7132
 sys/src/cmd/faces/util.c - 664 sys sys 1035698250 569
@@ -8490,7 +8491,7 @@ sys/src/cmd/ip/dhcpd/ping.c - 664 sys sys 956275654 1881
 sys/src/cmd/ip/dhcpd/testlook.c - 664 sys sys 950389140 4640
 sys/src/cmd/ip/dhcpd/testlookup.c - 664 sys sys 950389140 3195
 sys/src/cmd/ip/dhcpd/testping.c - 664 sys sys 950389141 352
-sys/src/cmd/ip/ftpd.c - 664 sys sys 1045505176 32914
+sys/src/cmd/ip/ftpd.c - 664 sys sys 1046643070 32813
 sys/src/cmd/ip/ftpfs - 20000000775 sys sys 1014925642 0
 sys/src/cmd/ip/ftpfs/file.c - 664 sys sys 1014925642 4208
 sys/src/cmd/ip/ftpfs/ftpfs.c - 664 sys sys 1035122891 13478
@@ -8701,7 +8702,7 @@ sys/src/cmd/lp/lpdsend.c - 664 sys sys 1039145206 9527
 sys/src/cmd/lp/lpsend.c - 664 sys sys 1015090024 6180
 sys/src/cmd/lp/lpsend.rc - 775 sys sys 953344615 361
 sys/src/cmd/lp/mkfile - 664 sys sys 953344616 535
-sys/src/cmd/ls.c - 664 sys sys 1045505418 5440
+sys/src/cmd/ls.c - 664 sys sys 1046649572 5378
 sys/src/cmd/map - 20000000775 sys sys 944961024 0
 sys/src/cmd/map/index.c - 664 sys sys 956282376 4345
 sys/src/cmd/map/iplot.h - 664 sys sys 944961024 1398
@@ -9439,15 +9440,15 @@ sys/src/cmd/ssh/ciphernone.c - 664 sys sys 1016466379 317
 sys/src/cmd/ssh/cipherrc4.c - 664 sys sys 1016466379 674
 sys/src/cmd/ssh/ciphertwiddle.c - 664 sys sys 1016466379 380
 sys/src/cmd/ssh/cmsg.c - 664 sys sys 1038371942 8382
-sys/src/cmd/ssh/mkfile - 664 sys sys 1038371941 1325
+sys/src/cmd/ssh/mkfile - 664 sys sys 1046654890 1226
 sys/src/cmd/ssh/msg.c - 664 sys sys 1038293465 7740
 sys/src/cmd/ssh/pubkey.c - 664 sys sys 1019928902 3974
-sys/src/cmd/ssh/scp.c - 664 sys sys 1016466380 13768
+sys/src/cmd/ssh/scp.c - 664 sys sys 1046643068 13708
 sys/src/cmd/ssh/smsg.c - 664 sys sys 1016466380 4225
-sys/src/cmd/ssh/ssh.c - 664 sys sys 1042424644 9603
+sys/src/cmd/ssh/ssh.c - 664 sys sys 1046654892 9615
 sys/src/cmd/ssh/ssh.h - 664 sys sys 1038293464 6011
 sys/src/cmd/ssh/ssh_genkey.c - 664 sys sys 1016466380 1563
-sys/src/cmd/ssh/sshnet.c - 664 sys sys 1045505611 17656
+sys/src/cmd/ssh/sshnet.c - 664 sys sys 1046655072 17660
 sys/src/cmd/ssh/sshserve.c - 664 sys sys 1019678647 5940
 sys/src/cmd/ssh/util.c - 664 sys sys 1038293465 5506
 sys/src/cmd/stats.c - 664 sys sys 1045059499 26965
@@ -9817,7 +9818,7 @@ sys/src/cmd/upas/common/aux.c - 664 sys sys 1019498851 2300
 sys/src/cmd/upas/common/become.c - 664 sys sys 1015009623 430
 sys/src/cmd/upas/common/common.h - 664 sys sys 1015009623 1921
 sys/src/cmd/upas/common/config.c - 664 sys sys 944961316 254
-sys/src/cmd/upas/common/libsys.c - 664 sys sys 1018974178 14071
+sys/src/cmd/upas/common/libsys.c - 664 sys sys 1046643066 13823
 sys/src/cmd/upas/common/mail.c - 664 sys sys 944961315 1346
 sys/src/cmd/upas/common/makefile - 664 sys sys 944961315 366
 sys/src/cmd/upas/common/mkfile - 664 sys sys 1031707285 251
@@ -9863,7 +9864,7 @@ sys/src/cmd/upas/misc/remotemail - 775 sys sys 954266541 113
 sys/src/cmd/upas/misc/rewrite - 664 sys sys 954264578 661
 sys/src/cmd/upas/mkfile - 664 sys sys 1035832987 1903
 sys/src/cmd/upas/ml - 20000000775 sys sys 1015096763 0
-sys/src/cmd/upas/ml/common.c - 664 sys sys 1015096762 3385
+sys/src/cmd/upas/ml/common.c - 664 sys sys 1046643067 3371
 sys/src/cmd/upas/ml/dat.h - 664 sys sys 1015096762 517
 sys/src/cmd/upas/ml/mkfile - 664 sys sys 1031707313 549
 sys/src/cmd/upas/ml/ml.c - 664 sys sys 1031707314 2703
@@ -10342,7 +10343,7 @@ sys/src/libauthsrv/mkfile - 664 sys sys 1035389776 409
 sys/src/libauthsrv/nvcsum.c - 664 sys sys 1015091654 192
 sys/src/libauthsrv/opasstokey.c - 664 sys sys 1015091654 448
 sys/src/libauthsrv/passtokey.c - 664 sys sys 1015091654 517
-sys/src/libauthsrv/readnvram.c - 664 sys sys 1032060993 7585
+sys/src/libauthsrv/readnvram.c - 664 sys sys 1046644259 8446
 sys/src/libbin - 20000000775 sys sys 984777332 0
 sys/src/libbin/bin.c - 664 sys sys 1045502972 1811
 sys/src/libbin/mkfile - 664 sys sys 1035389776 197
@@ -10987,7 +10988,7 @@ sys/src/libmach/xc/mips2ureg.h - 664 sys sys 964540563 886
 sys/src/libmach/xc/x.out.h - 664 sys sys 950325899 3232
 sys/src/libmach/xobj.c - 664 sys sys 964540518 2320
 sys/src/libmemdraw - 20000000775 sys sys 985020762 0
-sys/src/libmemdraw/alloc.c - 664 sys sys 1039752932 3152
+sys/src/libmemdraw/alloc.c - 664 sys sys 1046640198 3234
 sys/src/libmemdraw/alpha.hoc - 664 sys sys 944961741 220
 sys/src/libmemdraw/arc.c - 664 sys sys 1039752932 2608
 sys/src/libmemdraw/arctest.c - 664 sys sys 1045502219 865
