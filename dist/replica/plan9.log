@@ -13310,3 +13310,6 @@
 1064598788 14 c sys/src/cmd/upas/smtp/rfc822.y - 664 sys sys 1064589606 13417
 1064598788 15 c sys/src/cmd/upas/smtp/smtp.h - 664 sys sys 1064589597 1084
 1064598788 16 c sys/src/cmd/upas/vf/vf.c - 664 sys sys 1064589607 16851
+1064680077 0 c sys/src/9/pc/vgas3.c - 664 sys sys 1064679984 12160
+1064680077 1 c sys/src/9/pc/vgasavage.c - 664 sys sys 1064679984 16251
+1064680077 2 c sys/src/cmd/auth/secstore/secuser.c - 664 sys sys 1064667494 4971
