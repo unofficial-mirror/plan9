@@ -12537,3 +12537,4 @@
 1053401645 2 c sys/src/9/bitsy/screen.c - 664 sys sys 1053340962 10145
 1053401645 3 c sys/src/9/bitsy/wavelan.c - 664 sys sys 1053340976 27266
 1053574434 0 c sys/games/lib/fortunes - 664 sys sys 1053573344 243317
+1053578045 0 c sys/man/8/plan9.ini - 664 sys sys 1053576234 20536
