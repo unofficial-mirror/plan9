@@ -15299,3 +15299,4 @@
 1085078014 0 c 386/bin/fossil/conf - 775 sys sys 1085077052 1506
 1085369543 0 c sys/src/cmd/fossil/9dir.c - 664 sys sys 1085333382 2219
 1085369543 1 c sys/src/cmd/fossil/file.c - 664 sys sys 1085333383 30291
+1085628737 0 c sys/src/cmd/upas/ned/nedmail.c - 664 sys sys 1085599621 44170
