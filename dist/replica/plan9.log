@@ -16741,3 +16741,6 @@
 1111465927 0 c sys/src/cmd/acme/look.c - 664 sys sys 1111381048 14210
 1111505479 0 c sys/src/9/ppc/mmu.c - 664 sys sys 1111504133 4864
 1111505479 1 c sys/src/games/music/playlistfs/fs.c - 664 sys sys 1111504109 17985
+1111638721 0 c sys/src/cmd/acme/dat.h - 664 sys sys 1111606459 11106
+1111638721 1 c sys/src/cmd/acme/ecmd.c - 664 sys sys 1111606460 24205
+1111638721 2 c sys/src/cmd/acme/elog.c - 664 sys sys 1111607796 7294
