@@ -4355,7 +4355,7 @@ sys/man/7/map - 664 sys sys 1032632790 13549
 sys/man/7/scat - 664 sys sys 970069855 8904
 sys/man/8 - 20000000775 sys sys 1018384448 0
 sys/man/8/0intro - 664 sys sys 944959679 247
-sys/man/8/9load - 664 sys sys 1015024984 8340
+sys/man/8/9load - 664 sys sys 1056073409 8555
 sys/man/8/9pcon - 664 sys sys 1018973955 2226
 sys/man/8/aan - 664 sys sys 1045501064 1670
 sys/man/8/aliasmail - 664 sys sys 1055701148 1353
@@ -4404,7 +4404,7 @@ sys/man/8/securenet - 664 sys sys 954305552 3160
 sys/man/8/send - 664 sys sys 1045501634 2168
 sys/man/8/smtp - 664 sys sys 1049408388 4111
 sys/man/8/snoopy - 664 sys sys 1034009982 3714
-sys/man/8/stats - 664 sys sys 1045059512 4042
+sys/man/8/stats - 664 sys sys 1056073417 4179
 sys/man/8/stub - 664 sys sys 1044830500 943
 sys/man/8/swap - 664 sys sys 944959679 880
 sys/man/8/timesync - 664 sys sys 1022590210 1629
@@ -5640,7 +5640,7 @@ sys/src/boot/pc/cga.c - 664 sys sys 1015007948 1362
 sys/src/boot/pc/clock.c - 664 sys sys 1015007948 5648
 sys/src/boot/pc/conf.c - 664 sys sys 1032215915 10126
 sys/src/boot/pc/console.c - 664 sys sys 1021579983 3420
-sys/src/boot/pc/dat.h - 664 sys sys 1032215922 3412
+sys/src/boot/pc/dat.h - 664 sys sys 1056073257 3432
 sys/src/boot/pc/devfloppy.c - 664 sys sys 1032215913 15505
 sys/src/boot/pc/devfloppy.h - 664 sys sys 1032409559 4081
 sys/src/boot/pc/devi82365.c - 664 sys sys 1019533020 23202
@@ -5652,7 +5652,7 @@ sys/src/boot/pc/dosboot.c - 664 sys sys 1032215912 11014
 sys/src/boot/pc/dosfs.h - 664 sys sys 1032215924 1467
 sys/src/boot/pc/eoffs - 664 sys sys 1015007950 0
 sys/src/boot/pc/error.h - 664 sys sys 1015007950 3081
-sys/src/boot/pc/ether.c - 664 sys sys 1019533020 4408
+sys/src/boot/pc/ether.c - 664 sys sys 1056073258 4670
 sys/src/boot/pc/ether2000.c - 664 sys sys 1015007950 2609
 sys/src/boot/pc/ether2114x.c - 664 sys sys 1015007950 34538
 sys/src/boot/pc/ether589.c - 664 sys sys 1015007950 4628
@@ -5677,13 +5677,13 @@ sys/src/boot/pc/ip.h - 664 sys sys 1015007952 2434
 sys/src/boot/pc/kbd.c - 664 sys sys 1015007952 10188
 sys/src/boot/pc/kfs.h - 664 sys sys 1032215924 861
 sys/src/boot/pc/kfsboot.c - 664 sys sys 1032215914 4788
-sys/src/boot/pc/l.s - 664 sys sys 1021579984 12963
+sys/src/boot/pc/l.s - 664 sys sys 1056073258 12963
 sys/src/boot/pc/lib.h - 664 sys sys 1015007952 3485
-sys/src/boot/pc/load.c - 664 sys sys 1032215917 7884
+sys/src/boot/pc/load.c - 664 sys sys 1056073257 7908
 sys/src/boot/pc/mbr.s - 664 sys sys 1015007953 6234
 sys/src/boot/pc/mem.h - 664 sys sys 1015007953 3407
 sys/src/boot/pc/memory.c - 664 sys sys 1019533021 10272
-sys/src/boot/pc/mkfile - 664 sys sys 1032409572 2809
+sys/src/boot/pc/mkfile - 664 sys sys 1056073256 2926
 sys/src/boot/pc/noether.c - 664 sys sys 1018553453 300
 sys/src/boot/pc/part.c - 664 sys sys 1032215918 7505
 sys/src/boot/pc/pbs.s - 664 sys sys 1017854325 8279
@@ -9485,7 +9485,7 @@ sys/src/cmd/ssh/ssh.h - 664 sys sys 1048179595 6054
 sys/src/cmd/ssh/sshnet.c - 664 sys sys 1046655072 17660
 sys/src/cmd/ssh/sshserve.c - 664 sys sys 1048639835 5784
 sys/src/cmd/ssh/util.c - 664 sys sys 1048644598 4478
-sys/src/cmd/stats.c - 664 sys sys 1055699395 27161
+sys/src/cmd/stats.c - 664 sys sys 1056035464 27570
 sys/src/cmd/strings.c - 664 sys sys 944961364 1216
 sys/src/cmd/strip.c - 664 sys sys 1014926661 3306
 sys/src/cmd/sum.c - 664 sys sys 1014926615 5548

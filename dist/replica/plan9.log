@@ -12816,3 +12816,11 @@
 1055954810 1 c sys/src/9/port/devcons.c - 664 sys sys 1055954715 21969
 1055954810 2 a sys/src/9/port/mkrootall - 775 sys sys 1055954696 386
 1055954810 3 a sys/src/9/port/mkrootc - 775 sys sys 1055954695 717
+1056074579 0 c sys/man/8/9load - 664 sys sys 1056073409 8555
+1056074579 1 c sys/man/8/stats - 664 sys sys 1056073417 4179
+1056074579 2 c sys/src/boot/pc/dat.h - 664 sys sys 1056073257 3432
+1056074579 3 c sys/src/boot/pc/ether.c - 664 sys sys 1056073258 4670
+1056074579 4 c sys/src/boot/pc/l.s - 664 sys sys 1056073258 12963
+1056074579 5 c sys/src/boot/pc/load.c - 664 sys sys 1056073257 7908
+1056074579 6 c sys/src/boot/pc/mkfile - 664 sys sys 1056073256 2926
+1056074579 7 c sys/src/cmd/stats.c - 664 sys sys 1056035464 27570
