@@ -15388,3 +15388,15 @@
 1088739175 0 c sys/src/cmd/ls.c - 664 sys sys 1088735544 5400
 1088739175 1 c sys/src/libmach/8db.c - 664 sys sys 1088653064 39144
 1088739175 2 c sys/src/libmach/sym.c - 664 sys sys 1088653081 26582
+1088825472 0 c sys/src/9/pc/sdata.c - 664 sys sys 1088795302 50581
+1088825472 1 c sys/src/boot/pc/dosboot.c - 664 sys sys 1088798342 11096
+1088825472 2 c sys/src/boot/pc/lib.h - 664 sys sys 1088798344 2089
+1088825472 3 c sys/src/boot/pc/load.c - 664 sys sys 1088798343 8358
+1088825472 4 c sys/src/libcontrol/button.c - 664 sys sys 1088784890 5223
+1088825472 5 c sys/src/libcontrol/control.c - 664 sys sys 1088784890 15536
+1088825472 6 c sys/src/libcontrol/group.c - 664 sys sys 1088784890 19210
+1088825472 7 c sys/src/libcontrol/group.h - 664 sys sys 1088784890 326
+1088825472 8 c sys/src/libcontrol/mkfile - 664 sys sys 1088784889 490
+1088825472 9 c sys/src/libcontrol/text.c - 664 sys sys 1088784891 12316
+1088825472 10 c sys/src/libcontrol/textbutton.c - 664 sys sys 1088784891 7486
+1088825472 11 a sys/src/libcontrol/textbutton3.c - 664 sys sys 1088784891 9104
