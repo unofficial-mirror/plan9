@@ -14134,3 +14134,14 @@
 1072729991 48 c sys/src/cmd/fossil/source.c - 664 sys sys 1072705708 19899
 1072729991 49 c sys/src/cmd/usb/audio/controls.c - 664 sys sys 1072729649 13371
 1072729991 50 c sys/src/cmd/usb/mkfile - 664 sys sys 1072728986 219
+1072836200 0 c sys/include/libc.h - 664 sys sys 1072792615 19430
+1072836200 1 c sys/man/5/0intro - 664 sys sys 1072793193 14106
+1072836200 2 c sys/man/5/stat - 664 sys sys 1072793160 6333
+1072836200 3 c sys/src/ape/lib/ap/plan9/_buf.c - 664 sys sys 1072835434 9924
+1072836200 4 c sys/src/ape/lib/ap/plan9/lib.h - 664 sys sys 1072835434 2071
+1072836200 5 c sys/src/cmd/chmod.c - 664 sys sys 1072793234 1903
+1072836200 6 c sys/src/cmd/ls.c - 664 sys sys 1072793234 5388
+1072836200 7 a sys/src/cmd/fossil/flfmt9660.c - 664 sys sys 1072830620 12304
+1072836200 8 a sys/src/cmd/fossil/flfmt9660.h - 664 sys sys 1072830621 134
+1072836200 9 c sys/src/cmd/fossil/mkfile - 664 sys sys 1072830618 2103
+1072836200 10 c sys/src/cmd/venti/utils.c - 664 sys sys 1072816049 4528
