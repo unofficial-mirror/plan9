@@ -16405,3 +16405,5 @@
 1106109188 3 c sys/man/2/9pfid - 664 sys sys 1106072437 3663
 1106109188 4 c sys/src/cmd/diff/diffio.c - 664 sys sys 1106063669 5272
 1106109188 5 c sys/src/libauthsrv/readnvram.c - 664 sys sys 1106063383 8622
+1106195496 0 c rc/bin/patch/diff - 775 sys sys 1106151131 466
+1106195496 1 c sys/src/cmd/diff/main.c - 664 sys sys 1106151067 4325

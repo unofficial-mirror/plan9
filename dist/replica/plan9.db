@@ -2523,7 +2523,7 @@ rc/bin/patch - 20000000775 sys sys 1067803227 0
 rc/bin/patch/applied - 775 sys sys 1081204295 110
 rc/bin/patch/apply - 775 sys sys 1089299188 1276
 rc/bin/patch/create - 775 sys sys 1104988374 1160
-rc/bin/patch/diff - 775 sys sys 1067804404 466
+rc/bin/patch/diff - 775 sys sys 1106151131 466
 rc/bin/patch/list - 775 sys sys 1081204287 644
 rc/bin/patch/move - 775 sys sys 1104430337 565
 rc/bin/patch/note - 664 sys sys 1089299189 655
@@ -6839,7 +6839,7 @@ sys/src/cmd/diff/diff.h - 664 sys sys 1014925333 769
 sys/src/cmd/diff/diffdir.c - 664 sys sys 1014925333 1791
 sys/src/cmd/diff/diffio.c - 664 sys sys 1106063669 5272
 sys/src/cmd/diff/diffreg.c - 664 sys sys 1014925334 8825
-sys/src/cmd/diff/main.c - 664 sys sys 1099755545 4312
+sys/src/cmd/diff/main.c - 664 sys sys 1106151067 4325
 sys/src/cmd/diff/mkfile - 664 sys sys 944960882 141
 sys/src/cmd/disk - 20000000775 sys sys 1018468546 0
 sys/src/cmd/disk/9660 - 20000000775 sys sys 1017681443 0
