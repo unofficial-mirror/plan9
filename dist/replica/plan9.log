@@ -15134,3 +15134,4 @@
 1081386137 0 a sys/src/9/pc/nv_dma.h - 664 sys sys 1081384508 12943
 1081386137 1 c sys/src/9/pc/vganvidia.c - 664 sys sys 1081358011 12205
 1081386137 2 c sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1081358076 23145
+1081564331 0 c lib/vgadb - 664 sys sys 1081485565 27918
