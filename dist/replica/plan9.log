@@ -14377,3 +14377,8 @@
 1077751964 1 c sys/lib/lp/process/generic - 775 sys sys 1077715118 4805
 1077751964 2 c sys/src/boot/pc/mkfile - 664 sys sys 1077739195 3063
 1077854580 0 c sys/src/cmd/con/con.c - 664 sys sys 1077839879 15213
+1077942791 0 c sys/src/9/port/dev.c - 664 sys sys 1077896125 8247
+1077942791 1 c sys/src/cmd/fossil/9.h - 664 sys sys 1077896806 4268
+1077942791 2 c sys/src/cmd/fossil/9p.c - 664 sys sys 1077896346 21766
+1077942791 3 c sys/src/cmd/fossil/9srv.c - 664 sys sys 1077896346 3879
+1077942791 4 c sys/src/cmd/fossil/fossil.c - 664 sys sys 1077896345 2435
