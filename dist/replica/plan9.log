@@ -16695,3 +16695,5 @@
 1110641520 1 a sys/man/6/keys.who - 664 sys sys 1110641163 775
 1110724473 0 c rc/bin/patch/list - 775 sys sys 1110722754 716
 1110724473 1 a rc/bin/patch/save - 775 sys sys 1110722753 106
+1110861176 0 c sys/man/1/cp - 664 sys sys 1110816882 1947
+1110861176 1 a sys/src/cmd/fcp.c - 644 sys sys 1110816880 3780
