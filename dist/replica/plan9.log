@@ -14303,3 +14303,4 @@
 1077076956 9 c sys/src/boot/pc/sd53c8xx.c - 664 sys sys 1077033951 52135
 1077076956 10 c sys/src/boot/pc/sdscsi.c - 664 sys sys 1077033682 7022
 1077076956 11 c sys/src/cmd/tail.c - 664 sys sys 1077054929 6004
+1077163374 0 c sys/src/cmd/diff/main.c - 664 sys sys 1077133741 4300

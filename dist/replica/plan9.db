@@ -6825,7 +6825,7 @@ sys/src/cmd/diff/diff.h - 664 sys sys 1014925333 769
 sys/src/cmd/diff/diffdir.c - 664 sys sys 1014925333 1791
 sys/src/cmd/diff/diffio.c - 664 sys sys 1014925334 5031
 sys/src/cmd/diff/diffreg.c - 664 sys sys 1014925334 8825
-sys/src/cmd/diff/main.c - 664 sys sys 1014925334 4270
+sys/src/cmd/diff/main.c - 664 sys sys 1077133741 4300
 sys/src/cmd/diff/mkfile - 664 sys sys 944960882 141
 sys/src/cmd/disk - 20000000775 sys sys 1018468546 0
 sys/src/cmd/disk/9660 - 20000000775 sys sys 1017681443 0
