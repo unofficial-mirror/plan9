@@ -14228,3 +14228,10 @@
 1075080743 12 d sys/src/9/pc/pcf.c - 664 sys sys 1058659039 0
 1075131155 0 c sys/src/cmd/ssh/scp.c - 664 sys sys 1075130172 13886
 1075212177 0 c sys/src/cmd/upas/smtp/greylist.c - 664 sys sys 1075211327 6300
+1075348993 0 a sys/man/1/trace - 664 sys sys 1075347661 1758
+1075348993 1 d sys/src/cmd/rtstats/time.h - 664 sys sys 1038425434 0
+1075348993 2 d sys/src/cmd/rtstats/time.c - 664 sys sys 1038425433 0
+1075348993 3 d sys/src/cmd/rtstats/rtstats.c - 664 sys sys 1048644563 0
+1075348993 4 d sys/src/cmd/rtstats/resproc.c - 664 sys sys 1037669163 0
+1075348993 5 d sys/src/cmd/rtstats/mkfile - 664 sys sys 1038425447 0
+1075348993 6 d sys/src/cmd/rtstats/edfproc.c - 664 sys sys 1055699325 0
