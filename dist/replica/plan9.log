@@ -13954,3 +13954,7 @@
 1070417003 7 c sys/src/libdraw/mkfile - 664 sys sys 1070394450 1022
 1070460150 0 c sys/man/1/test - 664 sys sys 1070459150 3475
 1070460150 1 c sys/src/cmd/test.c - 664 sys sys 1070459150 5319
+1070660787 0 c sys/src/ape/lib/ap/plan9/mkfile - 664 sys sys 1070660696 1370
+1070660787 1 a sys/src/ape/lib/ap/plan9/9iounit.c - 664 sys sys 1070660696 981
+1070660787 2 c sys/src/ape/lib/draw/libc.h - 664 sys sys 1070660715 3456
+1070660787 3 c sys/src/libdraw/init.c - 664 sys sys 1070660683 9077
