@@ -11662,3 +11662,12 @@
 1045164850 4 a sys/src/cmd/unix/netkey.c - 755 sys sys 1045152984 21761
 1045236748 0 c sys/man/4/srv - 664 sys sys 1045236157 4649
 1045337548 0 a sys/src/libc/386/387/mkfile - 664 sys sys 1045336041 157
+1045436533 0 c sys/include/control.h - 664 sys sys 1045419238 4801
+1045436533 1 c sys/lib/yaccpars - 664 sys sys 1045432683 4596
+1045436533 2 c sys/src/9/ip/ip.c - 664 sys sys 1045432713 15274
+1045436533 3 c sys/src/9/ip/tcp.c - 664 sys sys 1045432714 65108
+1045436533 4 c sys/src/cmd/aux/timesync.c - 664 sys sys 1045435060 24288
+1045436533 5 c sys/src/cmd/faces/faces.h - 664 sys sys 1045419243 1071
+1045436533 6 c sys/src/cmd/faces/main.c - 664 sys sys 1045419249 13505
+1045436533 7 c sys/src/cmd/faces/plumb.c - 664 sys sys 1045419249 7132
+1045436533 8 c sys/src/cmd/replica/applylog.c - 664 sys sys 1045407499 16476
