@@ -15884,3 +15884,8 @@
 1093980693 2 c sys/src/ape/lib/ap/plan9/wait.c - 664 sys sys 1093980308 2378
 1093980693 3 c sys/src/cmd/comm.c - 664 sys sys 1093979717 2140
 1093980693 4 c sys/src/cmd/venti/syncarena.c - 664 sys sys 1093980087 4198
+1094095910 0 c sys/games/lib/fortunes - 664 sys sys 1094056593 249464
+1094095910 1 c sys/src/cmd/unix/u9fs/authp9any.c - 664 sys sys 1094068304 11021
+1094095910 2 c sys/src/cmd/unix/u9fs/doprint.c - 664 sys sys 1094068304 8685
+1094095910 3 c sys/src/cmd/unix/u9fs/plan9.h - 664 sys sys 1094068304 5568
+1094095910 4 c sys/src/cmd/upas/ned/nedmail.c - 664 sys sys 1094056330 44502
