@@ -12198,3 +12198,10 @@
 1047664970 4 c sys/src/fs/port/config.c - 664 sys sys 1047663951 18054
 1047664970 5 c sys/src/fs/port/main.c - 664 sys sys 1047663952 5698
 1047763989 0 c sys/src/cmd/aux/timesync.c - 664 sys sys 1047751422 24211
+1047952919 0 c sys/src/9/ip/arp.c - 664 sys sys 1047951324 10671
+1047952919 1 c sys/src/9/ip/ip.c - 664 sys sys 1047951326 15285
+1047952919 2 c sys/src/9/ip/ipifc.c - 664 sys sys 1047951327 37830
+1047952919 3 c sys/src/9/ip/iproute.c - 664 sys sys 1047951327 14767
+1047952919 4 c sys/src/9/ip/ipv6.c - 664 sys sys 1047951328 14433
+1047952919 5 c sys/src/9/port/devproc.c - 664 sys sys 1047952847 23450
+1047952919 6 c sys/src/9/port/proc.c - 664 sys sys 1047952847 24170
