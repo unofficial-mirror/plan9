@@ -12983,3 +12983,6 @@
 1059698010 6 a lib/face/48x48x8/b/boyd.1 - 664 sys sys 1059679697 1897
 1059698010 7 a lib/face/48x48x8/l/lucio.1 - 664 sys sys 1059678230 1069
 1059698010 8 c sys/src/cmd/dial/pass.c - 664 sys sys 1059696920 1297
+1060041853 0 c sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1060012272 12142
+1060041853 1 c sys/src/cmd/upas/ned/mkfile - 664 sys sys 1060041738 233
+1060041853 2 c sys/src/cmd/upas/ned/nedmail.c - 664 sys sys 1060041739 42848
