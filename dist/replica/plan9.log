@@ -14279,3 +14279,15 @@
 1076817716 5 c sys/src/cmd/rio/rio.c - 664 sys sys 1076777377 21415
 1076817716 6 c sys/src/libcomplete/complete.c - 664 sys sys 1076789202 2726
 1076904124 0 c sys/src/cmd/8c/cgen.c - 664 sys sys 1076855286 26295
+1076990541 0 c sys/src/cmd/5c/cgen.c - 664 sys sys 1076969808 19435
+1076990541 1 c sys/src/cmd/7c/cgen.c - 664 sys sys 1076969788 17650
+1076990541 2 m sys/src/cmd/7c/cgen.c - 664 sys sys 1076969788 17650
+1076990541 3 c sys/src/cmd/7c/txt.c - 664 sys sys 1076969788 20191
+1076990541 4 m sys/src/cmd/7c/txt.c - 664 sys sys 1076969788 20191
+1076990541 5 c sys/src/cmd/8c/cgen.c - 664 sys sys 1076969795 26343
+1076990541 6 c sys/src/cmd/cc/cc.y - 664 sys sys 1076969746 15801
+1076990541 7 c sys/src/cmd/cc/dpchk.c - 664 sys sys 1076969741 6738
+1076990541 8 c sys/src/cmd/cc/lex.c - 664 sys sys 1076969741 23769
+1076990541 9 c sys/src/cmd/qc/cgen.c - 664 sys sys 1076969803 18282
+1076990541 10 c sys/src/cmd/vc/cgen.c - 664 sys sys 1076969812 20070
+1076990541 11 c sys/src/libauth/newns.c - 664 sys sys 1076977148 6284
