@@ -12804,3 +12804,7 @@
 1055719956 249 d sys/src/9/bitsy/errstr.h - 664 sys sys 1053021020 0
 1055719956 250 d sys/src/9/alphapc/errstr.h - 664 sys sys 1015012784 0
 1055719956 251 d sys/man/8/x509 - 664 sys sys 1037581047 0
+1055819110 0 c sys/games/lib/fortunes - 664 sys sys 1055817277 243905
+1055819110 1 c sys/man/2/authsrv - 664 sys sys 1055734550 4145
+1055819110 2 c sys/src/cmd/auth/keyfs.c - 664 sys sys 1055797577 17594
+1055819110 3 d sys/src/fs/words - 664 sys sys 1015110099 0
