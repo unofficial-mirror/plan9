@@ -15805,3 +15805,13 @@
 1091736144 21 c sys/src/libmach/q.c - 664 sys sys 1091732625 3590
 1091736144 22 c sys/src/libmach/qobj.c - 664 sys sys 1091732625 2310
 1091736144 23 c sys/src/libmach/vobj.c - 664 sys sys 1091732625 2206
+1091849561 0 c sys/src/cmd/syscall/syscall.c - 664 sys sys 1091803376 3929
+1091849561 1 c sys/src/cmd/vnc/devmouse.c - 664 sys sys 1091816253 7389
+1091849561 2 c sys/src/fs/choline/mkfile - 664 sys sys 1091803608 1676
+1091849561 3 c sys/src/fs/emelie/mkfile - 664 sys sys 1091803614 1697
+1091849561 4 c sys/src/fs/pc/scsi.c - 664 sys sys 1091803674 8661
+1091849561 5 c sys/src/fs/port/lib.h - 664 sys sys 1091803590 3339
+1091849561 6 a sys/src/fs/port/lrand.c - 664 sys sys 1091803568 1093
+1091849561 7 c sys/src/fs/port/portdat.h - 664 sys sys 1091849428 16750
+1091849561 8 c sys/src/fs/roro/mkfile - 664 sys sys 1091803629 1650
+1091849561 9 c sys/src/fs/sony/mkfile - 664 sys sys 1091803623 1594
