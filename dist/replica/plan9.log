@@ -13313,3 +13313,6 @@
 1064680077 0 c sys/src/9/pc/vgas3.c - 664 sys sys 1064679984 12160
 1064680077 1 c sys/src/9/pc/vgasavage.c - 664 sys sys 1064679984 16251
 1064680077 2 c sys/src/cmd/auth/secstore/secuser.c - 664 sys sys 1064667494 4971
+1064799192 0 c sys/man/8/secstore - 664 sys sys 1064789017 1306
+1064799192 1 c sys/src/cmd/auth/secstore/SConn.c - 664 sys sys 1064789003 4419
+1064799192 2 c sys/src/cmd/auth/secstore/secstored.c - 664 sys sys 1064789004 7955
