@@ -12379,3 +12379,15 @@
 1048691757 1 c sys/src/cmd/fossil/flfmt.c - 664 sys sys 1048690059 10315
 1048691757 2 c sys/src/cmd/fossil/source.c - 664 sys sys 1048690038 18721
 1048691757 3 c sys/src/libc/9sys/dial.c - 664 sys sys 1048691618 3606
+1048822412 0 c lib/namespace - 664 sys sys 1048777128 590
+1048822412 1 c rc/bin/cpurc - 775 sys sys 1048777186 1338
+1048822412 2 c sys/games/lib/fortunes - 664 sys sys 1048813436 239855
+1048822412 3 c sys/src/9/pc/devarch.c - 664 sys sys 1048797659 17534
+1048822412 4 c sys/src/cmd/disk/prep/fdisk.c - 664 sys sys 1048796732 21876
+1048822412 5 c sys/src/libauth/newns.c - 664 sys sys 1048777093 5905
+1048822412 6 c sys/src/libc/9sys/dial.c - 664 sys sys 1048796753 3625
+1048822412 7 c sys/src/libc/fmt/fmtstr.c - 664 sys sys 1048801026 140
+1048822412 8 c sys/src/libc/fmt/runefmtstr.c - 664 sys sys 1048801028 144
+1048822412 9 c sys/src/libc/fmt/runevsmprint.c - 664 sys sys 1048801035 1031
+1048822412 10 c sys/src/libc/fmt/vsmprint.c - 664 sys sys 1048801042 997
+1048822412 11 c sys/src/libsec/port/tlshand.c - 664 sys sys 1048777088 53926

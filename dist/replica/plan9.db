@@ -2201,7 +2201,7 @@ lib/kana - 664 sys sys 944943772 1061
 lib/katakana - 664 sys sys 944943772 982
 lib/keyboard - 664 sys sys 984694514 25842
 lib/mammals - 664 sys sys 944943772 27760
-lib/namespace - 664 sys sys 1015882093 470
+lib/namespace - 664 sys sys 1048777128 590
 lib/namespace.ftp - 664 sys sys 1020313578 373
 lib/namespace.httpd - 664 sys sys 984695868 1209
 lib/ndb - 20000000775 sys sys 959260770 0
@@ -2416,7 +2416,7 @@ rc/bin/b: - 775 sys sys 1015089510 204
 rc/bin/broke - 775 sys sys 945617206 132
 rc/bin/bundle - 775 sys sys 945617206 173
 rc/bin/c: - 775 sys sys 1015089511 86
-rc/bin/cpurc - 775 sys sys 1019837834 1280
+rc/bin/cpurc - 775 sys sys 1048777186 1338
 rc/bin/dircp - 775 sys sys 953344769 113
 rc/bin/doc2txt - 775 sys sys 1025197880 563
 rc/bin/doctype - 775 sys sys 945617206 1726
@@ -2731,7 +2731,7 @@ sys/doc/venti/venti.pdf - 755 sys sys 1020384352 139090
 sys/doc/venti/venti.ps - 664 sys sys 1019852320 2012620
 sys/games - 20000000775 sys sys 952648872 0
 sys/games/lib - 20000000775 sys sys 952648879 0
-sys/games/lib/fortunes - 664 sys sys 1048532597 239637
+sys/games/lib/fortunes - 664 sys sys 1048813436 239855
 sys/include - 20000000775 sys sys 1016902416 0
 sys/include/9p.h - 664 sys sys 1044836327 4309
 sys/include/String.h - 664 sys sys 1014929061 1133
@@ -4614,7 +4614,7 @@ sys/src/9/pc/archmp.c - 664 sys sys 1018974173 2194
 sys/src/9/pc/audio.h - 664 sys sys 1015014513 343
 sys/src/9/pc/cga.c - 664 sys sys 1015014513 1843
 sys/src/9/pc/dat.h - 664 sys sys 1048644041 6068
-sys/src/9/pc/devarch.c - 664 sys sys 1048637309 17462
+sys/src/9/pc/devarch.c - 664 sys sys 1048797659 17534
 sys/src/9/pc/devether.c - 664 sys sys 1048644042 10178
 sys/src/9/pc/devfloppy.c - 664 sys sys 1048637319 20016
 sys/src/9/pc/devi82365.c - 664 sys sys 1020284820 19987
@@ -6521,7 +6521,7 @@ sys/src/cmd/disk/prep - 20000000775 sys sys 988249968 0
 sys/src/cmd/disk/prep/calc.y - 664 sys sys 958519682 2378
 sys/src/cmd/disk/prep/edit.c - 664 sys sys 1017854327 9714
 sys/src/cmd/disk/prep/edit.h - 664 sys sys 1015009215 994
-sys/src/cmd/disk/prep/fdisk.c - 664 sys sys 1045505057 21802
+sys/src/cmd/disk/prep/fdisk.c - 664 sys sys 1048796732 21876
 sys/src/cmd/disk/prep/mkfile - 664 sys sys 1022450200 250
 sys/src/cmd/disk/prep/prep.c - 664 sys sys 1015009215 8976
 sys/src/cmd/disk/rd9660.c - 664 sys sys 1021579990 7446
@@ -10336,7 +10336,7 @@ sys/src/libauth/authlocal.h - 664 sys sys 1014929317 87
 sys/src/libauth/httpauth.c - 664 sys sys 1017166331 1059
 sys/src/libauth/login.c - 664 sys sys 1014929318 264
 sys/src/libauth/mkfile - 664 sys sys 1035389776 441
-sys/src/libauth/newns.c - 664 sys sys 1019058720 5694
+sys/src/libauth/newns.c - 664 sys sys 1048777093 5905
 sys/src/libauth/noworld.c - 664 sys sys 1014929318 779
 sys/src/libauthsrv - 20000000775 sys sys 1015091654 0
 sys/src/libauthsrv/_asgetticket.c - 664 sys sys 1015091652 280
@@ -10500,7 +10500,7 @@ sys/src/libc/9sys/convM2S.c - 664 sys sys 1017679320 4969
 sys/src/libc/9sys/convS2M.c - 664 sys sys 1021580001 5014
 sys/src/libc/9sys/cputime.c - 664 sys sys 944961712 191
 sys/src/libc/9sys/ctime.c - 664 sys sys 944961712 4919
-sys/src/libc/9sys/dial.c - 664 sys sys 1048691618 3606
+sys/src/libc/9sys/dial.c - 664 sys sys 1048796753 3625
 sys/src/libc/9sys/dirfstat.c - 664 sys sys 1041363499 676
 sys/src/libc/9sys/dirfwstat.c - 664 sys sys 1014927336 242
 sys/src/libc/9sys/dirmodefmt.c - 664 sys sys 1014927337 581
@@ -10591,18 +10591,18 @@ sys/src/libc/fmt/fmtlock.c - 664 sys sys 1014927314 134
 sys/src/libc/fmt/fmtprint.c - 664 sys sys 1014927314 465
 sys/src/libc/fmt/fmtquote.c - 664 sys sys 1034959808 4732
 sys/src/libc/fmt/fmtrune.c - 664 sys sys 1014927314 314
-sys/src/libc/fmt/fmtstr.c - 664 sys sys 1014927315 105
+sys/src/libc/fmt/fmtstr.c - 664 sys sys 1048801026 140
 sys/src/libc/fmt/fmtvprint.c - 664 sys sys 1014927315 449
 sys/src/libc/fmt/fprint.c - 664 sys sys 1014927315 174
 sys/src/libc/fmt/mkfile - 664 sys sys 1035389806 582
 sys/src/libc/fmt/print.c - 664 sys sys 1014927315 164
-sys/src/libc/fmt/runefmtstr.c - 664 sys sys 1014927315 109
+sys/src/libc/fmt/runefmtstr.c - 664 sys sys 1048801028 144
 sys/src/libc/fmt/runeseprint.c - 664 sys sys 1014927315 204
 sys/src/libc/fmt/runesmprint.c - 664 sys sys 1014927316 176
 sys/src/libc/fmt/runesnprint.c - 664 sys sys 1014927316 203
 sys/src/libc/fmt/runesprint.c - 664 sys sys 1014927316 192
 sys/src/libc/fmt/runevseprint.c - 664 sys sys 1014927316 313
-sys/src/libc/fmt/runevsmprint.c - 664 sys sys 1014927316 887
+sys/src/libc/fmt/runevsmprint.c - 664 sys sys 1048801035 1031
 sys/src/libc/fmt/runevsnprint.c - 664 sys sys 1014927316 330
 sys/src/libc/fmt/seprint.c - 664 sys sys 1014927317 196
 sys/src/libc/fmt/smprint.c - 664 sys sys 1014927317 168
@@ -10610,7 +10610,7 @@ sys/src/libc/fmt/snprint.c - 664 sys sys 1014927317 195
 sys/src/libc/fmt/sprint.c - 664 sys sys 1015088665 236
 sys/src/libc/fmt/vfprint.c - 664 sys sys 1014927317 518
 sys/src/libc/fmt/vseprint.c - 664 sys sys 1014927317 309
-sys/src/libc/fmt/vsmprint.c - 664 sys sys 1014927317 841
+sys/src/libc/fmt/vsmprint.c - 664 sys sys 1048801042 997
 sys/src/libc/fmt/vsnprint.c - 664 sys sys 1014927318 326
 sys/src/libc/mips - 20000000775 sys sys 984709299 0
 sys/src/libc/mips/argv0.s - 664 sys sys 984709419 90
@@ -11221,7 +11221,7 @@ sys/src/libsec/port/sha1pickle.c - 664 sys sys 988225292 717
 sys/src/libsec/port/smallprimes.c - 664 sys sys 984710525 6851
 sys/src/libsec/port/smallprimetest.c - 664 sys sys 984710525 70640
 sys/src/libsec/port/thumb.c - 664 sys sys 1019832052 1891
-sys/src/libsec/port/tlshand.c - 664 sys sys 1027629126 53465
+sys/src/libsec/port/tlshand.c - 664 sys sys 1048777088 53926
 sys/src/libsec/port/x509.c - 664 sys sys 1047404307 50237
 sys/src/libsec/power - 20000000775 sys sys 984710502 0
 sys/src/libsec/power/mkfile - 664 sys sys 1032061453 139
