@@ -2821,7 +2821,7 @@ sys/doc/venti/venti.pdf - 755 sys sys 1020384352 139090
 sys/doc/venti/venti.ps - 664 sys sys 1019852320 2012620
 sys/games - 20000000775 sys sys 952648872 0
 sys/games/lib - 20000000775 sys sys 952648879 0
-sys/games/lib/fortunes - 664 sys sys 1098386393 250626
+sys/games/lib/fortunes - 664 sys sys 1098540092 250651
 sys/games/lib/mahjongg - 20000000775 sys sys 1095792278 0
 sys/games/lib/mahjongg/backgrounds - 20000000775 sys sys 1095792293 0
 sys/games/lib/mahjongg/backgrounds/default.bit - 664 sys sys 1095792293 346803
@@ -4998,7 +4998,7 @@ sys/src/9/port/qio.c - 664 sys sys 1070287837 23562
 sys/src/9/port/qlock.c - 664 sys sys 1067722765 3196
 sys/src/9/port/rdb.c - 664 sys sys 1018721202 1698
 sys/src/9/port/rebootcmd.c - 664 sys sys 1015278340 1561
-sys/src/9/port/sd.h - 664 sys sys 1055700523 2686
+sys/src/9/port/sd.h - 664 sys sys 1098546338 2348
 sys/src/9/port/segment.c - 664 sys sys 1032990942 13776
 sys/src/9/port/swap.c - 664 sys sys 1055688551 6980
 sys/src/9/port/sysfile.c - 664 sys sys 1077064173 22127

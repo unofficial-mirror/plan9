@@ -16045,3 +16045,5 @@
 1098502322 14 c sys/src/cmd/qc/swt.c - 664 sys sys 1098463321 12045
 1098502322 15 c sys/src/cmd/rio/rio.c - 664 sys sys 1098468361 22140
 1098502322 16 c sys/src/cmd/vc/swt.c - 664 sys sys 1098463321 12161
+1098588730 0 c sys/games/lib/fortunes - 664 sys sys 1098540092 250651
+1098588730 1 c sys/src/9/port/sd.h - 664 sys sys 1098546338 2348
