@@ -16518,3 +16518,14 @@
 1107837171 7 c sys/src/cmd/auth/keyfs.c - 664 sys sys 1107835724 17624
 1107837171 8 c sys/src/cmd/upas/fs/fs.c - 664 sys sys 1107835225 27456
 1107837171 9 c sys/src/cmd/upas/fs/mbox.c - 664 sys sys 1107835226 28935
+1107921672 0 c acme/mail/src/mail.c - 664 sys sys 1107894665 11277
+1107921672 1 c sys/games/lib/fortunes - 664 sys sys 1107880958 252781
+1107921672 2 c sys/lib/dist/pc/inst/bootsetup - 775 sys sys 1107839820 3572
+1107921672 3 c sys/man/1/tar - 664 sys sys 1107879863 3375
+1107921672 4 c sys/src/boot/pc/bootp.c - 664 sys sys 1107882190 12147
+1107921672 5 c sys/src/boot/pc/ether.c - 664 sys sys 1107882190 5090
+1107921672 6 c sys/src/boot/pc/ether589.c - 664 sys sys 1107921511 4620
+1107921672 7 c sys/src/boot/pc/etherif.h - 664 sys sys 1107882190 1255
+1107921672 8 c sys/src/cmd/acme/fsys.c - 664 sys sys 1107897581 12891
+1107921672 9 c sys/src/cmd/tar.c - 664 sys sys 1107921224 19566
+1107921672 10 c sys/src/cmd/upas/fs/fs.c - 664 sys sys 1107880276 27460

@@ -178,7 +178,7 @@ acme/mail/readme - 664 sys sys 1084385076 2795
 acme/mail/src - 20000000775 sys sys 1015364010 0
 acme/mail/src/dat.h - 664 sys sys 1033936953 3857
 acme/mail/src/html.c - 664 sys sys 1058463659 1348
-acme/mail/src/mail.c - 664 sys sys 1084385064 11057
+acme/mail/src/mail.c - 664 sys sys 1107894665 11277
 acme/mail/src/mesg.c - 664 sys sys 1043463888 26266
 acme/mail/src/mkfile - 664 sys sys 1037034918 364
 acme/mail/src/reply.c - 664 sys sys 1041137203 11326
@@ -2828,7 +2828,7 @@ sys/doc/venti/venti.pdf - 755 sys sys 1020384352 139090
 sys/doc/venti/venti.ps - 664 sys sys 1019852320 2012620
 sys/games - 20000000775 sys sys 952648872 0
 sys/games/lib - 20000000775 sys sys 952648879 0
-sys/games/lib/fortunes - 664 sys sys 1107321348 252719
+sys/games/lib/fortunes - 664 sys sys 1107880958 252781
 sys/games/lib/mahjongg - 20000000775 sys sys 1095792278 0
 sys/games/lib/mahjongg/backgrounds - 20000000775 sys sys 1095792293 0
 sys/games/lib/mahjongg/backgrounds/default.bit - 664 sys sys 1095792293 346803
@@ -3065,7 +3065,7 @@ sys/lib/dist/pc/glenda/tmp - 20000000775 sys sys 1018469723 0
 sys/lib/dist/pc/inst - 20000000775 sys sys 1018721419 0
 sys/lib/dist/pc/inst/bootfloppy - 775 sys sys 1019240165 899
 sys/lib/dist/pc/inst/bootplan9 - 775 sys sys 1019534696 1584
-sys/lib/dist/pc/inst/bootsetup - 775 sys sys 1063856192 3551
+sys/lib/dist/pc/inst/bootsetup - 775 sys sys 1107839820 3572
 sys/lib/dist/pc/inst/bootwin9x - 775 sys sys 1020384273 2525
 sys/lib/dist/pc/inst/bootwinnt - 775 sys sys 1019240165 1041
 sys/lib/dist/pc/inst/configarch - 775 sys sys 1018640312 636
@@ -4259,7 +4259,7 @@ sys/man/1/strip - 664 sys sys 958580250 448
 sys/man/1/sum - 664 sys sys 984772442 1390
 sys/man/1/syscall - 664 sys sys 1016466457 1439
 sys/man/1/tail - 664 sys sys 1017679307 1413
-sys/man/1/tar - 664 sys sys 1070371922 2538
+sys/man/1/tar - 664 sys sys 1107879863 3375
 sys/man/1/tbl - 664 sys sys 944959674 4308
 sys/man/1/tcs - 664 sys sys 952627441 2575
 sys/man/1/tee - 664 sys sys 969499886 351
@@ -5958,7 +5958,7 @@ sys/src/boot/pc/apm.c - 664 sys sys 1015007947 289
 sys/src/boot/pc/bcom.c - 664 sys sys 1032215919 6421
 sys/src/boot/pc/boot.c - 664 sys sys 1021579983 3353
 sys/src/boot/pc/bootld.c - 664 sys sys 1015007948 1801
-sys/src/boot/pc/bootp.c - 664 sys sys 1103641772 12262
+sys/src/boot/pc/bootp.c - 664 sys sys 1107882190 12147
 sys/src/boot/pc/cga.c - 664 sys sys 1015007948 1362
 sys/src/boot/pc/clock.c - 664 sys sys 1103641772 6425
 sys/src/boot/pc/conf.c - 664 sys sys 1094674484 10217
@@ -5974,10 +5974,10 @@ sys/src/boot/pc/dosboot.c - 664 sys sys 1097716791 11240
 sys/src/boot/pc/dosfs.h - 664 sys sys 1032215924 1467
 sys/src/boot/pc/eoffs - 664 sys sys 1015007950 0
 sys/src/boot/pc/error.h - 664 sys sys 1015007950 3081
-sys/src/boot/pc/ether.c - 664 sys sys 1103641772 5120
+sys/src/boot/pc/ether.c - 664 sys sys 1107882190 5090
 sys/src/boot/pc/ether2000.c - 664 sys sys 1015007950 2609
 sys/src/boot/pc/ether2114x.c - 664 sys sys 1066618033 37048
-sys/src/boot/pc/ether589.c - 664 sys sys 1015007950 4628
+sys/src/boot/pc/ether589.c - 664 sys sys 1107921511 4620
 sys/src/boot/pc/ether79c970.c - 664 sys sys 1015007950 11717
 sys/src/boot/pc/ether8003.c - 664 sys sys 1015007950 6446
 sys/src/boot/pc/ether8139.c - 664 sys sys 1102429126 14806
@@ -5989,7 +5989,7 @@ sys/src/boot/pc/ether8390.h - 664 sys sys 1015007951 1392
 sys/src/boot/pc/etherec2t.c - 664 sys sys 1015007951 3598
 sys/src/boot/pc/etherelnk3.c - 664 sys sys 1034454878 44068
 sys/src/boot/pc/etherelnk3x.c - 664 sys sys 1015007951 24989
-sys/src/boot/pc/etherif.h - 664 sys sys 1096379797 1285
+sys/src/boot/pc/etherif.h - 664 sys sys 1107882190 1255
 sys/src/boot/pc/etherigbe.c - 664 sys sys 1096379796 39825
 sys/src/boot/pc/ethermii.c - 664 sys sys 1103641771 4413
 sys/src/boot/pc/ethermii.h - 664 sys sys 1071175087 3259
@@ -6278,7 +6278,7 @@ sys/src/cmd/acme/elog.c - 664 sys sys 1078839859 7236
 sys/src/cmd/acme/exec.c - 664 sys sys 1099329953 28183
 sys/src/cmd/acme/file.c - 664 sys sys 1044626079 5717
 sys/src/cmd/acme/fns.h - 664 sys sys 1107154481 2916
-sys/src/cmd/acme/fsys.c - 664 sys sys 1107154482 12881
+sys/src/cmd/acme/fsys.c - 664 sys sys 1107897581 12891
 sys/src/cmd/acme/look.c - 664 sys sys 1077376257 14213
 sys/src/cmd/acme/mkfile - 664 sys sys 1058463682 543
 sys/src/cmd/acme/regx.c - 664 sys sys 1014926094 16057
@@ -9921,7 +9921,7 @@ sys/src/cmd/tapefs/v10fs.c - 664 sys sys 1014926385 3754
 sys/src/cmd/tapefs/v6fs.c - 664 sys sys 1014926385 3971
 sys/src/cmd/tapefs/zip.h - 664 sys sys 1097914153 1428
 sys/src/cmd/tapefs/zipfs.c - 664 sys sys 1097900277 6803
-sys/src/cmd/tar.c - 664 sys sys 1103607141 15725
+sys/src/cmd/tar.c - 664 sys sys 1107921224 19566
 sys/src/cmd/tbl - 20000000775 sys sys 954038038 0
 sys/src/cmd/tbl/mkfile - 664 sys sys 944961243 268
 sys/src/cmd/tbl/t.h - 664 sys sys 944961244 3987
@@ -10323,7 +10323,7 @@ sys/src/cmd/upas/filterkit/readaddrs.c - 664 sys sys 1018549521 1381
 sys/src/cmd/upas/filterkit/token.c - 664 sys sys 1018549521 1312
 sys/src/cmd/upas/fs - 20000000775 sys sys 988250018 0
 sys/src/cmd/upas/fs/dat.h - 664 sys sys 1047490337 4267
-sys/src/cmd/upas/fs/fs.c - 664 sys sys 1107835225 27456
+sys/src/cmd/upas/fs/fs.c - 664 sys sys 1107880276 27460
 sys/src/cmd/upas/fs/imap4.c - 664 sys sys 1075069146 16233
 sys/src/cmd/upas/fs/mbox.c - 664 sys sys 1107835226 28935
 sys/src/cmd/upas/fs/mkfile - 664 sys sys 1047490336 321
