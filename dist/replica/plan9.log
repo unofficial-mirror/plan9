@@ -15968,3 +15968,5 @@
 1095823961 37 a sys/src/games/sokoban/move.c - 664 sys sys 1095792097 2671
 1095823961 38 a sys/src/games/sokoban/sokoban.c - 664 sys sys 1095792097 4760
 1095823961 39 a sys/src/games/sokoban/sokoban.h - 664 sys sys 1095792097 1197
+1095910392 0 c sys/man/8/ipserv - 664 sys sys 1095862383 4375
+1095910392 1 c sys/src/cmd/ip/ftpd.c - 664 sys sys 1095862384 32934

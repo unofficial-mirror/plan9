@@ -4563,7 +4563,7 @@ sys/man/8/fsconfig - 664 sys sys 1045501600 8142
 sys/man/8/httpd - 664 sys sys 1065640802 6426
 sys/man/8/init - 664 sys sys 944959679 1430
 sys/man/8/ipconfig - 664 sys sys 1084462164 6171
-sys/man/8/ipserv - 664 sys sys 1063855796 4337
+sys/man/8/ipserv - 664 sys sys 1095862383 4375
 sys/man/8/kfscmd - 664 sys sys 1068569797 4515
 sys/man/8/listen - 664 sys sys 1045501609 3740
 sys/man/8/lp - 664 sys sys 954614702 2491
@@ -8887,7 +8887,7 @@ sys/src/cmd/ip/dhcpd/ping.c - 664 sys sys 956275654 1881
 sys/src/cmd/ip/dhcpd/testlook.c - 664 sys sys 950389140 4640
 sys/src/cmd/ip/dhcpd/testlookup.c - 664 sys sys 950389140 3195
 sys/src/cmd/ip/dhcpd/testping.c - 664 sys sys 950389141 352
-sys/src/cmd/ip/ftpd.c - 664 sys sys 1046643070 32813
+sys/src/cmd/ip/ftpd.c - 664 sys sys 1095862384 32934
 sys/src/cmd/ip/ftpfs - 20000000775 sys sys 1014925642 0
 sys/src/cmd/ip/ftpfs/file.c - 664 sys sys 1014925642 4208
 sys/src/cmd/ip/ftpfs/ftpfs.c - 664 sys sys 1093452873 13584
