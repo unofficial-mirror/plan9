@@ -12218,3 +12218,9 @@
 1048185139 7 c sys/src/cmd/ssh/ssh.h - 664 sys sys 1048179595 6054
 1048185139 8 c sys/src/cmd/ssh/sshserve.c - 664 sys sys 1048179703 5940
 1048185139 9 c sys/src/cmd/ssh/util.c - 664 sys sys 1048179672 5506
+1048289585 0 c sys/man/4/ftpfs - 664 sys sys 1048285446 4327
+1048289585 1 c sys/src/9/ip/ipifc.c - 664 sys sys 1048288617 37843
+1048289585 2 a sys/src/cmd/aux/vga/adventure - 664 sys sys 1048274168 14869
+1048289585 3 c sys/src/cmd/ip/ftpfs/ftpfs.c - 664 sys sys 1048285493 13555
+1048289585 4 c sys/src/cmd/ip/ftpfs/mkfile - 664 sys sys 1048285492 158
+1048289585 5 c sys/src/cmd/ip/ftpfs/proto.c - 664 sys sys 1048285496 29321
