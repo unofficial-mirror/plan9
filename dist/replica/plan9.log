@@ -15135,3 +15135,6 @@
 1081386137 1 c sys/src/9/pc/vganvidia.c - 664 sys sys 1081358011 12205
 1081386137 2 c sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1081358076 23145
 1081564331 0 c lib/vgadb - 664 sys sys 1081485565 27918
+1081652654 0 c sys/man/1/mkdir - 664 sys sys 1081621073 597
+1081652654 1 c sys/src/cmd/hget.c - 664 sys sys 1081651071 24671
+1081652654 2 c sys/src/cmd/mkdir.c - 664 sys sys 1081621076 868

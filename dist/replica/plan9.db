@@ -4183,7 +4183,7 @@ sys/man/1/man - 664 sys sys 1059484724 1740
 sys/man/1/marshal - 664 sys sys 1079970326 3150
 sys/man/1/mc - 664 sys sys 1045501392 508
 sys/man/1/mk - 664 sys sys 964455061 13154
-sys/man/1/mkdir - 664 sys sys 944959673 443
+sys/man/1/mkdir - 664 sys sys 1081621073 597
 sys/man/1/mlmgr - 664 sys sys 1045501403 2427
 sys/man/1/ms2html - 664 sys sys 960001562 856
 sys/man/1/nedmail - 664 sys sys 1055704205 11322
@@ -8878,7 +8878,7 @@ sys/src/cmd/gzip/mkfile - 664 sys sys 984758036 125
 sys/src/cmd/gzip/unzip.c - 664 sys sys 1050689595 13603
 sys/src/cmd/gzip/zip.c - 664 sys sys 1033183074 7054
 sys/src/cmd/gzip/zip.h - 664 sys sys 954778719 1428
-sys/src/cmd/hget.c - 664 sys sys 1081199967 24671
+sys/src/cmd/hget.c - 664 sys sys 1081651071 24671
 sys/src/cmd/history.c - 664 sys sys 1073079763 6117
 sys/src/cmd/hoc - 20000000775 sys sys 954036932 0
 sys/src/cmd/hoc/code.c - 664 sys sys 944961000 10041
@@ -9226,7 +9226,7 @@ sys/src/cmd/mk/symtab.c - 664 sys sys 944961025 1581
 sys/src/cmd/mk/var.c - 664 sys sys 944961025 539
 sys/src/cmd/mk/varsub.c - 664 sys sys 944961025 4438
 sys/src/cmd/mk/word.c - 664 sys sys 944961025 2595
-sys/src/cmd/mkdir.c - 664 sys sys 1014926614 422
+sys/src/cmd/mkdir.c - 664 sys sys 1081621076 868
 sys/src/cmd/mkfile - 664 sys sys 1045534751 2205
 sys/src/cmd/mklib - 664 sys sys 1022112159 599
 sys/src/cmd/mkmany - 664 sys sys 1022112160 1196
