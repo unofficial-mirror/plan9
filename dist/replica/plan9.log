@@ -12375,3 +12375,7 @@
 1048646017 145 d sys/src/cmd/aux/X509gen.c - 664 sys sys 1037575307 0
 1048646017 146 d sys/src/cmd/auth/factotum/secretpem.c - 664 sys sys 1017679313 0
 1048646017 147 d sys/src/ape/cmd/pdksh/missing.c - 664 sys sys 1014921977 0
+1048691757 0 c sys/src/cmd/fossil/cache.c - 664 sys sys 1048690487 41275
+1048691757 1 c sys/src/cmd/fossil/flfmt.c - 664 sys sys 1048690059 10315
+1048691757 2 c sys/src/cmd/fossil/source.c - 664 sys sys 1048690038 18721
+1048691757 3 c sys/src/libc/9sys/dial.c - 664 sys sys 1048691618 3606
