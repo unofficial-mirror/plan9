@@ -12197,3 +12197,4 @@
 1047664970 3 c sys/src/fs/port/chk.c - 664 sys sys 1047663951 14533
 1047664970 4 c sys/src/fs/port/config.c - 664 sys sys 1047663951 18054
 1047664970 5 c sys/src/fs/port/main.c - 664 sys sys 1047663952 5698
+1047763989 0 c sys/src/cmd/aux/timesync.c - 664 sys sys 1047751422 24211
