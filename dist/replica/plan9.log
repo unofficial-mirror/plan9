@@ -15860,3 +15860,8 @@
 1091916174 42 c sys/src/libscribble/hre_api.c - 664 sys sys 1091904427 27302
 1091916174 43 c sys/src/libscribble/hre_internal.h - 664 sys sys 1091904427 5155
 1091916174 44 c sys/src/libscribble/scribbleimpl.h - 664 sys sys 1091904427 13087
+1092022275 0 c sys/src/cmd/disk/mkext.c - 664 sys sys 1091943345 5760
+1092022275 1 c sys/src/cmd/grep/main.c - 664 sys sys 1091936379 4676
+1092022275 2 c sys/src/libcontrol/box.c - 664 sys sys 1091982888 3308
+1092022275 3 c sys/src/libcontrol/scribble.c - 664 sys sys 1091982888 6144
+1092022275 4 c sys/src/libcontrol/text.c - 664 sys sys 1091982888 12388

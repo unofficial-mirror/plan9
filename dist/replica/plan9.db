@@ -6853,7 +6853,7 @@ sys/src/cmd/disk/kfs/sub.c - 664 sys sys 1022008488 10804
 sys/src/cmd/disk/kfs/uid.c - 664 sys sys 1071335904 6791
 sys/src/cmd/disk/kfscmd.c - 664 sys sys 1015009135 1109
 sys/src/cmd/disk/mbr.c - 664 sys sys 1080218150 4325
-sys/src/cmd/disk/mkext.c - 664 sys sys 1072729311 5727
+sys/src/cmd/disk/mkext.c - 664 sys sys 1091943345 5760
 sys/src/cmd/disk/mkfile - 664 sys sys 1022385851 500
 sys/src/cmd/disk/mkfs.c - 664 sys sys 1032059493 14298
 sys/src/cmd/disk/prep - 20000000775 sys sys 988249968 0
@@ -7062,7 +7062,7 @@ sys/src/cmd/grep - 20000000775 sys sys 1018466661 0
 sys/src/cmd/grep/comp.c - 664 sys sys 944961351 4102
 sys/src/cmd/grep/grep.h - 664 sys sys 1068478083 2176
 sys/src/cmd/grep/grep.y - 664 sys sys 944961351 2804
-sys/src/cmd/grep/main.c - 664 sys sys 1018466654 4660
+sys/src/cmd/grep/main.c - 664 sys sys 1091936379 4676
 sys/src/cmd/grep/mkfile - 664 sys sys 944961351 153
 sys/src/cmd/grep/sub.c - 664 sys sys 984789207 3896
 sys/src/cmd/gs - 20000000775 sys sys 1017695101 0
@@ -11220,7 +11220,7 @@ sys/src/libcomplete - 20000000775 sys sys 1072904881 0
 sys/src/libcomplete/complete.c - 664 sys sys 1076789202 2726
 sys/src/libcomplete/mkfile - 664 sys sys 1072904881 208
 sys/src/libcontrol - 20000000775 sys sys 1016857569 0
-sys/src/libcontrol/box.c - 664 sys sys 1015095043 3276
+sys/src/libcontrol/box.c - 664 sys sys 1091982888 3308
 sys/src/libcontrol/button.c - 664 sys sys 1088784890 5223
 sys/src/libcontrol/cache.c - 664 sys sys 1015095044 2621
 sys/src/libcontrol/control.c - 664 sys sys 1088784890 15536
@@ -11232,10 +11232,10 @@ sys/src/libcontrol/label.c - 664 sys sys 1040447294 3986
 sys/src/libcontrol/menu.c - 664 sys sys 1040447294 7575
 sys/src/libcontrol/mkfile - 664 sys sys 1088784889 490
 sys/src/libcontrol/radiobutton.c - 664 sys sys 1015095046 3742
-sys/src/libcontrol/scribble.c - 664 sys sys 1015095047 6071
+sys/src/libcontrol/scribble.c - 664 sys sys 1091982888 6144
 sys/src/libcontrol/slider.c - 664 sys sys 1015095047 6411
 sys/src/libcontrol/tabs.c - 644 sys sys 1017166331 5521
-sys/src/libcontrol/text.c - 664 sys sys 1088784891 12316
+sys/src/libcontrol/text.c - 664 sys sys 1091982888 12388
 sys/src/libcontrol/textbutton.c - 664 sys sys 1088784891 7486
 sys/src/libcontrol/textbutton3.c - 664 sys sys 1088784891 9104
 sys/src/libdisk - 20000000775 sys sys 969512501 0
