@@ -11259,3 +11259,5 @@
 1040006413 6 c sys/src/libventi/plan9.c - 664 sys sys 1039964807 8481
 1040077940 0 c sys/games/lib/fortunes - 664 sys sys 1040076722 237819
 1040140996 0 c sys/src/fs/port/portdat.h - 664 sys sys 1040140792 16477
+1040367789 0 c sys/src/cmd/ip/imap4d/fetch.c - 664 sys sys 1040309082 11765
+1040367789 1 c sys/src/cmd/upas/marshal/marshal.c - 664 sys sys 1040307704 30160
