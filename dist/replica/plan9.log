@@ -14278,3 +14278,4 @@
 1076817716 4 c sys/src/cmd/cc/sub.c - 664 sys sys 1076774922 30940
 1076817716 5 c sys/src/cmd/rio/rio.c - 664 sys sys 1076777377 21415
 1076817716 6 c sys/src/libcomplete/complete.c - 664 sys sys 1076789202 2726
+1076904124 0 c sys/src/cmd/8c/cgen.c - 664 sys sys 1076855286 26295

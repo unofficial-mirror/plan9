@@ -6148,7 +6148,7 @@ sys/src/cmd/8a/lex.c - 664 sys sys 1067725160 18023
 sys/src/cmd/8a/mkfile - 664 sys sys 1032101905 277
 sys/src/cmd/8c - 20000000775 sys sys 945035118 0
 sys/src/cmd/8c/8.out.h - 664 sys sys 944960730 4107
-sys/src/cmd/8c/cgen.c - 664 sys sys 1076774954 26295
+sys/src/cmd/8c/cgen.c - 664 sys sys 1076855286 26295
 sys/src/cmd/8c/enam.c - 664 sys sys 944960730 3215
 sys/src/cmd/8c/gc.h - 664 sys sys 1018556084 5708
 sys/src/cmd/8c/list.c - 664 sys sys 1067720660 3975
