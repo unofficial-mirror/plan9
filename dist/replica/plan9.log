@@ -12544,3 +12544,4 @@
 1054391656 0 c sys/src/9/ip/devip.c - 664 sys sys 1054391399 24207
 1054391656 1 c sys/src/9/ip/ip.h - 664 sys sys 1054391400 16066
 1054479830 0 c sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1054479635 12043
+1054800215 0 c sys/src/9/bitsy/Booting101 - 664 sys sys 1054798506 8841
