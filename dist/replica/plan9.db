@@ -5005,7 +5005,7 @@ sys/src/9/port/rebootcmd.c - 664 sys sys 1015278340 1561
 sys/src/9/port/sd.h - 664 sys sys 1098546338 2348
 sys/src/9/port/segment.c - 664 sys sys 1032990942 13776
 sys/src/9/port/swap.c - 664 sys sys 1055688551 6980
-sys/src/9/port/sysfile.c - 664 sys sys 1077064173 22127
+sys/src/9/port/sysfile.c - 664 sys sys 1100363052 22146
 sys/src/9/port/sysproc.c - 664 sys sys 1067722765 15396
 sys/src/9/port/systab.h - 664 sys sys 1062721698 3044
 sys/src/9/port/taslock.c - 664 sys sys 1084475129 3658
