@@ -15147,3 +15147,14 @@
 1081740811 6 c sys/src/cmd/acid/dbg.y - 664 sys sys 1081736447 5567
 1081740811 7 c sys/src/cmd/echo.c - 664 sys sys 1081736344 581
 1081865039 0 c sys/src/9/port/devfs.c - 664 sys sys 1081864735 10779
+1082259157 0 c rc/bin/sig - 775 sys sys 1082221092 530
+1082259157 1 c sys/lib/kbmap/ascii - 664 sys sys 1082221421 6248
+1082259157 2 a sys/lib/kbmap/us - 664 sys sys 1082221421 6248
+1082259157 3 c sys/man/2/cachechars - 664 sys sys 1082222350 7061
+1082259157 4 c sys/src/cmd/disk/kfs/portdat.h - 664 sys sys 1082221137 6055
+1082259157 5 c sys/src/cmd/vnc/kbds.c - 664 sys sys 1082221522 3379
+1082259157 6 c sys/src/cmd/vnc/kbdv.c - 664 sys sys 1082221523 3735
+1082259157 7 a sys/src/cmd/vnc/ksym2utf.h - 664 sys sys 1082221523 13289
+1082259157 8 c sys/src/cmd/vnc/mkfile - 664 sys sys 1082221524 702
+1082259157 9 a sys/src/cmd/vnc/utf2ksym.h - 664 sys sys 1082221524 13585
+1082259157 10 c sys/src/cmd/vnc/vncv.c - 664 sys sys 1082221235 3197
