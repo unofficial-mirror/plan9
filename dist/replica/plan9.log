@@ -14271,3 +14271,10 @@
 1076689901 16 a sys/src/cmd/qi/syscall.c - 644 sys sys 1076688569 14402
 1076689901 17 a sys/src/cmd/qi/timing - 644 sys sys 1076688570 641
 1076689901 18 c sys/src/cmd/vi/syscall.c - 664 sys sys 1076688599 14165
+1076817716 0 c sys/src/cmd/8c/cgen.c - 664 sys sys 1076774954 26295
+1076817716 1 c sys/src/cmd/cc/cc.h - 664 sys sys 1076774919 11746
+1076817716 2 c sys/src/cmd/cc/com.c - 664 sys sys 1076774920 18843
+1076817716 3 c sys/src/cmd/cc/dpchk.c - 664 sys sys 1076774921 6738
+1076817716 4 c sys/src/cmd/cc/sub.c - 664 sys sys 1076774922 30940
+1076817716 5 c sys/src/cmd/rio/rio.c - 664 sys sys 1076777377 21415
+1076817716 6 c sys/src/libcomplete/complete.c - 664 sys sys 1076789202 2726

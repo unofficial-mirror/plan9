@@ -6148,7 +6148,7 @@ sys/src/cmd/8a/lex.c - 664 sys sys 1067725160 18023
 sys/src/cmd/8a/mkfile - 664 sys sys 1032101905 277
 sys/src/cmd/8c - 20000000775 sys sys 945035118 0
 sys/src/cmd/8c/8.out.h - 664 sys sys 944960730 4107
-sys/src/cmd/8c/cgen.c - 664 sys sys 1016938024 26295
+sys/src/cmd/8c/cgen.c - 664 sys sys 1076774954 26295
 sys/src/cmd/8c/enam.c - 664 sys sys 944960730 3215
 sys/src/cmd/8c/gc.h - 664 sys sys 1018556084 5708
 sys/src/cmd/8c/list.c - 664 sys sys 1067720660 3975
@@ -6693,15 +6693,15 @@ sys/src/cmd/cb/mkfile - 664 sys sys 1062860425 172
 sys/src/cmd/cc - 20000000775 sys sys 1018556175 0
 sys/src/cmd/cc/acid.c - 664 sys sys 944960808 5314
 sys/src/cmd/cc/bits.c - 664 sys sys 944960873 850
-sys/src/cmd/cc/cc.h - 664 sys sys 1067720645 11717
+sys/src/cmd/cc/cc.h - 664 sys sys 1076774919 11746
 sys/src/cmd/cc/cc.y - 664 sys sys 1014925177 15801
-sys/src/cmd/cc/com.c - 664 sys sys 985365310 18765
+sys/src/cmd/cc/com.c - 664 sys sys 1076774920 18843
 sys/src/cmd/cc/com64.c - 664 sys sys 944960808 9763
 sys/src/cmd/cc/compat - 664 sys sys 1014925177 684
 sys/src/cmd/cc/compat.c - 664 sys sys 944960869 266
 sys/src/cmd/cc/con.c - 664 sys sys 944960808 8349
 sys/src/cmd/cc/dcl.c - 664 sys sys 1039910271 25755
-sys/src/cmd/cc/dpchk.c - 664 sys sys 1067720645 6738
+sys/src/cmd/cc/dpchk.c - 664 sys sys 1076774921 6738
 sys/src/cmd/cc/funct.c - 664 sys sys 984718510 6167
 sys/src/cmd/cc/lex.c - 664 sys sys 1067720645 23769
 sys/src/cmd/cc/lexbody - 664 sys sys 1067725942 8953
@@ -6709,7 +6709,7 @@ sys/src/cmd/cc/mac.c - 664 sys sys 944960808 36
 sys/src/cmd/cc/macbody - 664 sys sys 1067720644 11182
 sys/src/cmd/cc/mkfile - 664 sys sys 984718516 564
 sys/src/cmd/cc/pickle.c - 664 sys sys 1063855374 4829
-sys/src/cmd/cc/sub.c - 664 sys sys 1018556165 30856
+sys/src/cmd/cc/sub.c - 664 sys sys 1076774922 30940
 sys/src/cmd/cdfs - 20000000775 sys sys 959922196 0
 sys/src/cmd/cdfs/buf.c - 664 sys sys 964456822 1848
 sys/src/cmd/cdfs/dat.h - 664 sys sys 1014925665 2334
@@ -9696,7 +9696,7 @@ sys/src/cmd/rio/data.c - 664 sys sys 1014926356 6169
 sys/src/cmd/rio/fns.h - 664 sys sys 1039133251 1065
 sys/src/cmd/rio/fsys.c - 664 sys sys 1019678647 13259
 sys/src/cmd/rio/mkfile - 664 sys sys 1039133251 454
-sys/src/cmd/rio/rio.c - 664 sys sys 1039133252 21381
+sys/src/cmd/rio/rio.c - 664 sys sys 1076777377 21415
 sys/src/cmd/rio/scrl.c - 664 sys sys 1014926357 3245
 sys/src/cmd/rio/time.c - 664 sys sys 1014926357 1829
 sys/src/cmd/rio/util.c - 664 sys sys 1014926357 2061
@@ -11235,7 +11235,7 @@ sys/src/libc/sparc/tas.s - 664 sys sys 944961721 67
 sys/src/libc/sparc/vlop.s - 664 sys sys 944961720 2423
 sys/src/libc/sparc/vlrt.c - 664 sys sys 1067723054 9066
 sys/src/libcomplete - 20000000775 sys sys 1072904881 0
-sys/src/libcomplete/complete.c - 664 sys sys 1076276513 2697
+sys/src/libcomplete/complete.c - 664 sys sys 1076789202 2726
 sys/src/libcomplete/mkfile - 664 sys sys 1072904881 208
 sys/src/libcontrol - 20000000775 sys sys 1016857569 0
 sys/src/libcontrol/box.c - 664 sys sys 1015095043 3276
