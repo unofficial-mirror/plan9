@@ -6402,7 +6402,7 @@ sys/src/cmd/auth/secstore/pak.c - 664 sys sys 1101135278 9290
 sys/src/cmd/auth/secstore/password.c - 664 sys sys 1062277640 2770
 sys/src/cmd/auth/secstore/secacct.c - 644 sys sys 1015008431 755
 sys/src/cmd/auth/secstore/secchk.c - 664 sys sys 1055698993 560
-sys/src/cmd/auth/secstore/secstore.c - 664 sys sys 1103929625 12531
+sys/src/cmd/auth/secstore/secstore.c - 664 sys sys 1104176417 12526
 sys/src/cmd/auth/secstore/secstore.h - 664 sys sys 1103929624 830
 sys/src/cmd/auth/secstore/secstored.c - 664 sys sys 1089058000 8328
 sys/src/cmd/auth/secstore/secuser.c - 664 sys sys 1103929625 5128
