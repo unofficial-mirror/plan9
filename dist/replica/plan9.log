@@ -11533,3 +11533,4 @@
 1044500538 15 a sys/src/libthread/iosleep.c - 664 sys sys 1044429929 240
 1044500538 16 c sys/src/libthread/mkfile - 664 sys sys 1044429931 986
 1044500538 17 c sys/src/libthread/threadimpl.h - 664 sys sys 1044429930 4628
+1044561867 0 c sys/src/cmd/file.c - 664 sys sys 1044560289 20196
