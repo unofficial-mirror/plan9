@@ -12516,3 +12516,4 @@
 1052021002 0 c sys/games/lib/fortunes - 664 sys sys 1052019992 242846
 1052328774 0 c lib/ndb/common - 664 sys sys 1052327139 5263
 1052409731 0 c lib/vgadb - 664 sys sys 1052409026 27589
+1052778772 0 c sys/src/cmd/unix/u9fs/u9fs.c - 664 sys sys 1052777926 30784
