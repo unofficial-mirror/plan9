@@ -13597,3 +13597,7 @@
 1067810583 8 a sys/man/1/patch - 664 sys sys 1067804449 2176
 1067810583 9 c sys/src/9/pc/etherigbe.c - 664 sys sys 1067792708 42430
 1067810583 10 c sys/src/9/pc/mkfile - 664 sys sys 1067810339 3219
+1067911370 0 c lib/face/48x48x4/.dict - 664 sys sys 1067873122 2032
+1067911370 1 c sys/src/9/pc/ether2114x.c - 664 sys sys 1067891102 41253
+1067911370 2 c sys/src/9/port/devproc.c - 664 sys sys 1067880146 28269
+1067911370 3 c dist/replica/network - 664 sys sys 1067910574 466
