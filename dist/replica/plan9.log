@@ -13961,3 +13961,7 @@
 1070912011 0 c dist/replica/network - 664 sys sys 1070911277 994
 1071009247 0 c sys/games/lib/fortunes - 664 sys sys 1070982320 246889
 1071009247 1 c sys/src/cmd/fossil/cache.c - 664 sys sys 1071007936 43090
+1071111877 0 c mail/lib/setup.bayes - 775 upas upas 1071065627 468
+1071111877 1 c sys/src/ape/lib/ap/mips/lock.c - 664 sys sys 1071110410 2380
+1071111877 2 c sys/src/cmd/ssh/cmsg.c - 664 sys sys 1071095546 8351
+1071111877 3 c dist/replica/network - 664 sys sys 1071079179 996
