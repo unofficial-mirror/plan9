@@ -13058,3 +13058,10 @@
 1062180205 14 c sys/src/cmd/ssh/sshserve.c - 664 sys sys 1062091020 5786
 1062180205 15 c sys/src/cmd/upas/ned/nedmail.c - 664 sys sys 1062073146 42984
 1062180205 16 c sys/src/libc/9syscall/sys.h - 664 sys sys 1062076905 896
+1062298978 0 c sys/man/8/secstore - 664 sys sys 1062291170 1159
+1062298978 1 c sys/src/cmd/auth/secstore/dirls.c - 664 sys sys 1062277640 1842
+1062298978 2 c sys/src/cmd/auth/secstore/pak.c - 664 sys sys 1062277640 9297
+1062298978 3 c sys/src/cmd/auth/secstore/password.c - 664 sys sys 1062277640 2770
+1062298978 4 c sys/src/cmd/auth/secstore/secstore.c - 664 sys sys 1062277640 12269
+1062298978 5 c sys/src/cmd/auth/secstore/secstored.c - 664 sys sys 1062277641 7952
+1062298978 6 c sys/src/cmd/ip/imap4d/copy.c - 664 sys sys 1062298855 4597
