@@ -16529,3 +16529,9 @@
 1107921672 8 c sys/src/cmd/acme/fsys.c - 664 sys sys 1107897581 12891
 1107921672 9 c sys/src/cmd/tar.c - 664 sys sys 1107921224 19566
 1107921672 10 c sys/src/cmd/upas/fs/fs.c - 664 sys sys 1107880276 27460
+1108009898 0 a rc/bin/ape/ld - 775 sys sys 1107957880 98
+1108009898 1 c rc/bin/patch/create - 775 sys sys 1107957505 1404
+1108009898 2 c rc/bin/patch/list - 775 sys sys 1107957885 696
+1108009898 3 c sys/src/cmd/disk/mkext.c - 664 sys sys 1107957513 5806
+1108009898 4 c sys/src/cmd/disk/mkfs.c - 664 sys sys 1108000852 14697
+1108009898 5 c sys/src/libmach/executable.c - 664 sys sys 1107963442 13918
