@@ -16697,3 +16697,6 @@
 1110724473 1 a rc/bin/patch/save - 775 sys sys 1110722753 106
 1110861176 0 c sys/man/1/cp - 664 sys sys 1110816882 1947
 1110861176 1 a sys/src/cmd/fcp.c - 644 sys sys 1110816880 3780
+1110947518 0 c sys/src/9/pc/ether8169.c - 664 sys sys 1110882037 22704
+1110947518 1 c sys/src/cmd/aux/gps/gpsfs.c - 664 sys sys 1110882109 17951
+1110947518 2 c sys/src/libmemdraw/line.c - 664 sys sys 1110918933 11040
