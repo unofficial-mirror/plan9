@@ -15138,3 +15138,11 @@
 1081652654 0 c sys/man/1/mkdir - 664 sys sys 1081621073 597
 1081652654 1 c sys/src/cmd/hget.c - 664 sys sys 1081651071 24671
 1081652654 2 c sys/src/cmd/mkdir.c - 664 sys sys 1081621076 868
+1081740811 0 c sys/src/9/pc/ether2114x.c - 664 sys sys 1081706476 41545
+1081740811 1 c sys/src/9/pc/ether82557.c - 664 sys sys 1081706477 29736
+1081740811 2 c sys/src/9/pc/ether83815.c - 664 sys sys 1081706477 23479
+1081740811 3 c sys/src/9/pc/etherelnk3.c - 664 sys sys 1081706477 48724
+1081740811 4 c sys/src/9/pc/etherigbe.c - 664 sys sys 1081706478 42962
+1081740811 5 c sys/src/9/pc/etherrhine.c - 664 sys sys 1081706478 13799
+1081740811 6 c sys/src/cmd/acid/dbg.y - 664 sys sys 1081736447 5567
+1081740811 7 c sys/src/cmd/echo.c - 664 sys sys 1081736344 581
