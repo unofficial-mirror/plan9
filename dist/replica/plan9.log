@@ -16820,3 +16820,12 @@
 1112502727 0 c acme/wiki/wiki.diff - 775 sys sys 1112461168 525
 1112502727 1 c sys/games/lib/fortunes - 664 sys sys 1112499855 253576
 1112502727 2 c sys/src/9/pc/sd53c8xx.c - 664 sys sys 1112461125 52220
+1112585544 0 c sys/lib/dist/pc/inst/mountdist - 775 sys sys 1112535194 4884
+1112585544 1 c sys/lib/dist/pc/proto - 664 sys sys 1112535197 4250
+1112585544 2 c sys/man/4/ftpfs - 664 sys sys 1112563349 4410
+1112585544 3 c sys/src/cmd/ip/ftpfs/ftpfs.c - 664 sys sys 1112563388 13760
+1112585544 4 c sys/src/cmd/ip/ftpfs/proto.c - 664 sys sys 1112563713 30346
+1112585544 5 c sys/src/cmd/sam/plan9.c - 664 sys sys 1112535044 2303
+1112585544 6 c sys/src/cmd/sam/sam.h - 664 sys sys 1112535045 9567
+1112585544 7 d sys/lib/dist/pc/inst/mountkfs - 775 sys sys 1063856188 0
+1112585544 8 d sys/lib/dist/pc/inst/iskfs - 775 sys sys 1018469719 0
