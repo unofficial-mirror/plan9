@@ -12902,3 +12902,4 @@
 1058475764 1 c sys/src/cmd/acme/elog.c - 664 sys sys 1058463684 6777
 1058475764 2 c sys/src/cmd/acme/mkfile - 664 sys sys 1058463682 543
 1058475764 3 c sys/src/cmd/aux/timesync.c - 664 sys sys 1058474964 24413
+1058659366 0 a sys/src/9/pc/pcf.c - 664 sys sys 1058659039 5110
