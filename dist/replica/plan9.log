@@ -11655,3 +11655,8 @@
 1045064037 16 c sys/src/9/port/netif.c - 664 sys sys 1045063591 13188
 1045064037 17 c sys/src/9/port/netif.h - 664 sys sys 1045063591 2944
 1045064037 18 c sys/src/cmd/stats.c - 664 sys sys 1045059499 26965
+1045164850 0 c sys/lib/lp/process/post - 775 sys sys 1045164703 1955
+1045164850 1 a sys/lib/lp/process/psextract - 775 sys sys 1045164704 777
+1045164850 2 m sys/src/9/ip/icmp6.c - 664 sys sys 1045063518 18086
+1045164850 3 m sys/src/9/ip/ipv6.h - 664 sys sys 1022588099 4304
+1045164850 4 a sys/src/cmd/unix/netkey.c - 755 sys sys 1045152984 21761
