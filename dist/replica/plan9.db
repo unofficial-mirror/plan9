@@ -11778,7 +11778,7 @@ sys/src/libsec/port/sha1pickle.c - 664 sys sys 988225292 717
 sys/src/libsec/port/smallprimes.c - 664 sys sys 984710525 6851
 sys/src/libsec/port/smallprimetest.c - 664 sys sys 984710525 70640
 sys/src/libsec/port/thumb.c - 664 sys sys 1019832052 1891
-sys/src/libsec/port/tlshand.c - 664 sys sys 1084318870 54247
+sys/src/libsec/port/tlshand.c - 664 sys sys 1109079424 54272
 sys/src/libsec/port/x509.c - 664 sys sys 1063853597 50342
 sys/src/libsec/power - 20000000775 sys sys 984710502 0
 sys/src/libsec/power/mkfile - 664 sys sys 1032061453 139
