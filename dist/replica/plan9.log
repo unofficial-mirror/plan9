@@ -12845,3 +12845,8 @@
 1056398555 0 a 386/bin/venti/conf - 775 sys sys 1056364399 1506
 1056398555 1 a 386/bin/fossil/conf - 775 sys sys 1056364255 1497
 1056398555 2 c sys/man/3/usb - 664 sys sys 1056364534 6670
+1056504789 0 c sys/src/9/alphapc/fns.h - 664 sys sys 1056503356 3888
+1056504789 1 c sys/src/9/alphapc/trap.c - 664 sys sys 1056503355 17893
+1056504789 2 a sys/src/9/pc/pcf - 664 sys sys 1056503364 1457
+1056504789 3 c sys/src/9/pc/sdata.c - 664 sys sys 1056475678 50230
+1056504789 4 a sys/src/9/pc/pccpuf - 664 sys sys 1056503364 909
