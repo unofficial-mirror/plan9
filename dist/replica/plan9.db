@@ -11188,9 +11188,9 @@ sys/src/libregexp/regaux.c - 664 sys sys 944961751 2069
 sys/src/libregexp/regcomp.c - 664 sys sys 944961751 9572
 sys/src/libregexp/regcomp.h - 664 sys sys 1041196492 1986
 sys/src/libregexp/regerror.c - 664 sys sys 944961751 210
-sys/src/libregexp/regexec.c - 664 sys sys 944961751 4945
+sys/src/libregexp/regexec.c - 664 sys sys 1058129054 4975
 sys/src/libregexp/regsub.c - 664 sys sys 988225293 1133
-sys/src/libregexp/rregexec.c - 664 sys sys 944961751 4639
+sys/src/libregexp/rregexec.c - 664 sys sys 1058129062 4671
 sys/src/libregexp/rregsub.c - 664 sys sys 988225293 1156
 sys/src/libscribble - 20000000775 sys sys 985636319 0
 sys/src/libscribble/graffiti.c - 664 sys sys 1014930922 7336
