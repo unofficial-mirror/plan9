@@ -16180,3 +16180,13 @@
 1101832294 0 c sys/games/lib/fortunes - 664 sys sys 1101830177 251359
 1101832294 1 c sys/man/4/usb - 664 sys sys 1101830658 3423
 1101832294 2 c sys/src/cmd/usb/misc/usbprint - 775 sys sys 1101830683 256
+1101962003 0 c sys/src/9/ip/ip.c - 664 sys sys 1101906449 15285
+1101962003 1 c sys/src/cmd/acme/acme.c - 664 sys sys 1101910760 19489
+1101962003 2 c sys/src/cmd/acme/dat.h - 664 sys sys 1101910760 11143
+1101962003 3 c sys/src/cmd/acme/edit.c - 664 sys sys 1101910761 12068
+1101962003 4 c sys/src/cmd/acme/rows.c - 664 sys sys 1101910761 14683
+1101962003 5 c sys/src/cmd/file.c - 664 sys sys 1101909618 22781
+1101962003 6 c sys/src/cmd/tar.c - 664 sys sys 1101909630 15630
+1101962003 7 c sys/src/cmd/usb/audio/usbaudioctl.c - 664 sys sys 1101906325 17266
+1101962003 8 c sys/src/cmd/usb/lib/dump.c - 664 sys sys 1101906317 12757
+1101962003 9 c sys/src/libframe/frdraw.c - 664 sys sys 1101910634 3271
