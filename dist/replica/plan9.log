@@ -16230,3 +16230,6 @@
 1102888907 1 c sys/man/2/assert - 664 sys sys 1102868467 377
 1102998737 0 c sys/games/lib/fortunes - 664 sys sys 1102994338 251812
 1102998737 1 c sys/src/boot/pc/clock.c - 664 sys sys 1102966794 5918
+1103257978 0 a sys/src/9/pc/ether8169.c - 664 sys sys 1103232343 22378
+1103257978 1 c sys/src/cmd/rio/xfid.c - 664 sys sys 1103205531 17446
+1103257978 2 c sys/src/cmd/fossil/source.c - 664 sys sys 1103225456 20229
