@@ -14066,3 +14066,9 @@
 1071802997 3 c sys/src/cmd/8c/peep.c - 664 sys sys 1071778501 10636
 1071802997 4 c sys/src/cmd/8l/obj.c - 664 sys sys 1071778472 24102
 1071802997 5 c sys/src/cmd/8l/optab.c - 664 sys sys 1071778472 16231
+1071885877 0 c sys/include/ape/bsd.h - 664 sys sys 1071844798 1136
+1071885877 1 c sys/src/ape/lib/ap/plan9/_buf.c - 664 sys sys 1071872236 9869
+1071885877 2 c sys/src/ape/lib/ap/plan9/kill.c - 664 sys sys 1071872236 874
+1071885877 3 c sys/src/cmd/init.c - 664 sys sys 1071873627 4452
+1071885877 4 a sys/src/cmd/rc/compiling.on.unix - 664 sys sys 1071884773 37638
+1071885877 5 d sys/man/1/lsof - 664 sys sys 1071802922 0
