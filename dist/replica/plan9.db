@@ -6054,7 +6054,7 @@ sys/src/cmd/astro/venust.c - 664 sys sys 944960761 739
 sys/src/cmd/auth - 20000000775 sys sys 1015008432 0
 sys/src/cmd/auth/asn12rsa.c - 664 sys sys 1048614959 1192
 sys/src/cmd/auth/authcmdlib.h - 664 sys sys 1032497636 1438
-sys/src/cmd/auth/authsrv.c - 664 sys sys 1045504853 18391
+sys/src/cmd/auth/authsrv.c - 664 sys sys 1051128389 18428
 sys/src/cmd/auth/challenge.c - 664 sys sys 1015008432 980
 sys/src/cmd/auth/changeuser.c - 664 sys sys 1015008431 2933
 sys/src/cmd/auth/convbio.c - 664 sys sys 1015008432 2212
