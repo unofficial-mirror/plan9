@@ -15865,3 +15865,5 @@
 1092022275 2 c sys/src/libcontrol/box.c - 664 sys sys 1091982888 3308
 1092022275 3 c sys/src/libcontrol/scribble.c - 664 sys sys 1091982888 6144
 1092022275 4 c sys/src/libcontrol/text.c - 664 sys sys 1091982888 12388
+1092083485 0 c sys/man/8/plan9.ini - 664 sys sys 1092082105 20930
+1092083485 1 c sys/src/9/pc/trap.c - 664 sys sys 1092080705 20458
