@@ -8935,7 +8935,7 @@ sys/src/cmd/ndb/dnnotify.c - 664 sys sys 1055701929 3062
 sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1055701926 15331
 sys/src/cmd/ndb/dns.c - 664 sys sys 1055701923 15221
 sys/src/cmd/ndb/dns.h - 664 sys sys 1060612174 8957
-sys/src/cmd/ndb/dnsdebug.c - 664 sys sys 1055701923 8359
+sys/src/cmd/ndb/dnsdebug.c - 664 sys sys 1060663185 8430
 sys/src/cmd/ndb/dnserver.c - 664 sys sys 1021579994 3687
 sys/src/cmd/ndb/dnsquery.c - 664 sys sys 1014926160 2108
 sys/src/cmd/ndb/dnstcp.c - 664 sys sys 1056171180 7066
