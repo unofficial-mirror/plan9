@@ -16739,3 +16739,5 @@
 1111293098 1 c sys/src/cmd/replica/applylog.c - 664 sys sys 1111253491 18157
 1111293098 2 c sys/src/cmd/rio/mkfile - 664 sys sys 1111249068 431
 1111465927 0 c sys/src/cmd/acme/look.c - 664 sys sys 1111381048 14210
+1111505479 0 c sys/src/9/ppc/mmu.c - 664 sys sys 1111504133 4864
+1111505479 1 c sys/src/games/music/playlistfs/fs.c - 664 sys sys 1111504109 17985
