@@ -16620,3 +16620,10 @@
 1109365293 1 c sys/src/boot/pc/dat.h - 664 sys sys 1109364490 3565
 1109365293 2 c sys/src/boot/pc/fns.h - 664 sys sys 1109364490 4221
 1109365293 3 c sys/src/boot/pc/load.c - 664 sys sys 1109364491 8903
+1109478736 0 a rc/bin/delkey - 775 sys sys 1109429137 643
+1109478736 1 c sys/games/lib/fortunes - 664 sys sys 1109471220 253178
+1109478736 2 m sys/lib/kbmap/azerty - 664 sys sys 1079473812 735
+1109478736 3 m sys/lib/kbmap/ee - 664 sys sys 1080222237 429
+1109478736 4 a sys/lib/kbmap/n97 - 664 sys sys 1109430112 561
+1109478736 5 c sys/man/1/man - 664 sys sys 1109428285 1745
+1109478736 6 a sys/man/1/delkey - 664 sys sys 1109429138 779
