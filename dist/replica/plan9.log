@@ -11343,3 +11343,4 @@
 1041554068 3 a sys/doc/net/net.pdf - 664 sys sys 1020384351 82603
 1041554068 4 a sys/doc/sam/sam.pdf - 664 sys sys 1020384352 156123
 1041554068 5 a sys/doc/venti/venti.pdf - 755 sys sys 1020384352 139090
+1041627287 0 c sys/src/cmd/ip/ftpfs/proto.c - 664 sys sys 1041568440 28988

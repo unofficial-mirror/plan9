@@ -8330,7 +8330,7 @@ sys/src/cmd/ip/ftpfs/file.c - 664 sys sys 1014925642 4208
 sys/src/cmd/ip/ftpfs/ftpfs.c - 664 sys sys 1035122891 13478
 sys/src/cmd/ip/ftpfs/ftpfs.h - 664 sys sys 1035122891 2319
 sys/src/cmd/ip/ftpfs/mkfile - 664 sys sys 1036479802 181
-sys/src/cmd/ip/ftpfs/proto.c - 664 sys sys 1036479802 28056
+sys/src/cmd/ip/ftpfs/proto.c - 664 sys sys 1041568440 28988
 sys/src/cmd/ip/glob.c - 664 sys sys 1015013111 2968
 sys/src/cmd/ip/glob.h - 664 sys sys 1015090252 270
 sys/src/cmd/ip/gping.c - 664 sys sys 1015013112 20476
