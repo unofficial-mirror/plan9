@@ -14081,3 +14081,5 @@
 1072146713 4 c sys/src/cmd/jpg/mkfile - 664 sys sys 1072107030 1014
 1072146713 5 a sys/src/cmd/jpg/toico.c - 664 sys sys 1072107030 5638
 1072227727 0 c sys/games/lib/fortunes - 664 sys sys 1072227105 247401
+1072562575 0 c sys/src/cmd/upas/smtp/smtp.c - 664 sys sys 1072561144 18914
+1072562575 1 c sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1072561144 24496
