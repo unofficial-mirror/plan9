@@ -15180,3 +15180,4 @@
 1083555199 0 c sys/include/thread.h - 664 sys sys 1083523466 3566
 1083555199 1 c sys/src/9/pc/etherdp83820.c - 664 sys sys 1083469193 29134
 1083555199 2 c sys/src/libthread/id.c - 664 sys sys 1083523466 1840
+1083726231 0 c sys/src/cmd/aux/timesync.c - 664 sys sys 1083697436 24772
