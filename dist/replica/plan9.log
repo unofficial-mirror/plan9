@@ -13383,3 +13383,5 @@
 1066849388 5 a sys/src/cmd/exportfs/pattern.c - 664 sys sys 1066823092 2960
 1066849388 6 c sys/src/cmd/fossil/file.c - 664 sys sys 1066848926 28000
 1067005967 0 c sys/games/lib/fortunes - 664 sys sys 1067005891 246404
+1067120245 0 c sys/src/9/bitsy/mkfile - 664 sys sys 1067120164 2454
+1067120245 1 c sys/src/9/port/lib.h - 664 sys sys 1067105741 5736
