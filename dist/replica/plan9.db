@@ -11485,7 +11485,7 @@ sys/src/libthread/debug.c - 664 sys sys 1014928157 832
 sys/src/libthread/example.c - 664 sys sys 1041440306 1402
 sys/src/libthread/exec.c - 664 sys sys 1014928157 1844
 sys/src/libthread/exit.c - 664 sys sys 1055700450 1318
-sys/src/libthread/id.c - 664 sys sys 1044429928 1872
+sys/src/libthread/id.c - 664 sys sys 1065139502 1772
 sys/src/libthread/iocall.c - 664 sys sys 1044429928 877
 sys/src/libthread/ioclose.c - 664 sys sys 1030537962 242
 sys/src/libthread/iodial.c - 664 sys sys 1030537988 438
