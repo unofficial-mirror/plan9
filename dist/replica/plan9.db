@@ -2767,7 +2767,7 @@ sys/include/ape/select.h - 664 sys sys 944948760 779
 sys/include/ape/setjmp.h - 664 sys sys 944948760 421
 sys/include/ape/signal.h - 664 sys sys 944948760 2619
 sys/include/ape/stddef.h - 664 sys sys 944948759 320
-sys/include/ape/stdio.h - 664 sys sys 1038237536 4869
+sys/include/ape/stdio.h - 664 sys sys 1046815898 4863
 sys/include/ape/stdlib.h - 664 sys sys 1038237536 1680
 sys/include/ape/string.h - 664 sys sys 944948760 1212
 sys/include/ape/sys - 20000000775 sys sys 1014927751 0
@@ -4096,7 +4096,7 @@ sys/man/2/abs - 664 sys sys 944959693 461
 sys/man/2/access - 664 sys sys 1046657167 1102
 sys/man/2/addpt - 664 sys sys 958249501 2964
 sys/man/2/aes - 664 sys sys 1032058672 997
-sys/man/2/allocimage - 664 sys sys 984709630 7300
+sys/man/2/allocimage - 664 sys sys 1046787977 7304
 sys/man/2/arg - 664 sys sys 1030711189 2154
 sys/man/2/arith3 - 664 sys sys 969499887 4397
 sys/man/2/assert - 664 sys sys 960089153 371
@@ -5466,7 +5466,7 @@ sys/src/ape/lib/ap/stdio/fputs.c - 664 sys sys 1014921982 137
 sys/src/ape/lib/ap/stdio/fread.c - 664 sys sys 1038237530 667
 sys/src/ape/lib/ap/stdio/freopen.c - 664 sys sys 1033135391 1517
 sys/src/ape/lib/ap/stdio/fscanf.c - 664 sys sys 1014921982 192
-sys/src/ape/lib/ap/stdio/fseek.c - 664 sys sys 1038237531 422
+sys/src/ape/lib/ap/stdio/fseek.c - 664 sys sys 1046815860 416
 sys/src/ape/lib/ap/stdio/fsetpos.c - 664 sys sys 1014921982 128
 sys/src/ape/lib/ap/stdio/ftell.c - 664 sys sys 1038237532 317
 sys/src/ape/lib/ap/stdio/ftoa.c - 664 sys sys 1014921982 951
@@ -6614,7 +6614,7 @@ sys/src/cmd/fossil/9excl.c - 664 sys sys 1042005502 1887
 sys/src/cmd/fossil/9fid.c - 664 sys sys 1045600016 5521
 sys/src/cmd/fossil/9fsys.c - 664 sys sys 1044906157 26913
 sys/src/cmd/fossil/9lstn.c - 664 sys sys 1042005503 2865
-sys/src/cmd/fossil/9p.c - 664 sys sys 1045600099 21080
+sys/src/cmd/fossil/9p.c - 664 sys sys 1046782756 21345
 sys/src/cmd/fossil/9ping.c - 664 sys sys 1042005503 1563
 sys/src/cmd/fossil/9proc.c - 664 sys sys 1045576808 13707
 sys/src/cmd/fossil/9srv.c - 664 sys sys 1045600018 3291
@@ -9913,7 +9913,7 @@ sys/src/cmd/upas/smtp/rfc822.y - 664 sys sys 1018974179 12512
 sys/src/cmd/upas/smtp/rmtdns.c - 664 sys sys 1015013150 1069
 sys/src/cmd/upas/smtp/smtp.c - 664 sys sys 1043171649 18267
 sys/src/cmd/upas/smtp/smtp.h - 664 sys sys 1015013151 1038
-sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1045505955 23075
+sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1046783570 24124
 sys/src/cmd/upas/smtp/smtpd.h - 664 sys sys 1045505962 1063
 sys/src/cmd/upas/smtp/smtpd.y - 664 sys sys 1043171647 6911
 sys/src/cmd/upas/smtp/spam.c - 664 sys sys 1045505970 9221

@@ -12134,3 +12134,8 @@
 1046705565 0 c sys/man/5/remove - 664 sys sys 1046704639 1078
 1046705565 1 c sys/src/cmd/rx.c - 664 sys sys 1046668081 3266
 1046705565 2 d sys/src/cmd/ssh/authrsafile.c - 664 sys sys 1016466378 0
+1046817166 0 c sys/include/ape/stdio.h - 664 sys sys 1046815898 4863
+1046817166 1 c sys/man/2/allocimage - 664 sys sys 1046787977 7304
+1046817166 2 c sys/src/ape/lib/ap/stdio/fseek.c - 664 sys sys 1046815860 416
+1046817166 3 c sys/src/cmd/fossil/9p.c - 664 sys sys 1046782756 21345
+1046817166 4 c sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1046783570 24124
