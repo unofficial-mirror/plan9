@@ -13636,3 +13636,6 @@
 1068246218 6 c sys/src/9/port/portfns.h - 664 sys sys 1068215525 11376
 1068246218 7 c sys/src/9/port/proc.c - 664 sys sys 1068215525 24867
 1068246218 8 c sys/src/9/port/taslock.c - 664 sys sys 1068209643 3532
+1068350629 0 c sys/src/9/pc/sdata.c - 664 sys sys 1068336178 50325
+1068350629 1 c sys/src/cmd/upas/fs/fs.c - 664 sys sys 1068350246 27381
+1068350629 2 c sys/src/cmd/upas/fs/mbox.c - 664 sys sys 1068350247 28726
