@@ -15976,3 +15976,14 @@
 1096342321 0 a 386/bin/games - 20000000775 sys sys 1096298711 0
 1096342321 1 c sys/man/1/games - 664 sys sys 1096308821 2280
 1096342321 2 a sys/src/games/juggle.c - 664 sys sys 1096307525 4105
+1096428739 0 c sys/src/9/pc/devarch.c - 664 sys sys 1096379063 18517
+1096428739 1 c sys/src/9/pc/i8253.c - 664 sys sys 1096379063 6279
+1096428739 2 c sys/src/9/pc/pci.c - 664 sys sys 1096379063 25817
+1096428739 3 c sys/src/9/pc/uartpci.c - 664 sys sys 1096379063 2891
+1096428739 4 c sys/src/boot/pc/clock.c - 664 sys sys 1096379794 5819
+1096428739 5 c sys/src/boot/pc/etherif.h - 664 sys sys 1096379797 1285
+1096428739 6 c sys/src/boot/pc/etherigbe.c - 664 sys sys 1096379796 39825
+1096428739 7 c sys/src/boot/pc/pci.c - 664 sys sys 1096379795 17688
+1096428739 8 c sys/src/boot/pc/sdata.c - 664 sys sys 1096379795 35481
+1096428739 9 c sys/src/cmd/acme/exec.c - 664 sys sys 1096388101 28104
+1096428739 10 c sys/src/cmd/acme/wind.c - 664 sys sys 1096388102 11187
