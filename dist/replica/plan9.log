@@ -14211,3 +14211,5 @@
 1074828857 9 c sys/src/9/pc/etherga620.c - 664 sys sys 1074785126 28754
 1074828857 10 c sys/src/9/port/devproc.c - 664 sys sys 1074785145 28636
 1074828857 11 d rc/bin/service.auth/tcp993 - 775 sys sys 1018720071 0
+1074884522 0 c sys/src/9/port/edf.h - 664 sys sys 1074883055 1145
+1074884522 1 a sys/src/cmd/trace.c - 664 sys sys 1074883076 17752
