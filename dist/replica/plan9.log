@@ -12524,3 +12524,10 @@
 1053128001 1 c sys/man/4/factotum - 664 sys sys 1053127875 14460
 1053128001 2 c sys/man/8/ventiaux - 664 sys sys 1053095327 9971
 1053128001 3 c sys/src/libauth/auth_proxy.c - 664 sys sys 1053106349 3606
+1053226950 0 c sys/log/mail - 666 sys sys 958934039 359
+1053226950 1 c sys/log/runq - 666 sys sys 958934039 330
+1053226950 2 c sys/log/smtp - 666 sys sys 958934039 152
+1053226950 3 c sys/src/cmd/aux/timesync.c - 664 sys sys 1053201572 24309
+1053226950 4 c sys/src/cmd/replica/applylog.c - 664 sys sys 1053210813 17189
+1053226950 5 c sys/src/cmd/rx.c - 664 sys sys 1053223080 3374
+1053226950 6 c sys/src/cmd/unix/u9fs/u9fs.c - 664 sys sys 1053226064 30784
