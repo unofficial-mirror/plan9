@@ -16584,3 +16584,6 @@
 1108960315 8 c sys/src/cmd/upas/smtp/mkfile - 664 sys sys 1108910002 801
 1108960315 9 c sys/src/cmd/upas/smtp/mxdial.c - 664 sys sys 1108875334 6251
 1108960315 10 c sys/src/libc/port/cleanname.c - 664 sys sys 1108937861 1537
+1109046731 0 c rc/bin/yesterday - 775 sys sys 1108996192 2551
+1109046731 1 c sys/man/1/tar - 664 sys sys 1108996183 3396
+1109046731 2 c sys/src/cmd/tar.c - 664 sys sys 1108996177 19824
