@@ -9788,7 +9788,7 @@ sys/src/cmd/scuzz/scsireq.c - 664 sys sys 1032060572 11501
 sys/src/cmd/scuzz/scsireq.h - 664 sys sys 1032060571 5904
 sys/src/cmd/scuzz/scuzz.c - 664 sys sys 1014926325 37608
 sys/src/cmd/scuzz/sense.c - 664 sys sys 969510790 3901
-sys/src/cmd/sed.c - 664 sys sys 1024754756 27001
+sys/src/cmd/sed.c - 664 sys sys 1100962924 27001
 sys/src/cmd/seq.c - 664 sys sys 1063854922 1484
 sys/src/cmd/sh.C - 664 sys sys 1055701754 10303
 sys/src/cmd/sha1sum.c - 664 sys sys 1014926229 1017
