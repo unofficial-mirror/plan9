@@ -15970,3 +15970,6 @@
 1095823961 39 a sys/src/games/sokoban/sokoban.h - 664 sys sys 1095792097 1197
 1095910392 0 c sys/man/8/ipserv - 664 sys sys 1095862383 4375
 1095910392 1 c sys/src/cmd/ip/ftpd.c - 664 sys sys 1095862384 32934
+1096083211 0 c sys/man/8/ppp - 664 sys sys 1096036494 4424
+1096083211 1 c sys/src/cmd/ip/ppp/ppp.c - 664 sys sys 1096060213 59659
+1096083211 2 c sys/src/cmd/stats.c - 664 sys sys 1096061397 27827
