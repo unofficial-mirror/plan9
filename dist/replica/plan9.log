@@ -13083,3 +13083,7 @@
 1062860571 3 a sys/src/cmd/cb/cbtype.c - 664 sys sys 1062860425 674
 1062860571 4 a sys/src/cmd/cb/cbtype.h - 664 sys sys 1062860425 794
 1062860571 5 a sys/src/cmd/cb/mkfile - 664 sys sys 1062860425 172
+1063072945 0 c sys/games/lib/fortunes - 664 sys sys 1063072455 244492
+1063072945 1 a sys/man/1/cb - 664 sys sys 1063025841 890
+1063072945 2 c sys/src/cmd/cb/cb.c - 664 sys sys 1063039630 18439
+1063072945 3 c sys/src/cmd/cb/cb.h - 664 sys sys 1063023989 3404
