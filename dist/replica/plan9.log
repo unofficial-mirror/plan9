@@ -16209,3 +16209,7 @@
 1102134758 15 c sys/src/cmd/upas/vf/vf.c - 664 sys sys 1102093227 17450
 1102134758 16 c sys/src/libc/port/malloc.c - 664 sys sys 1102093081 5697
 1102134758 17 c sys/src/libc/port/pool.c - 664 sys sys 1102093118 30853
+1102393874 0 c mail/lib/qmail - 775 upas upas 1102352695 197
+1102393874 1 c sys/lib/mimetype - 664 sys sys 1102352651 6153
+1102393874 2 c sys/src/cmd/auth/cron.c - 664 sys sys 1102346964 11487
+1102393874 3 c sys/src/cmd/auth/factotum/chap.c - 664 sys sys 1102347052 8751
