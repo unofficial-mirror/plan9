@@ -15407,3 +15407,5 @@
 1089084719 4 c sys/src/cmd/auth/secstore/secstored.c - 664 sys sys 1089058000 8328
 1089084719 5 c sys/src/cmd/aux/vga/neomagic.c - 664 sys sys 1089055692 8888
 1089084719 6 c sys/src/cmd/aux/vga/virge.c - 664 sys sys 1089055693 18540
+1089214285 0 c sys/man/2/ip - 664 sys sys 1089213089 7136
+1089214285 1 c sys/src/libip/bo.c - 664 sys sys 1089213099 811
