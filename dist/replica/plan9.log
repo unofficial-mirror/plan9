@@ -12887,3 +12887,5 @@
 1057354361 0 c sys/src/9/port/devsdp.c - 664 sys sys 1057323393 44800
 1057354361 1 c sys/src/9/port/thwack.c - 664 sys sys 1057323394 7253
 1057354361 2 c sys/src/9/port/unthwack.c - 664 sys sys 1057323394 5249
+1057797172 0 c sys/man/8/snoopy - 664 sys sys 1057752980 3802
+1057797172 1 c sys/src/libauth/newns.c - 664 sys sys 1057795439 6286

@@ -4425,7 +4425,7 @@ sys/man/8/secstore - 664 sys sys 1045501623 990
 sys/man/8/securenet - 664 sys sys 954305552 3160
 sys/man/8/send - 664 sys sys 1045501634 2168
 sys/man/8/smtp - 664 sys sys 1049408388 4111
-sys/man/8/snoopy - 664 sys sys 1034009982 3714
+sys/man/8/snoopy - 664 sys sys 1057752980 3802
 sys/man/8/stats - 664 sys sys 1056073417 4179
 sys/man/8/stub - 664 sys sys 1044830500 943
 sys/man/8/swap - 664 sys sys 944959679 880
@@ -10387,7 +10387,7 @@ sys/src/libauth/authlocal.h - 664 sys sys 1014929317 87
 sys/src/libauth/httpauth.c - 664 sys sys 1017166331 1059
 sys/src/libauth/login.c - 664 sys sys 1014929318 264
 sys/src/libauth/mkfile - 664 sys sys 1035389776 441
-sys/src/libauth/newns.c - 664 sys sys 1048777093 5905
+sys/src/libauth/newns.c - 664 sys sys 1057795439 6286
 sys/src/libauth/noworld.c - 664 sys sys 1014929318 779
 sys/src/libauthsrv - 20000000775 sys sys 1015091654 0
 sys/src/libauthsrv/_asgetticket.c - 664 sys sys 1015091652 280
