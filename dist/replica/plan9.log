@@ -12898,3 +12898,7 @@
 1058130160 1 c sys/src/libregexp/rregexec.c - 664 sys sys 1058129062 4671
 1058223801 0 c lib/face/48x48x4/.dict - 664 sys sys 1058223097 2005
 1058223801 1 a lib/face/48x48x4/p/plan9.1 - 664 sys sys 1058223140 993
+1058475764 0 c acme/mail/src/html.c - 664 sys sys 1058463659 1348
+1058475764 1 c sys/src/cmd/acme/elog.c - 664 sys sys 1058463684 6777
+1058475764 2 c sys/src/cmd/acme/mkfile - 664 sys sys 1058463682 543
+1058475764 3 c sys/src/cmd/aux/timesync.c - 664 sys sys 1058474964 24413
