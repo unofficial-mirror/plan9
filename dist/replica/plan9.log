@@ -15994,3 +15994,5 @@
 1097119890 3 c sys/src/9/ppc/main.c - 664 sys sys 1097073343 9041
 1097256760 0 c sys/games/lib/fortunes - 664 sys sys 1097256226 250017
 1097607703 0 c lib/vgadb - 664 sys sys 1097607554 28686
+1097717529 0 c sys/src/boot/pc/dosboot.c - 664 sys sys 1097716791 11240
+1097717529 1 c sys/src/boot/pc/sdata.c - 664 sys sys 1097716793 38020

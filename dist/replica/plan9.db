@@ -5959,7 +5959,7 @@ sys/src/boot/pc/devi82365.c - 664 sys sys 1019533020 23202
 sys/src/boot/pc/devpccard.c - 664 sys sys 1019533020 41357
 sys/src/boot/pc/devsd.c - 664 sys sys 1077033681 11262
 sys/src/boot/pc/dma.c - 664 sys sys 1015007949 4972
-sys/src/boot/pc/dosboot.c - 664 sys sys 1088798342 11096
+sys/src/boot/pc/dosboot.c - 664 sys sys 1097716791 11240
 sys/src/boot/pc/dosfs.h - 664 sys sys 1032215924 1467
 sys/src/boot/pc/eoffs - 664 sys sys 1015007950 0
 sys/src/boot/pc/error.h - 664 sys sys 1015007950 3081
@@ -6013,7 +6013,7 @@ sys/src/boot/pc/queue.c - 664 sys sys 1015007954 566
 sys/src/boot/pc/sd.h - 664 sys sys 1094674489 2271
 sys/src/boot/pc/sd53c8xx.c - 664 sys sys 1077033951 52135
 sys/src/boot/pc/sd53c8xx.i - 664 sys sys 1015007955 27245
-sys/src/boot/pc/sdata.c - 664 sys sys 1096379795 35481
+sys/src/boot/pc/sdata.c - 664 sys sys 1097716793 38020
 sys/src/boot/pc/sdmylex.c - 664 sys sys 1015007955 28743
 sys/src/boot/pc/sdscsi.c - 664 sys sys 1077033682 7022
 sys/src/boot/pc/trap.c - 664 sys sys 1018462833 7098
