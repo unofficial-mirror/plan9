@@ -15309,3 +15309,4 @@
 1086408181 4 c sys/src/9/port/devmnt.c - 664 sys sys 1086406908 21595
 1086408181 5 c sys/src/9/port/devsrv.c - 664 sys sys 1086406908 5198
 1086408181 6 c sys/src/9/port/devtls.c - 664 sys sys 1086406907 45225
+1086579128 0 c sys/src/cmd/8c/cgen64.c - 664 sys sys 1086543210 43289
