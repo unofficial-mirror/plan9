@@ -14189,3 +14189,5 @@
 1073854971 9 c sys/src/cmd/fossil/cache.c - 664 sys sys 1073851928 42849
 1073854971 10 c sys/src/cmd/fossil/error.c - 664 sys sys 1073851927 1450
 1073854971 11 c sys/src/cmd/fossil/error.h - 664 sys sys 1073851928 796
+1074087211 0 c sys/src/9/ip/devip.c - 664 sys sys 1074086743 24188
+1074087211 1 c sys/src/cmd/stats.c - 664 sys sys 1074086705 28191
