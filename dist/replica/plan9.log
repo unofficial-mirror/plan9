@@ -13362,3 +13362,10 @@
 1066327356 0 c sys/src/cmd/ip/imap4d/fetch.c - 664 sys sys 1066325855 11762
 1066327356 1 c sys/src/cmd/ip/imap4d/imap4d.c - 664 sys sys 1066325859 40675
 1066327356 2 c sys/src/cmd/ip/imap4d/store.c - 664 sys sys 1066317059 1910
+1066516378 0 c sys/src/9/ip/ethermedium.c - 664 sys sys 1066514880 15124
+1066516378 1 c sys/src/9/pc/ether82557.c - 664 sys sys 1066514925 29683
+1066516378 2 c sys/src/9/port/netif.c - 664 sys sys 1066514951 13421
+1066516378 3 c sys/src/9/port/netif.h - 664 sys sys 1066514947 2975
+1066516378 4 c sys/src/cmd/ssh/ssh.c - 664 sys sys 1066515693 9667
+1066516378 5 c sys/src/cmd/stats.c - 664 sys sys 1066515220 27952
+1066516378 6 c sys/src/libip/myetheraddr.c - 664 sys sys 1066515138 837

@@ -4626,7 +4626,7 @@ sys/src/9/ip/chandial.c - 664 sys sys 1022588098 2276
 sys/src/9/ip/devip.c - 664 sys sys 1054391399 24207
 sys/src/9/ip/eipconvtest.c - 664 sys sys 1022588098 3135
 sys/src/9/ip/esp.c - 664 sys sys 1047260561 17084
-sys/src/9/ip/ethermedium.c - 664 sys sys 1047260562 15120
+sys/src/9/ip/ethermedium.c - 664 sys sys 1066514880 15124
 sys/src/9/ip/gre.c - 664 sys sys 1047260562 4684
 sys/src/9/ip/icmp.c - 664 sys sys 1047260563 9437
 sys/src/9/ip/icmp6.c - 664 sys sys 1047260563 18098
@@ -4711,7 +4711,7 @@ sys/src/9/pc/ether79c970.c - 664 sys sys 1018386992 14056
 sys/src/9/pc/ether8003.c - 664 sys sys 1015014516 6665
 sys/src/9/pc/ether8139.c - 664 sys sys 1055689886 18012
 sys/src/9/pc/ether82543gc.c - 664 sys sys 1055689887 32296
-sys/src/9/pc/ether82557.c - 664 sys sys 1055689889 29634
+sys/src/9/pc/ether82557.c - 664 sys sys 1066514925 29683
 sys/src/9/pc/ether83815.c - 664 sys sys 1026847640 23050
 sys/src/9/pc/ether8390.c - 664 sys sys 1015014517 17548
 sys/src/9/pc/ether8390.h - 664 sys sys 1015014517 1511
@@ -4860,8 +4860,8 @@ sys/src/9/port/mkroot - 775 sys sys 1039753334 235
 sys/src/9/port/mkrootall - 775 sys sys 1055954696 386
 sys/src/9/port/mkrootc - 775 sys sys 1055954695 717
 sys/src/9/port/mksystab - 664 sys sys 1014931176 783
-sys/src/9/port/netif.c - 664 sys sys 1045063591 13188
-sys/src/9/port/netif.h - 664 sys sys 1045063591 2944
+sys/src/9/port/netif.c - 664 sys sys 1066514951 13421
+sys/src/9/port/netif.h - 664 sys sys 1066514947 2975
 sys/src/9/port/nulledf.c - 664 sys sys 1037669300 821
 sys/src/9/port/page.c - 664 sys sys 1055688510 8107
 sys/src/9/port/parse.c - 664 sys sys 1014931177 2026
@@ -9615,12 +9615,12 @@ sys/src/cmd/ssh/msg.c - 664 sys sys 1062091016 8023
 sys/src/cmd/ssh/pubkey.c - 664 sys sys 1019928902 3974
 sys/src/cmd/ssh/scp.c - 664 sys sys 1048644598 13757
 sys/src/cmd/ssh/smsg.c - 664 sys sys 1062091015 6135
-sys/src/cmd/ssh/ssh.c - 664 sys sys 1063858802 9635
+sys/src/cmd/ssh/ssh.c - 664 sys sys 1066515693 9667
 sys/src/cmd/ssh/ssh.h - 664 sys sys 1048179595 6054
 sys/src/cmd/ssh/sshnet.c - 664 sys sys 1062091019 17661
 sys/src/cmd/ssh/sshserve.c - 664 sys sys 1062091020 5786
 sys/src/cmd/ssh/util.c - 664 sys sys 1063858753 4478
-sys/src/cmd/stats.c - 664 sys sys 1056035464 27570
+sys/src/cmd/stats.c - 664 sys sys 1066515220 27952
 sys/src/cmd/strings.c - 664 sys sys 944961364 1216
 sys/src/cmd/strip.c - 664 sys sys 1014926661 3306
 sys/src/cmd/sum.c - 664 sys sys 1014926615 5548
@@ -11116,7 +11116,7 @@ sys/src/libip/equivip.c - 664 sys sys 944961726 146
 sys/src/libip/ip.h - 664 sys sys 944961727 1438
 sys/src/libip/ipaux.c - 664 sys sys 985038059 1515
 sys/src/libip/mkfile - 664 sys sys 1065576347 320
-sys/src/libip/myetheraddr.c - 664 sys sys 944961726 622
+sys/src/libip/myetheraddr.c - 664 sys sys 1066515138 837
 sys/src/libip/myipaddr.c - 664 sys sys 1063853830 942
 sys/src/libip/parseether.c - 664 sys sys 944961726 318
 sys/src/libip/parseip.c - 664 sys sys 950104689 2130
