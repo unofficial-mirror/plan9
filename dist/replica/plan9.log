@@ -15357,3 +15357,8 @@
 1087443196 18 c sys/src/cmd/page/view.c - 664 sys sys 1087406048 22740
 1087443196 19 c sys/src/cmd/stats.c - 664 sys sys 1087406219 27828
 1087443196 20 c sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1087421671 27665
+1087529470 0 c rc/bin/patch/okay - 775 sys sys 1087487682 242
+1087529470 1 c sys/src/9/pc/devarch.c - 664 sys sys 1087496483 18476
+1087529470 2 c sys/src/cmd/8l/span.c - 664 sys sys 1087498045 22199
+1087529470 3 c sys/src/cmd/cc/cc.h - 664 sys sys 1087505577 11838
+1087529470 4 c sys/src/cmd/cc/sub.c - 664 sys sys 1087505577 31090
