@@ -16376,3 +16376,4 @@
 1105130044 8 c sys/src/mkfile.proto - 664 sys sys 1105121349 265
 1105194741 0 c lib/vgadb - 664 sys sys 1105192978 28703
 1105194741 1 c sys/src/9/pc/devusb.c - 664 sys sys 1105193103 18364
+1105407100 0 c sys/games/lib/fortunes - 664 sys sys 1105406030 251918
