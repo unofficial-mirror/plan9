@@ -11234,3 +11234,14 @@
 1039768367 86 c sys/src/libmemlayer/lorigin.c - 664 sys sys 1039752981 2507
 1039768367 87 c sys/src/libmemlayer/mkfile - 664 sys sys 1039752977 365
 1039768367 88 c sys/src/libmemlayer/unload.c - 664 sys sys 1039752981 1007
+1039804342 0 c sys/src/9/alphapc/fns.h - 664 sys sys 1039794342 3889
+1039804342 1 c sys/src/9/alphapc/screen.h - 664 sys sys 1039794340 3547
+1039804342 2 c sys/src/9/boot/bootip.c - 664 sys sys 1039794324 3397
+1039804342 3 c sys/src/9/pc/pccpu - 664 sys sys 1039803186 785
+1039804342 4 a sys/src/9/pc/ether82543.c - 664 sys sys 1039803177 38406
+1039804342 5 a sys/src/9/pc/ethermii.c - 664 sys sys 1039803177 4555
+1039804342 6 c sys/src/cmd/vac/cache.c - 664 sys sys 1039797583 15878
+1039804342 7 c sys/src/cmd/vac/file.c - 664 sys sys 1039797584 18962
+1039804342 8 c sys/src/cmd/vac/source.c - 664 sys sys 1039797584 6723
+1039804342 9 c sys/src/fs/pc/compat.h - 664 sys sys 1039794577 1636
+1039804342 10 c sys/src/fs/pc/ether8139.c - 664 sys sys 1039794573 18318
