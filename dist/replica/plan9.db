@@ -6721,7 +6721,7 @@ sys/src/cmd/cc/funct.c - 664 sys sys 984718510 6167
 sys/src/cmd/cc/lex.c - 664 sys sys 1089299182 23826
 sys/src/cmd/cc/lexbody - 664 sys sys 1098499731 9014
 sys/src/cmd/cc/mac.c - 664 sys sys 944960808 36
-sys/src/cmd/cc/macbody - 664 sys sys 1108182410 11358
+sys/src/cmd/cc/macbody - 664 sys sys 1108281581 11703
 sys/src/cmd/cc/machcap.c - 664 sys sys 1084472048 78
 sys/src/cmd/cc/mkfile - 664 sys sys 1107365240 563
 sys/src/cmd/cc/pickle.c - 664 sys sys 1063855374 4829
@@ -11057,7 +11057,7 @@ sys/src/libc/9sys/dirmodefmt.c - 664 sys sys 1014927337 581
 sys/src/libc/9sys/dirread.c - 664 sys sys 1014927337 1385
 sys/src/libc/9sys/dirstat.c - 664 sys sys 1041363499 688
 sys/src/libc/9sys/dirwstat.c - 664 sys sys 1014927337 246
-sys/src/libc/9sys/fcallfmt.c - 664 sys sys 1033829606 5733
+sys/src/libc/9sys/fcallfmt.c - 664 sys sys 1108319655 5740
 sys/src/libc/9sys/fork.c - 664 sys sys 950892938 89
 sys/src/libc/9sys/getenv.c - 664 sys sys 985023079 548
 sys/src/libc/9sys/getnetconninfo.c - 664 sys sys 1108157974 2477
