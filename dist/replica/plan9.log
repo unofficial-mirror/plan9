@@ -16027,3 +16027,4 @@
 1098122842 1 c sys/src/cmd/lex/lmain.c - 664 sys sys 1098121111 6046
 1098122842 2 c sys/src/cmd/lex/sub1.c - 664 sys sys 1098121111 9795
 1098243075 0 c sys/src/cmd/aux/stub.c - 664 sys sys 1098196222 2723
+1098387093 0 c sys/games/lib/fortunes - 664 sys sys 1098386393 250626
