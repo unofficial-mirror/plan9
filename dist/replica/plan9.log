@@ -11449,3 +11449,8 @@
 1042331531 12 c sys/src/cmd/fossil/fs.c - 664 sys sys 1042311691 17030
 1042331531 13 c sys/src/cmd/fossil/history - 664 sys sys 1042311694 881
 1042331531 14 c sys/src/cmd/fossil/source.c - 664 sys sys 1042311692 18406
+1042428845 0 a rc/bin/rwd - 775 sys sys 1042418590 349
+1042428845 1 a sys/man/1/rwd - 664 sys sys 1042428060 2601
+1042428845 2 a sys/src/cmd/aux/conswdir.c - 664 sys sys 1042425146 2071
+1042428845 3 c sys/src/cmd/ssh/ssh.c - 664 sys sys 1042424644 9603
+1042428845 4 c sys/src/cmd/vnc/draw.c - 664 sys sys 1042391341 6958

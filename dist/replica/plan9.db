@@ -2466,6 +2466,7 @@ rc/bin/replica/pull - 775 sys sys 1019526606 1422
 rc/bin/replica/push - 775 sys sys 1019276168 349
 rc/bin/replica/scan - 775 sys sys 1018323467 401
 rc/bin/replica/setupdirs - 775 sys sys 1018321122 408
+rc/bin/rwd - 775 sys sys 1042418590 349
 rc/bin/seemail - 775 sys sys 945617208 59
 rc/bin/service - 20000000775 sys sys 1018831800 0
 rc/bin/service.auth - 20000000775 sys sys 1018029993 0
@@ -4037,6 +4038,7 @@ sys/man/1/resample - 664 sys sys 1015024740 1083
 sys/man/1/rio - 664 sys sys 1015024740 14087
 sys/man/1/rm - 664 sys sys 944959673 515
 sys/man/1/rtstats - 664 sys sys 1018897631 2108
+sys/man/1/rwd - 664 sys sys 1042428060 2601
 sys/man/1/sam - 664 sys sys 984709628 18107
 sys/man/1/secstore - 664 sys sys 1041890056 3434
 sys/man/1/sed - 664 sys sys 944959674 6884
@@ -6045,6 +6047,7 @@ sys/src/cmd/aux/astarld.c - 664 sys sys 1015008684 4638
 sys/src/cmd/aux/cddb.c - 664 sys sys 1032059267 4303
 sys/src/cmd/aux/clog.c - 664 sys sys 1014925109 1000
 sys/src/cmd/aux/consolefs.c - 664 sys sys 1014925110 20022
+sys/src/cmd/aux/conswdir.c - 664 sys sys 1042425146 2071
 sys/src/cmd/aux/data2s.c - 664 sys sys 1032059295 796
 sys/src/cmd/aux/depend.c - 664 sys sys 1015008684 25780
 sys/src/cmd/aux/disksim.c - 664 sys sys 1032325930 10218
@@ -9351,7 +9354,7 @@ sys/src/cmd/ssh/msg.c - 664 sys sys 1038293465 7740
 sys/src/cmd/ssh/pubkey.c - 664 sys sys 1019928902 3974
 sys/src/cmd/ssh/scp.c - 664 sys sys 1016466380 13768
 sys/src/cmd/ssh/smsg.c - 664 sys sys 1016466380 4225
-sys/src/cmd/ssh/ssh.c - 664 sys sys 1038445589 9529
+sys/src/cmd/ssh/ssh.c - 664 sys sys 1042424644 9603
 sys/src/cmd/ssh/ssh.h - 664 sys sys 1038293464 6011
 sys/src/cmd/ssh/ssh_genkey.c - 664 sys sys 1016466380 1563
 sys/src/cmd/ssh/sshnet.c - 664 sys sys 1038293468 17653
@@ -9992,7 +9995,7 @@ sys/src/cmd/vnc/dev.c - 664 sys sys 1014925997 5502
 sys/src/cmd/vnc/devcons.c - 664 sys sys 1034430139 6915
 sys/src/cmd/vnc/devdraw.c - 664 sys sys 1039753056 42068
 sys/src/cmd/vnc/devmouse.c - 664 sys sys 1034430139 7386
-sys/src/cmd/vnc/draw.c - 664 sys sys 1034430140 6947
+sys/src/cmd/vnc/draw.c - 664 sys sys 1042391341 6958
 sys/src/cmd/vnc/error.h - 664 sys sys 1014925998 2482
 sys/src/cmd/vnc/errstr.h - 664 sys sys 1014925998 2018
 sys/src/cmd/vnc/exporter.c - 664 sys sys 1014925998 1312
