@@ -27,7 +27,7 @@
 386/bin/disk/ksync - 775 sys sys 1020319074 302
 386/bin/disk/mk9660 - 775 sys sys 1020319074 144
 386/bin/fossil - 20000000775 sys sys 1042005470 0
-386/bin/fossil/conf - 775 sys sys 1056364255 1497
+386/bin/fossil/conf - 775 sys sys 1085077052 1506
 386/bin/fs - 20000000775 sys sys 954380769 0
 386/bin/ip - 20000000775 sys sys 1016920851 0
 386/bin/ip/httpd - 20000000775 sys sys 1016920846 0
