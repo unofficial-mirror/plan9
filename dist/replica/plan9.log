@@ -15368,3 +15368,12 @@
 1087659094 2 c sys/src/9/mtx/pci.c - 664 sys sys 1087657434 16662
 1087659094 3 c sys/src/9/pc/io.h - 664 sys sys 1087657448 8029
 1087659094 4 c sys/src/9/pc/pci.c - 664 sys sys 1087657460 25736
+1087875132 0 c sys/man/1/page - 664 sys sys 1087829646 5839
+1087875132 1 c sys/man/1/gview - 664 sys sys 1087829746 4298
+1087875132 2 c sys/man/2/pushtls - 664 sys sys 1087829666 4781
+1087875132 3 c sys/man/2/rsa - 664 sys sys 1087829658 4245
+1087875132 4 c sys/src/cmd/auth/factotum/util.c - 664 sys sys 1087829623 17051
+1087875132 5 c sys/src/cmd/auth/secstore/aescbc.c - 664 sys sys 1087829615 4175
+1087875132 6 c sys/src/cmd/gview.c - 664 sys sys 1087829737 50641
+1087875132 7 c sys/src/cmd/tlssrv.c - 664 sys sys 1087829606 3411
+1087875132 8 c sys/src/cmd/upas/vf/vf.c - 664 sys sys 1087829630 17442
