@@ -16508,3 +16508,13 @@
 1107750755 13 c sys/src/cmd/auth/factotum/rsa.c - 664 sys sys 1107706104 3416
 1107750755 14 c sys/src/cmd/auth/factotum/util.c - 664 sys sys 1107706104 17877
 1107750755 15 c sys/src/cmd/auth/factotum/wep.c - 664 sys sys 1107706104 2140
+1107837171 0 c rc/bin/dircp - 775 sys sys 1107836261 193
+1107837171 1 c rc/bin/patch/create - 775 sys sys 1107836219 1380
+1107837171 2 a rc/bin/patch/email - 775 sys sys 1107836219 401
+1107837171 3 c sys/man/4/factotum - 664 sys sys 1107836362 14708
+1107837171 4 c sys/src/cmd/8l/asm.c - 664 sys sys 1107755623 11882
+1107837171 5 c sys/src/cmd/8l/obj.c - 664 sys sys 1107756104 26053
+1107837171 6 c sys/src/cmd/auth/factotum/util.c - 664 sys sys 1107833785 17917
+1107837171 7 c sys/src/cmd/auth/keyfs.c - 664 sys sys 1107835724 17624
+1107837171 8 c sys/src/cmd/upas/fs/fs.c - 664 sys sys 1107835225 27456
+1107837171 9 c sys/src/cmd/upas/fs/mbox.c - 664 sys sys 1107835226 28935
