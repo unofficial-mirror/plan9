@@ -15086,3 +15086,8 @@
 1080180195 7 c sys/src/cmd/unix/drawterm/keyboard.h - 664 sys sys 1080159172 380
 1080180195 8 c sys/src/cmd/unix/drawterm/mkfile-Linux - 664 sys sys 1080159060 539
 1080180195 9 c sys/src/cmd/upas/fs/pop3.c - 664 sys sys 1080159334 12445
+1080223427 0 c sys/lib/kbmap/ascii - 664 sys sys 1080219252 23680
+1080223427 1 a sys/lib/kbmap/ee - 644 sys sys 1080222237 429
+1080223427 2 c sys/man/2/errstr - 664 sys sys 1080218022 1705
+1080223427 3 c sys/man/5/error - 664 sys sys 1080218022 513
+1080223427 4 c sys/src/cmd/disk/mbr.c - 664 sys sys 1080218150 4325
