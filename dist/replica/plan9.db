@@ -6141,7 +6141,7 @@ sys/src/cmd/auth/wrkey.c - 664 sys sys 1019058717 176
 sys/src/cmd/aux - 20000000775 sys sys 1015008975 0
 sys/src/cmd/aux/9pcon.c - 664 sys sys 1032059259 6283
 sys/src/cmd/aux/accupoint.c - 664 sys sys 985124882 2166
-sys/src/cmd/aux/acidleak.c - 664 sys sys 1048644418 5919
+sys/src/cmd/aux/acidleak.c - 664 sys sys 1050441591 5931
 sys/src/cmd/aux/apm.c - 664 sys sys 1046654953 20263
 sys/src/cmd/aux/astarld.c - 664 sys sys 1015008684 4638
 sys/src/cmd/aux/cddb.c - 664 sys sys 1032059267 4303
@@ -10603,7 +10603,7 @@ sys/src/libc/fmt/runesmprint.c - 664 sys sys 1014927316 176
 sys/src/libc/fmt/runesnprint.c - 664 sys sys 1014927316 203
 sys/src/libc/fmt/runesprint.c - 664 sys sys 1014927316 192
 sys/src/libc/fmt/runevseprint.c - 664 sys sys 1014927316 313
-sys/src/libc/fmt/runevsmprint.c - 664 sys sys 1050360307 1030
+sys/src/libc/fmt/runevsmprint.c - 664 sys sys 1050433061 1043
 sys/src/libc/fmt/runevsnprint.c - 664 sys sys 1014927316 330
 sys/src/libc/fmt/seprint.c - 664 sys sys 1014927317 196
 sys/src/libc/fmt/smprint.c - 664 sys sys 1014927317 168
