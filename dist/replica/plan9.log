@@ -14244,3 +14244,4 @@
 1076277748 3 c sys/src/libcomplete/complete.c - 664 sys sys 1076276513 2697
 1076385761 0 a sys/man/1/gview - 664 sys sys 1076349870 4219
 1076385761 1 a sys/src/cmd/gview.c - 664 sys sys 1076349870 50594
+1076459578 0 c rc/bin/fshalt - 775 sys sys 1076458748 1315
