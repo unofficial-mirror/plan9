@@ -13336,3 +13336,7 @@
 1065753130 3 c sys/src/cmd/upas/send/dest.c - 664 sys sys 1065717617 4732
 1065753130 4 c sys/src/cmd/upas/send/main.c - 664 sys sys 1065717618 11856
 1065753130 5 c sys/src/cmd/upas/send/message.c - 664 sys sys 1065717617 11064
+1065834093 0 c sys/src/9/pc/pci.c - 664 sys sys 1065815722 23867
+1065834093 1 c sys/src/boot/pc/pci.c - 664 sys sys 1065815736 17580
+1065834093 2 c sys/src/cmd/ip/imap4d/fetch.c - 664 sys sys 1065833426 11749
+1065834093 3 c sys/src/cmd/ip/imap4d/imap4d.c - 664 sys sys 1065805751 40675
