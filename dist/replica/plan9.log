@@ -16710,3 +16710,6 @@
 1111033896 7 c sys/src/cmd/mkone - 664 sys sys 1110990445 898
 1111033896 8 c sys/src/cmd/replica/applylog.c - 664 sys sys 1110990530 18079
 1111033896 9 a sys/src/libc/port/pool.acid - 664 sys sys 1110989242 12026
+1111120307 0 c sys/src/cmd/acme/cols.c - 664 sys sys 1111119425 11229
+1111120307 1 c sys/src/cmd/acme/scrl.c - 664 sys sys 1111119426 2875
+1111120307 2 c sys/src/games/music/jukebox/music.c - 664 sys sys 1111074158 28912
