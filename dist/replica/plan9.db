@@ -4462,7 +4462,7 @@ sys/src/9/bitsy/l.s - 664 sys sys 1037029024 18182
 sys/src/9/bitsy/main.c - 664 sys sys 1039753387 8929
 sys/src/9/bitsy/map - 664 sys sys 1017695515 236
 sys/src/9/bitsy/mem.h - 664 sys sys 1037029029 8048
-sys/src/9/bitsy/mkfile - 664 sys sys 1037812165 2387
+sys/src/9/bitsy/mkfile - 664 sys sys 1039911490 2389
 sys/src/9/bitsy/mmu.c - 664 sys sys 1017695515 11204
 sys/src/9/bitsy/mouse.c - 664 sys sys 1017695516 962
 sys/src/9/bitsy/paqfiles - 20000000775 sys sys 1020011250 0
@@ -4607,6 +4607,7 @@ sys/src/9/pc/etherga620.c - 664 sys sys 1032052917 28786
 sys/src/9/pc/etherga620fw.h - 644 sys sys 1026847642 222295
 sys/src/9/pc/etherif.h - 664 sys sys 1026847642 985
 sys/src/9/pc/ethermii.c - 664 sys sys 1039803177 4555
+sys/src/9/pc/ethermii.h - 664 sys sys 1039895684 3259
 sys/src/9/pc/ethersink.c - 664 sys sys 1017854323 1075
 sys/src/9/pc/ethersmc.c - 664 sys sys 1015014518 15079
 sys/src/9/pc/etherwavelan.c - 664 sys sys 1026847642 3722
@@ -4622,7 +4623,7 @@ sys/src/9/pc/l.s - 664 sys sys 1026847645 20867
 sys/src/9/pc/main.c - 664 sys sys 1034202255 14255
 sys/src/9/pc/mem.h - 664 sys sys 1018553448 4573
 sys/src/9/pc/memory.c - 664 sys sys 1032303986 12994
-sys/src/9/pc/mkfile - 664 sys sys 1039753495 2992
+sys/src/9/pc/mkfile - 664 sys sys 1039911473 2994
 sys/src/9/pc/mmu.c - 664 sys sys 1018553449 10008
 sys/src/9/pc/mouse.c - 664 sys sys 1020369766 6315
 sys/src/9/pc/mp.c - 664 sys sys 1018974174 17091
@@ -6200,7 +6201,7 @@ sys/src/cmd/cc/com64.c - 664 sys sys 944960808 9763
 sys/src/cmd/cc/compat - 664 sys sys 1014925177 684
 sys/src/cmd/cc/compat.c - 664 sys sys 944960869 266
 sys/src/cmd/cc/con.c - 664 sys sys 944960808 8349
-sys/src/cmd/cc/dcl.c - 664 sys sys 1014925177 25712
+sys/src/cmd/cc/dcl.c - 664 sys sys 1039910271 25755
 sys/src/cmd/cc/dpchk.c - 664 sys sys 1014925177 6368
 sys/src/cmd/cc/funct.c - 664 sys sys 984718510 6167
 sys/src/cmd/cc/lex.c - 664 sys sys 1014925177 23722
@@ -9912,7 +9913,7 @@ sys/src/cmd/vnc/exporter.c - 664 sys sys 1014925998 1312
 sys/src/cmd/vnc/exportfs.c - 664 sys sys 1014925998 13552
 sys/src/cmd/vnc/kbd.c - 664 sys sys 1014925998 3256
 sys/src/cmd/vnc/kbd.h - 664 sys sys 1034430141 301
-sys/src/cmd/vnc/kbd_vwr.c - 664 sys sys 1039767358 2361
+sys/src/cmd/vnc/kbd_vwr.c - 664 sys sys 1039889837 2389
 sys/src/cmd/vnc/latin1.c - 664 sys sys 1014925999 1410
 sys/src/cmd/vnc/latin1.h - 664 sys sys 1014925999 3524
 sys/src/cmd/vnc/mkfile - 664 sys sys 1034430146 649

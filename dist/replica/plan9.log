@@ -11245,3 +11245,8 @@
 1039804342 8 c sys/src/cmd/vac/source.c - 664 sys sys 1039797584 6723
 1039804342 9 c sys/src/fs/pc/compat.h - 664 sys sys 1039794577 1636
 1039804342 10 c sys/src/fs/pc/ether8139.c - 664 sys sys 1039794573 18318
+1039915984 0 c sys/src/9/bitsy/mkfile - 664 sys sys 1039911490 2389
+1039915984 1 c sys/src/9/pc/mkfile - 664 sys sys 1039911473 2994
+1039915984 2 a sys/src/9/pc/ethermii.h - 664 sys sys 1039895684 3259
+1039915984 3 c sys/src/cmd/cc/dcl.c - 664 sys sys 1039910271 25755
+1039915984 4 c sys/src/cmd/vnc/kbd_vwr.c - 664 sys sys 1039889837 2389
