@@ -16544,3 +16544,9 @@
 1108182729 2 c sys/src/cmd/cc/macbody - 664 sys sys 1108182410 11358
 1108182729 3 c sys/src/cmd/p.c - 664 sys sys 1108151788 1502
 1108182729 4 c sys/src/libc/9sys/getnetconninfo.c - 664 sys sys 1108157974 2477
+1108269081 0 c sys/src/cmd/aux/mkfile - 664 sys sys 1108184527 980
+1108269081 1 c sys/src/cmd/vnc/vncs.c - 664 sys sys 1108222270 21006
+1108269081 2 a sys/src/games/catback.p - 664 sys sys 1108184106 35763
+1108269081 3 a sys/src/games/catclock.c - 664 sys sys 1108184106 10354
+1108269081 4 a sys/src/games/eyes.p - 664 sys sys 1108184106 1128
+1108269081 5 a sys/src/games/mkfile - 664 sys sys 1108184131 526
