@@ -16167,3 +16167,4 @@
 1101270762 0 c sys/src/cmd/mklib - 664 sys sys 1101213349 618
 1101270762 1 c sys/src/cmd/fossil/fs.c - 664 sys sys 1101213292 21545
 1101312177 0 c sys/src/cmd/mkone - 664 sys sys 1101311048 835
+1101398530 0 c sys/man/4/usb - 664 sys sys 1101397021 3413
