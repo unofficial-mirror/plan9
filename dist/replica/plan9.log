@@ -14164,3 +14164,5 @@
 1073008958 11 a sys/src/cmd/usb/print/mkfile - 664 sys sys 1073007760 197
 1073008958 12 a sys/src/cmd/usb/print/usbprint - 775 sys sys 1073007760 222
 1073061185 0 c sys/src/mkfile - 664 sys sys 1073061130 1006
+1073151184 0 c sys/src/cmd/history.c - 664 sys sys 1073079763 6117
+1073151184 1 c sys/src/cmd/fossil/file.c - 664 sys sys 1073140359 30215
