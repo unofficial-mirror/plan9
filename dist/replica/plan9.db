@@ -1,6 +1,3 @@
-29000 - 20000000775 sys sys 954099276 0
-29000/include - 20000000775 sys sys 954099548 0
-29000/lib - 20000000775 sys sys 948037563 0
 386 - 20000000775 sys sys 1010957353 0
 386/bin - 20000000775 sys sys 1018897690 0
 386/bin/ape - 20000000775 sys sys 1016944144 0
@@ -41,6 +38,7 @@
 386/bin/upas/spam - 775 sys sys 1064598366 36
 386/bin/upas/unspam - 775 sys sys 1064598367 38
 386/bin/usb - 20000000775 sys sys 1019538890 0
+386/bin/usb/usbprinter - 775 sys sys 1089408719 222
 386/bin/venti - 20000000775 sys sys 947360466 0
 386/bin/venti/conf - 775 sys sys 1056364399 1506
 386/include - 20000000775 sys sys 953243048 0
@@ -92,8 +90,6 @@
 68020/lib - 20000000775 sys sys 947992106 0
 68020/lib/ape - 20000000775 sys sys 947992106 0
 68020/mkfile - 664 sys sys 948141303 52
-960 - 20000000775 sys sys 948037581 0
-960/include - 20000000775 sys sys 948037594 0
 LICENSE - 444 sys sys 1056856036 12895
 LICENSE.afpl - 664 sys sys 1056855682 14333
 LICENSE.gpl - 664 sys sys 1056572448 15081
@@ -347,7 +343,7 @@ dist/replica - 20000000755 sys sys 1019277119 0
 dist/replica/cd - 664 sys sys 1019527959 390
 dist/replica/kfs - 664 sys sys 1019527929 237
 dist/replica/network - 664 sys sys 1071079179 996
-dist/replica/plan9.proto - 664 sys sys 1079575451 2566
+dist/replica/plan9.proto - 664 sys sys 1089404586 2510
 env - 20000000775 sys sys 1015094872 0
 fd - 20000000775 sys sys 947958544 0
 lib - 20000000775 sys sys 958504315 0
@@ -4754,6 +4750,7 @@ sys/src/9/mtx/dat.h - 664 sys sys 1071245548 3849
 sys/src/9/mtx/devarch.c - 664 sys sys 1018721285 6793
 sys/src/9/mtx/devether.c - 664 sys sys 1071245412 9281
 sys/src/9/mtx/devrtc.c - 664 sys sys 1018721285 6772
+sys/src/9/mtx/errstr.h - 664 sys sys 1089390059 2137
 sys/src/9/mtx/ether2114x.c - 664 sys sys 1026848191 37904
 sys/src/9/mtx/etherif.h - 664 sys sys 1045504432 785
 sys/src/9/mtx/fns.h - 664 sys sys 1084475126 3171
@@ -6148,12 +6145,14 @@ sys/src/cmd/8c/bound.c - 664 sys sys 1084472146 16274
 sys/src/cmd/8c/bound.h - 664 sys sys 1084472146 903
 sys/src/cmd/8c/cgen.c - 664 sys sys 1089299180 32120
 sys/src/cmd/8c/cgen64.c - 664 sys sys 1089299182 45852
+sys/src/cmd/8c/div.c - 664 sys sys 1089382812 3313
 sys/src/cmd/8c/enam.c - 664 sys sys 1089299181 3227
 sys/src/cmd/8c/gc.h - 664 sys sys 1089299181 6418
 sys/src/cmd/8c/list.c - 664 sys sys 1067720660 3975
 sys/src/cmd/8c/machcap.c - 664 sys sys 1089299180 1201
 sys/src/cmd/8c/mkenam - 664 sys sys 944960730 112
 sys/src/cmd/8c/mkfile - 664 sys sys 1089299181 322
+sys/src/cmd/8c/mul.c - 664 sys sys 1089382812 5535
 sys/src/cmd/8c/peep.c - 664 sys sys 1089299181 11182
 sys/src/cmd/8c/reg.c - 664 sys sys 1089299180 20556
 sys/src/cmd/8c/sgen.c - 664 sys sys 1089299181 12833
@@ -8970,6 +8969,8 @@ sys/src/cmd/ip/snoopy/ppp_lcp.c - 664 sys sys 1015090061 50
 sys/src/cmd/ip/snoopy/pppoe_disc.c - 664 sys sys 1033797942 2495
 sys/src/cmd/ip/snoopy/pppoe_sess.c - 664 sys sys 1033797942 36
 sys/src/cmd/ip/snoopy/rarp.c - 664 sys sys 1015090062 50
+sys/src/cmd/ip/snoopy/rtcp.c - 644 sys sys 1089389638 1958
+sys/src/cmd/ip/snoopy/rtp.c - 664 sys sys 1089389638 1160
 sys/src/cmd/ip/snoopy/tcp.c - 664 sys sys 1055699196 3593
 sys/src/cmd/ip/snoopy/udp.c - 664 sys sys 1089299190 1990
 sys/src/cmd/ip/telnet.c - 664 sys sys 1080058033 8535
@@ -9570,7 +9571,7 @@ sys/src/cmd/qa/mkfile - 664 sys sys 944961076 215
 sys/src/cmd/qc - 20000000775 sys sys 944961081 0
 sys/src/cmd/qc/bits.c - 664 sys sys 944961081 1355
 sys/src/cmd/qc/cgen.c - 664 sys sys 1076969803 18282
-sys/src/cmd/qc/enam.c - 664 sys sys 1089299168 3653
+sys/src/cmd/qc/enam.c - 664 sys sys 1089383584 3653
 sys/src/cmd/qc/gc.h - 664 sys sys 1089299169 5971
 sys/src/cmd/qc/list.c - 664 sys sys 1067720728 3785
 sys/src/cmd/qc/mkenam - 664 sys sys 944961081 158
@@ -10385,8 +10386,9 @@ sys/src/cmd/usb/mouse - 20000000775 sys sys 1017802022 0
 sys/src/cmd/usb/mouse/mkfile - 664 sys sys 1017802022 211
 sys/src/cmd/usb/mouse/usbmouse.c - 664 sys sys 1017802022 3074
 sys/src/cmd/usb/print - 20000000775 sys sys 1073007760 0
-sys/src/cmd/usb/print/mkfile - 664 sys sys 1073660166 195
-sys/src/cmd/usb/print/usbprint - 775 sys sys 1073007760 222
+sys/src/cmd/usb/printer - 20000000775 sys sys 1073007760 0
+sys/src/cmd/usb/printer/mkfile - 664 sys sys 1089396828 199
+sys/src/cmd/usb/printer/usbprinter - 775 sys sys 1073007760 222
 sys/src/cmd/usb/usbd - 20000000775 sys sys 1017802021 0
 sys/src/cmd/usb/usbd/dat.h - 664 sys sys 1017802021 682
 sys/src/cmd/usb/usbd/device.c - 664 sys sys 1018387004 2955
@@ -11790,7 +11792,7 @@ sys/src/libventi/strdup.c - 664 sys sys 1045502096 203
 sys/src/libventi/venti.txt - 664 sys sys 1045502097 4347
 sys/src/libventi/zero.c - 664 sys sys 1045502097 1509
 sys/src/mkfile - 664 sys sys 1073061130 1006
-sys/src/mkfile.proto - 664 sys sys 1089299185 266
+sys/src/mkfile.proto - 664 sys sys 1089382963 265
 tmp - 20000000755 sys sys 953999902 0
 usr - 20000000775 sys sys 953406542 0
 usr/glenda - 20000000775 glenda glenda 953406571 0
