@@ -15752,3 +15752,4 @@
 1091331191 1 c sys/src/9/pc/usbuhci.c - 664 sys sys 1091287613 30721
 1091331191 2 a sys/src/cmd/usb/misc/usbmouse.c - 664 sys sys 1091282306 3056
 1091331191 3 c sys/src/cmd/usb/mkfile - 664 sys sys 1091327562 354
+1091417479 0 c sys/src/cmd/du.c - 664 sys sys 1091379562 3302
