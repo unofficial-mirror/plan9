@@ -16355,3 +16355,13 @@
 1104986011 3 c sys/src/cmd/calendar.c - 664 sys sys 1104939757 4205
 1104986011 4 c sys/src/cmd/fossil/9p.c - 664 sys sys 1104940048 21862
 1104986011 5 c sys/src/cmd/fossil/fossil-acid - 664 sys sys 1104940044 3991
+1105072429 0 c rc/bin/patch/create - 775 sys sys 1104988374 1160
+1105072429 1 a rc/bin/xls2txt - 755 sys sys 1105020030 520
+1105072429 2 a sys/log/secstore - 666 sys sys 1104988287 0
+1105072429 3 c sys/man/1/doc2txt - 664 sys sys 1105020018 2077
+1105072429 4 c sys/man/8/secstore - 664 sys sys 1105016705 1954
+1105072429 5 c sys/src/9/alphapc/trap.c - 664 sys sys 1105030177 18099
+1105072429 6 c sys/src/9/bitsy/trap.c - 664 sys sys 1105030166 19484
+1105072429 7 c sys/src/9/mtx/trap.c - 664 sys sys 1105030157 15882
+1105072429 8 c sys/src/9/pc/trap.c - 664 sys sys 1105030146 20520
+1105072429 9 c sys/src/9/ppc/trap.c - 664 sys sys 1105030152 18384
