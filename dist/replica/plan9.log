@@ -15131,3 +15131,6 @@
 1081204405 17 c sys/src/cmd/replica/proto.c - 664 sys sys 1081202238 8724
 1081204405 18 c sys/src/cmd/replica/revproto.c - 664 sys sys 1081202241 8932
 1081204405 19 c sys/src/libsec/port/md5pickle.c - 664 sys sys 1081199854 716
+1081386137 0 a sys/src/9/pc/nv_dma.h - 664 sys sys 1081384508 12943
+1081386137 1 c sys/src/9/pc/vganvidia.c - 664 sys sys 1081358011 12205
+1081386137 2 c sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1081358076 23145
