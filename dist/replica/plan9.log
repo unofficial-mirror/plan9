@@ -15164,3 +15164,13 @@
 1082604791 0 c sys/man/1/mkdir - 664 sys sys 1082593141 717
 1082604791 1 c sys/src/9/ip/ipv6.h - 664 sys sys 1082604125 4260
 1082604791 2 c sys/src/cmd/mkdir.c - 664 sys sys 1082593106 1026
+1082925181 0 c acme/bin/source/win/main.c - 664 sys sys 1082922243 12609
+1082925181 1 c sys/src/cmd/acme/acme.c - 664 sys sys 1082924469 19212
+1082925181 2 c sys/src/cmd/acme/wind.c - 664 sys sys 1082924470 11115
+1082925181 3 c sys/src/cmd/mc.c - 664 sys sys 1082924484 5520
+1082925181 4 c sys/src/libdraw/creadimage.c - 664 sys sys 1082924457 2379
+1082925181 5 c sys/src/libdraw/font.c - 664 sys sys 1082924457 7594
+1082925181 6 c sys/src/libdraw/getsubfont.c - 664 sys sys 1082924458 772
+1082925181 7 c sys/src/libdraw/readimage.c - 664 sys sys 1082924458 2431
+1082925181 8 c sys/src/libdraw/readsubfont.c - 664 sys sys 1082924458 1053
+1082925181 9 c sys/src/libdraw/subfontcache.c - 664 sys sys 1082924459 752
