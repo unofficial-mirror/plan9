@@ -14196,3 +14196,6 @@
 1074454413 0 c sys/src/cmd/srv.c - 664 sys sys 1074452607 3885
 1074560614 0 c sys/src/cmd/auth/secstore/secstored.c - 664 sys sys 1074559798 7998
 1074560614 1 c sys/src/cmd/auth/secureidcheck.c - 664 sys sys 1074559811 8985
+1074735241 0 a rc/bin/uptime - 775 sys sys 1074730712 234
+1074735241 1 a sys/man/1/uptime - 664 sys sys 1074733782 380
+1074735241 2 c sys/src/cmd/ssh/authsrvtis.c - 664 sys sys 1074731315 928
