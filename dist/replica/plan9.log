@@ -15363,3 +15363,8 @@
 1087529470 3 c sys/src/cmd/cc/cc.h - 664 sys sys 1087505577 11838
 1087529470 4 c sys/src/cmd/cc/sub.c - 664 sys sys 1087505577 31090
 1087606894 0 c sys/src/9/ip/tcp.c - 664 sys sys 1087606219 65623
+1087659094 0 c sys/src/9/alphapc/io.h - 664 sys sys 1087657423 4540
+1087659094 1 c sys/src/9/mtx/io.h - 664 sys sys 1087657404 4817
+1087659094 2 c sys/src/9/mtx/pci.c - 664 sys sys 1087657434 16662
+1087659094 3 c sys/src/9/pc/io.h - 664 sys sys 1087657448 8029
+1087659094 4 c sys/src/9/pc/pci.c - 664 sys sys 1087657460 25736
