@@ -15919,3 +15919,7 @@
 1094700711 20 d sys/src/boot/pc/donprint.c - 664 sys sys 1019240172 0
 1094837544 0 c lib/vgadb - 664 sys sys 1094837311 28572
 1095132682 0 c sys/src/cmd/8l/pass.c - 664 sys sys 1095107668 13675
+1095186687 0 c sys/src/cmd/unix/u9fs/doprint.c - 664 sys sys 1095185028 8641
+1095186687 1 c sys/src/cmd/unix/u9fs/plan9.h - 664 sys sys 1095185027 5748
+1095186687 2 c sys/src/cmd/unix/u9fs/print.c - 664 sys sys 1095185028 1329
+1095186687 3 c sys/src/cmd/unix/u9fs/u9fs.c - 664 sys sys 1095185027 30960
