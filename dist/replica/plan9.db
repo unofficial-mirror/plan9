@@ -4823,7 +4823,7 @@ sys/src/9/pc/etherga620fw.h - 644 sys sys 1026847642 222295
 sys/src/9/pc/etherif.h - 664 sys sys 1045063564 961
 sys/src/9/pc/etherigbe.c - 664 sys sys 1081706478 42962
 sys/src/9/pc/ethermii.c - 664 sys sys 1084331434 4612
-sys/src/9/pc/ethermii.h - 664 sys sys 1039895684 3259
+sys/src/9/pc/ethermii.h - 664 sys sys 1086873891 3258
 sys/src/9/pc/etherrhine.c - 664 sys sys 1081706478 13799
 sys/src/9/pc/ethersink.c - 664 sys sys 1048644103 1076
 sys/src/9/pc/ethersmc.c - 664 sys sys 1071245461 15103
@@ -10784,7 +10784,7 @@ sys/src/fs/worms - 664 sys sys 1015110031 2806
 sys/src/lib9p - 20000000775 sys sys 1015023311 0
 sys/src/lib9p/dirread.c - 664 sys sys 1015023310 641
 sys/src/lib9p/fid.c - 664 sys sys 1015023310 1051
-sys/src/lib9p/file.c - 664 sys sys 1015023310 5585
+sys/src/lib9p/file.c - 664 sys sys 1086896814 5585
 sys/src/lib9p/ftest.c - 664 sys sys 1015023310 502
 sys/src/lib9p/intmap.c - 664 sys sys 1016833881 2255
 sys/src/lib9p/mem.c - 664 sys sys 1015023310 765

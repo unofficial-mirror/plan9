@@ -15311,3 +15311,5 @@
 1086408181 6 c sys/src/9/port/devtls.c - 664 sys sys 1086406907 45225
 1086579128 0 c sys/src/cmd/8c/cgen64.c - 664 sys sys 1086543210 43289
 1086838376 0 c sys/src/cmd/acme/exec.c - 664 sys sys 1086809679 28158
+1086924676 0 c sys/src/9/pc/ethermii.h - 664 sys sys 1086873891 3258
+1086924676 1 c sys/src/lib9p/file.c - 664 sys sys 1086896814 5585
