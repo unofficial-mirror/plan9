@@ -11293,3 +11293,7 @@
 1040698976 4 c sys/man/8/boot - 664 sys sys 1040698789 6482
 1040698976 5 c sys/man/8/plan9.ini - 664 sys sys 1040698791 20588
 1040698976 6 c sys/src/cmd/unix/drawterm/drawterm.c - 664 sys sys 1040672905 11492
+1040970772 0 c sys/src/cmd/9nfs/nfsserver.c - 664 sys sys 1040952455 15576
+1040970772 1 c sys/src/cmd/9nfs/portmapper.c - 664 sys sys 1040952456 3179
+1040970772 2 c sys/src/cmd/9nfs/server.c - 664 sys sys 1040952456 11027
+1040970772 3 c sys/src/cmd/9nfs/unixnames.c - 664 sys sys 1040952457 5974
