@@ -11475,3 +11475,5 @@
 1042857112 1 c sys/src/9/pc/wavelan.h - 664 sys sys 1042855780 6228
 1042857112 2 c sys/src/9/port/netif.c - 664 sys sys 1042855805 13131
 1042857112 3 c sys/src/9/port/netif.h - 664 sys sys 1042855799 2908
+1042941787 0 c sys/src/cmd/hget.c - 664 sys sys 1042940715 21870
+1042941787 1 c sys/src/cmd/webcookies.c - 664 sys sys 1042940803 23411

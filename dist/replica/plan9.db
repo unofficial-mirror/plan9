@@ -8356,7 +8356,7 @@ sys/src/cmd/gzip/mkfile - 664 sys sys 984758036 125
 sys/src/cmd/gzip/unzip.c - 664 sys sys 1014924864 13591
 sys/src/cmd/gzip/zip.c - 664 sys sys 1033183074 7054
 sys/src/cmd/gzip/zip.h - 664 sys sys 954778719 1428
-sys/src/cmd/hget.c - 664 sys sys 1041067379 21856
+sys/src/cmd/hget.c - 664 sys sys 1042940715 21870
 sys/src/cmd/history.c - 664 sys sys 1018721429 4868
 sys/src/cmd/hoc - 20000000775 sys sys 954036932 0
 sys/src/cmd/hoc/code.c - 664 sys sys 944961000 10041
@@ -10029,7 +10029,7 @@ sys/src/cmd/vt/mkfile - 664 sys sys 944961620 159
 sys/src/cmd/vt/termcap - 664 sys sys 944961620 278
 sys/src/cmd/vt/vt.c - 664 sys sys 1014926857 16841
 sys/src/cmd/wc.c - 664 sys sys 984717764 12652
-sys/src/cmd/webcookies.c - 664 sys sys 1017680834 23397
+sys/src/cmd/webcookies.c - 664 sys sys 1042940803 23411
 sys/src/cmd/webfs - 20000000775 sys sys 1015015823 0
 sys/src/cmd/webfs/buf.c - 664 sys sys 1032665987 1198
 sys/src/cmd/webfs/client.c - 664 sys sys 1036004434 6477
