@@ -15206,3 +15206,13 @@
 1084332679 17 c sys/src/libsec/port/rsagen.c - 664 sys sys 1084318869 1462
 1084332679 18 c sys/src/libsec/port/tlshand.c - 664 sys sys 1084318870 54247
 1084332679 19 d sys/src/9/port/devrealtime.c - 664 sys sys 1055688366 0
+1084417368 0 c acme/mail/readme - 664 sys sys 1084385076 2795
+1084417368 1 c acme/mail/src/mail.c - 664 sys sys 1084385064 11057
+1084417368 2 c rc/bin/src - 775 sys sys 1084333365 916
+1084417368 3 c sys/games/lib/fortunes - 664 sys sys 1084332868 248449
+1084417368 4 c sys/man/2/rsa - 664 sys sys 1084332670 4245
+1084417368 5 c sys/man/4/vacfs - 664 sys sys 1084333062 1545
+1084417368 6 c sys/src/cmd/7c/cgen.c - 664 sys sys 1084370958 17748
+1084417368 7 c sys/src/cmd/aux/mkfile - 664 sys sys 1084415958 946
+1084417368 8 c sys/src/cmd/fossil/conf.rc - 775 sys sys 1084333190 1416
+1084417368 9 c sys/src/cmd/vac/vacfs.c - 664 sys sys 1084333048 13630
