@@ -14367,3 +14367,4 @@
 1077508910 32 a sys/src/cmd/unix/drawterm/pushssl.c - 664 sys sys 1077480278 897
 1077508910 33 c sys/src/cmd/unix/drawterm/qio.c - 664 sys sys 1077480279 14729
 1077508910 34 c sys/src/cmd/unix/drawterm/sys.h - 664 sys sys 1077480280 13888
+1077595330 0 c sys/man/6/font - 664 sys sys 1077594184 2528
