@@ -11454,3 +11454,6 @@
 1042428845 2 a sys/src/cmd/aux/conswdir.c - 664 sys sys 1042425146 2071
 1042428845 3 c sys/src/cmd/ssh/ssh.c - 664 sys sys 1042424644 9603
 1042428845 4 c sys/src/cmd/vnc/draw.c - 664 sys sys 1042391341 6958
+1042498931 0 c sys/man/1/rwd - 664 sys sys 1042469992 2958
+1042498931 1 c sys/src/9/pc/sdata.c - 664 sys sys 1042497924 44703
+1042498931 2 c sys/src/cmd/fossil/disk.c - 664 sys sys 1042497769 5736
