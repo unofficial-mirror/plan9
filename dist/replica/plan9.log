@@ -16539,3 +16539,8 @@
 1108096312 1 c sys/man/1/tar - 664 sys sys 1108059323 3380
 1108096312 2 c sys/src/9/pc/l.s - 664 sys sys 1108068066 23574
 1108096312 3 c sys/src/cmd/strip.c - 664 sys sys 1108077276 3350
+1108182729 0 c sys/include/libc.h - 664 sys sys 1108157980 19587
+1108182729 1 c sys/man/2/dial - 664 sys sys 1108158522 6594
+1108182729 2 c sys/src/cmd/cc/macbody - 664 sys sys 1108182410 11358
+1108182729 3 c sys/src/cmd/p.c - 664 sys sys 1108151788 1502
+1108182729 4 c sys/src/libc/9sys/getnetconninfo.c - 664 sys sys 1108157974 2477
