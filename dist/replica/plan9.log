@@ -14050,3 +14050,8 @@
 1071540155 9 c sys/src/cmd/9nfs/mkfile - 664 sys sys 1071498518 640
 1071540155 10 c sys/src/cmd/9nfs/nfsmount.c - 664 sys sys 1071498520 6142
 1071540155 11 c sys/src/cmd/ip/ipconfig.c - 664 sys sys 1071498576 34555
+1071621171 0 c rc/bin/window - 775 sys sys 1071573331 1781
+1071621171 1 a sys/lib/lp/log - 20000000775 sys sys 1071620128 0
+1071621171 2 c sys/lib/mimetype - 664 sys sys 1071573310 5589
+1071621171 3 c sys/src/9/pc/sdata.c - 664 sys sys 1071615236 50538
+1071621171 4 c sys/src/boot/pc/sdata.c - 664 sys sys 1071615664 35424
