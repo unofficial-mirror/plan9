@@ -16107,3 +16107,4 @@
 1100320299 0 c mail/lib/validatesender - 775 upas upas 1100271572 1080
 1100320299 1 c sys/src/boot/pc/clock.c - 664 sys sys 1100269944 6068
 1100406717 0 c sys/src/9/port/sysfile.c - 664 sys sys 1100363052 22146
+1100448126 0 c sys/games/lib/fortunes - 664 sys sys 1100446483 250944
