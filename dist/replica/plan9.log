@@ -12174,3 +12174,4 @@
 1047265355 29 a sys/src/cmd/unix/winplumb.c - 664 sys sys 1047233509 5015
 1047265355 30 a sys/src/cmd/unix/winplumb.exe - 664 sys sys 1047233509 32768
 1047265355 31 a sys/src/cmd/unix/winstart - 775 sys sys 1047233540 60
+1047322927 0 c sys/src/9/bitsy/wavelan.c - 664 sys sys 1047298972 27107

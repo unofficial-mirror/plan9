@@ -4523,7 +4523,7 @@ sys/src/9/bitsy/sdata.c - 664 sys sys 1037029041 44666
 sys/src/9/bitsy/tar.c - 664 sys sys 1017695521 1375
 sys/src/9/bitsy/trap.c - 664 sys sys 1037029044 18951
 sys/src/9/bitsy/uartsa1110.c - 664 sys sys 1037029045 8530
-sys/src/9/bitsy/wavelan.c - 664 sys sys 1043922422 25684
+sys/src/9/bitsy/wavelan.c - 664 sys sys 1047298972 27107
 sys/src/9/bitsy/wavelan.h - 664 sys sys 1037029076 27
 sys/src/9/boot - 20000000775 sys sys 1018556557 0
 sys/src/9/boot/aux.c - 664 sys sys 1015012529 2520
