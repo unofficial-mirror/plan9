@@ -16190,3 +16190,4 @@
 1101962003 7 c sys/src/cmd/usb/audio/usbaudioctl.c - 664 sys sys 1101906325 17266
 1101962003 8 c sys/src/cmd/usb/lib/dump.c - 664 sys sys 1101906317 12757
 1101962003 9 c sys/src/libframe/frdraw.c - 664 sys sys 1101910634 3271
+1101997922 0 c sys/man/1/acme - 664 sys sys 1101996606 17593
