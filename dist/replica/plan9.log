@@ -15074,3 +15074,5 @@
 1079971354 7 c sys/src/cmd/jpg/mkfile - 664 sys sys 1079970080 1056
 1079971354 8 a sys/src/cmd/jpg/readbmp.c - 664 sys sys 1079970079 13697
 1079971354 9 c sys/src/cmd/wikifs/parse.c - 664 sys sys 1079969446 4989
+1080059573 0 c lib/vgadb - 664 sys sys 1080049879 27670
+1080059573 1 c sys/src/cmd/ip/telnet.c - 664 sys sys 1080058033 8535
