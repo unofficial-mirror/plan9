@@ -14038,3 +14038,15 @@
 1071342129 16 c sys/src/cmd/upas/smtp/greylist.c - 664 sys sys 1071335923 5588
 1071459147 0 c lib/units - 664 sys sys 1071415518 9997
 1071459147 1 c sys/src/cmd/tapefs/tarfs.c - 664 sys sys 1071458376 2672
+1071540155 0 c sys/include/keyboard.h - 664 sys sys 1071535972 802
+1071540155 1 c sys/lib/lp/bin/lpscratch - 775 sys sys 1071539623 32
+1071540155 2 a sys/lib/lp/tmp - 20000000777 sys sys 1071536829 0
+1071540155 3 c sys/src/9/pc/etherelnk3.c - 664 sys sys 1071515332 48521
+1071540155 4 c sys/src/9/pc/fns.h - 664 sys sys 1071514801 4296
+1071540155 5 c sys/src/9/pc/l.s - 664 sys sys 1071514801 23314
+1071540155 6 a sys/src/cmd/9nfs/authhostowner.c - 664 sys sys 1071498519 4190
+1071540155 7 c sys/src/cmd/9nfs/dat.h - 664 sys sys 1071498518 4406
+1071540155 8 c sys/src/cmd/9nfs/fns.h - 664 sys sys 1071498519 1908
+1071540155 9 c sys/src/cmd/9nfs/mkfile - 664 sys sys 1071498518 640
+1071540155 10 c sys/src/cmd/9nfs/nfsmount.c - 664 sys sys 1071498520 6142
+1071540155 11 c sys/src/cmd/ip/ipconfig.c - 664 sys sys 1071498576 34555
