@@ -16651,3 +16651,6 @@
 1109910680 0 c acme/wiki/src/wiki.c - 664 sys sys 1109869230 10727
 1109910680 1 c sys/src/9/pc/devarch.c - 664 sys sys 1109854210 18553
 1109910680 2 c sys/src/cmd/con/con.c - 664 sys sys 1109869228 15231
+1110310375 0 c sys/games/lib/fortunes - 664 sys sys 1110309055 253240
+1110310375 1 c sys/src/cmd/unix/README - 664 sys sys 1110289527 746
+1110310375 2 c sys/src/cmd/unix/sam/README - 664 sys sys 1110289373 306
