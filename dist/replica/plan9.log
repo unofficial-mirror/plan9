@@ -13005,3 +13005,5 @@
 1060270460 7 c sys/src/9/port/devmouse.c - 664 sys sys 1060266767 12196
 1060270460 8 c sys/src/9/port/devuart.c - 664 sys sys 1060267239 11762
 1060270460 9 c sys/src/9/port/portfns.h - 664 sys sys 1060266745 10822
+1060360456 0 c lib/namespace - 664 sys sys 1060354451 590
+1060360456 1 c sys/games/lib/fortunes - 664 sys sys 1060359152 244377
