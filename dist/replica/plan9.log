@@ -15927,3 +15927,4 @@
 1095478342 1 c sys/src/cmd/vnc/exportfs.c - 664 sys sys 1095444302 13667
 1095564756 0 c 386/bin/aux/vmwarefs - 775 sys sys 1095563640 99117
 1095564756 1 c sys/games/lib/fortunes - 664 sys sys 1095516221 249755
+1095733874 0 c sys/games/lib/fortunes - 664 sys sys 1095732976 249846
