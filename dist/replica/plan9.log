@@ -13316,3 +13316,9 @@
 1064799192 0 c sys/man/8/secstore - 664 sys sys 1064789017 1306
 1064799192 1 c sys/src/cmd/auth/secstore/SConn.c - 664 sys sys 1064789003 4419
 1064799192 2 c sys/src/cmd/auth/secstore/secstored.c - 664 sys sys 1064789004 7955
+1064889207 0 c sys/man/8/httpd - 664 sys sys 1064887873 6230
+1064889207 1 c sys/man/8/secstore - 664 sys sys 1064807283 1306
+1064889207 2 c sys/src/cmd/ip/httpd/mkfile - 664 sys sys 1064887854 1615
+1064889207 3 a sys/src/cmd/ip/httpd/webls.c - 664 sys sys 1064887840 6940
+1064889207 4 a sys/src/cmd/ip/httpd/webls.denied - 664 sys sys 1064887847 3
+1064889207 5 c sys/src/libbio/bgetc.c - 664 sys sys 1064846001 948
