@@ -12508,3 +12508,4 @@
 1051207380 1 c sys/log/runq - 666 sys sys 1051207261 330
 1051207380 2 c sys/log/smtp - 666 sys sys 1051207261 152
 1051207380 3 c sys/src/cmd/ip/dhcp.h - 664 sys sys 1051206271 3368
+1051534904 0 c sys/games/lib/fortunes - 664 sys sys 1051533798 240058
