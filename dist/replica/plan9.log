@@ -13586,3 +13586,14 @@
 1067746861 197 c sys/src/libc/sparc/main9p.s - 664 sys sys 1067722817 749
 1067746861 198 c sys/src/libc/sparc/mkfile - 664 sys sys 1067723173 434
 1067746861 199 c sys/src/libc/sparc/vlrt.c - 664 sys sys 1067723054 9066
+1067810583 0 a rc/bin/patch - 20000000775 sys sys 1067803227 0
+1067810583 1 a rc/bin/patch/apply - 775 sys sys 1067804403 1234
+1067810583 2 a rc/bin/patch/create - 775 sys sys 1067804404 1129
+1067810583 3 a rc/bin/patch/diff - 775 sys sys 1067804404 466
+1067810583 4 a rc/bin/patch/list - 775 sys sys 1067804541 321
+1067810583 5 a rc/bin/patch/note - 664 sys sys 1067804405 593
+1067810583 6 a rc/bin/patch/okay - 775 sys sys 1067803227 240
+1067810583 7 a rc/bin/patch/undo - 775 sys sys 1067804405 549
+1067810583 8 a sys/man/1/patch - 664 sys sys 1067804449 2176
+1067810583 9 c sys/src/9/pc/etherigbe.c - 664 sys sys 1067792708 42430
+1067810583 10 c sys/src/9/pc/mkfile - 664 sys sys 1067810339 3219
