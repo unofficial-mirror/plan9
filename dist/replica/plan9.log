@@ -16642,3 +16642,7 @@
 1109565122 12 c sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1109511456 23718
 1109565122 13 c sys/src/cmd/upas/send/dest.c - 664 sys sys 1109511268 4789
 1109565122 14 c sys/src/cmd/venti/printarena.c - 664 sys sys 1109511493 2675
+1109651582 0 c sys/src/cmd/history.c - 664 sys sys 1109607291 6008
+1109651582 1 c sys/src/cmd/ip/ftpfs/ftpfs.c - 664 sys sys 1109607513 13700
+1109651582 2 c sys/src/cmd/ramfs.c - 664 sys sys 1109607491 15506
+1109651582 3 c sys/src/cmd/tapefs/fs.c - 664 sys sys 1109607563 9754

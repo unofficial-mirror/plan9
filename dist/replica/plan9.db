@@ -8861,7 +8861,7 @@ sys/src/cmd/gzip/unzip.c - 664 sys sys 1050689595 13603
 sys/src/cmd/gzip/zip.c - 664 sys sys 1033183074 7054
 sys/src/cmd/gzip/zip.h - 664 sys sys 954778719 1428
 sys/src/cmd/hget.c - 664 sys sys 1091129591 25650
-sys/src/cmd/history.c - 664 sys sys 1084471627 6117
+sys/src/cmd/history.c - 664 sys sys 1109607291 6008
 sys/src/cmd/hoc - 20000000775 sys sys 954036932 0
 sys/src/cmd/hoc/code.c - 664 sys sys 944961000 10041
 sys/src/cmd/hoc/hoc.h - 664 sys sys 944960999 2358
@@ -8905,7 +8905,7 @@ sys/src/cmd/ip/dhcpd/testping.c - 664 sys sys 950389141 352
 sys/src/cmd/ip/ftpd.c - 664 sys sys 1101155057 33054
 sys/src/cmd/ip/ftpfs - 20000000775 sys sys 1014925642 0
 sys/src/cmd/ip/ftpfs/file.c - 664 sys sys 1014925642 4208
-sys/src/cmd/ip/ftpfs/ftpfs.c - 664 sys sys 1093452873 13584
+sys/src/cmd/ip/ftpfs/ftpfs.c - 664 sys sys 1109607513 13700
 sys/src/cmd/ip/ftpfs/ftpfs.h - 664 sys sys 1091904423 2353
 sys/src/cmd/ip/ftpfs/mkfile - 664 sys sys 1048312050 173
 sys/src/cmd/ip/ftpfs/proto.c - 664 sys sys 1103565527 29470
@@ -9656,7 +9656,7 @@ sys/src/cmd/ql/optab.c - 664 sys sys 1089299167 13392
 sys/src/cmd/ql/pass.c - 664 sys sys 1089299168 11868
 sys/src/cmd/ql/sched.c - 664 sys sys 1089299166 12776
 sys/src/cmd/ql/span.c - 664 sys sys 1089299167 19882
-sys/src/cmd/ramfs.c - 664 sys sys 1079877660 15377
+sys/src/cmd/ramfs.c - 664 sys sys 1109607491 15506
 sys/src/cmd/ratfs - 20000000775 sys sys 1016943965 0
 sys/src/cmd/ratfs/ctlfiles.c - 664 sys sys 1016943964 6694
 sys/src/cmd/ratfs/main.c - 664 sys sys 1016943964 6516
@@ -9903,7 +9903,7 @@ sys/src/cmd/tail.c - 664 sys sys 1077054929 6004
 sys/src/cmd/tapefs - 20000000775 sys sys 944962012 0
 sys/src/cmd/tapefs/32vfs.c - 664 sys sys 1014926384 3688
 sys/src/cmd/tapefs/cpiofs.c - 664 sys sys 1014926384 2493
-sys/src/cmd/tapefs/fs.c - 664 sys sys 1032060630 9777
+sys/src/cmd/tapefs/fs.c - 664 sys sys 1109607563 9754
 sys/src/cmd/tapefs/mkfile - 664 sys sys 1097914131 254
 sys/src/cmd/tapefs/tapefs.h - 664 sys sys 1014926384 1609
 sys/src/cmd/tapefs/tapfs.c - 664 sys sys 1063854819 1938
