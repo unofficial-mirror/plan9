@@ -12434,3 +12434,5 @@
 1049841168 1 c sys/man/4/nfs - 664 sys sys 1049776970 4475
 1049841168 2 c sys/src/cmd/aux/portmap.c - 664 sys sys 1049776133 3617
 1049841168 3 c sys/src/cmd/nfs.c - 664 sys sys 1049839711 31052
+1049904151 0 c sys/games/lib/fortunes - 664 sys sys 1049903231 240008
+1049904151 1 c sys/src/cmd/nfs.c - 664 sys sys 1049859688 31052
