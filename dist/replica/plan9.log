@@ -16395,3 +16395,7 @@
 1105799523 1 c sys/src/cmd/kl/asm.c - 664 sys sys 1105798985 26122
 1105799523 2 c sys/src/cmd/kl/optab.c - 664 sys sys 1105798985 7369
 1105912942 0 c sys/src/9/pc/ether8169.c - 664 sys sys 1105912215 22703
+1106022769 0 c sys/games/lib/fortunes - 664 sys sys 1105977679 252117
+1106022769 1 c sys/man/4/usb - 664 sys sys 1105992038 4295
+1106022769 2 c sys/src/9/boot/local.c - 664 sys sys 1105976808 5619
+1106022769 3 c sys/src/boot/pc/ether8169.c - 664 sys sys 1106018997 18687
