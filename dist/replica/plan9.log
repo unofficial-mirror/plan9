@@ -16319,3 +16319,6 @@
 1103949068 3 c sys/src/cmd/auth/secstore/secuser.c - 664 sys sys 1103929625 5128
 1103949068 4 c sys/src/cmd/auth/secstore/util.c - 664 sys sys 1103929624 1478
 1103983277 0 c lib/face/48x48x4/.dict - 664 sys sys 1103981657 2530
+1104105699 0 c sys/src/libc/fmt/dofmt.c - 664 sys sys 1104099108 8565
+1104105699 1 c sys/src/libc/fmt/fmt.c - 664 sys sys 1104100968 3102
+1104105699 2 c sys/src/libsec/port/md5pickle.c - 664 sys sys 1104105067 716
