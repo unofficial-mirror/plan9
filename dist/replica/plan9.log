@@ -12191,3 +12191,9 @@
 1047513753 12 c sys/src/cmd/vnc/compat.h - 664 sys sys 1047512521 3425
 1047513753 13 c sys/src/cmd/vnc/kbdv.c - 664 sys sys 1047512524 3513
 1047513753 14 d sys/src/cmd/upas/filterkit/myupassend.sample - 775 sys sys 1019854294 0
+1047664970 0 c sys/src/fs/dev/cw.c - 664 sys sys 1047663897 42252
+1047664970 1 c sys/src/fs/pc/floppy.c - 664 sys sys 1047663990 13993
+1047664970 2 c sys/src/fs/pc/pc.c - 664 sys sys 1047663991 7938
+1047664970 3 c sys/src/fs/port/chk.c - 664 sys sys 1047663951 14533
+1047664970 4 c sys/src/fs/port/config.c - 664 sys sys 1047663951 18054
+1047664970 5 c sys/src/fs/port/main.c - 664 sys sys 1047663952 5698
