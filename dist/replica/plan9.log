@@ -16246,3 +16246,15 @@
 1103603524 7 c sys/src/lib9p/post.c - 664 sys sys 1103565871 356
 1103603524 8 c sys/src/lib9p/tpost.c - 664 sys sys 1103565872 316
 1103603524 9 c sys/src/libip/equivip.c - 664 sys sys 1103554773 285
+1103689942 0 c sys/src/9/pc/ether8169.c - 664 sys sys 1103641602 22531
+1103689942 1 c sys/src/9/port/latin1.h - 664 sys sys 1103633666 3563
+1103689942 2 c sys/src/boot/pc/bootp.c - 664 sys sys 1103641772 12262
+1103689942 3 c sys/src/boot/pc/clock.c - 664 sys sys 1103641772 6425
+1103689942 4 c sys/src/boot/pc/ether.c - 664 sys sys 1103641772 5120
+1103689942 5 a sys/src/boot/pc/ether8169.c - 664 sys sys 1103641772 18622
+1103689942 6 c sys/src/boot/pc/ethermii.c - 664 sys sys 1103641771 4413
+1103689942 7 c sys/src/boot/pc/l.s - 664 sys sys 1103641771 13843
+1103689942 8 c sys/src/boot/pc/mem.h - 664 sys sys 1103641771 3371
+1103689942 9 c sys/src/boot/pc/mkfile - 664 sys sys 1103641863 3105
+1103689942 10 c sys/src/cmd/acme/text.c - 664 sys sys 1103606882 27652
+1103689942 11 c sys/src/cmd/tar.c - 664 sys sys 1103607141 15725
