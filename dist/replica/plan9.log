@@ -16365,3 +16365,12 @@
 1105072429 7 c sys/src/9/mtx/trap.c - 664 sys sys 1105030157 15882
 1105072429 8 c sys/src/9/pc/trap.c - 664 sys sys 1105030146 20520
 1105072429 9 c sys/src/9/ppc/trap.c - 664 sys sys 1105030152 18384
+1105130044 0 c usr/glenda/lib/profile - 664 glenda glenda 1105128663 890
+1105130044 1 c sys/src/9/pc/trap.c - 664 sys sys 1105109602 20537
+1105130044 2 c sys/src/9/pc/ether8169.c - 664 sys sys 1105109291 22498
+1105130044 3 c sys/src/cmd/aux/mkfile - 664 sys sys 1105123164 962
+1105130044 4 a sys/src/cmd/aux/msexceltables.c - 664 sys sys 1105123098 13134
+1105130044 5 c sys/src/cmd/upas/smtp/mxdial.c - 664 sys sys 1105114609 6024
+1105130044 6 c sys/src/cmd/upas/smtp/smtp.c - 664 sys sys 1105114610 20113
+1105130044 7 c sys/src/cmd/upas/smtp/smtp.h - 664 sys sys 1105114610 1111
+1105130044 8 c sys/src/mkfile.proto - 664 sys sys 1105121349 265
