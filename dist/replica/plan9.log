@@ -16134,3 +16134,4 @@
 1100701973 6 c sys/src/9/ppc/m8260.h - 664 sys sys 1100701674 20899
 1100701973 7 c sys/src/9/ppc/trap.c - 664 sys sys 1100701675 18357
 1100701973 8 c sys/src/libc/power/cycles.s - 664 sys sys 1100701675 322
+1100797275 0 c sys/games/lib/fortunes - 664 sys sys 1100795513 251274
