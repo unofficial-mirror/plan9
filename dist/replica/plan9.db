@@ -4777,7 +4777,7 @@ sys/src/9/port/devproc.c - 664 sys sys 1047952847 23450
 sys/src/9/port/devrealtime.c - 664 sys sys 1055688366 16209
 sys/src/9/port/devroot.c - 664 sys sys 1048912313 4015
 sys/src/9/port/devsd.c - 664 sys sys 1055688396 28669
-sys/src/9/port/devsdp.c - 664 sys sys 1055688405 44800
+sys/src/9/port/devsdp.c - 664 sys sys 1057323393 44800
 sys/src/9/port/devsegment.c - 664 sys sys 1017679394 9600
 sys/src/9/port/devsrv.c - 664 sys sys 1014931174 5146
 sys/src/9/port/devssl.c - 664 sys sys 1045063590 26100
@@ -4828,10 +4828,10 @@ sys/src/9/port/sysfile.c - 664 sys sys 1055688552 21766
 sys/src/9/port/sysproc.c - 664 sys sys 1055688564 15125
 sys/src/9/port/systab.h - 664 sys sys 1014931179 3044
 sys/src/9/port/taslock.c - 664 sys sys 1036813005 2896
-sys/src/9/port/thwack.c - 664 sys sys 1014931179 7253
+sys/src/9/port/thwack.c - 664 sys sys 1057323394 7253
 sys/src/9/port/thwack.h - 664 sys sys 1015278340 1792
 sys/src/9/port/tod.c - 664 sys sys 1036813006 3328
-sys/src/9/port/unthwack.c - 664 sys sys 1015278340 5249
+sys/src/9/port/unthwack.c - 664 sys sys 1057323394 5249
 sys/src/9/port/xalloc.c - 664 sys sys 1032052814 4030
 sys/src/NOTICE - 444 sys sys 1018803112 63
 sys/src/ape - 20000000775 sys sys 1014921996 0

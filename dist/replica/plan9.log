@@ -12884,3 +12884,6 @@
 1057030384 19 a lib/face/48x48x8/s/stevesimon.1 - 664 sys sys 1056982262 1598
 1057156429 0 c sys/lib/postscript/font/NOTICE - 444 sys sys 1057155648 805
 1057273355 0 c sys/src/cmd/upas/marshal/marshal.c - 664 sys sys 1057272769 32362
+1057354361 0 c sys/src/9/port/devsdp.c - 664 sys sys 1057323393 44800
+1057354361 1 c sys/src/9/port/thwack.c - 664 sys sys 1057323394 7253
+1057354361 2 c sys/src/9/port/unthwack.c - 664 sys sys 1057323394 5249
