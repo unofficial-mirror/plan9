@@ -92,7 +92,8 @@
 960/include - 20000000775 sys sys 948037594 0
 960/include/u.h - 664 sys sys 1042604328 959
 960/mkfile - 664 sys sys 948141303 52
-LICENSE - 444 sys sys 1032615845 35386
+LICENSE - 444 sys sys 1056572182 12740
+LICENSE.gpl - 664 sys sys 1056572448 15081
 NOTICE - 444 sys sys 1018803063 63
 acme - 20000000775 sys sys 1020896383 0
 acme/acid - 20000000775 sys sys 1015011246 0
@@ -1602,7 +1603,7 @@ lib/font/bit/lucida/MathOps1.8.0 - 664 sys sys 944943776 4187
 lib/font/bit/lucida/MathOps1.8.1 - 664 sys sys 944943765 6176
 lib/font/bit/lucida/MathOps1.9.0 - 664 sys sys 944943776 4838
 lib/font/bit/lucida/MathOps1.9.1 - 664 sys sys 944943765 7147
-lib/font/bit/lucida/NOTICE - 444 sys sys 960135958 894
+lib/font/bit/lucida/NOTICE - 444 sys sys 1056572305 816
 lib/font/bit/lucida/Phonetic.10.0 - 664 sys sys 944943776 2984
 lib/font/bit/lucida/Phonetic.10.1 - 664 sys sys 944943765 4167
 lib/font/bit/lucida/Phonetic.12.0 - 664 sys sys 944943776 3373
@@ -2990,7 +2991,7 @@ sys/lib/ghostscript/errpage.ps - 664 sys sys 1032057298 8774
 sys/lib/ghostscript/font - 20000000775 sys sys 956275314 0
 sys/lib/ghostscript/font/Fontmap - 664 sys sys 984721439 14126
 sys/lib/ghostscript/font/Fontmap.GS - 664 sys sys 956343661 6541
-sys/lib/ghostscript/font/README - 664 sys sys 960092869 346
+sys/lib/ghostscript/font/README - 444 sys sys 1056572274 350
 sys/lib/ghostscript/font/a010013l.afm - 664 sys sys 956343661 31658
 sys/lib/ghostscript/font/a010013l.pfb - 664 sys sys 956343661 34871
 sys/lib/ghostscript/font/a010013l.pfm - 664 sys sys 956343661 4679
@@ -3330,7 +3331,7 @@ sys/lib/postscript/font/LucidaSans-Demi - 664 sys sys 954644148 55110
 sys/lib/postscript/font/LucidaSans-Italic - 664 sys sys 954644166 55183
 sys/lib/postscript/font/LucidaSans-Typewriter83 - 664 sys sys 954949417 54590
 sys/lib/postscript/font/LucidaTypewriter - 664 sys sys 954644142 61207
-sys/lib/postscript/font/NOTICE - 444 sys sys 960135977 894
+sys/lib/postscript/font/NOTICE - 444 sys sys 1056572331 816
 sys/lib/postscript/font/ams - 20000000775 sys sys 955402660 0
 sys/lib/postscript/font/ams/READ.ME - 664 sys sys 955402660 3723
 sys/lib/postscript/font/ams/cmbsy5.pfa - 664 sys sys 954644908 53732
@@ -4673,7 +4674,7 @@ sys/src/9/pc/mp.h - 664 sys sys 1015014520 6575
 sys/src/9/pc/pc - 664 sys sys 1055700612 1360
 sys/src/9/pc/pcauth - 664 sys sys 1055700612 609
 sys/src/9/pc/pccd - 664 sys sys 1055090302 1302
-sys/src/9/pc/pccpu - 664 sys sys 1055090302 803
+sys/src/9/pc/pccpu - 664 sys sys 1056568059 803
 sys/src/9/pc/pccpuf - 664 sys sys 1056503364 909
 sys/src/9/pc/pcdisk - 664 sys sys 1055700613 1432
 sys/src/9/pc/pcf - 664 sys sys 1056503364 1457
@@ -8577,7 +8578,7 @@ sys/src/cmd/ip/imap4d/utils.c - 664 sys sys 1015013077 2481
 sys/src/cmd/ip/ipconfig.c - 664 sys sys 1051023520 27439
 sys/src/cmd/ip/measure.c - 664 sys sys 944961011 3733
 sys/src/cmd/ip/mkfile - 664 sys sys 1038443023 1222
-sys/src/cmd/ip/ping.c - 664 sys sys 1032059854 5046
+sys/src/cmd/ip/ping.c - 664 sys sys 1056550715 5076
 sys/src/cmd/ip/ppp - 20000000775 sys sys 988249980 0
 sys/src/cmd/ip/ppp/block.c - 664 sys sys 1015090266 5353
 sys/src/cmd/ip/ppp/compress.c - 664 sys sys 1015090266 11743

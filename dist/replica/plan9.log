@@ -12850,3 +12850,11 @@
 1056504789 2 a sys/src/9/pc/pcf - 664 sys sys 1056503364 1457
 1056504789 3 c sys/src/9/pc/sdata.c - 664 sys sys 1056475678 50230
 1056504789 4 a sys/src/9/pc/pccpuf - 664 sys sys 1056503364 909
+1056573160 0 c LICENSE - 444 sys sys 1056572182 12740
+1056573160 1 a LICENSE.gpl - 664 sys sys 1056572448 15081
+1056573160 2 c lib/font/bit/lucida/NOTICE - 444 sys sys 1056572305 816
+1056573160 3 c sys/lib/ghostscript/font/README - 444 sys sys 1056572274 350
+1056573160 4 m sys/lib/ghostscript/font/README - 444 sys sys 1056572274 350
+1056573160 5 c sys/lib/postscript/font/NOTICE - 444 sys sys 1056572331 816
+1056573160 6 c sys/src/9/pc/pccpu - 664 sys sys 1056568059 803
+1056573160 7 c sys/src/cmd/ip/ping.c - 664 sys sys 1056550715 5076
