@@ -13382,3 +13382,4 @@
 1066849388 4 c sys/src/cmd/exportfs/mkfile - 664 sys sys 1066825703 194
 1066849388 5 a sys/src/cmd/exportfs/pattern.c - 664 sys sys 1066823092 2960
 1066849388 6 c sys/src/cmd/fossil/file.c - 664 sys sys 1066848926 28000
+1067005967 0 c sys/games/lib/fortunes - 664 sys sys 1067005891 246404
