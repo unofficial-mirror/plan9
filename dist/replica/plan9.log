@@ -14080,3 +14080,4 @@
 1072146713 3 a sys/src/cmd/jpg/ico.c - 664 sys sys 1072107030 8799
 1072146713 4 c sys/src/cmd/jpg/mkfile - 664 sys sys 1072107030 1014
 1072146713 5 a sys/src/cmd/jpg/toico.c - 664 sys sys 1072107030 5638
+1072227727 0 c sys/games/lib/fortunes - 664 sys sys 1072227105 247401
