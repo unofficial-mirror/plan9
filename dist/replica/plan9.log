@@ -14373,3 +14373,6 @@
 1077670940 2 a sys/lib/lp/process/gspipeijs - 775 sys sys 1077670465 949
 1077670940 3 a sys/lib/lp/process/pdfgsijs - 775 sys sys 1077634892 1687
 1077670940 4 c sys/man/2/ndb - 664 sys sys 1077632681 8901
+1077751964 0 c lib/ndb/local - 664 sys sys 1077723747 292
+1077751964 1 c sys/lib/lp/process/generic - 775 sys sys 1077715118 4805
+1077751964 2 c sys/src/boot/pc/mkfile - 664 sys sys 1077739195 3063
