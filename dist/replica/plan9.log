@@ -11344,3 +11344,10 @@
 1041554068 4 a sys/doc/sam/sam.pdf - 664 sys sys 1020384352 156123
 1041554068 5 a sys/doc/venti/venti.pdf - 755 sys sys 1020384352 139090
 1041627287 0 c sys/src/cmd/ip/ftpfs/proto.c - 664 sys sys 1041568440 28988
+1041890630 0 c sys/man/1/secstore - 664 sys sys 1041890056 3434
+1041890630 1 c sys/src/cmd/auth/secstore/SConn.c - 664 sys sys 1041890053 4381
+1041890630 2 c sys/src/cmd/auth/secstore/pak.c - 664 sys sys 1041890053 9353
+1041890630 3 c sys/src/cmd/auth/secstore/password.c - 664 sys sys 1041890053 2698
+1041890630 4 c sys/src/cmd/auth/secstore/secstore.c - 664 sys sys 1041890054 12213
+1041890630 5 c sys/src/cmd/auth/secstore/secstore.h - 664 sys sys 1041890053 841
+1041890630 6 c sys/src/cmd/auth/secstore/secuser.c - 664 sys sys 1041890054 4351
