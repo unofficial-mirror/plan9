@@ -16166,3 +16166,4 @@
 1101184343 11 c sys/src/cmd/upas/fs/pop3.c - 664 sys sys 1101154341 12864
 1101270762 0 c sys/src/cmd/mklib - 664 sys sys 1101213349 618
 1101270762 1 c sys/src/cmd/fossil/fs.c - 664 sys sys 1101213292 21545
+1101312177 0 c sys/src/cmd/mkone - 664 sys sys 1101311048 835
