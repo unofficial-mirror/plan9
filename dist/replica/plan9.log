@@ -13038,3 +13038,6 @@
 1061566356 20 c sys/src/cmd/fossil/vac.c - 664 sys sys 1061530727 12483
 1061566356 21 c sys/src/cmd/fossil/vac.h - 664 sys sys 1061530727 2779
 1061780566 0 c sys/src/cmd/upas/fs/imap4.c - 664 sys sys 1061779754 18103
+1061843653 0 c sys/src/cmd/auth/secstore/secuser.c - 664 sys sys 1061842567 4914
+1061843653 1 c sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1061836981 24287
+1061843653 2 c sys/src/cmd/upas/smtp/smtpd.y - 664 sys sys 1061836986 6949
