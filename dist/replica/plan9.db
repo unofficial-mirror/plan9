@@ -4133,6 +4133,7 @@ sys/man/1/grap - 664 sys sys 944959675 6417
 sys/man/1/graph - 664 sys sys 944959673 2858
 sys/man/1/grep - 664 sys sys 969512677 2224
 sys/man/1/gs - 664 sys sys 1032054727 6906
+sys/man/1/gview - 664 sys sys 1076349870 4219
 sys/man/1/gzip - 664 sys sys 969499884 3073
 sys/man/1/hget - 664 sys sys 1067722859 1483
 sys/man/1/history - 664 sys sys 1044909169 1709
@@ -8836,6 +8837,7 @@ sys/src/cmd/gs/zlib/zlib.h - 664 sys sys 1015035350 36326
 sys/src/cmd/gs/zlib/zlib.rc - 644 sys sys 1015035349 879
 sys/src/cmd/gs/zlib/zutil.c - 664 sys sys 1015035350 5015
 sys/src/cmd/gs/zlib/zutil.h - 664 sys sys 1015035350 4945
+sys/src/cmd/gview.c - 664 sys sys 1076349870 50594
 sys/src/cmd/gzip - 20000000775 sys sys 984789976 0
 sys/src/cmd/gzip/gunzip.c - 664 sys sys 1014924864 6039
 sys/src/cmd/gzip/gzip.c - 664 sys sys 1014924864 3646
