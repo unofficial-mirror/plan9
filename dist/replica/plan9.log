@@ -14145,3 +14145,8 @@
 1072836200 8 a sys/src/cmd/fossil/flfmt9660.h - 664 sys sys 1072830621 134
 1072836200 9 c sys/src/cmd/fossil/mkfile - 664 sys sys 1072830618 2103
 1072836200 10 c sys/src/cmd/venti/utils.c - 664 sys sys 1072816049 4528
+1072909943 0 a sys/include/complete.h - 664 sys sys 1072904891 517
+1072909943 1 a sys/man/2/complete - 664 sys sys 1072905221 2175
+1072909943 2 a sys/src/libcomplete - 20000000775 sys sys 1072904881 0
+1072909943 3 a sys/src/libcomplete/complete.c - 664 sys sys 1072904881 2673
+1072909943 4 a sys/src/libcomplete/mkfile - 664 sys sys 1072904881 208
