@@ -16573,3 +16573,14 @@
 1108872092 8 c sys/src/cmd/upas/smtp/mkfile - 664 sys sys 1108828019 755
 1108872092 9 c sys/src/cmd/upas/smtp/smtp.c - 664 sys sys 1108827987 20071
 1108872092 10 c sys/src/cmd/upas/smtp/smtp.h - 664 sys sys 1108827986 1270
+1108960315 0 c sys/src/cmd/jpg/jpg.c - 664 sys sys 1108938203 7411
+1108960315 1 c sys/src/cmd/jpg/png.c - 664 sys sys 1108939730 4834
+1108960315 2 c sys/src/cmd/jpg/torgbv.c - 664 sys sys 1108938204 7118
+1108960315 3 c sys/src/cmd/sam/error.c - 664 sys sys 1108939612 2222
+1108960315 4 c sys/src/cmd/sam/mkfile - 664 sys sys 1108939611 559
+1108960315 5 c sys/src/cmd/sam/plan9.c - 664 sys sys 1108939612 2860
+1108960315 6 c sys/src/cmd/sam/sam.h - 664 sys sys 1108939611 9584
+1108960315 7 c sys/src/cmd/sam/shell.c - 664 sys sys 1108939613 3149
+1108960315 8 c sys/src/cmd/upas/smtp/mkfile - 664 sys sys 1108910002 801
+1108960315 9 c sys/src/cmd/upas/smtp/mxdial.c - 664 sys sys 1108875334 6251
+1108960315 10 c sys/src/libc/port/cleanname.c - 664 sys sys 1108937861 1537
