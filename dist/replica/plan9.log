@@ -13375,3 +13375,10 @@
 1066619026 3 c sys/src/cmd/samterm/main.c - 664 sys sys 1066572812 10009
 1066619026 4 c sys/src/cmd/samterm/mkfile - 664 sys sys 1066572811 595
 1066737762 0 c sys/src/9/port/devtls.c - 664 sys sys 1066737478 45222
+1066849388 0 c sys/man/4/exportfs - 664 sys sys 1066826682 4336
+1066849388 1 c sys/src/cmd/exportfs/exportfs.c - 664 sys sys 1066823092 15669
+1066849388 2 c sys/src/cmd/exportfs/exportfs.h - 664 sys sys 1066823091 2800
+1066849388 3 c sys/src/cmd/exportfs/exportsrv.c - 664 sys sys 1066823092 11325
+1066849388 4 c sys/src/cmd/exportfs/mkfile - 664 sys sys 1066825703 194
+1066849388 5 a sys/src/cmd/exportfs/pattern.c - 664 sys sys 1066823092 2960
+1066849388 6 c sys/src/cmd/fossil/file.c - 664 sys sys 1066848926 28000
