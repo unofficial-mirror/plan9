@@ -15988,3 +15988,7 @@
 1096428739 9 c sys/src/cmd/acme/exec.c - 664 sys sys 1096388101 28104
 1096428739 10 c sys/src/cmd/acme/wind.c - 664 sys sys 1096388102 11187
 1096468358 0 c sys/src/9/pc/sdata.c - 664 sys sys 1096467467 50899
+1097119890 0 c sys/src/9/port/xalloc.c - 664 sys sys 1097074047 4030
+1097119890 1 c sys/src/9/ppc/dat.h - 664 sys sys 1097073353 4712
+1097119890 2 c sys/src/9/ppc/m8260.c - 664 sys sys 1097073366 14480
+1097119890 3 c sys/src/9/ppc/main.c - 664 sys sys 1097073343 9041
