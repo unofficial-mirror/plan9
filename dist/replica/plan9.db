@@ -4418,7 +4418,7 @@ sys/man/8/prep - 664 sys sys 1055692961 13573
 sys/man/8/qer - 664 sys sys 960837925 4785
 sys/man/8/reboot - 664 sys sys 969499895 414
 sys/man/8/replica - 664 sys sys 1021579979 6239
-sys/man/8/rsa - 664 sys sys 1048614939 4620
+sys/man/8/rsa - 664 sys sys 1057955511 4628
 sys/man/8/scanmail - 664 sys sys 969499895 10803
 sys/man/8/scuzz - 664 sys sys 984709640 7916
 sys/man/8/secstore - 664 sys sys 1045501623 990
@@ -11218,7 +11218,7 @@ sys/src/libsec/mkfile - 664 sys sys 1032061454 533
 sys/src/libsec/port - 20000000775 sys sys 1015023365 0
 sys/src/libsec/port/aes.c - 664 sys sys 1016731561 64104
 sys/src/libsec/port/blowfish.c - 664 sys sys 1016466467 19676
-sys/src/libsec/port/decodepem.c - 664 sys sys 988225292 1371
+sys/src/libsec/port/decodepem.c - 664 sys sys 1057953187 1383
 sys/src/libsec/port/des.c - 664 sys sys 1015013579 17496
 sys/src/libsec/port/des3CBC.c - 664 sys sys 988225292 1135
 sys/src/libsec/port/des3ECB.c - 664 sys sys 988225292 917
