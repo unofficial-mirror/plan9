@@ -15869,3 +15869,5 @@
 1092083485 1 c sys/src/9/pc/trap.c - 664 sys sys 1092080705 20458
 1092195107 0 c sys/lib/dist/pc/plan9.ini.cd - 664 sys sys 1092148201 357
 1092195107 1 c sys/src/cmd/aux/acidleak.c - 664 sys sys 1092148212 5940
+1092540713 0 c sys/src/cmd/ssh/msg.c - 664 sys sys 1092516579 8102
+1092540713 1 c sys/src/cmd/ssh/smsg.c - 664 sys sys 1092516575 6374
