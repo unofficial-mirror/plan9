@@ -3083,7 +3083,7 @@ sys/lib/dist/pc/inst/xxx - 775 sys sys 1018469719 160
 sys/lib/dist/pc/mkfile - 664 sys sys 1063856155 2026
 sys/lib/dist/pc/plan9.ini - 664 sys sys 1020361168 512
 sys/lib/dist/pc/plan9.ini.blank - 664 sys sys 1018469720 512
-sys/lib/dist/pc/plan9.ini.cd - 664 sys sys 1045500125 343
+sys/lib/dist/pc/plan9.ini.cd - 664 sys sys 1092148201 357
 sys/lib/dist/pc/plan9.ini.vmware - 664 sys sys 1045500078 168
 sys/lib/dist/pc/proto - 664 sys sys 1089299188 4314
 sys/lib/dist/pc/sub - 20000000775 sys sys 1018640631 0
@@ -6380,7 +6380,7 @@ sys/src/cmd/auth/wrkey.c - 664 sys sys 1019058717 176
 sys/src/cmd/aux - 20000000775 sys sys 1015008975 0
 sys/src/cmd/aux/9pcon.c - 664 sys sys 1032059259 6283
 sys/src/cmd/aux/accupoint.c - 664 sys sys 985124882 2166
-sys/src/cmd/aux/acidleak.c - 664 sys sys 1050441591 5931
+sys/src/cmd/aux/acidleak.c - 664 sys sys 1092148212 5940
 sys/src/cmd/aux/antiword - 20000000775 sys sys 1069793877 0
 sys/src/cmd/aux/antiword/COPYING - 664 sys sys 1069793863 17985
 sys/src/cmd/aux/antiword/ChangeLog - 664 sys sys 1069793863 7543
