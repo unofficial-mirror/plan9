@@ -16738,3 +16738,4 @@
 1111293098 0 c sys/man/1/sam - 664 sys sys 1111249064 18291
 1111293098 1 c sys/src/cmd/replica/applylog.c - 664 sys sys 1111253491 18157
 1111293098 2 c sys/src/cmd/rio/mkfile - 664 sys sys 1111249068 431
+1111465927 0 c sys/src/cmd/acme/look.c - 664 sys sys 1111381048 14210
