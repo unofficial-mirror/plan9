@@ -15160,3 +15160,4 @@
 1082259157 10 c sys/src/cmd/vnc/vncv.c - 664 sys sys 1082221235 3197
 1082327580 0 c sys/src/cmd/vnc/ksym2utf.h - 664 sys sys 1082326667 18402
 1082327580 1 c sys/src/cmd/vnc/utf2ksym.h - 664 sys sys 1082326667 18024
+1082406821 0 c sys/man/1/acid - 664 sys sys 1082404958 9725
