@@ -12453,3 +12453,14 @@
 1050364958 6 c sys/src/libc/fmt/runevsmprint.c - 664 sys sys 1050360307 1030
 1050442381 0 c sys/src/cmd/aux/acidleak.c - 664 sys sys 1050441591 5931
 1050442381 1 c sys/src/libc/fmt/runevsmprint.c - 664 sys sys 1050433061 1043
+1050521491 0 c sys/man/8/fossilcons - 664 sys sys 1050520258 14126
+1050521491 1 c sys/src/cmd/aux/disksim.c - 664 sys sys 1050521402 10227
+1050521491 2 c sys/src/cmd/fossil/9.h - 664 sys sys 1050518982 4067
+1050521491 3 c sys/src/cmd/fossil/9auth.c - 664 sys sys 1050518977 3394
+1050521491 4 c sys/src/cmd/fossil/9fsys.c - 664 sys sys 1050518978 28719
+1050521491 5 c sys/src/cmd/fossil/9proc.c - 664 sys sys 1050518978 15245
+1050521491 6 c sys/src/cmd/fossil/9user.c - 664 sys sys 1050518979 17211
+1050521491 7 c sys/src/cmd/fossil/Ccmd.c - 664 sys sys 1050518979 7246
+1050521491 8 c sys/src/cmd/fossil/dat.h - 664 sys sys 1050518981 7855
+1050521491 9 c sys/src/cmd/fossil/fs.c - 664 sys sys 1050518980 16944
+1050521491 10 c sys/src/cmd/fossil/fs.h - 664 sys sys 1050518982 1258
