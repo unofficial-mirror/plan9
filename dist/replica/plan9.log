@@ -15106,3 +15106,4 @@
 1080592369 6 c sys/src/cmd/fossil/flfmt9660.c - 664 sys sys 1080586883 12314
 1080592369 7 c sys/src/cmd/fossil/fs.c - 664 sys sys 1080586883 21525
 1080592369 8 c sys/src/cmd/fossil/fs.h - 664 sys sys 1080586883 1503
+1080838982 0 c sys/games/lib/fortunes - 664 sys sys 1080838116 248410
