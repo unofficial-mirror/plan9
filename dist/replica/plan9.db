@@ -8755,7 +8755,7 @@ sys/src/cmd/paqfs/mkpaqfs.c - 664 sys sys 1032060367 8509
 sys/src/cmd/paqfs/paqfs.c - 664 sys sys 1032060367 18320
 sys/src/cmd/paqfs/paqfs.h - 664 sys sys 1018721430 966
 sys/src/cmd/pbd.c - 664 sys sys 944961351 247
-sys/src/cmd/pcc.c - 664 sys sys 1014926696 5938
+sys/src/cmd/pcc.c - 664 sys sys 1042640611 5937
 sys/src/cmd/pic - 20000000775 sys sys 954037275 0
 sys/src/cmd/pic/arcgen.c - 664 sys sys 944961042 5999
 sys/src/cmd/pic/blockgen.c - 664 sys sys 944961042 5209
