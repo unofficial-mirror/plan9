@@ -15748,3 +15748,7 @@
 1091244772 37 d sys/src/cmd/usb/audio/controls.c - 664 sys sys 1072729649 0
 1091244772 38 d sys/src/cmd/usb/audio/config.c - 664 sys sys 1045503797 0
 1091244772 39 d sys/src/cmd/usb/audio/audioclass.h - 664 sys sys 1017802021 0
+1091331191 0 c sys/man/4/usb - 664 sys sys 1091287633 3428
+1091331191 1 c sys/src/9/pc/usbuhci.c - 664 sys sys 1091287613 30721
+1091331191 2 a sys/src/cmd/usb/misc/usbmouse.c - 664 sys sys 1091282306 3056
+1091331191 3 c sys/src/cmd/usb/mkfile - 664 sys sys 1091327562 354
