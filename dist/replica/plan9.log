@@ -12987,3 +12987,11 @@
 1060041853 1 c sys/src/cmd/upas/ned/mkfile - 664 sys sys 1060041738 233
 1060041853 2 c sys/src/cmd/upas/ned/nedmail.c - 664 sys sys 1060041739 42848
 1060092241 0 c lib/face/48x48x4/.dict - 664 sys sys 1060092065 2010
+1060191162 0 c lib/face/48x48x8/.dict - 664 sys sys 1060173964 1938
+1060191162 1 a lib/face/48x48x8/k/kris.1 - 664 sys sys 1060142993 2364
+1060191162 2 a lib/face/48x48x8/z/zed.1 - 664 sys sys 1060174022 2364
+1060191162 3 c rc/bin/fedex - 775 sys sys 1060187356 1244
+1060191162 4 c rc/bin/termrc - 775 sys sys 1060174264 2606
+1060191162 5 c sys/man/8/ipconfig - 664 sys sys 1060189415 5050
+1060191162 6 c sys/src/cmd/ip/ipconfig.c - 664 sys sys 1060189236 29311
+1060191162 7 c sys/src/cmd/ndb/cs.c - 664 sys sys 1060173544 32903
