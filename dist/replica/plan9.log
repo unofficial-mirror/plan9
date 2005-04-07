@@ -16834,3 +16834,4 @@
 1112758381 1 c sys/src/ape/cmd/cc.c - 664 sys sys 1112707823 7362
 1112758381 2 c sys/src/boot/pc/sdata.c - 664 sys sys 1112727812 38106
 1112758381 3 c sys/src/cmd/pcc.c - 664 sys sys 1112744693 5937
+1112905949 0 c sys/games/lib/fortunes - 664 sys sys 1112905578 253631
