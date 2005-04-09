@@ -16835,3 +16835,9 @@
 1112758381 2 c sys/src/boot/pc/sdata.c - 664 sys sys 1112727812 38106
 1112758381 3 c sys/src/cmd/pcc.c - 664 sys sys 1112744693 5937
 1112905949 0 c sys/games/lib/fortunes - 664 sys sys 1112905578 253631
+1113017571 0 c sys/man/8/plan9.ini - 664 sys sys 1112972932 21498
+1113017571 1 c sys/src/cmd/file.c - 664 sys sys 1112972205 23328
+1113017571 2 c sys/src/games/music/jukefs/parse.c - 664 sys sys 1112972626 14090
+1113017571 3 c sys/src/games/music/jukefs/server.c - 664 sys sys 1112972626 3544
+1113017571 4 d sys/src/cmd/upas/send/sender - 664 sys sys 944961323 0
+1113017571 5 d sys/src/cmd/upas/send/date - 664 sys sys 944961326 0
