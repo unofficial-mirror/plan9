@@ -163,7 +163,7 @@ acme/bin/source/win/main.c - 664 sys sys 1104430370 12508
 acme/bin/source/win/mkfile - 664 sys sys 1046654934 309
 acme/bin/source/win/pipe.c - 664 sys sys 1104430371 2802
 acme/bin/source/win/util.c - 664 sys sys 1017679346 1169
-acme/bin/source/win/win.c - 664 sys sys 1015011255 4240
+acme/bin/source/win/win.c - 664 sys sys 1113252156 4239
 acme/bin/unind - 755 sys sys 1015011256 27
 acme/bin/wnew - 775 sys sys 1046184422 84
 acme/mail - 20000000775 sys sys 1015011265 0
@@ -3076,7 +3076,7 @@ sys/lib/dist/pc/glenda/lib/profile - 664 sys sys 1032883600 327
 sys/lib/dist/pc/glenda/tmp - 20000000775 sys sys 1018469723 0
 sys/lib/dist/pc/inst - 20000000775 sys sys 1018721419 0
 sys/lib/dist/pc/inst/bootfloppy - 775 sys sys 1112361036 903
-sys/lib/dist/pc/inst/bootplan9 - 775 sys sys 1019534696 1584
+sys/lib/dist/pc/inst/bootplan9 - 775 sys sys 1113252317 1574
 sys/lib/dist/pc/inst/bootsetup - 775 sys sys 1112361037 3688
 sys/lib/dist/pc/inst/bootwin9x - 775 sys sys 1112361037 2527
 sys/lib/dist/pc/inst/bootwinnt - 775 sys sys 1019240165 1041
@@ -4297,7 +4297,7 @@ sys/man/1/vnc - 664 sys sys 1045501432 4186
 sys/man/1/vt - 664 sys sys 1018386774 2210
 sys/man/1/wc - 664 sys sys 944959675 908
 sys/man/1/who - 664 sys sys 944959674 332
-sys/man/1/winwatch - 664 sys sys 1112362775 470
+sys/man/1/winwatch - 664 sys sys 1113252108 723
 sys/man/1/xd - 664 sys sys 944959674 1517
 sys/man/1/yacc - 664 sys sys 944959676 3273
 sys/man/1/yesterday - 664 sys sys 1070288431 2348
@@ -10646,16 +10646,16 @@ sys/src/cmd/wikifs/io.c - 664 sys sys 1084469671 11572
 sys/src/cmd/wikifs/lookup.c - 664 sys sys 1018211093 182
 sys/src/cmd/wikifs/map.c - 664 sys sys 1018211093 109
 sys/src/cmd/wikifs/mkfile - 664 sys sys 1045503591 468
-sys/src/cmd/wikifs/parse.c - 664 sys sys 1079969446 4989
+sys/src/cmd/wikifs/parse.c - 664 sys sys 1113252120 5245
 sys/src/cmd/wikifs/parsehist.c - 664 sys sys 1018211093 1906
 sys/src/cmd/wikifs/testwrite.c - 664 sys sys 1018211093 818
-sys/src/cmd/wikifs/tohtml.c - 664 sys sys 1079380577 13998
+sys/src/cmd/wikifs/tohtml.c - 664 sys sys 1113252121 14301
 sys/src/cmd/wikifs/util.c - 664 sys sys 1018211093 1807
 sys/src/cmd/wikifs/wdir.c - 664 sys sys 1018211094 876
-sys/src/cmd/wikifs/wiki.h - 664 sys sys 1018323492 1891
+sys/src/cmd/wikifs/wiki.h - 664 sys sys 1113275619 1897
 sys/src/cmd/wikifs/wiki2html.c - 664 sys sys 1018211094 815
 sys/src/cmd/wikifs/wiki2text.c - 664 sys sys 1018211094 779
-sys/src/cmd/winwatch.c - 664 sys sys 1112362775 4614
+sys/src/cmd/winwatch.c - 664 sys sys 1113252107 4853
 sys/src/cmd/xd.c - 664 sys sys 944961355 5735
 sys/src/cmd/yacc.c - 664 sys sys 984717754 57876
 sys/src/fs - 20000000775 sys sys 1015110109 0

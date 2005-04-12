@@ -16842,3 +16842,10 @@
 1113017571 4 d sys/src/cmd/upas/send/sender - 664 sys sys 944961323 0
 1113017571 5 d sys/src/cmd/upas/send/date - 664 sys sys 944961326 0
 1113103927 0 c acme/mail/src/mesg.c - 664 sys sys 1113051860 26298
+1113276762 0 c acme/bin/source/win/win.c - 664 sys sys 1113252156 4239
+1113276762 1 c sys/lib/dist/pc/inst/bootplan9 - 775 sys sys 1113252317 1574
+1113276762 2 c sys/man/1/winwatch - 664 sys sys 1113252108 723
+1113276762 3 c sys/src/cmd/wikifs/parse.c - 664 sys sys 1113252120 5245
+1113276762 4 c sys/src/cmd/wikifs/tohtml.c - 664 sys sys 1113252121 14301
+1113276762 5 c sys/src/cmd/wikifs/wiki.h - 664 sys sys 1113275619 1897
+1113276762 6 c sys/src/cmd/winwatch.c - 664 sys sys 1113252107 4853
