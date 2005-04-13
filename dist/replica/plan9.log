@@ -16849,3 +16849,9 @@
 1113276762 4 c sys/src/cmd/wikifs/tohtml.c - 664 sys sys 1113252121 14301
 1113276762 5 c sys/src/cmd/wikifs/wiki.h - 664 sys sys 1113275619 1897
 1113276762 6 c sys/src/cmd/winwatch.c - 664 sys sys 1113252107 4853
+1113363179 0 c sys/src/cmd/file.c - 664 sys sys 1113312632 23324
+1113363179 1 c sys/src/cmd/winwatch.c - 664 sys sys 1113312596 4869
+1113363179 2 c sys/src/games/music/jukebox/client.c - 664 sys sys 1113342090 2713
+1113363179 3 c sys/src/games/music/jukefs/object.h - 664 sys sys 1113342073 2067
+1113363179 4 c sys/src/games/music/jukefs/parse.c - 664 sys sys 1113342059 14073
+1113363179 5 c sys/src/games/music/jukefs/server.c - 664 sys sys 1113342063 3648
