@@ -17353,3 +17353,4 @@
 1113500018 19 c lib/font/bit/fixed/unicode.9x15B.font - 664 sys sys 1113498934 556
 1113500018 20 c lib/font/bit/fixed/unicode.9x18.font - 664 sys sys 1113498934 726
 1113500018 21 c lib/font/bit/fixed/unicode.9x18B.font - 664 sys sys 1113498934 431
+1113622438 0 c sys/src/cmd/8c/reg.c - 664 sys sys 1113585456 20572

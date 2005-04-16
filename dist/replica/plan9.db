@@ -6671,7 +6671,7 @@ sys/src/cmd/8c/mkenam - 664 sys sys 944960730 112
 sys/src/cmd/8c/mkfile - 664 sys sys 1089299181 322
 sys/src/cmd/8c/mul.c - 664 sys sys 1089382812 5535
 sys/src/cmd/8c/peep.c - 664 sys sys 1089299181 11182
-sys/src/cmd/8c/reg.c - 664 sys sys 1089299180 20556
+sys/src/cmd/8c/reg.c - 664 sys sys 1113585456 20572
 sys/src/cmd/8c/sgen.c - 664 sys sys 1089299181 12833
 sys/src/cmd/8c/swt.c - 664 sys sys 1098463321 10943
 sys/src/cmd/8c/txt.c - 664 sys sys 1089299180 24215
