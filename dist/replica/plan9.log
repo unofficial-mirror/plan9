@@ -17402,3 +17402,10 @@
 1113881562 0 c sys/src/9/pc/l.s - 664 sys sys 1113879928 23699
 1113928374 0 c sys/src/9/pc/l.s - 664 sys sys 1113926772 23705
 1114054398 0 c sys/src/cmd/diff/diffreg.c - 664 sys sys 1114037841 8825
+1114227378 0 c sys/games/lib/fortunes - 664 sys sys 1114187716 253657
+1114227378 1 c sys/include/a.out.h - 664 sys sys 1114218489 1291
+1114227378 2 c sys/include/mach.h - 664 sys sys 1114218490 8336
+1114227378 3 c sys/src/9/boot/boot.c - 664 sys sys 1114188078 6012
+1114227378 4 c sys/src/9/pc/sdata.c - 664 sys sys 1114197935 51104
+1114227378 5 c sys/src/cmd/rc/plan9.c - 664 sys sys 1114188140 9332
+1114227378 6 c sys/src/libmach/5db.c - 664 sys sys 1114218476 21530
