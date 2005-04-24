@@ -17409,3 +17409,7 @@
 1114227378 4 c sys/src/9/pc/sdata.c - 664 sys sys 1114197935 51104
 1114227378 5 c sys/src/cmd/rc/plan9.c - 664 sys sys 1114188140 9332
 1114227378 6 c sys/src/libmach/5db.c - 664 sys sys 1114218476 21530
+1114365761 0 c sys/lib/dist/cmd/bargraph.c - 664 sys sys 1114364700 5871
+1114365761 1 a sys/lib/dist/pc/cd0.proto - 664 sys sys 1114358485 7
+1114365761 2 c sys/lib/dist/pc/glenda/lib/profile - 664 sys sys 1114364353 359
+1114365761 3 c sys/lib/dist/pc/mkfile - 664 sys sys 1114364348 2045
