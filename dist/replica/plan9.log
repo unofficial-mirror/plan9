@@ -17464,3 +17464,4 @@
 1114486383 48 d sys/src/libmach/xc/x.out.h - 664 sys sys 950325899 0
 1114486383 49 d sys/src/libmach/xc/mips2ureg.h - 664 sys sys 964540563 0
 1114486383 50 d sys/src/libmach/xc/README - 664 sys sys 950326252 0
+1114525993 0 a sys/lib/acid/sparc64 - 664 sys sys 1114524607 5441
