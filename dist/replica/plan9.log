@@ -17480,3 +17480,4 @@
 1114745635 10 c sys/src/cmd/upas/ned/nedmail.c - 664 sys sys 1114697983 44543
 1114745635 11 d acme/mail/old.iostats - 664 sys sys 1015011265 0
 1114745635 12 d acme/mail/Mail - 775 sys sys 1015011264 0
+1114804952 0 c sys/games/lib/fortunes - 664 sys sys 1114803424 253725
