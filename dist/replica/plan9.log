@@ -17467,3 +17467,16 @@
 1114525993 0 a sys/lib/acid/sparc64 - 664 sys sys 1114524607 5441
 1114659226 0 c sys/src/9/pc/etherigbe.c - 664 sys sys 1114632111 43779
 1114659226 1 c sys/src/boot/pc/etherigbe.c - 664 sys sys 1114632096 40106
+1114745635 0 a acme/bin/Mail - 775 sys sys 1114697798 201
+1114745635 1 c acme/mail/src/mail.c - 664 sys sys 1114697672 11259
+1114745635 2 c acme/mail/src/mesg.c - 664 sys sys 1114697672 26292
+1114745635 3 c acme/mail/src/mkfile - 664 sys sys 1114697575 342
+1114745635 4 c sys/man/1/diff - 664 sys sys 1114697100 3085
+1114745635 5 c sys/man/1/nedmail - 664 sys sys 1114697978 6820
+1114745635 6 c sys/src/boot/pc/part.c - 664 sys sys 1114697151 7153
+1114745635 7 c sys/src/cmd/aux/vga/main.c - 664 sys sys 1114703149 9471
+1114745635 8 c sys/src/cmd/aux/vga/vesa.c - 664 sys sys 1114703149 9421
+1114745635 9 c sys/src/cmd/diff/diffio.c - 664 sys sys 1114696977 6599
+1114745635 10 c sys/src/cmd/upas/ned/nedmail.c - 664 sys sys 1114697983 44543
+1114745635 11 d acme/mail/old.iostats - 664 sys sys 1015011265 0
+1114745635 12 d acme/mail/Mail - 775 sys sys 1015011264 0
