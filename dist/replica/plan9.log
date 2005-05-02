@@ -17482,3 +17482,5 @@
 1114745635 12 d acme/mail/Mail - 775 sys sys 1015011264 0
 1114804952 0 c sys/games/lib/fortunes - 664 sys sys 1114803424 253725
 1114918356 0 c sys/src/libmemdraw/draw.c - 664 sys sys 1114867396 55720
+1115004772 0 c sys/src/9/pc/sdata.c - 664 sys sys 1114981770 51181
+1115004772 1 c sys/src/cmd/tbl/t1.c - 664 sys sys 1114967760 1604

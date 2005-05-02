@@ -5390,7 +5390,7 @@ sys/src/9/pc/screen.h - 664 sys sys 1060267144 3797
 sys/src/9/pc/sd53c8xx.c - 664 sys sys 1112461125 52220
 sys/src/9/pc/sd53c8xx.i - 664 sys sys 1045063730 27355
 sys/src/9/pc/sd53c8xx.n - 664 sys sys 1032059019 12455
-sys/src/9/pc/sdata.c - 664 sys sys 1114197935 51104
+sys/src/9/pc/sdata.c - 664 sys sys 1114981770 51181
 sys/src/9/pc/sdmylex.c - 664 sys sys 1071245460 27812
 sys/src/9/pc/sdscsi.c - 664 sys sys 1077033661 7487
 sys/src/9/pc/trap.c - 664 sys sys 1105109602 20537
@@ -10420,7 +10420,7 @@ sys/src/cmd/tbl - 20000000775 sys sys 954038038 0
 sys/src/cmd/tbl/mkfile - 664 sys sys 944961243 268
 sys/src/cmd/tbl/t.h - 664 sys sys 944961244 3987
 sys/src/cmd/tbl/t0.c - 664 sys sys 944961244 1009
-sys/src/cmd/tbl/t1.c - 664 sys sys 944961244 1544
+sys/src/cmd/tbl/t1.c - 664 sys sys 1114967760 1604
 sys/src/cmd/tbl/t2.c - 664 sys sys 944961244 298
 sys/src/cmd/tbl/t3.c - 664 sys sys 944961244 1836
 sys/src/cmd/tbl/t4.c - 664 sys sys 944961244 8360
