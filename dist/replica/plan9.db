@@ -6701,7 +6701,7 @@ sys/src/cmd/8l/optab.c - 664 sys sys 1111156413 16231
 sys/src/cmd/8l/pass.c - 664 sys sys 1095107668 13675
 sys/src/cmd/8l/span.c - 664 sys sys 1107721554 23294
 sys/src/cmd/9660srv - 20000000775 sys sys 944960735 0
-sys/src/cmd/9660srv/9660srv.c - 664 sys sys 1014924873 17018
+sys/src/cmd/9660srv/9660srv.c - 664 sys sys 1115039888 17143
 sys/src/cmd/9660srv/dat.h - 664 sys sys 1091904429 2097
 sys/src/cmd/9660srv/data.c - 664 sys sys 944960735 373
 sys/src/cmd/9660srv/fns.h - 664 sys sys 1019425186 428
@@ -10855,7 +10855,7 @@ sys/src/cmd/upas/ned/mkfile - 664 sys sys 1060041738 233
 sys/src/cmd/upas/ned/nedmail.c - 664 sys sys 1114697983 44543
 sys/src/cmd/upas/pop3 - 20000000775 sys sys 1015009816 0
 sys/src/cmd/upas/pop3/mkfile - 664 sys sys 1064589604 186
-sys/src/cmd/upas/pop3/pop3.c - 664 sys sys 1076176207 14301
+sys/src/cmd/upas/pop3/pop3.c - 664 sys sys 1115039848 14327
 sys/src/cmd/upas/q - 20000000775 sys sys 988250019 0
 sys/src/cmd/upas/q/mkfile - 664 sys sys 1064589601 262
 sys/src/cmd/upas/q/qer.c - 664 sys sys 1014926528 3179

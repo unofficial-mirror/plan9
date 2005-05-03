@@ -17484,3 +17484,5 @@
 1114918356 0 c sys/src/libmemdraw/draw.c - 664 sys sys 1114867396 55720
 1115004772 0 c sys/src/9/pc/sdata.c - 664 sys sys 1114981770 51181
 1115004772 1 c sys/src/cmd/tbl/t1.c - 664 sys sys 1114967760 1604
+1115091194 0 c sys/src/cmd/9660srv/9660srv.c - 664 sys sys 1115039888 17143
+1115091194 1 c sys/src/cmd/upas/pop3/pop3.c - 664 sys sys 1115039848 14327
