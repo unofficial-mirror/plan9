@@ -6841,7 +6841,7 @@ sys/src/cmd/auth/factotum/log.c - 664 sys sys 1046655068 1781
 sys/src/cmd/auth/factotum/mkfile - 664 sys sys 1107706102 481
 sys/src/cmd/auth/factotum/p9any.c - 664 sys sys 1107706103 8484
 sys/src/cmd/auth/factotum/p9cr.c - 664 sys sys 1107706103 6666
-sys/src/cmd/auth/factotum/p9sk1.c - 664 sys sys 1107706208 9771
+sys/src/cmd/auth/factotum/p9sk1.c - 664 sys sys 1115143213 9743
 sys/src/cmd/auth/factotum/pass.c - 664 sys sys 1107706104 1514
 sys/src/cmd/auth/factotum/rpc.c - 664 sys sys 1107633794 11167
 sys/src/cmd/auth/factotum/rsa.c - 664 sys sys 1107706104 3416
