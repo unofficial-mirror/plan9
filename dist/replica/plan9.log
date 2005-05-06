@@ -17487,3 +17487,6 @@
 1115091194 0 c sys/src/cmd/9660srv/9660srv.c - 664 sys sys 1115039888 17143
 1115091194 1 c sys/src/cmd/upas/pop3/pop3.c - 664 sys sys 1115039848 14327
 1115177606 0 c sys/src/cmd/auth/factotum/p9sk1.c - 664 sys sys 1115143213 9743
+1115350446 0 c sys/man/4/exportfs - 664 sys sys 1115314261 4653
+1115350446 1 c sys/man/4/import - 664 sys sys 1115314601 3095
+1115350446 2 c sys/src/cmd/exportfs/exportfs.c - 664 sys sys 1115314269 16357
