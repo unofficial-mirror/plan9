@@ -17492,3 +17492,10 @@
 1115350446 2 c sys/src/cmd/exportfs/exportfs.c - 664 sys sys 1115314269 16357
 1115354046 0 c sys/src/9/pc/main.c - 664 sys sys 1115352568 14694
 1115478243 0 c sys/src/9/pc/ether83815.c - 664 sys sys 1115476450 23479
+1115568234 0 c sys/src/9/ip/ethermedium.c - 664 sys sys 1115565973 15592
+1115568234 1 c sys/src/9/ip/gre.c - 664 sys sys 1115566178 5069
+1115568234 2 c sys/src/9/ip/ipifc.c - 664 sys sys 1115566009 34255
+1115568234 3 c sys/src/9/pc/devarch.c - 664 sys sys 1115566123 18554
+1115568234 4 c sys/src/9/pc/ether82557.c - 664 sys sys 1115566440 30076
+1115568234 5 c sys/src/9/pc/l.s - 664 sys sys 1115566067 23833
+1115568234 6 c sys/src/boot/pc/ether82557.c - 664 sys sys 1115566440 18947
