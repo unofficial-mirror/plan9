@@ -17501,3 +17501,11 @@
 1115568234 6 c sys/src/boot/pc/ether82557.c - 664 sys sys 1115566440 18947
 1115694258 0 c sys/src/9/pc/etherigbe.c - 664 sys sys 1115694068 43995
 1115694258 1 c sys/src/boot/pc/etherigbe.c - 664 sys sys 1115693946 40304
+1115782348 0 m amd64/include/u.h - 664 sys sys 1114458660 1658
+1115782348 1 c sys/src/9/pc/ether83815.c - 664 sys sys 1115744557 23481
+1115782348 2 c sys/src/cmd/aux/vga/main.c - 664 sys sys 1115734902 9535
+1115782348 3 c sys/src/cmd/aux/vga/mkfile - 664 sys sys 1115734903 927
+1115782348 4 c sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1115734903 31499
+1115782348 5 c sys/src/cmd/aux/vga/vesa.c - 664 sys sys 1115734903 21639
+1115782348 6 a sys/src/cmd/aux/vga/vesadb.c - 664 sys sys 1115734902 10446
+1115782348 7 c sys/src/cmd/aux/vga/vga.h - 664 sys sys 1115734902 10470
