@@ -21239,3 +21239,5 @@
 1116174745 0 c sys/src/9/pc/devether.c - 664 sys sys 1116173410 10327
 1116259351 0 c sys/games/lib/fortunes - 664 sys sys 1116258114 253790
 1116385355 0 c sys/man/8/ipconfig - 664 sys sys 1116383710 6170
+1116424918 0 c sys/lib/dist/pc/inst/halt - 775 sys sys 1116424549 325
+1116424918 1 c sys/man/3/usb - 664 sys sys 1116424546 6826
