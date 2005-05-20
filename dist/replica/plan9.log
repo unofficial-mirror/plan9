@@ -21241,3 +21241,5 @@
 1116385355 0 c sys/man/8/ipconfig - 664 sys sys 1116383710 6170
 1116424918 0 c sys/lib/dist/pc/inst/halt - 775 sys sys 1116424549 325
 1116424918 1 c sys/man/3/usb - 664 sys sys 1116424546 6826
+1116559880 0 c sys/man/1/mlmgr - 664 sys sys 1116513886 2542
+1116559880 1 c sys/src/cmd/aux/msexceltables.c - 664 sys sys 1116559800 13722
