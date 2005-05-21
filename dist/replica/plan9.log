@@ -21243,3 +21243,10 @@
 1116424918 1 c sys/man/3/usb - 664 sys sys 1116424546 6826
 1116559880 0 c sys/man/1/mlmgr - 664 sys sys 1116513886 2542
 1116559880 1 c sys/src/cmd/aux/msexceltables.c - 664 sys sys 1116559800 13722
+1116646309 0 c sys/lib/dist/pc/inst/bootsetup - 775 sys sys 1116595009 3542
+1116646309 1 c sys/lib/dist/pc/inst/configfs - 775 sys sys 1116594995 427
+1116646309 2 c sys/lib/dist/pc/inst/confignet - 775 sys sys 1116594996 1294
+1116646309 3 c sys/lib/dist/pc/inst/fmtventi - 775 sys sys 1116594986 3733
+1116646309 4 c sys/man/4/keyfs - 664 sys sys 1116594919 5048
+1116646309 5 c sys/src/cmd/aux/msexceltables.c - 664 sys sys 1116594581 13722
+1116646309 6 c sys/src/cmd/disk/format.c - 664 sys sys 1116595013 17648
