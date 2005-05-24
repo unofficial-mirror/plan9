@@ -5245,7 +5245,7 @@ sys/doc/venti/venti.pdf - 755 sys sys 1020384352 139090
 sys/doc/venti/venti.ps - 664 sys sys 1019852320 2012620
 sys/games - 20000000775 sys sys 952648872 0
 sys/games/lib - 20000000775 sys sys 952648879 0
-sys/games/lib/fortunes - 664 sys sys 1116258114 253790
+sys/games/lib/fortunes - 664 sys sys 1116855350 253868
 sys/games/lib/mahjongg - 20000000775 sys sys 1095792278 0
 sys/games/lib/mahjongg/backgrounds - 20000000775 sys sys 1095792293 0
 sys/games/lib/mahjongg/backgrounds/default.bit - 664 sys sys 1095792293 346803
@@ -12425,7 +12425,7 @@ sys/src/cmd/troff/README - 644 sys sys 944961293 1168
 sys/src/cmd/troff/cvt - 664 sys sys 944961293 938
 sys/src/cmd/troff/dwbinit.c - 644 sys sys 944961293 9115
 sys/src/cmd/troff/dwbinit.h - 644 sys sys 944961293 491
-sys/src/cmd/troff/ext.h - 664 sys sys 944961293 3489
+sys/src/cmd/troff/ext.h - 664 sys sys 1116904533 3491
 sys/src/cmd/troff/find - 755 sys sys 944961293 15
 sys/src/cmd/troff/fns.h - 664 sys sys 944961293 7329
 sys/src/cmd/troff/hytab.c - 664 sys sys 944961293 7232

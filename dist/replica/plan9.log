@@ -21274,3 +21274,5 @@
 1116817337 21 c sys/src/cmd/upas/send/filter.c - 664 sys sys 1116769185 2311
 1116817337 22 c sys/src/cmd/yacc.c - 664 sys sys 1116770313 57945
 1116817337 23 c sys/src/libscribble/graffiti.c - 664 sys sys 1116769753 7344
+1116905562 0 c sys/games/lib/fortunes - 664 sys sys 1116855350 253868
+1116905562 1 c sys/src/cmd/troff/ext.h - 664 sys sys 1116904533 3491
