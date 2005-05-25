@@ -21276,3 +21276,5 @@
 1116817337 23 c sys/src/libscribble/graffiti.c - 664 sys sys 1116769753 7344
 1116905562 0 c sys/games/lib/fortunes - 664 sys sys 1116855350 253868
 1116905562 1 c sys/src/cmd/troff/ext.h - 664 sys sys 1116904533 3491
+1116991970 0 c sys/man/2/thread - 664 sys sys 1116954249 11640
+1116991970 1 c sys/man/8/newuser - 664 sys sys 1116954242 2418
