@@ -21447,3 +21447,5 @@
 1117314120 125 a sys/games/lib/sudoku/boards/vhard-2005-04-16.su - 644 sys sys 1117314032 180
 1117314120 126 a sys/games/lib/sudoku/boards/vhard-2005-05-08.su - 644 sys sys 1117314032 180
 1117510305 0 c sys/src/games/juggle.c - 664 sys sys 1117461327 4654
+1117551730 0 c sys/src/9/pc/ether82557.c - 664 sys sys 1117550886 30121
+1117551730 1 c sys/src/boot/pc/ether82557.c - 664 sys sys 1117550886 19045
