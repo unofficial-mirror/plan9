@@ -21446,3 +21446,4 @@
 1117314120 124 a sys/games/lib/sudoku/boards/vhard-2005-04-10.su - 644 sys sys 1117314032 180
 1117314120 125 a sys/games/lib/sudoku/boards/vhard-2005-04-16.su - 644 sys sys 1117314032 180
 1117314120 126 a sys/games/lib/sudoku/boards/vhard-2005-05-08.su - 644 sys sys 1117314032 180
+1117510305 0 c sys/src/games/juggle.c - 664 sys sys 1117461327 4654
