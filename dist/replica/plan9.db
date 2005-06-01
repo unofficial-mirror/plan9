@@ -7446,7 +7446,7 @@ sys/src/9/pc/pcdisk - 664 sys sys 1073851851 1427
 sys/src/9/pc/pcf - 664 sys sys 1104430623 1485
 sys/src/9/pc/pcfl - 664 sys sys 1042004821 1563
 sys/src/9/pc/pcflop - 664 sys sys 1112361040 1454
-sys/src/9/pc/pci.c - 664 sys sys 1107436009 25850
+sys/src/9/pc/pci.c - 664 sys sys 1117636046 26073
 sys/src/9/pc/pcmciamodem.c - 664 sys sys 1099761153 1586
 sys/src/9/pc/pcmkfile - 664 sys sys 1109303822 101
 sys/src/9/pc/piix4smbus.c - 664 sys sys 1091129037 5230
@@ -8582,7 +8582,7 @@ sys/src/boot/pc/pbsdisk.s - 664 sys sys 1017854325 6371
 sys/src/boot/pc/pbsdisklba - 775 sys sys 1015007954 509
 sys/src/boot/pc/pbsdisklba.s - 664 sys sys 1015007954 6022
 sys/src/boot/pc/pbslba.s - 664 sys sys 1017854326 8147
-sys/src/boot/pc/pci.c - 664 sys sys 1096379795 17688
+sys/src/boot/pc/pci.c - 664 sys sys 1117636062 17818
 sys/src/boot/pc/print.c - 664 sys sys 1094674483 219
 sys/src/boot/pc/queue.c - 664 sys sys 1015007954 566
 sys/src/boot/pc/sd.h - 664 sys sys 1094674489 2271
@@ -13410,7 +13410,7 @@ sys/src/games/sudoku - 20000000775 sys sys 1117225572 0
 sys/src/games/sudoku/game.c - 664 sys sys 1117226433 7788
 sys/src/games/sudoku/levels.c - 664 sys sys 1117226433 3186
 sys/src/games/sudoku/mkfile - 664 sys sys 1117226432 218
-sys/src/games/sudoku/sudoku.c - 664 sys sys 1117226433 7805
+sys/src/games/sudoku/sudoku.c - 664 sys sys 1117636441 7809
 sys/src/games/sudoku/sudoku.h - 664 sys sys 1117226432 1159
 sys/src/lib9p - 20000000775 sys sys 1015023311 0
 sys/src/lib9p/dirread.c - 664 sys sys 1015023310 641
