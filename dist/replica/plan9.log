@@ -21452,3 +21452,5 @@
 1117638146 0 c sys/src/9/pc/pci.c - 664 sys sys 1117636046 26073
 1117638146 1 c sys/src/boot/pc/pci.c - 664 sys sys 1117636062 17818
 1117638146 2 c sys/src/games/sudoku/sudoku.c - 664 sys sys 1117636441 7809
+1117839770 0 c sys/man/8/plan9.ini - 664 sys sys 1117814755 21579
+1117839770 1 d sys/games/lib/sudoku/boards/medium001.su - 664 sys sys 1117226433 0
