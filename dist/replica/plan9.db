@@ -868,7 +868,7 @@ lib/face/48x48x4/x - 20000000775 sys sys 944941894 0
 lib/face/48x48x4/y - 20000000775 sys sys 944941894 0
 lib/face/48x48x4/z - 20000000775 sys sys 944941894 0
 lib/face/48x48x8 - 20000000775 sys sys 944941834 0
-lib/face/48x48x8/.dict - 664 sys sys 1097900803 2174
+lib/face/48x48x8/.dict - 664 sys sys 1118196897 5677
 lib/face/48x48x8/Z - 20000000775 sys sys 944941832 0
 lib/face/48x48x8/a - 20000000775 sys sys 944941832 0
 lib/face/48x48x8/a/axel.1 - 664 sys sys 1056983599 473
@@ -880,6 +880,7 @@ lib/face/48x48x8/c/chrislocke.1 - 644 sys sys 1057005038 1613
 lib/face/48x48x8/c/comcast.1 - 664 sys sys 1057025679 6972
 lib/face/48x48x8/d - 20000000775 sys sys 944941833 0
 lib/face/48x48x8/d/dancross.1 - 664 sys sys 1057029244 1580
+lib/face/48x48x8/d/dlewis.1 - 664 sys sys 1118196820 2364
 lib/face/48x48x8/e - 20000000775 sys sys 944941833 0
 lib/face/48x48x8/f - 20000000775 sys sys 944941833 0
 lib/face/48x48x8/f/forsyth.1 - 644 sys sys 1056982111 1864
@@ -911,6 +912,7 @@ lib/face/48x48x8/r - 20000000775 sys sys 944941833 0
 lib/face/48x48x8/r/rog.1 - 644 sys sys 1057005153 1621
 lib/face/48x48x8/s - 20000000775 sys sys 944941833 0
 lib/face/48x48x8/s/scottschwartz.1 - 664 sys sys 1056981529 1837
+lib/face/48x48x8/s/sdavis.1 - 664 sys sys 1118196836 2364
 lib/face/48x48x8/s/stevesimon.1 - 664 sys sys 1056982262 1598
 lib/face/48x48x8/t - 20000000775 sys sys 944941833 0
 lib/face/48x48x8/t/tiit.1 - 664 sys sys 1078950263 2061
@@ -965,6 +967,7 @@ lib/face/48x48x8/x - 20000000775 sys sys 944941834 0
 lib/face/48x48x8/y - 20000000775 sys sys 944941834 0
 lib/face/48x48x8/z - 20000000775 sys sys 944941834 0
 lib/face/48x48x8/z/zed.1 - 664 sys sys 1060174022 2364
+lib/face/48x48x8/z/zfolkerts.1 - 664 sys sys 1118196805 2364
 lib/face/512x512x24 - 20000000755 sys sys 944941683 0
 lib/face/512x512x24/.dict - 644 sys sys 944941683 0
 lib/face/512x512x8 - 20000000755 sys sys 944941683 0
@@ -6077,7 +6080,7 @@ sys/lib/man/trademarks - 664 sys sys 958527089 1838
 sys/lib/mimetype - 664 sys sys 1102352651 6153
 sys/lib/newuser - 775 sys sys 1112362340 1226
 sys/lib/plumb - 20000000775 sys sys 944957365 0
-sys/lib/plumb/basic - 664 sys sys 1070330856 2930
+sys/lib/plumb/basic - 664 sys sys 1118196423 2946
 sys/lib/plumb/fileaddr - 664 sys sys 944957365 88
 sys/lib/postscript - 20000000775 sys sys 950322802 0
 sys/lib/postscript/afm - 20000000775 sys sys 950322802 0
@@ -6756,7 +6759,7 @@ sys/man/1/filter - 664 sys sys 1041108741 4403
 sys/man/1/fmt - 664 sys sys 1070032221 1557
 sys/man/1/fortune - 664 sys sys 944959673 449
 sys/man/1/freq - 664 sys sys 944959673 735
-sys/man/1/games - 664 sys sys 1117225790 3968
+sys/man/1/games - 664 sys sys 1118153814 4772
 sys/man/1/grap - 664 sys sys 944959675 6417
 sys/man/1/graph - 664 sys sys 944959673 2858
 sys/man/1/grep - 664 sys sys 969512677 2224
@@ -7445,7 +7448,7 @@ sys/src/9/pc/pcdisk - 664 sys sys 1073851851 1427
 sys/src/9/pc/pcf - 664 sys sys 1104430623 1485
 sys/src/9/pc/pcfl - 664 sys sys 1042004821 1563
 sys/src/9/pc/pcflop - 664 sys sys 1112361040 1454
-sys/src/9/pc/pci.c - 664 sys sys 1117636046 26073
+sys/src/9/pc/pci.c - 664 sys sys 1118159824 26297
 sys/src/9/pc/pcmciamodem.c - 664 sys sys 1099761153 1586
 sys/src/9/pc/pcmkfile - 664 sys sys 1109303822 101
 sys/src/9/pc/piix4smbus.c - 664 sys sys 1091129037 5230
@@ -13335,7 +13338,7 @@ sys/src/games - 20000000775 sys sys 1095792091 0
 sys/src/games/catback.p - 664 sys sys 1108184106 35763
 sys/src/games/catclock.c - 664 sys sys 1108184106 10354
 sys/src/games/eyes.p - 664 sys sys 1108184106 1128
-sys/src/games/juggle.c - 664 sys sys 1117461327 4654
+sys/src/games/juggle.c - 664 sys sys 1118153689 4471
 sys/src/games/mahjongg - 20000000775 sys sys 1095792293 0
 sys/src/games/mahjongg/graphics.c - 644 sys sys 1095792293 5794
 sys/src/games/mahjongg/level.c - 644 sys sys 1095792293 2522

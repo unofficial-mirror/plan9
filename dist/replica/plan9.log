@@ -21454,3 +21454,11 @@
 1117638146 2 c sys/src/games/sudoku/sudoku.c - 664 sys sys 1117636441 7809
 1117839770 0 c sys/man/8/plan9.ini - 664 sys sys 1117814755 21579
 1117839770 1 d sys/games/lib/sudoku/boards/medium001.su - 664 sys sys 1117226433 0
+1118198786 0 c lib/face/48x48x8/.dict - 664 sys sys 1118196897 5677
+1118198786 1 a lib/face/48x48x8/d/dlewis.1 - 664 sys sys 1118196820 2364
+1118198786 2 a lib/face/48x48x8/s/sdavis.1 - 664 sys sys 1118196836 2364
+1118198786 3 a lib/face/48x48x8/z/zfolkerts.1 - 664 sys sys 1118196805 2364
+1118198786 4 c sys/lib/plumb/basic - 664 sys sys 1118196423 2946
+1118198786 5 c sys/man/1/games - 664 sys sys 1118153814 4772
+1118198786 6 c sys/src/9/pc/pci.c - 664 sys sys 1118159824 26297
+1118198786 7 c sys/src/games/juggle.c - 664 sys sys 1118153689 4471
