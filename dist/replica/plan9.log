@@ -21462,3 +21462,4 @@
 1118198786 5 c sys/man/1/games - 664 sys sys 1118153814 4772
 1118198786 6 c sys/src/9/pc/pci.c - 664 sys sys 1118159824 26297
 1118198786 7 c sys/src/games/juggle.c - 664 sys sys 1118153689 4471
+1118288051 0 c sys/src/cmd/tar.c - 664 sys sys 1118244397 20697
