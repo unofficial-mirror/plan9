@@ -21464,3 +21464,9 @@
 1118198786 7 c sys/src/games/juggle.c - 664 sys sys 1118153689 4471
 1118288051 0 c sys/src/cmd/tar.c - 664 sys sys 1118244397 20697
 1118633514 0 c sys/src/cmd/ip/hogports.c - 664 sys sys 1118623129 989
+1118719962 0 a sys/games/lib/4scores - 664 sys sys 1118680448 0
+1118719962 1 a sys/games/lib/5scores - 664 sys sys 1118680453 0
+1118719962 2 a sys/src/games/4s.c - 664 sys sys 1118672529 1466
+1118719962 3 a sys/src/games/5s.c - 664 sys sys 1118672529 3802
+1118719962 4 c sys/src/games/mkfile - 664 sys sys 1118672535 567
+1118719962 5 a sys/src/games/xs.h - 664 sys sys 1118672529 14310
