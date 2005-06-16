@@ -21470,3 +21470,8 @@
 1118719962 3 a sys/src/games/5s.c - 664 sys sys 1118672529 3802
 1118719962 4 c sys/src/games/mkfile - 664 sys sys 1118672535 567
 1118719962 5 a sys/src/games/xs.h - 664 sys sys 1118672529 14310
+1118892766 0 c sys/man/8/ndb - 664 sys sys 1118851681 9943
+1118892766 1 c sys/src/cmd/auth/changeuser.c - 664 sys sys 1118884775 2932
+1118892766 2 c sys/src/cmd/hget.c - 664 sys sys 1118885209 25774
+1118892766 3 c sys/src/games/4s.c - 664 sys sys 1118885272 1466
+1118892766 4 c sys/src/games/xs.h - 664 sys sys 1118886450 14271
