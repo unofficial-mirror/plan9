@@ -21476,3 +21476,4 @@
 1118892766 3 c sys/src/games/4s.c - 664 sys sys 1118885272 1466
 1118892766 4 c sys/src/games/xs.h - 664 sys sys 1118886450 14271
 1119065483 0 c sys/src/cmd/ps.c - 664 sys sys 1119012350 2403
+1119144811 0 c sys/src/cmd/aux/write.c - 664 sys sys 1119143661 471
