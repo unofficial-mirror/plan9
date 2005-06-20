@@ -21477,3 +21477,7 @@
 1118892766 4 c sys/src/games/xs.h - 664 sys sys 1118886450 14271
 1119065483 0 c sys/src/cmd/ps.c - 664 sys sys 1119012350 2403
 1119144811 0 c sys/src/cmd/aux/write.c - 664 sys sys 1119143661 471
+1119277935 0 c sys/src/9/pc/errstr.h - 664 sys sys 1119276286 2144
+1119277935 1 c sys/src/cmd/ktrace.c - 664 sys sys 1119276523 5785
+1119277935 2 c sys/src/cmd/ndb/convDNS2M.c - 664 sys sys 1119276409 6866
+1119277935 3 c sys/src/libc/port/qsort.c - 664 sys sys 1119276453 1669
