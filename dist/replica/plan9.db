@@ -5250,7 +5250,7 @@ sys/games - 20000000775 sys sys 952648872 0
 sys/games/lib - 20000000775 sys sys 952648879 0
 sys/games/lib/4scores - 664 sys sys 1118680448 0
 sys/games/lib/5scores - 664 sys sys 1118680453 0
-sys/games/lib/fortunes - 664 sys sys 1117193231 253904
+sys/games/lib/fortunes - 664 sys sys 1119460364 253982
 sys/games/lib/mahjongg - 20000000775 sys sys 1095792278 0
 sys/games/lib/mahjongg/backgrounds - 20000000775 sys sys 1095792293 0
 sys/games/lib/mahjongg/backgrounds/default.bit - 664 sys sys 1095792293 346803
@@ -5514,7 +5514,7 @@ sys/include/ip.h - 664 sys sys 1103554773 2989
 sys/include/keyboard.h - 664 sys sys 1079577798 815
 sys/include/libc.h - 664 sys sys 1115925565 19623
 sys/include/libsec.h - 664 sys sys 1084318867 9264
-sys/include/mach.h - 664 sys sys 1114218490 8336
+sys/include/mach.h - 664 sys sys 1119476886 8368
 sys/include/memdraw.h - 664 sys sys 1091904419 5645
 sys/include/memlayer.h - 664 sys sys 1051031022 1851
 sys/include/mouse.h - 664 sys sys 1035232010 1003
@@ -8625,7 +8625,7 @@ sys/src/cmd/1l/cputime.c - 664 sys sys 944961466 134
 sys/src/cmd/1l/l.h - 664 sys sys 1089299178 4736
 sys/src/cmd/1l/list.c - 664 sys sys 1014926814 4816
 sys/src/cmd/1l/mkfile - 664 sys sys 944961466 314
-sys/src/cmd/1l/obj.c - 664 sys sys 1089299178 23682
+sys/src/cmd/1l/obj.c - 664 sys sys 1119493854 23886
 sys/src/cmd/1l/optab.c - 664 sys sys 947979660 16060
 sys/src/cmd/1l/pass.c - 664 sys sys 1045503930 11701
 sys/src/cmd/1l/span.c - 664 sys sys 1045503931 8925
@@ -8829,7 +8829,7 @@ sys/src/cmd/acid/list.c - 664 sys sys 944960738 3671
 sys/src/cmd/acid/main.c - 664 sys sys 1046198959 8475
 sys/src/cmd/acid/mkfile - 664 sys sys 1046199006 366
 sys/src/cmd/acid/print.c - 664 sys sys 984756705 6840
-sys/src/cmd/acid/proc.c - 664 sys sys 1014924908 4513
+sys/src/cmd/acid/proc.c - 664 sys sys 1119470118 4602
 sys/src/cmd/acid/util.c - 664 sys sys 944960738 4297
 sys/src/cmd/acme - 20000000775 sys sys 969511023 0
 sys/src/cmd/acme/acme.c - 664 sys sys 1104430286 19613
@@ -12179,7 +12179,7 @@ sys/src/cmd/proof/main.c - 664 sys sys 955242172 3268
 sys/src/cmd/proof/mkfile - 664 sys sys 944961622 180
 sys/src/cmd/proof/proof.h - 664 sys sys 955223407 919
 sys/src/cmd/proof/screen.c - 664 sys sys 1014926867 6659
-sys/src/cmd/ps.c - 664 sys sys 1119012350 2403
+sys/src/cmd/ps.c - 664 sys sys 1119469053 2309
 sys/src/cmd/pwd.c - 664 sys sys 1067722792 287
 sys/src/cmd/qa - 20000000775 sys sys 954037936 0
 sys/src/cmd/qa/a.h - 664 sys sys 1089299169 3252
@@ -14100,7 +14100,7 @@ sys/src/libmach/2obj.c - 664 sys sys 1091732624 2335
 sys/src/libmach/5.c - 664 sys sys 984710422 1513
 sys/src/libmach/5db.c - 664 sys sys 1114218476 21530
 sys/src/libmach/5obj.c - 664 sys sys 1091732625 2209
-sys/src/libmach/6.c - 644 sys sys 1114459868 3366
+sys/src/libmach/6.c - 644 sys sys 1119476887 3366
 sys/src/libmach/6c - 20000000775 sys sys 1114459480 0
 sys/src/libmach/6c/6.out.h - 644 sys sys 1114459480 7984
 sys/src/libmach/6obj.c - 644 sys sys 1114459831 2382
@@ -14112,7 +14112,7 @@ sys/src/libmach/8db.c - 664 sys sys 1114459831 50189
 sys/src/libmach/8obj.c - 664 sys sys 1091732625 2200
 sys/src/libmach/access.c - 664 sys sys 1068478065 4309
 sys/src/libmach/elf.h - 664 sys sys 1114459895 2323
-sys/src/libmach/executable.c - 664 sys sys 1114459829 15179
+sys/src/libmach/executable.c - 664 sys sys 1119476886 15431
 sys/src/libmach/k.c - 664 sys sys 964540516 3330
 sys/src/libmach/kdb.c - 664 sys sys 1014929544 21143
 sys/src/libmach/kobj.c - 664 sys sys 1091732625 2217
@@ -14124,7 +14124,7 @@ sys/src/libmach/obj.h - 664 sys sys 964540517 603
 sys/src/libmach/q.c - 664 sys sys 1091732625 3590
 sys/src/libmach/qdb.c - 664 sys sys 1114459830 27490
 sys/src/libmach/qobj.c - 664 sys sys 1091732625 2310
-sys/src/libmach/setmach.c - 664 sys sys 1114459829 2913
+sys/src/libmach/setmach.c - 664 sys sys 1119476886 2911
 sys/src/libmach/swap.c - 664 sys sys 964540518 1026
 sys/src/libmach/sym.c - 664 sys sys 1106409575 26581
 sys/src/libmach/u.c - 644 sys sys 1114459829 3396

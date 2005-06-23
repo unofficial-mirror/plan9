@@ -21481,3 +21481,11 @@
 1119277935 1 c sys/src/cmd/ktrace.c - 664 sys sys 1119276523 5785
 1119277935 2 c sys/src/cmd/ndb/convDNS2M.c - 664 sys sys 1119276409 6866
 1119277935 3 c sys/src/libc/port/qsort.c - 664 sys sys 1119276453 1669
+1119497581 0 c sys/games/lib/fortunes - 664 sys sys 1119460364 253982
+1119497581 1 c sys/include/mach.h - 664 sys sys 1119476886 8368
+1119497581 2 c sys/src/cmd/1l/obj.c - 664 sys sys 1119493854 23886
+1119497581 3 c sys/src/cmd/acid/proc.c - 664 sys sys 1119470118 4602
+1119497581 4 c sys/src/cmd/ps.c - 664 sys sys 1119469053 2309
+1119497581 5 c sys/src/libmach/6.c - 644 sys sys 1119476887 3366
+1119497581 6 c sys/src/libmach/executable.c - 664 sys sys 1119476886 15431
+1119497581 7 c sys/src/libmach/setmach.c - 664 sys sys 1119476886 2911
