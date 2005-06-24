@@ -21489,3 +21489,4 @@
 1119497581 5 c sys/src/libmach/6.c - 644 sys sys 1119476887 3366
 1119497581 6 c sys/src/libmach/executable.c - 664 sys sys 1119476886 15431
 1119497581 7 c sys/src/libmach/setmach.c - 664 sys sys 1119476886 2911
+1119583886 0 c sys/man/4/factotum - 664 sys sys 1119530771 14709
