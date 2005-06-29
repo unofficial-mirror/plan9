@@ -21490,3 +21490,11 @@
 1119497581 6 c sys/src/libmach/executable.c - 664 sys sys 1119476886 15431
 1119497581 7 c sys/src/libmach/setmach.c - 664 sys sys 1119476886 2911
 1119583886 0 c sys/man/4/factotum - 664 sys sys 1119530771 14709
+1120015897 0 c sys/man/1/tar - 664 sys sys 1119991094 3461
+1120015897 1 c sys/src/cmd/ssh/agent.c - 664 sys sys 1119985570 9054
+1120015897 2 c sys/src/cmd/ssh/authpasswd.c - 664 sys sys 1119985570 729
+1120015897 3 c sys/src/cmd/ssh/authrsa.c - 664 sys sys 1119985570 2584
+1120015897 4 c sys/src/cmd/ssh/authtis.c - 664 sys sys 1119985570 1006
+1120015897 5 c sys/src/cmd/tar.c - 664 sys sys 1119986000 21041
+1120015897 6 d sys/src/9/port/devnmouse.c - 664 sys sys 1036812999 0
+1120015897 7 d sys/src/9/ip/nudp.c - 664 sys sys 1050756592 0
