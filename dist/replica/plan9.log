@@ -21498,3 +21498,4 @@
 1120015897 5 c sys/src/cmd/tar.c - 664 sys sys 1119986000 21041
 1120015897 6 d sys/src/9/port/devnmouse.c - 664 sys sys 1036812999 0
 1120015897 7 d sys/src/9/ip/nudp.c - 664 sys sys 1050756592 0
+1120503686 0 c sys/games/lib/fortunes - 664 sys sys 1120502468 254088
