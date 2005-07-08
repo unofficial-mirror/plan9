@@ -21516,3 +21516,7 @@
 1120620879 14 a sys/src/libc/68000/memcpy.s - 664 sys sys 1120557009 1475
 1120620879 15 c sys/src/libc/68000/memmove.s - 664 sys sys 1120556960 1476
 1120620879 16 c sys/src/libc/68000/mkfile - 664 sys sys 1120557008 461
+1120793564 0 c sys/man/1/games - 664 sys sys 1120737932 5357
+1120793564 1 c sys/src/cmd/ip/httpd/webls.c - 664 sys sys 1120737502 7658
+1120793564 2 c sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1120737512 30820
+1120793564 3 c sys/src/libmemdraw/line.c - 664 sys sys 1120737758 11064
