@@ -6845,7 +6845,7 @@ sys/man/1/thesaurus - 664 sys sys 1068121775 222
 sys/man/1/time - 664 sys sys 944959673 380
 sys/man/1/touch - 664 sys sys 1018369246 461
 sys/man/1/tr - 664 sys sys 944959675 1730
-sys/man/1/trace - 664 sys sys 1077376189 1756
+sys/man/1/trace - 664 sys sys 1121082621 1776
 sys/man/1/troff - 664 sys sys 944959675 3102
 sys/man/1/troff2html - 664 sys sys 1113743328 1924
 sys/man/1/tweak - 664 sys sys 957920008 4762

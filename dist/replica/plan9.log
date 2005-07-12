@@ -21523,3 +21523,4 @@
 1120910572 0 c sys/src/9/pc/vganvidia.c - 664 sys sys 1120909910 12617
 1120910572 1 c sys/src/cmd/cpu.c - 664 sys sys 1120909565 21106
 1121052687 0 c sys/src/cmd/cpu.c - 664 sys sys 1121004911 21104
+1121139183 0 c sys/man/1/trace - 664 sys sys 1121082621 1776
