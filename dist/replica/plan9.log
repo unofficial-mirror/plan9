@@ -21530,3 +21530,16 @@
 1121304821 2 c sys/src/9/pc/pci.c - 664 sys sys 1121260128 26418
 1121304821 3 c sys/src/9/pc/sdata.c - 664 sys sys 1121260176 51278
 1121304821 4 c sys/src/9/port/segment.c - 664 sys sys 1121259584 13761
+1121398442 0 c sys/man/1/games - 664 sys sys 1121367092 5355
+1121398442 1 c sys/src/9/pc/ether8139.c - 664 sys sys 1121393473 18385
+1121398442 2 c sys/src/9/pc/main.c - 664 sys sys 1121367242 14693
+1121398442 3 c sys/src/9/pc/trap.c - 664 sys sys 1121367232 20503
+1121398442 4 c sys/src/9/pc/ether8169.c - 664 sys sys 1121391723 22704
+1121398442 5 c sys/src/boot/pc/ether8139.c - 664 sys sys 1121393459 14823
+1121398442 6 c sys/src/boot/pc/ether8169.c - 664 sys sys 1121391787 18687
+1121398442 7 c sys/src/boot/pc/pci.c - 664 sys sys 1121366869 17898
+1121398442 8 c sys/src/cmd/auth/factotum/dat.h - 664 sys sys 1121367028 4946
+1121398442 9 c sys/src/cmd/trace.c - 664 sys sys 1121367076 17928
+1121398442 10 c sys/src/libc/port/profile.c - 664 sys sys 1121367263 5413
+1121398442 11 c sys/src/libmach/obj.c - 664 sys sys 1121367249 5918
+1121398442 12 c sys/src/libmp/arm/mkfile - 664 sys sys 1121367256 182
