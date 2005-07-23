@@ -21613,3 +21613,5 @@
 1122003199 64 c sys/src/cmd/vi/symbols.c - 664 sys sys 1121977746 1744
 1122003199 65 c sys/src/cmd/vt/event.c - 664 sys sys 1121977166 1071
 1122003199 66 c sys/src/libventi/client.c - 664 sys sys 1121977166 5362
+1122129228 0 c sys/src/cmd/aux/listen.c - 664 sys sys 1122127534 8153
+1122129228 1 c sys/src/cmd/import.c - 664 sys sys 1122127534 6886
