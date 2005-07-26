@@ -21616,3 +21616,5 @@
 1122129228 0 c sys/src/cmd/aux/listen.c - 664 sys sys 1122127534 8153
 1122129228 1 c sys/src/cmd/import.c - 664 sys sys 1122127534 6886
 1122262457 0 c sys/src/cmd/import.c - 664 sys sys 1122260912 6885
+1122348789 0 c sys/src/ape/cmd/diff/system.h - 664 sys sys 1122299097 5775
+1122348789 1 c sys/src/cmd/wikifs/fs.c - 664 sys sys 1122335732 15656

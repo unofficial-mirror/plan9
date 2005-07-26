@@ -7667,7 +7667,7 @@ sys/src/ape/cmd/diff/regex.c - 664 sys sys 1046198749 186345
 sys/src/ape/cmd/diff/regex.h - 664 sys sys 1046198749 19353
 sys/src/ape/cmd/diff/sdiff.c - 664 sys sys 1046198750 23417
 sys/src/ape/cmd/diff/side.c - 664 sys sys 1046198750 7012
-sys/src/ape/cmd/diff/system.h - 664 sys sys 1046198750 5744
+sys/src/ape/cmd/diff/system.h - 664 sys sys 1122299097 5775
 sys/src/ape/cmd/diff/util.c - 664 sys sys 1046198750 18335
 sys/src/ape/cmd/diff/version.c - 664 sys sys 1046198750 94
 sys/src/ape/cmd/diff/xmalloc.c - 664 sys sys 1046198751 1828
@@ -13202,7 +13202,7 @@ sys/src/cmd/webfs/url.c - 664 sys sys 1019240175 24238
 sys/src/cmd/webfs/util.c - 664 sys sys 1015015823 1211
 sys/src/cmd/webfsget.c - 664 sys sys 1068413017 1595
 sys/src/cmd/wikifs - 20000000775 sys sys 1018211094 0
-sys/src/cmd/wikifs/fs.c - 664 sys sys 1079380576 15626
+sys/src/cmd/wikifs/fs.c - 664 sys sys 1122335732 15656
 sys/src/cmd/wikifs/io.c - 664 sys sys 1084469671 11572
 sys/src/cmd/wikifs/lookup.c - 664 sys sys 1018211093 182
 sys/src/cmd/wikifs/map.c - 664 sys sys 1018211093 109
