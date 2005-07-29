@@ -21619,3 +21619,4 @@
 1122348789 0 c sys/src/ape/cmd/diff/system.h - 664 sys sys 1122299097 5775
 1122348789 1 c sys/src/cmd/wikifs/fs.c - 664 sys sys 1122335732 15656
 1122608037 0 c sys/src/cmd/acme/wind.c - 664 sys sys 1122526112 11233
+1122638618 0 d sys/src/cmd/mkstate.c - 664 sys sys 1014926695 0
