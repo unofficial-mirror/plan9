@@ -22567,3 +22567,5 @@
 1123124610 943 d sys/src/ape/cmd/make-3.79/tests/scripts/features/conditionals - 644 sys sys 1014921978 0
 1123124610 944 d sys/src/ape/cmd/make-3.79/tests/scripts/features/comments - 644 sys sys 1014921978 0
 1123212823 0 c rc/bin/ap - 775 sys sys 1123163734 733
+1123299242 0 c sys/src/9/port/devsd.c - 664 sys sys 1123255503 28564
+1123299242 1 c sys/src/cmd/kprof.c - 664 sys sys 1123244004 2550
