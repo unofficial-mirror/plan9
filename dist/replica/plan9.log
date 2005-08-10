@@ -22582,3 +22582,6 @@
 1123446784 7 c sys/src/9/port/sysproc.c - 664 sys sys 1123438659 15118
 1123446784 8 c sys/src/9/ppc/mmu.c - 664 sys sys 1123438210 4897
 1123446784 9 c sys/src/boot/pc/etherigbe.c - 664 sys sys 1123445062 40477
+1123644810 0 a sys/man/8/gpsfs - 664 sys sys 1123643451 4924
+1123644810 1 c sys/src/9/pc/mp.c - 664 sys sys 1123637234 17024
+1123644810 2 c sys/src/cmd/ndb/dblookup.c - 664 sys sys 1123602793 18275
