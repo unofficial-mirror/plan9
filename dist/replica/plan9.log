@@ -22601,3 +22601,4 @@
 1123731221 13 d sys/src/9/ppc/errstr.h - 664 sys sys 1059490751 0
 1123731221 14 d sys/src/9/pc/errstr.h - 664 sys sys 1119276286 0
 1123731221 15 d sys/src/9/mtx/errstr.h - 664 sys sys 1089390059 0
+1123761830 0 c sys/games/lib/fortunes - 664 sys sys 1123761247 254403
