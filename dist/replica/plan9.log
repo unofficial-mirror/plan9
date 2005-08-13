@@ -22602,3 +22602,6 @@
 1123731221 14 d sys/src/9/pc/errstr.h - 664 sys sys 1119276286 0
 1123731221 15 d sys/src/9/mtx/errstr.h - 664 sys sys 1089390059 0
 1123761830 0 c sys/games/lib/fortunes - 664 sys sys 1123761247 254403
+1123903937 0 c sys/lib/acid/port - 664 sys sys 1123856142 8902
+1123903937 1 c sys/src/cmd/ip/httpd/mkfile - 664 sys sys 1123902339 1353
+1123903937 2 c sys/src/cmd/mkmany - 664 sys sys 1123818681 1304

@@ -23,9 +23,9 @@ XTARG=\
 	save\
 	wikipost\
 
-LIB=libhttps.a.$O
+LIB=libhttps.a$O
 
-LIBS=libhttps.a.$O
+LIBS=libhttps.a$O
 LIBSOFILES=\
 	anonymous.$O\
 	content.$O\
@@ -55,11 +55,11 @@ trial2: $O.netlib_find
 	echo "\n" | $O.netlib_find GET HTTP/1.0 xxx 'db=1&pat=Hearing' > /tmp/search
 	sed 17q /tmp/search
 
-$LIBS(%.$O):N: %.$O
-$LIBS:	${LIBSOFILES:%=$LIBS(%)}
-	names = `{echo $newprereq |sed 's/ /\n/g' |sed -n 's/'$LIBS'\(([^)]+)\)/\1/gp'}
-	ar vu $LIBS $names
-	rm $names
+$LIBS:	$LIBSOFILES
+	ar vu $LIBS $newprereq
+	rm $newprereq
+	# rm $newmember - cannot do this because of mk race
+
 
 re:N: v.re
 	v.re redirect.urls
@@ -76,3 +76,4 @@ $O.test9down: 9down4e.$O whois.$O classify.$O $LIB
 
 $O.testclassify: testclassify.$O whois.$O classify.$O $LIB
 	$LD -o $target $prereq
+
