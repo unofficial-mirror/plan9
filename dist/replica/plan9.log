@@ -22608,3 +22608,6 @@
 1123945379 0 c sys/man/4/webfs - 664 sys sys 1123943673 6454
 1123945379 1 c sys/src/cmd/mkone - 664 sys sys 1123943673 910
 1124076776 0 c sys/src/cmd/upas/marshal/marshal.c - 664 sys sys 1124027454 32708
+1124118203 0 a sys/lib/kbmap/dvorak - 664 sys sys 1124117871 1588
+1124118203 1 a sys/lib/kbmap/dvorakl - 664 sys sys 1124117871 1945
+1124118203 2 a sys/lib/kbmap/dvorakr - 664 sys sys 1124117871 1869
