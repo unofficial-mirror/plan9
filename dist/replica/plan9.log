@@ -22625,3 +22625,7 @@
 1124229815 11 c sys/src/cmd/vi/mkfile - 664 sys sys 1124229127 289
 1124229815 12 c sys/src/cmd/vi/syscall.c - 664 sys sys 1124229128 14183
 1124229815 13 c sys/src/cmd/vi/vi.c - 664 sys sys 1124229128 8989
+1124336062 0 c sys/src/cmd/aux/ms2.c - 664 sys sys 1124305056 3153
+1124336062 1 c sys/src/cmd/file.c - 664 sys sys 1124305142 23332
+1124336062 2 c sys/src/cmd/prof.c - 664 sys sys 1124305301 5547
+1124336062 3 c sys/src/cmd/tprof.c - 664 sys sys 1124305452 2731
