@@ -22629,3 +22629,4 @@
 1124336062 1 c sys/src/cmd/file.c - 664 sys sys 1124305142 23332
 1124336062 2 c sys/src/cmd/prof.c - 664 sys sys 1124305301 5547
 1124336062 3 c sys/src/cmd/tprof.c - 664 sys sys 1124305452 2731
+1124667191 0 c sys/games/lib/fortunes - 664 sys sys 1124666623 255050
