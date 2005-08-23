@@ -391,9 +391,9 @@ lib/dict - 20000000775 sys sys 1063656980 0
 lib/dict/README.pgw - 664 sys sys 1063660179 147
 lib/dict/README.roget - 664 sys sys 1100894426 105
 lib/face - 20000000775 sys sys 945049943 0
-lib/face/.machinelist - 664 sys sys 944945676 97
+lib/face/.machinelist - 664 sys sys 1124711522 87
 lib/face/48x48x1 - 20000000775 sys sys 1123100640 0
-lib/face/48x48x1/.dict - 664 sys sys 1079054327 9812
+lib/face/48x48x1/.dict - 664 sys sys 1124711604 9837
 lib/face/48x48x1/a - 20000000775 sys sys 1123100687 0
 lib/face/48x48x1/a/acsnet.1 - 664 sys sys 1020313578 1056
 lib/face/48x48x1/a/adb.1 - 664 sys sys 1020313578 1200
@@ -705,7 +705,7 @@ lib/face/48x48x1/x - 20000000775 sys sys 1020895709 0
 lib/face/48x48x1/y - 20000000775 sys sys 1020895709 0
 lib/face/48x48x1/z - 20000000775 sys sys 1020895709 0
 lib/face/48x48x2 - 20000000775 sys sys 1123100640 0
-lib/face/48x48x2/.dict - 664 sys sys 1059677865 534
+lib/face/48x48x2/.dict - 664 sys sys 1124711592 559
 lib/face/48x48x2/a - 20000000775 sys sys 1039727283 0
 lib/face/48x48x2/a/adb.1 - 664 sys sys 944941681 1776
 lib/face/48x48x2/a/andrew.1 - 664 sys sys 944941681 1776
@@ -757,7 +757,7 @@ lib/face/48x48x2/x - 20000000775 sys sys 1020895710 0
 lib/face/48x48x2/y - 20000000775 sys sys 1020895710 0
 lib/face/48x48x2/z - 20000000775 sys sys 1020895710 0
 lib/face/48x48x4 - 20000000775 sys sys 944941894 0
-lib/face/48x48x4/.dict - 664 sys sys 1103981657 2530
+lib/face/48x48x4/.dict - 664 sys sys 1124711578 2496
 lib/face/48x48x4/Z - 20000000775 sys sys 944945342 0
 lib/face/48x48x4/a - 20000000775 sys sys 944945701 0
 lib/face/48x48x4/a/adb.1 - 664 sys sys 944941890 962
@@ -5250,7 +5250,7 @@ sys/games - 20000000775 sys sys 952648872 0
 sys/games/lib - 20000000775 sys sys 952648879 0
 sys/games/lib/4scores - 664 sys sys 1118680448 0
 sys/games/lib/5scores - 664 sys sys 1118680453 0
-sys/games/lib/fortunes - 664 sys sys 1124666623 255050
+sys/games/lib/fortunes - 664 sys sys 1124716792 255238
 sys/games/lib/mahjongg - 20000000775 sys sys 1095792278 0
 sys/games/lib/mahjongg/backgrounds - 20000000775 sys sys 1095792293 0
 sys/games/lib/mahjongg/backgrounds/default.bit - 664 sys sys 1095792293 346803
@@ -5513,7 +5513,7 @@ sys/include/httpd.h - 664 sys sys 1091904418 5771
 sys/include/ip.h - 664 sys sys 1103554773 2989
 sys/include/keyboard.h - 664 sys sys 1079577798 815
 sys/include/libc.h - 664 sys sys 1115925565 19623
-sys/include/libsec.h - 664 sys sys 1084318867 9264
+sys/include/libsec.h - 664 sys sys 1124709121 9345
 sys/include/mach.h - 664 sys sys 1119476886 8368
 sys/include/memdraw.h - 664 sys sys 1091904419 5645
 sys/include/memlayer.h - 664 sys sys 1051031022 1851
@@ -6971,7 +6971,7 @@ sys/man/2/print - 664 sys sys 1115941566 8852
 sys/man/2/privalloc - 664 sys sys 984709633 651
 sys/man/2/proto - 664 sys sys 969499889 2948
 sys/man/2/pushssl - 664 sys sys 958249503 1032
-sys/man/2/pushtls - 664 sys sys 1087829666 4781
+sys/man/2/pushtls - 664 sys sys 1124711123 5618
 sys/man/2/qball - 664 sys sys 950892866 2000
 sys/man/2/qsort - 664 sys sys 944959694 763
 sys/man/2/quaternion - 664 sys sys 950892867 3421
@@ -7084,7 +7084,7 @@ sys/man/4/usb - 664 sys sys 1112038986 4430
 sys/man/4/usbd - 664 sys sys 1018386778 731
 sys/man/4/vacfs - 664 sys sys 1084333062 1545
 sys/man/4/webcookies - 664 sys sys 1019828742 3525
-sys/man/4/webfs - 664 sys sys 1123943673 6454
+sys/man/4/webfs - 664 sys sys 1124711926 6518
 sys/man/4/wikifs - 664 sys sys 1111765301 7505
 sys/man/5 - 20000000775 sys sys 1015024846 0
 sys/man/5/0intro - 664 sys sys 1072793193 14106
@@ -7568,7 +7568,7 @@ sys/src/9/port/pgrp.c - 664 sys sys 1072704671 3940
 sys/src/9/port/portclock.c - 664 sys sys 1102093397 4556
 sys/src/9/port/portdat.h - 664 sys sys 1109541435 22233
 sys/src/9/port/portfns.h - 664 sys sys 1123647283 10976
-sys/src/9/port/portmkfile - 664 sys sys 1109202242 2043
+sys/src/9/port/portmkfile - 664 sys sys 1124708650 2052
 sys/src/9/port/print.c - 664 sys sys 1014931178 227
 sys/src/9/port/proc.c - 664 sys sys 1099760501 28207
 sys/src/9/port/qio.c - 664 sys sys 1070287837 23562
@@ -9036,7 +9036,7 @@ sys/src/cmd/aux/mnihongo/mnihongo.c - 664 sys sys 946759402 6406
 sys/src/cmd/aux/mnihongo/tmac.nihongo - 664 sys sys 944960789 22
 sys/src/cmd/aux/mouse.c - 664 sys sys 1063855425 7049
 sys/src/cmd/aux/ms2.c - 664 sys sys 1124305056 3153
-sys/src/cmd/aux/msexceltables.c - 664 sys sys 1116594581 13722
+sys/src/cmd/aux/msexceltables.c - 664 sys sys 1124709007 13935
 sys/src/cmd/aux/mswordstrings.c - 664 sys sys 952201344 5767
 sys/src/cmd/aux/na - 20000000775 sys sys 955036627 0
 sys/src/cmd/aux/na/mkfile - 664 sys sys 955036627 121
@@ -11735,7 +11735,7 @@ sys/src/cmd/ndb/dnserver.c - 664 sys sys 1021579994 3687
 sys/src/cmd/ndb/dnsquery.c - 664 sys sys 1120564714 2198
 sys/src/cmd/ndb/dnstcp.c - 664 sys sys 1063861697 7085
 sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1055701924 5277
-sys/src/cmd/ndb/ipquery.c - 664 sys sys 960335375 760
+sys/src/cmd/ndb/ipquery.c - 664 sys sys 1124711426 773
 sys/src/cmd/ndb/mkdb.c - 664 sys sys 957402054 2886
 sys/src/cmd/ndb/mkfile - 664 sys sys 1055701930 1877
 sys/src/cmd/ndb/mkhash.c - 664 sys sys 1014926160 2899
@@ -13121,6 +13121,7 @@ sys/src/cmd/webfs/mkfile - 664 sys sys 1032665986 340
 sys/src/cmd/webfs/plumb.c - 664 sys sys 1015090008 2761
 sys/src/cmd/webfs/url.c - 664 sys sys 1019240175 24238
 sys/src/cmd/webfs/util.c - 664 sys sys 1015015823 1211
+sys/src/cmd/webfs/webget.c - 664 sys sys 1124711795 1589
 sys/src/cmd/webfsget.c - 664 sys sys 1068413017 1595
 sys/src/cmd/wikifs - 20000000775 sys sys 1018211094 0
 sys/src/cmd/wikifs/fs.c - 664 sys sys 1122335732 15656
@@ -14287,7 +14288,7 @@ sys/src/libsec/port/sha1pickle.c - 664 sys sys 988225292 717
 sys/src/libsec/port/smallprimes.c - 664 sys sys 984710525 6851
 sys/src/libsec/port/smallprimetest.c - 664 sys sys 984710525 70640
 sys/src/libsec/port/thumb.c - 664 sys sys 1019832052 1891
-sys/src/libsec/port/tlshand.c - 664 sys sys 1109079424 54272
+sys/src/libsec/port/tlshand.c - 664 sys sys 1124709122 54987
 sys/src/libsec/port/x509.c - 664 sys sys 1063853597 50342
 sys/src/libsec/power - 20000000775 sys sys 984710502 0
 sys/src/libsec/power/mkfile - 664 sys sys 1032061453 139

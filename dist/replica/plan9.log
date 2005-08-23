@@ -22630,3 +22630,16 @@
 1124336062 2 c sys/src/cmd/prof.c - 664 sys sys 1124305301 5547
 1124336062 3 c sys/src/cmd/tprof.c - 664 sys sys 1124305452 2731
 1124667191 0 c sys/games/lib/fortunes - 664 sys sys 1124666623 255050
+1124768012 0 c lib/face/.machinelist - 664 sys sys 1124711522 87
+1124768012 1 c lib/face/48x48x1/.dict - 664 sys sys 1124711604 9837
+1124768012 2 c lib/face/48x48x2/.dict - 664 sys sys 1124711592 559
+1124768012 3 c lib/face/48x48x4/.dict - 664 sys sys 1124711578 2496
+1124768012 4 c sys/games/lib/fortunes - 664 sys sys 1124716792 255238
+1124768012 5 c sys/include/libsec.h - 664 sys sys 1124709121 9345
+1124768012 6 c sys/man/2/pushtls - 664 sys sys 1124711123 5618
+1124768012 7 c sys/man/4/webfs - 664 sys sys 1124711926 6518
+1124768012 8 c sys/src/9/port/portmkfile - 664 sys sys 1124708650 2052
+1124768012 9 c sys/src/cmd/aux/msexceltables.c - 664 sys sys 1124709007 13935
+1124768012 10 c sys/src/cmd/ndb/ipquery.c - 664 sys sys 1124711426 773
+1124768012 11 a sys/src/cmd/webfs/webget.c - 664 sys sys 1124711795 1589
+1124768012 12 c sys/src/libsec/port/tlshand.c - 664 sys sys 1124709122 54987
