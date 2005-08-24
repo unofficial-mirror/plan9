@@ -22643,3 +22643,5 @@
 1124768012 10 c sys/src/cmd/ndb/ipquery.c - 664 sys sys 1124711426 773
 1124768012 11 a sys/src/cmd/webfs/webget.c - 664 sys sys 1124711795 1589
 1124768012 12 c sys/src/libsec/port/tlshand.c - 664 sys sys 1124709122 54987
+1124854431 0 c sys/man/1/gzip - 664 sys sys 1124839836 3226
+1124854431 1 c sys/src/cmd/gzip/unzip.c - 664 sys sys 1124839686 13816
