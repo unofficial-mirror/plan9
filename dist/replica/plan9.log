@@ -22645,3 +22645,17 @@
 1124768012 12 c sys/src/libsec/port/tlshand.c - 664 sys sys 1124709122 54987
 1124854431 0 c sys/man/1/gzip - 664 sys sys 1124839836 3226
 1124854431 1 c sys/src/cmd/gzip/unzip.c - 664 sys sys 1124839686 13816
+1124940851 0 a mail/lib/validateattachment - 775 upas upas 1124885063 680
+1124940851 1 c lib/font/bit/lucidasans/unicode.7.font - 664 sys sys 1124884861 2042
+1124940851 2 c sys/games/lib/fortunes - 664 sys sys 1124931511 255388
+1124940851 3 c sys/man/1/filter - 664 sys sys 1124885098 4619
+1124940851 4 c sys/src/9/port/mkfilelist - 775 sys sys 1124890427 266
+1124940851 5 c sys/src/cmd/aux/flashfs/journal.c - 664 sys sys 1124916236 14317
+1124940851 6 c sys/src/cmd/aux/msexceltables.c - 664 sys sys 1124933681 13912
+1124940851 7 c sys/src/cmd/aux/vga/i81x.c - 664 sys sys 1124916404 11755
+1124940851 8 c sys/src/cmd/gzip/mkfile - 664 sys sys 1124884920 124
+1124940851 9 c sys/src/cmd/ip/ftpfs/proto.c - 664 sys sys 1124935667 30337
+1124940851 10 c sys/src/cmd/ip/ipconfig.c - 664 sys sys 1124936750 34907
+1124940851 11 c sys/src/cmd/upas/vf/vf.c - 664 sys sys 1124885103 20004
+1124940851 12 c sys/src/lib9p/srv.c - 664 sys sys 1124911050 16885
+1124940851 13 c sys/src/libsec/port/tlshand.c - 664 sys sys 1124935566 54999

@@ -2456,7 +2456,7 @@ lib/font/bit/lucidasans/typeunicode.9.font - 464 sys sys 1115917409 1678
 lib/font/bit/lucidasans/unicode.10.font - 664 sys sys 1115914025 2042
 lib/font/bit/lucidasans/unicode.13.font - 664 sys sys 1116086405 1898
 lib/font/bit/lucidasans/unicode.6.font - 664 sys sys 1115914026 1945
-lib/font/bit/lucidasans/unicode.7.font - 664 sys sys 1115914026 1988
+lib/font/bit/lucidasans/unicode.7.font - 664 sys sys 1124884861 2042
 lib/font/bit/lucidasans/unicode.8.font - 664 sys sys 1115917409 2095
 lib/font/bit/lucidasans/unicode.8.font1 - 664 sys sys 944943795 476
 lib/font/bit/lucidasans/unicode.9x24.font - 664 sys sys 944943794 1922
@@ -4737,6 +4737,7 @@ mail/lib/smtpd.conf.ext - 664 upas upas 1089299188 1032
 mail/lib/spam.rc - 775 upas upas 1063950954 400
 mail/lib/unspam.rc - 775 upas upas 1063950954 400
 mail/lib/validateaddress - 775 upas upas 1098803974 48
+mail/lib/validateattachment - 775 upas upas 1124885063 680
 mail/lib/validatesender - 775 upas upas 1106233741 1128
 mail/lib/white.starter - 664 upas upas 1067739606 326
 mail/queue - 20000000777 upas upas 953302652 0
@@ -5250,7 +5251,7 @@ sys/games - 20000000775 sys sys 952648872 0
 sys/games/lib - 20000000775 sys sys 952648879 0
 sys/games/lib/4scores - 664 sys sys 1118680448 0
 sys/games/lib/5scores - 664 sys sys 1118680453 0
-sys/games/lib/fortunes - 664 sys sys 1124716792 255238
+sys/games/lib/fortunes - 664 sys sys 1124931511 255388
 sys/games/lib/mahjongg - 20000000775 sys sys 1095792278 0
 sys/games/lib/mahjongg/backgrounds - 20000000775 sys sys 1095792293 0
 sys/games/lib/mahjongg/backgrounds/default.bit - 664 sys sys 1095792293 346803
@@ -6760,7 +6761,7 @@ sys/man/1/expect - 664 sys sys 1058791094 3023
 sys/man/1/faces - 664 sys sys 1113743326 2395
 sys/man/1/factor - 664 sys sys 957920005 1019
 sys/man/1/file - 664 sys sys 1015024739 1578
-sys/man/1/filter - 664 sys sys 1041108741 4403
+sys/man/1/filter - 664 sys sys 1124885098 4619
 sys/man/1/fmt - 664 sys sys 1070032221 1557
 sys/man/1/fortune - 664 sys sys 944959673 449
 sys/man/1/freq - 664 sys sys 944959673 735
@@ -7554,7 +7555,7 @@ sys/src/9/port/mkdevlist - 775 sys sys 1055700519 510
 sys/src/9/port/mkerrstr - 775 sys sys 1015278340 75
 sys/src/9/port/mkextract - 775 sys sys 1039753334 435
 sys/src/9/port/mkfile - 664 sys sys 1063856960 350
-sys/src/9/port/mkfilelist - 775 sys sys 1109202242 203
+sys/src/9/port/mkfilelist - 775 sys sys 1124890427 266
 sys/src/9/port/mkroot - 775 sys sys 1039753334 235
 sys/src/9/port/mkrootall - 775 sys sys 1055954696 386
 sys/src/9/port/mkrootc - 775 sys sys 1055954695 717
@@ -9010,7 +9011,7 @@ sys/src/cmd/aux/flashfs/entry.c - 664 sys sys 1015009081 7936
 sys/src/cmd/aux/flashfs/errors.c - 664 sys sys 1015009081 286
 sys/src/cmd/aux/flashfs/flash.c - 664 sys sys 1015009081 973
 sys/src/cmd/aux/flashfs/flashfs.h - 664 sys sys 1015092280 3422
-sys/src/cmd/aux/flashfs/journal.c - 664 sys sys 1015009081 14297
+sys/src/cmd/aux/flashfs/journal.c - 664 sys sys 1124916236 14317
 sys/src/cmd/aux/flashfs/mkfile - 664 sys sys 1015009082 649
 sys/src/cmd/aux/flashfs/mkfs.c - 664 sys sys 1015009082 1072
 sys/src/cmd/aux/flashfs/mkit - 775 sys sys 1015009082 86
@@ -9036,7 +9037,7 @@ sys/src/cmd/aux/mnihongo/mnihongo.c - 664 sys sys 946759402 6406
 sys/src/cmd/aux/mnihongo/tmac.nihongo - 664 sys sys 944960789 22
 sys/src/cmd/aux/mouse.c - 664 sys sys 1063855425 7049
 sys/src/cmd/aux/ms2.c - 664 sys sys 1124305056 3153
-sys/src/cmd/aux/msexceltables.c - 664 sys sys 1124709007 13935
+sys/src/cmd/aux/msexceltables.c - 664 sys sys 1124933681 13912
 sys/src/cmd/aux/mswordstrings.c - 664 sys sys 952201344 5767
 sys/src/cmd/aux/na - 20000000775 sys sys 955036627 0
 sys/src/cmd/aux/na/mkfile - 664 sys sys 955036627 121
@@ -9072,7 +9073,7 @@ sys/src/cmd/aux/vga/error.c - 664 sys sys 1014925008 745
 sys/src/cmd/aux/vga/et4000.c - 664 sys sys 1014925008 6720
 sys/src/cmd/aux/vga/et4000hwgc.c - 664 sys sys 1014925008 552
 sys/src/cmd/aux/vga/hiqvideo.c - 664 sys sys 1048635653 9211
-sys/src/cmd/aux/vga/i81x.c - 664 sys sys 1062391404 11759
+sys/src/cmd/aux/vga/i81x.c - 664 sys sys 1124916404 11755
 sys/src/cmd/aux/vga/ibm8514.c - 664 sys sys 1014925009 2389
 sys/src/cmd/aux/vga/icd2061a.c - 664 sys sys 1014925009 2152
 sys/src/cmd/aux/vga/ics2494.c - 664 sys sys 1014925009 2000
@@ -11353,7 +11354,7 @@ sys/src/cmd/gzip - 20000000775 sys sys 984789976 0
 sys/src/cmd/gzip/gunzip.c - 664 sys sys 1014924864 6039
 sys/src/cmd/gzip/gzip.c - 664 sys sys 1014924864 3646
 sys/src/cmd/gzip/gzip.h - 664 sys sys 954778718 1058
-sys/src/cmd/gzip/mkfile - 664 sys sys 984758036 125
+sys/src/cmd/gzip/mkfile - 664 sys sys 1124884920 124
 sys/src/cmd/gzip/unzip.c - 664 sys sys 1124839686 13816
 sys/src/cmd/gzip/zip.c - 664 sys sys 1033183074 7054
 sys/src/cmd/gzip/zip.h - 664 sys sys 954778719 1428
@@ -11405,7 +11406,7 @@ sys/src/cmd/ip/ftpfs/file.c - 664 sys sys 1014925642 4208
 sys/src/cmd/ip/ftpfs/ftpfs.c - 664 sys sys 1116737713 13860
 sys/src/cmd/ip/ftpfs/ftpfs.h - 664 sys sys 1091904423 2353
 sys/src/cmd/ip/ftpfs/mkfile - 664 sys sys 1048312050 173
-sys/src/cmd/ip/ftpfs/proto.c - 664 sys sys 1112563713 30346
+sys/src/cmd/ip/ftpfs/proto.c - 664 sys sys 1124935667 30337
 sys/src/cmd/ip/glob.c - 664 sys sys 1101155057 3290
 sys/src/cmd/ip/glob.h - 664 sys sys 1101155058 308
 sys/src/cmd/ip/gping.c - 664 sys sys 1015013112 20476
@@ -11452,7 +11453,7 @@ sys/src/cmd/ip/imap4d/nodes.c - 664 sys sys 1015013077 3173
 sys/src/cmd/ip/imap4d/search.c - 664 sys sys 1015013077 4520
 sys/src/cmd/ip/imap4d/store.c - 664 sys sys 1066317059 1910
 sys/src/cmd/ip/imap4d/utils.c - 664 sys sys 1015013077 2481
-sys/src/cmd/ip/ipconfig.c - 664 sys sys 1084471140 34896
+sys/src/cmd/ip/ipconfig.c - 664 sys sys 1124936750 34907
 sys/src/cmd/ip/measure.c - 664 sys sys 944961011 3733
 sys/src/cmd/ip/mkfile - 664 sys sys 1089739069 1232
 sys/src/cmd/ip/ping.c - 664 sys sys 1084471009 5651
@@ -12897,7 +12898,7 @@ sys/src/cmd/upas/unesc/mkfile - 664 sys sys 1075080255 164
 sys/src/cmd/upas/unesc/unesc.c - 664 sys sys 1075080255 789
 sys/src/cmd/upas/vf - 20000000775 sys sys 1015096796 0
 sys/src/cmd/upas/vf/mkfile - 664 sys sys 1064393881 241
-sys/src/cmd/upas/vf/vf.c - 664 sys sys 1102093227 17450
+sys/src/cmd/upas/vf/vf.c - 664 sys sys 1124885103 20004
 sys/src/cmd/usb - 20000000775 sys sys 1017802022 0
 sys/src/cmd/usb/audio - 20000000775 sys sys 1017802021 0
 sys/src/cmd/usb/audio/audiofs.c - 664 sys sys 1100568596 18166
@@ -13352,7 +13353,7 @@ sys/src/lib9p/post.c - 664 sys sys 1103565871 356
 sys/src/lib9p/post.h - 664 sys sys 1029850260 201
 sys/src/lib9p/ramfs.c - 664 sys sys 1030450927 2534
 sys/src/lib9p/req.c - 664 sys sys 1089299187 1652
-sys/src/lib9p/srv.c - 664 sys sys 1050583820 16705
+sys/src/lib9p/srv.c - 664 sys sys 1124911050 16885
 sys/src/lib9p/tpost.c - 664 sys sys 1103565872 316
 sys/src/lib9p/uid.c - 664 sys sys 1015023311 517
 sys/src/lib9p/util.c - 664 sys sys 1017679319 465
@@ -14288,7 +14289,7 @@ sys/src/libsec/port/sha1pickle.c - 664 sys sys 988225292 717
 sys/src/libsec/port/smallprimes.c - 664 sys sys 984710525 6851
 sys/src/libsec/port/smallprimetest.c - 664 sys sys 984710525 70640
 sys/src/libsec/port/thumb.c - 664 sys sys 1019832052 1891
-sys/src/libsec/port/tlshand.c - 664 sys sys 1124709122 54987
+sys/src/libsec/port/tlshand.c - 664 sys sys 1124935566 54999
 sys/src/libsec/port/x509.c - 664 sys sys 1063853597 50342
 sys/src/libsec/power - 20000000775 sys sys 984710502 0
 sys/src/libsec/power/mkfile - 664 sys sys 1032061453 139
