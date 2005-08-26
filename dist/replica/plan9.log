@@ -22659,3 +22659,12 @@
 1124940851 11 c sys/src/cmd/upas/vf/vf.c - 664 sys sys 1124885103 20004
 1124940851 12 c sys/src/lib9p/srv.c - 664 sys sys 1124911050 16885
 1124940851 13 c sys/src/libsec/port/tlshand.c - 664 sys sys 1124935566 54999
+1125027154 0 c sys/src/cmd/1c/reg.c - 664 sys sys 1124993748 21247
+1125027154 1 c sys/src/cmd/2c/reg.c - 664 sys sys 1124993753 22305
+1125027154 2 c sys/src/cmd/acme/edit.c - 664 sys sys 1124993578 12019
+1125027154 3 c sys/src/cmd/acme/edit.h - 664 sys sys 1124993577 2369
+1125027154 4 c sys/src/cmd/acme/exec.c - 664 sys sys 1124993578 28255
+1125027154 5 c sys/src/cmd/wikifs/fs.c - 664 sys sys 1124975709 15731
+1125027154 6 c sys/src/cmd/wikifs/parse.c - 664 sys sys 1124975709 5394
+1125027154 7 c sys/src/cmd/wikifs/parsehist.c - 664 sys sys 1124975708 1988
+1125027154 8 c sys/src/cmd/xd.c - 664 sys sys 1124993597 5770

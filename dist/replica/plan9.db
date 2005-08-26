@@ -8535,7 +8535,7 @@ sys/src/cmd/1c/list.c - 664 sys sys 1014926630 4507
 sys/src/cmd/1c/mkfile - 664 sys sys 944961353 264
 sys/src/cmd/1c/mul.c - 664 sys sys 944961353 2599
 sys/src/cmd/1c/peep.c - 664 sys sys 1089299178 15578
-sys/src/cmd/1c/reg.c - 664 sys sys 1089299178 21252
+sys/src/cmd/1c/reg.c - 664 sys sys 1124993748 21247
 sys/src/cmd/1c/sgen.c - 664 sys sys 1089299179 10853
 sys/src/cmd/1c/swt.c - 664 sys sys 1098463320 15417
 sys/src/cmd/1c/txt.c - 664 sys sys 944961353 16943
@@ -8566,7 +8566,7 @@ sys/src/cmd/2c/list.c - 664 sys sys 1089299176 5521
 sys/src/cmd/2c/mkfile - 664 sys sys 944960717 258
 sys/src/cmd/2c/mul.c - 664 sys sys 944960717 2599
 sys/src/cmd/2c/peep.c - 664 sys sys 1089299176 15926
-sys/src/cmd/2c/reg.c - 664 sys sys 1089299176 22310
+sys/src/cmd/2c/reg.c - 664 sys sys 1124993753 22305
 sys/src/cmd/2c/sgen.c - 664 sys sys 1089299177 12738
 sys/src/cmd/2c/swt.c - 664 sys sys 1098463320 17170
 sys/src/cmd/2c/txt.c - 664 sys sys 944960718 17625
@@ -8760,10 +8760,10 @@ sys/src/cmd/acme/cols.c - 664 sys sys 1111119425 11229
 sys/src/cmd/acme/dat.h - 664 sys sys 1111606459 11106
 sys/src/cmd/acme/disk.c - 664 sys sys 1014926093 2151
 sys/src/cmd/acme/ecmd.c - 664 sys sys 1111606460 24205
-sys/src/cmd/acme/edit.c - 664 sys sys 1101910761 12068
-sys/src/cmd/acme/edit.h - 664 sys sys 969500816 2466
+sys/src/cmd/acme/edit.c - 664 sys sys 1124993578 12019
+sys/src/cmd/acme/edit.h - 664 sys sys 1124993577 2369
 sys/src/cmd/acme/elog.c - 664 sys sys 1111607796 7294
-sys/src/cmd/acme/exec.c - 664 sys sys 1111171699 28243
+sys/src/cmd/acme/exec.c - 664 sys sys 1124993578 28255
 sys/src/cmd/acme/file.c - 664 sys sys 1044626079 5717
 sys/src/cmd/acme/fns.h - 664 sys sys 1107154481 2916
 sys/src/cmd/acme/fsys.c - 664 sys sys 1111171699 13097
@@ -13125,13 +13125,13 @@ sys/src/cmd/webfs/util.c - 664 sys sys 1015015823 1211
 sys/src/cmd/webfs/webget.c - 664 sys sys 1124711795 1589
 sys/src/cmd/webfsget.c - 664 sys sys 1068413017 1595
 sys/src/cmd/wikifs - 20000000775 sys sys 1018211094 0
-sys/src/cmd/wikifs/fs.c - 664 sys sys 1122335732 15656
+sys/src/cmd/wikifs/fs.c - 664 sys sys 1124975709 15731
 sys/src/cmd/wikifs/io.c - 664 sys sys 1084469671 11572
 sys/src/cmd/wikifs/lookup.c - 664 sys sys 1018211093 182
 sys/src/cmd/wikifs/map.c - 664 sys sys 1018211093 109
 sys/src/cmd/wikifs/mkfile - 664 sys sys 1045503591 468
-sys/src/cmd/wikifs/parse.c - 664 sys sys 1113252120 5245
-sys/src/cmd/wikifs/parsehist.c - 664 sys sys 1018211093 1906
+sys/src/cmd/wikifs/parse.c - 664 sys sys 1124975709 5394
+sys/src/cmd/wikifs/parsehist.c - 664 sys sys 1124975708 1988
 sys/src/cmd/wikifs/testwrite.c - 664 sys sys 1018211093 818
 sys/src/cmd/wikifs/tohtml.c - 664 sys sys 1113252121 14301
 sys/src/cmd/wikifs/util.c - 664 sys sys 1018211093 1807
@@ -13140,7 +13140,7 @@ sys/src/cmd/wikifs/wiki.h - 664 sys sys 1113275619 1897
 sys/src/cmd/wikifs/wiki2html.c - 664 sys sys 1018211094 815
 sys/src/cmd/wikifs/wiki2text.c - 664 sys sys 1018211094 779
 sys/src/cmd/winwatch.c - 664 sys sys 1113312596 4869
-sys/src/cmd/xd.c - 664 sys sys 944961355 5735
+sys/src/cmd/xd.c - 664 sys sys 1124993597 5770
 sys/src/cmd/yacc.c - 664 sys sys 1116770313 57945
 sys/src/fs - 20000000775 sys sys 1015110109 0
 sys/src/fs/choline - 20000000775 sys sys 1015110109 0
