@@ -197,12 +197,12 @@ acme/news/src/win.h - 664 sys sys 1015011247 1655
 acme/wiki - 20000000775 sys sys 1015011266 0
 acme/wiki/guide - 444 sys sys 1038243508 98
 acme/wiki/src - 20000000775 sys sys 1015011266 0
-acme/wiki/src/awiki.h - 664 sys sys 1018288159 2140
+acme/wiki/src/awiki.h - 664 sys sys 1125314888 2172
 acme/wiki/src/main.c - 664 sys sys 1018387015 848
 acme/wiki/src/mkfile - 664 sys sys 1015011266 138
 acme/wiki/src/util.c - 664 sys sys 1016901956 1176
-acme/wiki/src/wiki.c - 664 sys sys 1109869230 10727
-acme/wiki/src/win.c - 664 sys sys 1016901957 5106
+acme/wiki/src/wiki.c - 664 sys sys 1125314888 10829
+acme/wiki/src/win.c - 664 sys sys 1125314889 5454
 acme/wiki/wiki.diff - 775 sys sys 1112461168 525
 adm - 20000000775 adm adm 1017438729 0
 adm/cache - 664 adm adm 1020313578 0
@@ -5251,7 +5251,7 @@ sys/games - 20000000775 sys sys 952648872 0
 sys/games/lib - 20000000775 sys sys 952648879 0
 sys/games/lib/4scores - 664 sys sys 1118680448 0
 sys/games/lib/5scores - 664 sys sys 1118680453 0
-sys/games/lib/fortunes - 664 sys sys 1124931511 255388
+sys/games/lib/fortunes - 664 sys sys 1125330091 255536
 sys/games/lib/mahjongg - 20000000775 sys sys 1095792278 0
 sys/games/lib/mahjongg/backgrounds - 20000000775 sys sys 1095792293 0
 sys/games/lib/mahjongg/backgrounds/default.bit - 664 sys sys 1095792293 346803
@@ -7046,7 +7046,7 @@ sys/man/3/usb - 664 sys sys 1116424546 6826
 sys/man/3/vga - 664 sys sys 1020356225 4827
 sys/man/4 - 20000000775 sys sys 1018581459 0
 sys/man/4/0intro - 664 sys sys 944959699 472
-sys/man/4/acme - 664 sys sys 1107154713 9959
+sys/man/4/acme - 664 sys sys 1125314183 10229
 sys/man/4/archfs - 664 sys sys 960000712 533
 sys/man/4/cdfs - 664 sys sys 1026846913 3638
 sys/man/4/cfs - 664 sys sys 1015024813 1758
@@ -8776,7 +8776,7 @@ sys/src/cmd/acme/text.c - 664 sys sys 1111171700 27912
 sys/src/cmd/acme/time.c - 664 sys sys 1014926095 1783
 sys/src/cmd/acme/util.c - 664 sys sys 1107154483 7984
 sys/src/cmd/acme/wind.c - 664 sys sys 1122526112 11233
-sys/src/cmd/acme/xfid.c - 664 sys sys 1107154483 19555
+sys/src/cmd/acme/xfid.c - 664 sys sys 1125314186 19766
 sys/src/cmd/ar.c - 664 sys sys 1046643027 23717
 sys/src/cmd/archfs.c - 664 sys sys 1014925694 3871
 sys/src/cmd/ascii.c - 664 sys sys 964457138 3989
@@ -9507,7 +9507,7 @@ sys/src/cmd/fax/receiverc - 775 sys sys 944960990 581
 sys/src/cmd/fax/send.c - 664 sys sys 944960990 923
 sys/src/cmd/fax/subr.c - 664 sys sys 1015090401 1245
 sys/src/cmd/fcp.c - 664 sys sys 1110816880 3780
-sys/src/cmd/file.c - 664 sys sys 1124305142 23332
+sys/src/cmd/file.c - 664 sys sys 1125313891 23512
 sys/src/cmd/fmt.c - 664 sys sys 1070032009 4088
 sys/src/cmd/fortune.c - 664 sys sys 1072729222 1779
 sys/src/cmd/fossil - 20000000775 sys sys 1042005512 0
@@ -11466,7 +11466,7 @@ sys/src/cmd/ip/ppp/dotest - 775 sys sys 944961006 152
 sys/src/cmd/ip/ppp/ipaux.c - 664 sys sys 1015090266 2326
 sys/src/cmd/ip/ppp/mkfile - 664 sys sys 1063897576 352
 sys/src/cmd/ip/ppp/mppc.c - 664 sys sys 1015090267 16624
-sys/src/cmd/ip/ppp/ppp.c - 664 sys sys 1096060213 59659
+sys/src/cmd/ip/ppp/ppp.c - 664 sys sys 1125316087 59889
 sys/src/cmd/ip/ppp/ppp.h - 664 sys sys 1091904423 8284
 sys/src/cmd/ip/ppp/testppp.c - 664 sys sys 1045505281 3011
 sys/src/cmd/ip/ppp/thw.c - 664 sys sys 1015090268 5962
@@ -13423,7 +13423,7 @@ sys/src/libbio/bflush.c - 664 sys sys 964455730 479
 sys/src/libbio/bgetc.c - 664 sys sys 1064846001 948
 sys/src/libbio/bgetd.c - 664 sys sys 944961707 401
 sys/src/libbio/bgetrune.c - 664 sys sys 944961707 634
-sys/src/libbio/binit.c - 664 sys sys 944961707 1859
+sys/src/libbio/binit.c - 664 sys sys 1125317646 1857
 sys/src/libbio/boffset.c - 664 sys sys 1036478806 360
 sys/src/libbio/bprint.c - 664 sys sys 1014927637 194
 sys/src/libbio/bputc.c - 664 sys sys 956275910 245
@@ -14289,7 +14289,7 @@ sys/src/libsec/port/sha1pickle.c - 664 sys sys 988225292 717
 sys/src/libsec/port/smallprimes.c - 664 sys sys 984710525 6851
 sys/src/libsec/port/smallprimetest.c - 664 sys sys 984710525 70640
 sys/src/libsec/port/thumb.c - 664 sys sys 1019832052 1891
-sys/src/libsec/port/tlshand.c - 664 sys sys 1124935566 54999
+sys/src/libsec/port/tlshand.c - 664 sys sys 1125314677 54860
 sys/src/libsec/port/x509.c - 664 sys sys 1063853597 50342
 sys/src/libsec/power - 20000000775 sys sys 984710502 0
 sys/src/libsec/power/mkfile - 664 sys sys 1032061453 139

@@ -22668,3 +22668,13 @@
 1125027154 6 c sys/src/cmd/wikifs/parse.c - 664 sys sys 1124975709 5394
 1125027154 7 c sys/src/cmd/wikifs/parsehist.c - 664 sys sys 1124975708 1988
 1125027154 8 c sys/src/cmd/xd.c - 664 sys sys 1124993597 5770
+1125347633 0 c acme/wiki/src/awiki.h - 664 sys sys 1125314888 2172
+1125347633 1 c acme/wiki/src/wiki.c - 664 sys sys 1125314888 10829
+1125347633 2 c acme/wiki/src/win.c - 664 sys sys 1125314889 5454
+1125347633 3 c sys/games/lib/fortunes - 664 sys sys 1125330091 255536
+1125347633 4 c sys/man/4/acme - 664 sys sys 1125314183 10229
+1125347633 5 c sys/src/cmd/acme/xfid.c - 664 sys sys 1125314186 19766
+1125347633 6 c sys/src/cmd/file.c - 664 sys sys 1125313891 23512
+1125347633 7 c sys/src/cmd/ip/ppp/ppp.c - 664 sys sys 1125316087 59889
+1125347633 8 c sys/src/libbio/binit.c - 664 sys sys 1125317646 1857
+1125347633 9 c sys/src/libsec/port/tlshand.c - 664 sys sys 1125314677 54860
