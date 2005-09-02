@@ -22730,3 +22730,7 @@
 1125545547 49 a sys/src/cmd/unix/spin/spin425.tar.gz - 664 sys sys 1125514573 330078
 1125545547 50 c sys/src/games/memo.c - 664 sys sys 1125514848 6321
 1125545547 51 d sys/src/cmd/unix/spin/spin334.tar.gz - 664 sys sys 956275830 0
+1125632004 0 c sys/games/lib/fortunes - 664 sys sys 1125564446 255656
+1125632004 1 c sys/src/9/pc/mmu.c - 664 sys sys 1125564128 10489
+1125632004 2 c sys/src/9/port/chan.c - 664 sys sys 1125551975 31560
+1125632004 3 c sys/src/cmd/tar.c - 664 sys sys 1125553195 21864
