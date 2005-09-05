@@ -22734,3 +22734,5 @@
 1125632004 1 c sys/src/9/pc/mmu.c - 664 sys sys 1125564128 10489
 1125632004 2 c sys/src/9/port/chan.c - 664 sys sys 1125551975 31560
 1125632004 3 c sys/src/cmd/tar.c - 664 sys sys 1125553195 21864
+1125891151 0 c rc/bin/termrc - 775 sys sys 1125835735 2653
+1125891151 1 c sys/src/cmd/wikifs/fs.c - 664 sys sys 1125835789 15730

@@ -5015,7 +5015,7 @@ rc/bin/start - 775 sys sys 945617209 120
 rc/bin/stock - 775 sys sys 1055701355 288
 rc/bin/stop - 775 sys sys 945617209 110
 rc/bin/tel - 775 sys sys 1019854296 136
-rc/bin/termrc - 775 sys sys 1064585645 2650
+rc/bin/termrc - 775 sys sys 1125835735 2653
 rc/bin/thesaurus - 775 sys sys 1068054167 246
 rc/bin/tlsclienttunnel - 775 sys sys 1024375633 153
 rc/bin/tlssrvtunnel - 775 sys sys 1024375634 175
@@ -13127,7 +13127,7 @@ sys/src/cmd/webfs/util.c - 664 sys sys 1015015823 1211
 sys/src/cmd/webfs/webget.c - 664 sys sys 1124711795 1589
 sys/src/cmd/webfsget.c - 664 sys sys 1068413017 1595
 sys/src/cmd/wikifs - 20000000775 sys sys 1018211094 0
-sys/src/cmd/wikifs/fs.c - 664 sys sys 1124975709 15731
+sys/src/cmd/wikifs/fs.c - 664 sys sys 1125835789 15730
 sys/src/cmd/wikifs/io.c - 664 sys sys 1084469671 11572
 sys/src/cmd/wikifs/lookup.c - 664 sys sys 1018211093 182
 sys/src/cmd/wikifs/map.c - 664 sys sys 1018211093 109
