@@ -22736,3 +22736,9 @@
 1125632004 3 c sys/src/cmd/tar.c - 664 sys sys 1125553195 21864
 1125891151 0 c rc/bin/termrc - 775 sys sys 1125835735 2653
 1125891151 1 c sys/src/cmd/wikifs/fs.c - 664 sys sys 1125835789 15730
+1125977572 0 c sys/src/games/sokoban/README - 664 sys sys 1125919542 799
+1125977572 1 a sys/src/games/sokoban/animation.c - 664 sys sys 1125919541 973
+1125977572 2 c sys/src/games/sokoban/mkfile - 664 sys sys 1125976294 261
+1125977572 3 c sys/src/games/sokoban/route.c - 664 sys sys 1125919542 4486
+1125977572 4 c sys/src/games/sokoban/sokoban.c - 664 sys sys 1125919542 6358
+1125977572 5 c sys/src/games/sokoban/sokoban.h - 664 sys sys 1125919542 2062
