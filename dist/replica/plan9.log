@@ -22742,3 +22742,5 @@
 1125977572 3 c sys/src/games/sokoban/route.c - 664 sys sys 1125919542 4486
 1125977572 4 c sys/src/games/sokoban/sokoban.c - 664 sys sys 1125919542 6358
 1125977572 5 c sys/src/games/sokoban/sokoban.h - 664 sys sys 1125919542 2062
+1126063993 0 c sys/src/cmd/ramfs.c - 664 sys sys 1126005899 15927
+1126063993 1 c sys/src/cmd/sleep.c - 664 sys sys 1126031186 170
