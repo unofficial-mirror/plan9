@@ -22748,3 +22748,4 @@
 1126150290 1 c sys/src/9/port/lib.h - 664 sys sys 1126103560 5770
 1126150290 2 c sys/src/cmd/aux/trampoline.c - 664 sys sys 1126104850 3790
 1126150290 3 c sys/src/cmd/ip/ipconfig.c - 664 sys sys 1126103921 34865
+1126211507 0 c sys/games/lib/fortunes - 664 sys sys 1126211316 255804
