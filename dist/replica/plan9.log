@@ -22744,3 +22744,7 @@
 1125977572 5 c sys/src/games/sokoban/sokoban.h - 664 sys sys 1125919542 2062
 1126063993 0 c sys/src/cmd/ramfs.c - 664 sys sys 1126005899 15927
 1126063993 1 c sys/src/cmd/sleep.c - 664 sys sys 1126031186 170
+1126150290 0 c sys/man/8/trampoline - 664 sys sys 1126104844 1199
+1126150290 1 c sys/src/9/port/lib.h - 664 sys sys 1126103560 5770
+1126150290 2 c sys/src/cmd/aux/trampoline.c - 664 sys sys 1126104850 3790
+1126150290 3 c sys/src/cmd/ip/ipconfig.c - 664 sys sys 1126103921 34865
