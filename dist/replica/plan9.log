@@ -22749,3 +22749,7 @@
 1126150290 2 c sys/src/cmd/aux/trampoline.c - 664 sys sys 1126104850 3790
 1126150290 3 c sys/src/cmd/ip/ipconfig.c - 664 sys sys 1126103921 34865
 1126211507 0 c sys/games/lib/fortunes - 664 sys sys 1126211316 255804
+1126323127 0 c sys/src/cmd/disk/prep/prep.c - 664 sys sys 1126278202 10098
+1126323127 1 c sys/src/cmd/mv.c - 664 sys sys 1126278115 4241
+1126323127 2 c sys/src/libdisk/disk.c - 664 sys sys 1126278243 6665
+1126323127 3 c sys/src/libdisk/scsi.c - 664 sys sys 1126278243 6023
