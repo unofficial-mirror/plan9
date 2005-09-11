@@ -22753,3 +22753,5 @@
 1126323127 1 c sys/src/cmd/mv.c - 664 sys sys 1126278115 4241
 1126323127 2 c sys/src/libdisk/disk.c - 664 sys sys 1126278243 6665
 1126323127 3 c sys/src/libdisk/scsi.c - 664 sys sys 1126278243 6023
+1126409545 0 c sys/lib/dist/pc/sub/termrc - 664 sys sys 1126355274 2209
+1126409545 1 c sys/src/cmd/dd.c - 664 sys sys 1126360951 11753
