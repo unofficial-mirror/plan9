@@ -22755,3 +22755,5 @@
 1126323127 3 c sys/src/libdisk/scsi.c - 664 sys sys 1126278243 6023
 1126409545 0 c sys/lib/dist/pc/sub/termrc - 664 sys sys 1126355274 2209
 1126409545 1 c sys/src/cmd/dd.c - 664 sys sys 1126360951 11753
+1126582337 0 c sys/src/9/port/portdat.h - 664 sys sys 1126582287 22484
+1126582337 1 c sys/src/9/port/portfns.h - 664 sys sys 1126582287 11006
