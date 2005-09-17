@@ -22776,3 +22776,6 @@
 1126668787 16 c sys/src/cmd/disk/prep/fdisk.c - 664 sys sys 1126623191 21983
 1126701161 0 c sys/lib/acid/kernel - 664 sys sys 1126699644 6303
 1126841592 0 c sys/src/cmd/aux/cddb.c - 664 sys sys 1126795279 4610
+1126927896 0 c sys/src/9/pc/sdata.c - 664 sys sys 1126906010 51396
+1126927896 1 c sys/src/boot/pc/sdata.c - 664 sys sys 1126906010 38224
+1126927896 2 c sys/src/cmd/aux/acidleak.c - 664 sys sys 1126879783 5952
