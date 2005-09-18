@@ -22779,3 +22779,8 @@
 1126927896 0 c sys/src/9/pc/sdata.c - 664 sys sys 1126906010 51396
 1126927896 1 c sys/src/boot/pc/sdata.c - 664 sys sys 1126906010 38224
 1126927896 2 c sys/src/cmd/aux/acidleak.c - 664 sys sys 1126879783 5952
+1127014323 0 c acme/mail/src/mail.c - 664 sys sys 1126971419 11255
+1127014323 1 c acme/mail/src/mesg.c - 664 sys sys 1126971419 26290
+1127014323 2 c sys/man/3/usb - 664 sys sys 1126971427 6960
+1127014323 3 c sys/src/libsec/port/tlshand.c - 664 sys sys 1126971523 54895
+1127014323 4 c sys/src/libsec/port/x509.c - 664 sys sys 1126971568 50653

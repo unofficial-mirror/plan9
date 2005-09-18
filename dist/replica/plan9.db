@@ -179,8 +179,8 @@ acme/mail/readme - 664 sys sys 1084385076 2795
 acme/mail/src - 20000000775 sys sys 1015364010 0
 acme/mail/src/dat.h - 664 sys sys 1033936953 3857
 acme/mail/src/html.c - 664 sys sys 1058463659 1348
-acme/mail/src/mail.c - 664 sys sys 1114697672 11259
-acme/mail/src/mesg.c - 664 sys sys 1114697672 26292
+acme/mail/src/mail.c - 664 sys sys 1126971419 11255
+acme/mail/src/mesg.c - 664 sys sys 1126971419 26290
 acme/mail/src/mkfile - 664 sys sys 1114697575 342
 acme/mail/src/reply.c - 664 sys sys 1112270143 11373
 acme/mail/src/util.c - 664 sys sys 1022112164 1391
@@ -7042,7 +7042,7 @@ sys/man/3/srv - 664 sys sys 958419690 1470
 sys/man/3/ssl - 664 sys sys 1018386776 3413
 sys/man/3/tls - 664 sys sys 1045501496 7018
 sys/man/3/uart - 664 sys sys 1102093395 1710
-sys/man/3/usb - 664 sys sys 1116424546 6826
+sys/man/3/usb - 664 sys sys 1126971427 6960
 sys/man/3/vga - 664 sys sys 1020356225 4827
 sys/man/4 - 20000000775 sys sys 1018581459 0
 sys/man/4/0intro - 664 sys sys 944959699 472
@@ -14293,8 +14293,8 @@ sys/src/libsec/port/sha1pickle.c - 664 sys sys 988225292 717
 sys/src/libsec/port/smallprimes.c - 664 sys sys 984710525 6851
 sys/src/libsec/port/smallprimetest.c - 664 sys sys 984710525 70640
 sys/src/libsec/port/thumb.c - 664 sys sys 1019832052 1891
-sys/src/libsec/port/tlshand.c - 664 sys sys 1125314677 54860
-sys/src/libsec/port/x509.c - 664 sys sys 1063853597 50342
+sys/src/libsec/port/tlshand.c - 664 sys sys 1126971523 54895
+sys/src/libsec/port/x509.c - 664 sys sys 1126971568 50653
 sys/src/libsec/power - 20000000775 sys sys 984710502 0
 sys/src/libsec/power/mkfile - 664 sys sys 1032061453 139
 sys/src/libstdio - 20000000775 sys sys 984710098 0
