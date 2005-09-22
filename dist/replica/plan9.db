@@ -7525,7 +7525,7 @@ sys/src/9/port/devkprof.c - 664 sys sys 1014931173 3111
 sys/src/9/port/devloopback.c - 664 sys sys 1076612248 14573
 sys/src/9/port/devmnt.c - 664 sys sys 1126586197 21545
 sys/src/9/port/devmntstats.c - 664 sys sys 1014931173 4039
-sys/src/9/port/devmouse.c - 664 sys sys 1099760452 12504
+sys/src/9/port/devmouse.c - 664 sys sys 1127360658 12976
 sys/src/9/port/devpipe.c - 664 sys sys 1077055016 5825
 sys/src/9/port/devpnp.c - 664 sys sys 1088560907 13624
 sys/src/9/port/devproc.c - 664 sys sys 1126586197 28465
@@ -7593,7 +7593,7 @@ sys/src/9/ppc - 20000000775 sys sys 1059490838 0
 sys/src/9/ppc/blast - 664 sys sys 1107436310 670
 sys/src/9/ppc/blast.h - 664 sys sys 1059490750 3109
 sys/src/9/ppc/clock.c - 664 sys sys 1100701675 1036
-sys/src/9/ppc/dat.h - 664 sys sys 1097073353 4712
+sys/src/9/ppc/dat.h - 664 sys sys 1127274100 4735
 sys/src/9/ppc/devether.c - 664 sys sys 1116097817 9264
 sys/src/9/ppc/devflash.c - 664 sys sys 1059490750 19885
 sys/src/9/ppc/devirq.c - 664 sys sys 1100701675 6314
@@ -9210,7 +9210,7 @@ sys/src/cmd/cc/dcl.c - 664 sys sys 1089299183 26723
 sys/src/cmd/cc/dpchk.c - 664 sys sys 1107365037 7152
 sys/src/cmd/cc/funct.c - 664 sys sys 984718510 6167
 sys/src/cmd/cc/lex.c - 664 sys sys 1109303822 23826
-sys/src/cmd/cc/lexbody - 664 sys sys 1098499731 9014
+sys/src/cmd/cc/lexbody - 664 sys sys 1127307403 9186
 sys/src/cmd/cc/mac.c - 664 sys sys 944960808 36
 sys/src/cmd/cc/macbody - 664 sys sys 1108281581 11703
 sys/src/cmd/cc/machcap.c - 664 sys sys 1084472048 78

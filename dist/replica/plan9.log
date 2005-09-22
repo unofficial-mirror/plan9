@@ -22799,3 +22799,6 @@
 1127257073 2 c sys/src/9/mtx/dat.h - 664 sys sys 1127215703 3897
 1127257073 3 c sys/src/9/port/portdat.h - 664 sys sys 1127215703 22586
 1127257073 4 c sys/src/cmd/acid/builtin.c - 664 sys sys 1127214825 20156
+1127360755 0 c sys/src/9/port/devmouse.c - 664 sys sys 1127360658 12976
+1127360755 1 c sys/src/9/ppc/dat.h - 664 sys sys 1127274100 4735
+1127360755 2 c sys/src/cmd/cc/lexbody - 664 sys sys 1127307403 9186
