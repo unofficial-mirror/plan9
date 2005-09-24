@@ -11514,9 +11514,9 @@ sys/src/cmd/ip/snoopy/rtcp.c - 664 sys sys 1089389638 1958
 sys/src/cmd/ip/snoopy/rtp.c - 664 sys sys 1089389638 1160
 sys/src/cmd/ip/snoopy/tcp.c - 664 sys sys 1055699196 3593
 sys/src/cmd/ip/snoopy/udp.c - 664 sys sys 1089299190 1990
-sys/src/cmd/ip/telnet.c - 664 sys sys 1121977161 8581
+sys/src/cmd/ip/telnet.c - 664 sys sys 1127523945 8573
 sys/src/cmd/ip/telnet.h - 664 sys sys 1015090250 5902
-sys/src/cmd/ip/telnetd.c - 664 sys sys 1121977161 11733
+sys/src/cmd/ip/telnetd.c - 664 sys sys 1127523098 11721
 sys/src/cmd/ip/tftpd.c - 664 sys sys 1106943821 7646
 sys/src/cmd/ip/traceroute.c - 664 sys sys 1032060124 9370
 sys/src/cmd/ip/udpecho.c - 664 sys sys 1050714674 855
@@ -12770,7 +12770,7 @@ sys/src/cmd/unix/u9fs/utfrune.c - 664 sys sys 1015092354 387
 sys/src/cmd/unix/winplumb.c - 664 sys sys 1047233509 5015
 sys/src/cmd/unix/winplumb.exe - 664 sys sys 1047233509 32768
 sys/src/cmd/unix/winstart - 775 sys sys 1047233540 60
-sys/src/cmd/unlnfs.c - 664 sys sys 1107435471 1949
+sys/src/cmd/unlnfs.c - 664 sys sys 1127525524 1914
 sys/src/cmd/unmount.c - 664 sys sys 1014926615 442
 sys/src/cmd/upas - 20000000775 sys sys 1018549518 0
 sys/src/cmd/upas/README - 664 sys sys 944961329 1041
@@ -13028,7 +13028,7 @@ sys/src/cmd/venti/syncindex.c - 664 sys sys 1055707433 983
 sys/src/cmd/venti/syncindex0.c - 664 sys sys 1036470283 3044
 sys/src/cmd/venti/unittoull.c - 664 sys sys 1019678881 398
 sys/src/cmd/venti/unwhack.c - 664 sys sys 1019678881 3191
-sys/src/cmd/venti/utils.c - 664 sys sys 1072816049 4528
+sys/src/cmd/venti/utils.c - 664 sys sys 1127527222 4002
 sys/src/cmd/venti/venti.c - 664 sys sys 1069101830 4626
 sys/src/cmd/venti/venti.conf - 664 sys sys 1019867537 397
 sys/src/cmd/venti/ventifs.c - 664 sys sys 1063854129 6157

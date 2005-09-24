@@ -22841,3 +22841,7 @@
 1127446357 36 a sys/src/libthread/xincamd64.s - 664 sys sys 1127405454 292
 1127446357 37 c sys/src/libthread/xincport.h - 664 sys sys 1127405405 211
 1127446357 38 d mail/lib/smtpd.conf.ext - 664 upas upas 1089299188 0
+1127532769 0 c sys/src/cmd/ip/telnet.c - 664 sys sys 1127523945 8573
+1127532769 1 c sys/src/cmd/ip/telnetd.c - 664 sys sys 1127523098 11721
+1127532769 2 c sys/src/cmd/unlnfs.c - 664 sys sys 1127525524 1914
+1127532769 3 c sys/src/cmd/venti/utils.c - 664 sys sys 1127527222 4002
