@@ -22846,3 +22846,5 @@
 1127532769 2 c sys/src/cmd/unlnfs.c - 664 sys sys 1127525524 1914
 1127532769 3 c sys/src/cmd/venti/utils.c - 664 sys sys 1127527222 4002
 1127561576 0 c sys/man/8/fossilcons - 664 sys sys 1127560168 17789
+1127671280 0 c sys/lib/dist/pc/inst/download - 775 sys sys 1127670124 1218
+1127671280 1 c sys/lib/dist/pc/inst/watchfd - 775 sys sys 1127670125 362
