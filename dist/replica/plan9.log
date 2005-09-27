@@ -22848,3 +22848,12 @@
 1127561576 0 c sys/man/8/fossilcons - 664 sys sys 1127560168 17789
 1127671280 0 c sys/lib/dist/pc/inst/download - 775 sys sys 1127670124 1218
 1127671280 1 c sys/lib/dist/pc/inst/watchfd - 775 sys sys 1127670125 362
+1127791908 0 c rc/bin/patch/create - 775 sys sys 1127761278 1457
+1127791908 1 c sys/man/1/patch - 664 sys sys 1127761213 2237
+1127791908 2 c sys/man/3/cons - 664 sys sys 1127766305 8965
+1127791908 3 c sys/src/9/pc/wavelan.c - 664 sys sys 1127743243 27879
+1127791908 4 c sys/src/9/port/devcons.c - 664 sys sys 1127766316 22681
+1127791908 5 c sys/src/cmd/cc/lex.c - 664 sys sys 1127766297 23848
+1127791908 6 c sys/src/libhttpd/gethead.c - 664 sys sys 1127766499 737
+1127791908 7 c sys/src/libhttpd/parse.c - 664 sys sys 1127766499 18965
+1127791908 8 c sys/src/libhttpd/parsereq.c - 664 sys sys 1127766499 5071
