@@ -22857,3 +22857,5 @@
 1127791908 6 c sys/src/libhttpd/gethead.c - 664 sys sys 1127766499 737
 1127791908 7 c sys/src/libhttpd/parse.c - 664 sys sys 1127766499 18965
 1127791908 8 c sys/src/libhttpd/parsereq.c - 664 sys sys 1127766499 5071
+1128051185 0 c sys/games/lib/fortunes - 664 sys sys 1128038631 256100
+1128051185 1 c sys/src/cmd/stats.c - 664 sys sys 1127974208 28128
