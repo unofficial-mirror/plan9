@@ -22891,3 +22891,13 @@
 1128223898 28 c sys/src/cmd/ip/snoopy/udp.c - 664 sys sys 1128179540 1999
 1128223898 29 c sys/src/cmd/wikifs/tohtml.c - 664 sys sys 1128179598 14527
 1128223898 30 c sys/src/cmd/wikifs/wiki2html.c - 664 sys sys 1128176575 916
+1128310310 0 c sys/man/1/netstat - 664 sys sys 1128255431 942
+1128310310 1 c sys/src/9/pc/devlm78.c - 664 sys sys 1128255048 6291
+1128310310 2 c sys/src/cmd/9660srv/iobuf.c - 664 sys sys 1128255068 3126
+1128310310 3 c sys/src/cmd/netstat.c - 664 sys sys 1128255434 4086
+1128310310 4 c sys/src/cmd/fossil/9fsys.c - 664 sys sys 1128255102 33313
+1128310310 5 c sys/src/games/4s.c - 664 sys sys 1128271724 1285
+1128310310 6 c sys/src/games/5s.c - 664 sys sys 1128271724 3621
+1128310310 7 c sys/src/games/mkfile - 664 sys sys 1128271766 586
+1128310310 8 a sys/src/games/xs.c - 664 sys sys 1128271724 17124
+1128310310 9 c sys/src/games/xs.h - 664 sys sys 1128271724 292
