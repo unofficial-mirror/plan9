@@ -22901,3 +22901,4 @@
 1128310310 7 c sys/src/games/mkfile - 664 sys sys 1128271766 586
 1128310310 8 a sys/src/games/xs.c - 664 sys sys 1128271724 17124
 1128310310 9 c sys/src/games/xs.h - 664 sys sys 1128271724 292
+1128339153 0 c sys/lib/dist/cmd/bargraph.c - 664 sys sys 1128338667 5951
