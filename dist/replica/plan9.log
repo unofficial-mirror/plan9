@@ -22932,3 +22932,4 @@
 1128742373 8 c sys/src/cmd/webfs/http.c - 664 sys sys 1128666924 9396
 1128742373 9 c sys/src/cmd/webfs/main.c - 664 sys sys 1128664462 1083
 1128742373 10 c sys/src/cmd/webfs/url.c - 664 sys sys 1128664462 24144
+1128828790 0 c sys/src/cmd/tbl/tg.c - 664 sys sys 1128819351 2164

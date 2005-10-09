@@ -12442,7 +12442,7 @@ sys/src/cmd/tbl/tb.c - 664 sys sys 944961244 1732
 sys/src/cmd/tbl/tc.c - 664 sys sys 944961244 1268
 sys/src/cmd/tbl/te.c - 664 sys sys 944961244 1071
 sys/src/cmd/tbl/tf.c - 664 sys sys 944961244 1283
-sys/src/cmd/tbl/tg.c - 664 sys sys 944961244 2058
+sys/src/cmd/tbl/tg.c - 664 sys sys 1128819351 2164
 sys/src/cmd/tbl/ti.c - 664 sys sys 944961244 1202
 sys/src/cmd/tbl/tm.c - 664 sys sys 944961244 1139
 sys/src/cmd/tbl/tr.c - 664 sys sys 944961244 993
