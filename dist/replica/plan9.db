@@ -11432,7 +11432,7 @@ sys/src/cmd/ip/httpd/netlib_find.c - 664 sys sys 1015090172 6247
 sys/src/cmd/ip/httpd/netlib_history.c - 664 sys sys 1121977160 4748
 sys/src/cmd/ip/httpd/redirect.c - 664 sys sys 1042522766 2978
 sys/src/cmd/ip/httpd/save.c - 664 sys sys 1015090172 3175
-sys/src/cmd/ip/httpd/sendfd.c - 664 sys sys 1017679317 12134
+sys/src/cmd/ip/httpd/sendfd.c - 664 sys sys 1129202621 12264
 sys/src/cmd/ip/httpd/webls.c - 664 sys sys 1120737502 7658
 sys/src/cmd/ip/httpd/webls.denied - 664 sys sys 1064887847 3
 sys/src/cmd/ip/httpd/wikipost.c - 664 sys sys 1083771074 5913
