@@ -22937,3 +22937,5 @@
 1129260787 0 c sys/src/cmd/ip/httpd/sendfd.c - 664 sys sys 1129202621 12264
 1129374160 0 c sys/src/9/port/chan.c - 664 sys sys 1129373741 33642
 1129519935 0 c sys/src/cmd/bc.y - 664 sys sys 1129475330 13379
+1129779087 0 c sys/src/cmd/diff/main.c - 664 sys sys 1129722806 4340
+1129779087 1 c sys/src/cmd/tapefs/tarfs.c - 664 sys sys 1129723024 2683
