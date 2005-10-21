@@ -12417,7 +12417,7 @@ sys/src/cmd/tapefs/fs.c - 664 sys sys 1109607563 9754
 sys/src/cmd/tapefs/mkfile - 664 sys sys 1097914131 254
 sys/src/cmd/tapefs/tapefs.h - 664 sys sys 1014926384 1609
 sys/src/cmd/tapefs/tapfs.c - 664 sys sys 1063854819 1938
-sys/src/cmd/tapefs/tarfs.c - 664 sys sys 1129723024 2683
+sys/src/cmd/tapefs/tarfs.c - 664 sys sys 1129855841 2703
 sys/src/cmd/tapefs/tpfs.c - 664 sys sys 1071322722 2012
 sys/src/cmd/tapefs/util.c - 664 sys sys 1014926385 2653
 sys/src/cmd/tapefs/v10fs.c - 664 sys sys 1014926385 3754
