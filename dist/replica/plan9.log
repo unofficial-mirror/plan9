@@ -22969,3 +22969,8 @@
 1130427198 25 c sys/src/libc/alpha/_seek.c - 664 sys sys 1130424714 180
 1130427198 26 c sys/src/libc/port/atexit.c - 664 sys sys 1130424722 772
 1130427198 27 c sys/src/libc/port/pool.c - 664 sys sys 1130424726 30938
+1130623331 0 c sys/lib/dist/pc/inst/mountfossil - 775 sys sys 1130622001 2518
+1130623331 1 c sys/src/9/port/devcons.c - 664 sys sys 1130616537 22567
+1130623331 2 c sys/src/cmd/cb/cb.c - 664 sys sys 1130594748 18532
+1130623331 3 c sys/src/lib9p/file.c - 664 sys sys 1130597663 6695
+1130623331 4 c sys/src/lib9p/srv.c - 664 sys sys 1130597663 16871

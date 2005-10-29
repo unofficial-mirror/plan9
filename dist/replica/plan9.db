@@ -5670,7 +5670,7 @@ sys/lib/dist/pc/inst/main - 775 sys sys 1112361039 1952
 sys/lib/dist/pc/inst/mainloop - 775 sys sys 1019058715 532
 sys/lib/dist/pc/inst/mkini.awk - 664 sys sys 1019917495 1163
 sys/lib/dist/pc/inst/mountdist - 775 sys sys 1112535194 4884
-sys/lib/dist/pc/inst/mountfossil - 775 sys sys 1112361039 2511
+sys/lib/dist/pc/inst/mountfossil - 775 sys sys 1130622001 2518
 sys/lib/dist/pc/inst/mountfs - 775 sys sys 1112361039 190
 sys/lib/dist/pc/inst/moveoldfs - 775 sys sys 1089300756 1347
 sys/lib/dist/pc/inst/partdisk - 775 sys sys 1112361039 1828
@@ -7516,7 +7516,7 @@ sys/src/9/port/dev.c - 664 sys sys 1126586172 8246
 sys/src/9/port/devaudio.c - 664 sys sys 1067722761 21130
 sys/src/9/port/devbridge.c - 664 sys sys 1055688301 24308
 sys/src/9/port/devcap.c - 664 sys sys 1048644215 4113
-sys/src/9/port/devcons.c - 664 sys sys 1127766316 22681
+sys/src/9/port/devcons.c - 664 sys sys 1130616537 22567
 sys/src/9/port/devdraw.c - 664 sys sys 1091733670 41996
 sys/src/9/port/devdup.c - 664 sys sys 1014931172 2332
 sys/src/9/port/devenv.c - 664 sys sys 1048644225 6992
@@ -9193,7 +9193,7 @@ sys/src/cmd/cal.c - 664 sys sys 944961619 4206
 sys/src/cmd/calendar.c - 664 sys sys 1116769436 4221
 sys/src/cmd/cat.c - 664 sys sys 1014926693 532
 sys/src/cmd/cb - 20000000775 sys sys 1062860425 0
-sys/src/cmd/cb/cb.c - 664 sys sys 1127392719 18523
+sys/src/cmd/cb/cb.c - 664 sys sys 1130594748 18532
 sys/src/cmd/cb/cb.h - 664 sys sys 1063023989 3404
 sys/src/cmd/cb/cbtype.c - 664 sys sys 1062860425 674
 sys/src/cmd/cb/cbtype.h - 664 sys sys 1062860425 794
@@ -13352,7 +13352,7 @@ sys/src/games/xs.h - 664 sys sys 1128271724 292
 sys/src/lib9p - 20000000775 sys sys 1015023311 0
 sys/src/lib9p/dirread.c - 664 sys sys 1015023310 641
 sys/src/lib9p/fid.c - 664 sys sys 1089299187 1066
-sys/src/lib9p/file.c - 664 sys sys 1086896814 5585
+sys/src/lib9p/file.c - 664 sys sys 1130597663 6695
 sys/src/lib9p/ftest.c - 664 sys sys 1015023310 502
 sys/src/lib9p/intmap.c - 664 sys sys 1016833881 2255
 sys/src/lib9p/mem.c - 664 sys sys 1015023310 765
@@ -13362,7 +13362,7 @@ sys/src/lib9p/post.c - 664 sys sys 1103565871 356
 sys/src/lib9p/post.h - 664 sys sys 1029850260 201
 sys/src/lib9p/ramfs.c - 664 sys sys 1030450927 2534
 sys/src/lib9p/req.c - 664 sys sys 1089299187 1652
-sys/src/lib9p/srv.c - 664 sys sys 1124911050 16885
+sys/src/lib9p/srv.c - 664 sys sys 1130597663 16871
 sys/src/lib9p/tpost.c - 664 sys sys 1103565872 316
 sys/src/lib9p/uid.c - 664 sys sys 1015023311 517
 sys/src/lib9p/util.c - 664 sys sys 1017679319 465
