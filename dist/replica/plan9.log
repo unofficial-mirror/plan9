@@ -23008,3 +23008,7 @@
 1130905885 7 c sys/src/boot/pc/trap.c - 664 sys sys 1130887225 7501
 1130905885 8 c sys/src/cmd/troff/tdef.h - 664 sys sys 1130848601 18335
 1130905885 9 c sys/src/games/memo.c - 664 sys sys 1130853201 6471
+1130992307 0 c sys/man/6/users - 664 sys sys 1130912014 1392
+1130992307 1 c sys/src/9/boot/boot.c - 664 sys sys 1130982159 6067
+1130992307 2 c sys/src/9/port/alloc.c - 664 sys sys 1130964595 5674
+1130992307 3 c sys/src/cmd/ip/imap4d/date.c - 664 sys sys 1130945828 5684

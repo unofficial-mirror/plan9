@@ -7126,7 +7126,7 @@ sys/man/6/rewrite - 664 sys sys 969499892 3235
 sys/man/6/smtpd - 664 sys sys 971095216 8192
 sys/man/6/snap - 664 sys sys 954089530 2393
 sys/man/6/thumbprint - 664 sys sys 1019866709 1124
-sys/man/6/users - 664 sys sys 944959678 1240
+sys/man/6/users - 664 sys sys 1130912014 1392
 sys/man/6/utf - 664 sys sys 944959678 2430
 sys/man/6/venti.conf - 664 sys sys 1055707590 1917
 sys/man/6/vgadb - 664 sys sys 960256513 10972
@@ -7301,7 +7301,7 @@ sys/src/9/bitsy/wavelan.c - 664 sys sys 1116097770 27267
 sys/src/9/bitsy/wavelan.h - 664 sys sys 1037029076 27
 sys/src/9/boot - 20000000775 sys sys 1018556557 0
 sys/src/9/boot/aux.c - 664 sys sys 1063857702 2579
-sys/src/9/boot/boot.c - 664 sys sys 1114188078 6012
+sys/src/9/boot/boot.c - 664 sys sys 1130982159 6067
 sys/src/9/boot/boot.h - 664 sys sys 1063857659 1785
 sys/src/9/boot/bootauth.c - 664 sys sys 1039763726 1097
 sys/src/9/boot/bootcache.c - 664 sys sys 1063857645 1579
@@ -7507,7 +7507,7 @@ sys/src/9/pc/wavelan.c - 664 sys sys 1127743243 27879
 sys/src/9/pc/wavelan.h - 664 sys sys 1107448246 6169
 sys/src/9/port - 20000000775 sys sys 1018469625 0
 sys/src/9/port/alarm.c - 664 sys sys 1067722766 1426
-sys/src/9/port/alloc.c - 664 sys sys 1102093389 5645
+sys/src/9/port/alloc.c - 664 sys sys 1130964595 5674
 sys/src/9/port/allocb.c - 664 sys sys 1123676437 3340
 sys/src/9/port/auth.c - 664 sys sys 1123647282 2392
 sys/src/9/port/cache.c - 664 sys sys 1126586168 9241
@@ -11443,7 +11443,7 @@ sys/src/cmd/ip/imap4d - 20000000775 sys sys 988249981 0
 sys/src/cmd/ip/imap4d/auth.c - 664 sys sys 1015013075 3510
 sys/src/cmd/ip/imap4d/copy.c - 664 sys sys 1062298855 4597
 sys/src/cmd/ip/imap4d/csquery.c - 664 sys sys 1015013076 762
-sys/src/cmd/ip/imap4d/date.c - 664 sys sys 1045505209 5668
+sys/src/cmd/ip/imap4d/date.c - 664 sys sys 1130945828 5684
 sys/src/cmd/ip/imap4d/debug.c - 664 sys sys 1016731557 1962
 sys/src/cmd/ip/imap4d/fetch.c - 664 sys sys 1066325855 11762
 sys/src/cmd/ip/imap4d/fns.h - 664 sys sys 1015013076 4282
