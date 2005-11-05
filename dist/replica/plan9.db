@@ -5251,7 +5251,7 @@ sys/games - 20000000775 sys sys 952648872 0
 sys/games/lib - 20000000775 sys sys 952648879 0
 sys/games/lib/4scores - 664 sys sys 1118680448 0
 sys/games/lib/5scores - 664 sys sys 1118680453 0
-sys/games/lib/fortunes - 664 sys sys 1130423837 256609
+sys/games/lib/fortunes - 664 sys sys 1131110299 256627
 sys/games/lib/mahjongg - 20000000775 sys sys 1095792278 0
 sys/games/lib/mahjongg/backgrounds - 20000000775 sys sys 1095792293 0
 sys/games/lib/mahjongg/backgrounds/default.bit - 664 sys sys 1095792293 346803
@@ -7027,7 +7027,7 @@ sys/man/3/floppy - 664 sys sys 954378905 881
 sys/man/3/fs - 664 sys sys 1055701106 2706
 sys/man/3/i82365 - 664 sys sys 954378906 884
 sys/man/3/ip - 664 sys sys 1103554774 21677
-sys/man/3/kbmap - 664 sys sys 1130788502 1666
+sys/man/3/kbmap - 664 sys sys 1131110122 1732
 sys/man/3/kprof - 664 sys sys 1018029972 1377
 sys/man/3/loopback - 664 sys sys 964662153 1995
 sys/man/3/lpt - 664 sys sys 944959698 893
@@ -7526,7 +7526,7 @@ sys/src/9/port/devfs.c - 664 sys sys 1105799131 10783
 sys/src/9/port/devkbmap.c - 664 sys sys 1130763846 3064
 sys/src/9/port/devkprof.c - 664 sys sys 1014931173 3111
 sys/src/9/port/devloopback.c - 664 sys sys 1076612248 14573
-sys/src/9/port/devmnt.c - 664 sys sys 1126586197 21545
+sys/src/9/port/devmnt.c - 664 sys sys 1131107956 21549
 sys/src/9/port/devmntstats.c - 664 sys sys 1014931173 4039
 sys/src/9/port/devmouse.c - 664 sys sys 1130848303 13517
 sys/src/9/port/devpipe.c - 664 sys sys 1077055016 5825
@@ -7537,7 +7537,7 @@ sys/src/9/port/devsd.c - 664 sys sys 1123255503 28564
 sys/src/9/port/devsdp.c - 664 sys sys 1057323393 44800
 sys/src/9/port/devsegment.c - 664 sys sys 1017679394 9600
 sys/src/9/port/devsrv.c - 664 sys sys 1107232208 5418
-sys/src/9/port/devssl.c - 664 sys sys 1045063590 26100
+sys/src/9/port/devssl.c - 664 sys sys 1131107944 26133
 sys/src/9/port/devtinyfs.c - 664 sys sys 1015278339 15347
 sys/src/9/port/devtls.c - 664 sys sys 1086406907 45225
 sys/src/9/port/devuart.c - 664 sys sys 1102093393 12192
@@ -8871,7 +8871,7 @@ sys/src/cmd/auth/lib/readn.c - 664 sys sys 1015008430 247
 sys/src/cmd/auth/lib/readwrite.c - 664 sys sys 1015008430 1424
 sys/src/cmd/auth/lib/wrbio.c - 664 sys sys 1015008430 755
 sys/src/cmd/auth/login.c - 664 sys sys 1121977157 3981
-sys/src/cmd/auth/mkfile - 664 sys sys 1071334970 1979
+sys/src/cmd/auth/mkfile - 664 sys sys 1131110392 1877
 sys/src/cmd/auth/netkey.c - 664 sys sys 1015008431 741
 sys/src/cmd/auth/newns.c - 664 sys sys 1128540497 962
 sys/src/cmd/auth/none.c - 664 sys sys 1116769155 774
@@ -9033,7 +9033,7 @@ sys/src/cmd/aux/lines.c - 664 sys sys 1015008782 546
 sys/src/cmd/aux/lis - 775 sys sys 944960794 45
 sys/src/cmd/aux/listen.c - 664 sys sys 1122127534 8153
 sys/src/cmd/aux/listen1.c - 664 sys sys 1093452955 2018
-sys/src/cmd/aux/mkfile - 664 sys sys 1108184527 980
+sys/src/cmd/aux/mkfile - 664 sys sys 1131110489 992
 sys/src/cmd/aux/mklatinkbd.c - 664 sys sys 953253425 3813
 sys/src/cmd/aux/mnihongo - 20000000775 sys sys 944960789 0
 sys/src/cmd/aux/mnihongo/README - 664 sys sys 944960789 475
@@ -9055,6 +9055,7 @@ sys/src/cmd/aux/portmap.c - 664 sys sys 1049776133 3617
 sys/src/cmd/aux/rdwr.c - 664 sys sys 1016833876 811
 sys/src/cmd/aux/reboot.c - 664 sys sys 1116769521 1429
 sys/src/cmd/aux/searchfs.c - 664 sys sys 1014925091 18176
+sys/src/cmd/aux/statusbar.c - 664 sys sys 1131110489 6015
 sys/src/cmd/aux/stub.c - 664 sys sys 1098196222 2723
 sys/src/cmd/aux/timesync.c - 664 sys sys 1107448970 25758
 sys/src/cmd/aux/trampoline.c - 664 sys sys 1126104850 3790
@@ -9083,7 +9084,7 @@ sys/src/cmd/aux/vga/ibm8514.c - 664 sys sys 1014925009 2389
 sys/src/cmd/aux/vga/icd2061a.c - 664 sys sys 1014925009 2152
 sys/src/cmd/aux/vga/ics2494.c - 664 sys sys 1014925009 2000
 sys/src/cmd/aux/vga/ics534x.c - 664 sys sys 1014925009 5319
-sys/src/cmd/aux/vga/io.c - 664 sys sys 1014925009 6222
+sys/src/cmd/aux/vga/io.c - 664 sys sys 1131110425 6329
 sys/src/cmd/aux/vga/mach32.c - 664 sys sys 1014925009 6004
 sys/src/cmd/aux/vga/mach64.c - 664 sys sys 1014925009 8279
 sys/src/cmd/aux/vga/mach64xx.c - 664 sys sys 1097900455 30266
@@ -9143,7 +9144,7 @@ sys/src/cmd/awk/re.c - 664 sys sys 964456820 6987
 sys/src/cmd/awk/run.c - 664 sys sys 1036687054 42680
 sys/src/cmd/awk/tran.c - 664 sys sys 944960802 11855
 sys/src/cmd/basename.c - 664 sys sys 944961619 605
-sys/src/cmd/bc.y - 664 sys sys 1129475330 13379
+sys/src/cmd/bc.y - 664 sys sys 1131110144 13457
 sys/src/cmd/bind.c - 664 sys sys 944961467 830
 sys/src/cmd/bitsy - 20000000775 sys sys 988249960 0
 sys/src/cmd/bitsy/bitsyload.c - 664 sys sys 1019509527 2494
@@ -9203,7 +9204,7 @@ sys/src/cmd/cb/mkfile - 664 sys sys 1062860425 172
 sys/src/cmd/cc - 20000000775 sys sys 1018556175 0
 sys/src/cmd/cc/acid.c - 664 sys sys 944960808 5314
 sys/src/cmd/cc/bits.c - 664 sys sys 944960873 850
-sys/src/cmd/cc/cc.h - 664 sys sys 1098463305 12048
+sys/src/cmd/cc/cc.h - 664 sys sys 1131110443 12071
 sys/src/cmd/cc/cc.y - 664 sys sys 1076969746 15801
 sys/src/cmd/cc/com.c - 664 sys sys 1089299183 18909
 sys/src/cmd/cc/com64.c - 664 sys sys 1089299182 9975
@@ -9220,7 +9221,7 @@ sys/src/cmd/cc/machcap.c - 664 sys sys 1084472048 78
 sys/src/cmd/cc/mkfile - 664 sys sys 1107365240 563
 sys/src/cmd/cc/pickle.c - 664 sys sys 1063855374 4829
 sys/src/cmd/cc/scon.c - 664 sys sys 1089343502 8606
-sys/src/cmd/cc/sub.c - 664 sys sys 1123096456 34013
+sys/src/cmd/cc/sub.c - 664 sys sys 1131110436 34138
 sys/src/cmd/cc/y.tab.c - 664 sys sys 1098501521 53564
 sys/src/cmd/cc/y.tab.h - 664 sys sys 1098501521 1680
 sys/src/cmd/cdfs - 20000000775 sys sys 959922196 0
@@ -9511,7 +9512,7 @@ sys/src/cmd/fax/receive.c - 664 sys sys 944960990 1097
 sys/src/cmd/fax/receiverc - 775 sys sys 944960990 581
 sys/src/cmd/fax/send.c - 664 sys sys 944960990 923
 sys/src/cmd/fax/subr.c - 664 sys sys 1015090401 1245
-sys/src/cmd/fcp.c - 664 sys sys 1110816880 3780
+sys/src/cmd/fcp.c - 664 sys sys 1131110045 3791
 sys/src/cmd/file.c - 664 sys sys 1125313891 23512
 sys/src/cmd/fmt.c - 664 sys sys 1070032009 4088
 sys/src/cmd/fortune.c - 664 sys sys 1072729222 1779
@@ -11461,7 +11462,7 @@ sys/src/cmd/ip/imap4d/store.c - 664 sys sys 1066317059 1910
 sys/src/cmd/ip/imap4d/utils.c - 664 sys sys 1015013077 2481
 sys/src/cmd/ip/ipconfig.c - 664 sys sys 1126103921 34865
 sys/src/cmd/ip/measure.c - 664 sys sys 944961011 3733
-sys/src/cmd/ip/mkfile - 664 sys sys 1089739069 1232
+sys/src/cmd/ip/mkfile - 664 sys sys 1131110598 1243
 sys/src/cmd/ip/ping.c - 664 sys sys 1084471009 5651
 sys/src/cmd/ip/ppp - 20000000775 sys sys 988249980 0
 sys/src/cmd/ip/ppp/block.c - 664 sys sys 1015090266 5353

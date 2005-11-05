@@ -23013,3 +23013,16 @@
 1130992307 2 c sys/src/9/port/alloc.c - 664 sys sys 1130964595 5674
 1130992307 3 c sys/src/cmd/ip/imap4d/date.c - 664 sys sys 1130945828 5684
 1131039124 0 c sys/src/libdraw/string.c - 664 sys sys 1131037549 3166
+1131165147 0 c sys/games/lib/fortunes - 664 sys sys 1131110299 256627
+1131165147 1 c sys/man/3/kbmap - 664 sys sys 1131110122 1732
+1131165147 2 c sys/src/9/port/devmnt.c - 664 sys sys 1131107956 21549
+1131165147 3 c sys/src/9/port/devssl.c - 664 sys sys 1131107944 26133
+1131165147 4 c sys/src/cmd/auth/mkfile - 664 sys sys 1131110392 1877
+1131165147 5 c sys/src/cmd/aux/mkfile - 664 sys sys 1131110489 992
+1131165147 6 a sys/src/cmd/aux/statusbar.c - 664 sys sys 1131110489 6015
+1131165147 7 c sys/src/cmd/aux/vga/io.c - 664 sys sys 1131110425 6329
+1131165147 8 c sys/src/cmd/bc.y - 664 sys sys 1131110144 13457
+1131165147 9 c sys/src/cmd/cc/cc.h - 664 sys sys 1131110443 12071
+1131165147 10 c sys/src/cmd/cc/sub.c - 664 sys sys 1131110436 34138
+1131165147 11 c sys/src/cmd/ip/mkfile - 664 sys sys 1131110598 1243
+1131165147 12 c sys/src/cmd/fcp.c - 664 sys sys 1131110045 3791
