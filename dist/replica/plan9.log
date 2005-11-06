@@ -23026,3 +23026,5 @@
 1131165147 10 c sys/src/cmd/cc/sub.c - 664 sys sys 1131110436 34138
 1131165147 11 c sys/src/cmd/ip/mkfile - 664 sys sys 1131110598 1243
 1131165147 12 c sys/src/cmd/fcp.c - 664 sys sys 1131110045 3791
+1131251588 0 a sys/man/8/statusbar - 664 sys sys 1131209276 1199
+1131251588 1 c sys/src/cmd/aux/statusbar.c - 664 sys sys 1131209286 6025
