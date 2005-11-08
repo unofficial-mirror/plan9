@@ -23237,3 +23237,11 @@
 1131327302 206 c sys/src/libmach/vdb.c - 664 sys sys 1131289381 22264
 1131327302 207 d sys/src/9/pc/sd53c8xx.i - 664 sys sys 1045063730 0
 1131327302 208 d sys/src/9/pc/reboot.h - 664 sys sys 1015014522 0
+1131424307 0 c sys/lib/acid/kernel - 664 sys sys 1131375651 6370
+1131424307 1 c sys/src/9/pc/trap.c - 664 sys sys 1131375347 21210
+1131424307 2 c sys/src/9/pc/vganeomagic.c - 664 sys sys 1131422294 10255
+1131424307 3 c sys/src/9/pc/vgavesa.c - 664 sys sys 1131402428 2396
+1131424307 4 c sys/src/cmd/aux/vga/main.c - 664 sys sys 1131375677 9584
+1131424307 5 c sys/src/cmd/rio/rio.c - 664 sys sys 1131375663 22143
+1131424307 6 c sys/src/libmach/mkfile - 664 sys sys 1131375713 479
+1131424307 7 d sys/src/9/pc/apbootstrap.h - 664 sys sys 1018553448 0
