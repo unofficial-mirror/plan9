@@ -23245,3 +23245,5 @@
 1131424307 5 c sys/src/cmd/rio/rio.c - 664 sys sys 1131375663 22143
 1131424307 6 c sys/src/libmach/mkfile - 664 sys sys 1131375713 479
 1131424307 7 d sys/src/9/pc/apbootstrap.h - 664 sys sys 1018553448 0
+1131498135 0 c sys/src/9/pc/memory.c - 664 sys sys 1131461842 18127
+1131498135 1 c sys/src/9/pc/mmu.c - 664 sys sys 1131497813 22628
