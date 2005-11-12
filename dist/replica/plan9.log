@@ -23279,3 +23279,5 @@
 1131683536 13 c sys/src/libdraw/creadimage.c - 664 sys sys 1131637696 2415
 1131683536 14 c sys/src/libdraw/getsubfont.c - 664 sys sys 1131637696 807
 1131769954 0 c sys/src/cmd/aux/vga/main.c - 664 sys sys 1131741978 9725
+1131816770 0 c sys/src/cmd/ip/ping.c - 664 sys sys 1131802956 5708
+1131816770 1 c sys/src/cmd/vnc/devcons.c - 664 sys sys 1131801747 6806
