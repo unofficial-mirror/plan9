@@ -23278,3 +23278,4 @@
 1131683536 12 c sys/src/libdraw/alloc.c - 664 sys sys 1131637702 4160
 1131683536 13 c sys/src/libdraw/creadimage.c - 664 sys sys 1131637696 2415
 1131683536 14 c sys/src/libdraw/getsubfont.c - 664 sys sys 1131637696 807
+1131769954 0 c sys/src/cmd/aux/vga/main.c - 664 sys sys 1131741978 9725

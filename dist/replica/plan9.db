@@ -9089,7 +9089,7 @@ sys/src/cmd/aux/vga/io.c - 664 sys sys 1131110425 6329
 sys/src/cmd/aux/vga/mach32.c - 664 sys sys 1014925009 6004
 sys/src/cmd/aux/vga/mach64.c - 664 sys sys 1014925009 8279
 sys/src/cmd/aux/vga/mach64xx.c - 664 sys sys 1097900455 30266
-sys/src/cmd/aux/vga/main.c - 664 sys sys 1131375677 9584
+sys/src/cmd/aux/vga/main.c - 664 sys sys 1131741978 9725
 sys/src/cmd/aux/vga/mga2164w.c - 664 sys sys 1014925010 13196
 sys/src/cmd/aux/vga/mga4xx.c - 664 sys sys 1014925010 35895
 sys/src/cmd/aux/vga/mkfile - 664 sys sys 1115734903 927
