@@ -23296,3 +23296,13 @@
 1131908599 12 c sys/src/9/port/devproc.c - 664 sys sys 1131886823 28287
 1131908599 13 c sys/src/9/port/portmkfile - 664 sys sys 1131907975 2062
 1131908599 14 c sys/src/cmd/tar.c - 664 sys sys 1131884442 21876
+1132342348 0 c sys/src/9/pc/mmu.c - 664 sys sys 1132341477 23864
+1132342348 1 c sys/src/9/pc/pc - 664 sys sys 1132333161 1428
+1132342348 2 c sys/src/9/pc/pcdisk - 664 sys sys 1132333161 1447
+1132342348 3 c sys/src/9/pc/trap.c - 664 sys sys 1132341484 21278
+1132342348 4 c sys/src/9/pc/vgamga2164w.c - 664 sys sys 1132331257 4769
+1132342348 5 c sys/src/cmd/upas/send/rewrite.c - 664 sys sys 1132331205 6386
+1132342348 6 c sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1132331205 31097
+1132342348 7 c sys/src/lib9p/file.c - 664 sys sys 1132336580 6695
+1132342348 8 c sys/src/libc/9sys/getenv.c - 664 sys sys 1132331534 589
+1132342348 9 c sys/src/libc/fmt/smprint.c - 664 sys sys 1132331535 205
