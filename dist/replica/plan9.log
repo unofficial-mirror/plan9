@@ -23370,3 +23370,6 @@
 1132457547 61 a sys/src/libc/sparc/getcallerpc.s - 664 sys sys 1132449295 49
 1132457547 62 c sys/src/libc/sparc/mkfile - 664 sys sys 1132449305 451
 1132457547 63 c sys/src/libip/ptclbsum.c - 664 sys sys 1132452948 1160
+1132545769 0 c sys/src/cmd/auth/mkfile - 664 sys sys 1132503359 1799
+1132545769 1 c sys/src/cmd/ip/ping.c - 664 sys sys 1132503333 5642
+1132545769 2 a sys/src/cmd/unix/u9fs/LICENSE - 664 sys sys 1132498433 735

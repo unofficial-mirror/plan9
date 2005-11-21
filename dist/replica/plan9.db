@@ -8880,7 +8880,7 @@ sys/src/cmd/auth/lib/readn.c - 664 sys sys 1015008430 247
 sys/src/cmd/auth/lib/readwrite.c - 664 sys sys 1015008430 1424
 sys/src/cmd/auth/lib/wrbio.c - 664 sys sys 1015008430 755
 sys/src/cmd/auth/login.c - 664 sys sys 1121977157 3981
-sys/src/cmd/auth/mkfile - 664 sys sys 1131110392 1877
+sys/src/cmd/auth/mkfile - 664 sys sys 1132503359 1799
 sys/src/cmd/auth/netkey.c - 664 sys sys 1015008431 741
 sys/src/cmd/auth/newns.c - 664 sys sys 1128540497 962
 sys/src/cmd/auth/none.c - 664 sys sys 1116769155 774
@@ -11472,7 +11472,7 @@ sys/src/cmd/ip/imap4d/utils.c - 664 sys sys 1015013077 2481
 sys/src/cmd/ip/ipconfig.c - 664 sys sys 1126103921 34865
 sys/src/cmd/ip/measure.c - 664 sys sys 944961011 3733
 sys/src/cmd/ip/mkfile - 664 sys sys 1131110598 1243
-sys/src/cmd/ip/ping.c - 664 sys sys 1131802956 5708
+sys/src/cmd/ip/ping.c - 664 sys sys 1132503333 5642
 sys/src/cmd/ip/ppp - 20000000775 sys sys 988249980 0
 sys/src/cmd/ip/ppp/block.c - 664 sys sys 1015090266 5353
 sys/src/cmd/ip/ppp/compress.c - 664 sys sys 1072729513 11774
@@ -12751,6 +12751,7 @@ sys/src/cmd/unix/netkey.c - 664 sys sys 1045152984 21761
 sys/src/cmd/unix/sam - 20000000775 sys sys 954263160 0
 sys/src/cmd/unix/spin - 20000000775 sys sys 956275829 0
 sys/src/cmd/unix/u9fs - 20000000775 sys sys 1015092354 0
+sys/src/cmd/unix/u9fs/LICENSE - 664 sys sys 1132498433 735
 sys/src/cmd/unix/u9fs/authnone.c - 664 sys sys 1015092351 321
 sys/src/cmd/unix/u9fs/authp9any.c - 664 sys sys 1094068304 11021
 sys/src/cmd/unix/u9fs/authrhosts.c - 664 sys sys 1015092351 747
