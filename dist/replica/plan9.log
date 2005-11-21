@@ -23373,3 +23373,5 @@
 1132545769 0 c sys/src/cmd/auth/mkfile - 664 sys sys 1132503359 1799
 1132545769 1 c sys/src/cmd/ip/ping.c - 664 sys sys 1132503333 5642
 1132545769 2 a sys/src/cmd/unix/u9fs/LICENSE - 664 sys sys 1132498433 735
+1132605186 0 c sys/src/9/pc/kbd.c - 664 sys sys 1132574883 12365
+1132605186 1 c sys/src/cmd/cc/dcl.c - 664 sys sys 1132595282 26815
