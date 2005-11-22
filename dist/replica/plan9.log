@@ -23375,3 +23375,4 @@
 1132545769 2 a sys/src/cmd/unix/u9fs/LICENSE - 664 sys sys 1132498433 735
 1132605186 0 c sys/src/9/pc/kbd.c - 664 sys sys 1132574883 12365
 1132605186 1 c sys/src/cmd/cc/dcl.c - 664 sys sys 1132595282 26815
+1132684402 0 c sys/src/cmd/acid/exec.c - 664 sys sys 1132674180 8383
