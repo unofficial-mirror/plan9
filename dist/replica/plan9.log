@@ -23376,3 +23376,4 @@
 1132605186 0 c sys/src/9/pc/kbd.c - 664 sys sys 1132574883 12365
 1132605186 1 c sys/src/cmd/cc/dcl.c - 664 sys sys 1132595282 26815
 1132684402 0 c sys/src/cmd/acid/exec.c - 664 sys sys 1132674180 8383
+1132821215 0 c sys/src/libmach/8db.c - 664 sys sys 1132812801 50731
