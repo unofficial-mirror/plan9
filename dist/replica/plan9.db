@@ -4871,7 +4871,7 @@ power/lib/ape - 20000000775 sys sys 947992106 0
 power/mkfile - 664 sys sys 948141304 46
 rc - 20000000775 sys sys 944959447 0
 rc/bin - 20000000775 sys sys 1018637942 0
-rc/bin/9fat: - 775 sys sys 1015089559 354
+rc/bin/9fat: - 775 sys sys 1133179689 367
 rc/bin/9fs - 775 sys sys 1079969823 948
 rc/bin/B - 775 sys sys 945617206 645
 rc/bin/C - 775 sys sys 1127395076 855
@@ -5653,7 +5653,7 @@ sys/lib/dist/pc/inst/copydist - 775 sys sys 1112361037 713
 sys/lib/dist/pc/inst/defs - 664 sys sys 1112361037 2439
 sys/lib/dist/pc/inst/download - 775 sys sys 1127670124 1218
 sys/lib/dist/pc/inst/finish - 775 sys sys 1032990669 266
-sys/lib/dist/pc/inst/fmtfossil - 775 sys sys 1112361038 1981
+sys/lib/dist/pc/inst/fmtfossil - 775 sys sys 1133187166 1996
 sys/lib/dist/pc/inst/fmtventi - 775 sys sys 1116594986 3733
 sys/lib/dist/pc/inst/gui - 775 sys sys 1032539034 79
 sys/lib/dist/pc/inst/halt - 775 sys sys 1116424549 325
@@ -5670,7 +5670,7 @@ sys/lib/dist/pc/inst/main - 775 sys sys 1112361039 1952
 sys/lib/dist/pc/inst/mainloop - 775 sys sys 1019058715 532
 sys/lib/dist/pc/inst/mkini.awk - 664 sys sys 1019917495 1163
 sys/lib/dist/pc/inst/mountdist - 775 sys sys 1112535194 4884
-sys/lib/dist/pc/inst/mountfossil - 775 sys sys 1130622001 2518
+sys/lib/dist/pc/inst/mountfossil - 775 sys sys 1133187166 2511
 sys/lib/dist/pc/inst/mountfs - 775 sys sys 1112361039 190
 sys/lib/dist/pc/inst/moveoldfs - 775 sys sys 1089300756 1347
 sys/lib/dist/pc/inst/partdisk - 775 sys sys 1112361039 1828
@@ -5705,7 +5705,7 @@ sys/lib/dist/pc/sub/pci - 775 sys sys 1018469726 52
 sys/lib/dist/pc/sub/pwd - 664 sys sys 1018469726 59
 sys/lib/dist/pc/sub/ramfs - 775 sys sys 1063856126 48
 sys/lib/dist/pc/sub/sleep - 664 sys sys 1018469726 118
-sys/lib/dist/pc/sub/termrc - 664 sys sys 1132452603 2448
+sys/lib/dist/pc/sub/termrc - 664 sys sys 1133187769 2466
 sys/lib/dist/pc/sub/unmount - 664 sys sys 1018469726 46
 sys/lib/dist/pc/sub/users - 664 sys sys 1018469726 103
 sys/lib/dist/pc/sub/vmware - 775 sys sys 1033073493 132
@@ -7062,7 +7062,7 @@ sys/man/4/fossil - 664 sys sys 1112368411 9546
 sys/man/4/fs - 664 sys sys 1019058716 3387
 sys/man/4/ftpfs - 664 sys sys 1112563349 4410
 sys/man/4/httpfile - 664 sys sys 1128556957 1233
-sys/man/4/import - 664 sys sys 1115314601 3095
+sys/man/4/import - 664 sys sys 1133180700 3202
 sys/man/4/iostats - 664 sys sys 1105574383 1621
 sys/man/4/keyfs - 664 sys sys 1116594919 5048
 sys/man/4/kfs - 664 sys sys 1102088374 2164
@@ -7465,7 +7465,7 @@ sys/src/9/pc/ptclbsum386.s - 664 sys sys 1015014521 1493
 sys/src/9/pc/random.c - 664 sys sys 1036812832 2021
 sys/src/9/pc/realmode.c - 664 sys sys 1131294602 2658
 sys/src/9/pc/rebootcode.s - 664 sys sys 1015014522 988
-sys/src/9/pc/screen.c - 664 sys sys 1131886897 13460
+sys/src/9/pc/screen.c - 664 sys sys 1133218367 13797
 sys/src/9/pc/screen.h - 664 sys sys 1131290516 4156
 sys/src/9/pc/sd53c8xx.c - 664 sys sys 1131538448 55207
 sys/src/9/pc/sd53c8xx.n - 664 sys sys 1131290556 12657
@@ -7480,7 +7480,7 @@ sys/src/9/pc/uartpci.c - 664 sys sys 1096379063 2891
 sys/src/9/pc/usb.h - 664 sys sys 1099760881 3650
 sys/src/9/pc/usbuhci.c - 664 sys sys 1099760881 30955
 sys/src/9/pc/vga.c - 664 sys sys 1131290595 5148
-sys/src/9/pc/vga3dfx.c - 664 sys sys 1131290600 3833
+sys/src/9/pc/vga3dfx.c - 664 sys sys 1133218367 3833
 sys/src/9/pc/vgaark2000pv.c - 664 sys sys 1131290600 3422
 sys/src/9/pc/vgabt485.c - 664 sys sys 1131290600 5057
 sys/src/9/pc/vgaclgd542x.c - 664 sys sys 1131290600 4550
@@ -11393,7 +11393,7 @@ sys/src/cmd/htmlfmt/mkfile - 664 sys sys 1034015650 297
 sys/src/cmd/htmlfmt/util.c - 664 sys sys 1015364025 1765
 sys/src/cmd/iconv.c - 664 sys sys 1039753035 1801
 sys/src/cmd/idiff.c - 664 sys sys 1014926695 6896
-sys/src/cmd/import.c - 664 sys sys 1122260912 6885
+sys/src/cmd/import.c - 664 sys sys 1133180705 7028
 sys/src/cmd/init.c - 664 sys sys 1121977160 4462
 sys/src/cmd/iostats - 20000000775 sys sys 944962001 0
 sys/src/cmd/iostats/iostats.c - 664 sys sys 1127431876 9669
@@ -13375,7 +13375,7 @@ sys/src/lib9p/post.c - 664 sys sys 1103565871 356
 sys/src/lib9p/post.h - 664 sys sys 1029850260 201
 sys/src/lib9p/ramfs.c - 664 sys sys 1030450927 2534
 sys/src/lib9p/req.c - 664 sys sys 1089299187 1652
-sys/src/lib9p/srv.c - 664 sys sys 1130597663 16871
+sys/src/lib9p/srv.c - 664 sys sys 1133180783 16904
 sys/src/lib9p/tpost.c - 664 sys sys 1103565872 316
 sys/src/lib9p/uid.c - 664 sys sys 1015023311 517
 sys/src/lib9p/util.c - 664 sys sys 1017679319 465
@@ -14221,7 +14221,7 @@ sys/src/libndb/ndbreorder.c - 664 sys sys 1078618600 966
 sys/src/libndb/ndbsubstitute.c - 664 sys sys 1078618600 692
 sys/src/libplumb - 20000000775 sys sys 1014928082 0
 sys/src/libplumb/event.c - 664 sys sys 947358887 1861
-sys/src/libplumb/mesg.c - 664 sys sys 1014928082 6718
+sys/src/libplumb/mesg.c - 664 sys sys 1133180252 7080
 sys/src/libplumb/mkfile - 664 sys sys 1035389780 228
 sys/src/libplumb/plumbsendtext.c - 664 sys sys 1014928082 288
 sys/src/libregexp - 20000000775 sys sys 988249530 0

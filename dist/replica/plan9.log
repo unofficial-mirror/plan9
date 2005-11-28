@@ -23381,3 +23381,13 @@
 1133148721 0 c lib/ndb/common - 664 sys sys 1133147947 5356
 1133148721 1 c sys/src/9/pc/sdmylex.c - 664 sys sys 1133068062 27806
 1133148721 2 c sys/src/cmd/upas/fs/imap4.c - 664 sys sys 1133147970 16258
+1133218939 0 c rc/bin/9fat: - 775 sys sys 1133179689 367
+1133218939 1 c sys/lib/dist/pc/inst/fmtfossil - 775 sys sys 1133187166 1996
+1133218939 2 c sys/lib/dist/pc/inst/mountfossil - 775 sys sys 1133187166 2511
+1133218939 3 c sys/lib/dist/pc/sub/termrc - 664 sys sys 1133187769 2466
+1133218939 4 c sys/man/4/import - 664 sys sys 1133180700 3202
+1133218939 5 c sys/src/9/pc/screen.c - 664 sys sys 1133218367 13797
+1133218939 6 c sys/src/9/pc/vga3dfx.c - 664 sys sys 1133218367 3833
+1133218939 7 c sys/src/cmd/import.c - 664 sys sys 1133180705 7028
+1133218939 8 c sys/src/lib9p/srv.c - 664 sys sys 1133180783 16904
+1133218939 9 c sys/src/libplumb/mesg.c - 664 sys sys 1133180252 7080
