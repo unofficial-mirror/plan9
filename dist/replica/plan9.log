@@ -23394,3 +23394,9 @@
 1133289151 0 c sys/src/libplumb/mesg.c - 664 sys sys 1133279518 7080
 1133402586 0 c sys/games/lib/fortunes - 664 sys sys 1133400893 256649
 1133402586 1 c sys/src/9/pc/screen.c - 664 sys sys 1133356380 13831
+1133469194 0 c sys/src/9/pc/ether83815.c - 664 sys sys 1133464742 23556
+1133469194 1 c sys/src/cmd/vt/cons.h - 664 sys sys 1133463638 1776
+1133469194 2 c sys/src/cmd/vt/event.c - 664 sys sys 1133463638 1245
+1133469194 3 c sys/src/cmd/vt/hp.c - 664 sys sys 1133463638 3361
+1133469194 4 c sys/src/cmd/vt/main.c - 664 sys sys 1133463639 16737
+1133469194 5 c sys/src/cmd/vt/vt.c - 664 sys sys 1133463639 20180
