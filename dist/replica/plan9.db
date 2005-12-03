@@ -7189,7 +7189,7 @@ sys/man/8/scuzz - 664 sys sys 984709640 7916
 sys/man/8/secstore - 664 sys sys 1105016705 1954
 sys/man/8/securenet - 664 sys sys 954305552 3160
 sys/man/8/send - 664 sys sys 1045501634 2168
-sys/man/8/smtp - 664 sys sys 1133542190 4509
+sys/man/8/smtp - 664 sys sys 1133631990 4507
 sys/man/8/snoopy - 664 sys sys 1128179510 4054
 sys/man/8/stats - 664 sys sys 1067722908 4291
 sys/man/8/statusbar - 664 sys sys 1131317865 1251
