@@ -23406,3 +23406,12 @@
 1133632917 0 c sys/man/8/smtp - 664 sys sys 1133631990 4507
 1133715743 0 c lib/face/48x48x4/.dict - 664 sys sys 1133715253 2561
 1133715743 1 a lib/face/48x48x4/u/uriel.1 - 664 sys sys 1133715222 833
+1133829173 0 c sys/man/1/vt - 664 sys sys 1133804098 2472
+1133829173 1 c sys/src/cmd/acid/builtin.c - 664 sys sys 1133802425 20958
+1133829173 2 c sys/src/cmd/ssh/cmsg.c - 664 sys sys 1133814916 7906
+1133829173 3 c sys/src/cmd/ssh/ssh.c - 664 sys sys 1133821217 9671
+1133829173 4 c sys/src/cmd/vt/cons.h - 664 sys sys 1133808292 1792
+1133829173 5 c sys/src/cmd/vt/event.c - 664 sys sys 1133808292 1071
+1133829173 6 c sys/src/cmd/vt/hp.c - 664 sys sys 1133808292 3362
+1133829173 7 c sys/src/cmd/vt/main.c - 664 sys sys 1133814920 14466
+1133829173 8 c sys/src/cmd/vt/vt.c - 664 sys sys 1133808291 19606
