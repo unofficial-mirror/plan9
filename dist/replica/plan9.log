@@ -23430,3 +23430,15 @@
 1134009104 2 c sys/src/ape/lib/ap/plan9/profile.c - 664 sys sys 1134003027 2531
 1134009104 3 c sys/src/cmd/scuzz/scuzz.c - 664 sys sys 1133957139 37580
 1134009104 4 c sys/src/cmd/upas/fs/pop3.c - 664 sys sys 1133988332 13024
+1134073922 0 c sys/src/9/ip/arp.c - 664 sys sys 1134042932 11218
+1134073922 1 c sys/src/9/pc/etherdp83820.c - 664 sys sys 1134042756 29166
+1134073922 2 c sys/src/9/port/alarm.c - 664 sys sys 1134042902 1425
+1134073922 3 c sys/src/9/port/portdat.h - 664 sys sys 1134042902 22558
+1134073922 4 c sys/src/9/port/sysfile.c - 664 sys sys 1134042952 22178
+1134073922 5 c sys/src/9/port/sysproc.c - 664 sys sys 1134042973 15146
+1134073922 6 c sys/src/ape/lib/ap/stdio/fgets.c - 664 sys sys 1134062985 263
+1134073922 7 c sys/src/ape/lib/ap/stdio/fread.c - 664 sys sys 1134052382 662
+1134073922 8 c sys/src/ape/lib/ap/stdio/setvbuf.c - 664 sys sys 1134052382 679
+1134073922 9 c sys/src/ape/lib/ap/stdio/sprintf.c - 664 sys sys 1134052382 295
+1134073922 10 c sys/src/ape/lib/ap/stdio/vsnprintf.c - 664 sys sys 1134052382 267
+1134073922 11 c sys/src/ape/lib/ap/stdio/vsprintf.c - 664 sys sys 1134052382 254

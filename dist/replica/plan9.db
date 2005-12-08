@@ -7321,7 +7321,7 @@ sys/src/9/boot/sac.c - 664 sys sys 1015012530 802
 sys/src/9/boot/settime.c - 664 sys sys 1036813626 2473
 sys/src/9/boot/testboot.c - 664 sys sys 1039763734 496
 sys/src/9/ip - 20000000775 sys sys 1015278450 0
-sys/src/9/ip/arp.c - 664 sys sys 1103554772 11345
+sys/src/9/ip/arp.c - 664 sys sys 1134042932 11218
 sys/src/9/ip/chandial.c - 664 sys sys 1099020048 2295
 sys/src/9/ip/devip.c - 664 sys sys 1084331653 24164
 sys/src/9/ip/eipconvtest.c - 664 sys sys 1022588098 3135
@@ -7414,7 +7414,7 @@ sys/src/9/pc/ether82557.c - 664 sys sys 1131290377 30107
 sys/src/9/pc/ether83815.c - 664 sys sys 1133464742 23556
 sys/src/9/pc/ether8390.c - 664 sys sys 1131290377 17702
 sys/src/9/pc/ether8390.h - 664 sys sys 1015014517 1511
-sys/src/9/pc/etherdp83820.c - 664 sys sys 1131290378 29128
+sys/src/9/pc/etherdp83820.c - 664 sys sys 1134042756 29166
 sys/src/9/pc/etherec2t.c - 664 sys sys 1086960044 4039
 sys/src/9/pc/etherelnk3.c - 664 sys sys 1131290378 48733
 sys/src/9/pc/etherga620.c - 664 sys sys 1131290379 28748
@@ -7508,7 +7508,7 @@ sys/src/9/pc/vgax.c - 664 sys sys 1131290604 1671
 sys/src/9/pc/wavelan.c - 664 sys sys 1127743243 27879
 sys/src/9/pc/wavelan.h - 664 sys sys 1107448246 6169
 sys/src/9/port - 20000000775 sys sys 1018469625 0
-sys/src/9/port/alarm.c - 664 sys sys 1067722766 1426
+sys/src/9/port/alarm.c - 664 sys sys 1134042902 1425
 sys/src/9/port/alloc.c - 664 sys sys 1130964595 5674
 sys/src/9/port/allocb.c - 664 sys sys 1123676437 3340
 sys/src/9/port/auth.c - 664 sys sys 1123647282 2392
@@ -7573,7 +7573,7 @@ sys/src/9/port/page.c - 664 sys sys 1131636090 11128
 sys/src/9/port/parse.c - 664 sys sys 1014931177 2026
 sys/src/9/port/pgrp.c - 664 sys sys 1072704671 3940
 sys/src/9/port/portclock.c - 664 sys sys 1102093397 4556
-sys/src/9/port/portdat.h - 664 sys sys 1131537261 22702
+sys/src/9/port/portdat.h - 664 sys sys 1134042902 22558
 sys/src/9/port/portfns.h - 664 sys sys 1131537254 11022
 sys/src/9/port/portmkfile - 664 sys sys 1131907975 2062
 sys/src/9/port/print.c - 664 sys sys 1014931178 227
@@ -7585,8 +7585,8 @@ sys/src/9/port/rebootcmd.c - 664 sys sys 1015278340 1561
 sys/src/9/port/sd.h - 664 sys sys 1131289990 2494
 sys/src/9/port/segment.c - 664 sys sys 1131298540 13722
 sys/src/9/port/swap.c - 664 sys sys 1055688551 6980
-sys/src/9/port/sysfile.c - 664 sys sys 1126586199 22173
-sys/src/9/port/sysproc.c - 664 sys sys 1131537275 15145
+sys/src/9/port/sysfile.c - 664 sys sys 1134042952 22178
+sys/src/9/port/sysproc.c - 664 sys sys 1134042973 15146
 sys/src/9/port/systab.h - 664 sys sys 1062721698 3044
 sys/src/9/port/taslock.c - 664 sys sys 1131290039 3928
 sys/src/9/port/thwack.c - 664 sys sys 1057323394 7253
@@ -8214,13 +8214,13 @@ sys/src/ape/lib/ap/stdio/ferror.c - 664 sys sys 1014921981 96
 sys/src/ape/lib/ap/stdio/fflush.c - 664 sys sys 1014921981 563
 sys/src/ape/lib/ap/stdio/fgetc.c - 664 sys sys 1014921981 88
 sys/src/ape/lib/ap/stdio/fgetpos.c - 664 sys sys 1014921981 127
-sys/src/ape/lib/ap/stdio/fgets.c - 664 sys sys 1014921981 261
+sys/src/ape/lib/ap/stdio/fgets.c - 664 sys sys 1134062985 263
 sys/src/ape/lib/ap/stdio/fileno.c - 664 sys sys 1014921981 122
 sys/src/ape/lib/ap/stdio/fopen.c - 664 sys sys 1014921982 230
 sys/src/ape/lib/ap/stdio/fprintf.c - 664 sys sys 1014921982 195
 sys/src/ape/lib/ap/stdio/fputc.c - 664 sys sys 1014921982 154
 sys/src/ape/lib/ap/stdio/fputs.c - 664 sys sys 1014921982 137
-sys/src/ape/lib/ap/stdio/fread.c - 664 sys sys 1038237530 667
+sys/src/ape/lib/ap/stdio/fread.c - 664 sys sys 1134052382 662
 sys/src/ape/lib/ap/stdio/freopen.c - 664 sys sys 1033135391 1517
 sys/src/ape/lib/ap/stdio/fscanf.c - 664 sys sys 1014921982 192
 sys/src/ape/lib/ap/stdio/fseek.c - 664 sys sys 1050684342 411
@@ -8248,11 +8248,11 @@ sys/src/ape/lib/ap/stdio/rewind.c - 664 sys sys 1014921982 99
 sys/src/ape/lib/ap/stdio/scanf.c - 664 sys sys 1014921982 185
 sys/src/ape/lib/ap/stdio/sclose.c - 664 sys sys 1014921982 556
 sys/src/ape/lib/ap/stdio/setbuf.c - 664 sys sys 1014921982 281
-sys/src/ape/lib/ap/stdio/setvbuf.c - 664 sys sys 1014921982 670
+sys/src/ape/lib/ap/stdio/setvbuf.c - 664 sys sys 1134052382 679
 sys/src/ape/lib/ap/stdio/snprintf.c - 664 sys sys 1050684385 307
 sys/src/ape/lib/ap/stdio/sopenr.c - 664 sys sys 1014921982 392
 sys/src/ape/lib/ap/stdio/sopenw.c - 664 sys sys 1014921982 287
-sys/src/ape/lib/ap/stdio/sprintf.c - 664 sys sys 1014921982 305
+sys/src/ape/lib/ap/stdio/sprintf.c - 664 sys sys 1134052382 295
 sys/src/ape/lib/ap/stdio/sscanf.c - 664 sys sys 1014921982 238
 sys/src/ape/lib/ap/stdio/stdio.c - 664 sys sys 1014921982 209
 sys/src/ape/lib/ap/stdio/strerror.c - 664 sys sys 1071245622 1816
@@ -8263,8 +8263,8 @@ sys/src/ape/lib/ap/stdio/ungetc.c - 664 sys sys 1038237533 491
 sys/src/ape/lib/ap/stdio/vfprintf.c - 664 sys sys 1087406384 14746
 sys/src/ape/lib/ap/stdio/vfscanf.c - 664 sys sys 1014921983 9100
 sys/src/ape/lib/ap/stdio/vprintf.c - 664 sys sys 1014921983 134
-sys/src/ape/lib/ap/stdio/vsnprintf.c - 664 sys sys 1050684390 277
-sys/src/ape/lib/ap/stdio/vsprintf.c - 664 sys sys 1014921983 266
+sys/src/ape/lib/ap/stdio/vsnprintf.c - 664 sys sys 1134052382 267
+sys/src/ape/lib/ap/stdio/vsprintf.c - 664 sys sys 1134052382 254
 sys/src/ape/lib/ap/syscall - 20000000775 sys sys 1014921991 0
 sys/src/ape/lib/ap/syscall/mkfile - 664 sys sys 1130424774 2698
 sys/src/ape/lib/bsd - 20000000775 sys sys 1014921995 0
