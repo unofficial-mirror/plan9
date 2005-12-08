@@ -5252,7 +5252,7 @@ sys/games - 20000000775 sys sys 952648872 0
 sys/games/lib - 20000000775 sys sys 952648879 0
 sys/games/lib/4scores - 664 sys sys 1118680448 0
 sys/games/lib/5scores - 664 sys sys 1118680453 0
-sys/games/lib/fortunes - 664 sys sys 1133400893 256649
+sys/games/lib/fortunes - 664 sys sys 1133956965 256761
 sys/games/lib/mahjongg - 20000000775 sys sys 1095792278 0
 sys/games/lib/mahjongg/backgrounds - 20000000775 sys sys 1095792293 0
 sys/games/lib/mahjongg/backgrounds/default.bit - 664 sys sys 1095792293 346803
@@ -8069,7 +8069,7 @@ sys/src/ape/lib/ap/plan9/access.c - 664 sys sys 1014921983 904
 sys/src/ape/lib/ap/plan9/acid.c - 664 sys sys 1014921985 729
 sys/src/ape/lib/ap/plan9/acidlib - 664 sys sys 1014921985 10866
 sys/src/ape/lib/ap/plan9/alarm.c - 664 sys sys 1014921983 127
-sys/src/ape/lib/ap/plan9/brk.c - 664 sys sys 1014921983 463
+sys/src/ape/lib/ap/plan9/brk.c - 664 sys sys 1134003440 472
 sys/src/ape/lib/ap/plan9/buf.prom - 664 sys sys 1014921984 6783
 sys/src/ape/lib/ap/plan9/cfgetospeed.c - 664 sys sys 1014921985 270
 sys/src/ape/lib/ap/plan9/chdir.c - 664 sys sys 1014921983 147
@@ -8125,7 +8125,7 @@ sys/src/ape/lib/ap/plan9/open.c - 664 sys sys 1048644335 1088
 sys/src/ape/lib/ap/plan9/opendir.c - 664 sys sys 1014921984 1881
 sys/src/ape/lib/ap/plan9/pause.c - 664 sys sys 1014921985 124
 sys/src/ape/lib/ap/plan9/pipe.c - 664 sys sys 1014921984 476
-sys/src/ape/lib/ap/plan9/profile.c - 664 sys sys 1014921985 2521
+sys/src/ape/lib/ap/plan9/profile.c - 664 sys sys 1134003027 2531
 sys/src/ape/lib/ap/plan9/qlock.c - 664 sys sys 1070330880 5124
 sys/src/ape/lib/ap/plan9/raise.c - 664 sys sys 1014921985 120
 sys/src/ape/lib/ap/plan9/read.c - 664 sys sys 1014921984 767
@@ -12312,7 +12312,7 @@ sys/src/cmd/scuzz/changer.c - 664 sys sys 944961084 1137
 sys/src/cmd/scuzz/mkfile - 664 sys sys 1032060571 231
 sys/src/cmd/scuzz/scsireq.c - 664 sys sys 1032060572 11501
 sys/src/cmd/scuzz/scsireq.h - 664 sys sys 1113741890 5929
-sys/src/cmd/scuzz/scuzz.c - 664 sys sys 1121977163 37610
+sys/src/cmd/scuzz/scuzz.c - 664 sys sys 1133957139 37580
 sys/src/cmd/scuzz/sense.c - 664 sys sys 969510790 3901
 sys/src/cmd/sed.c - 664 sys sys 1100962924 27001
 sys/src/cmd/seq.c - 664 sys sys 1125529033 1683
@@ -12839,7 +12839,7 @@ sys/src/cmd/upas/fs/imap4.c - 664 sys sys 1133147970 16258
 sys/src/cmd/upas/fs/mbox.c - 664 sys sys 1107835226 28935
 sys/src/cmd/upas/fs/mkfile - 664 sys sys 1047490336 321
 sys/src/cmd/upas/fs/plan9.c - 664 sys sys 1071334861 7465
-sys/src/cmd/upas/fs/pop3.c - 664 sys sys 1107358653 12930
+sys/src/cmd/upas/fs/pop3.c - 664 sys sys 1133988332 13024
 sys/src/cmd/upas/fs/readdir.c - 664 sys sys 944961331 203
 sys/src/cmd/upas/fs/strtotm.c - 664 sys sys 1041137528 1904
 sys/src/cmd/upas/fs/tester.c - 664 sys sys 985037420 1418
