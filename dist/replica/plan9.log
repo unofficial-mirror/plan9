@@ -23442,3 +23442,4 @@
 1134073922 9 c sys/src/ape/lib/ap/stdio/sprintf.c - 664 sys sys 1134052382 295
 1134073922 10 c sys/src/ape/lib/ap/stdio/vsnprintf.c - 664 sys sys 1134052382 267
 1134073922 11 c sys/src/ape/lib/ap/stdio/vsprintf.c - 664 sys sys 1134052382 254
+1134153159 0 c sys/src/ape/lib/ap/stdio/sclose.c - 664 sys sys 1134143011 575

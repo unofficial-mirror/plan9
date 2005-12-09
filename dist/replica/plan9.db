@@ -8246,7 +8246,7 @@ sys/src/ape/lib/ap/stdio/remove.c - 664 sys sys 1014921982 106
 sys/src/ape/lib/ap/stdio/rename.c - 664 sys sys 1014921982 225
 sys/src/ape/lib/ap/stdio/rewind.c - 664 sys sys 1014921982 99
 sys/src/ape/lib/ap/stdio/scanf.c - 664 sys sys 1014921982 185
-sys/src/ape/lib/ap/stdio/sclose.c - 664 sys sys 1014921982 556
+sys/src/ape/lib/ap/stdio/sclose.c - 664 sys sys 1134143011 575
 sys/src/ape/lib/ap/stdio/setbuf.c - 664 sys sys 1014921982 281
 sys/src/ape/lib/ap/stdio/setvbuf.c - 664 sys sys 1134052382 679
 sys/src/ape/lib/ap/stdio/snprintf.c - 664 sys sys 1050684385 307
