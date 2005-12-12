@@ -23511,3 +23511,15 @@
 1134356602 50 c sys/src/libc/9sys/fcallfmt.c - 664 sys sys 1134305457 5747
 1134356602 51 d sys/src/lib9p/tpost.c - 664 sys sys 1103565872 0
 1134356602 52 d sys/src/lib9p/post.h - 664 sys sys 1029850260 0
+1134426718 0 c sys/lib/acid/kernel - 664 sys sys 1134390252 6399
+1134426718 1 c sys/src/9/ip/icmp.c - 664 sys sys 1134390100 9496
+1134426718 2 c sys/src/9/ip/icmp6.c - 664 sys sys 1134390094 18083
+1134426718 3 c sys/src/9/ip/il.c - 664 sys sys 1134390107 26923
+1134426718 4 c sys/src/9/pc/etherga620.c - 664 sys sys 1134390125 28760
+1134426718 5 c sys/src/9/port/sd.h - 664 sys sys 1134411408 2494
+1134426718 6 c sys/src/cmd/aux/vga/i81x.c - 664 sys sys 1134390001 12036
+1134426718 7 c sys/src/cmd/cc/dcl.c - 664 sys sys 1134390084 26837
+1134426718 8 c sys/src/cmd/mksyslib - 664 sys sys 1134390137 665
+1134426718 9 c sys/src/libc/mkfile - 664 sys sys 1134396380 745
+1134426718 10 c sys/src/libmp/mkfile - 664 sys sys 1134426476 962
+1134426718 11 c sys/src/libsec/mkfile - 664 sys sys 1134426497 554

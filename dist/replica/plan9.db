@@ -5544,7 +5544,7 @@ sys/lib/acid/alef - 664 sys sys 944955985 2293
 sys/lib/acid/alpha - 664 sys sys 944955985 4849
 sys/lib/acid/arm - 664 sys sys 984696197 1842
 sys/lib/acid/coverage - 664 sys sys 944955985 1746
-sys/lib/acid/kernel - 664 sys sys 1131375651 6370
+sys/lib/acid/kernel - 664 sys sys 1134390252 6399
 sys/lib/acid/leak - 664 sys sys 1131289472 2363
 sys/lib/acid/mips - 664 sys sys 944955985 5472
 sys/lib/acid/network - 664 sys sys 1020313817 2499
@@ -7328,10 +7328,10 @@ sys/src/9/ip/eipconvtest.c - 664 sys sys 1022588098 3135
 sys/src/9/ip/esp.c - 664 sys sys 1047260561 17084
 sys/src/9/ip/ethermedium.c - 664 sys sys 1115565973 15592
 sys/src/9/ip/gre.c - 664 sys sys 1115566178 5069
-sys/src/9/ip/icmp.c - 664 sys sys 1077376217 9511
-sys/src/9/ip/icmp6.c - 664 sys sys 1047260563 18098
+sys/src/9/ip/icmp.c - 664 sys sys 1134390100 9496
+sys/src/9/ip/icmp6.c - 664 sys sys 1134390094 18083
 sys/src/9/ip/igmp.c - 664 sys sys 1055700768 5175
-sys/src/9/ip/il.c - 664 sys sys 1077376217 26959
+sys/src/9/ip/il.c - 664 sys sys 1134390107 26923
 sys/src/9/ip/inferno.c - 664 sys sys 1022588098 517
 sys/src/9/ip/ip.c - 664 sys sys 1101906449 15285
 sys/src/9/ip/ip.h - 664 sys sys 1091904429 15818
@@ -7417,7 +7417,7 @@ sys/src/9/pc/ether8390.h - 664 sys sys 1015014517 1511
 sys/src/9/pc/etherdp83820.c - 664 sys sys 1134042756 29166
 sys/src/9/pc/etherec2t.c - 664 sys sys 1086960044 4039
 sys/src/9/pc/etherelnk3.c - 664 sys sys 1131290378 48733
-sys/src/9/pc/etherga620.c - 664 sys sys 1131290379 28748
+sys/src/9/pc/etherga620.c - 664 sys sys 1134390125 28760
 sys/src/9/pc/etherga620fw.h - 664 sys sys 1026847642 222295
 sys/src/9/pc/etherif.h - 664 sys sys 1088178711 961
 sys/src/9/pc/etherigbe.c - 664 sys sys 1131896403 44621
@@ -7582,7 +7582,7 @@ sys/src/9/port/qio.c - 664 sys sys 1070287837 23562
 sys/src/9/port/qlock.c - 664 sys sys 1067722765 3196
 sys/src/9/port/rdb.c - 664 sys sys 1018721202 1698
 sys/src/9/port/rebootcmd.c - 664 sys sys 1015278340 1561
-sys/src/9/port/sd.h - 664 sys sys 1131289990 2494
+sys/src/9/port/sd.h - 664 sys sys 1134411408 2494
 sys/src/9/port/segment.c - 664 sys sys 1134276516 13762
 sys/src/9/port/swap.c - 664 sys sys 1055688551 6980
 sys/src/9/port/sysfile.c - 664 sys sys 1134042952 22178
@@ -9090,7 +9090,7 @@ sys/src/cmd/aux/vga/error.c - 664 sys sys 1014925008 745
 sys/src/cmd/aux/vga/et4000.c - 664 sys sys 1014925008 6720
 sys/src/cmd/aux/vga/et4000hwgc.c - 664 sys sys 1014925008 552
 sys/src/cmd/aux/vga/hiqvideo.c - 664 sys sys 1048635653 9211
-sys/src/cmd/aux/vga/i81x.c - 664 sys sys 1124916404 11755
+sys/src/cmd/aux/vga/i81x.c - 664 sys sys 1134390001 12036
 sys/src/cmd/aux/vga/ibm8514.c - 664 sys sys 1014925009 2389
 sys/src/cmd/aux/vga/icd2061a.c - 664 sys sys 1014925009 2152
 sys/src/cmd/aux/vga/ics2494.c - 664 sys sys 1014925009 2000
@@ -9221,7 +9221,7 @@ sys/src/cmd/cc/com.c - 664 sys sys 1134321739 22202
 sys/src/cmd/cc/com64.c - 664 sys sys 1089299182 9975
 sys/src/cmd/cc/compat - 664 sys sys 1014925177 684
 sys/src/cmd/cc/compat.c - 664 sys sys 1132451523 454
-sys/src/cmd/cc/dcl.c - 664 sys sys 1132595282 26815
+sys/src/cmd/cc/dcl.c - 664 sys sys 1134390084 26837
 sys/src/cmd/cc/dpchk.c - 664 sys sys 1107365037 7152
 sys/src/cmd/cc/funct.c - 664 sys sys 984718510 6167
 sys/src/cmd/cc/lex.c - 664 sys sys 1134321742 23923
@@ -11736,7 +11736,7 @@ sys/src/cmd/mkfile - 664 sys sys 1108476348 2414
 sys/src/cmd/mklib - 664 sys sys 1101213349 618
 sys/src/cmd/mkmany - 664 sys sys 1123818681 1304
 sys/src/cmd/mkone - 664 sys sys 1123943673 910
-sys/src/cmd/mksyslib - 664 sys sys 1022112160 660
+sys/src/cmd/mksyslib - 664 sys sys 1134390137 665
 sys/src/cmd/mntgen.c - 664 sys sys 1106410349 3630
 sys/src/cmd/mount.c - 664 sys sys 1034195354 1508
 sys/src/cmd/ms2html.c - 664 sys sys 1132452054 41032
@@ -13715,7 +13715,7 @@ sys/src/libc/mips/strcpy.s - 664 sys sys 944961714 1202
 sys/src/libc/mips/tas.s - 664 sys sys 944961714 494
 sys/src/libc/mips/vlop.s - 664 sys sys 944961714 239
 sys/src/libc/mips/vlrt.c - 664 sys sys 1067719030 9086
-sys/src/libc/mkfile - 664 sys sys 1089312339 636
+sys/src/libc/mkfile - 664 sys sys 1134396380 745
 sys/src/libc/port - 20000000775 sys sys 1016833881 0
 sys/src/libc/port/_assert.c - 664 sys sys 1014927393 166
 sys/src/libc/port/abs.c - 664 sys sys 1014927393 146
@@ -14155,7 +14155,7 @@ sys/src/libmp/mips/mpvecadd.s - 664 sys sys 953347683 1211
 sys/src/libmp/mips/mpvecdigmuladd.s - 664 sys sys 953347683 1098
 sys/src/libmp/mips/mpvecdigmulsub.s - 664 sys sys 953347683 1226
 sys/src/libmp/mips/mpvecsub.s - 664 sys sys 953347683 1209
-sys/src/libmp/mkfile - 664 sys sys 1032061370 923
+sys/src/libmp/mkfile - 664 sys sys 1134426476 962
 sys/src/libmp/port - 20000000775 sys sys 1014930548 0
 sys/src/libmp/port/betomp.c - 664 sys sys 1127128751 617
 sys/src/libmp/port/crt.c - 664 sys sys 1014930532 2050
@@ -14260,7 +14260,7 @@ sys/src/libsec/mips - 20000000775 sys sys 984710505 0
 sys/src/libsec/mips/md5block.s - 664 sys sys 985124884 7204
 sys/src/libsec/mips/mkfile - 664 sys sys 1032061452 227
 sys/src/libsec/mips/sha1block.s - 664 sys sys 985124884 4143
-sys/src/libsec/mkfile - 664 sys sys 1032061454 533
+sys/src/libsec/mkfile - 664 sys sys 1134426497 554
 sys/src/libsec/port - 20000000775 sys sys 1015023365 0
 sys/src/libsec/port/aes.c - 664 sys sys 1016731561 64104
 sys/src/libsec/port/blowfish.c - 664 sys sys 1016466467 19676
