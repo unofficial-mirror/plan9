@@ -23523,3 +23523,9 @@
 1134426718 9 c sys/src/libc/mkfile - 664 sys sys 1134396380 745
 1134426718 10 c sys/src/libmp/mkfile - 664 sys sys 1134426476 962
 1134426718 11 c sys/src/libsec/mkfile - 664 sys sys 1134426497 554
+1134505921 0 c sys/src/9/ip/icmp6.c - 664 sys sys 1134498903 18054
+1134505921 1 c sys/src/9/ip/il.c - 664 sys sys 1134498903 27226
+1134505921 2 c sys/src/9/port/devtls.c - 664 sys sys 1134498858 45226
+1134505921 3 c sys/src/cmd/auth/factotum/util.c - 664 sys sys 1134500240 18043
+1134505921 4 c sys/src/cmd/tlssrv.c - 664 sys sys 1134498997 3426
+1134505921 5 c sys/src/cmd/wikifs/io.c - 664 sys sys 1134498935 11573
