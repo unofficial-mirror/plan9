@@ -23529,3 +23529,15 @@
 1134505921 3 c sys/src/cmd/auth/factotum/util.c - 664 sys sys 1134500240 18043
 1134505921 4 c sys/src/cmd/tlssrv.c - 664 sys sys 1134498997 3426
 1134505921 5 c sys/src/cmd/wikifs/io.c - 664 sys sys 1134498935 11573
+1134594145 0 c sys/man/1/crop - 664 sys sys 1134557540 2630
+1134594145 1 c sys/man/1/diff - 664 sys sys 1134556573 3085
+1134594145 2 c sys/man/1/doc2txt - 664 sys sys 1134556783 2104
+1134594145 3 c sys/man/1/du - 664 sys sys 1134556965 1358
+1134594145 4 c sys/man/1/eqn - 664 sys sys 1134592617 5655
+1134594145 5 c sys/man/1/expect - 664 sys sys 1134557311 3014
+1134594145 6 c sys/src/cmd/aux/msexceltables.c - 664 sys sys 1134556625 13913
+1134594145 7 c sys/src/cmd/crop.c - 664 sys sys 1134557476 4137
+1134594145 8 c sys/src/cmd/diff/main.c - 664 sys sys 1134556503 4338
+1134594145 9 c sys/src/cmd/du.c - 664 sys sys 1134556965 3420
+1134594145 10 c sys/src/cmd/dial/expect.c - 664 sys sys 1134557318 1595
+1134594145 11 c sys/src/cmd/vi/run.c - 664 sys sys 1134537330 13213
