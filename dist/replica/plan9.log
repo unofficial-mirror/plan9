@@ -23557,3 +23557,4 @@
 1135103502 6 c sys/src/cmd/upas/send/filter.c - 664 sys sys 1135083956 2365
 1135103502 7 c sys/src/cmd/upas/vf/vf.c - 664 sys sys 1135083959 20043
 1135189926 0 c sys/src/cmd/tar.c - 664 sys sys 1135171244 22081
+1135283493 0 c sys/src/cmd/aux/vga/vesa.c - 664 sys sys 1135273443 21668

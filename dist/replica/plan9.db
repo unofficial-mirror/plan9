@@ -9127,7 +9127,7 @@ sys/src/cmd/aux/vga/tvp3025.c - 664 sys sys 1014925013 1960
 sys/src/cmd/aux/vga/tvp3025clock.c - 664 sys sys 1014925013 1511
 sys/src/cmd/aux/vga/tvp3026.c - 664 sys sys 1014925013 3580
 sys/src/cmd/aux/vga/tvp3026clock.c - 664 sys sys 1014925013 1960
-sys/src/cmd/aux/vga/vesa.c - 664 sys sys 1115734903 21639
+sys/src/cmd/aux/vga/vesa.c - 664 sys sys 1135273443 21668
 sys/src/cmd/aux/vga/vesadb.c - 664 sys sys 1115734902 10446
 sys/src/cmd/aux/vga/vga.c - 664 sys sys 1014925013 9305
 sys/src/cmd/aux/vga/vga.h - 664 sys sys 1115734902 10470
