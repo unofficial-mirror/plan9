@@ -23558,3 +23558,6 @@
 1135103502 7 c sys/src/cmd/upas/vf/vf.c - 664 sys sys 1135083959 20043
 1135189926 0 c sys/src/cmd/tar.c - 664 sys sys 1135171244 22081
 1135283493 0 c sys/src/cmd/aux/vga/vesa.c - 664 sys sys 1135273443 21668
+1135395125 0 c sys/src/cmd/ip/ping.c - 664 sys sys 1135352233 5611
+1135395125 1 c sys/src/cmd/upas/marshal/marshal.c - 664 sys sys 1135352267 32852
+1135395125 2 c sys/src/libmemdraw/alloc.c - 664 sys sys 1135394719 3332
