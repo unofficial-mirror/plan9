@@ -23644,3 +23644,4 @@
 1135571574 80 c sys/src/libventi/plan9-thread.c - 664 sys sys 1135487955 6713
 1135571574 81 d sys/src/libc/386/getcallerpc.c - 664 sys sys 944961709 0
 1135571574 82 d sys/src/ape/lib/9/386/getcallerpc.c - 664 sys sys 1132450766 0
+1135785710 0 c sys/src/9/pc/etherec2t.c - 664 sys sys 1135784135 4092
