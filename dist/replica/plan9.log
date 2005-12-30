@@ -24261,3 +24261,11 @@
 1135915372 613 d sys/src/cmd/unix/drawterm/_asrdfile.c - 664 sys sys 954098597 0
 1135915372 614 d sys/src/cmd/unix/drawterm/_asgetticket.c - 664 sys sys 954098597 0
 1135915372 615 d sys/src/cmd/unix/drawterm/README.MACOSX - 664 sys sys 1020578504 0
+1135974695 0 c acme/bin/source/adict/adict.c - 664 sys sys 1135960478 10915
+1135974695 1 c acme/bin/source/adict/win.c - 664 sys sys 1135960478 4800
+1135974695 2 c sys/src/9/port/chan.c - 664 sys sys 1135974610 33663
+1135974695 3 c sys/src/cmd/lex/lmain.c - 664 sys sys 1135921540 6076
+1135974695 4 c sys/src/cmd/lex/sub1.c - 664 sys sys 1135921541 10121
+1135974695 5 c sys/src/cmd/lex/sub2.c - 664 sys sys 1135921541 17089
+1135974695 6 c sys/src/cmd/tcs/html.c - 664 sys sys 1135958471 5247
+1135974695 7 m sys/src/cmd/unix/drawterm/cpu-bl.c - 664 sys sys 1135900534 14118
