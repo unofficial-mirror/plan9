@@ -24269,3 +24269,8 @@
 1135974695 5 c sys/src/cmd/lex/sub2.c - 664 sys sys 1135921541 17089
 1135974695 6 c sys/src/cmd/tcs/html.c - 664 sys sys 1135958471 5247
 1135974695 7 m sys/src/cmd/unix/drawterm/cpu-bl.c - 664 sys sys 1135900534 14118
+1136088091 0 c sys/src/9/pc/devarch.c - 664 sys sys 1136048694 18625
+1136088091 1 c sys/src/cmd/acme/exec.c - 664 sys sys 1136064450 28267
+1136088091 2 c sys/src/cmd/acme/text.c - 664 sys sys 1136064450 27870
+1136088091 3 c sys/src/cmd/aux/vga/i81x.c - 664 sys sys 1136074453 12059
+1136088091 4 c sys/src/libframe/frdraw.c - 664 sys sys 1136063243 3366
