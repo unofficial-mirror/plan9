@@ -24274,3 +24274,5 @@
 1136088091 2 c sys/src/cmd/acme/text.c - 664 sys sys 1136064450 27870
 1136088091 3 c sys/src/cmd/aux/vga/i81x.c - 664 sys sys 1136074453 12059
 1136088091 4 c sys/src/libframe/frdraw.c - 664 sys sys 1136063243 3366
+1136133106 0 c lib/face/48x48x8/.dict - 664 sys sys 1136131377 5784
+1136133106 1 a lib/face/48x48x8/q/quanstro.1 - 644 sys sys 1136131296 2250
