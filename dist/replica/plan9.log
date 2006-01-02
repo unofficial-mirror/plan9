@@ -24276,3 +24276,5 @@
 1136088091 4 c sys/src/libframe/frdraw.c - 664 sys sys 1136063243 3366
 1136133106 0 c lib/face/48x48x8/.dict - 664 sys sys 1136131377 5784
 1136133106 1 a lib/face/48x48x8/q/quanstro.1 - 644 sys sys 1136131296 2250
+1136224956 0 m lib/face/48x48x8/q/quanstro.1 - 664 sys sys 1136131296 2250
+1136224956 1 c sys/src/cmd/lex/parser.y - 664 sys sys 1136219175 14263
