@@ -24293,3 +24293,15 @@
 1136347368 12 c sys/src/libmach/udb.c - 664 sys sys 1136322404 21967
 1136347368 13 c sys/src/libmach/vcodas.c - 664 sys sys 1136329351 10293
 1136347368 14 c sys/src/libmach/vdb.c - 664 sys sys 1136329351 22299
+1136404981 0 c sys/man/1/freq - 664 sys sys 1136378272 735
+1136404981 1 c sys/man/1/grep - 664 sys sys 1136378273 2257
+1136404981 2 c sys/man/1/hoc - 664 sys sys 1136378274 2357
+1136404981 3 c sys/man/1/gview - 664 sys sys 1136378273 4361
+1136404981 4 c sys/src/9/pc/vganvidia.c - 664 sys sys 1136403794 12023
+1136404981 5 c sys/src/cmd/freq.c - 664 sys sys 1136378273 1728
+1136404981 6 c sys/src/cmd/grep/main.c - 664 sys sys 1136378273 4686
+1136404981 7 c sys/src/cmd/history.c - 664 sys sys 1136378274 6098
+1136404981 8 c sys/src/cmd/page/page.h - 664 sys sys 1136377361 2152
+1136404981 9 c sys/src/cmd/page/rotate.c - 664 sys sys 1136377361 10435
+1136404981 10 c sys/src/cmd/page/view.c - 664 sys sys 1136377361 22893
+1136404981 11 c sys/src/cmd/gview.c - 664 sys sys 1136378274 50883
