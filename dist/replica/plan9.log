@@ -24305,3 +24305,8 @@
 1136404981 9 c sys/src/cmd/page/rotate.c - 664 sys sys 1136377361 10435
 1136404981 10 c sys/src/cmd/page/view.c - 664 sys sys 1136377361 22893
 1136404981 11 c sys/src/cmd/gview.c - 664 sys sys 1136378274 50883
+1136656929 0 c sys/src/ape/lib/ap/plan9/dirstat.c - 664 sys sys 1136651853 1723
+1136656929 1 c sys/src/cmd/aquarela/aquarela.c - 664 sys sys 1136651999 7027
+1136656929 2 c sys/src/cmd/aquarela/smbglobals.c - 664 sys sys 1136651999 1141
+1136656929 3 c sys/src/cmd/pic/input.c - 664 sys sys 1136651708 11556
+1136656929 4 c sys/src/cmd/fcp.c - 664 sys sys 1136651872 3799

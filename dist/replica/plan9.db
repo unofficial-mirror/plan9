@@ -8085,7 +8085,7 @@ sys/src/ape/lib/ap/plan9/ctime.c - 664 sys sys 1014921983 4916
 sys/src/ape/lib/ap/plan9/cuserid.c - 664 sys sys 1014921983 343
 sys/src/ape/lib/ap/plan9/dir.h - 664 sys sys 1048644334 2092
 sys/src/ape/lib/ap/plan9/dirread.c - 664 sys sys 1014921986 1659
-sys/src/ape/lib/ap/plan9/dirstat.c - 664 sys sys 1014921986 1698
+sys/src/ape/lib/ap/plan9/dirstat.c - 664 sys sys 1136651853 1723
 sys/src/ape/lib/ap/plan9/dirtostat.c - 664 sys sys 1048644334 1081
 sys/src/ape/lib/ap/plan9/dup.c - 664 sys sys 1014921984 339
 sys/src/ape/lib/ap/plan9/execl.c - 664 sys sys 1014921984 138
@@ -8799,7 +8799,7 @@ sys/src/cmd/aquarela/COPYRIGHT - 664 sys sys 1135892145 43
 sys/src/cmd/aquarela/addname.c - 664 sys sys 1135892108 1281
 sys/src/cmd/aquarela/alarm.c - 664 sys sys 1135892108 2194
 sys/src/cmd/aquarela/alloc.c - 664 sys sys 1135892108 245
-sys/src/cmd/aquarela/aquarela.c - 664 sys sys 1135892108 6986
+sys/src/cmd/aquarela/aquarela.c - 664 sys sys 1136651999 7027
 sys/src/cmd/aquarela/cifscmd.c - 664 sys sys 1135892108 4430
 sys/src/cmd/aquarela/client.c - 664 sys sys 1135892108 2724
 sys/src/cmd/aquarela/dump.c - 664 sys sys 1135892108 2864
@@ -8849,7 +8849,7 @@ sys/src/cmd/aquarela/smbdat.h - 664 sys sys 1135892113 6649
 sys/src/cmd/aquarela/smbdircache.c - 664 sys sys 1135892113 631
 sys/src/cmd/aquarela/smbfile.c - 664 sys sys 1135892113 438
 sys/src/cmd/aquarela/smbfns.h - 664 sys sys 1135892113 12190
-sys/src/cmd/aquarela/smbglobals.c - 664 sys sys 1135892113 1096
+sys/src/cmd/aquarela/smbglobals.c - 664 sys sys 1136651999 1141
 sys/src/cmd/aquarela/smbidmap.c - 664 sys sys 1135892113 2178
 sys/src/cmd/aquarela/smblisten.c - 664 sys sys 1135892113 2592
 sys/src/cmd/aquarela/smblog.c - 664 sys sys 1135892113 1841
@@ -9603,7 +9603,7 @@ sys/src/cmd/fax/receive.c - 664 sys sys 944960990 1097
 sys/src/cmd/fax/receiverc - 775 sys sys 944960990 581
 sys/src/cmd/fax/send.c - 664 sys sys 944960990 923
 sys/src/cmd/fax/subr.c - 664 sys sys 1015090401 1245
-sys/src/cmd/fcp.c - 664 sys sys 1131110045 3791
+sys/src/cmd/fcp.c - 664 sys sys 1136651872 3799
 sys/src/cmd/file.c - 664 sys sys 1125313891 23512
 sys/src/cmd/fmt.c - 664 sys sys 1070032009 4088
 sys/src/cmd/fortune.c - 664 sys sys 1072729222 1779
@@ -11881,7 +11881,7 @@ sys/src/cmd/pic/blockgen.c - 664 sys sys 944961042 5209
 sys/src/cmd/pic/boxgen.c - 664 sys sys 944961042 2309
 sys/src/cmd/pic/circgen.c - 664 sys sys 944961042 2678
 sys/src/cmd/pic/for.c - 664 sys sys 944961042 1949
-sys/src/cmd/pic/input.c - 664 sys sys 944961043 11539
+sys/src/cmd/pic/input.c - 664 sys sys 1136651708 11556
 sys/src/cmd/pic/linegen.c - 664 sys sys 944961042 5392
 sys/src/cmd/pic/main.c - 664 sys sys 944961042 6705
 sys/src/cmd/pic/makefile - 664 sys sys 944961042 964
