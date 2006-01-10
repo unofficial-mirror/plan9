@@ -24310,3 +24310,4 @@
 1136656929 2 c sys/src/cmd/aquarela/smbglobals.c - 664 sys sys 1136651999 1141
 1136656929 3 c sys/src/cmd/pic/input.c - 664 sys sys 1136651708 11556
 1136656929 4 c sys/src/cmd/fcp.c - 664 sys sys 1136651872 3799
+1136912549 0 c sys/src/cmd/upas/ned/nedmail.c - 664 sys sys 1136911937 44584
