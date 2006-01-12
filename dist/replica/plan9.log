@@ -24311,3 +24311,8 @@
 1136656929 3 c sys/src/cmd/pic/input.c - 664 sys sys 1136651708 11556
 1136656929 4 c sys/src/cmd/fcp.c - 664 sys sys 1136651872 3799
 1136912549 0 c sys/src/cmd/upas/ned/nedmail.c - 664 sys sys 1136911937 44584
+1137081802 0 c sys/man/1/games - 664 sys sys 1137080360 5373
+1137081802 1 c sys/src/games/mahjongg/graphics.c - 664 sys sys 1137080359 7054
+1137081802 2 c sys/src/games/mahjongg/level.c - 664 sys sys 1137080360 2560
+1137081802 3 c sys/src/games/mahjongg/mahjongg.c - 664 sys sys 1137080360 3631
+1137081802 4 c sys/src/games/mahjongg/mahjongg.h - 664 sys sys 1137080360 1687
