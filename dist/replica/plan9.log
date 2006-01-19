@@ -26422,3 +26422,5 @@
 1137623540 34 c sys/src/cmd/unix/drawterm/libc/vseprint.c - 664 sys sys 1137619309 358
 1137623540 35 c sys/src/cmd/unix/drawterm/libc/vsmprint.c - 664 sys sys 1137619309 1002
 1137623540 36 c sys/src/cmd/unix/drawterm/libc/vsnprint.c - 664 sys sys 1137619309 368
+1137690142 0 c sys/src/9/pc/vganvidia.c - 664 sys sys 1137689150 12395
+1137690142 1 c sys/src/cmd/usb/lib/device.c - 664 sys sys 1137688747 3032
