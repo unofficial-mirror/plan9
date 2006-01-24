@@ -26424,3 +26424,14 @@
 1137623540 36 c sys/src/cmd/unix/drawterm/libc/vsnprint.c - 664 sys sys 1137619309 368
 1137690142 0 c sys/src/9/pc/vganvidia.c - 664 sys sys 1137689150 12395
 1137690142 1 c sys/src/cmd/usb/lib/device.c - 664 sys sys 1137688747 3032
+1138075334 0 c sys/man/1/bind - 664 sys sys 1138061948 4009
+1138075334 1 c sys/src/9/port/devcons.c - 664 sys sys 1138047754 23013
+1138075334 2 c sys/src/9/port/portfns.h - 664 sys sys 1138047830 11023
+1138075334 3 c sys/src/9/port/proc.c - 664 sys sys 1138028309 27967
+1138075334 4 c sys/src/9/port/swap.c - 664 sys sys 1138028310 7019
+1138075334 5 c sys/src/cmd/aux/msexceltables.c - 664 sys sys 1138065340 14094
+1138075334 6 c sys/src/cmd/hget.c - 664 sys sys 1138048432 25946
+1138075334 7 c sys/src/cmd/mount.c - 664 sys sys 1138061862 1633
+1138075334 8 c sys/src/cmd/usb/audio/usbaudio.c - 664 sys sys 1138027032 9843
+1138075334 9 c sys/src/cmd/usb/misc/usbmouse.c - 664 sys sys 1138027028 3475
+1138075334 10 c sys/src/cmd/vnc/wsys.c - 664 sys sys 1138065372 4197
