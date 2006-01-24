@@ -26435,3 +26435,15 @@
 1138075334 8 c sys/src/cmd/usb/audio/usbaudio.c - 664 sys sys 1138027032 9843
 1138075334 9 c sys/src/cmd/usb/misc/usbmouse.c - 664 sys sys 1138027028 3475
 1138075334 10 c sys/src/cmd/vnc/wsys.c - 664 sys sys 1138065372 4197
+1138131148 0 c sys/games/lib/fortunes - 664 sys sys 1138129633 257147
+1138131148 1 c sys/man/2/read - 664 sys sys 1138113665 1899
+1138131148 2 a sys/src/9/pc/ethervgbe.c - 664 sys sys 1138114457 26558
+1138131148 3 c sys/src/9/pc/pc - 664 sys sys 1138115243 1452
+1138131148 4 c sys/src/9/pc/pccd - 664 sys sys 1138115243 1451
+1138131148 5 c sys/src/9/pc/pccpu - 664 sys sys 1138115243 891
+1138131148 6 c sys/src/9/pc/pcdisk - 664 sys sys 1138115243 1471
+1138131148 7 c sys/src/9/pc/pcf - 664 sys sys 1138115243 1529
+1138131148 8 c sys/src/9/pc/pcflop - 664 sys sys 1138115244 1498
+1138131148 9 c sys/src/9/pc/pccpuf - 664 sys sys 1138115243 1511
+1138131148 10 c sys/src/9/port/devuart.c - 664 sys sys 1138118881 12141
+1138131148 11 c sys/src/9/port/portdat.h - 664 sys sys 1138127259 22540
