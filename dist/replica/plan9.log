@@ -26652,3 +26652,10 @@
 1138501983 89 c sys/src/libmach/sym.c - 664 sys sys 1138471012 26745
 1138501983 90 c sys/src/libmach/u.c - 664 sys sys 1138471017 3447
 1138501983 91 c sys/src/libthread/sched.c - 664 sys sys 1138463237 3342
+1138566867 0 c rc/bin/man - 775 sys sys 1138555265 2520
+1138566867 1 c sys/games/lib/fortunes - 664 sys sys 1138566736 257323
+1138566867 2 c sys/lib/plumb/basic - 664 sys sys 1138555264 2877
+1138566867 3 c sys/man/1/man - 664 sys sys 1138555093 2006
+1138566867 4 c sys/src/cmd/lex/ncform - 664 sys sys 1138551483 4074
+1138566867 5 c sys/src/cmd/lex/sub1.c - 664 sys sys 1138551488 10162
+1138566867 6 c sys/src/cmd/tbl/t1.c - 664 sys sys 1138551479 1554
