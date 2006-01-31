@@ -7582,13 +7582,13 @@ sys/src/9/port/portdat.h - 664 sys sys 1138458366 22535
 sys/src/9/port/portfns.h - 664 sys sys 1138469535 11079
 sys/src/9/port/portmkfile - 664 sys sys 1131907975 2062
 sys/src/9/port/print.c - 664 sys sys 1014931178 227
-sys/src/9/port/proc.c - 664 sys sys 1138469345 28053
+sys/src/9/port/proc.c - 664 sys sys 1138749368 28702
 sys/src/9/port/qio.c - 664 sys sys 1070287837 23562
 sys/src/9/port/qlock.c - 664 sys sys 1067722765 3196
 sys/src/9/port/rdb.c - 664 sys sys 1018721202 1698
 sys/src/9/port/rebootcmd.c - 664 sys sys 1015278340 1561
 sys/src/9/port/sd.h - 664 sys sys 1134411408 2494
-sys/src/9/port/segment.c - 664 sys sys 1134276516 13762
+sys/src/9/port/segment.c - 664 sys sys 1138749368 13939
 sys/src/9/port/swap.c - 664 sys sys 1138028310 7019
 sys/src/9/port/sysfile.c - 664 sys sys 1134042952 22178
 sys/src/9/port/sysproc.c - 664 sys sys 1137622456 15153
@@ -11828,7 +11828,7 @@ sys/src/cmd/ip/imap4d/utils.c - 664 sys sys 1015013077 2481
 sys/src/cmd/ip/ipconfig.c - 664 sys sys 1126103921 34865
 sys/src/cmd/ip/measure.c - 664 sys sys 944961011 3733
 sys/src/cmd/ip/mkfile - 664 sys sys 1131110598 1243
-sys/src/cmd/ip/ping.c - 664 sys sys 1135352233 5611
+sys/src/cmd/ip/ping.c - 664 sys sys 1138723947 5589
 sys/src/cmd/ip/ppp - 20000000775 sys sys 988249980 0
 sys/src/cmd/ip/ppp/block.c - 664 sys sys 1015090266 5353
 sys/src/cmd/ip/ppp/compress.c - 664 sys sys 1072729513 11774
@@ -12792,7 +12792,7 @@ sys/src/cmd/tapefs/v10fs.c - 664 sys sys 1014926385 3754
 sys/src/cmd/tapefs/v6fs.c - 664 sys sys 1014926385 3971
 sys/src/cmd/tapefs/zip.h - 664 sys sys 1097914153 1428
 sys/src/cmd/tapefs/zipfs.c - 664 sys sys 1097900277 6803
-sys/src/cmd/tar.c - 664 sys sys 1135171244 22081
+sys/src/cmd/tar.c - 664 sys sys 1138711857 22453
 sys/src/cmd/tbl - 20000000775 sys sys 954038038 0
 sys/src/cmd/tbl/mkfile - 664 sys sys 944961243 268
 sys/src/cmd/tbl/t.h - 664 sys sys 944961244 3987
