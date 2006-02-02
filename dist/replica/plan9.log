@@ -26663,3 +26663,4 @@
 1138750346 1 c sys/src/9/port/segment.c - 664 sys sys 1138749368 13939
 1138750346 2 c sys/src/cmd/ip/ping.c - 664 sys sys 1138723947 5589
 1138750346 3 c sys/src/cmd/tar.c - 664 sys sys 1138711857 22453
+1138843994 0 c sys/man/1/replica - 664 sys sys 1138843328 7210
