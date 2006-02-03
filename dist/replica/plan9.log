@@ -26664,3 +26664,8 @@
 1138750346 2 c sys/src/cmd/ip/ping.c - 664 sys sys 1138723947 5589
 1138750346 3 c sys/src/cmd/tar.c - 664 sys sys 1138711857 22453
 1138843994 0 c sys/man/1/replica - 664 sys sys 1138843328 7210
+1138984289 0 c sys/include/disk.h - 664 sys sys 1138975314 1120
+1138984289 1 c sys/src/cmd/usb/lib/usb.h - 664 sys sys 1138975309 7049
+1138984289 2 c sys/src/cmd/usb/usbd/hub.c - 664 sys sys 1138975310 4292
+1138984289 3 c sys/src/cmd/usb/usbd/setup.c - 664 sys sys 1138975309 1210
+1138984289 4 c sys/src/libdisk/scsi.c - 664 sys sys 1138975317 6099
