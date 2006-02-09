@@ -26669,3 +26669,4 @@
 1138984289 2 c sys/src/cmd/usb/usbd/hub.c - 664 sys sys 1138975310 4292
 1138984289 3 c sys/src/cmd/usb/usbd/setup.c - 664 sys sys 1138975309 1210
 1138984289 4 c sys/src/libdisk/scsi.c - 664 sys sys 1138975317 6099
+1139457710 0 c sys/src/cmd/faces/facedb.c - 664 sys sys 1139442044 10555
