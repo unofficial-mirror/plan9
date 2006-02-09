@@ -26670,3 +26670,7 @@
 1138984289 3 c sys/src/cmd/usb/usbd/setup.c - 664 sys sys 1138975309 1210
 1138984289 4 c sys/src/libdisk/scsi.c - 664 sys sys 1138975317 6099
 1139457710 0 c sys/src/cmd/faces/facedb.c - 664 sys sys 1139442044 10555
+1139508126 0 c rc/bin/9fs - 775 sys sys 1139499615 971
+1139508126 1 c sys/src/cmd/awk/lib.c - 664 sys sys 1139499813 16722
+1139508126 2 c sys/src/cmd/awk/run.c - 664 sys sys 1139499813 42772
+1139508126 3 c dist/replica/network - 664 sys sys 1139499513 956
