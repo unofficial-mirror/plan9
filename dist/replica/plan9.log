@@ -26720,3 +26720,12 @@
 1139761995 13 d sys/src/cmd/getflags/getflags.h - 664 sys sys 944960998 0
 1139761995 14 d sys/src/cmd/getflags/getflags.c - 664 sys sys 964540723 0
 1139761995 15 d sys/src/cmd/getflags/funcgetflags.c - 664 sys sys 944960998 0
+1139853697 0 a rc/bin/ape/ls - 775 sys sys 1139841321 1018
+1139853697 1 a rc/bin/ape/printf - 664 sys sys 1139841311 60
+1139853697 2 c rc/bin/lp - 775 sys sys 1139839436 5140
+1139853697 3 c sys/man/2/exec - 664 sys sys 1139838662 4191
+1139853697 4 c sys/man/8/getflags - 664 sys sys 1139839200 1712
+1139853697 5 c sys/src/cmd/lp/lp.rc - 775 sys sys 1139839431 5140
+1139853697 6 c sys/src/cmd/ls.c - 664 sys sys 1139853105 5706
+1139853697 7 c sys/src/cmd/venti/dumpvacroots - 775 sys sys 1139839229 550
+1139853697 8 c sys/src/cmd/venti/mkfile - 664 sys sys 1139839228 1795
