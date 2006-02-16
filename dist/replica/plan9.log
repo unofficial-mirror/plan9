@@ -26729,3 +26729,5 @@
 1139853697 6 c sys/src/cmd/ls.c - 664 sys sys 1139853105 5706
 1139853697 7 c sys/src/cmd/venti/dumpvacroots - 775 sys sys 1139839229 550
 1139853697 8 c sys/src/cmd/venti/mkfile - 664 sys sys 1139839228 1795
+1140048155 0 c sys/games/lib/fortunes - 664 sys sys 1140048019 257519
+1140048155 1 c sys/src/cmd/fossil/9p.c - 664 sys sys 1140010159 22931
