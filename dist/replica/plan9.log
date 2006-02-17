@@ -26731,3 +26731,9 @@
 1139853697 8 c sys/src/cmd/venti/mkfile - 664 sys sys 1139839228 1795
 1140048155 0 c sys/games/lib/fortunes - 664 sys sys 1140048019 257519
 1140048155 1 c sys/src/cmd/fossil/9p.c - 664 sys sys 1140010159 22931
+1140139985 0 c rc/bin/replica/pull - 775 sys sys 1140099635 1465
+1140139985 1 c sys/man/2/mp - 664 sys sys 1140106703 10762
+1140139985 2 c sys/src/cmd/iostats/iostats.c - 664 sys sys 1140099908 10209
+1140139985 3 c sys/src/cmd/iostats/statfs.h - 664 sys sys 1140099908 2626
+1140139985 4 c sys/src/cmd/fossil/9user.c - 664 sys sys 1140110621 17266
+1140139985 5 d sys/doc/fs/xx - 664 sys sys 944959592 0
