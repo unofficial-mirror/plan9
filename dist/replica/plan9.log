@@ -26907,3 +26907,6 @@
 1140343412 1 c sys/src/fs/pc/ether83815.c - 664 sys sys 1140335463 26764
 1140447759 0 a sys/lib/kbmap/svorak - 664 sys sys 1140447136 1446
 1140447759 1 c sys/man/4/nfs - 664 sys sys 1140447003 4475
+1140553979 0 c sys/games/lib/fortunes - 664 sys sys 1140522013 257576
+1140553979 1 c sys/src/9/pc/etherigbe.c - 664 sys sys 1140545255 44829
+1140553979 2 c sys/src/cmd/8l/asm.c - 664 sys sys 1140545812 11882
