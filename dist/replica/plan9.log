@@ -26910,3 +26910,6 @@
 1140553979 0 c sys/games/lib/fortunes - 664 sys sys 1140522013 257576
 1140553979 1 c sys/src/9/pc/etherigbe.c - 664 sys sys 1140545255 44829
 1140553979 2 c sys/src/cmd/8l/asm.c - 664 sys sys 1140545812 11882
+1140656489 0 c sys/games/lib/fortunes - 664 sys sys 1140655027 257628
+1140656489 1 c sys/src/9/pc/etherigbe.c - 664 sys sys 1140615989 44814
+1140656489 2 c sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1140615970 31488
