@@ -26958,3 +26958,8 @@
 1141012986 6 c sys/src/cmd/tapefs/tarfs.c - 664 sys sys 1141003342 2759
 1141012986 7 c sys/src/cmd/tapefs/util.c - 664 sys sys 1140966088 2964
 1141012986 8 c sys/src/cmd/tar.c - 664 sys sys 1141007861 24018
+1141147982 0 c sys/man/1/trace - 664 sys sys 1141147048 1497
+1141147982 1 c sys/src/cmd/ql/l.h - 664 sys sys 1141144912 5936
+1141147982 2 c sys/src/cmd/ql/list.c - 664 sys sys 1141144912 5663
+1141147982 3 c sys/src/cmd/ql/obj.c - 664 sys sys 1141144914 25389
+1141147982 4 c sys/src/cmd/tapefs/32vfs.c - 664 sys sys 1141144939 3899
