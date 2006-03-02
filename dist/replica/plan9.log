@@ -26963,3 +26963,9 @@
 1141147982 2 c sys/src/cmd/ql/list.c - 664 sys sys 1141144912 5663
 1141147982 3 c sys/src/cmd/ql/obj.c - 664 sys sys 1141144914 25389
 1141147982 4 c sys/src/cmd/tapefs/32vfs.c - 664 sys sys 1141144939 3899
+1141272133 0 a sys/src/cmd/cc/c99 - 664 sys sys 1141256556 1302
+1141272133 1 c sys/src/cmd/cc/cc.y - 664 sys sys 1141254919 16159
+1141272133 2 c sys/src/cmd/cc/dcl.c - 664 sys sys 1141256563 26858
+1141272133 3 c sys/src/cmd/cc/lex.c - 664 sys sys 1141250058 23973
+1141272133 4 c sys/src/fs/pc/ether82557.c - 664 sys sys 1141035189 30669
+1141272133 5 c sys/src/fs/pc/etherigbe.c - 664 sys sys 1141208695 46676
