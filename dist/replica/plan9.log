@@ -26969,3 +26969,9 @@
 1141272133 3 c sys/src/cmd/cc/lex.c - 664 sys sys 1141250058 23973
 1141272133 4 c sys/src/fs/pc/ether82557.c - 664 sys sys 1141035189 30669
 1141272133 5 c sys/src/fs/pc/etherigbe.c - 664 sys sys 1141208695 46676
+1141358618 0 c lib/pci - 664 sys sys 1141350058 196607
+1141358618 1 c sys/man/1/hget - 664 sys sys 1141313152 1482
+1141358618 2 c sys/man/8/statusbar - 664 sys sys 1141313214 1253
+1141358618 3 c sys/src/9/pc/vgamga4xx.c - 664 sys sys 1141324233 10211
+1141358618 4 c sys/src/cmd/cc/c99 - 664 sys sys 1141313718 1302
+1141358618 5 c sys/src/cmd/jpg/readgif.c - 664 sys sys 1141350545 10460
