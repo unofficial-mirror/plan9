@@ -26977,3 +26977,9 @@
 1141358618 5 c sys/src/cmd/jpg/readgif.c - 664 sys sys 1141350545 10460
 1141533096 0 c sys/src/boot/pc/ether83815.c - 664 sys sys 1141485864 22026
 1141617716 0 c sys/src/libmp/port/mptouv.c - 664 sys sys 1141591528 723
+1141662758 0 c sys/games/lib/fortunes - 664 sys sys 1141660932 257780
+1141662758 1 c sys/man/8/vga - 664 sys sys 1141660952 3856
+1141662758 2 c sys/src/cmd/snap/read.c - 664 sys sys 1141660969 4332
+1141662758 3 c sys/src/cmd/unix/drawterm/Make.win32 - 664 sys sys 1141662620 826
+1141662758 4 c sys/src/cmd/unix/drawterm/gui-win32/screen.c - 664 sys sys 1141662620 11653
+1141662758 5 c sys/src/cmd/webfs/http.c - 664 sys sys 1141662357 9487
