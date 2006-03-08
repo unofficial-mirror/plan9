@@ -26985,3 +26985,6 @@
 1141662758 5 c sys/src/cmd/webfs/http.c - 664 sys sys 1141662357 9487
 1141740164 0 c rc/bin/patch/create - 775 sys sys 1141738939 1509
 1141740164 1 c sys/man/1/patch - 664 sys sys 1141738937 2361
+1141794296 0 c sys/src/9/pc/devpccard.c - 664 sys sys 1141793347 40159
+1141794296 1 c sys/src/9/pc/pci.c - 664 sys sys 1141793347 26875
+1141794296 2 c sys/src/9/pc/sdata.c - 664 sys sys 1141793347 52244
