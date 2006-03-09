@@ -26988,3 +26988,13 @@
 1141794296 0 c sys/src/9/pc/devpccard.c - 664 sys sys 1141793347 40159
 1141794296 1 c sys/src/9/pc/pci.c - 664 sys sys 1141793347 26875
 1141794296 2 c sys/src/9/pc/sdata.c - 664 sys sys 1141793347 52244
+1141941874 0 a rc/bin/kmem - 775 sys sys 1141940177 468
+1141941874 1 c sys/games/lib/fortunes - 664 sys sys 1141922030 257851
+1141941874 2 c sys/lib/acid/leak - 664 sys sys 1141940182 3022
+1141941874 3 c sys/man/1/expect - 664 sys sys 1141913757 3018
+1141941874 4 c sys/man/1/leak - 664 sys sys 1141940187 3307
+1141941874 5 c sys/src/9/port/chan.c - 664 sys sys 1141940068 34831
+1141941874 6 c sys/src/9/port/sysfile.c - 664 sys sys 1141940070 22192
+1141941874 7 c sys/src/cmd/eqn/main.c - 664 sys sys 1141913958 7121
+1141941874 8 c sys/src/cmd/upas/marshal/marshal.c - 664 sys sys 1141913896 32859
+1141941874 9 c sys/src/cmd/webfsget.c - 664 sys sys 1141913846 1597
