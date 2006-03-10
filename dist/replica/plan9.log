@@ -26998,3 +26998,17 @@
 1141941874 7 c sys/src/cmd/eqn/main.c - 664 sys sys 1141913958 7121
 1141941874 8 c sys/src/cmd/upas/marshal/marshal.c - 664 sys sys 1141913896 32859
 1141941874 9 c sys/src/cmd/webfsget.c - 664 sys sys 1141913846 1597
+1142029913 0 c lib/face/48x48x1/.dict - 664 sys sys 1142017686 10346
+1142029913 1 c lib/face/48x48x2/.dict - 664 sys sys 1142017578 903
+1142029913 2 c lib/face/48x48x4/.dict - 664 sys sys 1142018530 3254
+1142029913 3 a lib/face/48x48x4/x/xigh.1 - 664 sys sys 1142019024 1204
+1142029913 4 c lib/face/48x48x8/.dict - 664 sys sys 1142017869 2523
+1142029913 5 a lib/face/48x48x8/v/vitanuova.1 - 664 sys sys 1142017867 1054
+1142029913 6 c lib/vgadb - 664 sys sys 1142017813 28743
+1142029913 7 c sys/src/9/pc/vgaclgd542x.c - 664 sys sys 1142017839 4810
+1142029913 8 c sys/src/cmd/aux/vga/clgd542x.c - 664 sys sys 1142017871 7249
+1142029913 9 c sys/src/cmd/awk/lex.c - 664 sys sys 1142005303 12346
+1142029913 10 c sys/src/cmd/awk/run.c - 664 sys sys 1142009077 42795
+1142029913 11 c sys/src/cmd/rio/data.c - 664 sys sys 1142015551 6169
+1142029913 12 c sys/src/cmd/rio/rio.c - 664 sys sys 1142015539 22807
+1142029913 13 c sys/src/cmd/rio/wind.c - 664 sys sys 1142015543 33362
