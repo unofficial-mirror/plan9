@@ -27012,3 +27012,7 @@
 1142029913 11 c sys/src/cmd/rio/data.c - 664 sys sys 1142015551 6169
 1142029913 12 c sys/src/cmd/rio/rio.c - 664 sys sys 1142015539 22807
 1142029913 13 c sys/src/cmd/rio/wind.c - 664 sys sys 1142015543 33362
+1142124494 0 c sys/src/9/pc/mmu.c - 664 sys sys 1142124315 25229
+1142124494 1 c sys/src/9/port/devaudio.c - 664 sys sys 1142086793 21147
+1142124494 2 c sys/src/9/port/devproc.c - 664 sys sys 1142086847 28500
+1142124494 3 c sys/src/cmd/faces/facedb.c - 664 sys sys 1142086801 10551
