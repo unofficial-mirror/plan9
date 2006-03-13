@@ -27043,3 +27043,4 @@
 1142188400 24 d sys/src/9/port/systab.h - 664 sys sys 1062721698 0
 1142188400 25 d lib/face/512x512x8/.dict - 664 sys sys 944941683 0
 1142188400 26 d lib/face/512x512x24/.dict - 664 sys sys 944941683 0
+1142289192 0 c sys/src/cmd/rio/rio.c - 664 sys sys 1142289011 22866
