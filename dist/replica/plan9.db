@@ -12575,7 +12575,7 @@ sys/src/cmd/rc/tree.c - 664 sys sys 1055698780 2071
 sys/src/cmd/rc/unix.c - 664 sys sys 1055698781 8726
 sys/src/cmd/rc/var.c - 664 sys sys 1055698781 1298
 sys/src/cmd/rc/win32.c - 664 sys sys 1132448675 8697
-sys/src/cmd/rdbfs.c - 664 sys sys 1131289483 7964
+sys/src/cmd/rdbfs.c - 664 sys sys 1142342219 7633
 sys/src/cmd/read.c - 664 sys sys 1022047660 1278
 sys/src/cmd/replica - 20000000775 sys sys 1018321113 0
 sys/src/cmd/replica/all.h - 664 sys sys 1091904421 1265
