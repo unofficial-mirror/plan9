@@ -27051,3 +27051,6 @@
 1142742725 2 c sys/src/9/bitsy/uartsa1110.c - 664 sys sys 1142741102 8537
 1142742725 3 c sys/src/cmd/auth/factotum/util.c - 664 sys sys 1142728071 18491
 1142742725 4 c sys/src/cmd/cc/dcl.c - 664 sys sys 1142726518 27014
+1142800352 0 c sys/games/lib/fortunes - 664 sys sys 1142795692 257917
+1142800352 1 c sys/man/8/httpd - 664 sys sys 1142795704 6866
+1142800352 2 c sys/src/cmd/fossil/cache.c - 664 sys sys 1142795449 43886
