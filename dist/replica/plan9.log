@@ -27063,3 +27063,17 @@
 1142906576 6 c sys/src/libdraw/readsubfont.c - 664 sys sys 1142862808 1054
 1142906576 7 c dist/replica/plan9.proto - 664 sys sys 1142862598 2744
 1142906576 8 d sys/games/sudoku - 20000000775 sys sys 1117225532 0
+1142967796 0 c rc/bin/C - 775 sys sys 1142958679 889
+1142967796 1 c sys/lib/dist/pc/mkfile - 664 sys sys 1142958580 2193
+1142967796 2 c sys/src/9/alphapc/apccpu - 664 sys sys 1142958706 532
+1142967796 3 c sys/src/9/alphapc/dma.c - 664 sys sys 1142966373 6526
+1142967796 4 c sys/src/9/mtx/dat.h - 664 sys sys 1142958517 3805
+1142967796 5 c sys/src/9/pc/dat.h - 664 sys sys 1142958313 6628
+1142967796 6 c sys/src/9/pc/devfloppy.c - 664 sys sys 1142958305 20139
+1142967796 7 c sys/src/9/pc/dma.c - 664 sys sys 1142966373 5332
+1142967796 8 c sys/src/9/pc/main.c - 664 sys sys 1142958321 15304
+1142967796 9 c sys/src/9/pc/mkfile - 664 sys sys 1142960857 3804
+1142967796 10 c sys/src/9/port/mkdevc - 775 sys sys 1142958298 4242
+1142967796 11 c sys/src/9/port/taslock.c - 664 sys sys 1142957865 3928
+1142967796 12 c sys/src/cmd/mkfile - 664 sys sys 1142958953 2451
+1142967796 13 c sys/src/cmd/syscall/syscall.c - 664 sys sys 1142958095 3954
