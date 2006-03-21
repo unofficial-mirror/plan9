@@ -27054,3 +27054,12 @@
 1142800352 0 c sys/games/lib/fortunes - 664 sys sys 1142795692 257917
 1142800352 1 c sys/man/8/httpd - 664 sys sys 1142795704 6866
 1142800352 2 c sys/src/cmd/fossil/cache.c - 664 sys sys 1142795449 43886
+1142906576 0 m sys/games/lib/4scores - 10000000666 sys sys 1118680448 0
+1142906576 1 m sys/games/lib/5scores - 10000000666 sys sys 1118680453 0
+1142906576 2 c sys/man/8/fsconfig - 664 sys sys 1142906116 8281
+1142906576 3 c sys/src/cmd/ip/httpd/log.c - 664 sys sys 1142862371 3054
+1142906576 4 c sys/src/libdraw/alloc.c - 664 sys sys 1142862808 4179
+1142906576 5 c sys/src/libdraw/init.c - 664 sys sys 1142862808 9108
+1142906576 6 c sys/src/libdraw/readsubfont.c - 664 sys sys 1142862808 1054
+1142906576 7 c dist/replica/plan9.proto - 664 sys sys 1142862598 2744
+1142906576 8 d sys/games/sudoku - 20000000775 sys sys 1117225532 0

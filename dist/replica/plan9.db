@@ -355,7 +355,7 @@ dist/replica - 20000000755 sys sys 1019277119 0
 dist/replica/cd - 664 sys sys 1019527959 390
 dist/replica/kfs - 664 sys sys 1019527929 237
 dist/replica/network - 664 sys sys 1139499513 956
-dist/replica/plan9.proto - 664 sys sys 1142183449 2561
+dist/replica/plan9.proto - 664 sys sys 1142862598 2744
 env - 20000000775 sys sys 1015094872 0
 fd - 20000000775 sys sys 947958544 0
 lib - 20000000775 sys sys 958504315 0
@@ -5227,8 +5227,8 @@ sys/doc/venti/venti.pdf - 664 sys sys 1020384352 139090
 sys/doc/venti/venti.ps - 664 sys sys 1019852320 2012620
 sys/games - 20000000775 sys sys 952648872 0
 sys/games/lib - 20000000775 sys sys 952648879 0
-sys/games/lib/4scores - 664 sys sys 1118680448 0
-sys/games/lib/5scores - 664 sys sys 1118680453 0
+sys/games/lib/4scores - 10000000666 sys sys 1118680448 0
+sys/games/lib/5scores - 10000000666 sys sys 1118680453 0
 sys/games/lib/fortunes - 664 sys sys 1142795692 257917
 sys/games/lib/mahjongg - 20000000775 sys sys 1095792278 0
 sys/games/lib/mahjongg/backgrounds - 20000000775 sys sys 1095792293 0
@@ -5402,7 +5402,6 @@ sys/games/lib/sudoku/images/6.bit - 664 sys sys 1117226542 527
 sys/games/lib/sudoku/images/7.bit - 664 sys sys 1117226542 403
 sys/games/lib/sudoku/images/8.bit - 664 sys sys 1117226542 528
 sys/games/lib/sudoku/images/9.bit - 664 sys sys 1117226542 537
-sys/games/sudoku - 20000000775 sys sys 1117225532 0
 sys/include - 20000000775 sys sys 1016902416 0
 sys/include/9p.h - 664 sys sys 1134337548 4759
 sys/include/String.h - 664 sys sys 1091904425 1319
@@ -7167,7 +7166,7 @@ sys/man/8/disksim - 664 sys sys 1141009713 1452
 sys/man/8/drawterm - 664 sys sys 1135901219 1741
 sys/man/8/fossilcons - 664 sys sys 1138466274 18276
 sys/man/8/fs - 664 sys sys 1055701170 15029
-sys/man/8/fsconfig - 664 sys sys 1107841165 8350
+sys/man/8/fsconfig - 664 sys sys 1142906116 8281
 sys/man/8/getflags - 664 sys sys 1139839200 1712
 sys/man/8/gpsfs - 664 sys sys 1123643451 4924
 sys/man/8/httpd - 664 sys sys 1142795704 6866
@@ -11800,7 +11799,7 @@ sys/src/cmd/ip/httpd/httpd.c - 664 sys sys 1142178185 11356
 sys/src/cmd/ip/httpd/httpsrv.h - 664 sys sys 1142178186 1388
 sys/src/cmd/ip/httpd/imagemap.c - 664 sys sys 984773808 5229
 sys/src/cmd/ip/httpd/init.c - 664 sys sys 1015090171 2182
-sys/src/cmd/ip/httpd/log.c - 664 sys sys 1142178185 3055
+sys/src/cmd/ip/httpd/log.c - 664 sys sys 1142862371 3054
 sys/src/cmd/ip/httpd/man2html.c - 664 sys sys 1139667314 9069
 sys/src/cmd/ip/httpd/mkfile - 664 sys sys 1123902339 1353
 sys/src/cmd/ip/httpd/netlib_find.c - 664 sys sys 1015090172 6247
@@ -14528,7 +14527,7 @@ sys/src/libdisk/proto.c - 664 sys sys 1020313839 8808
 sys/src/libdisk/scsi.c - 664 sys sys 1138975317 6099
 sys/src/libdisk/test.c - 664 sys sys 960347152 275
 sys/src/libdraw - 20000000775 sys sys 1014927873 0
-sys/src/libdraw/alloc.c - 664 sys sys 1131637702 4160
+sys/src/libdraw/alloc.c - 664 sys sys 1142862808 4179
 sys/src/libdraw/allocimagemix.c - 664 sys sys 1014927873 924
 sys/src/libdraw/arith.c - 664 sys sys 1070394447 2628
 sys/src/libdraw/bezier.c - 664 sys sys 1040442969 4948
@@ -14555,7 +14554,7 @@ sys/src/libdraw/getrect.c - 664 sys sys 1014927875 3046
 sys/src/libdraw/getsubfont.c - 664 sys sys 1131637696 807
 sys/src/libdraw/icossin.c - 664 sys sys 944961724 2117
 sys/src/libdraw/icossin2.c - 664 sys sys 944961724 4587
-sys/src/libdraw/init.c - 664 sys sys 1071692552 9082
+sys/src/libdraw/init.c - 664 sys sys 1142862808 9108
 sys/src/libdraw/keyboard.c - 664 sys sys 1030970091 1703
 sys/src/libdraw/line.c - 664 sys sys 1040442973 731
 sys/src/libdraw/loadimage.c - 664 sys sys 1014927876 983
@@ -14569,7 +14568,7 @@ sys/src/libdraw/openfont.c - 664 sys sys 1014927876 495
 sys/src/libdraw/poly.c - 664 sys sys 1040442974 1689
 sys/src/libdraw/readcolmap.c - 664 sys sys 1014927877 745
 sys/src/libdraw/readimage.c - 664 sys sys 1082924458 2431
-sys/src/libdraw/readsubfont.c - 664 sys sys 1082924458 1053
+sys/src/libdraw/readsubfont.c - 664 sys sys 1142862808 1054
 sys/src/libdraw/rectclip.c - 664 sys sys 944961725 571
 sys/src/libdraw/replclipr.c - 664 sys sys 944961725 363
 sys/src/libdraw/rgb.c - 664 sys sys 984709666 1679
