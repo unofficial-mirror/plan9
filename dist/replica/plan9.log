@@ -27077,3 +27077,4 @@
 1142967796 11 c sys/src/9/port/taslock.c - 664 sys sys 1142957865 3928
 1142967796 12 c sys/src/cmd/mkfile - 664 sys sys 1142958953 2451
 1142967796 13 c sys/src/cmd/syscall/syscall.c - 664 sys sys 1142958095 3954
+1143081140 0 c sys/man/2/rune - 664 sys sys 1143079849 3086
