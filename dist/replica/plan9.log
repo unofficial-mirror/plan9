@@ -27192,3 +27192,13 @@
 1143396217 12 c sys/src/cmd/vc/swt.c - 664 sys sys 1143384791 10367
 1143396217 13 c sys/src/cmd/vl/obj.c - 664 sys sys 1143384835 23728
 1143396217 14 c sys/src/libhtml/build.c - 664 sys sys 1143384150 94721
+1143488056 0 c sys/games/lib/fortunes - 664 sys sys 1143487643 258076
+1143488056 1 c sys/src/9/ip/ipifc.c - 664 sys sys 1143463302 34259
+1143488056 2 c sys/src/boot/pc/pbs.s - 664 sys sys 1143465387 8291
+1143488056 3 c sys/src/boot/pc/pbslba.s - 664 sys sys 1143465392 8158
+1143488056 4 c sys/src/cmd/auth/secstore/aescbc.c - 664 sys sys 1143465912 4063
+1143488056 5 c sys/src/cmd/auth/secstore/secstore.c - 664 sys sys 1143465894 12678
+1143488056 6 c sys/src/cmd/auth/secstore/secuser.c - 664 sys sys 1143465899 5136
+1143488056 7 c sys/src/cmd/cc/lex.c - 664 sys sys 1143463268 24200
+1143488056 8 c sys/src/cmd/ip/httpd/hints.c - 664 sys sys 1143465802 6312
+1143488056 9 c sys/src/cmd/ip/ppp/ppp.c - 664 sys sys 1143465826 59909
