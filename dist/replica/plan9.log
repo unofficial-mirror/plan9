@@ -27202,3 +27202,6 @@
 1143488056 7 c sys/src/cmd/cc/lex.c - 664 sys sys 1143463268 24200
 1143488056 8 c sys/src/cmd/ip/httpd/hints.c - 664 sys sys 1143465802 6312
 1143488056 9 c sys/src/cmd/ip/ppp/ppp.c - 664 sys sys 1143465826 59909
+1143568950 0 c sys/man/3/usb - 664 sys sys 1143567502 6941
+1143568950 1 c sys/man/8/prep - 664 sys sys 1143568557 13874
+1143568950 2 c sys/src/cmd/tweak.c - 664 sys sys 1143562011 38997
