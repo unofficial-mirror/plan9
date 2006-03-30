@@ -5232,7 +5232,7 @@ sys/games - 20000000775 sys sys 952648872 0
 sys/games/lib - 20000000775 sys sys 952648879 0
 sys/games/lib/4scores - 10000000666 sys sys 1118680448 0
 sys/games/lib/5scores - 10000000666 sys sys 1118680453 0
-sys/games/lib/fortunes - 664 sys sys 1143487643 258076
+sys/games/lib/fortunes - 664 sys sys 1143648119 258201
 sys/games/lib/mahjongg - 20000000775 sys sys 1095792278 0
 sys/games/lib/mahjongg/backgrounds - 20000000775 sys sys 1095792293 0
 sys/games/lib/mahjongg/backgrounds/default.bit - 664 sys sys 1095792293 346803
@@ -7510,7 +7510,7 @@ sys/src/9/pc/vgahiqvideo.c - 664 sys sys 1131290601 4098
 sys/src/9/pc/vgai81x.c - 664 sys sys 1135487942 4421
 sys/src/9/pc/vgamach64xx.c - 664 sys sys 1131290601 28257
 sys/src/9/pc/vgamga2164w.c - 664 sys sys 1132331257 4769
-sys/src/9/pc/vgamga4xx.c - 664 sys sys 1141324233 10211
+sys/src/9/pc/vgamga4xx.c - 664 sys sys 1143648125 9489
 sys/src/9/pc/vganeomagic.c - 664 sys sys 1131422294 10255
 sys/src/9/pc/vganvidia.c - 664 sys sys 1137689150 12395
 sys/src/9/pc/vgargb524.c - 664 sys sys 1131290602 4251
@@ -7537,7 +7537,7 @@ sys/src/9/port/dev.c - 664 sys sys 1131289870 8219
 sys/src/9/port/devaudio.c - 664 sys sys 1142086793 21147
 sys/src/9/port/devbridge.c - 664 sys sys 1055688301 24308
 sys/src/9/port/devcap.c - 664 sys sys 1048644215 4113
-sys/src/9/port/devcons.c - 664 sys sys 1142177608 22993
+sys/src/9/port/devcons.c - 664 sys sys 1143648105 23071
 sys/src/9/port/devdraw.c - 664 sys sys 1131289870 43537
 sys/src/9/port/devdup.c - 664 sys sys 1014931172 2332
 sys/src/9/port/devenv.c - 664 sys sys 1048644225 6992
@@ -7552,7 +7552,7 @@ sys/src/9/port/devpipe.c - 664 sys sys 1077055016 5825
 sys/src/9/port/devpnp.c - 664 sys sys 1088560907 13624
 sys/src/9/port/devproc.c - 664 sys sys 1142086847 28500
 sys/src/9/port/devroot.c - 664 sys sys 1067722764 4254
-sys/src/9/port/devsd.c - 664 sys sys 1138458233 30866
+sys/src/9/port/devsd.c - 664 sys sys 1143648157 30871
 sys/src/9/port/devsdp.c - 664 sys sys 1057323393 44800
 sys/src/9/port/devsegment.c - 664 sys sys 1131289891 9610
 sys/src/9/port/devsrv.c - 664 sys sys 1107232208 5418
@@ -8167,7 +8167,7 @@ sys/src/ape/lib/ap/plan9/times.c - 664 sys sys 1014921984 730
 sys/src/ape/lib/ap/plan9/tmpfile.c - 664 sys sys 1014921985 744
 sys/src/ape/lib/ap/plan9/ttyname.c - 664 sys sys 1014921985 133
 sys/src/ape/lib/ap/plan9/umask.c - 664 sys sys 1014921985 182
-sys/src/ape/lib/ap/plan9/uname.c - 664 sys sys 1014921985 408
+sys/src/ape/lib/ap/plan9/uname.c - 664 sys sys 1143672359 533
 sys/src/ape/lib/ap/plan9/unlink.c - 664 sys sys 1038237528 1505
 sys/src/ape/lib/ap/plan9/utime.c - 664 sys sys 1046643007 469
 sys/src/ape/lib/ap/plan9/wait.c - 664 sys sys 1093980308 2378
@@ -8839,7 +8839,7 @@ sys/src/cmd/aquarela/netbios.h - 664 sys sys 1135892110 5967
 sys/src/cmd/aquarela/smb.h - 664 sys sys 1135892110 9492
 sys/src/cmd/aquarela/smballoc.c - 664 sys sys 1135892110 508
 sys/src/cmd/aquarela/smbbrowse.c - 664 sys sys 1135892110 1473
-sys/src/cmd/aquarela/smbbuffer.c - 664 sys sys 1135892110 9717
+sys/src/cmd/aquarela/smbbuffer.c - 664 sys sys 1143670679 9728
 sys/src/cmd/aquarela/smbclientopen.c - 664 sys sys 1135892110 1428
 sys/src/cmd/aquarela/smbcomclose.c - 664 sys sys 1135892110 578
 sys/src/cmd/aquarela/smbcomcreatedir.c - 664 sys sys 1135892110 692
@@ -9012,7 +9012,7 @@ sys/src/cmd/auth/secstore/secstore.h - 664 sys sys 1106575526 859
 sys/src/cmd/auth/secstore/secstored.c - 664 sys sys 1140272944 8087
 sys/src/cmd/auth/secstore/secuser.c - 664 sys sys 1143465899 5136
 sys/src/cmd/auth/secstore/util.c - 664 sys sys 1140272945 1770
-sys/src/cmd/auth/secureidcheck.c - 664 sys sys 1078840013 9007
+sys/src/cmd/auth/secureidcheck.c - 664 sys sys 1143648183 9006
 sys/src/cmd/auth/status - 775 sys sys 1015008430 738
 sys/src/cmd/auth/uniq.c - 664 sys sys 1140272945 1440
 sys/src/cmd/auth/userpasswd.c - 664 sys sys 1015008432 591
@@ -9021,7 +9021,7 @@ sys/src/cmd/auth/wrkey.c - 664 sys sys 1019058717 176
 sys/src/cmd/aux - 20000000775 sys sys 1015008975 0
 sys/src/cmd/aux/9pcon.c - 664 sys sys 1127394247 6284
 sys/src/cmd/aux/accupoint.c - 664 sys sys 985124882 2166
-sys/src/cmd/aux/acidleak.c - 664 sys sys 1126879783 5952
+sys/src/cmd/aux/acidleak.c - 664 sys sys 1143670676 5965
 sys/src/cmd/aux/antiword - 20000000775 sys sys 1069793877 0
 sys/src/cmd/aux/antiword/antiword.h - 664 sys sys 1137261472 27773
 sys/src/cmd/aux/antiword/asc85enc.c - 664 sys sys 1137261472 3910
@@ -9104,7 +9104,7 @@ sys/src/cmd/aux/consolefs.c - 664 sys sys 1134305455 20200
 sys/src/cmd/aux/conswdir.c - 664 sys sys 1045504955 2077
 sys/src/cmd/aux/data2s.c - 664 sys sys 1032059295 796
 sys/src/cmd/aux/depend.c - 664 sys sys 1134305455 25880
-sys/src/cmd/aux/disksim.c - 664 sys sys 1140964826 11178
+sys/src/cmd/aux/disksim.c - 664 sys sys 1143670638 11172
 sys/src/cmd/aux/flashfs - 20000000775 sys sys 1015009082 0
 sys/src/cmd/aux/flashfs/aux.c - 664 sys sys 1015009080 699
 sys/src/cmd/aux/flashfs/aux.h - 664 sys sys 1015009080 111
@@ -9143,7 +9143,7 @@ sys/src/cmd/aux/mnihongo/mnihongo.c - 664 sys sys 946759402 6406
 sys/src/cmd/aux/mnihongo/tmac.nihongo - 664 sys sys 944960789 22
 sys/src/cmd/aux/mouse.c - 664 sys sys 1063855425 7049
 sys/src/cmd/aux/ms2.c - 664 sys sys 1124305056 3153
-sys/src/cmd/aux/msexceltables.c - 664 sys sys 1138065340 14094
+sys/src/cmd/aux/msexceltables.c - 664 sys sys 1143648177 14092
 sys/src/cmd/aux/mswordstrings.c - 664 sys sys 952201344 5767
 sys/src/cmd/aux/na - 20000000775 sys sys 955036627 0
 sys/src/cmd/aux/na/mkfile - 664 sys sys 955036627 121
@@ -9334,7 +9334,7 @@ sys/src/cmd/cdfs/dat.h - 664 sys sys 1014925665 2334
 sys/src/cmd/cdfs/fns.h - 664 sys sys 969542122 297
 sys/src/cmd/cdfs/main.c - 664 sys sys 1017679316 11040
 sys/src/cmd/cdfs/mkfile - 664 sys sys 959922196 182
-sys/src/cmd/cdfs/mmc.c - 664 sys sys 1014925666 17171
+sys/src/cmd/cdfs/mmc.c - 664 sys sys 1143670611 17182
 sys/src/cmd/cfs - 20000000775 sys sys 1015009266 0
 sys/src/cmd/cfs/bcache.c - 664 sys sys 1014925219 2956
 sys/src/cmd/cfs/bcache.h - 664 sys sys 1014925220 797
@@ -9589,7 +9589,7 @@ sys/src/cmd/ext2srv/ext2fs.c - 664 sys sys 1055687747 6063
 sys/src/cmd/ext2srv/ext2srv.man - 664 sys sys 1055687747 2409
 sys/src/cmd/ext2srv/ext2subs.c - 664 sys sys 1134305454 38683
 sys/src/cmd/ext2srv/fns.h - 664 sys sys 1055687748 1803
-sys/src/cmd/ext2srv/iobuf.c - 664 sys sys 1055687748 2854
+sys/src/cmd/ext2srv/iobuf.c - 664 sys sys 1143670611 2864
 sys/src/cmd/ext2srv/mkfile - 664 sys sys 1055687748 194
 sys/src/cmd/ext2srv/readme - 664 sys sys 1055687748 1700
 sys/src/cmd/ext2srv/version - 664 sys sys 1055687763 870
@@ -11776,7 +11776,7 @@ sys/src/cmd/ip/dhcp.h - 664 sys sys 1051206271 3368
 sys/src/cmd/ip/dhcpclient.c - 664 sys sys 1050714660 11978
 sys/src/cmd/ip/dhcpd - 20000000775 sys sys 988249979 0
 sys/src/cmd/ip/dhcpd/dat.h - 664 sys sys 1084471353 2522
-sys/src/cmd/ip/dhcpd/db.c - 664 sys sys 1032655001 7484
+sys/src/cmd/ip/dhcpd/db.c - 664 sys sys 1143670612 7466
 sys/src/cmd/ip/dhcpd/dhcpd.c - 664 sys sys 1084471366 32795
 sys/src/cmd/ip/dhcpd/dhcpleases.c - 664 sys sys 1032655001 779
 sys/src/cmd/ip/dhcpd/mkfile - 664 sys sys 1063897571 433
@@ -12836,11 +12836,11 @@ sys/src/cmd/tcs - 20000000775 sys sys 954034511 0
 sys/src/cmd/tcs/8859.h - 664 sys sys 1138382778 16466
 sys/src/cmd/tcs/big5.c - 664 sys sys 944961288 99606
 sys/src/cmd/tcs/big5.h - 664 sys sys 944961287 112
-sys/src/cmd/tcs/conv.h - 664 sys sys 1135487940 941
-sys/src/cmd/tcs/conv_big5.c - 664 sys sys 944961288 2821
-sys/src/cmd/tcs/conv_gb.c - 664 sys sys 944961287 2210
-sys/src/cmd/tcs/conv_jis.c - 664 sys sys 944961289 10998
-sys/src/cmd/tcs/conv_ksc.c - 664 sys sys 944961288 2716
+sys/src/cmd/tcs/conv.h - 664 sys sys 1143673019 1048
+sys/src/cmd/tcs/conv_big5.c - 664 sys sys 1143673020 2839
+sys/src/cmd/tcs/conv_gb.c - 664 sys sys 1143673020 2228
+sys/src/cmd/tcs/conv_jis.c - 664 sys sys 1143673020 11016
+sys/src/cmd/tcs/conv_ksc.c - 664 sys sys 1143673020 2734
 sys/src/cmd/tcs/cyrillic.h - 664 sys sys 1138382779 7921
 sys/src/cmd/tcs/desc.latin - 664 sys sys 944961287 20189
 sys/src/cmd/tcs/ex2.utf - 664 sys sys 944961288 14431
@@ -12864,7 +12864,7 @@ sys/src/cmd/tcs/font/qbits.c - 664 sys sys 944961251 2037
 sys/src/cmd/tcs/gb.c - 664 sys sys 944961288 62707
 sys/src/cmd/tcs/gb.h - 664 sys sys 944961287 183
 sys/src/cmd/tcs/hdr.h - 664 sys sys 944961287 1213
-sys/src/cmd/tcs/html.c - 664 sys sys 1143220982 7318
+sys/src/cmd/tcs/html.c - 664 sys sys 1143673020 7338
 sys/src/cmd/tcs/jis.h - 664 sys sys 944961287 2873
 sys/src/cmd/tcs/ksc.c - 664 sys sys 944961289 72413
 sys/src/cmd/tcs/ksc.h - 664 sys sys 944961287 112
@@ -12873,11 +12873,12 @@ sys/src/cmd/tcs/kuten208.h - 664 sys sys 944961287 94
 sys/src/cmd/tcs/kuten212.c - 664 sys sys 944961289 55407
 sys/src/cmd/tcs/kuten212.h - 664 sys sys 944961287 94
 sys/src/cmd/tcs/misc.h - 664 sys sys 1138382780 19274
-sys/src/cmd/tcs/mkfile - 664 sys sys 1138382781 591
+sys/src/cmd/tcs/mkfile - 664 sys sys 1143673021 601
 sys/src/cmd/tcs/ms.h - 664 sys sys 1138382780 44069
 sys/src/cmd/tcs/plan9.h - 664 sys sys 944961287 751
-sys/src/cmd/tcs/tcs.c - 664 sys sys 1143384248 15561
-sys/src/cmd/tcs/utf.c - 664 sys sys 1143131195 7907
+sys/src/cmd/tcs/tcs.c - 664 sys sys 1143673021 15717
+sys/src/cmd/tcs/tune.c - 664 sys sys 1143673021 6537
+sys/src/cmd/tcs/utf.c - 664 sys sys 1143673021 7975
 sys/src/cmd/tee.c - 664 sys sys 954970286 1062
 sys/src/cmd/telco - 20000000775 sys sys 1015701205 0
 sys/src/cmd/telco/mkfile - 664 sys sys 944961290 201
@@ -12891,7 +12892,7 @@ sys/src/cmd/tlssrv.c - 664 sys sys 1134498997 3426
 sys/src/cmd/touch.c - 664 sys sys 1139758085 960
 sys/src/cmd/tprof.c - 664 sys sys 1124305452 2731
 sys/src/cmd/tr.c - 664 sys sys 944961464 6008
-sys/src/cmd/trace.c - 664 sys sys 1121367076 17928
+sys/src/cmd/trace.c - 664 sys sys 1143648190 17927
 sys/src/cmd/troff - 20000000775 sys sys 944961294 0
 sys/src/cmd/troff/FIXES - 664 sys sys 944961293 24982
 sys/src/cmd/troff/README - 664 sys sys 944961293 1168
@@ -13503,7 +13504,7 @@ sys/src/cmd/upas/send/local.c - 664 sys sys 1031707305 2584
 sys/src/cmd/upas/send/log.c - 664 sys sys 944961322 2090
 sys/src/cmd/upas/send/main.c - 664 sys sys 1065717618 11856
 sys/src/cmd/upas/send/makefile - 664 sys sys 944961322 1247
-sys/src/cmd/upas/send/message.c - 664 sys sys 1065717617 11064
+sys/src/cmd/upas/send/message.c - 664 sys sys 1143670612 11077
 sys/src/cmd/upas/send/mkfile - 664 sys sys 1064589602 706
 sys/src/cmd/upas/send/regtest.c - 664 sys sys 944961322 566
 sys/src/cmd/upas/send/rewrite.c - 664 sys sys 1132331205 6386
@@ -13521,7 +13522,7 @@ sys/src/cmd/upas/smtp/smtp.c - 664 sys sys 1142187216 20134
 sys/src/cmd/upas/smtp/smtp.h - 664 sys sys 1108827986 1270
 sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1132331205 31097
 sys/src/cmd/upas/smtp/smtpd.h - 664 sys sys 1067722781 1111
-sys/src/cmd/upas/smtp/smtpd.y - 664 sys sys 1061836986 6949
+sys/src/cmd/upas/smtp/smtpd.y - 664 sys sys 1143670612 6961
 sys/src/cmd/upas/smtp/spam.c - 664 sys sys 1139699502 10238
 sys/src/cmd/upas/unesc - 20000000775 sys sys 1075080255 0
 sys/src/cmd/upas/unesc/mkfile - 664 sys sys 1075080255 164
@@ -14024,7 +14025,7 @@ sys/src/libString/s_alloc.c - 664 sys sys 1014930579 1277
 sys/src/libString/s_append.c - 664 sys sys 984754296 270
 sys/src/libString/s_array.c - 664 sys sys 985037746 319
 sys/src/libString/s_copy.c - 664 sys sys 1014930579 356
-sys/src/libString/s_getline.c - 664 sys sys 984754299 1174
+sys/src/libString/s_getline.c - 664 sys sys 1143674139 1163
 sys/src/libString/s_grow.c - 664 sys sys 1017679321 562
 sys/src/libString/s_memappend.c - 664 sys sys 984754300 332
 sys/src/libString/s_nappend.c - 664 sys sys 984754300 314
@@ -14685,7 +14686,7 @@ sys/src/libmach/2.c - 664 sys sys 1138471014 2085
 sys/src/libmach/2db.c - 664 sys sys 1136322405 61334
 sys/src/libmach/2obj.c - 664 sys sys 1091732624 2335
 sys/src/libmach/5.c - 664 sys sys 1138471013 1564
-sys/src/libmach/5db.c - 664 sys sys 1136322405 21586
+sys/src/libmach/5db.c - 664 sys sys 1143671740 21597
 sys/src/libmach/5obj.c - 664 sys sys 1091732625 2209
 sys/src/libmach/6.c - 664 sys sys 1138471019 3482
 sys/src/libmach/6c - 20000000775 sys sys 1114459480 0
@@ -14954,7 +14955,7 @@ sys/src/libsec/port/smallprimes.c - 664 sys sys 984710525 6851
 sys/src/libsec/port/smallprimetest.c - 664 sys sys 984710525 70640
 sys/src/libsec/port/thumb.c - 664 sys sys 1019832052 1891
 sys/src/libsec/port/tlshand.c - 664 sys sys 1126971523 54895
-sys/src/libsec/port/x509.c - 664 sys sys 1127128751 50918
+sys/src/libsec/port/x509.c - 664 sys sys 1143671659 50716
 sys/src/libsec/power - 20000000775 sys sys 984710502 0
 sys/src/libsec/power/mkfile - 664 sys sys 1032061453 139
 sys/src/libstdio - 20000000775 sys sys 984710098 0
