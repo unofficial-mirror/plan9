@@ -27361,3 +27361,15 @@
 1143779492 124 c sys/src/libmach/5db.c - 664 sys sys 1143696172 21599
 1143779492 125 c sys/src/libventi/packet.c - 664 sys sys 1143695310 13228
 1143779492 126 c sys/src/libventi/rpc.c - 664 sys sys 1143695302 7308
+1143864115 0 c adm/timezone/US_East-Indiana - 664 adm adm 1143844688 726
+1143864115 1 c sys/include/mach.h - 664 sys sys 1143814376 8641
+1143864115 2 c sys/lib/plumb/basic - 664 sys sys 1143814229 2878
+1143864115 3 c sys/man/8/ndb - 664 sys sys 1143814327 10087
+1143864115 4 c sys/src/cmd/upas/fs/dat.h - 664 sys sys 1143845990 4272
+1143864115 5 c sys/src/cmd/upas/fs/fs.c - 664 sys sys 1143845990 27463
+1143864115 6 c sys/src/cmd/upas/fs/mbox.c - 664 sys sys 1143845990 29022
+1143864115 7 c sys/src/cmd/upas/marshal/marshal.c - 664 sys sys 1143827332 33818
+1143864115 8 c sys/src/libmach/0.c - 664 sys sys 1143834577 4167
+1143864115 9 a sys/src/libmach/mips2ureg.h - 664 sys sys 1143821483 886
+1143864115 10 d sys/src/libmach/0c/ureg.h - 664 sys sys 1114459438 0
+1143864115 11 d sys/src/libmach/0c/README - 664 sys sys 1114459609 0
