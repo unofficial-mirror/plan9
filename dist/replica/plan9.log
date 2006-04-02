@@ -27390,3 +27390,4 @@
 1143950542 14 c sys/src/cmd/upas/fs/fs.c - 664 sys sys 1143946869 26924
 1143950542 15 c sys/src/cmd/upas/fs/mbox.c - 664 sys sys 1143929917 26636
 1143950542 16 a sys/src/cmd/upas/fs/rfc2047-test - 664 sys sys 1143946985 1146
+1143981174 0 c rc/bin/iwhois - 775 sys sys 1143979502 1637
