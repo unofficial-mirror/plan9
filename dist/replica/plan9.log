@@ -27420,3 +27420,6 @@
 1144175539 26 c sys/src/libndb/ndbipinfo.c - 664 sys sys 1144174490 5105
 1144175539 27 c sys/src/libndb/ndbparse.c - 664 sys sys 1144174490 1207
 1144175539 28 c sys/src/libndb/ndbsubstitute.c - 664 sys sys 1144174491 867
+1144265546 0 c sys/man/2/ndb - 664 sys sys 1144256600 9607
+1144265546 1 c sys/src/cmd/unix/drawterm/libc/strtod.c - 664 sys sys 1144256614 8407
+1144265546 2 c sys/src/libmach/executable.c - 664 sys sys 1144256627 16172

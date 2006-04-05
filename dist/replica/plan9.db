@@ -6971,7 +6971,7 @@ sys/man/2/mouse - 664 sys sys 1140900146 4952
 sys/man/2/mp - 664 sys sys 1140106703 10762
 sys/man/2/muldiv - 664 sys sys 984709633 639
 sys/man/2/nan - 664 sys sys 975084242 937
-sys/man/2/ndb - 664 sys sys 1078840106 9427
+sys/man/2/ndb - 664 sys sys 1144256600 9607
 sys/man/2/notify - 664 sys sys 1032058674 6376
 sys/man/2/object - 664 sys sys 944959695 3864
 sys/man/2/open - 664 sys sys 1015091524 3404
@@ -13166,7 +13166,7 @@ sys/src/cmd/unix/drawterm/libc/smprint.c - 664 sys sys 1137619307 188
 sys/src/cmd/unix/drawterm/libc/snprint.c - 664 sys sys 1137619307 215
 sys/src/cmd/unix/drawterm/libc/sprint.c - 664 sys sys 1137619307 444
 sys/src/cmd/unix/drawterm/libc/strecpy.c - 664 sys sys 1135900571 223
-sys/src/cmd/unix/drawterm/libc/strtod.c - 664 sys sys 1137619308 8363
+sys/src/cmd/unix/drawterm/libc/strtod.c - 664 sys sys 1144256614 8407
 sys/src/cmd/unix/drawterm/libc/strtod.h - 664 sys sys 1135900571 120
 sys/src/cmd/unix/drawterm/libc/strtoll.c - 664 sys sys 1135900571 1302
 sys/src/cmd/unix/drawterm/libc/sysfatal.c - 664 sys sys 1135900571 479
@@ -14703,7 +14703,7 @@ sys/src/libmach/8db.c - 664 sys sys 1136322405 50889
 sys/src/libmach/8obj.c - 664 sys sys 1091732625 2200
 sys/src/libmach/access.c - 664 sys sys 1131289377 4588
 sys/src/libmach/elf.h - 664 sys sys 1131292881 2301
-sys/src/libmach/executable.c - 664 sys sys 1138471015 16006
+sys/src/libmach/executable.c - 664 sys sys 1144256627 16172
 sys/src/libmach/k.c - 664 sys sys 1138471021 3381
 sys/src/libmach/kdb.c - 664 sys sys 1136322404 21222
 sys/src/libmach/kobj.c - 664 sys sys 1091732625 2217
