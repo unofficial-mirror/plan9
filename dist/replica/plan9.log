@@ -27425,3 +27425,5 @@
 1144265546 2 c sys/src/libmach/executable.c - 664 sys sys 1144256627 16172
 1144341163 0 c cron/upas/cron - 664 upas sys 1144339539 247
 1144341163 1 c dist/replica/plan9.proto - 664 sys sys 1144339418 2765
+1144425765 0 c sys/man/2/setjmp - 664 sys sys 1144424826 1863
+1144425765 1 c sys/man/4/consolefs - 664 sys sys 1144424854 4245
