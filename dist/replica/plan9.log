@@ -27475,3 +27475,7 @@
 1144985616 29 c sys/src/cmd/ndb/dnstcp.c - 664 sys sys 1144952604 7349
 1144985616 30 c sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1144969092 5337
 1144985616 31 c sys/src/cmd/usb/lib/device.c - 664 sys sys 1144905083 3073
+1145035905 0 c sys/man/1/patch - 664 sys sys 1145023250 2375
+1145035905 1 c sys/man/1/yesterday - 664 sys sys 1145023317 2628
+1145035905 2 c sys/src/boot/pc/mkfile - 664 sys sys 1145035359 3116
+1145035905 3 c sys/src/cmd/ip/httpd/authorize.c - 664 sys sys 1145023291 2403

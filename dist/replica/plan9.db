@@ -6816,7 +6816,7 @@ sys/man/1/ns - 664 sys sys 944959677 893
 sys/man/1/p - 664 sys sys 944959673 504
 sys/man/1/page - 664 sys sys 1087829646 5839
 sys/man/1/passwd - 664 sys sys 1113743327 1382
-sys/man/1/patch - 664 sys sys 1141738937 2361
+sys/man/1/patch - 664 sys sys 1145023250 2375
 sys/man/1/pcc - 664 sys sys 1015024740 3478
 sys/man/1/pic - 664 sys sys 1022625353 8229
 sys/man/1/pipefile - 664 sys sys 984709628 1861
@@ -6878,7 +6878,7 @@ sys/man/1/who - 664 sys sys 944959674 332
 sys/man/1/winwatch - 664 sys sys 1113252108 723
 sys/man/1/xd - 664 sys sys 944959674 1517
 sys/man/1/yacc - 664 sys sys 944959676 3273
-sys/man/1/yesterday - 664 sys sys 1140694868 2607
+sys/man/1/yesterday - 664 sys sys 1145023317 2628
 sys/man/2 - 20000000775 sys sys 1017423721 0
 sys/man/2/0intro - 664 sys sys 1115941566 11660
 sys/man/2/9p - 664 sys sys 1134335896 15859
@@ -8532,7 +8532,7 @@ sys/src/boot/pc/load.c - 664 sys sys 1135487939 8923
 sys/src/boot/pc/mbr.s - 664 sys sys 1015007953 6234
 sys/src/boot/pc/mem.h - 664 sys sys 1130887225 3371
 sys/src/boot/pc/memory.c - 664 sys sys 1019533021 10272
-sys/src/boot/pc/mkfile - 664 sys sys 1144961190 3112
+sys/src/boot/pc/mkfile - 664 sys sys 1145035359 3116
 sys/src/boot/pc/noether.c - 664 sys sys 1094674488 358
 sys/src/boot/pc/part.c - 664 sys sys 1114697151 7153
 sys/src/boot/pc/pbs.s - 664 sys sys 1143465387 8291
@@ -11799,7 +11799,7 @@ sys/src/cmd/ip/gping.c - 664 sys sys 1015013112 20476
 sys/src/cmd/ip/hogports.c - 664 sys sys 1118623129 989
 sys/src/cmd/ip/httpd - 20000000775 sys sys 1016902735 0
 sys/src/cmd/ip/httpd/anonymous.c - 664 sys sys 984773807 195
-sys/src/cmd/ip/httpd/authorize.c - 664 sys sys 1016902735 2387
+sys/src/cmd/ip/httpd/authorize.c - 664 sys sys 1145023291 2403
 sys/src/cmd/ip/httpd/classify.c - 664 sys sys 1078840017 9665
 sys/src/cmd/ip/httpd/content.c - 664 sys sys 1015090170 3140
 sys/src/cmd/ip/httpd/emem.c - 664 sys sys 984773807 278
