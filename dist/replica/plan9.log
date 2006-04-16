@@ -27479,3 +27479,7 @@
 1145035905 1 c sys/man/1/yesterday - 664 sys sys 1145023317 2628
 1145035905 2 c sys/src/boot/pc/mkfile - 664 sys sys 1145035359 3116
 1145035905 3 c sys/src/cmd/ip/httpd/authorize.c - 664 sys sys 1145023291 2403
+1145194364 0 c acme/bin/source/win/fs.c - 664 sys sys 1145192656 2743
+1145194364 1 c acme/bin/source/win/main.c - 664 sys sys 1145192657 12432
+1145194364 2 c sys/games/lib/fortunes - 664 sys sys 1145163827 258572
+1145194364 3 c sys/src/cmd/9nfs/nfsserver.c - 664 sys sys 1145192364 15772
