@@ -27483,3 +27483,5 @@
 1145194364 1 c acme/bin/source/win/main.c - 664 sys sys 1145192657 12432
 1145194364 2 c sys/games/lib/fortunes - 664 sys sys 1145163827 258572
 1145194364 3 c sys/src/cmd/9nfs/nfsserver.c - 664 sys sys 1145192364 15772
+1145313338 0 c sys/games/lib/fortunes - 664 sys sys 1145277998 258634
+1145313338 1 c sys/lib/dist/pc/inst/copydist - 775 sys sys 1145312927 715
