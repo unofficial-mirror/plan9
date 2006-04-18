@@ -7419,7 +7419,7 @@ sys/src/9/pc/devusb.c - 664 sys sys 1105193103 18364
 sys/src/9/pc/devvga.c - 664 sys sys 1131290315 9332
 sys/src/9/pc/dma.c - 664 sys sys 1142966373 5332
 sys/src/9/pc/ether2000.c - 664 sys sys 1089299187 4819
-sys/src/9/pc/ether2114x.c - 664 sys sys 1144963814 41694
+sys/src/9/pc/ether2114x.c - 664 sys sys 1145359795 41693
 sys/src/9/pc/ether589.c - 664 sys sys 1015014516 4644
 sys/src/9/pc/ether79c970.c - 664 sys sys 1131290338 13953
 sys/src/9/pc/ether8003.c - 664 sys sys 1015014516 6665
@@ -7485,7 +7485,7 @@ sys/src/9/pc/realmode.c - 664 sys sys 1139667044 2678
 sys/src/9/pc/rebootcode.s - 664 sys sys 1015014522 988
 sys/src/9/pc/screen.c - 664 sys sys 1136336092 13971
 sys/src/9/pc/screen.h - 664 sys sys 1131290516 4156
-sys/src/9/pc/sd53c8xx.c - 664 sys sys 1139667209 55143
+sys/src/9/pc/sd53c8xx.c - 664 sys sys 1145359822 55087
 sys/src/9/pc/sd53c8xx.n - 664 sys sys 1131290556 12657
 sys/src/9/pc/sdata.c - 664 sys sys 1141793347 52244
 sys/src/9/pc/sdmv50xx.c - 664 sys sys 1131290638 25780

@@ -27485,3 +27485,5 @@
 1145194364 3 c sys/src/cmd/9nfs/nfsserver.c - 664 sys sys 1145192364 15772
 1145313338 0 c sys/games/lib/fortunes - 664 sys sys 1145277998 258634
 1145313338 1 c sys/lib/dist/pc/inst/copydist - 775 sys sys 1145312927 715
+1145379697 0 c sys/src/9/pc/ether2114x.c - 664 sys sys 1145359795 41693
+1145379697 1 c sys/src/9/pc/sd53c8xx.c - 664 sys sys 1145359822 55087
