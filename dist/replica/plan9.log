@@ -27487,3 +27487,5 @@
 1145313338 1 c sys/lib/dist/pc/inst/copydist - 775 sys sys 1145312927 715
 1145379697 0 c sys/src/9/pc/ether2114x.c - 664 sys sys 1145359795 41693
 1145379697 1 c sys/src/9/pc/sd53c8xx.c - 664 sys sys 1145359822 55087
+1145503954 0 c lib/vgadb - 664 sys sys 1145484293 30282
+1145503954 1 c sys/src/boot/pc/devpccard.c - 664 sys sys 1145459731 33937
