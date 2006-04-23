@@ -27490,3 +27490,4 @@
 1145503954 0 c lib/vgadb - 664 sys sys 1145484293 30282
 1145503954 1 c sys/src/boot/pc/devpccard.c - 664 sys sys 1145459731 33937
 1145554369 0 c sys/games/lib/fortunes - 664 sys sys 1145553099 258781
+1145777515 0 c sys/games/lib/fortunes - 664 sys sys 1145776709 258931
