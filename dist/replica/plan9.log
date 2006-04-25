@@ -27499,3 +27499,4 @@
 1145934218 5 c sys/src/9/pc/vganvidia.c - 664 sys sys 1145906148 12373
 1145934218 6 c sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1145906420 33115
 1145934218 7 c sys/src/cmd/tcs/tcs.c - 664 sys sys 1145881809 19215
+1145993585 0 c sys/src/cmd/exportfs/exportfs.c - 664 sys sys 1145964192 16377

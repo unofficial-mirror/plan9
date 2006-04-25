@@ -9577,7 +9577,7 @@ sys/src/cmd/execnet/main.c - 664 sys sys 1019861330 657
 sys/src/cmd/execnet/mkfile - 664 sys sys 1032059543 208
 sys/src/cmd/execnet/note.c - 664 sys sys 1019855740 2315
 sys/src/cmd/exportfs - 20000000775 sys sys 988249971 0
-sys/src/cmd/exportfs/exportfs.c - 664 sys sys 1115314269 16357
+sys/src/cmd/exportfs/exportfs.c - 664 sys sys 1145964192 16377
 sys/src/cmd/exportfs/exportfs.h - 664 sys sys 1135487971 2809
 sys/src/cmd/exportfs/exportsrv.c - 664 sys sys 1135488028 11946
 sys/src/cmd/exportfs/mkfile - 664 sys sys 1066825703 194
