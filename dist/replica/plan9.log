@@ -27491,3 +27491,11 @@
 1145503954 1 c sys/src/boot/pc/devpccard.c - 664 sys sys 1145459731 33937
 1145554369 0 c sys/games/lib/fortunes - 664 sys sys 1145553099 258781
 1145777515 0 c sys/games/lib/fortunes - 664 sys sys 1145776709 258931
+1145934218 0 c sys/man/1/ascii - 664 sys sys 1145881662 2726
+1145934218 1 c sys/man/1/jpg - 664 sys sys 1145882310 4843
+1145934218 2 c sys/man/4/exportfs - 664 sys sys 1145881912 4655
+1145934218 3 c sys/man/8/9pcon - 664 sys sys 1145881850 2234
+1145934218 4 c sys/man/8/timesync - 664 sys sys 1145882352 1717
+1145934218 5 c sys/src/9/pc/vganvidia.c - 664 sys sys 1145906148 12373
+1145934218 6 c sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1145906420 33115
+1145934218 7 c sys/src/cmd/tcs/tcs.c - 664 sys sys 1145881809 19215
