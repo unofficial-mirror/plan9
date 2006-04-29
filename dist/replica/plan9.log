@@ -27535,3 +27535,12 @@
 1146175313 12 c sys/src/9/port/portclock.c - 664 sys sys 1146151715 4333
 1146175313 13 c sys/src/9/port/taslock.c - 664 sys sys 1146151714 4536
 1146175313 14 c sys/src/cmd/pcc.c - 664 sys sys 1146137351 6016
+1146339155 0 c rc/bin/lp - 775 sys sys 1146317617 5154
+1146339155 1 c sys/man/8/snoopy - 664 sys sys 1146318297 4288
+1146339155 2 c sys/src/9/pc/devi82365.c - 664 sys sys 1146318335 20504
+1146339155 3 c sys/src/9/pc/devpccard.c - 664 sys sys 1146318335 40443
+1146339155 4 c sys/src/cmd/cdfs/mmc.c - 664 sys sys 1146318348 17198
+1146339155 5 c sys/src/cmd/ip/snoopy/dat.h - 664 sys sys 1146318302 1933
+1146339155 6 c sys/src/cmd/ip/snoopy/main.c - 664 sys sys 1146318297 15720
+1146339155 7 c sys/src/cmd/lp/lp.rc - 775 sys sys 1146317617 5154
+1146339155 8 c sys/src/cmd/strings.c - 664 sys sys 1146317512 1231
