@@ -27544,3 +27544,5 @@
 1146339155 6 c sys/src/cmd/ip/snoopy/main.c - 664 sys sys 1146318297 15720
 1146339155 7 c sys/src/cmd/lp/lp.rc - 775 sys sys 1146317617 5154
 1146339155 8 c sys/src/cmd/strings.c - 664 sys sys 1146317512 1231
+1146583907 0 c sys/man/6/utf - 664 sys sys 1146582112 2430
+1146583907 1 c sys/src/9/pc/mp.c - 664 sys sys 1146542974 17317
