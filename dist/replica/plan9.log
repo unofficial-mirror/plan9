@@ -27574,3 +27574,5 @@
 1146799974 16 c sys/src/fs/port/fcmd.c - 664 sys sys 1146785267 1255
 1146799974 17 c sys/src/fs/port/lib.h - 664 sys sys 1146798595 3791
 1146799974 18 c sys/src/fs/port/sub.c - 664 sys sys 1146787681 25595
+1146805386 0 c sys/src/fs/doc/words - 664 sys sys 1146803821 1162
+1146805386 1 c sys/src/fs/pc/compat.h - 664 sys sys 1140774918 2578
