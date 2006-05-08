@@ -27588,3 +27588,12 @@
 1147057332 9 c sys/src/9/port/devdraw.c - 664 sys sys 1147023550 44447
 1147057332 10 a sys/src/cmd/aux/8prefix.c - 664 sys sys 1147022850 4505
 1147057332 11 c sys/src/cmd/aux/mkfile - 664 sys sys 1147022848 1021
+1147118548 0 c sys/games/lib/fortunes - 664 sys sys 1147102515 258975
+1147118548 1 c sys/src/9/alphapc/fns.h - 664 sys sys 1147116740 3658
+1147118548 2 c sys/src/9/alphapc/screen.h - 664 sys sys 1147108286 3923
+1147118548 3 c sys/src/9/pc/dat.h - 664 sys sys 1147098951 6654
+1147118548 4 c sys/src/9/pc/mmu.c - 664 sys sys 1147098958 24086
+1147118548 5 c sys/src/9/port/devcons.c - 664 sys sys 1147098985 23107
+1147118548 6 c sys/src/cmd/auth/secureidcheck.c - 664 sys sys 1147099026 9788
+1147118548 7 c sys/src/cmd/ndb/dns.c - 664 sys sys 1147098969 15309
+1147118548 8 c sys/src/cmd/unix/drawterm/kern/devtls.c - 664 sys sys 1147099089 45427
