@@ -27598,3 +27598,4 @@
 1147118548 7 c sys/src/cmd/ndb/dns.c - 664 sys sys 1147098969 15309
 1147118548 8 c sys/src/cmd/unix/drawterm/kern/devtls.c - 664 sys sys 1147099089 45427
 1147181566 0 c sys/src/cmd/htmlroff/html.c - 664 sys sys 1147180952 3992
+1147366903 0 c sys/src/cmd/fossil/9lstn.c - 664 sys sys 1147355153 3038
