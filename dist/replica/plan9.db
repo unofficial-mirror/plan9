@@ -7211,7 +7211,7 @@ sys/man/8/scuzz - 664 sys sys 984709640 7916
 sys/man/8/secstore - 664 sys sys 1105016705 1954
 sys/man/8/securenet - 664 sys sys 954305552 3160
 sys/man/8/send - 664 sys sys 1045501634 2168
-sys/man/8/smtp - 664 sys sys 1133631990 4507
+sys/man/8/smtp - 664 sys sys 1147439305 4499
 sys/man/8/snoopy - 664 sys sys 1146318297 4288
 sys/man/8/stats - 664 sys sys 1067722908 4291
 sys/man/8/statusbar - 664 sys sys 1141313214 1253
@@ -8943,7 +8943,7 @@ sys/src/cmd/auth/changeuser.c - 664 sys sys 1118884775 2932
 sys/src/cmd/auth/convbio.c - 664 sys sys 1015008432 2212
 sys/src/cmd/auth/convkeys.c - 664 sys sys 1140272940 2370
 sys/src/cmd/auth/convkeys2.c - 664 sys sys 1140272940 2427
-sys/src/cmd/auth/cron.c - 664 sys sys 1143694942 11443
+sys/src/cmd/auth/cron.c - 664 sys sys 1147439284 11681
 sys/src/cmd/auth/debug.c - 664 sys sys 1143694911 7325
 sys/src/cmd/auth/disable - 775 sys sys 1015008431 146
 sys/src/cmd/auth/enable - 775 sys sys 1015008430 134
@@ -9607,7 +9607,7 @@ sys/src/cmd/faces - 20000000775 sys sys 952888246 0
 sys/src/cmd/faces/dblook.c - 664 sys sys 944961084 359
 sys/src/cmd/faces/facedb.c - 664 sys sys 1142086801 10551
 sys/src/cmd/faces/faces.h - 664 sys sys 1072972232 1115
-sys/src/cmd/faces/main.c - 664 sys sys 1106409986 13643
+sys/src/cmd/faces/main.c - 664 sys sys 1147439217 13713
 sys/src/cmd/faces/mkfile - 664 sys sys 1062460262 355
 sys/src/cmd/faces/plumb.c - 664 sys sys 1143759346 7029
 sys/src/cmd/faces/util.c - 664 sys sys 1035698250 569
@@ -13534,7 +13534,7 @@ sys/src/cmd/upas/smtp/rfc822.y - 664 sys sys 1064589606 13417
 sys/src/cmd/upas/smtp/rmtdns.c - 664 sys sys 1015013150 1069
 sys/src/cmd/upas/smtp/smtp.c - 664 sys sys 1143759341 20123
 sys/src/cmd/upas/smtp/smtp.h - 664 sys sys 1108827986 1270
-sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1132331205 31097
+sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1147439361 31157
 sys/src/cmd/upas/smtp/smtpd.h - 664 sys sys 1067722781 1111
 sys/src/cmd/upas/smtp/smtpd.y - 664 sys sys 1143670612 6961
 sys/src/cmd/upas/smtp/spam.c - 664 sys sys 1139699502 10238

@@ -27599,3 +27599,7 @@
 1147118548 8 c sys/src/cmd/unix/drawterm/kern/devtls.c - 664 sys sys 1147099089 45427
 1147181566 0 c sys/src/cmd/htmlroff/html.c - 664 sys sys 1147180952 3992
 1147366903 0 c sys/src/cmd/fossil/9lstn.c - 664 sys sys 1147355153 3038
+1147453448 0 c sys/man/8/smtp - 664 sys sys 1147439305 4499
+1147453448 1 c sys/src/cmd/auth/cron.c - 664 sys sys 1147439284 11681
+1147453448 2 c sys/src/cmd/faces/main.c - 664 sys sys 1147439217 13713
+1147453448 3 c sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1147439361 31157
