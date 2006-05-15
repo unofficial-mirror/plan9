@@ -5488,7 +5488,7 @@ sys/include/draw.h - 664 sys sys 1108655526 16144
 sys/include/event.h - 664 sys sys 1014929063 1426
 sys/include/fcall.h - 664 sys sys 1137461445 3063
 sys/include/flate.h - 664 sys sys 1014929063 1245
-sys/include/frame.h - 664 sys sys 1014929063 2666
+sys/include/frame.h - 664 sys sys 1147706379 2682
 sys/include/geometry.h - 664 sys sys 1014929063 2632
 sys/include/html.h - 664 sys sys 1128662123 15232
 sys/include/httpd.h - 664 sys sys 1091904418 5771
@@ -14626,9 +14626,9 @@ sys/src/libflate/zlib.h - 664 sys sys 984709217 219
 sys/src/libframe - 20000000775 sys sys 944961726 0
 sys/src/libframe/frbox.c - 664 sys sys 1078466650 3028
 sys/src/libframe/frdelete.c - 664 sys sys 944961726 3079
-sys/src/libframe/frdraw.c - 664 sys sys 1136063243 3366
+sys/src/libframe/frdraw.c - 664 sys sys 1147706378 3447
 sys/src/libframe/frinit.c - 664 sys sys 1019498851 1761
-sys/src/libframe/frinsert.c - 664 sys sys 984709939 6700
+sys/src/libframe/frinsert.c - 664 sys sys 1147706378 6720
 sys/src/libframe/frptofchar.c - 664 sys sys 944961726 1995
 sys/src/libframe/frselect.c - 664 sys sys 1021580002 2623
 sys/src/libframe/frstr.c - 664 sys sys 944961726 646

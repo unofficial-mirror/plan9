@@ -27604,3 +27604,6 @@
 1147453448 2 c sys/src/cmd/faces/main.c - 664 sys sys 1147439217 13713
 1147453448 3 c sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1147439361 31157
 1147532667 0 c sys/games/lib/fortunes - 664 sys sys 1147531044 259119
+1147712625 0 c sys/include/frame.h - 664 sys sys 1147706379 2682
+1147712625 1 c sys/src/libframe/frdraw.c - 664 sys sys 1147706378 3447
+1147712625 2 c sys/src/libframe/frinsert.c - 664 sys sys 1147706378 6720
