@@ -9623,7 +9623,7 @@ sys/src/cmd/fax/receiverc - 775 sys sys 944960990 581
 sys/src/cmd/fax/send.c - 664 sys sys 944960990 923
 sys/src/cmd/fax/subr.c - 664 sys sys 1015090401 1245
 sys/src/cmd/fcp.c - 664 sys sys 1136651872 3799
-sys/src/cmd/file.c - 664 sys sys 1148099097 24353
+sys/src/cmd/file.c - 664 sys sys 1148481459 24833
 sys/src/cmd/fmt.c - 664 sys sys 1137603598 4078
 sys/src/cmd/fortune.c - 664 sys sys 1072729222 1779
 sys/src/cmd/fossil - 20000000775 sys sys 1042005512 0
@@ -13551,7 +13551,7 @@ sys/src/cmd/upas/smtp/rfc822.y - 664 sys sys 1064589606 13417
 sys/src/cmd/upas/smtp/rmtdns.c - 664 sys sys 1015013150 1069
 sys/src/cmd/upas/smtp/smtp.c - 664 sys sys 1143759341 20123
 sys/src/cmd/upas/smtp/smtp.h - 664 sys sys 1108827986 1270
-sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1147439361 31157
+sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1148482561 31169
 sys/src/cmd/upas/smtp/smtpd.h - 664 sys sys 1067722781 1111
 sys/src/cmd/upas/smtp/smtpd.y - 664 sys sys 1143670612 6961
 sys/src/cmd/upas/smtp/spam.c - 664 sys sys 1139699502 10238
@@ -14490,7 +14490,7 @@ sys/src/libc/port/toupper.c - 664 sys sys 1014927407 183
 sys/src/libc/port/u16.c - 664 sys sys 1015219696 823
 sys/src/libc/port/u32.c - 664 sys sys 1014927407 2414
 sys/src/libc/port/u64.c - 664 sys sys 1026739051 3282
-sys/src/libc/port/utfecpy.c - 664 sys sys 1014927407 284
+sys/src/libc/port/utfecpy.c - 664 sys sys 1148482404 282
 sys/src/libc/port/utflen.c - 664 sys sys 1143695500 231
 sys/src/libc/port/utfnlen.c - 664 sys sys 1014927408 317
 sys/src/libc/port/utfrrune.c - 664 sys sys 1143695482 403
