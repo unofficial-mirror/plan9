@@ -27702,3 +27702,4 @@
 1148500903 0 c sys/src/cmd/file.c - 664 sys sys 1148481459 24833
 1148500903 1 c sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1148482561 31169
 1148500903 2 c sys/src/libc/port/utfecpy.c - 664 sys sys 1148482404 282
+1148761984 0 c sys/man/1/yesterday - 664 sys sys 1148760984 2640
