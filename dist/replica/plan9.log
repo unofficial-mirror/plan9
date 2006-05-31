@@ -27703,3 +27703,9 @@
 1148500903 1 c sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1148482561 31169
 1148500903 2 c sys/src/libc/port/utfecpy.c - 664 sys sys 1148482404 282
 1148761984 0 c sys/man/1/yesterday - 664 sys sys 1148760984 2640
+1149067931 0 c adm/keys - 664 adm adm 1425976947 0
+1149067931 1 c adm/netkeys - 664 adm adm 1425976947 0
+1149067931 2 c mail/box/glenda/mbox - 10000000662 glenda glenda 1425976947 0
+1149067931 3 c sys/lib/sysconfig/auth/boundary/httppasswords - 664 sys sys 1425976947 0
+1149067931 4 c sys/lib/sysconfig/auth/boundary/keys - 664 sys sys 1425976947 0
+1149067931 5 c sys/lib/sysconfig/auth/boundary/netkeys - 664 sys sys 1425976947 0
