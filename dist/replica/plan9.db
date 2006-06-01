@@ -206,9 +206,9 @@ acme/wiki/src/win.c - 664 sys sys 1125314889 5454
 acme/wiki/wiki.diff - 775 sys sys 1112461168 525
 adm - 20000000775 adm adm 1017438729 0
 adm/cache - 664 adm adm 1020313578 0
-adm/keys - 664 adm adm 1425976947 0
+adm/keys - 664 adm adm 1020313578 0
 adm/keys.who - 664 adm adm 1020313578 0
-adm/netkeys - 664 adm adm 1425976947 0
+adm/netkeys - 664 adm adm 1020313578 0
 adm/netkeys.who - 664 adm adm 1020313578 0
 adm/timezone - 20000000775 adm adm 1014921100 0
 adm/timezone/Argentina - 664 adm adm 1116737181 22
@@ -352,7 +352,7 @@ cron/upas - 20000000775 upas sys 1017438409 0
 cron/upas/cron - 664 upas sys 1144683680 222
 dist - 20000000755 sys sys 1017437778 0
 dist/replica - 20000000755 sys sys 1019277119 0
-dist/replica/cd - 664 sys sys 1019527959 390
+dist/replica/cd - 664 sys sys 1149084099 922
 dist/replica/kfs - 664 sys sys 1019527929 237
 dist/replica/network - 664 sys sys 1139499513 956
 dist/replica/plan9.proto - 664 sys sys 1144683345 2813
@@ -4706,7 +4706,7 @@ mail - 20000000775 upas upas 953344765 0
 mail/box - 20000000777 upas upas 1039727907 0
 mail/box/glenda - 20000000775 glenda glenda 1019530541 0
 mail/box/glenda/L.mbox - 4000000666 glenda glenda 1018730020 0
-mail/box/glenda/mbox - 10000000662 glenda glenda 1425976947 0
+mail/box/glenda/mbox - 10000000662 glenda glenda 1019530558 0
 mail/faxoutqueue - 20000000777 upas upas 953302646 0
 mail/faxqueue - 20000000777 upas upas 954036327 0
 mail/faxqueue/faxrecipients - 664 upas upas 1015089361 41
@@ -6478,12 +6478,12 @@ sys/lib/sysconfig/auth/boundary - 20000000775 sys sys 1016833537 0
 sys/lib/sysconfig/auth/boundary/auth - 664 sys sys 1016833536 400
 sys/lib/sysconfig/auth/boundary/consoledb - 664 sys sys 1019240164 426
 sys/lib/sysconfig/auth/boundary/cpurc - 775 sys sys 1016833536 2280
-sys/lib/sysconfig/auth/boundary/httppasswords - 664 sys sys 1425976947 0
-sys/lib/sysconfig/auth/boundary/keys - 664 sys sys 1425976947 0
+sys/lib/sysconfig/auth/boundary/httppasswords - 664 sys sys 1016833584 0
+sys/lib/sysconfig/auth/boundary/keys - 664 sys sys 1016833570 0
 sys/lib/sysconfig/auth/boundary/keys.who - 664 sys sys 1016833572 0
 sys/lib/sysconfig/auth/boundary/lib.ndb.mkfile - 664 sys sys 1016833536 1343
 sys/lib/sysconfig/auth/boundary/namespace.boundary - 664 sys sys 1016833536 650
-sys/lib/sysconfig/auth/boundary/netkeys - 664 sys sys 1425976947 0
+sys/lib/sysconfig/auth/boundary/netkeys - 664 sys sys 1016833574 0
 sys/lib/sysconfig/auth/boundary/netkeys.who - 664 sys sys 1016833577 0
 sys/lib/sysconfig/auth/boundary/plan9.ini - 664 sys sys 1016833537 322
 sys/lib/sysconfig/auth/boundary/plan9.nvr - 664 sys sys 1016833591 0
@@ -13551,7 +13551,7 @@ sys/src/cmd/upas/smtp/rfc822.y - 664 sys sys 1064589606 13417
 sys/src/cmd/upas/smtp/rmtdns.c - 664 sys sys 1015013150 1069
 sys/src/cmd/upas/smtp/smtp.c - 664 sys sys 1143759341 20123
 sys/src/cmd/upas/smtp/smtp.h - 664 sys sys 1108827986 1270
-sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1148482561 31169
+sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1149083996 31606
 sys/src/cmd/upas/smtp/smtpd.h - 664 sys sys 1067722781 1111
 sys/src/cmd/upas/smtp/smtpd.y - 664 sys sys 1143670612 6961
 sys/src/cmd/upas/smtp/spam.c - 664 sys sys 1139699502 10238

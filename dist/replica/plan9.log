@@ -27709,3 +27709,11 @@
 1149067931 3 c sys/lib/sysconfig/auth/boundary/httppasswords - 664 sys sys 1425976947 0
 1149067931 4 c sys/lib/sysconfig/auth/boundary/keys - 664 sys sys 1425976947 0
 1149067931 5 c sys/lib/sysconfig/auth/boundary/netkeys - 664 sys sys 1425976947 0
+1149170615 0 c adm/keys - 664 adm adm 1020313578 0
+1149170615 1 c adm/netkeys - 664 adm adm 1020313578 0
+1149170615 2 c mail/box/glenda/mbox - 10000000662 glenda glenda 1019530558 0
+1149170615 3 c sys/lib/sysconfig/auth/boundary/httppasswords - 664 sys sys 1016833584 0
+1149170615 4 c sys/lib/sysconfig/auth/boundary/keys - 664 sys sys 1016833570 0
+1149170615 5 c sys/lib/sysconfig/auth/boundary/netkeys - 664 sys sys 1016833574 0
+1149170615 6 c sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1149083996 31606
+1149170615 7 c dist/replica/cd - 664 sys sys 1149084099 922
