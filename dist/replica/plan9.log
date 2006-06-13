@@ -27723,3 +27723,5 @@
 1150063318 1 c sys/man/2/9p - 664 sys sys 1150036738 15887
 1150063318 2 c sys/src/9/pc/pci.c - 664 sys sys 1150036688 26932
 1150063318 3 c sys/src/libdraw/chan.c - 664 sys sys 1150037604 1223
+1150218168 0 c lib/face/48x48x4/.dict - 664 sys sys 1150202436 3276
+1150218168 1 c sys/src/cmd/aux/consolefs.c - 664 sys sys 1150201588 21201
