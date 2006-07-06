@@ -27760,3 +27760,6 @@
 1151879600 0 c sys/games/lib/fortunes - 664 sys sys 1151878959 259906
 1151879600 1 c sys/man/2/bio - 664 sys sys 1151854125 6546
 1151994816 0 c sys/games/lib/fortunes - 664 sys sys 1151993809 259988
+1152225093 0 c sys/games/lib/fortunes - 664 sys sys 1152212060 260027
+1152225093 1 c sys/src/cmd/auth/cron.c - 664 sys sys 1152222646 12266
+1152225093 2 c sys/src/cmd/auth/lib/mkfile - 664 sys sys 1152223363 386
