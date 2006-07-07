@@ -4711,7 +4711,6 @@ mail/faxoutqueue - 20000000777 upas upas 953302646 0
 mail/faxqueue - 20000000777 upas upas 954036327 0
 mail/faxqueue/faxrecipients - 664 upas upas 1015089361 41
 mail/fs - 20000000755 upas upas 952639473 0
-mail/grey - 20000000775 upas upas 1425959634 0
 mail/lib - 20000000775 upas upas 1016731571 0
 mail/lib/blocked - 664 upas upas 956777853 460
 mail/lib/classify.re - 664 upas upas 1063950966 80082
