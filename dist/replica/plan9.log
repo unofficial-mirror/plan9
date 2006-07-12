@@ -27764,3 +27764,5 @@
 1152225093 1 c sys/src/cmd/auth/cron.c - 664 sys sys 1152222646 12266
 1152225093 2 c sys/src/cmd/auth/lib/mkfile - 664 sys sys 1152223363 386
 1152291695 0 d mail/grey - 20000000775 upas upas 1425959634 0
+1152730898 0 c sys/man/8/prep - 664 sys sys 1152729153 14013
+1152730898 1 c sys/src/9/pc/usbuhci.c - 664 sys sys 1152730364 30793
