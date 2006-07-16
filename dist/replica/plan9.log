@@ -27767,3 +27767,7 @@
 1152730898 0 c sys/man/8/prep - 664 sys sys 1152729153 14013
 1152730898 1 c sys/src/9/pc/usbuhci.c - 664 sys sys 1152730364 30793
 1152982894 0 c sys/src/libhttpd/parsereq.c - 664 sys sys 1152982850 5041
+1153083688 0 c sys/src/9/pc/devpccard.c - 664 sys sys 1153082883 39122
+1153083688 1 c sys/src/9/pc/ether82557.c - 664 sys sys 1153082663 30197
+1153083688 2 c sys/src/9/pc/fns.h - 664 sys sys 1153082883 4564
+1153083688 3 c sys/src/9/pc/pci.c - 664 sys sys 1153082883 26859
