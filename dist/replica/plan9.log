@@ -27775,3 +27775,8 @@
 1153173691 1 c sys/src/9/pc/memory.c - 664 sys sys 1153172671 18773
 1153251097 0 c sys/src/9/pc/devpccard.c - 664 sys sys 1153250455 39299
 1153251097 1 c sys/src/9/pc/mp.h - 664 sys sys 1153193597 6795
+1153339359 0 c sys/src/boot/pc/devpccard.c - 664 sys sys 1153333456 33897
+1153339359 1 c sys/src/boot/pc/ether8169.c - 664 sys sys 1153333456 21470
+1153339359 2 c sys/src/boot/pc/fns.h - 664 sys sys 1153333456 4667
+1153339359 3 c sys/src/boot/pc/pci.c - 664 sys sys 1153333456 20363
+1153339359 4 c sys/src/boot/pc/sd.h - 664 sys sys 1153333456 2244
