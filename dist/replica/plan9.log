@@ -27813,3 +27813,5 @@
 1155364293 19 c sys/src/libdraw/subfontname.c - 664 sys sys 1155362344 813
 1155364293 20 c sys/src/libhtml/build.c - 664 sys sys 1155362319 94787
 1155364293 21 d rc/bin/patch/email - 775 sys sys 1109511607 0
+1155524498 0 a sys/src/9/pc/uartaxp.c - 664 sys sys 1155522821 17906
+1155524498 1 a sys/src/9/pc/uartaxp.i - 664 sys sys 1155522709 111326

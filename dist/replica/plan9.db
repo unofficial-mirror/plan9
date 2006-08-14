@@ -7497,6 +7497,8 @@ sys/src/9/pc/sdmv50xx.c - 664 sys sys 1131290638 25780
 sys/src/9/pc/sdmylex.c - 664 sys sys 1133068062 27806
 sys/src/9/pc/sdscsi.c - 664 sys sys 1146746630 7106
 sys/src/9/pc/trap.c - 664 sys sys 1135487942 21257
+sys/src/9/pc/uartaxp.c - 664 sys sys 1155522821 17906
+sys/src/9/pc/uartaxp.i - 664 sys sys 1155522709 111326
 sys/src/9/pc/uarti8250.c - 664 sys sys 1102820421 13958
 sys/src/9/pc/uartisa.c - 664 sys sys 1127126907 1777
 sys/src/9/pc/uartpci.c - 664 sys sys 1096379063 2891
