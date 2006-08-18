@@ -27818,3 +27818,4 @@
 1155697290 0 c sys/src/9/pc/pccpu - 664 sys sys 1155674606 925
 1155697290 1 c sys/src/9/pc/pccpuf - 664 sys sys 1155674479 1532
 1155697290 2 c sys/src/cmd/aux/vga/i81x.c - 664 sys sys 1155674438 12163
+1155940374 0 c sys/games/lib/fortunes - 664 sys sys 1155938701 260515
