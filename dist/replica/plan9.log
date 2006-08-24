@@ -27850,3 +27850,6 @@
 1155996091 28 c sys/src/cmd/auth/netkey.c - 664 sys sys 1155994849 758
 1155996091 29 c sys/src/cmd/auth/passwd.c - 664 sys sys 1155994849 2786
 1155996091 30 c sys/src/cmd/auth/printnetkey.c - 664 sys sys 1155994849 670
+1156453315 0 c sys/man/2/ip - 664 sys sys 1156429262 7197
+1156453315 1 c sys/src/9/pc/ether8169.c - 664 sys sys 1156429147 25232
+1156453315 2 c sys/src/boot/pc/ether8169.c - 664 sys sys 1156429147 21582

@@ -6961,7 +6961,7 @@ sys/man/2/hypot - 664 sys sys 944959693 302
 sys/man/2/intmap - 664 sys sys 1015091523 2622
 sys/man/2/ioproc - 664 sys sys 1155995343 3064
 sys/man/2/iounit - 664 sys sys 1015091523 1001
-sys/man/2/ip - 664 sys sys 1103554773 7276
+sys/man/2/ip - 664 sys sys 1156429262 7197
 sys/man/2/isalpharune - 664 sys sys 1015091523 1059
 sys/man/2/keyboard - 664 sys sys 950892860 2065
 sys/man/2/lock - 664 sys sys 1048643958 4692
@@ -7429,7 +7429,7 @@ sys/src/9/pc/ether589.c - 664 sys sys 1015014516 4644
 sys/src/9/pc/ether79c970.c - 664 sys sys 1131290338 13953
 sys/src/9/pc/ether8003.c - 664 sys sys 1015014516 6665
 sys/src/9/pc/ether8139.c - 664 sys sys 1131290376 18400
-sys/src/9/pc/ether8169.c - 664 sys sys 1153399639 25120
+sys/src/9/pc/ether8169.c - 664 sys sys 1156429147 25232
 sys/src/9/pc/ether82543gc.c - 664 sys sys 1131290377 32294
 sys/src/9/pc/ether82557.c - 664 sys sys 1153082663 30197
 sys/src/9/pc/ether83815.c - 664 sys sys 1140271743 26125
@@ -8510,7 +8510,7 @@ sys/src/boot/pc/ether589.c - 664 sys sys 1144961189 4624
 sys/src/boot/pc/ether79c970.c - 664 sys sys 1015007950 11717
 sys/src/boot/pc/ether8003.c - 664 sys sys 1015007950 6446
 sys/src/boot/pc/ether8139.c - 664 sys sys 1121393459 14823
-sys/src/boot/pc/ether8169.c - 664 sys sys 1153333456 21470
+sys/src/boot/pc/ether8169.c - 664 sys sys 1156429147 21582
 sys/src/boot/pc/ether82557.c - 664 sys sys 1140802406 19090
 sys/src/boot/pc/ether83815.c - 664 sys sys 1144961190 21993
 sys/src/boot/pc/ether8390.c - 664 sys sys 1112382847 16209
