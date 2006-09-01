@@ -27858,3 +27858,16 @@
 1156995153 0 c lib/face/48x48x4/.dict - 664 sys sys 1156993280 3337
 1156995153 1 c lib/face/48x48x8/.dict - 664 sys sys 1156993289 2648
 1157079696 0 c sys/src/cmd/htmlroff/char.c - 664 sys sys 1157078288 2301
+1157149894 0 a lib/face/48x48x4/b/bwc.1 - 664 sys sys 1157087065 1210
+1157149894 1 c lib/face/48x48x8/f/fst.1 - 664 sys sys 1157149515 1099
+1157149894 2 a lib/face/48x48x8/p/plus.1 - 664 sys sys 1157142255 1049
+1157149894 3 c sys/doc/comp.ms - 664 sys sys 1157083635 37859
+1157149894 4 c sys/doc/mkfile - 664 sys sys 1157083603 2493
+1157149894 5 c sys/man/1/file - 664 sys sys 1157143697 1481
+1157149894 6 c sys/src/cmd/file.c - 664 sys sys 1157143564 27438
+1157149894 7 c sys/src/cmd/grep/sub.c - 664 sys sys 1157090728 3941
+1157149894 8 c sys/src/cmd/htmlroff/char.c - 664 sys sys 1157082850 2301
+1157149894 9 a sys/src/cmd/mug.c - 664 sys sys 1157143847 24888
+1157149894 10 c sys/src/cmd/wikifs/io.c - 664 sys sys 1157090225 11896
+1157149894 11 c sys/src/cmd/wikifs/parse.c - 664 sys sys 1157146110 5388
+1157149894 12 c sys/src/cmd/wikifs/tohtml.c - 664 sys sys 1157090250 14546
