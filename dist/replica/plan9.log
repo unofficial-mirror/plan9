@@ -27871,3 +27871,5 @@
 1157149894 10 c sys/src/cmd/wikifs/io.c - 664 sys sys 1157090225 11896
 1157149894 11 c sys/src/cmd/wikifs/parse.c - 664 sys sys 1157146110 5388
 1157149894 12 c sys/src/cmd/wikifs/tohtml.c - 664 sys sys 1157090250 14546
+1157169765 0 c sys/src/cmd/wikifs/fs.c - 664 sys sys 1157169486 14459
+1157169765 1 c sys/src/cmd/wikifs/io.c - 664 sys sys 1157169580 11896
