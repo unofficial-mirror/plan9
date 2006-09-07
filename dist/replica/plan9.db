@@ -9366,7 +9366,7 @@ sys/src/cmd/chgrp.c - 664 sys sys 1014926580 624
 sys/src/cmd/chmod.c - 664 sys sys 1079372923 1904
 sys/src/cmd/cleanname.c - 664 sys sys 944960760 715
 sys/src/cmd/clock.c - 664 sys sys 1014925410 1881
-sys/src/cmd/cmp.c - 664 sys sys 1134330528 2379
+sys/src/cmd/cmp.c - 664 sys sys 1157581072 2491
 sys/src/cmd/colors.c - 664 sys sys 951763912 3186
 sys/src/cmd/comm.c - 664 sys sys 1093979717 2140
 sys/src/cmd/con - 20000000775 sys sys 944961996 0
