@@ -27874,3 +27874,11 @@
 1157169765 0 c sys/src/cmd/wikifs/fs.c - 664 sys sys 1157169486 14459
 1157169765 1 c sys/src/cmd/wikifs/io.c - 664 sys sys 1157169580 11896
 1157598105 0 c sys/src/cmd/cmp.c - 664 sys sys 1157581072 2491
+1157684514 0 c sys/man/1/gzip - 664 sys sys 1157681393 3830
+1157684514 1 c sys/man/3/ip - 664 sys sys 1157657123 21416
+1157684514 2 c sys/src/cmd/grep/grep.h - 664 sys sys 1157665788 2198
+1157684514 3 c sys/src/cmd/grep/grep.y - 664 sys sys 1157665806 2964
+1157684514 4 c sys/src/cmd/grep/sub.c - 664 sys sys 1157665944 4006
+1157684514 5 a sys/src/cmd/compress - 20000000775 sys sys 1157679448 0
+1157684514 6 a sys/src/cmd/compress/compress.c - 664 sys sys 1157679448 31907
+1157684514 7 a sys/src/cmd/compress/mkfile - 664 sys sys 1157679443 118
