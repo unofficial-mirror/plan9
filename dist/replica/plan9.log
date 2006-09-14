@@ -27926,3 +27926,4 @@
 1158102097 10 c sys/src/cmd/vnc/vnc.h - 664 sys sys 1158063990 2633
 1158102097 11 c sys/src/cmd/vnc/vncv.c - 664 sys sys 1158063990 3316
 1158102097 12 c sys/src/libmach/q.c - 664 sys sys 1158071179 3641
+1158202895 0 c sys/man/1/pr - 664 sys sys 1158202686 1819

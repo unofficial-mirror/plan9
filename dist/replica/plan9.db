@@ -6829,7 +6829,7 @@ sys/man/1/pic - 664 sys sys 1022625353 8229
 sys/man/1/pipefile - 664 sys sys 984709628 1861
 sys/man/1/plot - 664 sys sys 944959673 1196
 sys/man/1/plumb - 664 sys sys 957920007 1297
-sys/man/1/pr - 664 sys sys 984709628 1804
+sys/man/1/pr - 664 sys sys 1158202686 1819
 sys/man/1/prof - 664 sys sys 1067718952 3561
 sys/man/1/proof - 664 sys sys 1113743329 2300
 sys/man/1/ps - 664 sys sys 1144686669 1722
