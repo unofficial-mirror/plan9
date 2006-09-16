@@ -27934,3 +27934,4 @@
 1158375702 1 c sys/man/6/ndb - 664 sys sys 1158358889 6579
 1158375702 2 c sys/src/cmd/fossil/dat.h - 664 sys sys 1158373945 7622
 1158375702 3 c sys/src/cmd/fossil/disk.c - 664 sys sys 1158373945 6887
+1158435102 0 c sys/man/1/vac - 664 sys sys 1158391232 3228
