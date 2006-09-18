@@ -27935,3 +27935,6 @@
 1158375702 2 c sys/src/cmd/fossil/dat.h - 664 sys sys 1158373945 7622
 1158375702 3 c sys/src/cmd/fossil/disk.c - 664 sys sys 1158373945 6887
 1158435102 0 c sys/man/1/vac - 664 sys sys 1158391232 3228
+1158550297 0 c lib/face/48x48x8/.dict - 664 sys sys 1158542759 2706
+1158550297 1 c sys/doc/asm.ms - 664 sys sys 1158549534 31523
+1158550297 2 c sys/doc/asm.ps - 664 sys sys 1158549581 333976
