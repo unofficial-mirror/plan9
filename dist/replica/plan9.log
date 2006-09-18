@@ -27938,3 +27938,13 @@
 1158550297 0 c lib/face/48x48x8/.dict - 664 sys sys 1158542759 2706
 1158550297 1 c sys/doc/asm.ms - 664 sys sys 1158549534 31523
 1158550297 2 c sys/doc/asm.ps - 664 sys sys 1158549581 333976
+1158620506 0 c sys/man/8/swap - 664 sys sys 1158604825 886
+1158620506 1 c sys/src/9/pc/sdata.c - 664 sys sys 1158593448 52577
+1158620506 2 c sys/src/cmd/aux/vga/3dfx.c - 664 sys sys 1158594480 6891
+1158620506 3 c sys/src/cmd/aux/vga/main.c - 664 sys sys 1158594481 9765
+1158620506 4 c sys/src/cmd/aux/vga/mga4xx.c - 664 sys sys 1158594482 36898
+1158620506 5 c sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1158594482 33114
+1158620506 6 c sys/src/cmd/vac/vac.c - 664 sys sys 1158618260 23102
+1158620506 7 c sys/src/cmd/vac/vtdump.c - 664 sys sys 1158618245 7166
+1158620506 8 c sys/src/cmd/venti/copy.c - 664 sys sys 1158618908 3713
+1158620506 9 c sys/src/libauthsrv/readnvram.c - 664 sys sys 1158593647 8945

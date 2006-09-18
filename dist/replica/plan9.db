@@ -7218,7 +7218,7 @@ sys/man/8/snoopy - 664 sys sys 1146318297 4288
 sys/man/8/stats - 664 sys sys 1067722908 4291
 sys/man/8/statusbar - 664 sys sys 1141313214 1253
 sys/man/8/stub - 664 sys sys 1044830500 943
-sys/man/8/swap - 664 sys sys 944959679 880
+sys/man/8/swap - 664 sys sys 1158604825 886
 sys/man/8/timesync - 664 sys sys 1145882352 1717
 sys/man/8/tlssrv - 664 sys sys 1037580152 2594
 sys/man/8/trampoline - 664 sys sys 1126104844 1199
@@ -7495,7 +7495,7 @@ sys/src/9/pc/screen.c - 664 sys sys 1136336092 13971
 sys/src/9/pc/screen.h - 664 sys sys 1147023549 4256
 sys/src/9/pc/sd53c8xx.c - 664 sys sys 1149280015 55135
 sys/src/9/pc/sd53c8xx.n - 664 sys sys 1131290556 12657
-sys/src/9/pc/sdata.c - 664 sys sys 1155361705 52464
+sys/src/9/pc/sdata.c - 664 sys sys 1158593448 52577
 sys/src/9/pc/sdmv50xx.c - 664 sys sys 1131290638 25780
 sys/src/9/pc/sdmylex.c - 664 sys sys 1133068062 27806
 sys/src/9/pc/sdscsi.c - 664 sys sys 1146746630 7106
@@ -9176,7 +9176,7 @@ sys/src/cmd/aux/typepasswd.c - 664 sys sys 1143759348 1749
 sys/src/cmd/aux/unlock - 664 sys sys 944960793 0
 sys/src/cmd/aux/usage.c - 664 sys sys 1139744276 1095
 sys/src/cmd/aux/vga - 20000000775 sys sys 1018723175 0
-sys/src/cmd/aux/vga/3dfx.c - 664 sys sys 1026337537 6886
+sys/src/cmd/aux/vga/3dfx.c - 664 sys sys 1158594480 6891
 sys/src/cmd/aux/vga/adventure - 664 sys sys 1048274168 14869
 sys/src/cmd/aux/vga/ark2000pv.c - 664 sys sys 1014925006 5958
 sys/src/cmd/aux/vga/att20c49x.c - 664 sys sys 1014925007 1730
@@ -9202,13 +9202,13 @@ sys/src/cmd/aux/vga/io.c - 664 sys sys 1131110425 6329
 sys/src/cmd/aux/vga/mach32.c - 664 sys sys 1014925009 6004
 sys/src/cmd/aux/vga/mach64.c - 664 sys sys 1014925009 8279
 sys/src/cmd/aux/vga/mach64xx.c - 664 sys sys 1097900455 30266
-sys/src/cmd/aux/vga/main.c - 664 sys sys 1131741978 9725
+sys/src/cmd/aux/vga/main.c - 664 sys sys 1158594481 9765
 sys/src/cmd/aux/vga/mga2164w.c - 664 sys sys 1135487945 13173
-sys/src/cmd/aux/vga/mga4xx.c - 664 sys sys 1155364222 36908
+sys/src/cmd/aux/vga/mga4xx.c - 664 sys sys 1158594482 36898
 sys/src/cmd/aux/vga/mkfile - 664 sys sys 1115734903 927
 sys/src/cmd/aux/vga/neomagic.c - 664 sys sys 1104430499 8975
 sys/src/cmd/aux/vga/notes.txt - 664 sys sys 1028334647 14376
-sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1145906420 33115
+sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1158594482 33114
 sys/src/cmd/aux/vga/palette.c - 664 sys sys 1014925010 2201
 sys/src/cmd/aux/vga/pci.c - 664 sys sys 1014925011 8659
 sys/src/cmd/aux/vga/pci.h - 664 sys sys 1014925011 3290
@@ -13624,11 +13624,11 @@ sys/src/cmd/vac/source.c - 664 sys sys 1039797584 6723
 sys/src/cmd/vac/srcload.c - 664 sys sys 1036024047 4925
 sys/src/cmd/vac/stdinc.h - 664 sys sys 1036006059 121
 sys/src/cmd/vac/util.c - 664 sys sys 1019678787 930
-sys/src/cmd/vac/vac.c - 664 sys sys 1036470170 23082
+sys/src/cmd/vac/vac.c - 664 sys sys 1158618260 23102
 sys/src/cmd/vac/vac.h - 664 sys sys 1091904424 3598
 sys/src/cmd/vac/vacfs.c - 664 sys sys 1134305451 13635
 sys/src/cmd/vac/vactest.c - 664 sys sys 1036024047 2742
-sys/src/cmd/vac/vtdump.c - 664 sys sys 1036006056 7170
+sys/src/cmd/vac/vtdump.c - 664 sys sys 1158618245 7166
 sys/src/cmd/vac/vtread.c - 664 sys sys 1019678788 2052
 sys/src/cmd/vac/wtest.c - 664 sys sys 1019678788 766
 sys/src/cmd/vc - 20000000775 sys sys 947099614 0
@@ -13658,7 +13658,7 @@ sys/src/cmd/venti/clumpstats.c - 664 sys sys 1055707430 2239
 sys/src/cmd/venti/conf.rc - 775 sys sys 1055707446 1416
 sys/src/cmd/venti/config.c - 664 sys sys 1138471074 4930
 sys/src/cmd/venti/conv.c - 664 sys sys 1019678878 8202
-sys/src/cmd/venti/copy.c - 664 sys sys 1055707434 3517
+sys/src/cmd/venti/copy.c - 664 sys sys 1158618908 3713
 sys/src/cmd/venti/dat.h - 664 sys sys 1132452191 15346
 sys/src/cmd/venti/dcache.c - 664 sys sys 1019678878 7374
 sys/src/cmd/venti/dump.c - 664 sys sys 1068520313 1578
@@ -14118,7 +14118,7 @@ sys/src/libauthsrv/mkfile - 664 sys sys 1035389776 409
 sys/src/libauthsrv/nvcsum.c - 664 sys sys 1015091654 192
 sys/src/libauthsrv/opasstokey.c - 664 sys sys 1015091654 448
 sys/src/libauthsrv/passtokey.c - 664 sys sys 1143695654 488
-sys/src/libauthsrv/readnvram.c - 664 sys sys 1143695645 8769
+sys/src/libauthsrv/readnvram.c - 664 sys sys 1158593647 8945
 sys/src/libbin - 20000000775 sys sys 984777332 0
 sys/src/libbin/bin.c - 664 sys sys 1135487932 1829
 sys/src/libbin/mkfile - 664 sys sys 1035389776 197
