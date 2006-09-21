@@ -27948,3 +27948,7 @@
 1158620506 7 c sys/src/cmd/vac/vtdump.c - 664 sys sys 1158618245 7166
 1158620506 8 c sys/src/cmd/venti/copy.c - 664 sys sys 1158618908 3713
 1158620506 9 c sys/src/libauthsrv/readnvram.c - 664 sys sys 1158593647 8945
+1158804101 0 a rc/bin/uncompress - 775 sys sys 1158798931 30
+1158804101 1 a sys/man/1/mug - 664 sys sys 1158800370 1424
+1158804101 2 c sys/src/9/pc/mkfile - 664 sys sys 1158794206 4004
+1158804101 3 c sys/src/9/pc/uartaxp.c - 664 sys sys 1158803840 18862
