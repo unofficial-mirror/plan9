@@ -27959,3 +27959,4 @@
 1158892305 4 c sys/src/cmd/scuzz/scuzz.c - 664 sys sys 1158891727 38135
 1158980570 0 c sys/src/9/port/devfs.c - 664 sys sys 1158979963 10897
 1159039898 0 c sys/src/cmd/dd.c - 664 sys sys 1158983783 11831
+1159151513 0 c sys/src/cmd/compress/compress.c - 664 sys sys 1159150971 31929
