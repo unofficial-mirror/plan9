@@ -27978,3 +27978,4 @@
 1159471907 15 c sys/man/8/ventiaux - 664 sys sys 1159419552 10571
 1159471907 16 c sys/src/cmd/file.c - 664 sys sys 1159419571 28106
 1159551101 0 c sys/man/6/mhtml - 664 sys sys 1159550638 1714
+1159666307 0 c sys/src/cmd/aux/cddb.c - 664 sys sys 1159664477 4676
