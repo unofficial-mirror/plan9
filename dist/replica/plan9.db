@@ -7406,6 +7406,7 @@ sys/src/9/mtx/raven.c - 664 sys sys 1018721288 2587
 sys/src/9/mtx/trap.c - 664 sys sys 1105030157 15882
 sys/src/9/mtx/uarti8250.c - 664 sys sys 1018721288 11590
 sys/src/9/pc - 20000000775 sys sys 1018721225 0
+sys/src/9/pc/a100p.cp - 444 sys sys 1159735144 21984
 sys/src/9/pc/apbootstrap.s - 664 sys sys 1131293655 3037
 sys/src/9/pc/apic.c - 664 sys sys 1131290206 8748
 sys/src/9/pc/apm.c - 664 sys sys 1131290210 3723
