@@ -27980,3 +27980,4 @@
 1159551101 0 c sys/man/6/mhtml - 664 sys sys 1159550638 1714
 1159666307 0 c sys/src/cmd/aux/cddb.c - 664 sys sys 1159664477 4676
 1159736502 0 a sys/src/9/pc/a100p.cp - 444 sys sys 1159735144 21984
+1159822912 0 c sys/src/9/port/devuart.c - 664 sys sys 1159822860 12193
