@@ -27981,3 +27981,10 @@
 1159666307 0 c sys/src/cmd/aux/cddb.c - 664 sys sys 1159664477 4676
 1159736502 0 a sys/src/9/pc/a100p.cp - 444 sys sys 1159735144 21984
 1159822912 0 c sys/src/9/port/devuart.c - 664 sys sys 1159822860 12193
+1160103702 0 c sys/man/8/dhcpd - 664 sys sys 1160071627 5460
+1160103702 1 c sys/src/9/pc/ether79c970.c - 664 sys sys 1160070602 14088
+1160103702 2 c sys/src/9/pc/ether8139.c - 664 sys sys 1160066369 18561
+1160103702 3 c sys/src/9/pc/ethervgbe.c - 664 sys sys 1160066496 26838
+1160103702 4 c sys/src/9/pc/ether8169.c - 664 sys sys 1160066369 25393
+1160103702 5 c sys/src/9/pc/etherdp83820.c - 664 sys sys 1160069116 29352
+1160103702 6 c sys/src/cmd/ip/dhcpd/dhcpd.c - 664 sys sys 1160071607 33096
