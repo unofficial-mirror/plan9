@@ -28005,3 +28005,13 @@
 1161140502 6 c sys/src/9/ip/devip.c - 664 sys sys 1161061185 24242
 1161140502 7 c sys/src/9/pc/pci.c - 664 sys sys 1161060538 26986
 1161140502 8 c sys/src/boot/pc/pci.c - 664 sys sys 1161067268 20500
+1161225121 0 c mail/lib/rewrite.direct - 664 upas upas 1161213962 1131
+1161225121 1 c mail/lib/rewrite.gateway - 664 upas upas 1161213989 1164
+1161225121 2 c rc/bin/tel - 775 sys sys 1161209756 128
+1161225121 3 c sys/man/1/tel - 664 sys sys 1161209780 1057
+1161225121 4 c sys/man/2/ndb - 664 sys sys 1161207554 9603
+1161225121 5 c sys/src/9/pc/sdata.c - 664 sys sys 1161214978 52637
+1161225121 6 a sys/src/9/port/systab.h - 664 sys sys 1161222889 3204
+1161225121 7 c sys/src/boot/pc/sdata.c - 664 sys sys 1161214797 38799
+1161225121 8 c sys/src/cmd/upas/smtp/greylist.c - 664 sys sys 1161209057 6546
+1161225121 9 d sys/src/9/pc/uartaxp.i - 664 sys sys 1155522709 0
