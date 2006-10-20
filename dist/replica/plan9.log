@@ -28015,3 +28015,11 @@
 1161225121 7 c sys/src/boot/pc/sdata.c - 664 sys sys 1161214797 38799
 1161225121 8 c sys/src/cmd/upas/smtp/greylist.c - 664 sys sys 1161209057 6546
 1161225121 9 d sys/src/9/pc/uartaxp.i - 664 sys sys 1155522709 0
+1161309743 0 c sys/man/8/plan9.ini - 664 sys sys 1161298588 22787
+1161309743 1 c sys/src/9/pc/pcdisk - 664 sys sys 1161302470 1495
+1161309743 2 c sys/src/9/pc/pcf - 664 sys sys 1161302469 1553
+1161309743 3 c sys/src/9/pc/sdata.c - 664 sys sys 1161230658 52692
+1161309743 4 c sys/src/9/pc/pcfl - 664 sys sys 1161302470 1587
+1161309743 5 c sys/src/boot/pc/bootp.c - 664 sys sys 1161230046 12447
+1161309743 6 c sys/src/boot/pc/sdata.c - 664 sys sys 1161230053 38799
+1161309743 7 c sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1161308327 31702
