@@ -28044,3 +28044,4 @@
 1161486109 18 c sys/src/cmd/yacc.c - 664 sys sys 1161442160 58076
 1161486109 19 c sys/src/libip/readipifc.c - 664 sys sys 1161442538 4247
 1161486109 20 c sys/src/libsec/port/x509.c - 664 sys sys 1161441337 50831
+1161604923 0 c sys/games/lib/fortunes - 664 sys sys 1161603592 261218
