@@ -5239,7 +5239,7 @@ sys/games - 20000000775 sys sys 952648872 0
 sys/games/lib - 20000000775 sys sys 952648879 0
 sys/games/lib/4scores - 10000000666 sys sys 1118680448 0
 sys/games/lib/5scores - 10000000666 sys sys 1118680453 0
-sys/games/lib/fortunes - 664 sys sys 1161603592 261218
+sys/games/lib/fortunes - 664 sys sys 1162243786 261387
 sys/games/lib/mahjongg - 20000000775 sys sys 1095792278 0
 sys/games/lib/mahjongg/backgrounds - 20000000775 sys sys 1095792293 0
 sys/games/lib/mahjongg/backgrounds/default.bit - 664 sys sys 1095792293 346803
@@ -7176,7 +7176,6 @@ sys/man/8/apm - 664 sys sys 1017679308 1811
 sys/man/8/auth - 664 sys sys 1100575042 4226
 sys/man/8/boot - 664 sys sys 1063858248 8362
 sys/man/8/booting - 664 sys sys 1015024984 4136
-sys/man/8/checkarenas - 664 sys sys 1019866709 669
 sys/man/8/cpurc - 664 sys sys 971455510 1275
 sys/man/8/cron - 664 sys sys 1063858596 1867
 sys/man/8/dhcpd - 664 sys sys 1160071627 5460
@@ -7427,7 +7426,7 @@ sys/src/9/pc/devlm78.c - 664 sys sys 1128255048 6291
 sys/src/9/pc/devlml.c - 664 sys sys 1132448361 7502
 sys/src/9/pc/devlml.h - 664 sys sys 1026847636 2948
 sys/src/9/pc/devlpt.c - 664 sys sys 1015014514 4420
-sys/src/9/pc/devpccard.c - 664 sys sys 1153250455 39299
+sys/src/9/pc/devpccard.c - 664 sys sys 1162222267 39301
 sys/src/9/pc/devrtc.c - 664 sys sys 1015014515 7167
 sys/src/9/pc/devtv.c - 664 sys sys 1131290299 45676
 sys/src/9/pc/devusb.c - 664 sys sys 1105193103 18364

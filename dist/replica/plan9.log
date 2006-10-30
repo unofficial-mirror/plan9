@@ -28059,3 +28059,6 @@
 1162139497 10 c sys/src/9/pc/ether8169.c - 664 sys sys 1162138241 25392
 1162139497 11 c sys/src/9/port/xalloc.c - 664 sys sys 1162138307 4277
 1162139497 12 c sys/src/cmd/lp/lp.rc - 775 sys sys 1162105978 5201
+1162243915 0 c sys/games/lib/fortunes - 664 sys sys 1162243786 261387
+1162243915 1 c sys/src/9/pc/devpccard.c - 664 sys sys 1162222267 39301
+1162243915 2 d sys/man/8/checkarenas - 664 sys sys 1019866709 0
