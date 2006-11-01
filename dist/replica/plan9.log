@@ -28062,3 +28062,9 @@
 1162243915 0 c sys/games/lib/fortunes - 664 sys sys 1162243786 261387
 1162243915 1 c sys/src/9/pc/devpccard.c - 664 sys sys 1162222267 39301
 1162243915 2 d sys/man/8/checkarenas - 664 sys sys 1019866709 0
+1162351921 0 c sys/src/cmd/vac/file.c - 664 sys sys 1162350655 19061
+1162351921 1 c sys/src/cmd/vac/fs.c - 664 sys sys 1162327826 2902
+1162351921 2 c sys/src/cmd/vac/source.c - 664 sys sys 1162327879 6767
+1162351921 3 c sys/src/cmd/vac/vac.c - 664 sys sys 1162350579 23803
+1162351921 4 c sys/src/cmd/vac/vacfs.c - 664 sys sys 1162327841 13629
+1162351921 5 c sys/src/cmd/vac/vtdump.c - 664 sys sys 1162327892 7323
