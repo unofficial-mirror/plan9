@@ -7210,7 +7210,7 @@ sys/man/8/pop3 - 664 sys sys 1063854676 2720
 sys/man/8/ppp - 664 sys sys 1125530075 4414
 sys/man/8/prep - 664 sys sys 1152729153 14013
 sys/man/8/qer - 664 sys sys 1067723129 4909
-sys/man/8/reboot - 664 sys sys 969499895 414
+sys/man/8/reboot - 664 sys sys 1162423006 443
 sys/man/8/replica - 664 sys sys 1138479158 6383
 sys/man/8/rsa - 664 sys sys 1057955511 4628
 sys/man/8/scanmail - 664 sys sys 969499895 10803
@@ -7475,7 +7475,7 @@ sys/src/9/pc/memory.c - 664 sys sys 1153172671 18773
 sys/src/9/pc/mkfile - 664 sys sys 1158794206 4004
 sys/src/9/pc/mmu.c - 664 sys sys 1155995596 24115
 sys/src/9/pc/mouse.c - 664 sys sys 1098479254 7057
-sys/src/9/pc/mp.c - 664 sys sys 1146542974 17317
+sys/src/9/pc/mp.c - 664 sys sys 1162388126 17349
 sys/src/9/pc/mp.h - 664 sys sys 1153193597 6795
 sys/src/9/pc/nv_dma.h - 664 sys sys 1081384508 12943
 sys/src/9/pc/pc - 664 sys sys 1143768293 1452
@@ -9172,7 +9172,7 @@ sys/src/cmd/aux/olefs.c - 664 sys sys 1071245775 9853
 sys/src/cmd/aux/pcmcia.c - 664 sys sys 1099761153 9213
 sys/src/cmd/aux/portmap.c - 664 sys sys 1049776133 3617
 sys/src/cmd/aux/rdwr.c - 664 sys sys 1016833876 811
-sys/src/cmd/aux/reboot.c - 664 sys sys 1116769521 1429
+sys/src/cmd/aux/reboot.c - 664 sys sys 1162419091 1533
 sys/src/cmd/aux/searchfs.c - 664 sys sys 1143759348 18163
 sys/src/cmd/aux/statusbar.c - 664 sys sys 1138460096 6066
 sys/src/cmd/aux/stub.c - 664 sys sys 1098196222 2723
@@ -11926,7 +11926,7 @@ sys/src/cmd/ip/snoopy/rtp.c - 664 sys sys 1138463392 1021
 sys/src/cmd/ip/snoopy/tcp.c - 664 sys sys 1144956781 3618
 sys/src/cmd/ip/snoopy/ttls.c - 664 sys sys 1128179540 1451
 sys/src/cmd/ip/snoopy/udp.c - 664 sys sys 1144955685 2015
-sys/src/cmd/ip/telnet.c - 664 sys sys 1143759344 8614
+sys/src/cmd/ip/telnet.c - 664 sys sys 1162416789 8621
 sys/src/cmd/ip/telnet.h - 664 sys sys 1015090250 5902
 sys/src/cmd/ip/telnetd.c - 664 sys sys 1135487948 11772
 sys/src/cmd/ip/tftpd.c - 664 sys sys 1106943821 7646
@@ -13632,7 +13632,7 @@ sys/src/cmd/vac/stdinc.h - 664 sys sys 1036006059 121
 sys/src/cmd/vac/util.c - 664 sys sys 1019678787 930
 sys/src/cmd/vac/vac.c - 664 sys sys 1162350579 23803
 sys/src/cmd/vac/vac.h - 664 sys sys 1091904424 3598
-sys/src/cmd/vac/vacfs.c - 664 sys sys 1162327841 13629
+sys/src/cmd/vac/vacfs.c - 664 sys sys 1162402257 13621
 sys/src/cmd/vac/vactest.c - 664 sys sys 1036024047 2742
 sys/src/cmd/vac/vtdump.c - 664 sys sys 1162327892 7323
 sys/src/cmd/vac/vtread.c - 664 sys sys 1019678788 2052

@@ -28068,3 +28068,8 @@
 1162351921 3 c sys/src/cmd/vac/vac.c - 664 sys sys 1162350579 23803
 1162351921 4 c sys/src/cmd/vac/vacfs.c - 664 sys sys 1162327841 13629
 1162351921 5 c sys/src/cmd/vac/vtdump.c - 664 sys sys 1162327892 7323
+1162441922 0 c sys/man/8/reboot - 664 sys sys 1162423006 443
+1162441922 1 c sys/src/9/pc/mp.c - 664 sys sys 1162388126 17349
+1162441922 2 c sys/src/cmd/aux/reboot.c - 664 sys sys 1162419091 1533
+1162441922 3 c sys/src/cmd/ip/telnet.c - 664 sys sys 1162416789 8621
+1162441922 4 c sys/src/cmd/vac/vacfs.c - 664 sys sys 1162402257 13621
