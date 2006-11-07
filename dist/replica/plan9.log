@@ -28073,3 +28073,5 @@
 1162441922 2 c sys/src/cmd/aux/reboot.c - 664 sys sys 1162419091 1533
 1162441922 3 c sys/src/cmd/ip/telnet.c - 664 sys sys 1162416789 8621
 1162441922 4 c sys/src/cmd/vac/vacfs.c - 664 sys sys 1162402257 13621
+1162872101 0 c sys/src/9/pc/uartpci.c - 664 sys sys 1162859151 3617
+1162872101 1 c sys/src/cmd/auth/lib/getexpiration.c - 664 sys sys 1162844529 1574
