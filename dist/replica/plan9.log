@@ -28090,3 +28090,6 @@
 1162960379 12 c sys/src/cmd/vac/file.c - 664 sys sys 1162951640 19943
 1162960379 13 c sys/src/cmd/vac/vtdump.c - 664 sys sys 1162951782 8007
 1162960379 14 c sys/src/cmd/vac/vtread.c - 664 sys sys 1162951740 2016
+1163044904 0 c sys/man/2/wait - 664 sys sys 1163004064 2525
+1163044904 1 c sys/src/9/port/devsrv.c - 664 sys sys 1163030369 5728
+1163044904 2 c sys/src/cmd/mv.c - 664 sys sys 1163029439 4682
