@@ -28093,3 +28093,4 @@
 1163044904 0 c sys/man/2/wait - 664 sys sys 1163004064 2525
 1163044904 1 c sys/src/9/port/devsrv.c - 664 sys sys 1163030369 5728
 1163044904 2 c sys/src/cmd/mv.c - 664 sys sys 1163029439 4682
+1163107913 0 c sys/games/lib/fortunes - 664 sys sys 1163106189 261686
