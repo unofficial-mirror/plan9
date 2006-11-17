@@ -28104,3 +28104,6 @@
 1163210506 7 c sys/src/cmd/ndb/cs.c - 664 sys sys 1163208617 33080
 1163363498 0 c sys/src/cmd/ls.c - 664 sys sys 1163342173 5715
 1163475106 0 c sys/src/libc/port/pool.c - 664 sys sys 1143695534 31040
+1163723544 0 c sys/src/cmd/usb/lib/dump.c - 664 sys sys 1163722010 12983
+1163723544 1 c sys/src/cmd/usb/lib/usb.h - 664 sys sys 1163721974 7129
+1163723544 2 c sys/src/cmd/usb/misc/usbmouse.c - 664 sys sys 1163722035 3603
