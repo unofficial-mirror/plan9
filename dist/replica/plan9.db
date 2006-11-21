@@ -7069,7 +7069,7 @@ sys/man/3/srv - 664 sys sys 958419690 1470
 sys/man/3/ssl - 664 sys sys 1018386776 3413
 sys/man/3/tls - 664 sys sys 1045501496 7018
 sys/man/3/uart - 664 sys sys 1138191356 2003
-sys/man/3/usb - 664 sys sys 1143567502 6941
+sys/man/3/usb - 664 sys sys 1164149393 6960
 sys/man/3/vga - 664 sys sys 1131301005 4957
 sys/man/4 - 20000000775 sys sys 1018581459 0
 sys/man/4/0intro - 664 sys sys 944959699 472
@@ -7109,8 +7109,8 @@ sys/man/4/tapefs - 664 sys sys 1140965924 1861
 sys/man/4/telco - 664 sys sys 1015024814 4359
 sys/man/4/u9fs - 664 sys sys 1043769139 4748
 sys/man/4/upasfs - 664 sys sys 1034348505 6212
-sys/man/4/usb - 664 sys sys 1127204688 4546
-sys/man/4/usbd - 664 sys sys 1018386778 731
+sys/man/4/usb - 664 sys sys 1164149417 4643
+sys/man/4/usbd - 664 sys sys 1164149441 712
 sys/man/4/vacfs - 664 sys sys 1084333062 1545
 sys/man/4/webcookies - 664 sys sys 1019828742 3525
 sys/man/4/webfs - 664 sys sys 1124711926 6518
@@ -9402,7 +9402,7 @@ sys/src/cmd/cpp/mkfile - 664 sys sys 944960879 178
 sys/src/cmd/cpp/nlist.c - 664 sys sys 1116770041 4645
 sys/src/cmd/cpp/test.c - 664 sys sys 944960879 47
 sys/src/cmd/cpp/tokens.c - 664 sys sys 944960879 6755
-sys/src/cmd/cpu.c - 664 sys sys 1143695295 21126
+sys/src/cmd/cpu.c - 664 sys sys 1164133664 21154
 sys/src/cmd/crop.c - 664 sys sys 1134557476 4137
 sys/src/cmd/date.c - 664 sys sys 944961351 449
 sys/src/cmd/db - 20000000775 sys sys 988249965 0
@@ -9597,7 +9597,7 @@ sys/src/cmd/execnet/main.c - 664 sys sys 1019861330 657
 sys/src/cmd/execnet/mkfile - 664 sys sys 1032059543 208
 sys/src/cmd/execnet/note.c - 664 sys sys 1019855740 2315
 sys/src/cmd/exportfs - 20000000775 sys sys 988249971 0
-sys/src/cmd/exportfs/exportfs.c - 664 sys sys 1145964192 16377
+sys/src/cmd/exportfs/exportfs.c - 664 sys sys 1164133573 16377
 sys/src/cmd/exportfs/exportfs.h - 664 sys sys 1135487971 2809
 sys/src/cmd/exportfs/exportsrv.c - 664 sys sys 1135488028 11946
 sys/src/cmd/exportfs/mkfile - 664 sys sys 1066825703 194
@@ -13597,7 +13597,7 @@ sys/src/cmd/usb/lib/util.c - 664 sys sys 1091204978 523
 sys/src/cmd/usb/misc - 20000000775 sys sys 1091205037 0
 sys/src/cmd/usb/misc/mkfile - 664 sys sys 1091205037 274
 sys/src/cmd/usb/misc/usbmouse.c - 664 sys sys 1163722035 3603
-sys/src/cmd/usb/misc/usbprint - 775 sys sys 1101830683 256
+sys/src/cmd/usb/misc/usbprint - 775 sys sys 1164149479 270
 sys/src/cmd/usb/mkfile - 664 sys sys 1091327562 354
 sys/src/cmd/usb/mouse - 20000000775 sys sys 1017802022 0
 sys/src/cmd/usb/print - 20000000775 sys sys 1073007760 0
