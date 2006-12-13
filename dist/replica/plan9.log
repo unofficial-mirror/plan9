@@ -28154,3 +28154,8 @@
 1165624302 22 c sys/src/9/pc/usb.h - 664 sys sys 1165555430 4257
 1165624302 23 c sys/src/9/pc/usbuhci.c - 664 sys sys 1165555497 31000
 1165811497 0 c sys/src/9/port/devsrv.c - 664 sys sys 1165810571 5711
+1165969899 0 c sys/games/lib/fortunes - 664 sys sys 1165968371 262152
+1165969899 1 c sys/src/cmd/upas/fs/fs.c - 664 sys sys 1165967907 26929
+1165969899 2 c sys/src/cmd/upas/fs/imap4.c - 664 sys sys 1165967944 16484
+1165969899 3 c sys/src/cmd/upas/fs/mbox.c - 664 sys sys 1165967884 27070
+1165969899 4 c sys/src/cmd/upas/fs/plan9.c - 664 sys sys 1165967878 7480
