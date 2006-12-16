@@ -28159,3 +28159,6 @@
 1165969899 2 c sys/src/cmd/upas/fs/imap4.c - 664 sys sys 1165967944 16484
 1165969899 3 c sys/src/cmd/upas/fs/mbox.c - 664 sys sys 1165967884 27070
 1165969899 4 c sys/src/cmd/upas/fs/plan9.c - 664 sys sys 1165967878 7480
+1166248915 0 c sys/src/9/pc/uartaxp.c - 664 sys sys 1166247784 18879
+1166248915 1 c sys/src/9/port/proc.c - 664 sys sys 1166244036 28770
+1166248915 2 c sys/src/cmd/rc/havefork.c - 664 sys sys 1166244119 3482
