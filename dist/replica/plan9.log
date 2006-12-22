@@ -28164,3 +28164,12 @@
 1166248915 2 c sys/src/cmd/rc/havefork.c - 664 sys sys 1166244119 3482
 1166493707 0 c sys/games/lib/fortunes - 664 sys sys 1166491854 262249
 1166493707 1 c sys/src/cmd/rc/havefork.c - 664 sys sys 1166459910 3473
+1166761915 0 c sys/man/1/doc2txt - 664 sys sys 1166761437 2304
+1166761915 1 c sys/man/1/jpg - 664 sys sys 1166760721 4841
+1166761915 2 c sys/src/cmd/aux/msexceltables.c - 664 sys sys 1166761436 14597
+1166761915 3 c sys/src/cmd/file.c - 664 sys sys 1166761867 28088
+1166761915 4 c sys/src/cmd/ip/ipconfig.c - 664 sys sys 1166761782 35168
+1166761915 5 c sys/src/cmd/ip/ping.c - 664 sys sys 1166760556 5721
+1166761915 6 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1166760856 15351
+1166761915 7 c sys/src/cmd/postscript/tr2post/mkfile - 664 sys sys 1166761556 524
+1166761915 8 c sys/src/cmd/postscript/tr2post/tr2post.c - 664 sys sys 1166761555 5371

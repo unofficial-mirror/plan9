@@ -6775,7 +6775,7 @@ sys/man/1/dd - 664 sys sys 1055693436 3346
 sys/man/1/delkey - 664 sys sys 1128483118 779
 sys/man/1/deroff - 664 sys sys 1113743324 1826
 sys/man/1/diff - 664 sys sys 1140694865 3089
-sys/man/1/doc2txt - 664 sys sys 1150036613 1850
+sys/man/1/doc2txt - 664 sys sys 1166761437 2304
 sys/man/1/doctype - 664 sys sys 1113743325 860
 sys/man/1/du - 664 sys sys 1134556965 1358
 sys/man/1/echo - 664 sys sys 1079969656 430
@@ -6803,7 +6803,7 @@ sys/man/1/hoc - 664 sys sys 1136378274 2357
 sys/man/1/htmlroff - 664 sys sys 1138396051 1831
 sys/man/1/idiff - 664 sys sys 1113743324 914
 sys/man/1/join - 664 sys sys 1113743324 2561
-sys/man/1/jpg - 664 sys sys 1145882310 4843
+sys/man/1/jpg - 664 sys sys 1166760721 4841
 sys/man/1/kbmap - 664 sys sys 1159419894 846
 sys/man/1/kill - 664 sys sys 1018369246 1193
 sys/man/1/ktrace - 664 sys sys 957920006 1330
@@ -9162,7 +9162,7 @@ sys/src/cmd/aux/mnihongo/mnihongo.c - 664 sys sys 946759402 6406
 sys/src/cmd/aux/mnihongo/tmac.nihongo - 664 sys sys 944960789 22
 sys/src/cmd/aux/mouse.c - 664 sys sys 1063855425 7049
 sys/src/cmd/aux/ms2.c - 664 sys sys 1124305056 3153
-sys/src/cmd/aux/msexceltables.c - 664 sys sys 1143759349 14023
+sys/src/cmd/aux/msexceltables.c - 664 sys sys 1166761436 14597
 sys/src/cmd/aux/mswordstrings.c - 664 sys sys 952201344 5767
 sys/src/cmd/aux/na - 20000000775 sys sys 955036627 0
 sys/src/cmd/aux/na/mkfile - 664 sys sys 955036627 121
@@ -9639,7 +9639,7 @@ sys/src/cmd/fax/receiverc - 775 sys sys 944960990 581
 sys/src/cmd/fax/send.c - 664 sys sys 944960990 923
 sys/src/cmd/fax/subr.c - 664 sys sys 1015090401 1245
 sys/src/cmd/fcp.c - 664 sys sys 1136651872 3799
-sys/src/cmd/file.c - 664 sys sys 1159419571 28106
+sys/src/cmd/file.c - 664 sys sys 1166761867 28088
 sys/src/cmd/fmt.c - 664 sys sys 1137603598 4078
 sys/src/cmd/fortune.c - 664 sys sys 1072729222 1779
 sys/src/cmd/fossil - 20000000775 sys sys 1042005512 0
@@ -11861,10 +11861,10 @@ sys/src/cmd/ip/imap4d/nodes.c - 664 sys sys 1015013077 3173
 sys/src/cmd/ip/imap4d/search.c - 664 sys sys 1015013077 4520
 sys/src/cmd/ip/imap4d/store.c - 664 sys sys 1066317059 1910
 sys/src/cmd/ip/imap4d/utils.c - 664 sys sys 1015013077 2481
-sys/src/cmd/ip/ipconfig.c - 664 sys sys 1161484510 34927
+sys/src/cmd/ip/ipconfig.c - 664 sys sys 1166761782 35168
 sys/src/cmd/ip/measure.c - 664 sys sys 944961011 3733
 sys/src/cmd/ip/mkfile - 664 sys sys 1131110598 1243
-sys/src/cmd/ip/ping.c - 664 sys sys 1139667147 5708
+sys/src/cmd/ip/ping.c - 664 sys sys 1166760556 5721
 sys/src/cmd/ip/ppp - 20000000775 sys sys 988249980 0
 sys/src/cmd/ip/ppp/block.c - 664 sys sys 1015090266 5353
 sys/src/cmd/ip/ppp/compress.c - 664 sys sys 1072729513 11774
@@ -12144,7 +12144,7 @@ sys/src/cmd/ndb/dblookup.c - 664 sys sys 1143759343 18249
 sys/src/cmd/ndb/dn.c - 664 sys sys 1144952605 28763
 sys/src/cmd/ndb/dnarea.c - 664 sys sys 1121977162 2128
 sys/src/cmd/ndb/dnnotify.c - 664 sys sys 1144952605 3066
-sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1144952604 15346
+sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1166760856 15351
 sys/src/cmd/ndb/dns.c - 664 sys sys 1147098969 15309
 sys/src/cmd/ndb/dns.h - 664 sys sys 1144969092 10171
 sys/src/cmd/ndb/dnsdebug.c - 664 sys sys 1144952604 8492
@@ -12488,13 +12488,13 @@ sys/src/cmd/postscript/tr2post/chartab.c - 664 sys sys 947802032 13688
 sys/src/cmd/postscript/tr2post/conv.c - 664 sys sys 944961072 2478
 sys/src/cmd/postscript/tr2post/devcntl.c - 664 sys sys 984789205 4701
 sys/src/cmd/postscript/tr2post/draw.c - 664 sys sys 984789205 10727
-sys/src/cmd/postscript/tr2post/mkfile - 664 sys sys 953344697 484
+sys/src/cmd/postscript/tr2post/mkfile - 664 sys sys 1166761556 524
 sys/src/cmd/postscript/tr2post/pictures.c - 664 sys sys 952627603 9641
 sys/src/cmd/postscript/tr2post/ps_include.c - 664 sys sys 944961072 6050
 sys/src/cmd/postscript/tr2post/ps_include.h - 664 sys sys 944961071 2136
 sys/src/cmd/postscript/tr2post/readDESC.c - 664 sys sys 944961072 3320
 sys/src/cmd/postscript/tr2post/shell.lib - 664 sys sys 944961071 22924
-sys/src/cmd/postscript/tr2post/tr2post.c - 664 sys sys 944961072 5320
+sys/src/cmd/postscript/tr2post/tr2post.c - 664 sys sys 1166761555 5371
 sys/src/cmd/postscript/tr2post/tr2post.h - 664 sys sys 984789206 2373
 sys/src/cmd/postscript/tr2post/utfmap - 664 sys sys 944961071 1172
 sys/src/cmd/postscript/tr2post/utils.c - 664 sys sys 944961072 7135
