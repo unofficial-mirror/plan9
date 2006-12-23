@@ -8665,7 +8665,7 @@ sys/src/cmd/5i/mkfile - 664 sys sys 1124229121 265
 sys/src/cmd/5i/run.c - 664 sys sys 1014924773 18578
 sys/src/cmd/5i/stats.c - 664 sys sys 1067739537 3943
 sys/src/cmd/5i/symbols.c - 664 sys sys 1121977746 1724
-sys/src/cmd/5i/syscall.c - 664 sys sys 1124229122 13686
+sys/src/cmd/5i/syscall.c - 664 sys sys 1166822289 13691
 sys/src/cmd/5l - 20000000775 sys sys 1014936039 0
 sys/src/cmd/5l/asm.c - 664 sys sys 1089299173 32633
 sys/src/cmd/5l/compat.c - 664 sys sys 946759353 465
@@ -8820,7 +8820,7 @@ sys/src/cmd/acme/exec.c - 664 sys sys 1136064450 28267
 sys/src/cmd/acme/file.c - 664 sys sys 1044626079 5717
 sys/src/cmd/acme/fns.h - 664 sys sys 1107154481 2916
 sys/src/cmd/acme/fsys.c - 664 sys sys 1111171699 13097
-sys/src/cmd/acme/look.c - 664 sys sys 1111381048 14210
+sys/src/cmd/acme/look.c - 664 sys sys 1166822365 14203
 sys/src/cmd/acme/mkfile - 664 sys sys 1058463682 543
 sys/src/cmd/acme/regx.c - 664 sys sys 1014926094 16057
 sys/src/cmd/acme/rows.c - 664 sys sys 1103565437 14702
@@ -9215,7 +9215,7 @@ sys/src/cmd/aux/vga/mga4xx.c - 664 sys sys 1158594482 36898
 sys/src/cmd/aux/vga/mkfile - 664 sys sys 1115734903 927
 sys/src/cmd/aux/vga/neomagic.c - 664 sys sys 1104430499 8975
 sys/src/cmd/aux/vga/notes.txt - 664 sys sys 1028334647 14376
-sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1158594482 33114
+sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1166796095 33178
 sys/src/cmd/aux/vga/palette.c - 664 sys sys 1014925010 2201
 sys/src/cmd/aux/vga/pci.c - 664 sys sys 1014925011 8659
 sys/src/cmd/aux/vga/pci.h - 664 sys sys 1014925011 3290
@@ -9397,7 +9397,7 @@ sys/src/cmd/cpp/cpp.h - 664 sys sys 1144691586 4707
 sys/src/cmd/cpp/eval.c - 664 sys sys 1014925275 9892
 sys/src/cmd/cpp/hideset.c - 664 sys sys 944960879 1936
 sys/src/cmd/cpp/include.c - 664 sys sys 959299274 2845
-sys/src/cmd/cpp/lex.c - 664 sys sys 1143759347 13584
+sys/src/cmd/cpp/lex.c - 664 sys sys 1166823021 13582
 sys/src/cmd/cpp/macro.c - 664 sys sys 1144691586 11287
 sys/src/cmd/cpp/mkfile - 664 sys sys 944960879 178
 sys/src/cmd/cpp/nlist.c - 664 sys sys 1116770041 4645
@@ -9407,11 +9407,11 @@ sys/src/cmd/cpu.c - 664 sys sys 1164133664 21154
 sys/src/cmd/crop.c - 664 sys sys 1134557476 4137
 sys/src/cmd/date.c - 664 sys sys 944961351 449
 sys/src/cmd/db - 20000000775 sys sys 988249965 0
-sys/src/cmd/db/command.c - 664 sys sys 1131297926 4377
-sys/src/cmd/db/defs.h - 664 sys sys 1131292957 1700
+sys/src/cmd/db/command.c - 664 sys sys 1166823791 4376
+sys/src/cmd/db/defs.h - 664 sys sys 1166823791 1699
 sys/src/cmd/db/expr.c - 664 sys sys 1131292957 5441
-sys/src/cmd/db/fns.h - 664 sys sys 1131297926 2014
-sys/src/cmd/db/format.c - 664 sys sys 1134305455 6878
+sys/src/cmd/db/fns.h - 664 sys sys 1166823791 2013
+sys/src/cmd/db/format.c - 664 sys sys 1166823791 6877
 sys/src/cmd/db/input.c - 664 sys sys 1016731556 2194
 sys/src/cmd/db/main.c - 664 sys sys 1016731556 3308
 sys/src/cmd/db/mkfile - 664 sys sys 944960880 233
@@ -9523,7 +9523,7 @@ sys/src/cmd/disk/kfs/sub.c - 664 sys sys 1022008488 10804
 sys/src/cmd/disk/kfs/uid.c - 664 sys sys 1143759347 6779
 sys/src/cmd/disk/kfscmd.c - 664 sys sys 1015009135 1109
 sys/src/cmd/disk/mbr.c - 664 sys sys 1080218150 4325
-sys/src/cmd/disk/mkext.c - 664 sys sys 1107957513 5806
+sys/src/cmd/disk/mkext.c - 664 sys sys 1166823931 5805
 sys/src/cmd/disk/mkfile - 664 sys sys 1022385851 500
 sys/src/cmd/disk/mkfs.c - 664 sys sys 1108000852 14697
 sys/src/cmd/disk/prep - 20000000775 sys sys 988249968 0
@@ -9609,7 +9609,7 @@ sys/src/cmd/ext2srv/dat.h - 664 sys sys 1055687746 5275
 sys/src/cmd/ext2srv/errstr.h - 664 sys sys 1055687747 565
 sys/src/cmd/ext2srv/ext2fs.c - 664 sys sys 1055687747 6063
 sys/src/cmd/ext2srv/ext2srv.man - 664 sys sys 1055687747 2409
-sys/src/cmd/ext2srv/ext2subs.c - 664 sys sys 1143759346 38666
+sys/src/cmd/ext2srv/ext2subs.c - 664 sys sys 1166798475 38655
 sys/src/cmd/ext2srv/fns.h - 664 sys sys 1055687748 1803
 sys/src/cmd/ext2srv/iobuf.c - 664 sys sys 1143670611 2864
 sys/src/cmd/ext2srv/mkfile - 664 sys sys 1055687748 194
@@ -11791,7 +11791,7 @@ sys/src/cmd/iostats - 20000000775 sys sys 944962001 0
 sys/src/cmd/iostats/iostats.c - 664 sys sys 1140099908 10209
 sys/src/cmd/iostats/mkfile - 664 sys sys 1014925727 122
 sys/src/cmd/iostats/statfs.h - 664 sys sys 1140099908 2626
-sys/src/cmd/iostats/statsrv.c - 664 sys sys 1135487954 10770
+sys/src/cmd/iostats/statsrv.c - 664 sys sys 1166824341 10773
 sys/src/cmd/ip - 20000000775 sys sys 1015096228 0
 sys/src/cmd/ip/arp.h - 664 sys sys 944961005 751
 sys/src/cmd/ip/dhcp.h - 664 sys sys 1051206271 3368
@@ -11816,7 +11816,7 @@ sys/src/cmd/ip/ftpfs/mkfile - 664 sys sys 1048312050 173
 sys/src/cmd/ip/ftpfs/proto.c - 664 sys sys 1124935667 30337
 sys/src/cmd/ip/glob.c - 664 sys sys 1101155057 3290
 sys/src/cmd/ip/glob.h - 664 sys sys 1101155058 308
-sys/src/cmd/ip/gping.c - 664 sys sys 1015013112 20476
+sys/src/cmd/ip/gping.c - 664 sys sys 1166824873 20476
 sys/src/cmd/ip/hogports.c - 664 sys sys 1118623129 989
 sys/src/cmd/ip/httpd - 20000000775 sys sys 1016902735 0
 sys/src/cmd/ip/httpd/anonymous.c - 664 sys sys 984773807 195
@@ -11948,7 +11948,7 @@ sys/src/cmd/jpg/multichan.c - 664 sys sys 1039753047 825
 sys/src/cmd/jpg/onechan.c - 664 sys sys 1039753044 3732
 sys/src/cmd/jpg/png.c - 664 sys sys 1108939730 4834
 sys/src/cmd/jpg/ppm.c - 664 sys sys 1108852826 4204
-sys/src/cmd/jpg/readbmp.c - 664 sys sys 1105455271 13691
+sys/src/cmd/jpg/readbmp.c - 664 sys sys 1166825626 13711
 sys/src/cmd/jpg/readgif.c - 664 sys sys 1143220941 10472
 sys/src/cmd/jpg/readjpg.c - 664 sys sys 1032060302 33009
 sys/src/cmd/jpg/readpng.c - 664 sys sys 1108852825 10117
@@ -12002,7 +12002,7 @@ sys/src/cmd/ki/run.c - 664 sys sys 944961015 22231
 sys/src/cmd/ki/sparc.h - 664 sys sys 944961015 4419
 sys/src/cmd/ki/stats.c - 664 sys sys 1068859845 4536
 sys/src/cmd/ki/symbols.c - 664 sys sys 1121977746 1745
-sys/src/cmd/ki/syscall.c - 664 sys sys 1124229139 14075
+sys/src/cmd/ki/syscall.c - 664 sys sys 1166822290 14080
 sys/src/cmd/kl - 20000000775 sys sys 944961016 0
 sys/src/cmd/kl/asm.c - 664 sys sys 1105798985 26122
 sys/src/cmd/kl/compat.c - 664 sys sys 947099591 465
@@ -12130,7 +12130,7 @@ sys/src/cmd/mkone - 664 sys sys 1123943673 910
 sys/src/cmd/mksyslib - 664 sys sys 1134390137 665
 sys/src/cmd/mntgen.c - 664 sys sys 1106410349 3630
 sys/src/cmd/mount.c - 664 sys sys 1138061862 1633
-sys/src/cmd/ms2html.c - 664 sys sys 1143695278 41022
+sys/src/cmd/ms2html.c - 664 sys sys 1166823350 41013
 sys/src/cmd/mtime.c - 664 sys sys 1036172302 450
 sys/src/cmd/mug.c - 664 sys sys 1157143847 24888
 sys/src/cmd/mv.c - 664 sys sys 1163029439 4682
@@ -12551,7 +12551,7 @@ sys/src/cmd/qi/qi.c - 664 sys sys 1124229161 7867
 sys/src/cmd/qi/run.c - 664 sys sys 1076688569 4173
 sys/src/cmd/qi/stats.c - 664 sys sys 1076688569 4338
 sys/src/cmd/qi/symbols.c - 664 sys sys 1121978130 1742
-sys/src/cmd/qi/syscall.c - 664 sys sys 1124229161 14420
+sys/src/cmd/qi/syscall.c - 664 sys sys 1166822290 14425
 sys/src/cmd/qi/timing - 664 sys sys 1076688570 641
 sys/src/cmd/ql - 20000000775 sys sys 954037972 0
 sys/src/cmd/ql/asm.c - 664 sys sys 1135487949 13021
@@ -12646,7 +12646,7 @@ sys/src/cmd/sam/cmd.c - 664 sys sys 1132448975 10774
 sys/src/cmd/sam/disk.c - 664 sys sys 1014926938 1988
 sys/src/cmd/sam/error.c - 664 sys sys 1108939612 2222
 sys/src/cmd/sam/errors.h - 664 sys sys 944961628 695
-sys/src/cmd/sam/file.c - 664 sys sys 1045505553 11030
+sys/src/cmd/sam/file.c - 664 sys sys 1166825726 11022
 sys/src/cmd/sam/io.c - 664 sys sys 1111181614 4688
 sys/src/cmd/sam/list.c - 664 sys sys 1133885097 1437
 sys/src/cmd/sam/mesg.c - 664 sys sys 1132448975 14291
@@ -12949,7 +12949,7 @@ sys/src/cmd/troff2html - 20000000775 sys sys 961257241 0
 sys/src/cmd/troff2html/chars.h - 644 sys sys 1105584129 3957
 sys/src/cmd/troff2html/mkfile - 664 sys sys 1105631961 242
 sys/src/cmd/troff2html/troff2html.c - 664 sys sys 1132450028 14280
-sys/src/cmd/tweak.c - 664 sys sys 1143695257 38963
+sys/src/cmd/tweak.c - 664 sys sys 1166822151 38956
 sys/src/cmd/unicode.c - 664 sys sys 944961351 1953
 sys/src/cmd/uniq.c - 664 sys sys 944961351 2236
 sys/src/cmd/units.y - 664 sys sys 1014926801 10979
@@ -13727,7 +13727,7 @@ sys/src/cmd/vi/run.c - 664 sys sys 1134537330 13213
 sys/src/cmd/vi/special.c - 664 sys sys 944961342 6723
 sys/src/cmd/vi/stats.c - 664 sys sys 1067746789 5386
 sys/src/cmd/vi/symbols.c - 664 sys sys 1121977746 1744
-sys/src/cmd/vi/syscall.c - 664 sys sys 1124229128 14183
+sys/src/cmd/vi/syscall.c - 664 sys sys 1166821723 14188
 sys/src/cmd/vi/vi.c - 664 sys sys 1124229128 8989
 sys/src/cmd/vl - 20000000775 sys sys 944961343 0
 sys/src/cmd/vl/asm.c - 664 sys sys 1143293749 31296
@@ -14680,12 +14680,12 @@ sys/src/libgeometry/quaternion.c - 664 sys sys 944961726 5707
 sys/src/libgeometry/transform.c - 664 sys sys 944961726 1995
 sys/src/libgeometry/tstack.c - 664 sys sys 944961726 4716
 sys/src/libhtml - 20000000775 sys sys 1016902547 0
-sys/src/libhtml/build.c - 664 sys sys 1155362319 94787
-sys/src/libhtml/impl.h - 664 sys sys 1021580002 4627
-sys/src/libhtml/lex.c - 664 sys sys 1157899961 28212
+sys/src/libhtml/build.c - 664 sys sys 1166796404 94558
+sys/src/libhtml/impl.h - 664 sys sys 1166796404 4598
+sys/src/libhtml/lex.c - 664 sys sys 1166796404 28136
 sys/src/libhtml/mkfile - 664 sys sys 1035389778 246
 sys/src/libhtml/strinttab.c - 664 sys sys 1016902547 1285
-sys/src/libhtml/utils.c - 664 sys sys 1021580002 9745
+sys/src/libhtml/utils.c - 664 sys sys 1166796403 9579
 sys/src/libhttpd - 20000000775 sys sys 1014930785 0
 sys/src/libhttpd/alloc.c - 664 sys sys 1014930783 600
 sys/src/libhttpd/checkcontent.c - 664 sys sys 1014930783 771
@@ -15135,7 +15135,7 @@ sys/src/libventi/plan9-io.c - 664 sys sys 1135487933 1758
 sys/src/libventi/plan9-sha1.c - 664 sys sys 1045502095 1058
 sys/src/libventi/plan9-thread.c - 664 sys sys 1135487955 6713
 sys/src/libventi/readfully.c - 664 sys sys 1045502095 237
-sys/src/libventi/rpc.c - 664 sys sys 1143695302 7308
+sys/src/libventi/rpc.c - 664 sys sys 1166821900 7296
 sys/src/libventi/scorefmt.c - 664 sys sys 1045502096 255
 sys/src/libventi/server.c - 664 sys sys 1045502096 4507
 sys/src/libventi/session.h - 664 sys sys 1063853749 936
