@@ -28197,3 +28197,5 @@
 1166848313 21 c sys/src/libhtml/lex.c - 664 sys sys 1166796404 28136
 1166848313 22 c sys/src/libhtml/utils.c - 664 sys sys 1166796403 9579
 1166848313 23 c sys/src/libventi/rpc.c - 664 sys sys 1166821900 7296
+1166907704 0 c sys/src/cmd/acme/rows.c - 664 sys sys 1166887151 14708
+1166907704 1 c sys/src/cmd/tapefs/v10fs.c - 664 sys sys 1166887348 4096
