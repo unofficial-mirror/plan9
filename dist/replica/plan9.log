@@ -28200,3 +28200,4 @@
 1166907704 0 c sys/src/cmd/acme/rows.c - 664 sys sys 1166887151 14708
 1166907704 1 c sys/src/cmd/tapefs/v10fs.c - 664 sys sys 1166887348 4096
 1167080511 0 c sys/src/libmp/port/mptoui.c - 664 sys sys 1167066554 438
+1167114695 0 a sys/doc/index.html - 664 sys sys 1019916696 6906
