@@ -28201,3 +28201,10 @@
 1166907704 1 c sys/src/cmd/tapefs/v10fs.c - 664 sys sys 1166887348 4096
 1167080511 0 c sys/src/libmp/port/mptoui.c - 664 sys sys 1167066554 438
 1167114695 0 a sys/doc/index.html - 664 sys sys 1019916696 6906
+1167276728 0 c sys/man/4/usb - 664 sys sys 1167253879 4649
+1167276728 1 c sys/man/8/plan9.ini - 664 sys sys 1167276434 22689
+1167276728 2 c sys/src/cmd/usb/misc/mkfile - 664 sys sys 1167255850 374
+1167276728 3 c sys/src/cmd/usb/misc/usbprint - 775 sys sys 1167253831 314
+1167276728 4 a sys/src/cmd/usb/misc/usbprobe - 775 sys sys 1167253836 173
+1167276728 5 d sys/src/cmd/usb/printer - 20000000775 sys sys 1073007760 0
+1167276728 6 d sys/src/cmd/usb/mouse - 20000000775 sys sys 1017802022 0
