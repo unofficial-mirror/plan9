@@ -6865,7 +6865,7 @@ sys/man/1/split - 664 sys sys 1038183072 1171
 sys/man/1/src - 664 sys sys 954266293 1138
 sys/man/1/ssh - 664 sys sys 1048643947 6622
 sys/man/1/stop - 664 sys sys 944959673 658
-sys/man/1/strings - 664 sys sys 944959675 774
+sys/man/1/strings - 664 sys sys 1167861217 815
 sys/man/1/strip - 664 sys sys 1131293239 523
 sys/man/1/sum - 664 sys sys 984772442 1390
 sys/man/1/syscall - 664 sys sys 1016466457 1439
@@ -12812,7 +12812,7 @@ sys/src/cmd/ssh/sshnet.c - 664 sys sys 1078840016 17641
 sys/src/cmd/ssh/sshserve.c - 664 sys sys 1135487956 5772
 sys/src/cmd/ssh/util.c - 664 sys sys 1154722953 4522
 sys/src/cmd/stats.c - 664 sys sys 1161483503 28084
-sys/src/cmd/strings.c - 664 sys sys 1146317512 1231
+sys/src/cmd/strings.c - 664 sys sys 1167860903 1474
 sys/src/cmd/strip.c - 664 sys sys 1131293244 2502
 sys/src/cmd/sum.c - 664 sys sys 1014926615 5548
 sys/src/cmd/swap.c - 664 sys sys 1014926662 1141

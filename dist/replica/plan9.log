@@ -28220,3 +28220,5 @@
 1167777126 6 c sys/src/9/pc/sdmv50xx.c - 664 sys sys 1167774867 25865
 1167777126 7 c sys/src/9/port/devsd.c - 664 sys sys 1167774805 31099
 1167777126 8 c sys/src/cmd/venti/dumpvacroots - 775 sys sys 1167777001 571
+1167883302 0 c sys/man/1/strings - 664 sys sys 1167861217 815
+1167883302 1 c sys/src/cmd/strings.c - 664 sys sys 1167860903 1474
