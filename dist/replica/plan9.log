@@ -28222,3 +28222,8 @@
 1167777126 8 c sys/src/cmd/venti/dumpvacroots - 775 sys sys 1167777001 571
 1167883302 0 c sys/man/1/strings - 664 sys sys 1167861217 815
 1167883302 1 c sys/src/cmd/strings.c - 664 sys sys 1167860903 1474
+1168054299 0 c sys/games/lib/fortunes - 664 sys sys 1168053975 262351
+1168054299 1 c sys/lib/acid/386 - 664 sys sys 1168035402 3188
+1168054299 2 c sys/src/cmd/acid/builtin.c - 664 sys sys 1168034619 20982
+1168054299 3 c sys/src/cmd/acid/expr.c - 664 sys sys 1168034614 15242
+1168054299 4 c sys/src/libmach/8.c - 664 sys sys 1168034569 2071
