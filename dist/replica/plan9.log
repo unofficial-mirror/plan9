@@ -28283,3 +28283,4 @@
 1168317129 53 c sys/src/libc/386/cycles.s - 664 sys sys 1168306801 207
 1168317129 54 c sys/src/libc/port/pool.c - 664 sys sys 1168306758 30863
 1168317129 55 c sys/src/libc/port/profile.c - 664 sys sys 1168306718 5415
+1168554720 0 c sys/games/lib/fortunes - 664 sys sys 1168553329 262588
