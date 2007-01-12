@@ -28284,3 +28284,7 @@
 1168317129 54 c sys/src/libc/port/pool.c - 664 sys sys 1168306758 30863
 1168317129 55 c sys/src/libc/port/profile.c - 664 sys sys 1168306718 5415
 1168554720 0 c sys/games/lib/fortunes - 664 sys sys 1168553329 262588
+1168633911 0 c sys/src/cmd/sam/file.c - 664 sys sys 1168617774 10670
+1168633911 1 c sys/src/cmd/sam/mesg.c - 664 sys sys 1168617775 14393
+1168633911 2 c sys/src/cmd/sam/rasp.c - 664 sys sys 1168617775 5817
+1168633911 3 c sys/src/cmd/sam/sam.h - 664 sys sys 1168617774 9418
