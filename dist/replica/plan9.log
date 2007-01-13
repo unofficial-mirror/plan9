@@ -28288,3 +28288,14 @@
 1168633911 1 c sys/src/cmd/sam/mesg.c - 664 sys sys 1168617775 14393
 1168633911 2 c sys/src/cmd/sam/rasp.c - 664 sys sys 1168617775 5817
 1168633911 3 c sys/src/cmd/sam/sam.h - 664 sys sys 1168617774 9418
+1168720302 0 c sys/doc/acid.ms - 664 sys sys 1168701270 65160
+1168720302 1 c sys/man/1/2c - 664 sys sys 1168702903 9195
+1168720302 2 c sys/src/cmd/5c/txt.c - 664 sys sys 1168702343 19030
+1168720302 3 c sys/src/cmd/7c/txt.c - 664 sys sys 1168702344 20257
+1168720302 4 c sys/src/cmd/cc/com.c - 664 sys sys 1168702346 22212
+1168720302 5 c sys/src/cmd/cc/pgen.c - 664 sys sys 1168702347 8946
+1168720302 6 c sys/src/cmd/cc/pswt.c - 664 sys sys 1168702348 2219
+1168720302 7 c sys/src/cmd/ip/httpd/httpd.c - 664 sys sys 1168701369 11538
+1168720302 8 c sys/src/cmd/kc/txt.c - 664 sys sys 1168702345 19595
+1168720302 9 c sys/src/cmd/qc/txt.c - 664 sys sys 1168702345 20011
+1168720302 10 c sys/src/cmd/vc/txt.c - 664 sys sys 1168702346 22737
