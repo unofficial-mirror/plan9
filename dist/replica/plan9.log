@@ -28299,3 +28299,7 @@
 1168720302 8 c sys/src/cmd/kc/txt.c - 664 sys sys 1168702345 19595
 1168720302 9 c sys/src/cmd/qc/txt.c - 664 sys sys 1168702345 20011
 1168720302 10 c sys/src/cmd/vc/txt.c - 664 sys sys 1168702346 22737
+1168921908 0 c sys/man/1/leak - 664 sys sys 1168893962 3457
+1168921908 1 c sys/src/cmd/ip/imap4d/msg.c - 664 sys sys 1168894057 31415
+1168921908 2 c sys/src/cmd/ip/imap4d/utils.c - 664 sys sys 1168894057 2587
+1168921908 3 c sys/src/cmd/rc/lex.c - 664 sys sys 1168915241 6199
