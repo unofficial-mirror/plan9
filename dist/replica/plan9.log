@@ -28304,3 +28304,9 @@
 1168921908 2 c sys/src/cmd/ip/imap4d/utils.c - 664 sys sys 1168894057 2587
 1168921908 3 c sys/src/cmd/rc/lex.c - 664 sys sys 1168915241 6199
 1169006532 0 c sys/src/cmd/ip/imap4d/mbox.c - 664 sys sys 1168984478 16991
+1169092989 0 c sys/man/1/rc - 664 sys sys 1169092054 20021
+1169092989 1 c sys/man/1/tar - 664 sys sys 1169092135 3577
+1169092989 2 c sys/man/4/snap - 664 sys sys 1169092032 1908
+1169092989 3 c sys/man/8/ping - 664 sys sys 1169091081 3639
+1169092989 4 c sys/src/cmd/ip/ping.c - 664 sys sys 1169091087 8437
+1169092989 5 c sys/src/cmd/tar.c - 664 sys sys 1169092124 25725
