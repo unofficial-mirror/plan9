@@ -28310,3 +28310,11 @@
 1169092989 3 c sys/man/8/ping - 664 sys sys 1169091081 3639
 1169092989 4 c sys/src/cmd/ip/ping.c - 664 sys sys 1169091087 8437
 1169092989 5 c sys/src/cmd/tar.c - 664 sys sys 1169092124 25725
+1169181244 0 c sys/man/8/ping - 664 sys sys 1169105315 3650
+1169181244 1 c sys/src/cmd/ip/dhcpd/mkfile - 664 sys sys 1169162185 443
+1169181244 2 c sys/src/cmd/ip/dhcpd/ping.c - 664 sys sys 1169162185 1163
+1169181244 3 c sys/src/cmd/ip/gping.c - 664 sys sys 1169165326 19784
+1169181244 4 a sys/src/cmd/ip/icmp.h - 664 sys sys 1169162039 1563
+1169181244 5 c sys/src/cmd/ip/mkfile - 664 sys sys 1169163575 1250
+1169181244 6 c sys/src/cmd/ip/ping.c - 664 sys sys 1169162049 9673
+1169181244 7 c sys/src/cmd/ip/traceroute.c - 664 sys sys 1169162086 8637
