@@ -7056,7 +7056,7 @@ sys/man/3/ether - 664 sys sys 984709635 2563
 sys/man/3/floppy - 664 sys sys 954378905 881
 sys/man/3/fs - 664 sys sys 1165622643 2702
 sys/man/3/i82365 - 664 sys sys 954378906 884
-sys/man/3/ip - 664 sys sys 1169494390 21816
+sys/man/3/ip - 664 sys sys 1169599032 22614
 sys/man/3/kbmap - 664 sys sys 1131110122 1732
 sys/man/3/kprof - 664 sys sys 1018029972 1377
 sys/man/3/loopback - 664 sys sys 964662153 1995
@@ -14721,7 +14721,7 @@ sys/src/libip/mkfile - 664 sys sys 1065576347 320
 sys/src/libip/myetheraddr.c - 664 sys sys 1066515138 837
 sys/src/libip/myipaddr.c - 664 sys sys 1069766545 841
 sys/src/libip/parseether.c - 664 sys sys 944961726 318
-sys/src/libip/parseip.c - 664 sys sys 950104689 2130
+sys/src/libip/parseip.c - 664 sys sys 1169595542 2429
 sys/src/libip/ptclbsum.c - 664 sys sys 1132452948 1160
 sys/src/libip/readipifc.c - 664 sys sys 1161442538 4247
 sys/src/libip/testreadipifc.c - 664 sys sys 1021580003 400

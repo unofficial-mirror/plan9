@@ -28340,3 +28340,5 @@
 1169499705 17 c sys/src/9/port/devenv.c - 664 sys sys 1169498893 7015
 1169499705 18 c sys/src/9/port/xalloc.c - 664 sys sys 1169491770 4289
 1169499705 19 c sys/src/9/ppc/mmu.c - 664 sys sys 1169491797 5142
+1169613101 0 c sys/man/3/ip - 664 sys sys 1169599032 22614
+1169613101 1 c sys/src/libip/parseip.c - 664 sys sys 1169595542 2429
