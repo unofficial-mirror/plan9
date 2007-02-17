@@ -28365,3 +28365,5 @@
 1171233472 1 c sys/games/lib/fortunes - 664 sys sys 1171231680 263238
 1171323145 0 c sys/src/9/pc/sdmylex.c - 664 sys sys 1171321627 28237
 1171567955 0 c sys/man/8/scuzz - 664 sys sys 1171566796 8701
+1171670508 0 c sys/man/2/atof - 664 sys sys 1171668702 2778
+1171670508 1 c sys/src/9/boot/mkboot - 775 sys sys 1171608307 1935
