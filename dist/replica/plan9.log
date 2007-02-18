@@ -28383,3 +28383,7 @@
 1171762331 13 c sys/src/cmd/auth/factotum/p9cr.c - 664 sys sys 1171690104 6721
 1171762331 14 c sys/src/cmd/auth/factotum/p9sk1.c - 664 sys sys 1171690098 9802
 1171762331 15 c sys/src/libauthsrv/readnvram.c - 664 sys sys 1171690274 10057
+1171830707 0 c sys/src/boot/pc/load.c - 664 sys sys 1171784377 9288
+1171830707 1 c sys/src/boot/pc/sdmylex.c - 664 sys sys 1171783051 28694
+1171830707 2 c sys/src/cmd/cfs/cfs.c - 664 sys sys 1171785255 16484
+1171830707 3 c sys/src/libauthsrv/readnvram.c - 664 sys sys 1171777600 10170

@@ -8549,7 +8549,7 @@ sys/src/boot/pc/kfs.h - 664 sys sys 1032215924 861
 sys/src/boot/pc/kfsboot.c - 664 sys sys 1032215914 4788
 sys/src/boot/pc/l.s - 664 sys sys 1130887225 18115
 sys/src/boot/pc/lib.h - 664 sys sys 1135487939 2796
-sys/src/boot/pc/load.c - 664 sys sys 1135487939 8923
+sys/src/boot/pc/load.c - 664 sys sys 1171784377 9288
 sys/src/boot/pc/mbr.s - 664 sys sys 1015007953 6234
 sys/src/boot/pc/mem.h - 664 sys sys 1130887225 3371
 sys/src/boot/pc/memory.c - 664 sys sys 1019533021 10272
@@ -8569,7 +8569,7 @@ sys/src/boot/pc/sd.h - 664 sys sys 1153333456 2244
 sys/src/boot/pc/sd53c8xx.c - 664 sys sys 1144961191 52127
 sys/src/boot/pc/sd53c8xx.i - 664 sys sys 1015007955 27245
 sys/src/boot/pc/sdata.c - 664 sys sys 1161230053 38799
-sys/src/boot/pc/sdmylex.c - 664 sys sys 1144961191 28693
+sys/src/boot/pc/sdmylex.c - 664 sys sys 1171783051 28694
 sys/src/boot/pc/sdscsi.c - 664 sys sys 1144961224 7006
 sys/src/boot/pc/trap.c - 664 sys sys 1144961191 7499
 sys/src/boot/pc/ureg.h - 664 sys sys 1015007955 550
@@ -9362,7 +9362,7 @@ sys/src/cmd/cfs - 20000000775 sys sys 1015009266 0
 sys/src/cmd/cfs/bcache.c - 664 sys sys 1014925219 2956
 sys/src/cmd/cfs/bcache.h - 664 sys sys 1014925220 797
 sys/src/cmd/cfs/cformat.h - 664 sys sys 1014925220 1404
-sys/src/cmd/cfs/cfs.c - 664 sys sys 1134305455 16526
+sys/src/cmd/cfs/cfs.c - 664 sys sys 1171785255 16484
 sys/src/cmd/cfs/disk.c - 664 sys sys 1134305455 5949
 sys/src/cmd/cfs/disk.h - 664 sys sys 1014925220 467
 sys/src/cmd/cfs/file.c - 664 sys sys 944960876 5124
@@ -14129,7 +14129,7 @@ sys/src/libauthsrv/mkfile - 664 sys sys 1035389776 409
 sys/src/libauthsrv/nvcsum.c - 664 sys sys 1015091654 192
 sys/src/libauthsrv/opasstokey.c - 664 sys sys 1015091654 448
 sys/src/libauthsrv/passtokey.c - 664 sys sys 1143695654 488
-sys/src/libauthsrv/readnvram.c - 664 sys sys 1171690274 10057
+sys/src/libauthsrv/readnvram.c - 664 sys sys 1171777600 10170
 sys/src/libbin - 20000000775 sys sys 984777332 0
 sys/src/libbin/bin.c - 664 sys sys 1135487932 1829
 sys/src/libbin/mkfile - 664 sys sys 1035389776 197
