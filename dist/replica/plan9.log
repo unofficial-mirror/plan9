@@ -28391,3 +28391,14 @@
 1172030501 1 a sys/man/1/col - 664 sys sys 1172005089 962
 1172030501 2 c sys/src/9/boot/bootcache.c - 664 sys sys 1171955975 1608
 1172030501 3 a sys/src/cmd/col.c - 664 sys sys 1172005084 3850
+1172203298 0 c sys/games/lib/fortunes - 664 sys sys 1172125060 263335
+1172203298 1 c sys/src/cmd/cfs/bcache.c - 664 sys sys 1172123361 2964
+1172203298 2 c sys/src/cmd/cfs/cformat.h - 664 sys sys 1172125152 1400
+1172203298 3 c sys/src/cmd/cfs/cfs.c - 664 sys sys 1172123357 16567
+1172203298 4 c sys/src/cmd/cfs/disk.c - 664 sys sys 1172123358 5900
+1172203298 5 c sys/src/cmd/cfs/disk.h - 664 sys sys 1172123358 471
+1172203298 6 c sys/src/cmd/cfs/file.c - 664 sys sys 1172123358 5088
+1172203298 7 c sys/src/cmd/cfs/inode.c - 664 sys sys 1172123357 6939
+1172203298 8 c sys/src/cmd/cfs/stats.h - 664 sys sys 1172123357 931
+1172203298 9 c sys/src/libmach/executable.c - 664 sys sys 1172172965 16228
+1172203298 10 c sys/src/libmach/setmach.c - 664 sys sys 1172172965 2911
