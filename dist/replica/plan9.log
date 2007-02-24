@@ -28402,3 +28402,12 @@
 1172203298 8 c sys/src/cmd/cfs/stats.h - 664 sys sys 1172123357 931
 1172203298 9 c sys/src/libmach/executable.c - 664 sys sys 1172172965 16228
 1172203298 10 c sys/src/libmach/setmach.c - 664 sys sys 1172172965 2911
+1172291498 0 c lib/face/48x48x8/.dict - 664 sys sys 1172265593 2972
+1172291498 1 a lib/face/48x48x8/a/alu.1 - 664 sys sys 1172265619 1719
+1172291498 2 a lib/face/48x48x8/f/faa.1 - 664 sys sys 1172265611 2013
+1172291498 3 a lib/face/48x48x8/r/rit.1 - 664 sys sys 1172264510 1128
+1172291498 4 a lib/face/48x48x8/s/st.1 - 664 sys sys 1172265601 629
+1172291498 5 c sys/src/9/pc/ether83815.c - 664 sys sys 1172259521 26346
+1172291498 6 c sys/src/9/pc/ether8169.c - 664 sys sys 1172259757 25466
+1172291498 7 c sys/src/cmd/hoc/code.c - 664 sys sys 1172257358 10061
+1172291498 8 c sys/src/cmd/primes.c - 664 sys sys 1172257895 2471
