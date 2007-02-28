@@ -28412,3 +28412,9 @@
 1172291498 7 c sys/src/cmd/hoc/code.c - 664 sys sys 1172257358 10061
 1172291498 8 c sys/src/cmd/primes.c - 664 sys sys 1172257895 2471
 1172503900 0 c mail/lib/ignore - 664 upas upas 1172503258 185
+1172680367 0 c sys/src/fs/9netics32.16k/fns.h - 664 sys sys 1172679928 2168
+1172680367 1 c sys/src/fs/9netics64.8k/fns.h - 664 sys sys 1172679928 2168
+1172680367 2 c sys/src/fs/choline/fns.h - 664 sys sys 1172679929 2168
+1172680367 3 c sys/src/fs/emelie/fns.h - 664 sys sys 1172679929 2168
+1172680367 4 c sys/src/fs/fs/fns.h - 664 sys sys 1172679929 2168
+1172680367 5 c sys/src/fs/fs64/fns.h - 664 sys sys 1172679929 2330
