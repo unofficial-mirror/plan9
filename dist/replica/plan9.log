@@ -28487,3 +28487,9 @@
 1173061902 16 c sys/src/cmd/ndb/mkfile - 664 sys sys 1173059600 1984
 1173061902 17 d sys/src/cmd/ndb/time.c - 664 sys sys 957402055 0
 1173061902 18 d sys/src/cmd/ndb/csgetval.c - 664 sys sys 957402051 0
+1173155509 0 c rc/bin/label - 775 sys sys 1173121903 113
+1173155509 1 c sys/man/8/ndb - 664 sys sys 1173120870 10642
+1173155509 2 c sys/src/cmd/ip/snoopy/dns.c - 664 sys sys 1173130870 7867
+1173155509 3 c sys/src/cmd/ip/snoopy/mkfile - 664 sys sys 1173130906 985
+1173155509 4 c sys/src/cmd/ndb/convM2DNS.c - 664 sys sys 1173118920 10483
+1173155509 5 c sys/src/cmd/ndb/dns.c - 664 sys sys 1173075040 15645
