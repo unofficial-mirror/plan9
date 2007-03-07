@@ -28493,3 +28493,17 @@
 1173155509 3 c sys/src/cmd/ip/snoopy/mkfile - 664 sys sys 1173130906 985
 1173155509 4 c sys/src/cmd/ndb/convM2DNS.c - 664 sys sys 1173118920 10483
 1173155509 5 c sys/src/cmd/ndb/dns.c - 664 sys sys 1173075040 15645
+1173241902 0 c sys/man/2/ip - 664 sys sys 1173239323 7249
+1173241902 1 c sys/man/2/ndb - 664 sys sys 1173239303 9603
+1173241902 2 c sys/src/9/pc/devpccard.c - 664 sys sys 1173225108 39296
+1173241902 3 c sys/src/cmd/ndb/convM2DNS.c - 664 sys sys 1173161431 10636
+1173241902 4 c sys/src/cmd/ndb/dblookup.c - 664 sys sys 1173238983 18199
+1173241902 5 c sys/src/cmd/ndb/dn.c - 664 sys sys 1173239201 32107
+1173241902 6 c sys/src/cmd/ndb/dnnotify.c - 664 sys sys 1173238959 3158
+1173241902 7 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1173240424 20672
+1173241902 8 c sys/src/cmd/ndb/dns.c - 664 sys sys 1173239144 15721
+1173241902 9 c sys/src/cmd/ndb/dns.h - 664 sys sys 1173238977 9967
+1173241902 10 c sys/src/cmd/ndb/dnsdebug.c - 664 sys sys 1173239028 8629
+1173241902 11 c sys/src/cmd/ndb/dnstcp.c - 664 sys sys 1173239020 7698
+1173241902 12 c sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1173239157 5693
+1173241902 13 c sys/src/cmd/ndb/query.c - 664 sys sys 1173239042 1137
