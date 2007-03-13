@@ -28626,3 +28626,11 @@
 1173756705 41 c sys/src/fs/port/time.c - 664 sys sys 1173736121 6443
 1173756705 42 c sys/src/libc/9syscall/mkfile - 664 sys sys 1173737379 2800
 1173756705 43 c sys/src/libndb/ndbopen.c - 664 sys sys 1173737251 2717
+1173814303 0 c sys/lib/acid/arm - 664 sys sys 1173788243 2090
+1173814303 1 c sys/src/9/alphapc/mmu.c - 664 sys sys 1173788325 5218
+1173814303 2 c sys/src/9/bitsy/fpiarm.c - 664 sys sys 1173788243 9402
+1173814303 3 c sys/src/9/mtx/mkfile - 664 sys sys 1173788325 1612
+1173814303 4 c sys/src/9/mtx/mmu.c - 664 sys sys 1173788325 4695
+1173814303 5 c sys/src/9/port/portmkfile - 664 sys sys 1173788325 2069
+1173814303 6 c sys/src/cmd/aux/listen.c - 664 sys sys 1173762441 9291
+1173814303 7 c sys/src/libmach/5obj.c - 664 sys sys 1173788325 2268
