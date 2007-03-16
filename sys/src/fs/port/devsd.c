@@ -12,11 +12,11 @@
 
 #define parttrace 0
 
-extern SDifc sdataifc; // , sdmv50xxifc;
+extern SDifc sdataifc, sdmv50xxifc;
 
 SDifc* sdifc[] = {
 	&sdataifc,
-//	&sdmv50xxifc,
+	&sdmv50xxifc,
 	nil,
 };
 
@@ -249,7 +249,7 @@ _sdinit(void)
 		else
 			sdlist = sdev;
 		for(tail = sdev; tail->next != nil; tail = tail->next){
-			sdev->index = sdnunit;
+			tail->index = sdnunit;
 			sdnunit += tail->nunit;
 		}
 		tail->index = sdnunit;
