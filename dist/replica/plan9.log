@@ -28635,3 +28635,5 @@
 1173814303 6 c sys/src/cmd/aux/listen.c - 664 sys sys 1173762441 9291
 1173814303 7 c sys/src/libmach/5obj.c - 664 sys sys 1173788325 2268
 1173907913 0 d sys/src/cmd/replica/proto.c - 664 sys sys 1081202238 0
+1174019510 0 c sys/man/8/plan9.ini - 664 sys sys 1173993823 22729
+1174019510 1 c sys/src/9/pc/etherga620.c - 664 sys sys 1174018926 29882
