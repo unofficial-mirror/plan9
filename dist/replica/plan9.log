@@ -28653,3 +28653,5 @@
 1174278700 3 c sys/src/cmd/aquarela/smbtrans2query.c - 664 sys sys 1174276975 8262
 1174451510 0 c sys/man/3/fs - 664 sys sys 1174450141 2894
 1174451510 1 c sys/src/9/pc/apic.c - 664 sys sys 1174415344 8991
+1174530715 0 c sys/src/cmd/ip/snoopy/dns.c - 664 sys sys 1144956382 7867
+1174530715 1 c sys/src/cmd/ip/snoopy/mkfile - 664 sys sys 1144954564 985
