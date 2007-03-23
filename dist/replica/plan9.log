@@ -28655,3 +28655,10 @@
 1174451510 1 c sys/src/9/pc/apic.c - 664 sys sys 1174415344 8991
 1174530715 0 c sys/src/cmd/ip/snoopy/dns.c - 664 sys sys 1144956382 7867
 1174530715 1 c sys/src/cmd/ip/snoopy/mkfile - 664 sys sys 1144954564 985
+1174615313 0 c sys/src/9/pc/archmp.c - 664 sys sys 1174614168 2407
+1174615313 1 a sys/src/9/pc/etherm10g.c - 664 sys sys 1174595240 27681
+1174615313 2 a sys/src/9/pc/etherm10g2k.i - 664 sys sys 1174590427 957485
+1174615313 3 a sys/src/9/pc/etherm10g4k.i - 664 sys sys 1174590430 926959
+1174615313 4 a sys/src/fs/pc/etherm10g.c - 664 sys sys 1174594317 25743
+1174615313 5 a sys/src/fs/pc/etherm10g2k.i - 664 sys sys 1174590598 36
+1174615313 6 a sys/src/fs/pc/etherm10g4k.i - 664 sys sys 1174590598 36
