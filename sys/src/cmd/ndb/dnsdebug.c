@@ -10,22 +10,20 @@ enum {
 	Maxrequest=		128,
 };
 
-extern int inside;
+Cfg cfg;
 
 static char *servername;
 static RR *serverrr;
 static RR *serveraddrs;
 
-int	cachedb;
 char	*dbfile;
 int	debug;
 uchar	ipaddr[IPaddrlen];	/* my ip address */
-char	*logfile = "dns";
-int	maxage  = 60;
+char	*logfile = "dnsdebug";
+int	maxage  = 60*60;
 char	mntpt[Maxpath];
 int	needrefresh;
 ulong	now;
-int	resolver;
 int	testing;
 char	*trace;
 int	traceactivity;
@@ -54,14 +52,14 @@ main(int argc, char *argv[])
 	char *f[4];
 
 	strcpy(mntpt, "/net");
-	inside = 1;
+	cfg.inside = 1;
 
 	ARGBEGIN{
 	case 'f':
 		dbfile = EARGF(usage());
 		break;
 	case 'r':
-		resolver = 1;
+		cfg.resolver = 1;
 		break;
 	case 'x':
 		dbfile = "/lib/ndb/external";
@@ -71,14 +69,14 @@ main(int argc, char *argv[])
 		usage();
 	}ARGEND
 
-	now = time(0);
+	now = time(nil);
 	dninit();
 	fmtinstall('R', prettyrrfmt);
 	if(myipaddr(ipaddr, mntpt) < 0)
 		sysfatal("can't read my ip address");
 	opendatabase();
 
-	if(resolver)
+	if(cfg.resolver)
 		squirrelserveraddrs();
 
 	debug = 1;
@@ -185,6 +183,11 @@ prettyrrfmt(Fmt *f)
 			rp->soa->refresh, rp->soa->retry,
 			rp->soa->expire, rp->soa->minttl);
 		break;
+	case Tsrv:
+		seprint(p, e, "\t%ud %ud %ud %s",
+			rp->srv->pri, rp->srv->weight, rp->srv->port,
+			rp->srv->target->name);
+		break;
 	case Tnull:
 		seprint(p, e, "\t%.*H", rp->null->dlen, rp->null->data);
 		break;
@@ -256,12 +259,11 @@ logreply(int id, uchar *addr, DNSmsg *mp)
 	}
 
 	print("%d: rcvd %s from %I (%s%s%s%s%s)\n", id, resp, addr,
-		mp->flags & Fauth ? "authoritative" : "",
-		mp->flags & Ftrunc ? " truncated" : "",
-		mp->flags & Frecurse ? " recurse" : "",
-		mp->flags & Fcanrec ? " can_recurse" : "",
-		mp->flags & (Fauth|Rname) == (Fauth|Rname) ?
-		" nx" : "");
+		mp->flags & Fauth? "authoritative": "",
+		mp->flags & Ftrunc? " truncated": "",
+		mp->flags & Frecurse? " recurse": "",
+		mp->flags & Fcanrec? " can_recurse": "",
+		(mp->flags & (Fauth|Rmask)) == (Fauth|Rname)? " nx": "");
 	for(rp = mp->qd; rp != nil; rp = rp->next)
 		print("\tQ:    %s %s\n", rp->owner->name,
 			rrname(rp->type, buf, sizeof buf));
@@ -301,7 +303,7 @@ squirrelserveraddrs(void)
 	Request req;
 
 	/* look up the resolver address first */
-	resolver = 0;
+	cfg.resolver = 0;
 	debug = 0;
 	if(serveraddrs)
 		rrfreelist(serveraddrs);
@@ -322,7 +324,7 @@ squirrelserveraddrs(void)
 		while(*l != nil)
 			l = &(*l)->next;
 	}
-	resolver = 1;
+	cfg.resolver = 1;
 	debug = 1;
 }
 
@@ -344,7 +346,7 @@ setserver(char *server)
 	if(servername != nil){
 		free(servername);
 		servername = nil;
-		resolver = 0;
+		cfg.resolver = 0;
 	}
 	if(server == nil || *server == 0)
 		return 0;
@@ -352,10 +354,10 @@ setserver(char *server)
 	squirrelserveraddrs();
 	if(serveraddrs == nil){
 		print("can't resolve %s\n", servername);
-		resolver = 0;
+		cfg.resolver = 0;
 	} else
-		resolver = 1;
-	return resolver ? 0 : -1;
+		cfg.resolver = 1;
+	return cfg.resolver? 0: -1;
 }
 
 void
@@ -367,7 +369,7 @@ doquery(char *name, char *tstr)
 	RR *rr, *rp;
 	Request req;
 
-	if(resolver)
+	if(cfg.resolver)
 		preloadserveraddrs();
 
 	/* default to an "ip" request if alpha, "ptr" if numeric */
@@ -454,7 +456,7 @@ docmd(int n, char **f)
 			tmpsrv = 1;
 			break;
 		}
-	} else {
+	} else
 		switch(n){
 		case 2:
 			type = f[1];
@@ -463,7 +465,6 @@ docmd(int n, char **f)
 			name = f[0];
 			break;
 		}
-	}
 
 	if(name == nil)
 		return;

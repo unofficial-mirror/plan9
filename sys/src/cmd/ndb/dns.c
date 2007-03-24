@@ -60,25 +60,21 @@ struct {
 	Mfile	*inuse;		/* active mfile's */
 } mfalloc;
 
-extern int inside, straddle, serve;
-
-int	cachedb;
+Cfg	cfg;
 int	debug;
 uchar	ipaddr[IPaddrlen];	/* my ip address */
 int	maxage = Defmaxage;
 int	mfd[2];
 int	needrefresh;
 ulong	now;
-int	resolver;
 int	sendnotifies;
 int	testing;
 char	*trace;
 int	traceactivity;
 char	*zonerefreshprogram;
 
-char	*LOG;
+char	*logfile = "dns";	/* or "dns.test" */
 char	*dbfile;
-char	*logfile = "dns";
 char	mntpt[Maxpath];
 
 int	fillreply(Mfile*, int);
@@ -139,17 +135,17 @@ main(int argc, char *argv[])
 			target = 100;
 		break;
 	case 'o':
-		straddle = 1;		/* straddle inside & outside networks */
+		cfg.straddle = 1;	/* straddle inside & outside networks */
 		break;
 	case 'r':
-		resolver = 1;
+		cfg.resolver = 1;
 		break;
 	case 'R':
 		norecursion = 1;
 		break;
 	case 's':
-		serve = 1;		/* serve network */
-		cachedb = 1;
+		cfg.serve = 1;		/* serve network */
+		cfg.cachedb = 1;
 		break;
 	case 't':
 		testing = 1;
@@ -166,20 +162,21 @@ main(int argc, char *argv[])
 	USED(argv);
 
 	if(testing)
-		mainmem->flags |= POOL_NOREUSE;
-//	mainmem->flags |= POOL_ANTAGONISM | POOL_PARANOIA;	/* DEBUG */
+		mainmem->flags |= POOL_NOREUSE | POOL_ANTAGONISM;
 	rfork(RFREND|RFNOTEG);
 
-	inside = (*mntpt == '\0' || strcmp(mntpt, "/net") == 0);
+	cfg.inside = (*mntpt == '\0' || strcmp(mntpt, "/net") == 0);
 
 	/* start syslog before we fork */
 	fmtinstall('F', fcallfmt);
 	dninit();
 	if(myipaddr(ipaddr, mntpt) < 0)
 		sysfatal("can't read my ip address");
-
-	syslog(0, logfile, "starting %sdns on %I's %s",
-		(straddle? "straddling ": ""), ipaddr, mntpt);
+	dnslog("starting %s%sdns %s%son %I's %s",
+		(cfg.straddle? "straddling ": ""),
+		(cfg.cachedb? "caching ": ""),
+		(cfg.serve?   "udp server ": ""),
+		(cfg.resolver? "resolver ": ""), ipaddr, mntpt);
 
 	opendatabase();
 
@@ -188,17 +185,19 @@ main(int argc, char *argv[])
 	remove(servefile);
 	mountinit(servefile, mntpt);
 
-	now = time(0);
+	now = time(nil);
 	srand(now*getpid());
 	db2cache(1);
 
-	if(serve)
+	if (cfg.straddle && !seerootns())
+		dnslog("straddle server misconfigured; can't see root name servers");
+	if(cfg.serve)
 		dnudpserver(mntpt);
 	if(sendnotifies)
 		notifyproc();
 
 	io();
-	syslog(0, logfile, "io returned, exiting");
+	dnslog("io returned, exiting");
 	exits(0);
 }
 
@@ -248,7 +247,7 @@ mountinit(char *service, char *mntpt)
 		f = create(service, 1, 0666);
 		if(f < 0)
 			abort(); /* service */;
-		snprint(buf, sizeof(buf), "%d", p[1]);
+		snprint(buf, sizeof buf, "%d", p[1]);
 		if(write(f, buf, strlen(buf)) != strlen(buf))
 			abort(); /* "write %s", service */;
 		close(f);
@@ -295,10 +294,8 @@ freefid(Mfile *mf)
 	for(l = &mfalloc.inuse; *l != nil; l = &(*l)->next)
 		if(*l == mf){
 			*l = mf->next;
-			if(mf->user) {
-				memset(mf->user, 0, sizeof *mf->user); /* cause trouble */
+			if(mf->user)
 				free(mf->user);
-			}
 			memset(mf, 0, sizeof *mf);	/* cause trouble */
 			free(mf);
 			unlock(&mfalloc);
@@ -328,7 +325,7 @@ newjob(void)
 {
 	Job *job;
 
-	job = emalloc(sizeof(*job));
+	job = emalloc(sizeof *job);
 	lock(&joblock);
 	job->next = joblist;
 	joblist = job;
@@ -344,7 +341,7 @@ freejob(Job *job)
 
 	lock(&joblock);
 	for(l = &joblist; *l; l = &(*l)->next)
-		if((*l) == job){
+		if(*l == job){
 			*l = job->next;
 			memset(job, 0, sizeof *job);	/* cause trouble */
 			free(job);
@@ -389,7 +386,7 @@ io(void)
 	for(;;){
 		n = read9pmsg(mfd[0], mdata, sizeof mdata);
 		if(n<=0){
-			syslog(0, logfile, "error reading mntpt: %r");
+			dnslog("error reading mntpt: %r");
 			exits(0);
 		}
 
@@ -400,15 +397,14 @@ io(void)
 		}
 		mf = newfid(job->request.fid, 0);
 		if(debug)
-			syslog(0, logfile, "%F", &job->request);
+			dnslog("%F", &job->request);
 
 		getactivity(&req, 0);
 		req.aborttime = now + Maxreqtm;
 
 		switch(job->request.type){
 		default:
-			syslog(1, logfile, "unknown request type %d",
-				job->request.type);
+			warning("unknown request type %d", job->request.type);
 			break;
 		case Tversion:
 			rversion(job);
@@ -536,7 +532,7 @@ rwalk(Job *job, Mfile *mf)
 	/* else nmf will be nil */
 
 	qid = mf->qid;
-	if(nelems > 0){
+	if(nelems > 0)
 		/* walk fid */
 		for(i=0; i<nelems && i<MAXWELEM; i++){
 			if((qid.type & QTDIR) == 0){
@@ -560,7 +556,6 @@ Found:
 			err = "file does not exist";
 			break;
 		}
-	}
 
 send:
 	if(nmf != nil && (err!=nil || job->reply.nwqid<nelems))
@@ -579,10 +574,9 @@ ropen(Job *job, Mfile *mf)
 
 	err = 0;
 	mode = job->request.mode;
-	if(mf->qid.type & QTDIR){
+	if(mf->qid.type & QTDIR)
 		if(mode)
 			err = "permission denied";
-	}
 	job->reply.qid = mf->qid;
 	job->reply.iounit = 0;
 	sendmsg(job, err);
@@ -613,7 +607,7 @@ rread(Job *job, Mfile *mf)
 	*buf = '\0';
 	job->reply.data = (char*)buf;
 	if(mf->qid.type & QTDIR){
-		clock = time(0);
+		clock = time(nil);
 		if(off == 0){
 			dir.name = "dns";
 			dir.qid.type = QTFILE;
@@ -740,6 +734,7 @@ rwrite(Job *job, Mfile *mf, Request *req)
 		wantsav = 0;
 
 	dncheck(0, 1);
+	status = 0;
 	rp = dnresolve(p, Cin, mf->type, req, 0, 0, Recurse, rooted, &status);
 
 	dncheck(0, 1);
@@ -818,7 +813,7 @@ rstat(Job *job, Mfile *mf)
 	dir.qid = mf->qid;
 	dir.length = 0;
 	dir.uid = dir.gid = dir.muid = mf->user;
-	dir.atime = dir.mtime = time(0);
+	dir.atime = dir.mtime = time(nil);
 	job->reply.nstat = convD2M(&dir, buf, sizeof buf);
 	job->reply.stat = buf;
 	sendmsg(job, 0);
@@ -840,15 +835,14 @@ sendmsg(Job *job, char *err)
 
 	if(err){
 		job->reply.type = Rerror;
-		snprint(ename, sizeof(ename), "dns: %s", err);
+		snprint(ename, sizeof ename, "dns: %s", err);
 		job->reply.ename = ename;
 	}else
 		job->reply.type = job->request.type+1;
 	job->reply.tag = job->request.tag;
 	n = convS2M(&job->reply, mdata, sizeof mdata);
 	if(n == 0){
-		syslog(1, logfile, "sendmsg convS2M of %F returns 0",
-			&job->reply);
+		warning("sendmsg convS2M of %F returns 0", &job->reply);
 		abort();
 	}
 	lock(&joblock);
@@ -857,7 +851,7 @@ sendmsg(Job *job, char *err)
 			sysfatal("mount write");
 	unlock(&joblock);
 	if(debug)
-		syslog(0, logfile, "%F %d", &job->reply, n);
+		dnslog("%F %d", &job->reply, n);
 }
 
 /*
@@ -868,21 +862,20 @@ logreply(int id, uchar *addr, DNSmsg *mp)
 {
 	RR *rp;
 
-	syslog(0, LOG, "%d: rcvd %I flags:%s%s%s%s%s", id, addr,
-		mp->flags & Fauth ? " auth" : "",
-		mp->flags & Ftrunc ? " trunc" : "",
-		mp->flags & Frecurse ? " rd" : "",
-		mp->flags & Fcanrec ? " ra" : "",
-		mp->flags & (Fauth|Rname) == (Fauth|Rname) ?
-		" nx" : "");
+	dnslog("%d: rcvd %I flags:%s%s%s%s%s", id, addr,
+		mp->flags & Fauth? " auth": "",
+		mp->flags & Ftrunc? " trunc": "",
+		mp->flags & Frecurse? " rd": "",
+		mp->flags & Fcanrec? " ra": "",
+		(mp->flags & (Fauth|Rmask)) == (Fauth|Rname)? " nx": "");
 	for(rp = mp->qd; rp != nil; rp = rp->next)
-		syslog(0, LOG, "%d: rcvd %I qd %s", id, addr, rp->owner->name);
+		dnslog("%d: rcvd %I qd %s", id, addr, rp->owner->name);
 	for(rp = mp->an; rp != nil; rp = rp->next)
-		syslog(0, LOG, "%d: rcvd %I an %R", id, addr, rp);
+		dnslog("%d: rcvd %I an %R", id, addr, rp);
 	for(rp = mp->ns; rp != nil; rp = rp->next)
-		syslog(0, LOG, "%d: rcvd %I ns %R", id, addr, rp);
+		dnslog("%d: rcvd %I ns %R", id, addr, rp);
 	for(rp = mp->ar; rp != nil; rp = rp->next)
-		syslog(0, LOG, "%d: rcvd %I ar %R", id, addr, rp);
+		dnslog("%d: rcvd %I ar %R", id, addr, rp);
 }
 
 void
@@ -890,7 +883,7 @@ logsend(int id, int subid, uchar *addr, char *sname, char *rname, int type)
 {
 	char buf[12];
 
-	syslog(0, LOG, "[%d] %d.%d: sending to %I/%s %s %s",
+	dnslog("[%d] %d.%d: sending to %I/%s %s %s",
 		getpid(), id, subid, addr, sname, rname,
 		rrname(type, buf, sizeof buf));
 }

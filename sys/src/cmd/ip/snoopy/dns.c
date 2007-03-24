@@ -353,8 +353,14 @@ freealldn(void)
 
 ulong now = 0;
 
+void
+dnslog(char *fmt, ...)			/* don't log */
+{
+	USED(fmt);
+}
+
 /*************************************************
- * Everything below here is copied from /sys/src/cmd/ndb/dn.c
+ * Everything below here is copied from /sys/src/cmd/ndb/dns.c
  * without modification and can be recopied to update.
  */
 

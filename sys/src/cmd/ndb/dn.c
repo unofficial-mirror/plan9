@@ -313,7 +313,7 @@ dnageall(int doit)
 	}
 
 	if(dnvars.names >= target) {
-		syslog(0, "dns", "more names (%lud) than target (%lud)",
+		dnslog("more names (%lud) than target (%lud)",
 			dnvars.names, target);
 		dnvars.oldest /= 2;
 	}
@@ -349,6 +349,7 @@ dnageall(int doit)
 				case Tmd:
 				case Tmf:
 				case Tns:
+				case Tmx:
 					REF(rp->host);
 					break;
 				case Tmg:
@@ -363,9 +364,6 @@ dnageall(int doit)
 					REF(rp->rmb);
 					REF(rp->rp);
 					break;
-				case Tmx:
-					REF(rp->host);
-					break;
 				case Ta:
 				case Taaaa:
 					REF(rp->ip);
@@ -376,6 +374,9 @@ dnageall(int doit)
 				case Tsoa:
 					REF(rp->host);
 					REF(rp->rmb);
+					break;
+				case Tsrv:
+					REF(rp->srv->target);
 					break;
 				}
 			}
@@ -395,7 +396,7 @@ dnageall(int doit)
 				if (canqlock(&dp->querylck))
 					qunlock(&dp->querylck);
 				else
-					syslog(0, "dns",
+					dnslog(
 				    "dnageall: freeing DN with querylck held");
 				memset(dp, 0, sizeof *dp); /* cause trouble */
 				free(dp);
@@ -480,7 +481,7 @@ getactivity(Request *req, int recursive)
 	int rv;
 
 	if(traceactivity)
-		syslog(0, "dns", "get: %d active by pid %d from %p",
+		dnslog("get: %d active by pid %d from %p",
 			dnvars.active, getpid(), getcallerpc(&req));
 	lock(&dnvars);
 	/*
@@ -489,13 +490,11 @@ getactivity(Request *req, int recursive)
 	 */
 	while(!recursive && dnvars.mutex){
 		unlock(&dnvars);
-		syslog(0, "dns", "get: waiting for dnvars.mutex, pid %d",
-			getpid());
 		sleep(100);			/* was 200 */
 		lock(&dnvars);
 	}
 	rv = ++dnvars.active;
-	now = time(0);
+	now = time(nil);
 	req->id = ++dnvars.id;
 	unlock(&dnvars);
 
@@ -507,7 +506,7 @@ putactivity(int recursive)
 	static ulong lastclean;
 
 	if(traceactivity)
-		syslog(0, "dns", "put: %d active by pid %d",
+		dnslog("put: %d active by pid %d",
 			dnvars.active, getpid());
 	lock(&dnvars);
 	dnvars.active--;
@@ -528,8 +527,6 @@ putactivity(int recursive)
 	dnvars.mutex = 1;
 	while(dnvars.active > 0){
 		unlock(&dnvars);
-		syslog(0, "dns", "put: waiting for dnvars.active==0, pid %d",
-			getpid());
 		sleep(100);		/* was 100 */
 		lock(&dnvars);
 	}
@@ -559,6 +556,7 @@ rrattach1(RR *new, int auth)
 
 	assert(new->magic == RRmagic && !new->cached);
 
+//	dnslog("rrattach1: %s", new->owner->name);
 	if(!new->db)
 		new->expire = new->ttl;
 	else
@@ -651,7 +649,8 @@ rrattach(RR *rp, int auth)
 		rp->next = nil;
 
 		/* avoid any outside spoofing */
-		if(cachedb && !rp->db && inmyarea(rp->owner->name))
+//		dnslog("rrattach: %s", rp->owner->name);
+		if(cfg.cachedb && !rp->db && inmyarea(rp->owner->name))
 			rrfree(rp);
 		else
 			rrattach1(rp, auth);
@@ -675,6 +674,9 @@ rralloc(int type)
 	case Tsoa:
 		rp->soa = emalloc(sizeof(*rp->soa));
 		rp->soa->slaves = nil;
+		break;
+	case Tsrv:
+		rp->srv = emalloc(sizeof(*rp->srv));
 		break;
 	case Tkey:
 		rp->key = emalloc(sizeof(*rp->key));
@@ -721,26 +723,26 @@ rrfree(RR *rp)
 		memset(rp->soa, 0, sizeof *rp->soa);	/* cause trouble */
 		free(rp->soa);
 		break;
+	case Tsrv:
+		memset(rp->srv, 0, sizeof *rp->srv);	/* cause trouble */
+		free(rp->srv);
+		break;
 	case Tkey:
-		memset(rp->key->data, 0, sizeof *rp->key->data); /* cause trouble */
 		free(rp->key->data);
 		memset(rp->key, 0, sizeof *rp->key);	/* cause trouble */
 		free(rp->key);
 		break;
 	case Tcert:
-		memset(rp->cert->data, 0, sizeof *rp->cert->data); /* cause trouble */
 		free(rp->cert->data);
 		memset(rp->cert, 0, sizeof *rp->cert);	/* cause trouble */
 		free(rp->cert);
 		break;
 	case Tsig:
-		memset(rp->sig->data, 0, sizeof *rp->sig->data); /* cause trouble */
 		free(rp->sig->data);
 		memset(rp->sig, 0, sizeof *rp->sig);	/* cause trouble */
 		free(rp->sig);
 		break;
 	case Tnull:
-		memset(rp->null->data, 0, sizeof *rp->null->data); /* cause trouble */
 		free(rp->null->data);
 		memset(rp->null, 0, sizeof *rp->null);	/* cause trouble */
 		free(rp->null);
@@ -749,7 +751,6 @@ rrfree(RR *rp)
 		while(rp->txt != nil){
 			t = rp->txt;
 			rp->txt = t->next;
-			memset(t->p, 0, sizeof *t->p);	/* cause trouble */
 			free(t->p);
 			memset(t, 0, sizeof *t);	/* cause trouble */
 			free(t);
@@ -779,12 +780,13 @@ rrfreelist(RR *rp)
 RR**
 rrcopy(RR *rp, RR **last)
 {
+	Cert *cert;
+	Key *key;
+	Null *null;
 	RR *nrp;
 	SOA *soa;
-	Key *key;
-	Cert *cert;
 	Sig *sig;
-	Null *null;
+	Srv *srv;
 	Txt *t, *nt, **l;
 
 	nrp = rralloc(rp->type);
@@ -807,6 +809,12 @@ rrcopy(RR *rp, RR **last)
 		nrp->soa = soa;
 		*nrp->soa = *rp->soa;
 		nrp->soa->slaves = copyserverlist(rp->soa->slaves);
+		break;
+	case Tsrv:
+		srv = nrp->srv;
+		*nrp = *rp;
+		nrp->srv = srv;
+		*nrp->srv = *rp->srv;
 		break;
 	case Tkey:
 		key = nrp->key;
@@ -885,7 +893,7 @@ rrlookup(DN *dp, int type, int flag)
 	if(first)
 		goto out;
 
-	/* try for an living authoritative network entry */
+	/* try for a living authoritative network entry */
 	for(rp = dp->rr; rp; rp = rp->next){
 		if(!rp->db)
 		if(rp->auth)
@@ -899,7 +907,7 @@ rrlookup(DN *dp, int type, int flag)
 	if(first)
 		goto out;
 
-	/* try for an living unauthoritative network entry */
+	/* try for a living unauthoritative network entry */
 	for(rp = dp->rr; rp; rp = rp->next){
 		if(!rp->db)
 		if(rp->ttl + 60 > now)
@@ -921,7 +929,7 @@ rrlookup(DN *dp, int type, int flag)
 	if(first)
 		goto out;
 
-	/* otherwise, settle for anything we got (except for negative caches)  */
+	/* otherwise, settle for anything we got (except for negative caches) */
 	for(rp = dp->rr; rp; rp = rp->next)
 		if(tsame(type, rp->type)){
 			if(rp->negative)
@@ -932,6 +940,7 @@ rrlookup(DN *dp, int type, int flag)
 out:
 	unlock(&dnlock);
 	unique(first);
+//	dnslog("rrlookup(%s) -> %#p\t# in-core only", dp->name, first);
 	return first;
 }
 
@@ -1077,6 +1086,7 @@ rrfmt(Fmt *f)
 	RR *rp;
 	Server *s;
 	SOA *soa;
+	Srv *srv;
 	Txt *t;
 
 	fmtstrinit(&fstr);
@@ -1135,6 +1145,12 @@ rrfmt(Fmt *f)
 		if (soa)
 			for(s = soa->slaves; s != nil; s = s->next)
 				fmtprint(&fstr, " %s", s->name);
+		break;
+	case Tsrv:
+		srv = rp->srv;
+		fmtprint(&fstr, "\t%ud %ud %ud %s",
+			(srv? srv->pri: 0), (srv? srv->weight: 0),
+			(srv? srv->port: 0), (srv? dnname(srv->target): ""));
 		break;
 	case Tnull:
 		if (rp->null == nil)
@@ -1195,6 +1211,7 @@ rravfmt(Fmt *f)
 	RR *rp;
 	Server *s;
 	SOA *soa;
+	Srv *srv;
 	Txt *t;
 
 	fmtstrinit(&fstr);
@@ -1254,6 +1271,12 @@ rravfmt(Fmt *f)
 			(soa? soa->expire: 0), (soa? soa->minttl: 0));
 		for(s = soa->slaves; s != nil; s = s->next)
 			fmtprint(&fstr, " dnsslave=%s", s->name);
+		break;
+	case Tsrv:
+		srv = rp->srv;
+		fmtprint(&fstr, " pri=%ud weight=%ud port=%ud target=%s",
+			(srv? srv->pri: 0), (srv? srv->weight: 0),
+			(srv? srv->port: 0), (srv? dnname(srv->target): ""));
 		break;
 	case Tnull:
 		if (rp->null == nil)
@@ -1315,13 +1338,25 @@ out:
 void
 warning(char *fmt, ...)
 {
-	char dnserr[128];
+	char dnserr[256];
 	va_list arg;
 
 	va_start(arg, fmt);
 	vseprint(dnserr, dnserr+sizeof(dnserr), fmt, arg);
 	va_end(arg);
-	syslog(1, "dns", dnserr);
+	syslog(1, logfile, dnserr);		/* on console too */
+}
+
+void
+dnslog(char *fmt, ...)
+{
+	char dnserr[256];
+	va_list arg;
+
+	va_start(arg, fmt);
+	vseprint(dnserr, dnserr+sizeof(dnserr), fmt, arg);
+	va_end(arg);
+	syslog(0, logfile, dnserr);
 }
 
 /*
@@ -1372,7 +1407,7 @@ slave(Request *req)
 	/* limit parallelism */
 	if(getactivity(req, 1) > Maxactive){
 		if(traceactivity)
-			syslog(0, "dns", "[%d] too much activity", getpid());
+			dnslog("[%d] too much activity", getpid());
 		putactivity(1);
 		return;
 	}
@@ -1386,7 +1421,7 @@ slave(Request *req)
 	case 0:
 		procsetname("request slave of pid %d", ppid);
  		if(traceactivity)
-			syslog(0, "dns", "[%d] take activity from %d",
+			dnslog("[%d] take activity from %d",
 				getpid(), ppid);
 		req->isslave = 1;	/* why not `= getpid()'? */
 		break;

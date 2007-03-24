@@ -105,7 +105,7 @@ enum
 	Rbadname=	20,		/* duplicate key name */
 	Rbadalg=	21,		/* algorithm not supported */
 	Rmask=		0x1f,	/* mask for response */
-	Rtimeout=	0x20,	/* timeout sending (for internal use only) */
+	Rtimeout=	1<<5,	/* timeout sending (for internal use only) */
 
 	/* bits in flag word (other than opcode and response) */
 	Fresp=		1<<15,	/* message is a response */
@@ -160,6 +160,7 @@ typedef struct Request	Request;
 typedef struct SOA	SOA;
 typedef struct Server	Server;
 typedef struct Sig	Sig;
+typedef struct Srv	Srv;
 typedef struct Txt	Txt;
 
 /*
@@ -281,6 +282,7 @@ struct RR
 		Sig	*sig;
 		Null	*null;
 		Txt	*txt;
+		Srv	*srv;
 	};
 };
 
@@ -294,7 +296,7 @@ struct Server
 };
 
 /*
- *  timers for a start of authenticated record.  all ulongs are in seconds.
+ *  timers for a start-of-authority record.  all ulongs are in seconds.
  */
 struct SOA
 {
@@ -305,6 +307,18 @@ struct SOA
 	ulong	minttl;		/* min. time to live for any entry */
 
 	Server	*slaves;	/* slave servers */
+};
+
+/*
+ * srv (service location) record (rfc2782):
+ * _service._proto.name ttl class(IN) 'SRV' priority weight port target
+ */
+struct Srv
+{
+	ushort	pri;
+	ushort	weight;
+	ushort	port;
+	DN	*target;
 };
 
 /*
@@ -337,6 +351,15 @@ struct Area
 	int	needrefresh;
 };
 
+typedef struct Cfg Cfg;
+struct Cfg {
+	int	cachedb;
+	int	resolver;
+	int	serve;
+	int	inside;
+	int	straddle;
+};
+
 enum
 {
 	Recurse,
@@ -345,7 +368,7 @@ enum
 	OKneg,
 };
 
-extern int	cachedb;
+extern Cfg	cfg;
 extern char	*dbfile;
 extern int	debug;
 extern Area	*delegated;
@@ -356,7 +379,6 @@ extern int	needrefresh;
 extern int	norecursion;
 extern ulong	now;		/* time base */
 extern Area	*owned;
-extern int	resolver;
 extern int	sendnotifies;
 extern ulong	target;
 extern int	testing;	/* test cache whenever removing a DN */
@@ -374,48 +396,49 @@ extern char	*rname[];
 extern unsigned	nrname;
 extern char	*opname[];
 
+void	abort(); /* char*, ... */;
+void	addserver(Server**, char*);
+Server*	copyserverlist(Server*);
 void	db2cache(int);
-void	dninit(void);
-DN*	dnlookup(char*, int, int);
 void	dnage(DN*);
 void	dnageall(int);
 void	dnagedb(void);
 void	dnauthdb(void);
+void	dncheck(void*, int);
+void	dndump(char*);
 void	dnget(void);
+void	dninit(void);
+DN*	dnlookup(char*, int, int);
+void	dnptr(uchar*, uchar*, char*, int, int);
 void	dnpurge(void);
 void	dnput(void);
+void	dnslog(char*, ...);
+void*	emalloc(int);
+char*	estrdup(char*);
+void	freeserverlist(Server*);
+int	getactivity(Request*, int);
 Area*	inmyarea(char*);
-void	rrattach(RR*, int);
+void	putactivity(int);
+RR*	randomize(RR*);
 RR*	rralloc(int);
+void	rrattach(RR*, int);
+int	rravfmt(Fmt*);
+RR*	rrcat(RR**, RR*);
+RR**	rrcopy(RR*, RR**);
+int	rrfmt(Fmt*);
 void	rrfree(RR*);
 void	rrfreelist(RR*);
 RR*	rrlookup(DN*, int, int);
-RR*	rrcat(RR**, RR*);
-RR**	rrcopy(RR*, RR**);
+char*	rrname(int, char*, int);
 RR*	rrremneg(RR**);
 RR*	rrremtype(RR**, int);
-int	rrfmt(Fmt*);
-int	rravfmt(Fmt*);
 int	rrsupported(int);
 int	rrtype(char*);
-char*	rrname(int, char*, int);
-int	tsame(int, int);
-void	dndump(char*);
-int	getactivity(Request*, int);
-void	putactivity(int);
-void	abort(); /* char*, ... */;
-void	warning(char*, ...);
 void	slave(Request*);
-void	dncheck(void*, int);
-void	unique(RR*);
 int	subsume(char*, char*);
-RR*	randomize(RR*);
-void*	emalloc(int);
-char*	estrdup(char*);
-void	dnptr(uchar*, uchar*, char*, int, int);
-void	addserver(Server**, char*);
-Server*	copyserverlist(Server*);
-void	freeserverlist(Server*);
+int	tsame(int, int);
+void	unique(RR*);
+void	warning(char*, ...);
 
 /* dnarea.c */
 void	refresh_areas(Area*);
@@ -423,12 +446,15 @@ void	freearea(Area**);
 void	addarea(DN *dp, RR *rp, Ndbtuple *t);
 
 /* dblookup.c */
-RR*	dblookup(char*, int, int, int, int);
-RR*	dbinaddr(DN*, int);
 int	baddelegation(RR*, RR*, uchar*);
+RR*	dbinaddr(DN*, int);
+RR*	dblookup(char*, int, int, int, int);
 RR*	dnsservers(int);
 RR*	domainlist(int);
+int	insideaddr(char *dom);
+int	insidens(uchar *ip);
 int	opendatabase(void);
+uchar*	outsidens(int);
 
 /* dns.c */
 char*	walkup(char*);
@@ -441,6 +467,7 @@ void	procsetname(char *fmt, ...);
 RR*	dnresolve(char*, int, int, Request*, RR**, int, int, int, int*);
 int	udpport(char *);
 int	mkreq(DN *dp, int type, uchar *buf, int flags, ushort reqno);
+int	seerootns(void);
 
 /* dnserver.c */
 void	dnserver(DNSmsg*, DNSmsg*, Request*, uchar *, int);
@@ -456,3 +483,5 @@ int	convDNS2M(DNSmsg*, uchar*, int);
 
 /* convM2DNS.c */
 char*	convM2DNS(uchar*, int, DNSmsg*, int*);
+
+#pragma varargck argpos dnslog 1

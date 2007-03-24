@@ -51,16 +51,7 @@ psym(uchar *p, uchar *ep, char *np)
 static uchar*
 pstr(uchar *p, uchar *ep, char *np)
 {
-	int n;
-
-	n = strlen(np);
-	if(n >= Strlen)			/* DNS maximum length string */
-		n = Strlen - 1;
-	if(ep - p < n+1)		/* see if it fits in the buffer */
-		return ep+1;
-	*p++ = n;
-	memmove(p, np, n);
-	return p + n;
+	return psym(p, ep, np);
 }
 
 static uchar*
@@ -261,6 +252,12 @@ convRR2M(RR *rp, uchar *p, uchar *ep, Dict *dp)
 		ULONG(rp->soa->retry);
 		ULONG(rp->soa->expire);
 		ULONG(rp->soa->minttl);
+		break;
+	case Tsrv:
+		USHORT(rp->srv->pri);
+		USHORT(rp->srv->weight);
+		USHORT(rp->srv->port);
+		STRING(rp->srv->target->name);
 		break;
 	case Ttxt:
 		for(t = rp->txt; t != nil; t = t->next)

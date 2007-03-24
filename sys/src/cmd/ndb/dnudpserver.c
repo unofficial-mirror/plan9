@@ -6,8 +6,6 @@
 static int	udpannounce(char*);
 static void	reply(int, uchar*, DNSmsg*, Request*);
 
-extern char *logfile;
-
 static void
 ding(void *x, char *msg)
 {
@@ -117,7 +115,7 @@ restart:
 			goto restart;
 		uh = (OUdphdr*)buf;
 		len -= OUdphdrsize;
-		// syslog(0, logfile, "read received UDP from %I to %I",
+		// dnslog("read received UDP from %I to %I",
 		//	((OUdphdr*)buf)->raddr, ((OUdphdr*)buf)->laddr);
 		getactivity(&req, 0);
 		req.aborttime = now + Maxreqtm;
@@ -125,29 +123,26 @@ restart:
 		err = convM2DNS(&buf[OUdphdrsize], len, &reqmsg, &rcode);
 		if(err){
 			/* first bytes in buf are source IP addr */
-			syslog(0, logfile, "server: input error: %s from %I",
-				err, buf);
+			dnslog("server: input error: %s from %I", err, buf);
 			continue;
 		}
 		if (rcode == 0)
 			if(reqmsg.qdcount < 1){
-				syslog(0, logfile,
-					"server: no questions from %I", buf);
+				dnslog("server: no questions from %I", buf);
 				goto freereq;
 			} else if(reqmsg.flags & Fresp){
-				syslog(0, logfile,
-				    "server: reply not request from %I", buf);
+				dnslog("server: reply not request from %I", buf);
 				goto freereq;
 			}
 		op = reqmsg.flags & Omask;
 		if(op != Oquery && op != Onotify){
-			syslog(0, logfile, "server: op %d from %I",
+			dnslog("server: op %d from %I",
 				reqmsg.flags & Omask, buf);
 			goto freereq;
 		}
 
 		if(debug || (trace && subsume(trace, reqmsg.qd->owner->name))){
-			syslog(0, logfile, "%d: serve (%I/%d) %d %s %s",
+			dnslog("%d: serve (%I/%d) %d %s %s",
 				req.id, buf, uh->rport[0]<<8 | uh->rport[1],
 				reqmsg.id,
 				reqmsg.qd->owner->name,
@@ -157,7 +152,7 @@ restart:
 		p = clientrxmit(&reqmsg, buf);
 		if(p == nil){
 			if(debug)
-				syslog(0, logfile, "%d: duplicate", req.id);
+				dnslog("%d: duplicate", req.id);
 			goto freereq;
 		}
 
@@ -240,25 +235,25 @@ reply(int fd, uchar *buf, DNSmsg *rep, Request *reqp)
 	RR *rp;
 
 	if(debug || (trace && subsume(trace, rep->qd->owner->name)))
-		syslog(0, logfile, "%d: reply (%I/%d) %d %s %s an %R ns %R ar %R",
+		dnslog("%d: reply (%I/%d) %d %s %s qd %R an %R ns %R ar %R",
 			reqp->id, buf, buf[4]<<8 | buf[5],
 			rep->id, rep->qd->owner->name,
 			rrname(rep->qd->type, tname, sizeof tname),
-			rep->an, rep->ns, rep->ar);
+			rep->qd, rep->an, rep->ns, rep->ar);
 
 	len = convDNS2M(rep, &buf[OUdphdrsize], Maxudp);
 	if(len <= 0){
-		syslog(0, logfile, "error converting reply: %s %d",
+		dnslog("error converting reply: %s %d",
 			rep->qd->owner->name, rep->qd->type);
 		for(rp = rep->an; rp; rp = rp->next)
-			syslog(0, logfile, "an %R", rp);
+			dnslog("an %R", rp);
 		for(rp = rep->ns; rp; rp = rp->next)
-			syslog(0, logfile, "ns %R", rp);
+			dnslog("ns %R", rp);
 		for(rp = rep->ar; rp; rp = rp->next)
-			syslog(0, logfile, "ar %R", rp);
+			dnslog("ar %R", rp);
 		return;
 	}
 	len += OUdphdrsize;
 	if(write(fd, buf, len) != len)
-		syslog(0, logfile, "error sending reply: %r");
+		dnslog("error sending reply: %r");
 }

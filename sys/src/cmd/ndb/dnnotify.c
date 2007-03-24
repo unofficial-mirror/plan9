@@ -29,14 +29,14 @@ dnnotify(DNSmsg *reqp, DNSmsg *repp, Request *)
 	if(repp->qd->type != Tsoa)
 		return;
 
-syslog(0, logfile, "notification for %s", repp->qd->owner->name);
+dnslog("notification for %s", repp->qd->owner->name);
 
 	/* is it something we care about? */
 	a = inmyarea(repp->qd->owner->name);
 	if(a == nil)
 		return;
 
-syslog(0, logfile, "serial old %lud new %lud", a->soarr->soa->serial, repp->qd->soa->serial);
+dnslog("serial old %lud new %lud", a->soarr->soa->serial, repp->qd->soa->serial);
 
 	/* do nothing if it didn't change */
 	if(a->soarr->soa->serial != repp->qd->soa->serial)
@@ -87,7 +87,7 @@ send_notify(char *slave, RR *soa, Request *req)
 	/* send 3 times or until we get anything back */
 	n += OUdphdrsize;
 	for(i = 0; i < 3; i++){
-syslog(0, logfile, "sending %d byte notify to %s/%I.%d about %s", n, slave, up->raddr, nhgets(up->rport), soa->owner->name);
+dnslog("sending %d byte notify to %s/%I.%d about %s", n, slave, up->raddr, nhgets(up->rport), soa->owner->name);
 		if(write(fd, obuf, n) != n)
 			break;
 		alarm(2*1000);

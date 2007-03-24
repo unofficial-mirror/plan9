@@ -110,7 +110,7 @@ gv4addr(RR *rp, Scan *sp)
 		return 0;
 	if(sp->ep - sp->p < 4)
 		return (DN*)errtoolong(rp, sp, sp->ep - sp->p, 4, "gv4addr");
-	snprint(addr, sizeof(addr), "%V", sp->p);
+	snprint(addr, sizeof addr, "%V", sp->p);
 	sp->p += 4;
 
 	return dnlookup(addr, Cin, 1);
@@ -125,7 +125,7 @@ gv6addr(RR *rp, Scan *sp)
 	if(sp->ep - sp->p < IPaddrlen)
 		return (DN*)errtoolong(rp, sp, sp->ep - sp->p, IPaddrlen,
 			"gv6addr");
-	snprint(addr, sizeof(addr), "%I", sp->p);
+	snprint(addr, sizeof addr, "%I", sp->p);
 	sp->p += IPaddrlen;
 
 	return dnlookup(addr, Cin, 1);
@@ -287,9 +287,9 @@ static void
 mstypehack(Scan *sp, int type, char *where)
 {
 	if ((uchar)type == 0 && (uchar)(type>>8) != 0) {
-		syslog(0, "dns",
-			"%s: byte-swapped type field in ptr rr from win2k",
-			where);
+		USED(where);
+//		dnslog("%s: byte-swapped type field in ptr rr from win2k",
+//			where);
 		if (sp->rcode == 0)
 			sp->rcode = Rformat;
 	}
@@ -301,10 +301,10 @@ mstypehack(Scan *sp, int type, char *where)
 static RR*
 convM2RR(Scan *sp, char *what)
 {
-	RR *rp = nil;
 	int type, class, len;
-	uchar *data;
 	char dname[Domlen+1];
+	uchar *data;
+	RR *rp = nil;
 	Txt *t, **l;
 
 retry:
@@ -331,8 +331,8 @@ retry:
 	if (sp->ep - sp->p < len &&
 	   !(strcmp(what, "hints") == 0 ||
 	     sp->p == sp->ep + 1 && strcmp(what, "answers") == 0)) {
-		syslog(0, "dns", "%s sp: base %#p p %#p ep %#p len %d", what,
-			sp->base, sp->p, sp->ep, len);	/* DEBUG */
+		dnslog("%s sp: base %#p p %#p ep %#p len %d", what,
+			sp->base, sp->p, sp->ep, len);
 		errtoolong(rp, sp, sp->ep - sp->p, len, "convM2RR");
 	}
 	if(sp->err || sp->rcode){
@@ -387,6 +387,12 @@ retry:
 		ULONG(rp->soa->retry);
 		ULONG(rp->soa->expire);
 		ULONG(rp->soa->minttl);
+		break;
+	case Tsrv:
+		USHORT(rp->srv->pri);
+		USHORT(rp->srv->weight);
+		USHORT(rp->srv->port);
+		rp->srv->target = dnlookup(NAME(dname), Cin, 1);
 		break;
 	case Ttxt:
 		l = &rp->txt;
@@ -465,7 +471,7 @@ convM2Q(Scan *sp)
 	USHORT(type);
 	USHORT(class);
 	if(sp->err || sp->rcode)
-		return 0;
+		return nil;
 
 	mstypehack(sp, type, "convM2Q");
 	rp = rralloc(type);
@@ -481,11 +487,11 @@ rrloop(Scan *sp, char *what, int count, int quest)
 	RR *first, *rp, **l;
 
 	if(sp->err || sp->rcode)
-		return 0;
+		return nil;
 	l = &first;
-	first = 0;
+	first = nil;
 	for(i = 0; i < count; i++){
-		rp = quest ? convM2Q(sp) : convM2RR(sp, what);
+		rp = quest? convM2Q(sp): convM2RR(sp, what);
 		if(rp == nil)
 			break;
 		if(sp->err || sp->rcode){

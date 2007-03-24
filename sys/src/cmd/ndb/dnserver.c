@@ -6,8 +6,6 @@
 static RR*	doextquery(DNSmsg*, Request*, int);
 static void	hint(RR**, RR*);
 
-extern char *logfile;
-
 /* set in dns.c */
 int	norecursion;		/* don't allow recursive requests */
 
@@ -34,28 +32,28 @@ dnserver(DNSmsg *reqp, DNSmsg *repp, Request *req, uchar *srcip, int rcode)
 	/* move one question from reqp to repp */
 	tp = reqp->qd;
 	reqp->qd = tp->next;
-	tp->next = 0;
+	tp->next = nil;
 	repp->qd = tp;
 
 	if (rcode) {
 		errmsg = "";
 		if (rcode >= 0 && rcode < nrname)
 			errmsg = rname[rcode];
-		syslog(0, logfile, "server: response code 0%o (%s), req from %I",
+		dnslog("server: response code 0%o (%s), req from %I",
 			rcode, errmsg, srcip);
 		/* provide feedback to clients who send us trash */
 		repp->flags = (rcode&Rmask) | Fresp | Fcanrec | Oquery;
 		return;
 	}
 	if(!rrsupported(repp->qd->type)){
-		syslog(0, logfile, "server: unsupported request %s from %I",
+		dnslog("server: unsupported request %s from %I",
 			rrname(repp->qd->type, tname, sizeof tname), srcip);
 		repp->flags = Runimplimented | Fresp | Fcanrec | Oquery;
 		return;
 	}
 
 	if(repp->qd->owner->class != Cin){
-		syslog(0, logfile, "server: unsupported class %d from %I",
+		dnslog("server: unsupported class %d from %I",
 			repp->qd->owner->class, srcip);
 		repp->flags = Runimplimented | Fresp | Fcanrec | Oquery;
 		return;
@@ -64,10 +62,10 @@ dnserver(DNSmsg *reqp, DNSmsg *repp, Request *req, uchar *srcip, int rcode)
 	myarea = inmyarea(repp->qd->owner->name);
 	if(myarea != nil) {
 		if(repp->qd->type == Tixfr || repp->qd->type == Taxfr){
-			syslog(0, logfile,
-				"server: unsupported xfr request %s from %I",
+			dnslog(
+			    "server: unsupported xfr request %s for %s from %I",
 				rrname(repp->qd->type, tname, sizeof tname),
-				srcip);
+				repp->qd->owner->name, srcip);
 			repp->flags = Runimplimented | Fresp | recursionflag |
 				Oquery;
 			return;
@@ -92,7 +90,7 @@ dnserver(DNSmsg *reqp, DNSmsg *repp, Request *req, uchar *srcip, int rcode)
 		repp->flags |= Fauth;
 
 	/* pass on error codes */
-	if(repp->an == 0){
+	if(repp->an == nil){
 		dp = dnlookup(repp->qd->owner->name, repp->qd->owner->class, 0);
 		if(dp->rr == nil)
 			if(reqp->flags & Frecurse)
@@ -105,7 +103,7 @@ dnserver(DNSmsg *reqp, DNSmsg *repp, Request *req, uchar *srcip, int rcode)
 		 */
 		for(cp = repp->qd->owner->name; cp; cp = walkup(cp)){
 			nsdp = dnlookup(cp, repp->qd->owner->class, 0);
-			if(nsdp == 0)
+			if(nsdp == nil)
 				continue;
 
 			repp->ns = rrlookup(nsdp, Tns, OKneg);
