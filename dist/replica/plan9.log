@@ -28685,3 +28685,9 @@
 1174705318 20 c sys/src/cmd/ndb/query.c - 664 sys sys 1174623580 1137
 1174705318 21 d sys/src/cmd/ndb/time.c - 664 sys sys 957402055 0
 1174705318 22 d sys/src/cmd/ndb/dn.acid - 664 sys sys 1144950752 0
+1174793501 0 c sys/man/3/ip - 664 sys sys 1174771711 22618
+1174793501 1 c sys/man/6/ndb - 664 sys sys 1174770884 6755
+1174793501 2 c sys/man/8/cpurc - 664 sys sys 1174792133 1541
+1174793501 3 c sys/man/8/listen - 664 sys sys 1174792129 3826
+1174793501 4 c sys/man/8/ndb - 664 sys sys 1174774024 13164
+1174793501 5 c sys/src/cmd/ndb/dblookup.c - 664 sys sys 1174792290 20940
