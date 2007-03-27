@@ -28795,3 +28795,5 @@
 1174966303 20 c sys/src/cmd/cwfs/9p2.c - 664 sys sys 1174942081 35261
 1174966303 21 c sys/src/cmd/cwfs/mkfile - 664 sys sys 1174941889 201
 1174966303 22 c sys/src/fs/port/9p2.c - 664 sys sys 1174941740 36357
+1175023928 0 c sys/src/9/pc/ether8139.c - 664 sys sys 1175019929 18584
+1175023928 1 c sys/src/cmd/cwfs/pc.c - 664 sys sys 1174976414 1718

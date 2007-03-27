@@ -7452,7 +7452,7 @@ sys/src/9/pc/ether2114x.c - 664 sys sys 1145359795 41693
 sys/src/9/pc/ether589.c - 664 sys sys 1015014516 4644
 sys/src/9/pc/ether79c970.c - 664 sys sys 1160070602 14088
 sys/src/9/pc/ether8003.c - 664 sys sys 1015014516 6665
-sys/src/9/pc/ether8139.c - 664 sys sys 1160066369 18561
+sys/src/9/pc/ether8139.c - 664 sys sys 1175019929 18584
 sys/src/9/pc/ether8169.c - 664 sys sys 1172259757 25466
 sys/src/9/pc/ether82543gc.c - 664 sys sys 1131290377 32294
 sys/src/9/pc/ether82557.c - 664 sys sys 1153082663 30197
@@ -9487,7 +9487,7 @@ sys/src/cmd/cwfs/malloc.c - 664 sys sys 1174281557 2360
 sys/src/cmd/cwfs/mkfile - 664 sys sys 1174941889 201
 sys/src/cmd/cwfs/mworm.c - 664 sys sys 1174370308 4311
 sys/src/cmd/cwfs/net.c - 664 sys sys 1174521421 9939
-sys/src/cmd/cwfs/pc.c - 664 sys sys 1174716747 1718
+sys/src/cmd/cwfs/pc.c - 664 sys sys 1174976414 1718
 sys/src/cmd/cwfs/portdat.h - 664 sys sys 1174716952 15241
 sys/src/cmd/cwfs/portfns.h - 664 sys sys 1174798778 6701
 sys/src/cmd/cwfs/portmkfile - 664 sys sys 1174798711 791
