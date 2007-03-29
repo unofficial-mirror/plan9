@@ -28797,3 +28797,6 @@
 1174966303 22 c sys/src/fs/port/9p2.c - 664 sys sys 1174941740 36357
 1175023928 0 c sys/src/9/pc/ether8139.c - 664 sys sys 1175019929 18584
 1175023928 1 c sys/src/cmd/cwfs/pc.c - 664 sys sys 1174976414 1718
+1175142716 0 c sys/games/lib/fortunes - 664 sys sys 1175084846 264123
+1175142716 1 c sys/lib/tmac/tmac.an - 664 sys sys 1175141775 8441
+1175142716 2 c sys/src/9/pc/ethervt6102.c - 664 sys sys 1175105554 22333
