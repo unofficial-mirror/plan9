@@ -28800,3 +28800,5 @@
 1175142716 0 c sys/games/lib/fortunes - 664 sys sys 1175084846 264123
 1175142716 1 c sys/lib/tmac/tmac.an - 664 sys sys 1175141775 8441
 1175142716 2 c sys/src/9/pc/ethervt6102.c - 664 sys sys 1175105554 22333
+1175146428 0 c sys/man/3/fs - 664 sys sys 1175145095 3147
+1175146428 1 c sys/src/9/port/devfs.c - 664 sys sys 1175146085 11517
