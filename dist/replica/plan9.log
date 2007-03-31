@@ -28805,3 +28805,6 @@
 1175311908 0 c sys/src/9/pc/etherdp83820.c - 664 sys sys 1175292818 29621
 1175311908 1 c sys/src/boot/pc/load.c - 664 sys sys 1175289729 9410
 1175311908 2 c sys/src/boot/pc/etherga620.c - 664 sys sys 1175289484 27168
+1175324641 0 c sys/src/9/pc/etherga620.c - 664 sys sys 1175322931 29912
+1175324641 1 c sys/src/cmd/upas/fs/fs.c - 664 sys sys 1175322795 26929
+1175324641 2 c sys/src/cmd/upas/fs/plan9.c - 664 sys sys 1175322803 7498
