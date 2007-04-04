@@ -28813,3 +28813,10 @@
 1175565765 1 c sys/src/9/pc/sdata.c - 664 sys sys 1175564140 52809
 1175565765 2 c sys/src/boot/pc/pci.c - 664 sys sys 1175564218 20545
 1175565765 3 c sys/src/boot/pc/sdata.c - 664 sys sys 1175564193 38846
+1175655700 0 c sys/src/cmd/ndb/convDNS2M.c - 664 sys sys 1175642286 6881
+1175655700 1 c sys/src/cmd/ndb/dn.c - 664 sys sys 1175642250 32545
+1175655700 2 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1175642403 26242
+1175655700 3 c sys/src/cmd/ndb/dns.c - 664 sys sys 1175642266 15906
+1175655700 4 c sys/src/cmd/ndb/dns.h - 664 sys sys 1175642258 10561
+1175655700 5 c sys/src/cmd/ndb/dnstcp.c - 664 sys sys 1175642311 7419
+1175655700 6 c sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1175642323 5188
