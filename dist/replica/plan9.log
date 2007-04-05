@@ -28820,3 +28820,10 @@
 1175655700 4 c sys/src/cmd/ndb/dns.h - 664 sys sys 1175642258 10561
 1175655700 5 c sys/src/cmd/ndb/dnstcp.c - 664 sys sys 1175642311 7419
 1175655700 6 c sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1175642323 5188
+1175742100 0 c sys/man/2/dial - 664 sys sys 1175725019 6594
+1175742100 1 c sys/man/8/ndb - 664 sys sys 1175725007 13255
+1175742100 2 c sys/src/cmd/ndb/convM2DNS.c - 664 sys sys 1175728897 10892
+1175742100 3 c sys/src/cmd/ndb/dnarea.c - 664 sys sys 1175664421 2519
+1175742100 4 c sys/src/cmd/ndb/dnnotify.c - 664 sys sys 1175728921 3142
+1175742100 5 c sys/src/cmd/ndb/dnstcp.c - 664 sys sys 1175728913 7433
+1175742100 6 c sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1175728907 5204
