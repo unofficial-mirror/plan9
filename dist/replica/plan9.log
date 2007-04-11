@@ -28853,3 +28853,6 @@
 1175974355 2 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1175927771 29811
 1175974355 3 c sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1175925609 5251
 1176152529 0 c rc/bin/diskparts - 775 sys sys 1176151301 559
+1176262308 0 c lib/namespace - 664 sys sys 1176262168 619
+1176262308 1 c rc/bin/cpurc - 775 sys sys 1176262038 2142
+1176262308 2 c sys/games/lib/fortunes - 664 sys sys 1176226787 264469
