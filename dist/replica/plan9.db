@@ -4919,7 +4919,8 @@ rc/bin/b: - 775 sys sys 1015089510 204
 rc/bin/broke - 775 sys sys 1143389260 142
 rc/bin/bundle - 775 sys sys 945617206 173
 rc/bin/c: - 775 sys sys 1015089511 86
-rc/bin/cpurc - 775 sys sys 1176314252 2069
+rc/bin/cpurc - 775 sys sys 1176444833 1884
+rc/bin/cpurc.local - 775 sys sys 1176502011 448
 rc/bin/delkey - 775 sys sys 1109429137 643
 rc/bin/dial - 20000000775 sys sys 1059180057 0
 rc/bin/diffy - 775 sys sys 1140694870 277
@@ -5041,7 +5042,8 @@ rc/bin/start - 775 sys sys 945617209 120
 rc/bin/stock - 775 sys sys 1143126371 292
 rc/bin/stop - 775 sys sys 945617209 110
 rc/bin/tel - 775 sys sys 1161209756 128
-rc/bin/termrc - 775 sys sys 1176432928 2436
+rc/bin/termrc - 775 sys sys 1176444113 1665
+rc/bin/termrc.local - 775 sys sys 1176500067 425
 rc/bin/thesaurus - 775 sys sys 1068054167 246
 rc/bin/tlsclienttunnel - 775 sys sys 1024375633 153
 rc/bin/tlssrvtunnel - 775 sys sys 1024375634 175
@@ -5510,7 +5512,7 @@ sys/include/frame.h - 664 sys sys 1147706379 2682
 sys/include/geometry.h - 664 sys sys 1014929063 2632
 sys/include/html.h - 664 sys sys 1128662123 15232
 sys/include/httpd.h - 664 sys sys 1091904418 5771
-sys/include/ip.h - 664 sys sys 1103554773 2989
+sys/include/ip.h - 664 sys sys 1176499323 2978
 sys/include/keyboard.h - 664 sys sys 1131637696 865
 sys/include/libc.h - 664 sys sys 1168306860 19851
 sys/include/libsec.h - 664 sys sys 1124709121 9345
@@ -5518,7 +5520,7 @@ sys/include/mach.h - 664 sys sys 1143814376 8641
 sys/include/memdraw.h - 664 sys sys 1091904419 5645
 sys/include/memlayer.h - 664 sys sys 1051031022 1851
 sys/include/mouse.h - 664 sys sys 1035232010 1003
-sys/include/mp.h - 664 sys sys 1014929065 4610
+sys/include/mp.h - 664 sys sys 1176499134 4803
 sys/include/ndb.h - 664 sys sys 1144174492 4412
 sys/include/nfs3.h - 664 sys sys 1045589438 15082
 sys/include/plumb.h - 664 sys sys 1014929065 989
@@ -7076,7 +7078,7 @@ sys/man/3/pnp - 664 sys sys 1088560895 4547
 sys/man/3/proc - 664 sys sys 1138458595 12062
 sys/man/3/root - 664 sys sys 1046958450 632
 sys/man/3/rtc - 664 sys sys 954378857 667
-sys/man/3/sd - 664 sys sys 1167774768 5652
+sys/man/3/sd - 664 sys sys 1176502187 5678
 sys/man/3/segment - 664 sys sys 1017423721 2378
 sys/man/3/srv - 664 sys sys 958419690 1470
 sys/man/3/ssl - 664 sys sys 1018386776 3413
@@ -7203,7 +7205,7 @@ sys/man/8/getflags - 664 sys sys 1159419702 1713
 sys/man/8/gpsfs - 664 sys sys 1165623047 4918
 sys/man/8/httpd - 664 sys sys 1165623004 6865
 sys/man/8/init - 664 sys sys 944959679 1430
-sys/man/8/ipconfig - 664 sys sys 1159419702 6170
+sys/man/8/ipconfig - 664 sys sys 1176502409 6209
 sys/man/8/ipserv - 664 sys sys 1095862383 4375
 sys/man/8/kfscmd - 664 sys sys 1068569797 4515
 sys/man/8/listen - 664 sys sys 1174792129 3826
@@ -9435,13 +9437,13 @@ sys/src/cmd/cwfs/9netics64.8k - 20000000775 sys sys 1174799194 0
 sys/src/cmd/cwfs/9netics64.8k/conf.c - 664 sys sys 1171171458 564
 sys/src/cmd/cwfs/9netics64.8k/dat.h - 664 sys sys 1171171387 791
 sys/src/cmd/cwfs/9netics64.8k/mkfile - 664 sys sys 1171519752 28
-sys/src/cmd/cwfs/9p1.c - 664 sys sys 1174716878 29747
+sys/src/cmd/cwfs/9p1.c - 664 sys sys 1176500150 29749
 sys/src/cmd/cwfs/9p1.h - 664 sys sys 1171159776 2128
 sys/src/cmd/cwfs/9p1lib.c - 664 sys sys 1171145882 7894
 sys/src/cmd/cwfs/9p2.c - 664 sys sys 1174942081 35261
 sys/src/cmd/cwfs/README - 664 sys sys 1171520084 344
 sys/src/cmd/cwfs/all.h - 664 sys sys 1174716764 2186
-sys/src/cmd/cwfs/auth.c - 664 sys sys 1174797532 5840
+sys/src/cmd/cwfs/auth.c - 664 sys sys 1176500150 5842
 sys/src/cmd/cwfs/chk.c - 664 sys sys 1174716979 14579
 sys/src/cmd/cwfs/choline - 20000000775 sys sys 1174799194 0
 sys/src/cmd/cwfs/choline/conf.c - 664 sys sys 1171170952 412
@@ -9480,8 +9482,8 @@ sys/src/cmd/cwfs/fs64/dat.h - 664 sys sys 1171172076 786
 sys/src/cmd/cwfs/fs64/mkfile - 664 sys sys 1174799404 24
 sys/src/cmd/cwfs/fworm.c - 664 sys sys 1174716894 1814
 sys/src/cmd/cwfs/io.h - 664 sys sys 1174280312 866
-sys/src/cmd/cwfs/iobuf.c - 664 sys sys 1174716894 4713
-sys/src/cmd/cwfs/juke.c - 664 sys sys 1174799503 28859
+sys/src/cmd/cwfs/iobuf.c - 664 sys sys 1176500092 4722
+sys/src/cmd/cwfs/juke.c - 664 sys sys 1176500144 28859
 sys/src/cmd/cwfs/lrand.c - 664 sys sys 1171160167 1070
 sys/src/cmd/cwfs/main.c - 664 sys sys 1174799729 9976
 sys/src/cmd/cwfs/malloc.c - 664 sys sys 1174281557 2360
@@ -9493,7 +9495,7 @@ sys/src/cmd/cwfs/portdat.h - 664 sys sys 1174716952 15241
 sys/src/cmd/cwfs/portfns.h - 664 sys sys 1174798778 6701
 sys/src/cmd/cwfs/portmkfile - 664 sys sys 1174798711 791
 sys/src/cmd/cwfs/scsi.c - 664 sys sys 1174282908 8865
-sys/src/cmd/cwfs/sub.c - 664 sys sys 1174798849 24353
+sys/src/cmd/cwfs/sub.c - 664 sys sys 1176500092 24371
 sys/src/cmd/cwfs/time.c - 664 sys sys 1171500176 1696
 sys/src/cmd/cwfs/uidgid.c - 664 sys sys 1174717700 9421
 sys/src/cmd/cwfs/wren.c - 664 sys sys 1174458303 2737
@@ -9755,7 +9757,7 @@ sys/src/cmd/fossil/archive.c - 664 sys sys 1087005594 10230
 sys/src/cmd/fossil/build - 664 sys sys 1042005505 449
 sys/src/cmd/fossil/buildsh - 775 sys sys 1042005505 561
 sys/src/cmd/fossil/bwatch.c - 664 sys sys 1042005505 6754
-sys/src/cmd/fossil/cache.c - 664 sys sys 1143759345 43875
+sys/src/cmd/fossil/cache.c - 664 sys sys 1176500208 43930
 sys/src/cmd/fossil/check.c - 664 sys sys 1173736846 17436
 sys/src/cmd/fossil/conf.rc - 775 sys sys 1084333190 1416
 sys/src/cmd/fossil/dat.h - 664 sys sys 1158373945 7622
@@ -11954,7 +11956,7 @@ sys/src/cmd/ip/imap4d/nodes.c - 664 sys sys 1015013077 3173
 sys/src/cmd/ip/imap4d/search.c - 664 sys sys 1015013077 4520
 sys/src/cmd/ip/imap4d/store.c - 664 sys sys 1066317059 1910
 sys/src/cmd/ip/imap4d/utils.c - 664 sys sys 1168894057 2587
-sys/src/cmd/ip/ipconfig.c - 664 sys sys 1166761782 35168
+sys/src/cmd/ip/ipconfig.c - 664 sys sys 1176502464 35429
 sys/src/cmd/ip/measure.c - 664 sys sys 944961011 3733
 sys/src/cmd/ip/mkfile - 664 sys sys 1169163575 1250
 sys/src/cmd/ip/ping.c - 664 sys sys 1175868270 9699
@@ -12216,7 +12218,7 @@ sys/src/cmd/mk/var.c - 664 sys sys 1131289510 530
 sys/src/cmd/mk/varsub.c - 664 sys sys 1174930010 4297
 sys/src/cmd/mk/word.c - 664 sys sys 1174930010 2709
 sys/src/cmd/mkdir.c - 664 sys sys 1082593106 1026
-sys/src/cmd/mkfile - 664 sys sys 1173736967 2618
+sys/src/cmd/mkfile - 664 sys sys 1176520958 2674
 sys/src/cmd/mklib - 664 sys sys 1101213349 618
 sys/src/cmd/mkmany - 664 sys sys 1123818681 1304
 sys/src/cmd/mkone - 664 sys sys 1123943673 910
@@ -14714,7 +14716,7 @@ sys/src/libdraw/makefile - 664 sys sys 944961725 648
 sys/src/libdraw/menuhit.c - 664 sys sys 1014927876 7263
 sys/src/libdraw/mkfile - 664 sys sys 1097972686 1034
 sys/src/libdraw/mkfont.c - 664 sys sys 944961725 1283
-sys/src/libdraw/mouse.c - 664 sys sys 1030970092 2559
+sys/src/libdraw/mouse.c - 664 sys sys 1176502264 2623
 sys/src/libdraw/newwindow.c - 664 sys sys 1035232036 424
 sys/src/libdraw/openfont.c - 664 sys sys 1014927876 495
 sys/src/libdraw/poly.c - 664 sys sys 1040442974 1689
@@ -14735,7 +14737,7 @@ sys/src/libdraw/subfontname.c - 664 sys sys 1155362344 813
 sys/src/libdraw/test.c - 664 sys sys 944961725 201
 sys/src/libdraw/unloadimage.c - 664 sys sys 944961725 1000
 sys/src/libdraw/window.c - 664 sys sys 1018387005 3529
-sys/src/libdraw/writecolmap.c - 664 sys sys 944961725 725
+sys/src/libdraw/writecolmap.c - 664 sys sys 1176502270 788
 sys/src/libdraw/writeimage.c - 664 sys sys 1014927877 4459
 sys/src/libdraw/writesubfont.c - 664 sys sys 944961725 689
 sys/src/libflate - 20000000775 sys sys 984709217 0
