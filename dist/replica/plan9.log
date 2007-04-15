@@ -28892,3 +28892,5 @@
 1176521513 15 c sys/src/cmd/cwfs/sub.c - 664 sys sys 1176500092 24371
 1176521513 16 c sys/src/libdraw/mouse.c - 664 sys sys 1176502264 2623
 1176521513 17 c sys/src/libdraw/writecolmap.c - 664 sys sys 1176502270 788
+1176660105 0 c sys/src/9/port/devcons.c - 664 sys sys 1176658321 22943
+1176660105 1 c sys/src/9/port/proc.c - 664 sys sys 1176658321 28742
