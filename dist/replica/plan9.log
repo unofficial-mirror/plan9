@@ -28933,3 +28933,12 @@
 1176867119 5 c sys/src/9/ip/ipv6.h - 664 sys sys 1176844019 4087
 1176867119 6 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1176837575 30062
 1176867119 7 c sys/src/cmd/upas/smtp/mxdial.c - 664 sys sys 1176837561 6567
+1176939112 0 c sys/man/2/ndb - 664 sys sys 1176932123 9743
+1176939112 1 c sys/man/6/ndb - 664 sys sys 1176932139 6671
+1176939112 2 c sys/man/8/ndb - 664 sys sys 1176932150 13254
+1176939112 3 c sys/src/9/ip/icmp6.c - 664 sys sys 1176937812 17893
+1176939112 4 c sys/src/9/ip/ipifc.c - 664 sys sys 1176937940 33863
+1176939112 5 c sys/src/9/ip/ipv6.c - 664 sys sys 1176938017 14297
+1176939112 6 a sys/src/cmd/ip/ipconfig - 20000000775 sys sys 1176933436 0
+1176939112 7 c sys/src/cmd/ndb/cs.c - 664 sys sys 1176931848 33123
+1176939112 8 c sys/src/libndb/ndbipinfo.c - 664 sys sys 1176931776 5181
