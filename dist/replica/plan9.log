@@ -28942,3 +28942,8 @@
 1176939112 6 a sys/src/cmd/ip/ipconfig - 20000000775 sys sys 1176933436 0
 1176939112 7 c sys/src/cmd/ndb/cs.c - 664 sys sys 1176931848 33123
 1176939112 8 c sys/src/libndb/ndbipinfo.c - 664 sys sys 1176931776 5181
+1177012954 0 c sys/man/3/ip - 664 sys sys 1176959517 24540
+1177012954 1 c sys/src/9/ip/ip.c - 664 sys sys 1176957040 15288
+1177012954 2 c sys/src/9/ip/ip.h - 664 sys sys 1176957139 15982
+1177012954 3 c sys/src/9/ip/ipifc.c - 664 sys sys 1176957160 33517
+1177012954 4 c sys/src/cmd/auth/cron.c - 664 sys sys 1177004942 12306
