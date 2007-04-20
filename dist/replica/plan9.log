@@ -28947,3 +28947,15 @@
 1177012954 2 c sys/src/9/ip/ip.h - 664 sys sys 1176957139 15982
 1177012954 3 c sys/src/9/ip/ipifc.c - 664 sys sys 1176957160 33517
 1177012954 4 c sys/src/cmd/auth/cron.c - 664 sys sys 1177004942 12306
+1177101105 0 a rc/bin/ipv6on - 775 sys sys 1177099714 1872
+1177101105 1 c sys/man/6/ndb - 664 sys sys 1177100292 6745
+1177101105 2 c sys/man/8/ipconfig - 664 sys sys 1177100280 7984
+1177101105 3 c sys/src/cmd/ip/dhcp.h - 664 sys sys 1177099797 3420
+1177101105 4 a sys/src/cmd/ip/ipconfig/ipconfig.h - 664 sys sys 1177092388 5536
+1177101105 5 a sys/src/cmd/ip/ipconfig/ipv6.c - 664 sys sys 1177092388 19783
+1177101105 6 a sys/src/cmd/ip/ipconfig/main.c - 664 sys sys 1177092388 37908
+1177101105 7 a sys/src/cmd/ip/ipconfig/mkfile - 664 sys sys 1177092388 236
+1177101105 8 a sys/src/cmd/ip/ipconfig/ppp.c - 664 sys sys 1177092388 1128
+1177101105 9 a sys/src/cmd/ip/linklocal.c - 664 sys sys 1177099730 867
+1177101105 10 c sys/src/cmd/ip/mkfile - 664 sys sys 1177099797 1271
+1177101105 11 d sys/src/cmd/ip/ipconfig.c - 664 sys sys 1176502464 0
