@@ -28964,3 +28964,4 @@
 1177191106 2 c sys/lib/tmac/tmac.an - 664 sys sys 1177190095 8342
 1177191106 3 c sys/src/libhttpd/hio.c - 664 sys sys 1177184789 7540
 1177191106 4 c sys/src/libhttpd/parsereq.c - 664 sys sys 1177187800 5112
+1177284713 0 c sys/games/lib/fortunes - 664 sys sys 1177258701 264583
