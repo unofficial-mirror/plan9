@@ -28965,3 +28965,13 @@
 1177191106 3 c sys/src/libhttpd/hio.c - 664 sys sys 1177184789 7540
 1177191106 4 c sys/src/libhttpd/parsereq.c - 664 sys sys 1177187800 5112
 1177284713 0 c sys/games/lib/fortunes - 664 sys sys 1177258701 264583
+1177461132 0 c sys/man/8/fossilcons - 664 sys sys 1177432029 18368
+1177461132 1 c sys/src/9/pc/sdmv50xx.c - 664 sys sys 1177393607 33810
+1177461132 2 c sys/src/9/port/taslock.c - 664 sys sys 1177343190 4418
+1177461132 3 c sys/src/cmd/fossil/9fsys.c - 664 sys sys 1177432002 33485
+1177461132 4 c sys/src/cmd/fossil/check.c - 664 sys sys 1177432003 17448
+1177461132 5 c sys/src/cmd/fossil/dat.h - 664 sys sys 1177432005 7655
+1177461132 6 c sys/src/cmd/fossil/file.c - 664 sys sys 1177432003 30146
+1177461132 7 c sys/src/cmd/fossil/fns.h - 664 sys sys 1177432005 3233
+1177461132 8 c sys/src/cmd/fossil/fs.c - 664 sys sys 1177432004 21598
+1177461132 9 c sys/src/cmd/fossil/source.c - 664 sys sys 1177432004 20301
