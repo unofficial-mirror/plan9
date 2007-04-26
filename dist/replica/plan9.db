@@ -8873,7 +8873,7 @@ sys/src/cmd/acme/fsys.c - 664 sys sys 1111171699 13097
 sys/src/cmd/acme/look.c - 664 sys sys 1166822365 14203
 sys/src/cmd/acme/mkfile - 664 sys sys 1058463682 543
 sys/src/cmd/acme/regx.c - 664 sys sys 1014926094 16057
-sys/src/cmd/acme/rows.c - 664 sys sys 1166887151 14708
+sys/src/cmd/acme/rows.c - 664 sys sys 1177527677 14708
 sys/src/cmd/acme/scrl.c - 664 sys sys 1111119426 2875
 sys/src/cmd/acme/text.c - 664 sys sys 1136064450 27870
 sys/src/cmd/acme/time.c - 664 sys sys 1014926095 1783
@@ -11989,12 +11989,12 @@ sys/src/cmd/ip/imap4d/utils.c - 664 sys sys 1168894057 2587
 sys/src/cmd/ip/ipconfig - 20000000775 sys sys 1176933436 0
 sys/src/cmd/ip/ipconfig/ipconfig.h - 664 sys sys 1177092388 5536
 sys/src/cmd/ip/ipconfig/ipv6.c - 664 sys sys 1177092388 19783
-sys/src/cmd/ip/ipconfig/main.c - 664 sys sys 1177092388 37908
+sys/src/cmd/ip/ipconfig/main.c - 664 sys sys 1177541727 37984
 sys/src/cmd/ip/ipconfig/mkfile - 664 sys sys 1177092388 236
 sys/src/cmd/ip/ipconfig/ppp.c - 664 sys sys 1177092388 1128
 sys/src/cmd/ip/linklocal.c - 664 sys sys 1177099730 867
 sys/src/cmd/ip/measure.c - 664 sys sys 944961011 3733
-sys/src/cmd/ip/mkfile - 664 sys sys 1177099797 1271
+sys/src/cmd/ip/mkfile - 664 sys sys 1177479927 1260
 sys/src/cmd/ip/ping.c - 664 sys sys 1175868270 9699
 sys/src/cmd/ip/ppp - 20000000775 sys sys 988249980 0
 sys/src/cmd/ip/ppp/block.c - 664 sys sys 1015090266 5353

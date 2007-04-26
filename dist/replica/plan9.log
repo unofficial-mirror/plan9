@@ -28975,3 +28975,6 @@
 1177461132 7 c sys/src/cmd/fossil/fns.h - 664 sys sys 1177432005 3233
 1177461132 8 c sys/src/cmd/fossil/fs.c - 664 sys sys 1177432004 21598
 1177461132 9 c sys/src/cmd/fossil/source.c - 664 sys sys 1177432004 20301
+1177558302 0 c sys/src/cmd/acme/rows.c - 664 sys sys 1177527677 14708
+1177558302 1 c sys/src/cmd/ip/ipconfig/main.c - 664 sys sys 1177541727 37984
+1177558302 2 c sys/src/cmd/ip/mkfile - 664 sys sys 1177479927 1260
