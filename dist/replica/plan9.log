@@ -29001,3 +29001,8 @@
 1177731104 4 c sys/src/cmd/scuzz/scsireq.h - 664 sys sys 1177702200 6958
 1177731104 5 c sys/src/cmd/scuzz/scuzz.c - 664 sys sys 1177702170 38155
 1177731104 6 c sys/src/cmd/scuzz/sense.c - 664 sys sys 1177702138 5680
+1177817518 0 c rc/bin/diskparts - 775 sys sys 1177742148 605
+1177817518 1 c rc/bin/fshalt - 775 sys sys 1177742142 1658
+1177817518 2 c sys/man/6/ndb - 664 sys sys 1177742177 6776
+1177817518 3 c sys/src/cmd/ndb/dn.c - 664 sys sys 1177811830 32939
+1177817518 4 c sys/src/cmd/ndb/dns.c - 664 sys sys 1177811831 16021
