@@ -29006,3 +29006,4 @@
 1177817518 2 c sys/man/6/ndb - 664 sys sys 1177742177 6776
 1177817518 3 c sys/src/cmd/ndb/dn.c - 664 sys sys 1177811830 32939
 1177817518 4 c sys/src/cmd/ndb/dns.c - 664 sys sys 1177811831 16021
+1177876911 0 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1177818627 30221

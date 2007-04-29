@@ -12277,7 +12277,7 @@ sys/src/cmd/ndb/dblookup.c - 664 sys sys 1175901604 21010
 sys/src/cmd/ndb/dn.c - 664 sys sys 1177811830 32939
 sys/src/cmd/ndb/dnarea.c - 664 sys sys 1175664421 2519
 sys/src/cmd/ndb/dnnotify.c - 664 sys sys 1175901450 3147
-sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1176837575 30062
+sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1177818627 30221
 sys/src/cmd/ndb/dns.c - 664 sys sys 1177811831 16021
 sys/src/cmd/ndb/dns.h - 664 sys sys 1175901645 10640
 sys/src/cmd/ndb/dnsdebug.c - 664 sys sys 1176746985 8741
