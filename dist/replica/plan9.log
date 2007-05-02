@@ -29007,3 +29007,9 @@
 1177817518 3 c sys/src/cmd/ndb/dn.c - 664 sys sys 1177811830 32939
 1177817518 4 c sys/src/cmd/ndb/dns.c - 664 sys sys 1177811831 16021
 1177876911 0 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1177818627 30221
+1178076700 0 c sys/src/9/ip/udp.c - 664 sys sys 1178057621 13132
+1178076700 1 c sys/src/9/port/qlock.c - 664 sys sys 1178057654 3300
+1178076700 2 c sys/src/cmd/ip/ipconfig/ipconfig.h - 664 sys sys 1178051838 5666
+1178076700 3 c sys/src/cmd/ip/ipconfig/ipv6.c - 664 sys sys 1178051839 19588
+1178076700 4 c sys/src/cmd/ip/ipconfig/main.c - 664 sys sys 1178051838 37982
+1178076700 5 c sys/src/cmd/ip/ping.c - 664 sys sys 1178055342 9699
