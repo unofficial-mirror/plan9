@@ -11934,7 +11934,7 @@ sys/src/cmd/ip/dhcpd/ping.c - 664 sys sys 1169162185 1163
 sys/src/cmd/ip/dhcpd/testlook.c - 664 sys sys 950389140 4640
 sys/src/cmd/ip/dhcpd/testlookup.c - 664 sys sys 950389140 3195
 sys/src/cmd/ip/dhcpd/testping.c - 664 sys sys 950389141 352
-sys/src/cmd/ip/ftpd.c - 664 sys sys 1143759344 33045
+sys/src/cmd/ip/ftpd.c - 664 sys sys 1178127705 33168
 sys/src/cmd/ip/ftpfs - 20000000775 sys sys 1014925642 0
 sys/src/cmd/ip/ftpfs/file.c - 664 sys sys 1014925642 4208
 sys/src/cmd/ip/ftpfs/ftpfs.c - 664 sys sys 1116737713 13860

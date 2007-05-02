@@ -29013,3 +29013,4 @@
 1178076700 3 c sys/src/cmd/ip/ipconfig/ipv6.c - 664 sys sys 1178051839 19588
 1178076700 4 c sys/src/cmd/ip/ipconfig/main.c - 664 sys sys 1178051838 37982
 1178076700 5 c sys/src/cmd/ip/ping.c - 664 sys sys 1178055342 9699
+1178136117 0 c sys/src/cmd/ip/ftpd.c - 664 sys sys 1178127705 33168
