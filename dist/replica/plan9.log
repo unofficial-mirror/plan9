@@ -29014,3 +29014,8 @@
 1178076700 4 c sys/src/cmd/ip/ipconfig/main.c - 664 sys sys 1178051838 37982
 1178076700 5 c sys/src/cmd/ip/ping.c - 664 sys sys 1178055342 9699
 1178136117 0 c sys/src/cmd/ip/ftpd.c - 664 sys sys 1178127705 33168
+1178249521 0 c lib/face/48x48x8/.dict - 664 sys sys 1178172651 4056
+1178249521 1 a rc/bin/dmaon - 775 sys sys 1178214935 213
+1178249521 2 c sys/games/lib/fortunes - 664 sys sys 1178172623 264810
+1178249521 3 c sys/man/4/cwfs - 664 sys sys 1178224996 6225
+1178249521 4 c sys/src/9/ip/ipifc.c - 664 sys sys 1178172609 33638
