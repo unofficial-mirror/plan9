@@ -29019,3 +29019,7 @@
 1178249521 2 c sys/games/lib/fortunes - 664 sys sys 1178172623 264810
 1178249521 3 c sys/man/4/cwfs - 664 sys sys 1178224996 6225
 1178249521 4 c sys/src/9/ip/ipifc.c - 664 sys sys 1178172609 33638
+1178335908 0 c sys/games/lib/fortunes - 664 sys sys 1178249993 264810
+1178335908 1 c sys/src/9/port/devcap.c - 664 sys sys 1178320320 4160
+1178335908 2 c sys/src/cmd/auth/cron.c - 664 sys sys 1178316322 12313
+1178335908 3 c sys/src/cmd/cpp/eval.c - 664 sys sys 1178313120 9886
