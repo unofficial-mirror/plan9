@@ -29023,3 +29023,6 @@
 1178335908 1 c sys/src/9/port/devcap.c - 664 sys sys 1178320320 4160
 1178335908 2 c sys/src/cmd/auth/cron.c - 664 sys sys 1178316322 12313
 1178335908 3 c sys/src/cmd/cpp/eval.c - 664 sys sys 1178313120 9886
+1178422341 0 c rc/bin/diskparts - 775 sys sys 1178399618 624
+1178422341 1 c sys/games/lib/fortunes - 664 sys sys 1178418339 265010
+1178422341 2 c sys/src/cmd/scuzz/scuzz.c - 664 sys sys 1178401100 37903
