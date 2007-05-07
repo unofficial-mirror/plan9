@@ -7091,6 +7091,7 @@ sys/man/3/0intro - 664 sys sys 984709634 1873
 sys/man/3/apm - 664 sys sys 984709634 1625
 sys/man/3/arch - 664 sys sys 958419692 1425
 sys/man/3/audio - 664 sys sys 1133880494 2933
+sys/man/3/bridge - 664 sys sys 1178574591 2921
 sys/man/3/cap - 664 sys sys 1032632323 2137
 sys/man/3/cons - 664 sys sys 1133880397 8972
 sys/man/3/draw - 664 sys sys 1040457030 13813
@@ -7100,7 +7101,7 @@ sys/man/3/ether - 664 sys sys 984709635 2563
 sys/man/3/floppy - 664 sys sys 954378905 881
 sys/man/3/fs - 664 sys sys 1175145095 3147
 sys/man/3/i82365 - 664 sys sys 954378906 884
-sys/man/3/ip - 664 sys sys 1178484285 24566
+sys/man/3/ip - 664 sys sys 1178575371 25066
 sys/man/3/kbmap - 664 sys sys 1131110122 1732
 sys/man/3/kprof - 664 sys sys 1018029972 1377
 sys/man/3/loopback - 664 sys sys 964662153 1995
@@ -7337,7 +7338,7 @@ sys/src/9/bitsy/bitsyreset.s - 664 sys sys 1017695510 2352
 sys/src/9/bitsy/clock.c - 664 sys sys 1037028998 4835
 sys/src/9/bitsy/dat.h - 664 sys sys 1143129783 5829
 sys/src/9/bitsy/defont.c - 664 sys sys 1017695511 21570
-sys/src/9/bitsy/devether.c - 664 sys sys 1116097769 10675
+sys/src/9/bitsy/devether.c - 664 sys sys 1178548255 10676
 sys/src/9/bitsy/devflash.c - 664 sys sys 1138500612 16830
 sys/src/9/bitsy/devpcmcia.c - 664 sys sys 1099801570 12977
 sys/src/9/bitsy/devpenmouse.c - 664 sys sys 1131289775 9589
@@ -7437,7 +7438,7 @@ sys/src/9/mtx/clock.c - 664 sys sys 1032053278 1293
 sys/src/9/mtx/cycintr.c - 664 sys sys 1018721285 230
 sys/src/9/mtx/dat.h - 664 sys sys 1169491926 3825
 sys/src/9/mtx/devarch.c - 664 sys sys 1018721285 6793
-sys/src/9/mtx/devether.c - 664 sys sys 1116097786 9281
+sys/src/9/mtx/devether.c - 664 sys sys 1178548255 9282
 sys/src/9/mtx/devrtc.c - 664 sys sys 1018721285 6772
 sys/src/9/mtx/ether2114x.c - 664 sys sys 1026848191 37904
 sys/src/9/mtx/etherif.h - 664 sys sys 1045504432 785
@@ -7471,7 +7472,7 @@ sys/src/9/pc/bios32.c - 664 sys sys 1173287378 3029
 sys/src/9/pc/cga.c - 664 sys sys 1015014513 1843
 sys/src/9/pc/dat.h - 664 sys sys 1173289271 6917
 sys/src/9/pc/devarch.c - 664 sys sys 1168315311 19342
-sys/src/9/pc/devether.c - 664 sys sys 1131290265 10315
+sys/src/9/pc/devether.c - 664 sys sys 1178548254 10316
 sys/src/9/pc/devfloppy.c - 664 sys sys 1142958305 20139
 sys/src/9/pc/devi82365.c - 664 sys sys 1146318335 20504
 sys/src/9/pc/devlm78.c - 664 sys sys 1128255048 6291
@@ -7622,7 +7623,7 @@ sys/src/9/port/devpipe.c - 664 sys sys 1077055016 5825
 sys/src/9/port/devpnp.c - 664 sys sys 1088560907 13624
 sys/src/9/port/devproc.c - 664 sys sys 1168304324 28543
 sys/src/9/port/devroot.c - 664 sys sys 1146151714 4242
-sys/src/9/port/devsd.c - 664 sys sys 1167774805 31099
+sys/src/9/port/devsd.c - 664 sys sys 1178553988 31116
 sys/src/9/port/devsdp.c - 664 sys sys 1057323393 44800
 sys/src/9/port/devsegment.c - 664 sys sys 1131289891 9610
 sys/src/9/port/devsrv.c - 664 sys sys 1165810571 5711
@@ -7687,7 +7688,7 @@ sys/src/9/ppc/blast - 664 sys sys 1107436310 670
 sys/src/9/ppc/blast.h - 664 sys sys 1059490750 3109
 sys/src/9/ppc/clock.c - 664 sys sys 1131290066 1076
 sys/src/9/ppc/dat.h - 664 sys sys 1127274100 4735
-sys/src/9/ppc/devether.c - 664 sys sys 1131290184 9327
+sys/src/9/ppc/devether.c - 664 sys sys 1178548254 9328
 sys/src/9/ppc/devflash.c - 664 sys sys 1138469487 19884
 sys/src/9/ppc/devirq.c - 664 sys sys 1100701675 6314
 sys/src/9/ppc/devtls.c - 664 sys sys 1059490751 43721
@@ -9094,7 +9095,7 @@ sys/src/cmd/aux - 20000000775 sys sys 1015008975 0
 sys/src/cmd/aux/8prefix.c - 664 sys sys 1147022850 4505
 sys/src/cmd/aux/9pcon.c - 664 sys sys 1127394247 6284
 sys/src/cmd/aux/accupoint.c - 664 sys sys 985124882 2166
-sys/src/cmd/aux/acidleak.c - 664 sys sys 1143670676 5965
+sys/src/cmd/aux/acidleak.c - 664 sys sys 1178547061 6282
 sys/src/cmd/aux/antiword - 20000000775 sys sys 1069793877 0
 sys/src/cmd/aux/antiword/antiword.h - 664 sys sys 1137261472 27773
 sys/src/cmd/aux/antiword/asc85enc.c - 664 sys sys 1137261472 3910
@@ -14415,7 +14416,7 @@ sys/src/libc/9sys/getppid.c - 664 sys sys 944961712 202
 sys/src/libc/9sys/getwd.c - 664 sys sys 971455516 248
 sys/src/libc/9sys/iounit.c - 664 sys sys 1014927338 456
 sys/src/libc/9sys/mkfile - 664 sys sys 1035389805 789
-sys/src/libc/9sys/nsec.c - 664 sys sys 1014927338 1188
+sys/src/libc/9sys/nsec.c - 664 sys sys 1178547598 551
 sys/src/libc/9sys/nulldir.c - 664 sys sys 1014927338 131
 sys/src/libc/9sys/postnote.c - 664 sys sys 944961712 430
 sys/src/libc/9sys/privalloc.c - 664 sys sys 984709402 606
