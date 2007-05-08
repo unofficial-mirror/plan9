@@ -7018,7 +7018,7 @@ sys/man/2/hypot - 664 sys sys 944959693 302
 sys/man/2/intmap - 664 sys sys 1015091523 2622
 sys/man/2/ioproc - 664 sys sys 1159419768 3060
 sys/man/2/iounit - 664 sys sys 1015091523 1001
-sys/man/2/ip - 664 sys sys 1173239323 7249
+sys/man/2/ip - 664 sys sys 1178598000 7246
 sys/man/2/isalpharune - 664 sys sys 1015091523 1059
 sys/man/2/keyboard - 664 sys sys 950892860 2065
 sys/man/2/lock - 664 sys sys 1174844415 5704
@@ -7097,7 +7097,7 @@ sys/man/3/cons - 664 sys sys 1133880397 8972
 sys/man/3/draw - 664 sys sys 1040457030 13813
 sys/man/3/dup - 664 sys sys 1015024778 1099
 sys/man/3/env - 664 sys sys 1015024778 1409
-sys/man/3/ether - 664 sys sys 984709635 2563
+sys/man/3/ether - 664 sys sys 1178597986 2890
 sys/man/3/floppy - 664 sys sys 954378905 881
 sys/man/3/fs - 664 sys sys 1175145095 3147
 sys/man/3/i82365 - 664 sys sys 954378906 884
@@ -14850,7 +14850,7 @@ sys/src/libip/equivip.c - 664 sys sys 1103554773 285
 sys/src/libip/ip.h - 664 sys sys 944961727 1438
 sys/src/libip/ipaux.c - 664 sys sys 985038059 1515
 sys/src/libip/mkfile - 664 sys sys 1065576347 320
-sys/src/libip/myetheraddr.c - 664 sys sys 1066515138 837
+sys/src/libip/myetheraddr.c - 664 sys sys 1178597962 382
 sys/src/libip/myipaddr.c - 664 sys sys 1069766545 841
 sys/src/libip/parseether.c - 664 sys sys 944961726 318
 sys/src/libip/parseip.c - 664 sys sys 1169595542 2429

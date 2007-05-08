@@ -29050,3 +29050,6 @@
 1178577118 6 c sys/src/9/ppc/devether.c - 664 sys sys 1178548254 9328
 1178577118 7 c sys/src/cmd/aux/acidleak.c - 664 sys sys 1178547061 6282
 1178577118 8 c sys/src/libc/9sys/nsec.c - 664 sys sys 1178547598 551
+1178654529 0 c sys/man/2/ip - 664 sys sys 1178598000 7246
+1178654529 1 c sys/man/3/ether - 664 sys sys 1178597986 2890
+1178654529 2 c sys/src/libip/myetheraddr.c - 664 sys sys 1178597962 382
