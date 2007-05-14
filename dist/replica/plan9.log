@@ -29096,3 +29096,5 @@
 1178940705 28 c sys/src/libmach/qdb.c - 664 sys sys 1178892114 30360
 1178940705 29 c sys/src/libmach/setmach.c - 664 sys sys 1178892113 3016
 1178940705 30 c dist/replica/plan9.proto - 664 sys sys 1178910941 2871
+1179113505 0 c sys/man/1/marshal - 664 sys sys 1179087317 3176
+1179113505 1 c sys/src/cmd/upas/marshal/marshal.c - 664 sys sys 1179087968 34023
