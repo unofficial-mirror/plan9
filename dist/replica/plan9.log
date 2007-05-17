@@ -29100,3 +29100,12 @@
 1179113505 1 c sys/src/cmd/upas/marshal/marshal.c - 664 sys sys 1179087968 34023
 1179261247 0 c sys/man/4/acme - 664 sys sys 1179239864 10433
 1179261247 1 c sys/src/cmd/ip/ipconfig/main.c - 664 sys sys 1179231088 38062
+1179372718 0 c sys/man/8/fossilcons - 664 sys sys 1179296666 18371
+1179372718 1 c sys/src/9/port/devfs.c - 664 sys sys 1179356387 12406
+1179372718 2 c sys/src/cmd/auth/newns.c - 664 sys sys 1179368218 979
+1179372718 3 c sys/src/cmd/cpu.c - 664 sys sys 1179337486 21193
+1179372718 4 c sys/src/cmd/rio/rio.c - 664 sys sys 1179332602 22953
+1179372718 5 c sys/src/cmd/fossil/disk.c - 664 sys sys 1179296683 6993
+1179372718 6 c sys/src/libauth/auth_proxy.c - 664 sys sys 1179362110 3673
+1179372718 7 c sys/src/libauth/newns.c - 664 sys sys 1179362110 7356
+1179372718 8 c sys/src/libdraw/init.c - 664 sys sys 1179326794 9523
