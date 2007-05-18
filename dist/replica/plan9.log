@@ -29109,3 +29109,12 @@
 1179372718 6 c sys/src/libauth/auth_proxy.c - 664 sys sys 1179362110 3673
 1179372718 7 c sys/src/libauth/newns.c - 664 sys sys 1179362110 7356
 1179372718 8 c sys/src/libdraw/init.c - 664 sys sys 1179326794 9523
+1179459162 0 c lib/vgadb - 664 sys sys 1179427249 30622
+1179459162 1 c sys/games/lib/fortunes - 664 sys sys 1179445990 265143
+1179459162 2 c sys/lib/acid/leak - 664 sys sys 1179405289 3022
+1179459162 3 c sys/man/4/import - 664 sys sys 1179442944 3272
+1179459162 4 c sys/man/4/srv - 664 sys sys 1179442921 4764
+1179459162 5 c sys/src/cmd/auth/factotum/p9sk1.c - 664 sys sys 1179405289 9834
+1179459162 6 c sys/src/cmd/auth/none.c - 664 sys sys 1179405289 970
+1179459162 7 c sys/src/cmd/ip/dhcpd/dhcpd.c - 664 sys sys 1179429075 33386
+1179459162 8 c sys/src/cmd/fossil/9fid.c - 664 sys sys 1179405289 5571
