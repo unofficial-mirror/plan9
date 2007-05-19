@@ -29127,3 +29127,4 @@
 1179520470 6 c sys/src/libregexp/regexec.c - 664 sys sys 1179507091 4977
 1179520470 7 c sys/src/libregexp/rregexec.c - 664 sys sys 1179507092 4676
 1179520470 8 c sys/src/libthread/lib.c - 664 sys sys 1179510703 711
+1179604949 0 c sys/src/cmd/rio/wind.c - 664 sys sys 1179591640 33382
