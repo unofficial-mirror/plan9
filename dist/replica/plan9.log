@@ -29128,3 +29128,6 @@
 1179520470 7 c sys/src/libregexp/rregexec.c - 664 sys sys 1179507092 4676
 1179520470 8 c sys/src/libthread/lib.c - 664 sys sys 1179510703 711
 1179604949 0 c sys/src/cmd/rio/wind.c - 664 sys sys 1179591640 33382
+1179709384 0 c sys/man/3/ip - 664 sys sys 1179708346 24886
+1179709384 1 c sys/src/9/ip/ipifc.c - 664 sys sys 1179700017 34199
+1179709384 2 c sys/src/9/ip/ipmux.c - 664 sys sys 1179708314 15363
