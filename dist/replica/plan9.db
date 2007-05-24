@@ -5295,7 +5295,7 @@ sys/games - 20000000775 sys sys 952648872 0
 sys/games/lib - 20000000775 sys sys 952648879 0
 sys/games/lib/4scores - 10000000666 sys sys 1118680448 0
 sys/games/lib/5scores - 10000000666 sys sys 1118680453 0
-sys/games/lib/fortunes - 664 sys sys 1179445990 265143
+sys/games/lib/fortunes - 664 sys sys 1179957238 265482
 sys/games/lib/mahjongg - 20000000775 sys sys 1095792278 0
 sys/games/lib/mahjongg/backgrounds - 20000000775 sys sys 1095792293 0
 sys/games/lib/mahjongg/backgrounds/default.bit - 664 sys sys 1095792293 346803
@@ -7625,7 +7625,7 @@ sys/src/9/port/devcons.c - 664 sys sys 1176658321 22943
 sys/src/9/port/devdraw.c - 664 sys sys 1147023550 44447
 sys/src/9/port/devdup.c - 664 sys sys 1014931172 2332
 sys/src/9/port/devenv.c - 664 sys sys 1169498893 7015
-sys/src/9/port/devfs.c - 664 sys sys 1179726929 12395
+sys/src/9/port/devfs.c - 664 sys sys 1179951300 12209
 sys/src/9/port/devkbmap.c - 664 sys sys 1130763846 3064
 sys/src/9/port/devkprof.c - 664 sys sys 1014931173 3111
 sys/src/9/port/devloopback.c - 664 sys sys 1138458368 14579
@@ -13619,7 +13619,7 @@ sys/src/cmd/upas/bayes/msgtok.c - 664 sys sys 1063951010 4185
 sys/src/cmd/upas/bayes/regcomp.c - 664 sys sys 1063951010 9707
 sys/src/cmd/upas/bayes/regen.c - 664 sys sys 1063951011 2452
 sys/src/cmd/upas/common - 20000000775 sys sys 1015088626 0
-sys/src/cmd/upas/common/appendfiletombox.c - 664 sys sys 1075064534 2154
+sys/src/cmd/upas/common/appendfiletombox.c - 664 sys sys 1179946114 2563
 sys/src/cmd/upas/common/aux.c - 664 sys sys 1019498851 2300
 sys/src/cmd/upas/common/become.c - 664 sys sys 1015009623 430
 sys/src/cmd/upas/common/common.h - 664 sys sys 1098803897 2040

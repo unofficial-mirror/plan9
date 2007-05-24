@@ -29142,3 +29142,6 @@
 1179804754 8 a sys/src/cmd/ip/6in4.c - 664 sys sys 1179783180 7341
 1179804754 9 c sys/src/cmd/ip/traceroute.c - 664 sys sys 1179779560 8645
 1179804754 10 a sys/src/cmd/ecp.c - 664 sys sys 1179725473 14664
+1179977599 0 c sys/games/lib/fortunes - 664 sys sys 1179957238 265482
+1179977599 1 c sys/src/9/port/devfs.c - 664 sys sys 1179951300 12209
+1179977599 2 c sys/src/cmd/upas/common/appendfiletombox.c - 664 sys sys 1179946114 2563
