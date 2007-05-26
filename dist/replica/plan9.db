@@ -9808,7 +9808,7 @@ sys/src/cmd/fossil/archive.c - 664 sys sys 1087005594 10230
 sys/src/cmd/fossil/build - 664 sys sys 1042005505 449
 sys/src/cmd/fossil/buildsh - 775 sys sys 1042005505 561
 sys/src/cmd/fossil/bwatch.c - 664 sys sys 1042005505 6754
-sys/src/cmd/fossil/cache.c - 664 sys sys 1176500208 43930
+sys/src/cmd/fossil/cache.c - 664 sys sys 1180158132 43913
 sys/src/cmd/fossil/check.c - 664 sys sys 1177432003 17448
 sys/src/cmd/fossil/conf.rc - 775 sys sys 1084333190 1416
 sys/src/cmd/fossil/dat.h - 664 sys sys 1177432005 7655
