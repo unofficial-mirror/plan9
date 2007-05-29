@@ -9093,7 +9093,7 @@ sys/src/cmd/auth/secstore/aescbc.c - 664 sys sys 1143465912 4063
 sys/src/cmd/auth/secstore/dirls.c - 664 sys sys 1062277640 1842
 sys/src/cmd/auth/secstore/mkfile - 664 sys sys 1106577499 836
 sys/src/cmd/auth/secstore/pak.c - 664 sys sys 1140272943 9314
-sys/src/cmd/auth/secstore/password.c - 664 sys sys 1106577427 2929
+sys/src/cmd/auth/secstore/password.c - 664 sys sys 1180417351 3038
 sys/src/cmd/auth/secstore/secchk.c - 664 sys sys 1172776633 565
 sys/src/cmd/auth/secstore/secstore.c - 664 sys sys 1143465894 12678
 sys/src/cmd/auth/secstore/secstore.h - 664 sys sys 1106575526 859
