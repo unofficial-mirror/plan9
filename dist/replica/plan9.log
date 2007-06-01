@@ -29148,3 +29148,8 @@
 1180209719 0 c sys/src/cmd/fossil/cache.c - 664 sys sys 1180158132 43913
 1180251138 0 c sys/src/9/port/devfs.c - 664 sys sys 1180249924 13409
 1180469009 0 c sys/src/cmd/auth/secstore/password.c - 664 sys sys 1180417351 3038
+1180668739 0 c rc/bin/fshalt - 775 sys sys 1180592582 1669
+1180668739 1 c sys/man/8/6in4 - 664 sys sys 1180653391 1850
+1180668739 2 c sys/src/9/port/devfs.c - 664 sys sys 1180592541 13499
+1180668739 3 c sys/src/cmd/ip/6in4.c - 664 sys sys 1180652319 7570
+1180668739 4 c sys/src/cmd/ip/traceroute.c - 664 sys sys 1180651317 8699
