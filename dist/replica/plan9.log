@@ -29177,3 +29177,8 @@
 1181273523 3 c sys/man/8/mkpaqfs - 664 sys sys 1181261121 890
 1181273523 4 c sys/man/8/plan9.ini - 664 sys sys 1181239022 23242
 1181273523 5 c sys/src/9/ip/tcp.c - 664 sys sys 1181238163 65894
+1181359923 0 c sys/man/1/passwd - 664 sys sys 1181277007 1532
+1181359923 1 c sys/man/1/secstore - 664 sys sys 1181275322 3913
+1181359923 2 c sys/man/8/auth - 664 sys sys 1181325518 4586
+1181359923 3 c sys/man/8/fossilcons - 664 sys sys 1181331315 18400
+1181359923 4 c sys/src/cmd/upas/vf/vf.c - 664 sys sys 1181326746 20235
