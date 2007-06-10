@@ -7112,7 +7112,7 @@ sys/man/3/ether - 664 sys sys 1178597986 2890
 sys/man/3/floppy - 664 sys sys 954378905 881
 sys/man/3/fs - 664 sys sys 1175145095 3147
 sys/man/3/i82365 - 664 sys sys 954378906 884
-sys/man/3/ip - 664 sys sys 1179708346 24886
+sys/man/3/ip - 664 sys sys 1181506841 24876
 sys/man/3/kbmap - 664 sys sys 1131110122 1732
 sys/man/3/kprof - 664 sys sys 1018029972 1377
 sys/man/3/loopback - 664 sys sys 964662153 1995
@@ -8590,7 +8590,7 @@ sys/src/boot/pc/ether8003.c - 664 sys sys 1015007950 6446
 sys/src/boot/pc/ether8139.c - 664 sys sys 1121393459 14823
 sys/src/boot/pc/ether8169.c - 664 sys sys 1156429147 21582
 sys/src/boot/pc/ether82557.c - 664 sys sys 1140802406 19090
-sys/src/boot/pc/ether82563.c - 664 sys sys 1178926666 24957
+sys/src/boot/pc/ether82563.c - 664 sys sys 1181517000 25452
 sys/src/boot/pc/ether83815.c - 664 sys sys 1144961190 21993
 sys/src/boot/pc/ether8390.c - 664 sys sys 1112382847 16209
 sys/src/boot/pc/ether8390.h - 664 sys sys 1015007951 1392
@@ -8601,7 +8601,7 @@ sys/src/boot/pc/etherelnk3x.c - 664 sys sys 1015007951 24989
 sys/src/boot/pc/etherga620.c - 664 sys sys 1175289484 27168
 sys/src/boot/pc/etherga620fw.h - 664 sys sys 1174080072 222295
 sys/src/boot/pc/etherif.h - 664 sys sys 1174077279 1338
-sys/src/boot/pc/etherigbe.c - 664 sys sys 1140710606 40769
+sys/src/boot/pc/etherigbe.c - 664 sys sys 1181515261 41262
 sys/src/boot/pc/ethermii.c - 664 sys sys 1103641771 4413
 sys/src/boot/pc/ethermii.h - 664 sys sys 1071175087 3259
 sys/src/boot/pc/etherrhine.c - 664 sys sys 1144961190 12383
@@ -13725,9 +13725,9 @@ sys/src/cmd/upas/smtp/rfc822.y - 664 sys sys 1064589606 13417
 sys/src/cmd/upas/smtp/rmtdns.c - 664 sys sys 1015013150 1069
 sys/src/cmd/upas/smtp/smtp.c - 664 sys sys 1143759341 20123
 sys/src/cmd/upas/smtp/smtp.h - 664 sys sys 1108827986 1270
-sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1161308327 31702
+sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1181513473 32835
 sys/src/cmd/upas/smtp/smtpd.h - 664 sys sys 1067722781 1111
-sys/src/cmd/upas/smtp/smtpd.y - 664 sys sys 1143670612 6961
+sys/src/cmd/upas/smtp/smtpd.y - 664 sys sys 1181508390 6924
 sys/src/cmd/upas/smtp/spam.c - 664 sys sys 1139699502 10238
 sys/src/cmd/upas/unesc - 20000000775 sys sys 1075080255 0
 sys/src/cmd/upas/unesc/mkfile - 664 sys sys 1173383407 142

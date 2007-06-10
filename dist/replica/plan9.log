@@ -29203,3 +29203,8 @@
 1181437334 18 c sys/src/cmd/scuzz/scuzz.c - 664 sys sys 1181436627 38286
 1181437334 19 c sys/src/libregexp/regexec.c - 664 sys sys 1181417679 4976
 1181437334 20 c sys/src/libregexp/rregexec.c - 664 sys sys 1181417679 4675
+1181518339 0 c sys/man/3/ip - 664 sys sys 1181506841 24876
+1181518339 1 c sys/src/boot/pc/etherigbe.c - 664 sys sys 1181515261 41262
+1181518339 2 c sys/src/boot/pc/ether82563.c - 664 sys sys 1181517000 25452
+1181518339 3 c sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1181513473 32835
+1181518339 4 c sys/src/cmd/upas/smtp/smtpd.y - 664 sys sys 1181508390 6924
