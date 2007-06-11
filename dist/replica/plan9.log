@@ -29208,3 +29208,4 @@
 1181518339 2 c sys/src/boot/pc/ether82563.c - 664 sys sys 1181517000 25452
 1181518339 3 c sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1181513473 32835
 1181518339 4 c sys/src/cmd/upas/smtp/smtpd.y - 664 sys sys 1181508390 6924
+1181597560 0 c sys/src/libauthsrv/readnvram.c - 664 sys sys 1181596613 10196

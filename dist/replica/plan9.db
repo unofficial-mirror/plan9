@@ -14285,7 +14285,7 @@ sys/src/libauthsrv/mkfile - 664 sys sys 1035389776 409
 sys/src/libauthsrv/nvcsum.c - 664 sys sys 1015091654 192
 sys/src/libauthsrv/opasstokey.c - 664 sys sys 1015091654 448
 sys/src/libauthsrv/passtokey.c - 664 sys sys 1143695654 488
-sys/src/libauthsrv/readnvram.c - 664 sys sys 1174807437 10155
+sys/src/libauthsrv/readnvram.c - 664 sys sys 1181596613 10196
 sys/src/libbin - 20000000775 sys sys 984777332 0
 sys/src/libbin/bin.c - 664 sys sys 1135487932 1829
 sys/src/libbin/mkfile - 664 sys sys 1035389776 197
