@@ -7158,7 +7158,7 @@ sys/man/4/mntgen - 664 sys sys 1043680799 473
 sys/man/4/namespace - 664 sys sys 1161060792 6920
 sys/man/4/nfs - 664 sys sys 1140447003 4475
 sys/man/4/nntpfs - 664 sys sys 1032632346 2771
-sys/man/4/paqfs - 664 sys sys 1017723482 1541
+sys/man/4/paqfs - 664 sys sys 1181701436 1736
 sys/man/4/plumber - 664 sys sys 944959699 2748
 sys/man/4/ramfs - 664 sys sys 1168307208 1642
 sys/man/4/ratfs - 664 sys sys 1157898800 3276
@@ -7243,7 +7243,7 @@ sys/man/8/cpurc - 664 sys sys 1174792133 1541
 sys/man/8/cron - 664 sys sys 1063858596 1867
 sys/man/8/dhcpd - 664 sys sys 1172959497 5572
 sys/man/8/disksim - 664 sys sys 1144150487 1476
-sys/man/8/drawterm - 664 sys sys 1135901219 1741
+sys/man/8/drawterm - 664 sys sys 1181675938 1921
 sys/man/8/fossilcons - 664 sys sys 1181331315 18400
 sys/man/8/fs - 664 sys sys 1172956177 15086
 sys/man/8/fsconfig - 664 sys sys 1172956534 8878
@@ -8601,7 +8601,7 @@ sys/src/boot/pc/etherelnk3x.c - 664 sys sys 1015007951 24989
 sys/src/boot/pc/etherga620.c - 664 sys sys 1175289484 27168
 sys/src/boot/pc/etherga620fw.h - 664 sys sys 1174080072 222295
 sys/src/boot/pc/etherif.h - 664 sys sys 1174077279 1338
-sys/src/boot/pc/etherigbe.c - 664 sys sys 1181515261 41262
+sys/src/boot/pc/etherigbe.c - 664 sys sys 1181675291 41434
 sys/src/boot/pc/ethermii.c - 664 sys sys 1103641771 4413
 sys/src/boot/pc/ethermii.h - 664 sys sys 1071175087 3259
 sys/src/boot/pc/etherrhine.c - 664 sys sys 1144961190 12383
@@ -12340,7 +12340,7 @@ sys/src/cmd/page/view.c - 664 sys sys 1136377361 22893
 sys/src/cmd/paqfs - 20000000775 sys sys 1017696804 0
 sys/src/cmd/paqfs/mkfile - 664 sys sys 1032060366 228
 sys/src/cmd/paqfs/mkpaqfs.c - 664 sys sys 1072729575 8836
-sys/src/cmd/paqfs/paqfs.c - 664 sys sys 1084470285 19571
+sys/src/cmd/paqfs/paqfs.c - 664 sys sys 1181701442 19936
 sys/src/cmd/paqfs/paqfs.h - 664 sys sys 1072729575 1016
 sys/src/cmd/pbd.c - 664 sys sys 944961351 247
 sys/src/cmd/pcc.c - 664 sys sys 1146137351 6016
@@ -13138,8 +13138,8 @@ sys/src/cmd/unix/drawterm/Makefile - 664 sys sys 1135900534 1112
 sys/src/cmd/unix/drawterm/README - 664 sys sys 1148233748 1056
 sys/src/cmd/unix/drawterm/args.h - 664 sys sys 1135900534 709
 sys/src/cmd/unix/drawterm/bin - 20000000775 sys sys 959090509 0
-sys/src/cmd/unix/drawterm/cpu-bl.c - 664 sys sys 1135900534 14118
-sys/src/cmd/unix/drawterm/cpu.c - 664 sys sys 1148233749 13982
+sys/src/cmd/unix/drawterm/cpu-bl.c - 664 sys sys 1181676099 14118
+sys/src/cmd/unix/drawterm/cpu.c - 664 sys sys 1181676099 13982
 sys/src/cmd/unix/drawterm/drawterm.h - 664 sys sys 1135900535 472
 sys/src/cmd/unix/drawterm/drawterm.ico - 664 sys sys 1135900535 1662
 sys/src/cmd/unix/drawterm/drawterm.rc - 664 sys sys 1135900535 1713
@@ -13734,7 +13734,7 @@ sys/src/cmd/upas/unesc/mkfile - 664 sys sys 1173383407 142
 sys/src/cmd/upas/unesc/unesc.c - 664 sys sys 1173383408 969
 sys/src/cmd/upas/vf - 20000000775 sys sys 1015096796 0
 sys/src/cmd/upas/vf/mkfile - 664 sys sys 1064393881 241
-sys/src/cmd/upas/vf/vf.c - 664 sys sys 1181326746 20235
+sys/src/cmd/upas/vf/vf.c - 664 sys sys 1181681383 20307
 sys/src/cmd/usb - 20000000775 sys sys 1017802022 0
 sys/src/cmd/usb/audio - 20000000775 sys sys 1017802021 0
 sys/src/cmd/usb/audio/audiofs.c - 664 sys sys 1172903208 18518
