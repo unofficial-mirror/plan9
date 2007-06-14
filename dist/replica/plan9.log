@@ -29216,3 +29216,7 @@
 1181705523 4 c sys/src/cmd/unix/drawterm/cpu-bl.c - 664 sys sys 1181676099 14118
 1181705523 5 c sys/src/cmd/unix/drawterm/cpu.c - 664 sys sys 1181676099 13982
 1181705523 6 c sys/src/cmd/upas/vf/vf.c - 664 sys sys 1181681383 20307
+1181791923 0 c sys/man/4/paqfs - 664 sys sys 1181749508 1848
+1181791923 1 c sys/man/8/listen - 664 sys sys 1181790503 3658
+1181791923 2 c sys/src/cmd/aux/listen.c - 664 sys sys 1181789265 9292
+1181791923 3 c sys/src/cmd/paqfs/paqfs.c - 664 sys sys 1181749507 19998
