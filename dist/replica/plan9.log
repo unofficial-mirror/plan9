@@ -29220,3 +29220,7 @@
 1181791923 1 c sys/man/8/listen - 664 sys sys 1181790503 3658
 1181791923 2 c sys/src/cmd/aux/listen.c - 664 sys sys 1181789265 9292
 1181791923 3 c sys/src/cmd/paqfs/paqfs.c - 664 sys sys 1181749507 19998
+1181878321 0 c sys/man/4/srv - 664 sys sys 1181849407 4970
+1181878321 1 c sys/src/9/boot/boot.h - 664 sys sys 1181823402 1722
+1181878321 2 c sys/src/cmd/mount.c - 664 sys sys 1181847483 1685
+1181878321 3 c sys/src/cmd/fossil/9user.c - 664 sys sys 1181842829 17277
