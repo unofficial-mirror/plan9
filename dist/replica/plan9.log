@@ -29224,3 +29224,7 @@
 1181878321 1 c sys/src/9/boot/boot.h - 664 sys sys 1181823402 1722
 1181878321 2 c sys/src/cmd/mount.c - 664 sys sys 1181847483 1685
 1181878321 3 c sys/src/cmd/fossil/9user.c - 664 sys sys 1181842829 17277
+1181964728 0 c sys/man/1/acme - 664 sys sys 1181880498 18540
+1181964728 1 c sys/src/cmd/acme/exec.c - 664 sys sys 1181880498 28938
+1181964728 2 c sys/src/cmd/pic/linegen.c - 664 sys sys 1181939996 5634
+1181964728 3 c sys/src/cmd/pic/misc.c - 664 sys sys 1181939986 9002

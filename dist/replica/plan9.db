@@ -6800,7 +6800,7 @@ sys/man/1/2a - 664 sys sys 1158281866 1196
 sys/man/1/2c - 664 sys sys 1175892134 9440
 sys/man/1/2l - 664 sys sys 1158281887 4376
 sys/man/1/acid - 664 sys sys 1134233059 9730
-sys/man/1/acme - 664 sys sys 1169932614 18550
+sys/man/1/acme - 664 sys sys 1181880498 18540
 sys/man/1/ap - 664 sys sys 1068471657 364
 sys/man/1/ar - 664 sys sys 1079397701 3153
 sys/man/1/ascii - 664 sys sys 1145881662 2726
@@ -8888,7 +8888,7 @@ sys/src/cmd/acme/ecmd.c - 664 sys sys 1111606460 24205
 sys/src/cmd/acme/edit.c - 664 sys sys 1124993578 12019
 sys/src/cmd/acme/edit.h - 664 sys sys 1124993577 2369
 sys/src/cmd/acme/elog.c - 664 sys sys 1111607796 7294
-sys/src/cmd/acme/exec.c - 664 sys sys 1136064450 28267
+sys/src/cmd/acme/exec.c - 664 sys sys 1181880498 28938
 sys/src/cmd/acme/file.c - 664 sys sys 1044626079 5717
 sys/src/cmd/acme/fns.h - 664 sys sys 1107154481 2916
 sys/src/cmd/acme/fsys.c - 664 sys sys 1111171699 13097
@@ -12351,10 +12351,10 @@ sys/src/cmd/pic/boxgen.c - 664 sys sys 944961042 2309
 sys/src/cmd/pic/circgen.c - 664 sys sys 944961042 2678
 sys/src/cmd/pic/for.c - 664 sys sys 944961042 1949
 sys/src/cmd/pic/input.c - 664 sys sys 1136651708 11556
-sys/src/cmd/pic/linegen.c - 664 sys sys 944961042 5392
+sys/src/cmd/pic/linegen.c - 664 sys sys 1181939996 5634
 sys/src/cmd/pic/main.c - 664 sys sys 944961042 6705
 sys/src/cmd/pic/makefile - 664 sys sys 944961042 964
-sys/src/cmd/pic/misc.c - 664 sys sys 985322747 8957
+sys/src/cmd/pic/misc.c - 664 sys sys 1181939986 9002
 sys/src/cmd/pic/mkfile - 664 sys sys 944961042 490
 sys/src/cmd/pic/movegen.c - 664 sys sys 944961042 1566
 sys/src/cmd/pic/pic.h - 664 sys sys 944961042 5568
