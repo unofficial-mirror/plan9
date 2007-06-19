@@ -12296,7 +12296,7 @@ sys/src/cmd/mv.c - 664 sys sys 1163029439 4682
 sys/src/cmd/ndb - 20000000775 sys sys 988249988 0
 sys/src/cmd/ndb/convDNS2M.c - 664 sys sys 1175901489 6927
 sys/src/cmd/ndb/convM2DNS.c - 664 sys sys 1175901582 11659
-sys/src/cmd/ndb/cs.c - 664 sys sys 1176931848 33123
+sys/src/cmd/ndb/cs.c - 664 sys sys 1182275681 33213
 sys/src/cmd/ndb/csquery.c - 664 sys sys 1174626119 1073
 sys/src/cmd/ndb/dblookup.c - 664 sys sys 1175901604 21010
 sys/src/cmd/ndb/dn.c - 664 sys sys 1177811830 32939

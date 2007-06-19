@@ -29234,3 +29234,4 @@
 1182223921 3 c sys/src/cmd/disk/kfs/con.c - 664 sys sys 1182192569 12768
 1182223921 4 c sys/src/cmd/disk/kfs/main.c - 664 sys sys 1182192646 9506
 1182223921 5 c sys/src/cmd/scat/header.c - 664 sys sys 1182191590 5982
+1182283336 0 c sys/src/cmd/ndb/cs.c - 664 sys sys 1182275681 33213
