@@ -29228,3 +29228,9 @@
 1181964728 1 c sys/src/cmd/acme/exec.c - 664 sys sys 1181880498 28938
 1181964728 2 c sys/src/cmd/pic/linegen.c - 664 sys sys 1181939996 5634
 1181964728 3 c sys/src/cmd/pic/misc.c - 664 sys sys 1181939986 9002
+1182223921 0 c sys/man/8/kfscmd - 664 sys sys 1182192559 4514
+1182223921 1 c sys/src/cmd/9nfs/nfsmount.c - 664 sys sys 1182190701 6447
+1182223921 2 c sys/src/cmd/auth/factotum/util.c - 664 sys sys 1182192267 18452
+1182223921 3 c sys/src/cmd/disk/kfs/con.c - 664 sys sys 1182192569 12768
+1182223921 4 c sys/src/cmd/disk/kfs/main.c - 664 sys sys 1182192646 9506
+1182223921 5 c sys/src/cmd/scat/header.c - 664 sys sys 1182191590 5982
