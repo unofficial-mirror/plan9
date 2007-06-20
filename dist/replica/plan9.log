@@ -29235,3 +29235,6 @@
 1182223921 4 c sys/src/cmd/disk/kfs/main.c - 664 sys sys 1182192646 9506
 1182223921 5 c sys/src/cmd/scat/header.c - 664 sys sys 1182191590 5982
 1182283336 0 c sys/src/cmd/ndb/cs.c - 664 sys sys 1182275681 33213
+1182368000 0 c sys/man/3/bridge - 664 sys sys 1182317237 3151
+1182368000 1 c sys/man/3/vga - 664 sys sys 1182367669 4987
+1182368000 2 c sys/src/9/ip/ethermedium.c - 664 sys sys 1182317888 15596
