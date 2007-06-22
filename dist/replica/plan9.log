@@ -29238,3 +29238,6 @@
 1182368000 0 c sys/man/3/bridge - 664 sys sys 1182317237 3151
 1182368000 1 c sys/man/3/vga - 664 sys sys 1182367669 4987
 1182368000 2 c sys/src/9/ip/ethermedium.c - 664 sys sys 1182317888 15596
+1182483097 0 c sys/man/1/sed - 664 sys sys 1182458430 6921
+1182483097 1 c sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1182462658 32347
+1182483097 2 c sys/src/cmd/sed.c - 664 sys sys 1182465504 26844
