@@ -29241,3 +29241,7 @@
 1182483097 0 c sys/man/1/sed - 664 sys sys 1182458430 6921
 1182483097 1 c sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1182462658 32347
 1182483097 2 c sys/src/cmd/sed.c - 664 sys sys 1182465504 26844
+1182569524 0 c sys/games/lib/fortunes - 664 sys sys 1182530451 265776
+1182569524 1 c sys/src/cmd/ndb/convDNS2M.c - 664 sys sys 1182554015 7035
+1182569524 2 c sys/src/cmd/ndb/convM2DNS.c - 664 sys sys 1182554038 11730
+1182569524 3 c sys/src/cmd/ndb/dns.h - 664 sys sys 1182554108 11171

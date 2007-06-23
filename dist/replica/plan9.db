@@ -5297,7 +5297,7 @@ sys/games - 20000000775 sys sys 952648872 0
 sys/games/lib - 20000000775 sys sys 952648879 0
 sys/games/lib/4scores - 10000000666 sys sys 1118680448 0
 sys/games/lib/5scores - 10000000666 sys sys 1118680453 0
-sys/games/lib/fortunes - 664 sys sys 1181172615 265729
+sys/games/lib/fortunes - 664 sys sys 1182530451 265776
 sys/games/lib/mahjongg - 20000000775 sys sys 1095792278 0
 sys/games/lib/mahjongg/backgrounds - 20000000775 sys sys 1095792293 0
 sys/games/lib/mahjongg/backgrounds/default.bit - 664 sys sys 1095792293 346803
@@ -12294,8 +12294,8 @@ sys/src/cmd/mtime.c - 664 sys sys 1036172302 450
 sys/src/cmd/mug.c - 664 sys sys 1157143847 24888
 sys/src/cmd/mv.c - 664 sys sys 1163029439 4682
 sys/src/cmd/ndb - 20000000775 sys sys 988249988 0
-sys/src/cmd/ndb/convDNS2M.c - 664 sys sys 1175901489 6927
-sys/src/cmd/ndb/convM2DNS.c - 664 sys sys 1175901582 11659
+sys/src/cmd/ndb/convDNS2M.c - 664 sys sys 1182554015 7035
+sys/src/cmd/ndb/convM2DNS.c - 664 sys sys 1182554038 11730
 sys/src/cmd/ndb/cs.c - 664 sys sys 1182275681 33213
 sys/src/cmd/ndb/csquery.c - 664 sys sys 1174626119 1073
 sys/src/cmd/ndb/dblookup.c - 664 sys sys 1175901604 21010
@@ -12304,7 +12304,7 @@ sys/src/cmd/ndb/dnarea.c - 664 sys sys 1175664421 2519
 sys/src/cmd/ndb/dnnotify.c - 664 sys sys 1178508075 3140
 sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1178508075 30139
 sys/src/cmd/ndb/dns.c - 664 sys sys 1177811831 16021
-sys/src/cmd/ndb/dns.h - 664 sys sys 1175901645 10640
+sys/src/cmd/ndb/dns.h - 664 sys sys 1182554108 11171
 sys/src/cmd/ndb/dnsdebug.c - 664 sys sys 1176746985 8741
 sys/src/cmd/ndb/dnserver.c - 664 sys sys 1175901160 4392
 sys/src/cmd/ndb/dnsquery.c - 664 sys sys 1174626126 2435
