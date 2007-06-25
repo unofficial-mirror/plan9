@@ -29246,3 +29246,4 @@
 1182569524 2 c sys/src/cmd/ndb/convM2DNS.c - 664 sys sys 1182554038 11730
 1182569524 3 c sys/src/cmd/ndb/dns.h - 664 sys sys 1182554108 11171
 1182628936 0 c sys/src/cmd/ip/pptp.c - 664 sys sys 1182582403 16596
+1182749542 0 c sys/man/8/smtp - 664 sys sys 1182748396 4590
