@@ -29317,3 +29317,4 @@
 1183001540 39 c sys/src/cmd/rc/tree.c - 664 sys sys 1182898340 2081
 1183001540 40 c sys/src/cmd/rc/unix.c - 664 sys sys 1182898521 8708
 1183001540 41 c sys/src/cmd/rc/win32.c - 664 sys sys 1182898536 8691
+1183129369 0 c sys/games/lib/fortunes - 664 sys sys 1183128515 265891
