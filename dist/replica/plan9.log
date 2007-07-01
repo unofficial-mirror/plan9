@@ -29318,3 +29318,12 @@
 1183001540 40 c sys/src/cmd/rc/unix.c - 664 sys sys 1182898521 8708
 1183001540 41 c sys/src/cmd/rc/win32.c - 664 sys sys 1182898536 8691
 1183129369 0 c sys/games/lib/fortunes - 664 sys sys 1183128515 265891
+1183260734 0 c sys/src/cmd/ndb/convM2DNS.c - 664 sys sys 1183184540 11853
+1183260734 1 c sys/src/cmd/ndb/dblookup.c - 664 sys sys 1183184528 22430
+1183260734 2 c sys/src/cmd/ndb/dn.c - 664 sys sys 1183184500 35208
+1183260734 3 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1183185006 32437
+1183260734 4 c sys/src/cmd/ndb/dns.c - 664 sys sys 1183184469 16237
+1183260734 5 c sys/src/cmd/ndb/dns.h - 664 sys sys 1183184420 11241
+1183260734 6 c sys/src/cmd/ndb/dnsdebug.c - 664 sys sys 1183184428 8754
+1183260734 7 c sys/src/cmd/ndb/dnstcp.c - 664 sys sys 1183184439 7440
+1183260734 8 c sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1183184635 5325
