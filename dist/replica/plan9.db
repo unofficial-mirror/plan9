@@ -12298,7 +12298,7 @@ sys/src/cmd/ndb/convDNS2M.c - 664 sys sys 1182554015 7035
 sys/src/cmd/ndb/convM2DNS.c - 664 sys sys 1183184540 11853
 sys/src/cmd/ndb/cs.c - 664 sys sys 1182275681 33213
 sys/src/cmd/ndb/csquery.c - 664 sys sys 1174626119 1073
-sys/src/cmd/ndb/dblookup.c - 664 sys sys 1183184528 22430
+sys/src/cmd/ndb/dblookup.c - 664 sys sys 1183406703 22445
 sys/src/cmd/ndb/dn.c - 664 sys sys 1183184500 35208
 sys/src/cmd/ndb/dnarea.c - 664 sys sys 1175664421 2519
 sys/src/cmd/ndb/dnnotify.c - 664 sys sys 1178508075 3140
@@ -12309,7 +12309,7 @@ sys/src/cmd/ndb/dnsdebug.c - 664 sys sys 1183184428 8754
 sys/src/cmd/ndb/dnserver.c - 664 sys sys 1175901160 4392
 sys/src/cmd/ndb/dnsquery.c - 664 sys sys 1174626126 2435
 sys/src/cmd/ndb/dnstcp.c - 664 sys sys 1183184439 7440
-sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1183184635 5325
+sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1183406741 5366
 sys/src/cmd/ndb/ipquery.c - 664 sys sys 1124711423 773
 sys/src/cmd/ndb/mkdb.c - 664 sys sys 957402054 2886
 sys/src/cmd/ndb/mkfile - 664 sys sys 1174623575 1984
@@ -12980,14 +12980,14 @@ sys/src/cmd/tapefs/fs.c - 664 sys sys 1141003366 9887
 sys/src/cmd/tapefs/mkfile - 664 sys sys 1097914131 254
 sys/src/cmd/tapefs/tapefs.h - 664 sys sys 1140966413 1815
 sys/src/cmd/tapefs/tapfs.c - 664 sys sys 1140814624 1924
-sys/src/cmd/tapefs/tarfs.c - 664 sys sys 1141003342 2759
+sys/src/cmd/tapefs/tarfs.c - 664 sys sys 1183421287 4542
 sys/src/cmd/tapefs/tpfs.c - 664 sys sys 1140814810 1999
 sys/src/cmd/tapefs/util.c - 664 sys sys 1140966088 2964
 sys/src/cmd/tapefs/v10fs.c - 664 sys sys 1166887348 4096
 sys/src/cmd/tapefs/v6fs.c - 664 sys sys 1140814625 3993
 sys/src/cmd/tapefs/zip.h - 664 sys sys 1097914153 1428
 sys/src/cmd/tapefs/zipfs.c - 664 sys sys 1140814625 6588
-sys/src/cmd/tar.c - 664 sys sys 1169092124 25725
+sys/src/cmd/tar.c - 664 sys sys 1183409751 25727
 sys/src/cmd/tbl - 20000000775 sys sys 954038038 0
 sys/src/cmd/tbl/mkfile - 664 sys sys 944961243 268
 sys/src/cmd/tbl/t.h - 664 sys sys 944961244 3987

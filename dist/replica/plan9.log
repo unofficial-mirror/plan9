@@ -29327,3 +29327,7 @@
 1183260734 6 c sys/src/cmd/ndb/dnsdebug.c - 664 sys sys 1183184428 8754
 1183260734 7 c sys/src/cmd/ndb/dnstcp.c - 664 sys sys 1183184439 7440
 1183260734 8 c sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1183184635 5325
+1183433530 0 c sys/src/cmd/ndb/dblookup.c - 664 sys sys 1183406703 22445
+1183433530 1 c sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1183406741 5366
+1183433530 2 c sys/src/cmd/tapefs/tarfs.c - 664 sys sys 1183421287 4542
+1183433530 3 c sys/src/cmd/tar.c - 664 sys sys 1183409751 25727
