@@ -12299,14 +12299,14 @@ sys/src/cmd/ndb/convM2DNS.c - 664 sys sys 1183184540 11853
 sys/src/cmd/ndb/cs.c - 664 sys sys 1182275681 33213
 sys/src/cmd/ndb/csquery.c - 664 sys sys 1174626119 1073
 sys/src/cmd/ndb/dblookup.c - 664 sys sys 1183406703 22445
-sys/src/cmd/ndb/dn.c - 664 sys sys 1183184500 35208
+sys/src/cmd/ndb/dn.c - 664 sys sys 1183448045 35283
 sys/src/cmd/ndb/dnarea.c - 664 sys sys 1175664421 2519
 sys/src/cmd/ndb/dnnotify.c - 664 sys sys 1178508075 3140
 sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1183185006 32437
 sys/src/cmd/ndb/dns.c - 664 sys sys 1183184469 16237
-sys/src/cmd/ndb/dns.h - 664 sys sys 1183184420 11241
+sys/src/cmd/ndb/dns.h - 664 sys sys 1183448016 11240
 sys/src/cmd/ndb/dnsdebug.c - 664 sys sys 1183184428 8754
-sys/src/cmd/ndb/dnserver.c - 664 sys sys 1175901160 4392
+sys/src/cmd/ndb/dnserver.c - 664 sys sys 1183447961 4402
 sys/src/cmd/ndb/dnsquery.c - 664 sys sys 1174626126 2435
 sys/src/cmd/ndb/dnstcp.c - 664 sys sys 1183184439 7440
 sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1183406741 5366
@@ -13853,7 +13853,7 @@ sys/src/cmd/venti/sortientry.c - 664 sys sys 1143759340 7436
 sys/src/cmd/venti/stats.c - 664 sys sys 1019678880 2099
 sys/src/cmd/venti/stdinc.h - 664 sys sys 1019678880 139
 sys/src/cmd/venti/sync.c - 664 sys sys 1036470213 674
-sys/src/cmd/venti/syncarena.c - 664 sys sys 1093980087 4198
+sys/src/cmd/venti/syncarena.c - 664 sys sys 1183441016 4206
 sys/src/cmd/venti/syncindex.c - 664 sys sys 1055707433 983
 sys/src/cmd/venti/syncindex0.c - 664 sys sys 1036470283 3044
 sys/src/cmd/venti/unittoull.c - 664 sys sys 1019678881 398

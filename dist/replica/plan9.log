@@ -29331,3 +29331,7 @@
 1183433530 1 c sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1183406741 5366
 1183433530 2 c sys/src/cmd/tapefs/tarfs.c - 664 sys sys 1183421287 4542
 1183433530 3 c sys/src/cmd/tar.c - 664 sys sys 1183409751 25727
+1183492939 0 c sys/src/cmd/ndb/dn.c - 664 sys sys 1183448045 35283
+1183492939 1 c sys/src/cmd/ndb/dns.h - 664 sys sys 1183448016 11240
+1183492939 2 c sys/src/cmd/ndb/dnserver.c - 664 sys sys 1183447961 4402
+1183492939 3 c sys/src/cmd/venti/syncarena.c - 664 sys sys 1183441016 4206
