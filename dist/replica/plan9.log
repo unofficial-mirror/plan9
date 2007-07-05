@@ -29335,3 +29335,12 @@
 1183492939 1 c sys/src/cmd/ndb/dns.h - 664 sys sys 1183448016 11240
 1183492939 2 c sys/src/cmd/ndb/dnserver.c - 664 sys sys 1183447961 4402
 1183492939 3 c sys/src/cmd/venti/syncarena.c - 664 sys sys 1183441016 4206
+1183604556 0 c sys/man/4/factotum - 664 sys sys 1183529524 14841
+1183604556 1 c sys/man/8/auth - 664 sys sys 1183580530 4981
+1183604556 2 c sys/src/cmd/5c/cgen.c - 664 sys sys 1183570553 19784
+1183604556 3 c sys/src/cmd/5c/txt.c - 664 sys sys 1183570604 19423
+1183604556 4 c sys/src/cmd/5i/5i.c - 664 sys sys 1183602564 4529
+1183604556 5 c sys/src/cmd/5i/arm.h - 664 sys sys 1183570672 3929
+1183604556 6 c sys/src/cmd/5i/mem.c - 664 sys sys 1183570672 4322
+1183604556 7 c sys/src/cmd/5i/syscall.c - 664 sys sys 1183602564 13461
+1183604556 8 d sys/src/cmd/5c/bits.c - 664 sys sys 944960723 0
