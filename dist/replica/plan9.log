@@ -29361,3 +29361,9 @@
 1183664006 14 c sys/src/libc/arm/strcmp.s - 664 sys sys 1183607547 1010
 1183664006 15 c sys/src/libc/arm/vlop.s - 664 sys sys 1183607547 262
 1183664006 16 c sys/src/libc/arm/vlrt.c - 664 sys sys 1183607546 8947
+1183757523 0 c sys/src/cmd/ndb/dn.c - 664 sys sys 1183743268 35708
+1183757523 1 c sys/src/cmd/ndb/dnnotify.c - 664 sys sys 1183750450 3195
+1183757523 2 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1183756960 33524
+1183757523 3 c sys/src/cmd/ndb/dns.c - 664 sys sys 1183750507 16257
+1183757523 4 c sys/src/cmd/ndb/dns.h - 664 sys sys 1183748115 11440
+1183757523 5 c sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1183750487 5470
