@@ -29375,3 +29375,6 @@
 1183867381 2 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1183866553 34076
 1184027614 0 c sys/src/cmd/ndb/dn.c - 664 sys sys 1184026098 35996
 1184027614 1 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1184026119 34245
+1184108508 0 c sys/src/cmd/ndb/dblookup.c - 664 sys sys 1184108014 22529
+1184108508 1 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1184108033 34482
+1184108508 2 c sys/src/cmd/ndb/dns.h - 664 sys sys 1184107975 11658
