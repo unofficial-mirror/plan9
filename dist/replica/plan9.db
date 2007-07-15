@@ -5544,7 +5544,7 @@ sys/include/bin.h - 664 sys sys 1091904425 239
 sys/include/bio.h - 664 sys sys 1014929062 1854
 sys/include/bootexec.h - 664 sys sys 1089314125 2610
 sys/include/complete.h - 664 sys sys 1076276516 562
-sys/include/control.h - 664 sys sys 1084467622 4844
+sys/include/control.h - 664 sys sys 1184471693 4847
 sys/include/ctype.h - 664 sys sys 1014929062 951
 sys/include/cursor.h - 664 sys sys 1014929062 102
 sys/include/disk.h - 664 sys sys 1138975314 1120
@@ -5554,7 +5554,7 @@ sys/include/fcall.h - 664 sys sys 1137461445 3063
 sys/include/flate.h - 664 sys sys 1014929063 1245
 sys/include/frame.h - 664 sys sys 1147706379 2682
 sys/include/geometry.h - 664 sys sys 1014929063 2632
-sys/include/html.h - 664 sys sys 1128662123 15232
+sys/include/html.h - 664 sys sys 1184472600 15622
 sys/include/httpd.h - 664 sys sys 1177187803 5794
 sys/include/ip.h - 664 sys sys 1178768502 2597
 sys/include/keyboard.h - 664 sys sys 1131637696 865
@@ -5575,7 +5575,7 @@ sys/include/regexp.h - 664 sys sys 1014929066 1308
 sys/include/scribble.h - 664 sys sys 1176432918 715
 sys/include/stdio.h - 664 sys sys 1121977155 4208
 sys/include/sunrpc.h - 664 sys sys 1046367129 7219
-sys/include/thread.h - 664 sys sys 1138463280 3616
+sys/include/thread.h - 664 sys sys 1184471649 3586
 sys/include/tos.h - 664 sys sys 1091904418 575
 sys/include/trace.h - 664 sys sys 1138460022 640
 sys/include/venti.h - 664 sys sys 1091904426 7150
@@ -7414,11 +7414,11 @@ sys/src/9/boot/sac.c - 664 sys sys 1184466374 815
 sys/src/9/boot/settime.c - 664 sys sys 1036813626 2473
 sys/src/9/boot/testboot.c - 664 sys sys 1039763734 496
 sys/src/9/ip - 20000000775 sys sys 1015278450 0
-sys/src/9/ip/arp.c - 664 sys sys 1134042932 11218
+sys/src/9/ip/arp.c - 664 sys sys 1184471153 11234
 sys/src/9/ip/chandial.c - 664 sys sys 1099020048 2295
 sys/src/9/ip/devip.c - 664 sys sys 1161061185 24242
 sys/src/9/ip/eipconvtest.c - 664 sys sys 1022588098 3135
-sys/src/9/ip/esp.c - 664 sys sys 1047260561 17084
+sys/src/9/ip/esp.c - 664 sys sys 1184521732 17108
 sys/src/9/ip/ethermedium.c - 664 sys sys 1184244252 15419
 sys/src/9/ip/gre.c - 664 sys sys 1115566178 5069
 sys/src/9/ip/icmp.c - 664 sys sys 1134390100 9496
@@ -7428,7 +7428,7 @@ sys/src/9/ip/il.c - 664 sys sys 1134498903 27226
 sys/src/9/ip/inferno.c - 664 sys sys 1022588098 517
 sys/src/9/ip/ip.c - 664 sys sys 1176957040 15288
 sys/src/9/ip/ip.h - 664 sys sys 1176957139 15982
-sys/src/9/ip/ipaux.c - 664 sys sys 1079538100 12862
+sys/src/9/ip/ipaux.c - 664 sys sys 1184471278 12873
 sys/src/9/ip/ipifc.c - 664 sys sys 1179700017 34199
 sys/src/9/ip/ipmux.c - 664 sys sys 1179708314 15363
 sys/src/9/ip/iproute.c - 664 sys sys 1168305878 14778
@@ -7441,9 +7441,9 @@ sys/src/9/ip/nullmedium.c - 664 sys sys 1086406910 492
 sys/src/9/ip/pktmedium.c - 664 sys sys 1084331746 1314
 sys/src/9/ip/ptclbsum.c - 664 sys sys 1022588099 1243
 sys/src/9/ip/rudp.c - 664 sys sys 1055700790 21415
-sys/src/9/ip/tcp.c - 664 sys sys 1181238163 65894
+sys/src/9/ip/tcp.c - 664 sys sys 1184471371 65911
 sys/src/9/ip/tripmedium.c - 664 sys sys 1045063515 7136
-sys/src/9/ip/udp.c - 664 sys sys 1178817924 13317
+sys/src/9/ip/udp.c - 664 sys sys 1184471318 13328
 sys/src/9/mkfile - 664 sys sys 1063857477 205
 sys/src/9/mtx - 20000000775 sys sys 1018721288 0
 sys/src/9/mtx/clock.c - 664 sys sys 1032053278 1293
@@ -7484,12 +7484,12 @@ sys/src/9/pc/audio.h - 664 sys sys 1015014513 343
 sys/src/9/pc/bios32.c - 664 sys sys 1173287378 3029
 sys/src/9/pc/cga.c - 664 sys sys 1015014513 1843
 sys/src/9/pc/dat.h - 664 sys sys 1173289271 6917
-sys/src/9/pc/devarch.c - 664 sys sys 1168315311 19342
+sys/src/9/pc/devarch.c - 664 sys sys 1184470975 19350
 sys/src/9/pc/devether.c - 664 sys sys 1178823613 10489
 sys/src/9/pc/devfloppy.c - 664 sys sys 1142958305 20139
 sys/src/9/pc/devi82365.c - 664 sys sys 1146318335 20504
 sys/src/9/pc/devlm78.c - 664 sys sys 1128255048 6291
-sys/src/9/pc/devlml.c - 664 sys sys 1132448361 7502
+sys/src/9/pc/devlml.c - 664 sys sys 1184470711 7597
 sys/src/9/pc/devlml.h - 664 sys sys 1184470164 3031
 sys/src/9/pc/devlpt.c - 664 sys sys 1184469951 4423
 sys/src/9/pc/devpccard.c - 664 sys sys 1184469910 39336
@@ -7567,7 +7567,7 @@ sys/src/9/pc/ptclbsum386.s - 664 sys sys 1015014521 1493
 sys/src/9/pc/random.c - 664 sys sys 1036812832 2021
 sys/src/9/pc/realmode.c - 664 sys sys 1139667044 2678
 sys/src/9/pc/rebootcode.s - 664 sys sys 1015014522 988
-sys/src/9/pc/screen.c - 664 sys sys 1136336092 13971
+sys/src/9/pc/screen.c - 664 sys sys 1184522395 13973
 sys/src/9/pc/screen.h - 664 sys sys 1147023549 4256
 sys/src/9/pc/sd53c8xx.c - 664 sys sys 1170456695 55276
 sys/src/9/pc/sd53c8xx.n - 664 sys sys 1131290556 12657
@@ -8148,7 +8148,7 @@ sys/src/ape/lib/ap/mips/strcpy.s - 664 sys sys 1014921989 1202
 sys/src/ape/lib/ap/mips/tas.s - 664 sys sys 1014921989 494
 sys/src/ape/lib/ap/mips/vlop.s - 664 sys sys 1014921989 239
 sys/src/ape/lib/ap/mips/vlrt.c - 664 sys sys 1014921989 9001
-sys/src/ape/lib/ap/mkfile - 664 sys sys 1183662148 307
+sys/src/ape/lib/ap/mkfile - 664 sys sys 1184520637 316
 sys/src/ape/lib/ap/plan9 - 20000000775 sys sys 1014921986 0
 sys/src/ape/lib/ap/plan9/9errstr.c - 664 sys sys 1070330880 31
 sys/src/ape/lib/ap/plan9/9iounit.c - 664 sys sys 1070660696 981

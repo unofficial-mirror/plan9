@@ -29411,3 +29411,15 @@
 1184470313 21 c sys/src/ape/lib/ap/stdio/strerror.c - 664 sys sys 1184449249 2091
 1184470313 22 c sys/src/cmd/dd.c - 664 sys sys 1184464448 11893
 1184470313 23 c sys/src/cmd/upas/marshal/marshal.c - 664 sys sys 1184451870 33901
+1184535111 0 c sys/include/control.h - 664 sys sys 1184471693 4847
+1184535111 1 c sys/include/html.h - 664 sys sys 1184472600 15622
+1184535111 2 c sys/include/thread.h - 664 sys sys 1184471649 3586
+1184535111 3 c sys/src/9/ip/arp.c - 664 sys sys 1184471153 11234
+1184535111 4 c sys/src/9/ip/esp.c - 664 sys sys 1184521732 17108
+1184535111 5 c sys/src/9/ip/ipaux.c - 664 sys sys 1184471278 12873
+1184535111 6 c sys/src/9/ip/tcp.c - 664 sys sys 1184471371 65911
+1184535111 7 c sys/src/9/ip/udp.c - 664 sys sys 1184471318 13328
+1184535111 8 c sys/src/9/pc/devarch.c - 664 sys sys 1184470975 19350
+1184535111 9 c sys/src/9/pc/screen.c - 664 sys sys 1184522395 13973
+1184535111 10 c sys/src/9/pc/devlml.c - 664 sys sys 1184470711 7597
+1184535111 11 c sys/src/ape/lib/ap/mkfile - 664 sys sys 1184520637 316
