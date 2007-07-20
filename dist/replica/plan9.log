@@ -29456,3 +29456,9 @@
 1184902319 14 c sys/src/cmd/ip/ipconfig/ppp.c - 664 sys sys 1184880751 1046
 1184902319 15 c sys/src/cmd/ip/ping.c - 664 sys sys 1184900703 10237
 1184902319 16 c sys/src/cmd/ip/traceroute.c - 664 sys sys 1184887073 8733
+1184965309 0 c sys/src/9/ip/gre.c - 664 sys sys 1184946959 5071
+1184965309 1 c sys/src/9/ip/icmp.c - 664 sys sys 1184946959 9498
+1184965309 2 c sys/src/9/ip/il.c - 664 sys sys 1184946959 27225
+1184965309 3 c sys/src/9/ip/rudp.c - 664 sys sys 1184946959 21529
+1184965309 4 c sys/src/9/ip/udp.c - 664 sys sys 1184946959 13316
+1184965309 5 c sys/src/cmd/ip/icmp.h - 664 sys sys 1184951372 1461
