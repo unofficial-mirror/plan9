@@ -29462,3 +29462,12 @@
 1184965309 3 c sys/src/9/ip/rudp.c - 664 sys sys 1184946959 21529
 1184965309 4 c sys/src/9/ip/udp.c - 664 sys sys 1184946959 13316
 1184965309 5 c sys/src/cmd/ip/icmp.h - 664 sys sys 1184951372 1461
+1185067954 0 c sys/man/1/con - 664 sys sys 1185067107 4865
+1185067954 1 c sys/src/cmd/con/con.c - 664 sys sys 1185066485 15264
+1185067954 2 c sys/src/cmd/ndb/dblookup.c - 664 sys sys 1184990885 22626
+1185067954 3 c sys/src/cmd/ndb/dn.c - 664 sys sys 1184990893 36087
+1185067954 4 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1184990924 34536
+1185067954 5 c sys/src/cmd/ndb/dns.h - 664 sys sys 1184990871 11692
+1185067954 6 c sys/src/cmd/ndb/dnsdebug.c - 664 sys sys 1184990937 8766
+1185067954 7 c sys/src/cmd/ndb/dnserver.c - 664 sys sys 1184990866 4627
+1185067954 8 c sys/src/cmd/rx.c - 664 sys sys 1185066370 4411
