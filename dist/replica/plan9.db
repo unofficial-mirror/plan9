@@ -12011,7 +12011,7 @@ sys/src/cmd/ip/imap4d/store.c - 664 sys sys 1066317059 1910
 sys/src/cmd/ip/imap4d/utils.c - 664 sys sys 1168894057 2587
 sys/src/cmd/ip/ipconfig - 20000000775 sys sys 1176933436 0
 sys/src/cmd/ip/ipconfig/ipconfig.h - 664 sys sys 1184880748 5635
-sys/src/cmd/ip/ipconfig/ipv6.c - 664 sys sys 1184880748 19731
+sys/src/cmd/ip/ipconfig/ipv6.c - 664 sys sys 1185212228 19732
 sys/src/cmd/ip/ipconfig/main.c - 664 sys sys 1184880913 38660
 sys/src/cmd/ip/ipconfig/mkfile - 664 sys sys 1184880750 233
 sys/src/cmd/ip/ipconfig/ppp.c - 664 sys sys 1184880751 1046
