@@ -29472,3 +29472,10 @@
 1185067954 7 c sys/src/cmd/ndb/dnserver.c - 664 sys sys 1184990866 4627
 1185067954 8 c sys/src/cmd/rx.c - 664 sys sys 1185066370 4411
 1185220917 0 c sys/src/cmd/ip/ipconfig/ipv6.c - 664 sys sys 1185212228 19732
+1185334306 0 c sys/man/8/ndb - 664 sys sys 1185315934 13539
+1185334306 1 c sys/src/9/ip/tcp.c - 664 sys sys 1185283974 65958
+1185334306 2 c sys/src/cmd/ndb/dblookup.c - 664 sys sys 1185315186 24885
+1185334306 3 c sys/src/cmd/ndb/dn.c - 664 sys sys 1185315217 36335
+1185334306 4 c sys/src/cmd/ndb/dns.h - 664 sys sys 1185315217 11703
+1185334306 5 c sys/src/cmd/ndb/dnsdebug.c - 664 sys sys 1185315248 8805
+1185334306 6 c sys/src/cmd/ndb/dnsquery.c - 664 sys sys 1185315254 2507
