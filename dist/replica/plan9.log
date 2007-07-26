@@ -29486,3 +29486,8 @@
 1185420706 4 c sys/src/cmd/ip/ipconfig/ipconfig.h - 664 sys sys 1185390045 5683
 1185420706 5 c sys/src/cmd/ip/ipconfig/ipv6.c - 664 sys sys 1185390096 19652
 1185420706 6 c sys/src/cmd/ip/ipconfig/main.c - 664 sys sys 1185390323 38954
+1185492709 0 c sys/src/9/ip/ipaux.c - 664 sys sys 1185486678 12341
+1185492709 1 c sys/src/9/ip/ipv6.h - 664 sys sys 1185486283 4322
+1185492709 2 c sys/src/9/pc/ether8139.c - 664 sys sys 1185490762 18594
+1185492709 3 c sys/src/9/pc/pci.c - 664 sys sys 1185452613 29418
+1185492709 4 c sys/src/9/pc/ether8169.c - 664 sys sys 1185490910 25476
