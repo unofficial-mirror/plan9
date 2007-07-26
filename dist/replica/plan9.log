@@ -29479,3 +29479,10 @@
 1185334306 4 c sys/src/cmd/ndb/dns.h - 664 sys sys 1185315217 11703
 1185334306 5 c sys/src/cmd/ndb/dnsdebug.c - 664 sys sys 1185315248 8805
 1185334306 6 c sys/src/cmd/ndb/dnsquery.c - 664 sys sys 1185315254 2507
+1185420706 0 c sys/include/ip.h - 664 sys sys 1185389848 4324
+1185420706 1 c sys/man/3/ip - 664 sys sys 1185396805 25985
+1185420706 2 c sys/src/9/ip/ipv6.h - 664 sys sys 1185389900 4422
+1185420706 3 c sys/src/cmd/ip/dhcpd/ndb.c - 664 sys sys 1185389947 5739
+1185420706 4 c sys/src/cmd/ip/ipconfig/ipconfig.h - 664 sys sys 1185390045 5683
+1185420706 5 c sys/src/cmd/ip/ipconfig/ipv6.c - 664 sys sys 1185390096 19652
+1185420706 6 c sys/src/cmd/ip/ipconfig/main.c - 664 sys sys 1185390323 38954
