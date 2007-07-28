@@ -29497,3 +29497,7 @@
 1185568305 3 c sys/src/9/pc/ether8169.c - 664 sys sys 1185509068 25466
 1185568305 4 c sys/src/cmd/ip/6in4.c - 664 sys sys 1185564832 7472
 1185568305 5 c sys/src/cmd/upas/smtp/smtp.c - 664 sys sys 1185515675 20528
+1185652911 0 c sys/src/9/pc/ether8139.c - 664 sys sys 1185650567 19974
+1185652911 1 c sys/src/9/pc/ether8169.c - 664 sys sys 1185650568 26932
+1185652911 2 c sys/src/9/pc/etherga620.c - 664 sys sys 1185652495 29895
+1185652911 3 c sys/src/9/pc/wavelan.c - 664 sys sys 1185652512 27841
