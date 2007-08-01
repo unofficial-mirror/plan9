@@ -29513,3 +29513,6 @@
 1185924710 7 c sys/src/cmd/ip/ipconfig/ipv6.c - 664 sys sys 1185923430 20620
 1185924710 8 c sys/src/cmd/ip/ipconfig/main.c - 664 sys sys 1185923495 39912
 1185924710 9 c sys/src/cmd/ip/mkfile - 664 sys sys 1185920805 1267
+1186011212 0 c sys/man/3/ip - 664 sys sys 1185997698 26031
+1186011212 1 c sys/src/9/ip/esp.c - 664 sys sys 1186010386 17349
+1186011212 2 c sys/src/9/port/devbridge.c - 664 sys sys 1185994684 24171
