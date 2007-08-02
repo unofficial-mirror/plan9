@@ -29516,3 +29516,13 @@
 1186011212 0 c sys/man/3/ip - 664 sys sys 1185997698 26031
 1186011212 1 c sys/src/9/ip/esp.c - 664 sys sys 1186010386 17349
 1186011212 2 c sys/src/9/port/devbridge.c - 664 sys sys 1185994684 24171
+1186093920 0 m rc/bin/C - 775 sys sys 1169492077 980
+1186093920 1 c sys/games/lib/fortunes - 664 sys sys 1186059829 266217
+1186093920 2 c sys/man/3/ip - 664 sys sys 1186036896 26203
+1186093920 3 c sys/src/boot/pc/lib.h - 664 sys sys 1186031516 2843
+1186093920 4 c sys/src/boot/pc/pbslba.s - 664 sys sys 1186031549 8180
+1186093920 5 c sys/src/boot/pc/sd53c8xx.c - 664 sys sys 1186031515 52082
+1186093920 6 c sys/src/cmd/ip/snoopy/dhcp.c - 664 sys sys 1186081890 8965
+1186093920 7 c sys/src/cmd/ip/snoopy/dns.c - 664 sys sys 1186081910 8710
+1186093920 8 c sys/src/cmd/ndb/convM2DNS.c - 664 sys sys 1186081796 11679
+1186093920 9 c sys/src/cmd/ndb/dn.c - 664 sys sys 1186081811 36413
