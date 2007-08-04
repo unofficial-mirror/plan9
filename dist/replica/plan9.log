@@ -29526,3 +29526,9 @@
 1186093920 7 c sys/src/cmd/ip/snoopy/dns.c - 664 sys sys 1186081910 8710
 1186093920 8 c sys/src/cmd/ndb/convM2DNS.c - 664 sys sys 1186081796 11679
 1186093920 9 c sys/src/cmd/ndb/dn.c - 664 sys sys 1186081811 36413
+1186198302 0 c rc/bin/dircp - 775 sys sys 1186179147 246
+1186198302 1 a sys/log/6in4 - 666 sys sys 1186166728 0
+1186198302 2 c sys/man/1/tar - 664 sys sys 1186179393 3836
+1186198302 3 c sys/man/8/6in4 - 664 sys sys 1186182195 2330
+1186198302 4 c sys/man/8/mkfs - 664 sys sys 1186179498 3427
+1186198302 5 c sys/src/cmd/ip/6in4.c - 664 sys sys 1186180319 8844

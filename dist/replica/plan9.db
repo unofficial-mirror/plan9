@@ -4966,7 +4966,7 @@ rc/bin/cpurc.local - 775 sys sys 1176827268 367
 rc/bin/delkey - 775 sys sys 1109429137 643
 rc/bin/dial - 20000000775 sys sys 1059180057 0
 rc/bin/diffy - 775 sys sys 1140694870 277
-rc/bin/dircp - 775 sys sys 1169490692 234
+rc/bin/dircp - 775 sys sys 1186179147 246
 rc/bin/diskparts - 775 sys sys 1178399618 624
 rc/bin/dmaon - 775 sys sys 1178214935 213
 rc/bin/doc2ps - 775 sys sys 1069793831 244
@@ -6763,6 +6763,7 @@ sys/lib/wiki/werror.html - 664 sys sys 1018580959 1234
 sys/lib/yaccpar - 664 sys sys 1123699615 4588
 sys/lib/yaccpars - 664 sys sys 1123699616 4596
 sys/log - 20000000775 sys sys 984760091 0
+sys/log/6in4 - 666 sys sys 1186166728 0
 sys/log/aan - 666 sys sys 1019856844 0
 sys/log/auth - 666 sys sys 959261821 0
 sys/log/cs - 666 sys sys 958934039 0
@@ -6927,7 +6928,7 @@ sys/man/1/strip - 664 sys sys 1131293239 523
 sys/man/1/sum - 664 sys sys 984772442 1390
 sys/man/1/syscall - 664 sys sys 1016466457 1439
 sys/man/1/tail - 664 sys sys 1113743327 1413
-sys/man/1/tar - 664 sys sys 1169092135 3577
+sys/man/1/tar - 664 sys sys 1186179393 3836
 sys/man/1/tbl - 664 sys sys 944959674 4308
 sys/man/1/tcs - 664 sys sys 1143131200 2654
 sys/man/1/tee - 664 sys sys 969499886 351
@@ -7232,7 +7233,7 @@ sys/man/7/playlistfs - 664 sys sys 1103794042 3831
 sys/man/7/scat - 664 sys sys 970069855 8904
 sys/man/8 - 20000000775 sys sys 1018384448 0
 sys/man/8/0intro - 664 sys sys 944959679 247
-sys/man/8/6in4 - 664 sys sys 1181070628 1934
+sys/man/8/6in4 - 664 sys sys 1186182195 2330
 sys/man/8/9load - 664 sys sys 1094676489 9170
 sys/man/8/9pcon - 664 sys sys 1145881850 2234
 sys/man/8/aan - 664 sys sys 1045501064 1670
@@ -7260,7 +7261,7 @@ sys/man/8/kfscmd - 664 sys sys 1182192559 4514
 sys/man/8/listen - 664 sys sys 1181790503 3658
 sys/man/8/lp - 664 sys sys 954614702 2491
 sys/man/8/mk9660 - 664 sys sys 1104430379 3946
-sys/man/8/mkfs - 664 sys sys 1163208436 3414
+sys/man/8/mkfs - 664 sys sys 1186179498 3427
 sys/man/8/mkpaqfs - 664 sys sys 1181261121 890
 sys/man/8/mksacfs - 664 sys sys 964886843 710
 sys/man/8/mouse - 664 sys sys 971455511 2476
@@ -11941,7 +11942,7 @@ sys/src/cmd/iostats/mkfile - 664 sys sys 1014925727 122
 sys/src/cmd/iostats/statfs.h - 664 sys sys 1140099908 2626
 sys/src/cmd/iostats/statsrv.c - 664 sys sys 1166824341 10773
 sys/src/cmd/ip - 20000000775 sys sys 1015096228 0
-sys/src/cmd/ip/6in4.c - 664 sys sys 1185564832 7472
+sys/src/cmd/ip/6in4.c - 664 sys sys 1186180319 8844
 sys/src/cmd/ip/arp.h - 664 sys sys 944961005 751
 sys/src/cmd/ip/dhcp.h - 664 sys sys 1184696111 3419
 sys/src/cmd/ip/dhcpclient.c - 664 sys sys 1178482836 11969
