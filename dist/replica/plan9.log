@@ -29534,3 +29534,13 @@
 1186198302 5 c sys/src/cmd/ip/6in4.c - 664 sys sys 1186180319 8844
 1186259509 0 c sys/src/cmd/ip/6in4.c - 664 sys sys 1186210033 8811
 1186259509 1 c sys/src/cmd/ip/ping.c - 664 sys sys 1186208356 10518
+1186371107 0 a rc/bin/ape/dircp - 775 sys sys 1186289076 186
+1186371107 1 c rc/bin/dircp - 775 sys sys 1186289104 181
+1186371107 2 c rc/bin/ipv6on - 775 sys sys 1186362803 2047
+1186371107 3 c sys/man/3/ip - 664 sys sys 1186348061 26244
+1186371107 4 c sys/src/9/pc/sdata.c - 664 sys sys 1186361525 52991
+1186371107 5 c sys/src/9/pc/trap.c - 664 sys sys 1186361997 21898
+1186371107 6 c sys/src/9/pc/ahci.h - 664 sys sys 1186366009 6314
+1186371107 7 a sys/src/boot/pc/ahci.h - 664 sys sys 1186366104 6318
+1186371107 8 a sys/src/boot/pc/sd63xxesb.c - 664 sys sys 1186368565 26990
+1186371107 9 c sys/src/libhtml/lex.c - 664 sys sys 1186360650 28187
