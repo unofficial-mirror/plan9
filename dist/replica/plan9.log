@@ -29577,3 +29577,11 @@
 1186529517 29 c sys/src/cmd/spin/tl_parse.c - 664 sys sys 1186525921 8348
 1186529517 30 c sys/src/cmd/spin/vars.c - 664 sys sys 1186525921 8374
 1186529517 31 c sys/src/cmd/spin/version.h - 664 sys sys 1186525921 53
+1186630306 0 c sys/src/9/pc/sdscsi.c - 664 sys sys 1186618532 7957
+1186630306 1 c sys/src/9/port/devsd.c - 664 sys sys 1186618574 31315
+1186630306 2 c sys/src/9/port/sd.h - 664 sys sys 1186618553 2499
+1186630306 3 c sys/src/boot/pc/load.c - 664 sys sys 1186619888 9469
+1186630306 4 c sys/src/boot/pc/mkfile - 664 sys sys 1186619876 3181
+1186630306 5 c sys/src/cmd/auth/cron.c - 664 sys sys 1186599442 12315
+1186630306 6 c sys/src/cmd/dd.c - 664 sys sys 1186615580 11885
+1186630306 7 c sys/src/cmd/mount.c - 664 sys sys 1186618412 1685
