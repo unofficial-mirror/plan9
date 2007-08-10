@@ -29602,3 +29602,7 @@
 1186716717 14 c sys/src/cmd/vt/cons.h - 664 sys sys 1186695308 1812
 1186716717 15 c sys/src/cmd/vt/main.c - 664 sys sys 1186696182 14785
 1186716717 16 c sys/src/cmd/vt/vt.c - 664 sys sys 1186695869 19650
+1186778055 0 c sys/man/2/9pcmdbuf - 664 sys sys 1186721809 2162
+1186778055 1 c sys/man/3/sdaoe - 664 sys sys 1186723542 1310
+1186778055 2 c sys/src/9/port/devaoe.c - 664 sys sys 1186772629 41313
+1186778055 3 c sys/src/9/port/sdaoe.c - 664 sys sys 1186772635 9983
