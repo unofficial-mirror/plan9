@@ -29606,3 +29606,4 @@
 1186778055 1 c sys/man/3/sdaoe - 664 sys sys 1186723542 1310
 1186778055 2 c sys/src/9/port/devaoe.c - 664 sys sys 1186772629 41313
 1186778055 3 c sys/src/9/port/sdaoe.c - 664 sys sys 1186772635 9983
+1186893723 0 c sys/man/4/fossil - 664 sys sys 1186820346 9592
