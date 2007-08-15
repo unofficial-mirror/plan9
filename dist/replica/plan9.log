@@ -29625,3 +29625,10 @@
 1187062309 15 c sys/src/9/port/devaoe.c - 664 sys sys 1187061517 41444
 1187062309 16 c sys/src/9/port/sdaoe.c - 664 sys sys 1187034227 9934
 1187062309 17 c sys/src/cmd/ip/6in4.c - 664 sys sys 1187047430 9714
+1187148711 0 c lib/face/48x48x8/.dict - 664 sys sys 1187107503 4193
+1187148711 1 a lib/face/48x48x8/k/kix.1 - 664 sys sys 1187107466 779
+1187148711 2 c sys/man/8/fossilcons - 664 sys sys 1187134504 18542
+1187148711 3 c sys/src/9/ip/esp.c - 664 sys sys 1187064283 19158
+1187148711 4 c sys/src/cmd/fossil/check.c - 664 sys sys 1187136398 17470
+1187148711 5 c sys/src/cmd/fossil/pack.c - 664 sys sys 1187136436 4710
+1187148711 6 c sys/src/cmd/fossil/source.c - 664 sys sys 1187135867 20578
