@@ -29632,3 +29632,10 @@
 1187148711 4 c sys/src/cmd/fossil/check.c - 664 sys sys 1187136398 17470
 1187148711 5 c sys/src/cmd/fossil/pack.c - 664 sys sys 1187136436 4710
 1187148711 6 c sys/src/cmd/fossil/source.c - 664 sys sys 1187135867 20578
+1187235105 0 a cfg/example/cpurc - 775 sys sys 1187226177 266
+1187235105 1 c rc/bin/cpurc - 775 sys sys 1187226871 1901
+1187235105 2 c sys/lib/dist/mkfile - 664 sys sys 1187231219 5377
+1187235105 3 c sys/man/2/des - 664 sys sys 1187231239 3505
+1187235105 4 c sys/man/2/pushtls - 664 sys sys 1187210621 6020
+1187235105 5 c sys/man/8/cpurc - 664 sys sys 1187227584 1522
+1187235105 6 c sys/src/libsec/port/readcert.c - 664 sys sys 1187210612 1024
