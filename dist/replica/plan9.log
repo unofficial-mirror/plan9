@@ -29641,3 +29641,5 @@
 1187235105 6 c sys/src/libsec/port/readcert.c - 664 sys sys 1187210612 1024
 1187321505 0 c sys/games/lib/fortunes - 664 sys sys 1187314856 266328
 1187321505 1 c sys/src/9/port/devaoe.c - 664 sys sys 1187282168 41343
+1187380912 0 c sys/games/lib/fortunes - 664 sys sys 1187359457 266564
+1187380912 1 c sys/src/libsec/port/aes.c - 664 sys sys 1187327457 63962
