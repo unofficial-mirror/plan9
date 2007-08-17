@@ -29639,3 +29639,5 @@
 1187235105 4 c sys/man/2/pushtls - 664 sys sys 1187210621 6020
 1187235105 5 c sys/man/8/cpurc - 664 sys sys 1187227584 1522
 1187235105 6 c sys/src/libsec/port/readcert.c - 664 sys sys 1187210612 1024
+1187321505 0 c sys/games/lib/fortunes - 664 sys sys 1187314856 266328
+1187321505 1 c sys/src/9/port/devaoe.c - 664 sys sys 1187282168 41343
