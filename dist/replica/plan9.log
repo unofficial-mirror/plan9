@@ -29643,3 +29643,8 @@
 1187321505 1 c sys/src/9/port/devaoe.c - 664 sys sys 1187282168 41343
 1187380912 0 c sys/games/lib/fortunes - 664 sys sys 1187359457 266564
 1187380912 1 c sys/src/libsec/port/aes.c - 664 sys sys 1187327457 63962
+1187647301 0 c sys/man/2/auth - 664 sys sys 1187643286 7538
+1187647301 1 c sys/man/2/lock - 664 sys sys 1187644134 5705
+1187647301 2 c sys/man/2/thread - 664 sys sys 1187645645 11918
+1187647301 3 c sys/src/9/ip/rudp.c - 664 sys sys 1187631835 21591
+1187647301 4 c sys/src/cmd/ip/snoopy/filter.y - 664 sys sys 1187631889 1753
