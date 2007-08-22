@@ -29663,3 +29663,6 @@
 1187742704 12 c sys/src/9/pc/uartpci.c - 664 sys sys 1187668457 4534
 1187742704 13 c sys/src/9/port/devbridge.c - 664 sys sys 1187735844 24076
 1187742704 14 c sys/src/9/port/netif.h - 664 sys sys 1187735815 3059
+1187762543 0 c sys/src/9/port/devaoe.c - 664 sys sys 1187760674 42003
+1187762543 1 d sys/src/9/pc/etherm10g4k.i - 664 sys sys 1174590430 0
+1187762543 2 d sys/src/9/pc/etherm10g2k.i - 664 sys sys 1174590427 0
