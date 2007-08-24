@@ -29668,3 +29668,4 @@
 1187762543 2 d sys/src/9/pc/etherm10g2k.i - 664 sys sys 1174590427 0
 1187926394 0 c sys/man/8/httpd - 664 sys sys 1187893163 6866
 1187926394 1 c sys/src/cmd/acme/util.c - 664 sys sys 1187899854 7994
+1187937233 0 c sys/src/cmd/ip/httpd/authorize.c - 664 sys sys 1187936238 2405
