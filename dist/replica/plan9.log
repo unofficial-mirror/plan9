@@ -29669,3 +29669,8 @@
 1187926394 0 c sys/man/8/httpd - 664 sys sys 1187893163 6866
 1187926394 1 c sys/src/cmd/acme/util.c - 664 sys sys 1187899854 7994
 1187937233 0 c sys/src/cmd/ip/httpd/authorize.c - 664 sys sys 1187936238 2405
+1188253931 0 c sys/man/2/aes - 664 sys sys 1188253121 1057
+1188253931 1 c sys/man/2/des - 664 sys sys 1188253121 3609
+1188253931 2 c sys/man/8/ipserv - 664 sys sys 1188191285 4411
+1188253931 3 c sys/src/cmd/ip/ftpd.c - 664 sys sys 1188195412 33395
+1188253931 4 c sys/src/libc/386/387/mkfile - 664 sys sys 1188195399 147
