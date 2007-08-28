@@ -29674,3 +29674,11 @@
 1188253931 2 c sys/man/8/ipserv - 664 sys sys 1188191285 4411
 1188253931 3 c sys/src/cmd/ip/ftpd.c - 664 sys sys 1188195412 33395
 1188253931 4 c sys/src/libc/386/387/mkfile - 664 sys sys 1188195399 147
+1188330030 0 c sys/include/libsec.h - 664 sys sys 1188328413 8684
+1188330030 1 c sys/man/2/aes - 664 sys sys 1188280234 1149
+1188330030 2 c sys/man/2/des - 664 sys sys 1188278025 3901
+1188330030 3 c sys/man/2/sechash - 664 sys sys 1188328413 3537
+1188330030 4 c sys/src/libsec/port/aes.c - 664 sys sys 1188328427 64086
+1188330030 5 c sys/src/libsec/port/hmac.c - 664 sys sys 1188328428 885
+1188330030 6 c sys/src/libsec/port/md5.c - 664 sys sys 1188328428 3418
+1188330030 7 c sys/src/libsec/port/sha1.c - 664 sys sys 1188328426 2446

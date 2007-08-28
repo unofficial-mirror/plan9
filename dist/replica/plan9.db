@@ -5562,7 +5562,7 @@ sys/include/httpd.h - 664 sys sys 1177187803 5794
 sys/include/ip.h - 664 sys sys 1187047442 4383
 sys/include/keyboard.h - 664 sys sys 1131637696 865
 sys/include/libc.h - 664 sys sys 1168306860 19851
-sys/include/libsec.h - 664 sys sys 1181273373 8263
+sys/include/libsec.h - 664 sys sys 1188328413 8684
 sys/include/mach.h - 664 sys sys 1178892102 8758
 sys/include/memdraw.h - 664 sys sys 1091904419 5645
 sys/include/memlayer.h - 664 sys sys 1051031022 1851
@@ -6969,7 +6969,7 @@ sys/man/2/abort - 664 sys sys 944959693 331
 sys/man/2/abs - 664 sys sys 944959693 461
 sys/man/2/access - 664 sys sys 1046657167 1102
 sys/man/2/addpt - 664 sys sys 958249501 2964
-sys/man/2/aes - 664 sys sys 1188253121 1057
+sys/man/2/aes - 664 sys sys 1188280234 1149
 sys/man/2/allocimage - 664 sys sys 1046787977 7304
 sys/man/2/arg - 664 sys sys 1139744263 2184
 sys/man/2/arith3 - 664 sys sys 1162102967 4393
@@ -6992,7 +6992,7 @@ sys/man/2/cputime - 664 sys sys 1015091518 713
 sys/man/2/ctime - 664 sys sys 954378853 2547
 sys/man/2/ctype - 664 sys sys 1079535676 2611
 sys/man/2/debugger - 664 sys sys 944959696 8629
-sys/man/2/des - 664 sys sys 1188253121 3609
+sys/man/2/des - 664 sys sys 1188278025 3901
 sys/man/2/dial - 664 sys sys 1175725019 6594
 sys/man/2/dirread - 664 sys sys 1015091519 1901
 sys/man/2/disk - 664 sys sys 1015091519 3188
@@ -7083,7 +7083,7 @@ sys/man/2/rune - 664 sys sys 1143079849 3086
 sys/man/2/runestrcat - 664 sys sys 969499889 1086
 sys/man/2/scribble - 664 sys sys 985638584 3847
 sys/man/2/scsi - 664 sys sys 1170885103 3203
-sys/man/2/sechash - 664 sys sys 1046042040 3016
+sys/man/2/sechash - 664 sys sys 1188328413 3537
 sys/man/2/seek - 664 sys sys 944959696 671
 sys/man/2/segattach - 664 sys sys 1135487945 4166
 sys/man/2/segbrk - 664 sys sys 1165622575 1211
@@ -15123,7 +15123,7 @@ sys/src/libsec/mips/mkfile - 664 sys sys 1032061452 227
 sys/src/libsec/mips/sha1block.s - 664 sys sys 985124884 4143
 sys/src/libsec/mkfile - 664 sys sys 1134426497 554
 sys/src/libsec/port - 20000000775 sys sys 1015023365 0
-sys/src/libsec/port/aes.c - 664 sys sys 1187327457 63962
+sys/src/libsec/port/aes.c - 664 sys sys 1188328427 64086
 sys/src/libsec/port/blowfish.c - 664 sys sys 1016466467 19676
 sys/src/libsec/port/decodepem.c - 664 sys sys 1084318869 1831
 sys/src/libsec/port/des.c - 664 sys sys 1015013579 17496
@@ -15151,11 +15151,11 @@ sys/src/libsec/port/genprime.c - 664 sys sys 984710521 535
 sys/src/libsec/port/genrandom.c - 664 sys sys 984710521 1171
 sys/src/libsec/port/gensafeprime.c - 664 sys sys 1027629124 741
 sys/src/libsec/port/genstrongprime.c - 664 sys sys 984710522 1039
-sys/src/libsec/port/hmac.c - 664 sys sys 1140694284 1183
+sys/src/libsec/port/hmac.c - 664 sys sys 1188328428 885
 sys/src/libsec/port/hmactest.c - 664 sys sys 984710522 344
 sys/src/libsec/port/md4.c - 664 sys sys 1015013579 4260
 sys/src/libsec/port/md4test.c - 664 sys sys 984710522 537
-sys/src/libsec/port/md5.c - 664 sys sys 1084318868 3254
+sys/src/libsec/port/md5.c - 664 sys sys 1188328428 3418
 sys/src/libsec/port/md5block.c - 664 sys sys 985124885 5015
 sys/src/libsec/port/md5pickle.c - 664 sys sys 1104105067 716
 sys/src/libsec/port/mkfile - 664 sys sys 1044931345 879
@@ -15173,7 +15173,7 @@ sys/src/libsec/port/rsafill.c - 664 sys sys 1045502171 1104
 sys/src/libsec/port/rsagen.c - 664 sys sys 1084318869 1462
 sys/src/libsec/port/rsaprivtopub.c - 664 sys sys 984710525 237
 sys/src/libsec/port/rsatest.c - 664 sys sys 984710525 1095
-sys/src/libsec/port/sha1.c - 664 sys sys 985124885 2279
+sys/src/libsec/port/sha1.c - 664 sys sys 1188328426 2446
 sys/src/libsec/port/sha1block.c - 664 sys sys 1015013580 4673
 sys/src/libsec/port/sha1pickle.c - 664 sys sys 988225292 717
 sys/src/libsec/port/smallprimes.c - 664 sys sys 984710525 6851
