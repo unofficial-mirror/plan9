@@ -5300,7 +5300,7 @@ sys/games - 20000000775 sys sys 952648872 0
 sys/games/lib - 20000000775 sys sys 952648879 0
 sys/games/lib/4scores - 10000000666 sys sys 1118680448 0
 sys/games/lib/5scores - 10000000666 sys sys 1118680453 0
-sys/games/lib/fortunes - 664 sys sys 1187359457 266564
+sys/games/lib/fortunes - 664 sys sys 1188481493 266620
 sys/games/lib/mahjongg - 20000000775 sys sys 1095792278 0
 sys/games/lib/mahjongg/backgrounds - 20000000775 sys sys 1095792293 0
 sys/games/lib/mahjongg/backgrounds/default.bit - 664 sys sys 1095792293 346803
@@ -6802,7 +6802,7 @@ sys/log/timesync.d - 20000000775 sys sys 947099701 0
 sys/log/v6routeradv - 666 sys sys 1185923299 0
 sys/man - 20000000775 sys sys 1012278794 0
 sys/man/1 - 20000000775 sys sys 1018897631 0
-sys/man/1/0intro - 664 sys sys 1101668050 9625
+sys/man/1/0intro - 664 sys sys 1188516607 9586
 sys/man/1/2a - 664 sys sys 1158281866 1196
 sys/man/1/2c - 664 sys sys 1186687706 9488
 sys/man/1/2l - 664 sys sys 1158281887 4376
@@ -7120,7 +7120,7 @@ sys/man/3/ether - 664 sys sys 1178597986 2890
 sys/man/3/floppy - 664 sys sys 954378905 881
 sys/man/3/fs - 664 sys sys 1186946771 3159
 sys/man/3/i82365 - 664 sys sys 954378906 884
-sys/man/3/ip - 664 sys sys 1187046244 26227
+sys/man/3/ip - 664 sys sys 1188520355 25466
 sys/man/3/kbmap - 664 sys sys 1131110122 1732
 sys/man/3/kprof - 664 sys sys 1018029972 1377
 sys/man/3/loopback - 664 sys sys 964662153 1995
@@ -7155,7 +7155,7 @@ sys/man/4/exportfs - 664 sys sys 1145881912 4655
 sys/man/4/ext2srv - 664 sys sys 1055692986 2409
 sys/man/4/factotum - 664 sys sys 1187721636 14843
 sys/man/4/fossil - 664 sys sys 1186820346 9592
-sys/man/4/fs - 664 sys sys 1019058716 3387
+sys/man/4/fs - 664 sys sys 1188520557 3441
 sys/man/4/ftpfs - 664 sys sys 1112563349 4410
 sys/man/4/httpfile - 664 sys sys 1128556957 1233
 sys/man/4/import - 664 sys sys 1179442944 3272
@@ -7164,7 +7164,7 @@ sys/man/4/keyfs - 664 sys sys 1116594919 5048
 sys/man/4/kfs - 664 sys sys 1102088374 2164
 sys/man/4/lnfs - 664 sys sys 1073491345 1219
 sys/man/4/mntgen - 664 sys sys 1043680799 473
-sys/man/4/namespace - 664 sys sys 1184784007 7192
+sys/man/4/namespace - 664 sys sys 1188520411 7177
 sys/man/4/nfs - 664 sys sys 1140447003 4475
 sys/man/4/nntpfs - 664 sys sys 1032632346 2771
 sys/man/4/paqfs - 664 sys sys 1181749508 1848
@@ -7217,7 +7217,7 @@ sys/man/6/mnihongo - 664 sys sys 1158064572 716
 sys/man/6/mpictures - 664 sys sys 944959678 2899
 sys/man/6/ms - 664 sys sys 958249504 6815
 sys/man/6/namespace - 664 sys sys 1048637182 1576
-sys/man/6/ndb - 664 sys sys 1177742177 6776
+sys/man/6/ndb - 664 sys sys 1188515785 6735
 sys/man/6/plot - 664 sys sys 944959679 6739
 sys/man/6/plumb - 664 sys sys 969499892 10918
 sys/man/6/regexp - 664 sys sys 954089523 2050
@@ -7246,7 +7246,7 @@ sys/man/8/aan - 664 sys sys 1045501064 1670
 sys/man/8/aliasmail - 664 sys sys 1170818958 1350
 sys/man/8/apm - 664 sys sys 1017679308 1811
 sys/man/8/auth - 664 sys sys 1183580530 4981
-sys/man/8/boot - 664 sys sys 1165623055 8357
+sys/man/8/boot - 664 sys sys 1188515985 8331
 sys/man/8/booting - 664 sys sys 1015024984 4136
 sys/man/8/cpurc - 664 sys sys 1187227584 1522
 sys/man/8/cron - 664 sys sys 1063858596 1867
@@ -7255,7 +7255,7 @@ sys/man/8/disksim - 664 sys sys 1144150487 1476
 sys/man/8/drawterm - 664 sys sys 1181675938 1921
 sys/man/8/fossilcons - 664 sys sys 1187134504 18542
 sys/man/8/fs - 664 sys sys 1172956177 15086
-sys/man/8/fsconfig - 664 sys sys 1172956534 8878
+sys/man/8/fsconfig - 664 sys sys 1188530378 8890
 sys/man/8/fshalt - 664 sys sys 1173737264 862
 sys/man/8/getflags - 664 sys sys 1159419702 1713
 sys/man/8/gpsfs - 664 sys sys 1165623047 4918
@@ -7264,7 +7264,7 @@ sys/man/8/init - 664 sys sys 944959679 1430
 sys/man/8/ipconfig - 664 sys sys 1177100280 7984
 sys/man/8/ipserv - 664 sys sys 1188191285 4411
 sys/man/8/kfscmd - 664 sys sys 1182192559 4514
-sys/man/8/listen - 664 sys sys 1181790503 3658
+sys/man/8/listen - 664 sys sys 1188520111 3664
 sys/man/8/lp - 664 sys sys 954614702 2491
 sys/man/8/mk9660 - 664 sys sys 1104430379 3946
 sys/man/8/mkfs - 664 sys sys 1186179498 3427
@@ -7272,7 +7272,7 @@ sys/man/8/mkpaqfs - 664 sys sys 1181261121 890
 sys/man/8/mksacfs - 664 sys sys 964886843 710
 sys/man/8/mouse - 664 sys sys 971455511 2476
 sys/man/8/na - 664 sys sys 958527089 859
-sys/man/8/ndb - 664 sys sys 1188423135 14041
+sys/man/8/ndb - 664 sys sys 1188515390 14031
 sys/man/8/newuser - 664 sys sys 1116954242 2418
 sys/man/8/nfsserver - 664 sys sys 1163208425 3587
 sys/man/8/pcmcia - 664 sys sys 944959679 408
@@ -7291,7 +7291,7 @@ sys/man/8/scuzz - 664 sys sys 1171566796 8701
 sys/man/8/secstore - 664 sys sys 1105016705 1954
 sys/man/8/securenet - 664 sys sys 954305552 3160
 sys/man/8/send - 664 sys sys 1045501634 2168
-sys/man/8/smtp - 664 sys sys 1187720119 5236
+sys/man/8/smtp - 664 sys sys 1188509627 5332
 sys/man/8/snoopy - 664 sys sys 1169851832 4442
 sys/man/8/stats - 664 sys sys 1161483511 4336
 sys/man/8/statusbar - 664 sys sys 1159419702 1254
@@ -12232,9 +12232,9 @@ sys/src/cmd/mv.c - 664 sys sys 1163029439 4682
 sys/src/cmd/ndb - 20000000775 sys sys 988249988 0
 sys/src/cmd/ndb/convDNS2M.c - 664 sys sys 1182554015 7035
 sys/src/cmd/ndb/convM2DNS.c - 664 sys sys 1186081796 11679
-sys/src/cmd/ndb/cs.c - 664 sys sys 1184303534 32981
+sys/src/cmd/ndb/cs.c - 664 sys sys 1188515063 32892
 sys/src/cmd/ndb/csquery.c - 664 sys sys 1174626119 1073
-sys/src/cmd/ndb/dblookup.c - 664 sys sys 1186704108 24960
+sys/src/cmd/ndb/dblookup.c - 664 sys sys 1188515055 25030
 sys/src/cmd/ndb/dn.c - 664 sys sys 1186704098 36512
 sys/src/cmd/ndb/dnarea.c - 664 sys sys 1175664421 2519
 sys/src/cmd/ndb/dnnotify.c - 664 sys sys 1183866408 3217
@@ -13656,12 +13656,12 @@ sys/src/cmd/upas/send/tryit - 664 sys sys 944961322 584
 sys/src/cmd/upas/smtp - 20000000775 sys sys 988250017 0
 sys/src/cmd/upas/smtp/greylist.c - 664 sys sys 1161209057 6546
 sys/src/cmd/upas/smtp/mkfile - 664 sys sys 1108910002 801
-sys/src/cmd/upas/smtp/mxdial.c - 664 sys sys 1176837561 6567
+sys/src/cmd/upas/smtp/mxdial.c - 664 sys sys 1188509395 6813
 sys/src/cmd/upas/smtp/rfc822.y - 664 sys sys 1064589606 13417
-sys/src/cmd/upas/smtp/rmtdns.c - 664 sys sys 1015013150 1069
-sys/src/cmd/upas/smtp/smtp.c - 664 sys sys 1185515675 20528
-sys/src/cmd/upas/smtp/smtp.h - 664 sys sys 1108827986 1270
-sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1181513473 32835
+sys/src/cmd/upas/smtp/rmtdns.c - 664 sys sys 1188509396 1075
+sys/src/cmd/upas/smtp/smtp.c - 664 sys sys 1188509396 20717
+sys/src/cmd/upas/smtp/smtp.h - 664 sys sys 1188509396 1356
+sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1188509398 32887
 sys/src/cmd/upas/smtp/smtpd.h - 664 sys sys 1067722781 1111
 sys/src/cmd/upas/smtp/smtpd.y - 664 sys sys 1181508390 6924
 sys/src/cmd/upas/smtp/spam.c - 664 sys sys 1139699502 10238
@@ -13928,6 +13928,7 @@ sys/src/fs/9netics64.8k/fns.h - 664 sys sys 1172679928 2168
 sys/src/fs/9netics64.8k/io.h - 664 sys sys 1157939328 6720
 sys/src/fs/9netics64.8k/mem.h - 664 sys sys 1140167924 2907
 sys/src/fs/9netics64.8k/mkfile - 664 sys sys 1157938855 1637
+sys/src/fs/GOING.AWAY - 664 sys sys 1188510006 63
 sys/src/fs/choline - 20000000775 sys sys 1015110109 0
 sys/src/fs/choline/9cholinefs.c - 664 sys sys 1140168020 2989
 sys/src/fs/choline/dat.h - 664 sys sys 1140168017 612
@@ -14848,8 +14849,8 @@ sys/src/libmach/9c - 20000000775 sys sys 1178892193 0
 sys/src/libmach/9c/9.out.h - 664 sys sys 1178892193 4669
 sys/src/libmach/9obj.c - 664 sys sys 1178892115 2747
 sys/src/libmach/access.c - 664 sys sys 1131289377 4588
-sys/src/libmach/elf.h - 664 sys sys 1131292881 2301
-sys/src/libmach/executable.c - 664 sys sys 1178892113 16424
+sys/src/libmach/elf.h - 664 sys sys 1188499825 2468
+sys/src/libmach/executable.c - 664 sys sys 1188481473 16479
 sys/src/libmach/k.c - 664 sys sys 1138471021 3381
 sys/src/libmach/kdb.c - 664 sys sys 1136322404 21222
 sys/src/libmach/kobj.c - 664 sys sys 1148106912 2275
