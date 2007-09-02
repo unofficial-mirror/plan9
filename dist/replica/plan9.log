@@ -31865,3 +31865,9 @@
 1188594188 166 d sys/src/fs/9netics32.16k/9net32.16kfs.c - 664 sys sys 1140167903 0
 1188594188 167 d sys/src/fs/9netics32.16k - 20000000775 sys sys 1140158691 0
 1188594188 168 d sys/src/9/ip/il.c - 664 sys sys 1184946959 0
+1188703976 0 c rc/bin/iwhois - 775 sys sys 1188682646 1792
+1188703976 1 c sys/src/cmd/auth/secstore/SConn.h - 664 sys sys 1188694756 952
+1188703976 2 c sys/src/cmd/auth/secstore/secstore.c - 664 sys sys 1188695265 12518
+1188703976 3 c sys/src/cmd/auth/secstore/secstore.h - 664 sys sys 1188694756 881
+1188703976 4 c sys/src/cmd/auth/secstore/secstored.c - 664 sys sys 1188695492 8000
+1188703976 5 c sys/src/cmd/auth/secstore/util.c - 664 sys sys 1188695121 1818
