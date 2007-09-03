@@ -31871,3 +31871,4 @@
 1188703976 3 c sys/src/cmd/auth/secstore/secstore.h - 664 sys sys 1188694756 881
 1188703976 4 c sys/src/cmd/auth/secstore/secstored.c - 664 sys sys 1188695492 8000
 1188703976 5 c sys/src/cmd/auth/secstore/util.c - 664 sys sys 1188695121 1818
+1188842635 0 c sys/man/2/thread - 664 sys sys 1188841215 11916
