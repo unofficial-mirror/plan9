@@ -31872,3 +31872,7 @@
 1188703976 4 c sys/src/cmd/auth/secstore/secstored.c - 664 sys sys 1188695492 8000
 1188703976 5 c sys/src/cmd/auth/secstore/util.c - 664 sys sys 1188695121 1818
 1188842635 0 c sys/man/2/thread - 664 sys sys 1188841215 11916
+1188958019 0 c sys/man/2/exec - 664 sys sys 1188955837 4230
+1188958019 1 c sys/src/9/port/sysfile.c - 664 sys sys 1188922869 22120
+1188958019 2 c sys/src/9/port/sysproc.c - 664 sys sys 1188922870 21419
+1188958019 3 c sys/src/cmd/aux/na/na.y - 775 sys sys 1188957547 25129
