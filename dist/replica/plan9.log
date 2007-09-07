@@ -32129,3 +32129,10 @@
 1189049653 250 d sys/man/8/ventiaux - 664 sys sys 1159419552 0
 1189136163 0 c sys/src/cmd/fossil/9fid.c - 664 sys sys 1189110070 5584
 1189136163 1 c sys/src/cmd/fossil/9p.c - 664 sys sys 1189110070 22957
+1189197383 0 a 386/bin/oventi - 20000000775 sys sys 1189138522 0
+1189197383 1 c sys/man/1/venti - 664 sys sys 1189183078 2647
+1189197383 2 c sys/man/4/exportfs - 664 sys sys 1189182220 4657
+1189197383 3 c sys/src/9/port/devaoe.c - 664 sys sys 1189187154 41993
+1189197383 4 c sys/src/ape/lib/ap/gen/memccpy.c - 664 sys sys 1189183558 212
+1189197383 5 c sys/src/ape/lib/ap/gen/memchr.c - 664 sys sys 1189183558 184
+1189197383 6 c sys/src/cmd/oventi/mkfile - 664 sys sys 1189182581 255
