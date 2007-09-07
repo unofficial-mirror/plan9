@@ -32127,3 +32127,5 @@
 1189049653 248 d sys/src/cmd/venti/arenas.c - 664 sys sys 1063854192 0
 1189049653 249 d sys/src/cmd/venti/arena.c - 664 sys sys 1045503653 0
 1189049653 250 d sys/man/8/ventiaux - 664 sys sys 1159419552 0
+1189136163 0 c sys/src/cmd/fossil/9fid.c - 664 sys sys 1189110070 5584
+1189136163 1 c sys/src/cmd/fossil/9p.c - 664 sys sys 1189110070 22957
