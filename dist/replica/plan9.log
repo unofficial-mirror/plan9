@@ -32136,3 +32136,9 @@
 1189197383 4 c sys/src/ape/lib/ap/gen/memccpy.c - 664 sys sys 1189183558 212
 1189197383 5 c sys/src/ape/lib/ap/gen/memchr.c - 664 sys sys 1189183558 184
 1189197383 6 c sys/src/cmd/oventi/mkfile - 664 sys sys 1189182581 255
+1189308795 0 c 386/bin/venti/conf - 775 sys sys 1189304039 1505
+1189308795 1 c sys/src/9/pc/sdmylex.c - 664 sys sys 1189229947 28395
+1189308795 2 c sys/src/9/port/portclock.c - 664 sys sys 1189292530 4276
+1189308795 3 a sys/src/cmd/venti/srv/conf.rc - 775 sys sys 1189304120 1416
+1189308795 4 c sys/src/cmd/venti/srv/ifile.c - 664 sys sys 1189307036 2592
+1189308795 5 c sys/src/cmd/venti/srv/mkfile - 664 sys sys 1189304068 1243

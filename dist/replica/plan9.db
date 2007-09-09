@@ -42,7 +42,7 @@
 386/bin/usb - 20000000775 sys sys 1019538890 0
 386/bin/usb/usbprinter - 775 sys sys 1089408719 222
 386/bin/venti - 20000000775 sys sys 947360466 0
-386/bin/venti/conf - 775 sys sys 1056364399 1506
+386/bin/venti/conf - 775 sys sys 1189304039 1505
 386/include - 20000000775 sys sys 953243048 0
 386/include/ape - 20000000775 sys sys 944946041 0
 386/include/ape/float.h - 664 sys sys 969656988 1643
@@ -7595,7 +7595,7 @@ sys/src/9/pc/sd53c8xx.n - 664 sys sys 1131290556 12657
 sys/src/9/pc/sd63xxesb.c - 664 sys sys 1184467400 35975
 sys/src/9/pc/sdata.c - 664 sys sys 1186361525 52991
 sys/src/9/pc/sdmv50xx.c - 664 sys sys 1184467229 33837
-sys/src/9/pc/sdmylex.c - 664 sys sys 1171321627 28237
+sys/src/9/pc/sdmylex.c - 664 sys sys 1189229947 28395
 sys/src/9/pc/sdscsi.c - 664 sys sys 1186618532 7957
 sys/src/9/pc/trap.c - 664 sys sys 1186361997 21898
 sys/src/9/pc/uartaxp.c - 664 sys sys 1166247784 18879
@@ -7698,7 +7698,7 @@ sys/src/9/port/netif.h - 664 sys sys 1187735815 3059
 sys/src/9/port/page.c - 664 sys sys 1131636090 11128
 sys/src/9/port/parse.c - 664 sys sys 1014931177 2026
 sys/src/9/port/pgrp.c - 664 sys sys 1138458260 4760
-sys/src/9/port/portclock.c - 664 sys sys 1146746630 4276
+sys/src/9/port/portclock.c - 664 sys sys 1189292530 4276
 sys/src/9/port/portdat.h - 664 sys sys 1155995676 22703
 sys/src/9/port/portfns.h - 664 sys sys 1178831066 11059
 sys/src/9/port/portmkfile - 664 sys sys 1184737233 2082
@@ -13793,6 +13793,7 @@ sys/src/cmd/venti/srv/clump.c - 664 sys sys 1177189435 5329
 sys/src/cmd/venti/srv/clumpstats.c - 664 sys sys 1142736351 2234
 sys/src/cmd/venti/srv/cmparena.c - 664 sys sys 1142736351 5471
 sys/src/cmd/venti/srv/cmparenas.c - 664 sys sys 1177189435 7215
+sys/src/cmd/venti/srv/conf.rc - 775 sys sys 1189304120 1416
 sys/src/cmd/venti/srv/config.c - 664 sys sys 1178160303 5566
 sys/src/cmd/venti/srv/conv.c - 664 sys sys 1178160303 14052
 sys/src/cmd/venti/srv/dat.h - 664 sys sys 1178160303 19018
@@ -13812,14 +13813,14 @@ sys/src/cmd/venti/srv/hdisk.c - 664 sys sys 1177189437 16510
 sys/src/cmd/venti/srv/httpd.c - 664 sys sys 1177189437 22784
 sys/src/cmd/venti/srv/icache.c - 664 sys sys 1186114652 8778
 sys/src/cmd/venti/srv/icachewrite.c - 664 sys sys 1178160304 7655
-sys/src/cmd/venti/srv/ifile.c - 664 sys sys 1177535026 2327
+sys/src/cmd/venti/srv/ifile.c - 664 sys sys 1189307036 2592
 sys/src/cmd/venti/srv/index.c - 664 sys sys 1178160304 17239
 sys/src/cmd/venti/srv/index2.c - 664 sys sys 1142736354 21620
 sys/src/cmd/venti/srv/lump.c - 664 sys sys 1177189437 5799
 sys/src/cmd/venti/srv/lumpcache.c - 664 sys sys 1177189437 8811
 sys/src/cmd/venti/srv/lumpqueue.c - 664 sys sys 1142736354 2722
 sys/src/cmd/venti/srv/mirrorarenas.c - 664 sys sys 1178160304 10544
-sys/src/cmd/venti/srv/mkfile - 664 sys sys 1188622141 1032
+sys/src/cmd/venti/srv/mkfile - 664 sys sys 1189304068 1243
 sys/src/cmd/venti/srv/part.c - 664 sys sys 1180244694 5662
 sys/src/cmd/venti/srv/png.c - 664 sys sys 1142736354 3729
 sys/src/cmd/venti/srv/printarena.c - 664 sys sys 1177189438 2673
