@@ -32142,3 +32142,4 @@
 1189308795 3 a sys/src/cmd/venti/srv/conf.rc - 775 sys sys 1189304120 1416
 1189308795 4 c sys/src/cmd/venti/srv/ifile.c - 664 sys sys 1189307036 2592
 1189308795 5 c sys/src/cmd/venti/srv/mkfile - 664 sys sys 1189304068 1243
+1189366460 0 c 386/bin/venti/conf - 775 sys sys 1189362423 1505

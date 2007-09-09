@@ -42,7 +42,7 @@
 386/bin/usb - 20000000775 sys sys 1019538890 0
 386/bin/usb/usbprinter - 775 sys sys 1089408719 222
 386/bin/venti - 20000000775 sys sys 947360466 0
-386/bin/venti/conf - 775 sys sys 1189304039 1505
+386/bin/venti/conf - 775 sys sys 1189362423 1505
 386/include - 20000000775 sys sys 953243048 0
 386/include/ape - 20000000775 sys sys 944946041 0
 386/include/ape/float.h - 664 sys sys 969656988 1643
