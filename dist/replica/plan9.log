@@ -32143,3 +32143,8 @@
 1189308795 4 c sys/src/cmd/venti/srv/ifile.c - 664 sys sys 1189307036 2592
 1189308795 5 c sys/src/cmd/venti/srv/mkfile - 664 sys sys 1189304068 1243
 1189366460 0 c 386/bin/venti/conf - 775 sys sys 1189362423 1505
+1189553893 0 c sys/src/cmd/fossil/9auth.c - 664 sys sys 1189552651 3972
+1189553893 1 c sys/src/cmd/fossil/dat.h - 664 sys sys 1189552944 7822
+1189553893 2 c sys/src/cmd/fossil/fns.h - 664 sys sys 1189552875 3262
+1189553893 3 c sys/src/cmd/fossil/fs.h - 664 sys sys 1189552775 1606
+1189553893 4 c sys/src/cmd/fossil/invariants - 664 sys sys 1189552808 4073
