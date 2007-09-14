@@ -32171,3 +32171,4 @@
 1189739088 2 c sys/src/cmd/venti/srv/dcache.c - 664 sys sys 1189738448 18608
 1189739088 3 c sys/src/cmd/venti/srv/fixarenas.c - 664 sys sys 1189738460 40533
 1189739088 4 c sys/src/cmd/venti/srv/icachewrite.c - 664 sys sys 1189738523 7785
+1189811165 0 c dist/replica/network - 664 sys sys 1189810597 1038
