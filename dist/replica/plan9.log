@@ -32179,3 +32179,12 @@
 1190077564 3 c sys/man/1/venti - 664 sys sys 1190066650 2655
 1190077564 4 c sys/src/cmd/venti/srv/fixarenas.c - 664 sys sys 1190076775 40524
 1190077564 5 c sys/src/cmd/venti/srv/icachewrite.c - 664 sys sys 1190076776 7787
+1190151774 0 c sys/man/1/2c - 664 sys sys 1190150125 9524
+1190151774 1 a sys/src/cmd/page/cache.c - 664 sys sys 1190093304 3114
+1190151774 2 c sys/src/cmd/page/mkfile - 664 sys sys 1190093307 422
+1190151774 3 c sys/src/cmd/page/page.c - 664 sys sys 1190093304 4444
+1190151774 4 c sys/src/cmd/page/page.h - 664 sys sys 1190093304 2222
+1190151774 5 c sys/src/cmd/page/ps.c - 664 sys sys 1190093304 9191
+1190151774 6 c sys/src/cmd/page/view.c - 664 sys sys 1190093303 22159
+1190151774 7 c sys/src/cmd/venti/srv/dcache.c - 664 sys sys 1190092637 18695
+1190151774 8 c sys/src/libventi/log.c - 664 sys sys 1190092827 3936
