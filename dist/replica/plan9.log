@@ -32201,3 +32201,8 @@
 1190246760 10 c sys/src/9/pc/sd63xxesb.c - 664 sys sys 1190229767 36207
 1190246760 11 c sys/src/boot/pc/etherdp83820.c - 664 sys sys 1190221155 28740
 1190246760 12 c sys/src/cmd/htmlfmt/html.c - 664 sys sys 1190228833 6040
+1190314379 0 c sys/src/9/pc/dat.h - 664 sys sys 1190268414 7549
+1190314379 1 c sys/src/9/pc/fns.h - 664 sys sys 1190268439 4738
+1190314379 2 c sys/src/9/pc/l.s - 664 sys sys 1190268443 29347
+1190314379 3 c sys/src/9/pc/sd63xxesb.c - 664 sys sys 1190313935 36207
+1190314379 4 d sys/src/cmd/venti/srv/fixarenas0.c - 664 sys sys 1142736352 0
