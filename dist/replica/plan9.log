@@ -32188,3 +32188,16 @@
 1190151774 6 c sys/src/cmd/page/view.c - 664 sys sys 1190093303 22159
 1190151774 7 c sys/src/cmd/venti/srv/dcache.c - 664 sys sys 1190092637 18695
 1190151774 8 c sys/src/libventi/log.c - 664 sys sys 1190092827 3936
+1190246760 0 c sys/games/lib/fortunes - 664 sys sys 1190238331 266990
+1190246760 1 c sys/lib/plumb/basic - 664 sys sys 1190228595 2889
+1190246760 2 c sys/man/1/patch - 664 sys sys 1190245640 2437
+1190246760 3 c sys/man/2/auth - 664 sys sys 1190243345 7537
+1190246760 4 c sys/man/4/exportfs - 664 sys sys 1190243304 4655
+1190246760 5 c sys/man/4/import - 664 sys sys 1190243339 3269
+1190246760 6 c sys/man/8/listen - 664 sys sys 1190243316 3735
+1190246760 7 c sys/man/8/plan9.ini - 664 sys sys 1190241912 23835
+1190246760 8 c sys/src/9/pc/uartpci.c - 664 sys sys 1190235592 4685
+1190246760 9 c sys/src/9/pc/ether82563.c - 664 sys sys 1190235476 35505
+1190246760 10 c sys/src/9/pc/sd63xxesb.c - 664 sys sys 1190229767 36207
+1190246760 11 c sys/src/boot/pc/etherdp83820.c - 664 sys sys 1190221155 28740
+1190246760 12 c sys/src/cmd/htmlfmt/html.c - 664 sys sys 1190228833 6040
