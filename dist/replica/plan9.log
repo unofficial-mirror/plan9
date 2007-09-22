@@ -32206,3 +32206,7 @@
 1190314379 2 c sys/src/9/pc/l.s - 664 sys sys 1190268443 29347
 1190314379 3 c sys/src/9/pc/sd63xxesb.c - 664 sys sys 1190313935 36207
 1190314379 4 d sys/src/cmd/venti/srv/fixarenas0.c - 664 sys sys 1142736352 0
+1190430168 0 c sys/games/lib/fortunes - 664 sys sys 1190428693 267065
+1190430168 1 c sys/src/cmd/cwfs/cw.c - 664 sys sys 1190350112 42914
+1190430168 2 d sys/src/cmd/venti/srv/index2.c - 664 sys sys 1142736354 0
+1190430168 3 d sys/src/cmd/venti/srv/cmparena.c - 664 sys sys 1142736351 0
