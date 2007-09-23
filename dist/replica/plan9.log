@@ -32210,3 +32210,6 @@
 1190430168 1 c sys/src/cmd/cwfs/cw.c - 664 sys sys 1190350112 42914
 1190430168 2 d sys/src/cmd/venti/srv/index2.c - 664 sys sys 1142736354 0
 1190430168 3 d sys/src/cmd/venti/srv/cmparena.c - 664 sys sys 1142736351 0
+1190506403 0 c sys/man/6/venti - 664 sys sys 1190504984 10701
+1190506403 1 c sys/man/8/venti - 664 sys sys 1190504986 12190
+1190506403 2 c sys/src/9/port/devfs.c - 664 sys sys 1190443411 13857
