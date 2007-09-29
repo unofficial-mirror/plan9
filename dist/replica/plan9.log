@@ -32246,3 +32246,5 @@
 1190925293 2 c sys/src/boot/pc/mem.h - 664 sys sys 1190921475 3437
 1190925293 3 c sys/src/boot/pc/mkfile - 664 sys sys 1190921423 3182
 1190925293 4 a sys/src/boot/pc/devbios.h - 664 sys sys 1190921600 453
+1191036798 0 c sys/src/9/port/devfs.c - 664 sys sys 1191008235 14697
+1191036798 1 c sys/src/cmd/auth/keyfs.c - 664 sys sys 1191007186 19129
