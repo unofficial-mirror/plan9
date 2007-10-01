@@ -32248,3 +32248,5 @@
 1190925293 4 a sys/src/boot/pc/devbios.h - 664 sys sys 1190921600 453
 1191036798 0 c sys/src/9/port/devfs.c - 664 sys sys 1191008235 14697
 1191036798 1 c sys/src/cmd/auth/keyfs.c - 664 sys sys 1191007186 19129
+1191209715 0 c sys/src/cmd/page/cache.c - 664 sys sys 1191178341 3160
+1191209715 1 c sys/src/cmd/page/view.c - 664 sys sys 1190093181 22159
