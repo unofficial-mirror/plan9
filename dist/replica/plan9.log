@@ -32292,3 +32292,10 @@
 1191382365 10 c sys/src/games/mahjongg/mahjongg.c - 664 sys sys 1191355577 3869
 1191382365 11 c sys/src/games/mahjongg/mahjongg.h - 664 sys sys 1191355577 2092
 1191382365 12 c sys/src/games/mahjongg/mkfile - 664 sys sys 1191354593 241
+1191447202 0 c sys/src/9/port/mkrootall - 775 sys sys 1191430540 453
+1191447202 1 c sys/src/boot/pc/ether.c - 664 sys sys 1191446356 5411
+1191447202 2 c sys/src/boot/pc/etherigbe.c - 664 sys sys 1191446222 41284
+1191447202 3 c sys/src/cmd/venti/srv/fns.h - 664 sys sys 1191430752 9231
+1191447202 4 a sys/src/cmd/venti/srv/hproc.c - 664 sys sys 1191430754 10333
+1191447202 5 c sys/src/cmd/venti/srv/httpd.c - 664 sys sys 1191430753 22897
+1191447202 6 c sys/src/cmd/venti/srv/mkfile - 664 sys sys 1191430751 1300
