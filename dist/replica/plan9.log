@@ -32279,3 +32279,16 @@
 1191296071 26 c sys/src/cmd/venti/srv/verifyarena.c - 664 sys sys 1191257292 5776
 1191296071 27 c sys/src/cmd/cwfs/mworm.c - 664 sys sys 1191264337 4542
 1191296071 28 c sys/src/libhttpd/parse.c - 664 sys sys 1191217118 19346
+1191382365 0 c sys/man/1/games - 664 sys sys 1191356354 5444
+1191382365 1 c sys/man/2/pool - 664 sys sys 1191360187 8577
+1191382365 2 c sys/man/4/cfs - 664 sys sys 1191355900 2136
+1191382365 3 c sys/man/8/9load - 664 sys sys 1191355906 9162
+1191382365 4 c sys/man/8/dhcpd - 664 sys sys 1191306105 5575
+1191382365 5 c sys/src/9/pc/kbd.c - 664 sys sys 1191355133 12339
+1191382365 6 c sys/src/cmd/ip/snoopy/main.c - 664 sys sys 1191350326 16160
+1191382365 7 c sys/src/games/mahjongg/graphics.c - 664 sys sys 1191355576 5749
+1191382365 8 c sys/src/games/mahjongg/level.c - 664 sys sys 1191355577 2490
+1191382365 9 a sys/src/games/mahjongg/logic.c - 664 sys sys 1191354594 1720
+1191382365 10 c sys/src/games/mahjongg/mahjongg.c - 664 sys sys 1191355577 3869
+1191382365 11 c sys/src/games/mahjongg/mahjongg.h - 664 sys sys 1191355577 2092
+1191382365 12 c sys/src/games/mahjongg/mkfile - 664 sys sys 1191354593 241
