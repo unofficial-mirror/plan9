@@ -32317,3 +32317,6 @@
 1191539030 15 c sys/src/cmd/file.c - 664 sys sys 1191472670 28522
 1191539030 16 d sys/src/cmd/aux/typepasswd.c - 664 sys sys 1143759348 0
 1191539030 17 d sys/src/cmd/auth/iam.c - 664 sys sys 1015008430 0
+1191623635 0 a mail/lib/mailnews - 775 upas upas 1191622324 440
+1191623635 1 c cron/upas/cron - 664 upas sys 1191622540 284
+1191623635 2 c sys/man/8/ndb - 664 sys sys 1191613971 14611
