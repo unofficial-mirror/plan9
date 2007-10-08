@@ -32321,3 +32321,6 @@
 1191623635 1 c cron/upas/cron - 664 upas sys 1191622540 284
 1191623635 2 c sys/man/8/ndb - 664 sys sys 1191613971 14611
 1191704883 0 c sys/games/lib/fortunes - 664 sys sys 1191703593 267174
+1191814592 0 c sys/man/8/vga - 664 sys sys 1191737663 4129
+1191814592 1 c sys/src/cmd/aux/vga/main.c - 664 sys sys 1191737144 9892
+1191814592 2 c sys/src/cmd/upas/ned/nedmail.c - 664 sys sys 1191814356 44531
