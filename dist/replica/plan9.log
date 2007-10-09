@@ -32341,3 +32341,5 @@
 1191889966 14 a sys/src/boot/pc/sdiahci.c - 664 sys sys 1191886818 27133
 1191889966 15 d sys/src/boot/pc/sd63xxesb.c - 664 sys sys 1186368565 0
 1191889966 16 d sys/src/9/pc/sd63xxesb.c - 664 sys sys 1191481587 0
+1191967455 0 c sys/man/8/listen - 664 sys sys 1191965641 4032
+1191967455 1 c sys/src/9/pc/dat.h - 664 sys sys 1190268296 7549
