@@ -32358,3 +32358,6 @@
 1192763124 5 c sys/man/2/bio - 664 sys sys 1192742374 6648
 1192763124 6 c sys/src/cmd/upas/filterkit/deliver.c - 664 sys sys 1192743256 1153
 1192763124 7 c sys/src/libauthsrv/authdial.c - 664 sys sys 1192737014 850
+1192824601 0 c lib/face/48x48x8/.dict - 664 sys sys 1192767500 4266
+1192824601 1 a lib/face/48x48x8/u/unknown.pl - 664 sys sys 1192767483 338
+1192824601 2 m rc/bin/dpost - 775 sys sys 1192741346 220
