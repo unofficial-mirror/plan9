@@ -32350,3 +32350,11 @@
 1192305829 1 c sys/games/lib/fortunes - 664 sys sys 1192305216 267301
 1192579802 0 c sys/man/1/spell - 664 sys sys 1192579418 1898
 1192579802 1 c sys/src/9/port/devmouse.c - 664 sys sys 1192564555 13904
+1192763124 0 a rc/bin/addpsfonts - 775 sys sys 1192741348 293
+1192763124 1 a rc/bin/dpost - 755 sys sys 1192741346 220
+1192763124 2 c rc/bin/fshalt - 775 sys sys 1192741344 1862
+1192763124 3 c sys/man/1/troff - 664 sys sys 1192741763 3659
+1192763124 4 c sys/man/2/authsrv - 664 sys sys 1192737581 4583
+1192763124 5 c sys/man/2/bio - 664 sys sys 1192742374 6648
+1192763124 6 c sys/src/cmd/upas/filterkit/deliver.c - 664 sys sys 1192743256 1153
+1192763124 7 c sys/src/libauthsrv/authdial.c - 664 sys sys 1192737014 850
