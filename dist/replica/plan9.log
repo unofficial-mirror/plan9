@@ -32379,3 +32379,7 @@
 1193182458 14 a sys/src/cmd/usb/disk/disk.c - 664 sys sys 1193181450 19997
 1193182458 15 a sys/src/cmd/usb/disk/mkfile - 664 sys sys 1193181450 359
 1193182458 16 c sys/src/cmd/usb/mkfile - 664 sys sys 1193181446 361
+1193283307 0 a sys/man/4/usbdisk - 664 sys sys 1193264908 2800
+1193283307 1 a sys/man/8/partfs - 664 sys sys 1193264932 851
+1193283307 2 c sys/src/cmd/disk/mkfile - 664 sys sys 1193264991 509
+1193283307 3 a sys/src/cmd/disk/partfs.c - 664 sys sys 1193279294 9714

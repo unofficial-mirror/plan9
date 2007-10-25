@@ -7202,6 +7202,7 @@ sys/man/4/u9fs - 664 sys sys 1043769139 4748
 sys/man/4/upasfs - 664 sys sys 1034348505 6212
 sys/man/4/usb - 664 sys sys 1172764045 4682
 sys/man/4/usbd - 664 sys sys 1164149441 712
+sys/man/4/usbdisk - 664 sys sys 1193264908 2800
 sys/man/4/vacfs - 664 sys sys 1084333062 1545
 sys/man/4/webcookies - 664 sys sys 1019828742 3525
 sys/man/4/webfs - 664 sys sys 1124711926 6518
@@ -7296,6 +7297,7 @@ sys/man/8/na - 664 sys sys 958527089 859
 sys/man/8/ndb - 664 sys sys 1191867910 14502
 sys/man/8/newuser - 664 sys sys 1116954242 2418
 sys/man/8/nfsserver - 664 sys sys 1191524525 3576
+sys/man/8/partfs - 664 sys sys 1193264932 851
 sys/man/8/pcmcia - 664 sys sys 944959679 408
 sys/man/8/pem - 664 sys sys 1060263669 1189
 sys/man/8/ping - 664 sys sys 1169105315 3650
@@ -9706,8 +9708,9 @@ sys/src/cmd/disk/kfs/uid.c - 664 sys sys 1143759347 6779
 sys/src/cmd/disk/kfscmd.c - 664 sys sys 1015009135 1109
 sys/src/cmd/disk/mbr.c - 664 sys sys 1080218150 4325
 sys/src/cmd/disk/mkext.c - 664 sys sys 1166823931 5805
-sys/src/cmd/disk/mkfile - 664 sys sys 1022385851 500
+sys/src/cmd/disk/mkfile - 664 sys sys 1193264991 509
 sys/src/cmd/disk/mkfs.c - 664 sys sys 1108000852 14697
+sys/src/cmd/disk/partfs.c - 664 sys sys 1193279294 9714
 sys/src/cmd/disk/prep - 20000000775 sys sys 988249968 0
 sys/src/cmd/disk/prep/calc.y - 664 sys sys 1135487935 2406
 sys/src/cmd/disk/prep/edit.c - 664 sys sys 1017854327 9714
