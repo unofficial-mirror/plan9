@@ -32383,3 +32383,14 @@
 1193283307 1 a sys/man/8/partfs - 664 sys sys 1193264932 851
 1193283307 2 c sys/src/cmd/disk/mkfile - 664 sys sys 1193264991 509
 1193283307 3 a sys/src/cmd/disk/partfs.c - 664 sys sys 1193279294 9714
+1193366038 0 a sys/doc/troff.pdf - 664 sys sys 1193286693 246065
+1193366038 1 c sys/man/8/9load - 664 sys sys 1193364197 9814
+1193366038 2 c sys/man/8/prep - 664 sys sys 1193284681 14201
+1193366038 3 c sys/src/boot/pc/load.c - 664 sys sys 1193359334 9765
+1193366038 4 c sys/src/boot/pc/mkfile - 664 sys sys 1193359312 3224
+1193366038 5 c sys/src/boot/pc/noether.c - 664 sys sys 1193336537 416
+1193366038 6 a sys/src/boot/pc/aoe.h - 664 sys sys 1193336543 826
+1193366038 7 c sys/src/boot/pc/devbios.c - 664 sys sys 1193353518 9297
+1193366038 8 c sys/src/boot/pc/ether82563.c - 664 sys sys 1193335413 25390
+1193366038 9 a sys/src/boot/pc/sdaoe.c - 664 sys sys 1193341405 11270
+1193366038 10 a sys/src/boot/pc/sdbios.c - 664 sys sys 1193359341 3001
