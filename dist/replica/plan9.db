@@ -7298,7 +7298,7 @@ sys/man/8/na - 664 sys sys 958527089 859
 sys/man/8/ndb - 664 sys sys 1191867910 14502
 sys/man/8/newuser - 664 sys sys 1116954242 2418
 sys/man/8/nfsserver - 664 sys sys 1191524525 3576
-sys/man/8/partfs - 664 sys sys 1193264932 851
+sys/man/8/partfs - 664 sys sys 1193418360 869
 sys/man/8/pcmcia - 664 sys sys 944959679 408
 sys/man/8/pem - 664 sys sys 1060263669 1189
 sys/man/8/ping - 664 sys sys 1169105315 3650
@@ -8118,7 +8118,7 @@ sys/src/ape/lib/ap/gen/memcmp.c - 664 sys sys 1014921988 262
 sys/src/ape/lib/ap/gen/memmove.c - 664 sys sys 1014921987 433
 sys/src/ape/lib/ap/gen/memset.c - 664 sys sys 1014921988 135
 sys/src/ape/lib/ap/gen/mkfile - 664 sys sys 1038237524 837
-sys/src/ape/lib/ap/gen/mktime.c - 664 sys sys 1014921987 2401
+sys/src/ape/lib/ap/gen/mktime.c - 664 sys sys 1193430538 2373
 sys/src/ape/lib/ap/gen/qsort.c - 664 sys sys 1014921987 2893
 sys/src/ape/lib/ap/gen/raise.c - 664 sys sys 1014921987 185
 sys/src/ape/lib/ap/gen/rand.c - 664 sys sys 1014921987 1105
@@ -9714,7 +9714,7 @@ sys/src/cmd/disk/mbr.c - 664 sys sys 1080218150 4325
 sys/src/cmd/disk/mkext.c - 664 sys sys 1166823931 5805
 sys/src/cmd/disk/mkfile - 664 sys sys 1193264991 509
 sys/src/cmd/disk/mkfs.c - 664 sys sys 1108000852 14697
-sys/src/cmd/disk/partfs.c - 664 sys sys 1193279294 9714
+sys/src/cmd/disk/partfs.c - 664 sys sys 1193417445 9641
 sys/src/cmd/disk/prep - 20000000775 sys sys 988249968 0
 sys/src/cmd/disk/prep/calc.y - 664 sys sys 1135487935 2406
 sys/src/cmd/disk/prep/edit.c - 664 sys sys 1017854327 9714
@@ -9895,7 +9895,6 @@ sys/src/cmd/getflags - 20000000775 sys sys 954036865 0
 sys/src/cmd/getmap.c - 664 sys sys 954468786 3290
 sys/src/cmd/grap - 20000000775 sys sys 944960999 0
 sys/src/cmd/grap/coord.c - 664 sys sys 944960999 1559
-sys/src/cmd/grap/find - 775 sys sys 944960999 37
 sys/src/cmd/grap/for.c - 664 sys sys 944960999 1890
 sys/src/cmd/grap/frame.c - 664 sys sys 944960999 1572
 sys/src/cmd/grap/grap.h - 664 sys sys 944960999 6090
