@@ -32457,3 +32457,10 @@
 1193792818 36 d sys/src/cmd/oventi/conf.rc - 775 sys sys 1055707446 0
 1193792818 37 d sys/src/cmd/oventi/backup.example - 775 sys sys 1045503662 0
 1193792818 38 d sys/src/cmd/oventi/README - 664 sys sys 1189018077 0
+1193873668 0 c sys/games/lib/fortunes - 664 sys sys 1193852802 267533
+1193873668 1 c sys/lib/dist/pc/plan9.ini - 664 sys sys 1193864577 250
+1193873668 2 c sys/lib/dist/pc/plan9.ini.cd - 664 sys sys 1193864518 383
+1193873668 3 c sys/man/2/avl - 664 sys sys 1193861693 2447
+1193873668 4 c sys/man/4/usbdisk - 664 sys sys 1193865997 2801
+1193873668 5 c sys/src/9/ip/tcp.c - 664 sys sys 1193872007 65959
+1193873668 6 c sys/src/cmd/venti/srv/hproc.c - 664 sys sys 1193855451 10662
