@@ -32464,3 +32464,7 @@
 1193873668 4 c sys/man/4/usbdisk - 664 sys sys 1193865997 2801
 1193873668 5 c sys/src/9/ip/tcp.c - 664 sys sys 1193872007 65959
 1193873668 6 c sys/src/cmd/venti/srv/hproc.c - 664 sys sys 1193855451 10662
+1193963632 0 c sys/man/2/fmtinstall - 664 sys sys 1193939299 7941
+1193963632 1 c sys/src/boot/pc/devbios.c - 664 sys sys 1193956078 9172
+1193963632 2 c sys/src/cmd/jpg/ico.c - 664 sys sys 1193938850 8874
+1193963632 3 c sys/src/cmd/cwfs/cw.c - 664 sys sys 1193962091 42974
