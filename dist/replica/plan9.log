@@ -32468,3 +32468,8 @@
 1193963632 1 c sys/src/boot/pc/devbios.c - 664 sys sys 1193956078 9172
 1193963632 2 c sys/src/cmd/jpg/ico.c - 664 sys sys 1193938850 8874
 1193963632 3 c sys/src/cmd/cwfs/cw.c - 664 sys sys 1193962091 42974
+1194033799 0 c sys/games/lib/fortunes - 664 sys sys 1194013944 267571
+1194033799 1 c sys/lib/dist/pc/plan9.ini - 664 sys sys 1194032589 585
+1194033799 2 c sys/lib/dist/pc/plan9.ini.cd - 664 sys sys 1194032364 562
+1194033799 3 c sys/src/boot/pc/ether.c - 664 sys sys 1194025450 5440
+1194033799 4 c sys/src/boot/pc/load.c - 664 sys sys 1194033271 10278
