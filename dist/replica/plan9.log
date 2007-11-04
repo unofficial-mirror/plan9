@@ -32473,3 +32473,6 @@
 1194033799 2 c sys/lib/dist/pc/plan9.ini.cd - 664 sys sys 1194032364 562
 1194033799 3 c sys/src/boot/pc/ether.c - 664 sys sys 1194025450 5440
 1194033799 4 c sys/src/boot/pc/load.c - 664 sys sys 1194033271 10278
+1194147659 0 c sys/src/boot/pc/load.c - 664 sys sys 1194143072 10346
+1194147659 1 c sys/src/boot/pc/devbios.c - 664 sys sys 1194145648 9346
+1194147659 2 c sys/src/boot/pc/sdbios.c - 664 sys sys 1194145651 3282
