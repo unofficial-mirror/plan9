@@ -32511,3 +32511,5 @@
 1194219881 32 c sys/src/liboventi/rpc.c - 664 sys sys 1194215809 7332
 1194219881 33 c sys/src/liboventi/server.c - 664 sys sys 1194215807 4552
 1194219881 34 c sys/src/liboventi/strdup.c - 664 sys sys 1194215805 240
+1194322072 0 c sys/src/boot/pc/load.c - 664 sys sys 1194295338 10407
+1194322072 1 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1194321818 34961
