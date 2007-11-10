@@ -32522,3 +32522,8 @@
 1194557933 2 c sys/src/boot/pc/clock.c - 664 sys sys 1194556585 6622
 1194557933 3 c sys/src/boot/pc/etherrhine.c - 664 sys sys 1194556608 12640
 1194557933 4 c sys/src/boot/pc/io.h - 664 sys sys 1194556593 8134
+1194658402 0 c sys/src/boot/pc/bootp.c - 664 sys sys 1194650469 12624
+1194658402 1 c sys/src/boot/pc/etherrhine.c - 664 sys sys 1194655423 12729
+1194658402 2 c sys/src/boot/pc/load.c - 664 sys sys 1194649778 10526
+1194658402 3 c sys/src/libhttpd/escape.h - 664 sys sys 1194635555 2800
+1194658402 4 d sys/src/9/pc/etherrhine.c - 664 sys sys 1081706478 0
