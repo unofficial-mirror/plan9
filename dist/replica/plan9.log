@@ -32527,3 +32527,5 @@
 1194658402 2 c sys/src/boot/pc/load.c - 664 sys sys 1194649778 10526
 1194658402 3 c sys/src/libhttpd/escape.h - 664 sys sys 1194635555 2800
 1194658402 4 d sys/src/9/pc/etherrhine.c - 664 sys sys 1081706478 0
+1194753849 0 c sys/src/9/port/devaoe.c - 664 sys sys 1194752565 41987
+1194753849 1 c sys/src/9/port/sdaoe.c - 664 sys sys 1194752512 9922
