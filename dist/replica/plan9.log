@@ -32539,3 +32539,6 @@
 1194996777 3 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1194996432 35393
 1194996777 4 c sys/src/cmd/ndb/dns.c - 664 sys sys 1194996490 17499
 1194996777 5 c sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1194996502 5612
+1195164190 0 c rc/bin/fedex - 775 sys sys 1195162568 1236
+1195164190 1 c sys/games/lib/fortunes - 664 sys sys 1195163116 267897
+1195164190 2 c sys/src/cmd/auth/secstore/SConn.c - 664 sys sys 1195162288 4429
