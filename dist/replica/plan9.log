@@ -32543,3 +32543,4 @@
 1195164190 1 c sys/games/lib/fortunes - 664 sys sys 1195163116 267897
 1195164190 2 c sys/src/cmd/auth/secstore/SConn.c - 664 sys sys 1195162288 4429
 1195284339 0 c sys/src/cmd/disk/9660/sysuse.c - 664 sys sys 1195281485 13953
+1195508046 0 c sys/src/boot/pc/x16.h - 664 sys sys 1195507126 5264
