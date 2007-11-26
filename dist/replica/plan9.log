@@ -32548,3 +32548,5 @@
 1195679187 0 c sys/man/4/consolefs - 664 sys sys 1195678039 4389
 1195965230 0 c sys/src/cmd/acme/look.c - 664 sys sys 1195964468 14203
 1195967071 0 c sys/src/ape/lib/mkfile - 664 sys sys 1195965345 206
+1196116580 0 c rc/bin/patch/list - 775 sys sys 1196100902 816
+1196116580 1 c sys/man/8/ndb - 664 sys sys 1196115084 15205
