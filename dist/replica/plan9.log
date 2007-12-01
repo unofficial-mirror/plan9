@@ -32689,3 +32689,10 @@
 1196460109 4 c sys/src/cmd/cpp/eval.c - 664 sys sys 1196458908 9898
 1196460109 5 c sys/src/cmd/cpp/include.c - 664 sys sys 1196458932 2857
 1196460109 6 c sys/src/cmd/cpp/macro.c - 664 sys sys 1196458858 11352
+1196548688 0 a 386/bin/usb/usbprint - 775 sys sys 1196537245 314
+1196548688 1 a 386/bin/usb/usbprobe - 775 sys sys 1196537245 173
+1196548688 2 c sys/lib/dist/mkfile - 664 sys sys 1196547774 5490
+1196548688 3 c sys/man/1/fedex - 664 sys sys 1196533426 528
+1196548688 4 c sys/src/games/mp3dec/mkfile - 664 sys sys 1196544425 839
+1196548688 5 c sys/src/games/mp3enc/mkfile - 664 sys sys 1196544606 1086
+1196548688 6 d 386/bin/usb/usbprinter - 775 sys sys 1089408719 0
