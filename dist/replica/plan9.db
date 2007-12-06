@@ -880,7 +880,7 @@ lib/face/48x48x4/x/xigh.1 - 664 sys sys 1142019024 1204
 lib/face/48x48x4/y - 20000000775 sys sys 944941894 0
 lib/face/48x48x4/z - 20000000775 sys sys 944941894 0
 lib/face/48x48x8 - 20000000775 sys sys 944941834 0
-lib/face/48x48x8/.dict - 664 sys sys 1196685315 4295
+lib/face/48x48x8/.dict - 664 sys sys 1196685315 4324
 lib/face/48x48x8/Z - 20000000775 sys sys 944941832 0
 lib/face/48x48x8/a - 20000000775 sys sys 944941832 0
 lib/face/48x48x8/a/alcortes.1 - 664 sys sys 1176753392 976
@@ -6821,6 +6821,7 @@ sys/man/1/2l - 664 sys sys 1196638934 4376
 sys/man/1/acid - 664 sys sys 1196638934 9730
 sys/man/1/acme - 664 sys sys 1196638934 18540
 sys/man/1/ap - 664 sys sys 1196638934 364
+sys/man/1/aquarela - 664 sys sys 1196895084 2770
 sys/man/1/ar - 664 sys sys 1196638934 3153
 sys/man/1/ascii - 664 sys sys 1196638934 2726
 sys/man/1/awk - 664 sys sys 1196638934 10881
@@ -7527,7 +7528,7 @@ sys/src/9/pc/bios32.c - 664 sys sys 1173287378 3029
 sys/src/9/pc/cga.c - 664 sys sys 1015014513 1843
 sys/src/9/pc/dat.h - 664 sys sys 1190268296 7549
 sys/src/9/pc/devarch.c - 664 sys sys 1194556823 19867
-sys/src/9/pc/devether.c - 664 sys sys 1196687022 10489
+sys/src/9/pc/devether.c - 664 sys sys 1196687022 10567
 sys/src/9/pc/devfloppy.c - 664 sys sys 1142958305 20139
 sys/src/9/pc/devi82365.c - 664 sys sys 1146318335 20504
 sys/src/9/pc/devlm78.c - 664 sys sys 1128255048 6291
@@ -8920,11 +8921,11 @@ sys/src/cmd/acid/acid.h - 664 sys sys 1172764379 4305
 sys/src/cmd/acid/builtin.c - 664 sys sys 1172764379 21752
 sys/src/cmd/acid/dbg.y - 664 sys sys 1172764472 5552
 sys/src/cmd/acid/dot.c - 664 sys sys 1131289462 2162
-sys/src/cmd/acid/exec.c - 664 sys sys 1132674180 8383
-sys/src/cmd/acid/expr.c - 664 sys sys 1172799792 15425
+sys/src/cmd/acid/exec.c - 664 sys sys 1196895288 8400
+sys/src/cmd/acid/expr.c - 664 sys sys 1196895295 15497
 sys/src/cmd/acid/lex.c - 664 sys sys 1131289460 7963
 sys/src/cmd/acid/list.c - 664 sys sys 1131289462 3680
-sys/src/cmd/acid/main.c - 664 sys sys 1143695038 8549
+sys/src/cmd/acid/main.c - 664 sys sys 1196895291 8547
 sys/src/cmd/acid/mkfile - 664 sys sys 1046199006 366
 sys/src/cmd/acid/print.c - 664 sys sys 1131289462 6831
 sys/src/cmd/acid/proc.c - 664 sys sys 1143223273 4333

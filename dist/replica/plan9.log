@@ -43328,3 +43328,9 @@
 1196737471 5050 c sys/src/cmd/ecp.c - 664 sys sys 1179725473 14664
 1196737471 5051 c sys/src/games/mp3dec/mkfile - 664 sys sys 1196685451 853
 1196737471 5052 c sys/src/games/music/mkfile - 664 sys sys 1196736121 753
+1196915560 0 c lib/face/48x48x8/.dict - 664 sys sys 1196685315 4324
+1196915560 1 a sys/man/1/aquarela - 664 sys sys 1196895084 2770
+1196915560 2 c sys/src/9/pc/devether.c - 664 sys sys 1196687022 10567
+1196915560 3 c sys/src/cmd/acid/exec.c - 664 sys sys 1196895288 8400
+1196915560 4 c sys/src/cmd/acid/expr.c - 664 sys sys 1196895295 15497
+1196915560 5 c sys/src/cmd/acid/main.c - 664 sys sys 1196895291 8547
