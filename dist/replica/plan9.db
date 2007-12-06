@@ -5685,7 +5685,7 @@ sys/lib/dist/cmd/touchfs.c - 664 sys sys 1018469727 1120
 sys/lib/dist/cmd/unbflz.c - 664 sys sys 1018469727 1688
 sys/lib/dist/logcompress.awk - 664 sys sys 1068558028 298
 sys/lib/dist/logtime.awk - 664 sys sys 1019526213 38
-sys/lib/dist/mkfile - 664 sys sys 1196547774 5490
+sys/lib/dist/mkfile - 664 sys sys 1196959057 5493
 sys/lib/dist/pc - 20000000775 sys sys 1018721419 0
 sys/lib/dist/pc/cd0.proto - 664 sys sys 1114358485 7
 sys/lib/dist/pc/empty - 20000000775 sys sys 1018469720 0
@@ -14880,7 +14880,7 @@ sys/src/libmach/8db.c - 664 sys sys 1136322405 50889
 sys/src/libmach/8obj.c - 664 sys sys 1148106912 2258
 sys/src/libmach/9.c - 664 sys sys 1178892114 3625
 sys/src/libmach/9c - 20000000775 sys sys 1178892193 0
-sys/src/libmach/9c/9.out.h - 664 sys sys 1178892193 4669
+sys/src/libmach/9c/9.out.h - 664 sys sys 1196959035 4709
 sys/src/libmach/9obj.c - 664 sys sys 1178892115 2747
 sys/src/libmach/access.c - 664 sys sys 1131289377 4588
 sys/src/libmach/elf.h - 664 sys sys 1188499825 2468

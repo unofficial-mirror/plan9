@@ -43334,3 +43334,5 @@
 1196915560 3 c sys/src/cmd/acid/exec.c - 664 sys sys 1196895288 8400
 1196915560 4 c sys/src/cmd/acid/expr.c - 664 sys sys 1196895295 15497
 1196915560 5 c sys/src/cmd/acid/main.c - 664 sys sys 1196895291 8547
+1196973392 0 c sys/lib/dist/mkfile - 664 sys sys 1196959057 5493
+1196973392 1 c sys/src/libmach/9c/9.out.h - 664 sys sys 1196959035 4709
