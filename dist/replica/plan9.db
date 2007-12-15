@@ -7682,7 +7682,7 @@ sys/src/9/port/devmntstats.c - 664 sys sys 1014931173 4039
 sys/src/9/port/devmouse.c - 664 sys sys 1192564555 13904
 sys/src/9/port/devpipe.c - 664 sys sys 1077055016 5825
 sys/src/9/port/devpnp.c - 664 sys sys 1088560907 13624
-sys/src/9/port/devproc.c - 664 sys sys 1168304324 28543
+sys/src/9/port/devproc.c - 664 sys sys 1197732969 28473
 sys/src/9/port/devroot.c - 664 sys sys 1146151714 4242
 sys/src/9/port/devsd.c - 664 sys sys 1186965855 31275
 sys/src/9/port/devsdp.c - 664 sys sys 1057323393 44800
@@ -7727,7 +7727,7 @@ sys/src/9/port/portfns.h - 664 sys sys 1178831066 11059
 sys/src/9/port/portmkfile - 664 sys sys 1184737233 2082
 sys/src/9/port/print.c - 664 sys sys 1014931178 227
 sys/src/9/port/proc.c - 664 sys sys 1176658321 28742
-sys/src/9/port/qio.c - 664 sys sys 1070287837 23562
+sys/src/9/port/qio.c - 664 sys sys 1197732972 23616
 sys/src/9/port/qlock.c - 664 sys sys 1178057654 3300
 sys/src/9/port/rdb.c - 664 sys sys 1184465938 1704
 sys/src/9/port/rebootcmd.c - 664 sys sys 1015278340 1561

@@ -43352,3 +43352,5 @@
 1197673650 4 c sys/src/cmd/aquarela/alarm.c - 664 sys sys 1197673331 2170
 1197673650 5 c sys/src/cmd/ip/linklocal.c - 664 sys sys 1197673397 1751
 1197673650 6 c sys/src/libdraw/font.c - 664 sys sys 1197673270 7648
+1197745772 0 c sys/src/9/port/devproc.c - 664 sys sys 1197732969 28473
+1197745772 1 c sys/src/9/port/qio.c - 664 sys sys 1197732972 23616
