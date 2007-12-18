@@ -43354,3 +43354,5 @@
 1197673650 6 c sys/src/libdraw/font.c - 664 sys sys 1197673270 7648
 1197745772 0 c sys/src/9/port/devproc.c - 664 sys sys 1197732969 28473
 1197745772 1 c sys/src/9/port/qio.c - 664 sys sys 1197732972 23616
+1198012163 0 c sys/src/9/pc/ether82563.c - 664 sys sys 1198011483 34697
+1198012163 1 c sys/src/boot/pc/ether82563.c - 664 sys sys 1198011456 25413
