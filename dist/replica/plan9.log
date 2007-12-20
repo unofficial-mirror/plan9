@@ -43356,3 +43356,17 @@
 1197745772 1 c sys/src/9/port/qio.c - 664 sys sys 1197732972 23616
 1198012163 0 c sys/src/9/pc/ether82563.c - 664 sys sys 1198011483 34697
 1198012163 1 c sys/src/boot/pc/ether82563.c - 664 sys sys 1198011456 25413
+1198190453 0 c sys/include/ip.h - 664 sys sys 1198184776 4401
+1198190453 1 a sys/man/8/aquarela - 664 sys sys 1198159132 3798
+1198190453 2 c sys/src/ape/lib/ap/plan9/_errno.c - 664 sys sys 1198158066 3909
+1198190453 3 c sys/src/cmd/file.c - 664 sys sys 1198189467 28953
+1198190453 4 c sys/src/cmd/aquarela/aquarela.c - 664 sys sys 1198159137 7017
+1198190453 5 c sys/src/cmd/ip/6in4.c - 664 sys sys 1198185057 9743
+1198190453 6 c sys/src/cmd/ip/dhcpd/ping.c - 664 sys sys 1198186463 1225
+1198190453 7 c sys/src/cmd/ip/gping.c - 664 sys sys 1198188401 19930
+1198190453 8 c sys/src/cmd/ip/icmp.h - 664 sys sys 1198189398 1501
+1198190453 9 c sys/src/cmd/ip/ipconfig/ipconfig.h - 664 sys sys 1198189129 5311
+1198190453 10 c sys/src/cmd/ip/ipconfig/ipv6.c - 664 sys sys 1198189135 20619
+1198190453 11 c sys/src/cmd/ip/ping.c - 664 sys sys 1198188930 10554
+1198190453 12 c sys/src/cmd/ip/traceroute.c - 664 sys sys 1198186109 8747
+1198190453 13 d sys/man/1/aquarela - 664 sys sys 1196895084 0
