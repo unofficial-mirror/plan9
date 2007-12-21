@@ -6852,7 +6852,7 @@ sys/man/1/dd - 664 sys sys 1196638931 3346
 sys/man/1/delkey - 664 sys sys 1196638931 779
 sys/man/1/deroff - 664 sys sys 1196638931 1826
 sys/man/1/diff - 664 sys sys 1196638935 3089
-sys/man/1/doc2txt - 664 sys sys 1196638935 2304
+sys/man/1/doc2txt - 664 sys sys 1198243815 2518
 sys/man/1/doctype - 664 sys sys 1196638931 860
 sys/man/1/du - 664 sys sys 1196638931 2281
 sys/man/1/echo - 664 sys sys 1196638932 430
