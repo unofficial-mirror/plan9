@@ -43371,3 +43371,6 @@
 1198190453 12 c sys/src/cmd/ip/traceroute.c - 664 sys sys 1198186109 8747
 1198190453 13 d sys/man/1/aquarela - 664 sys sys 1196895084 0
 1198252296 0 c sys/man/1/doc2txt - 664 sys sys 1198243815 2518
+1199307826 0 a rc/bin/usbfat: - 775 sys sys 1199300762 712
+1199307826 1 c sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1199290669 32518
+1199307826 2 c sys/src/cmd/fossil/fossil-acid - 664 sys sys 1199304805 4367
