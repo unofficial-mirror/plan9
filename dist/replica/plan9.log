@@ -43374,3 +43374,4 @@
 1199307826 0 a rc/bin/usbfat: - 775 sys sys 1199300762 712
 1199307826 1 c sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1199290669 32518
 1199307826 2 c sys/src/cmd/fossil/fossil-acid - 664 sys sys 1199304805 4367
+1199421236 0 c sys/src/cmd/acme/ecmd.c - 664 sys sys 1199391526 24298
