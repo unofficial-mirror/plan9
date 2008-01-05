@@ -43375,3 +43375,6 @@
 1199307826 1 c sys/src/cmd/aux/vga/nvidia.c - 664 sys sys 1199290669 32518
 1199307826 2 c sys/src/cmd/fossil/fossil-acid - 664 sys sys 1199304805 4367
 1199421236 0 c sys/src/cmd/acme/ecmd.c - 664 sys sys 1199391526 24298
+1199493121 0 c sys/man/1/date - 664 sys sys 1199473136 996
+1199493121 1 c sys/src/boot/pc/devsd.c - 664 sys sys 1199490748 11497
+1199493121 2 c sys/src/boot/pc/sdiahci.c - 664 sys sys 1199493064 27056
