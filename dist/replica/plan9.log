@@ -43378,3 +43378,5 @@
 1199493121 0 c sys/man/1/date - 664 sys sys 1199473136 996
 1199493121 1 c sys/src/boot/pc/devsd.c - 664 sys sys 1199490748 11497
 1199493121 2 c sys/src/boot/pc/sdiahci.c - 664 sys sys 1199493064 27056
+1199766998 0 c sys/src/cmd/aux/cddb.c - 664 sys sys 1199724334 4707
+1199766998 1 c sys/src/cmd/ndb/dn.c - 664 sys sys 1199740043 37481

@@ -9242,7 +9242,7 @@ sys/src/cmd/aux/antiword/xmalloc.c - 664 sys sys 1137261474 2501
 sys/src/cmd/aux/antiword/xml.c - 664 sys sys 1137261474 34115
 sys/src/cmd/aux/apm.c - 664 sys sys 1130423972 20275
 sys/src/cmd/aux/astarld.c - 664 sys sys 1015008684 4638
-sys/src/cmd/aux/cddb.c - 664 sys sys 1159664477 4676
+sys/src/cmd/aux/cddb.c - 664 sys sys 1199724334 4707
 sys/src/cmd/aux/clog.c - 664 sys sys 1014925109 1000
 sys/src/cmd/aux/consolefs.c - 664 sys sys 1150201588 21201
 sys/src/cmd/aux/conswdir.c - 664 sys sys 1168307860 2583
@@ -12285,7 +12285,7 @@ sys/src/cmd/ndb/convM2DNS.c - 664 sys sys 1194216290 11959
 sys/src/cmd/ndb/cs.c - 664 sys sys 1188515063 32892
 sys/src/cmd/ndb/csquery.c - 664 sys sys 1174626119 1073
 sys/src/cmd/ndb/dblookup.c - 664 sys sys 1194216346 25229
-sys/src/cmd/ndb/dn.c - 664 sys sys 1194996325 37423
+sys/src/cmd/ndb/dn.c - 664 sys sys 1199740043 37481
 sys/src/cmd/ndb/dnarea.c - 664 sys sys 1175664421 2519
 sys/src/cmd/ndb/dnnotify.c - 664 sys sys 1194996355 3265
 sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1194996432 35393
