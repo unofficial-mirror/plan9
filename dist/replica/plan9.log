@@ -43399,3 +43399,4 @@
 1199921493 13 c sys/src/boot/pc/ahci.h - 664 sys sys 1199911245 6283
 1199921493 14 c sys/src/boot/pc/sdaoe.c - 664 sys sys 1199911246 11268
 1199921493 15 c sys/src/boot/pc/sdiahci.c - 664 sys sys 1199911456 28029
+1200026039 0 c sys/src/cmd/wikifs/io.c - 664 sys sys 1199991690 11909
