@@ -6870,7 +6870,7 @@ sys/man/1/filter - 664 sys sys 1196638935 6143
 sys/man/1/fmt - 664 sys sys 1196638932 1557
 sys/man/1/fortune - 664 sys sys 1196638932 449
 sys/man/1/freq - 664 sys sys 1196638932 735
-sys/man/1/games - 664 sys sys 1196638932 5444
+sys/man/1/games - 664 sys sys 1200263435 6166
 sys/man/1/grap - 664 sys sys 1196638935 6417
 sys/man/1/graph - 664 sys sys 1196638932 3061
 sys/man/1/grep - 664 sys sys 1196638932 2257
