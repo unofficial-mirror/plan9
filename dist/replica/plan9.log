@@ -43408,3 +43408,6 @@
 1200173543 3 c sys/src/libregexp/regexec.c - 664 sys sys 1200170872 4977
 1200173543 4 c sys/src/libregexp/rregexec.c - 664 sys sys 1200170858 4676
 1200263924 0 c sys/man/1/games - 664 sys sys 1200263435 6166
+1200350067 0 c sys/src/9/pc/ether82563.c - 664 sys sys 1200342471 37076
+1200350067 1 c sys/src/9/pc/sdiahci.c - 664 sys sys 1200348596 38496
+1200350067 2 c sys/src/boot/pc/sdiahci.c - 664 sys sys 1200349145 28259
