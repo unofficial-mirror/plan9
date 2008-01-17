@@ -43415,3 +43415,5 @@
 1200438149 1 c sys/lib/dist/pc/inst/bootsetup - 775 sys sys 1200416156 3638
 1200515831 0 c sys/lib/dist/mkfile - 664 sys sys 1200515221 5430
 1200515831 1 a sys/lib/dist/setup - 775 sys sys 1200515222 190
+1200609387 0 c sys/src/cmd/aquarela/smbtrans2set.c - 664 sys sys 1200604163 5299
+1200609387 1 c sys/src/games/xs.c - 664 sys sys 1200609238 17094
