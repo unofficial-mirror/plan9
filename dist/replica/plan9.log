@@ -43431,3 +43431,5 @@
 1200774905 4 c sys/src/cmd/ndb/dns.c - 664 sys sys 1200429502 17583
 1200774905 5 c sys/src/cmd/ndb/dnserver.c - 664 sys sys 1198183920 4630
 1200774905 6 c sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1200463045 5727
+1200893675 0 c sys/src/boot/pc/devsd.c - 664 sys sys 1200893250 11506
+1200893675 1 c sys/src/boot/pc/lib.h - 664 sys sys 1200893244 2925
