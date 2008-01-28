@@ -43439,3 +43439,8 @@
 1201321967 2 c sys/src/9/pc/ethervt6102.c - 664 sys sys 1201296945 22600
 1201321967 3 c sys/src/cmd/sleep.c - 664 sys sys 1201287728 550
 1201321967 4 c sys/src/cmd/upas/smtp/greylist.c - 664 sys sys 1201288520 6935
+1201552352 0 c sys/man/8/smtp - 664 sys sys 1201502316 5493
+1201552352 1 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1201499792 35562
+1201552352 2 c sys/src/cmd/upas/smtp/greylist.c - 664 sys sys 1201502212 7114
+1201552352 3 c sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1201499389 33282
+1201552352 4 c sys/src/cmd/upas/smtp/smtpd.h - 664 sys sys 1201499389 1134
