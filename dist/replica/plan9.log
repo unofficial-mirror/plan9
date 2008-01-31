@@ -43444,3 +43444,10 @@
 1201552352 2 c sys/src/cmd/upas/smtp/greylist.c - 664 sys sys 1201502212 7114
 1201552352 3 c sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1201499389 33282
 1201552352 4 c sys/src/cmd/upas/smtp/smtpd.h - 664 sys sys 1201499389 1134
+1201753890 0 c rc/bin/ipso - 775 sys sys 1201722823 3048
+1201753890 1 c sys/man/1/passwd - 664 sys sys 1201730866 1591
+1201753890 2 c sys/src/cmd/vt/consctl.c - 664 sys sys 1201747864 1451
+1201753890 3 c sys/src/cmd/vt/event.c - 664 sys sys 1201747864 1013
+1201753890 4 c sys/src/cmd/webfs/http.c - 664 sys sys 1201721955 10572
+1201753890 5 c sys/src/libip/readipifc.c - 664 sys sys 1201723612 4396
+1201753890 6 d sys/src/libc/9sys/consctl.c - 664 sys sys 984709400 0
