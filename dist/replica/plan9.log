@@ -43451,3 +43451,6 @@
 1201753890 4 c sys/src/cmd/webfs/http.c - 664 sys sys 1201721955 10572
 1201753890 5 c sys/src/libip/readipifc.c - 664 sys sys 1201723612 4396
 1201753890 6 d sys/src/libc/9sys/consctl.c - 664 sys sys 984709400 0
+1201822403 0 c sys/man/8/aquarela - 664 sys sys 1201804560 3612
+1201822403 1 c sys/src/9/pc/etherigbe.c - 664 sys sys 1201822310 45935
+1201822403 2 c sys/src/boot/pc/etherigbe.c - 664 sys sys 1201822335 41718
