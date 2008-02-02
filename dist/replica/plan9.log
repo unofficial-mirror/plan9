@@ -43459,3 +43459,7 @@
 1201928401 2 c sys/src/cmd/ndb/dn.c - 664 sys sys 1200424507 37758
 1201928401 3 c sys/src/cmd/ndb/dns.c - 664 sys sys 1200429502 17679
 1201928401 4 c sys/src/cmd/ndb/dns.h - 664 sys sys 1194216527 11915
+1201986269 0 c sys/src/cmd/ndb/dblookup.c - 664 sys sys 1201927753 25262
+1201986269 1 c sys/src/cmd/ndb/dn.c - 664 sys sys 1201927830 37758
+1201986269 2 c sys/src/cmd/ndb/dns.c - 664 sys sys 1201927800 17679
+1201986269 3 c sys/src/cmd/ndb/dns.h - 664 sys sys 1201927786 11915
