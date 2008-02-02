@@ -7045,7 +7045,7 @@ sys/man/2/genrandom - 664 sys sys 1196638940 876
 sys/man/2/getcallerpc - 664 sys sys 1196638940 666
 sys/man/2/getenv - 664 sys sys 1196638937 685
 sys/man/2/getfcr - 664 sys sys 1196638940 2713
-sys/man/2/getfields - 664 sys sys 1196638937 1605
+sys/man/2/getfields - 664 sys sys 1201889839 1749
 sys/man/2/getpid - 664 sys sys 1196638937 657
 sys/man/2/getuser - 664 sys sys 1196638937 641
 sys/man/2/getwd - 664 sys sys 1196638937 701
@@ -12285,13 +12285,13 @@ sys/src/cmd/ndb/convDNS2M.c - 664 sys sys 1194216289 7061
 sys/src/cmd/ndb/convM2DNS.c - 664 sys sys 1194216290 11959
 sys/src/cmd/ndb/cs.c - 664 sys sys 1188515063 32892
 sys/src/cmd/ndb/csquery.c - 664 sys sys 1174626119 1073
-sys/src/cmd/ndb/dblookup.c - 664 sys sys 1193284932 25229
-sys/src/cmd/ndb/dn.c - 664 sys sys 1200424507 37507
+sys/src/cmd/ndb/dblookup.c - 664 sys sys 1193284932 25262
+sys/src/cmd/ndb/dn.c - 664 sys sys 1200424507 37758
 sys/src/cmd/ndb/dnarea.c - 664 sys sys 1175664421 2519
 sys/src/cmd/ndb/dnnotify.c - 664 sys sys 1197930912 3278
 sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1201499792 35562
-sys/src/cmd/ndb/dns.c - 664 sys sys 1200429502 17583
-sys/src/cmd/ndb/dns.h - 664 sys sys 1194216527 11889
+sys/src/cmd/ndb/dns.c - 664 sys sys 1200429502 17679
+sys/src/cmd/ndb/dns.h - 664 sys sys 1194216527 11915
 sys/src/cmd/ndb/dnsdebug.c - 664 sys sys 1194216583 8790
 sys/src/cmd/ndb/dnserver.c - 664 sys sys 1198183920 4630
 sys/src/cmd/ndb/dnsquery.c - 664 sys sys 1185315254 2507
