@@ -43463,3 +43463,6 @@
 1201986269 1 c sys/src/cmd/ndb/dn.c - 664 sys sys 1201927830 37758
 1201986269 2 c sys/src/cmd/ndb/dns.c - 664 sys sys 1201927800 17679
 1201986269 3 c sys/src/cmd/ndb/dns.h - 664 sys sys 1201927786 11915
+1202162626 0 c sys/man/8/ipserv - 664 sys sys 1202161489 3268
+1202162626 1 c sys/src/9/pc/etherm10g2k.i - 664 sys sys 1202131465 1094881
+1202162626 2 c sys/src/9/pc/etherm10g4k.i - 664 sys sys 1202131484 1065187
