@@ -43487,3 +43487,8 @@
 1202272444 18 c sys/src/cmd/usb/usbd/hub.c - 664 sys sys 1202255474 4292
 1202272444 19 c sys/src/cmd/usb/usbd/setup.c - 664 sys sys 1202255463 1351
 1202272444 20 c sys/src/cmd/usb/usbd/usbd.c - 664 sys sys 1202255449 5327
+1202358740 0 c rc/bin/usbfat: - 775 sys sys 1202320226 716
+1202358740 1 c sys/man/6/ms - 664 sys sys 1202324341 6970
+1202358740 2 c sys/src/9/pc/usbohci.c - 664 sys sys 1202323008 47570
+1202358740 3 c sys/src/ape/lib/v/plan9/getpass.c - 664 sys sys 1202327292 731
+1202358740 4 c sys/src/ape/lib/v/plan9/tty.c - 664 sys sys 1202327292 559
