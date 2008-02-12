@@ -43497,3 +43497,12 @@
 1202497419 1 a sys/src/9/pc/ether82598.c - 664 sys sys 1202489363 0
 1202497419 2 c sys/src/9/pc/etherm10g.c - 664 sys sys 1202453395 28413
 1202704332 0 c sys/src/cmd/usb/misc/usbmouse.c - 664 sys sys 1202702762 4804
+1202774522 0 c rc/bin/usbfat: - 775 sys sys 1202773132 818
+1202774522 1 c sys/src/cmd/ndb/cs.c - 664 sys sys 1202761086 32962
+1202774522 2 c sys/src/cmd/ndb/dn.c - 664 sys sys 1202761157 37770
+1202774522 3 c sys/src/cmd/ndb/dnnotify.c - 664 sys sys 1202761157 3249
+1202774522 4 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1202761187 35667
+1202774522 5 c sys/src/cmd/ndb/dns.c - 664 sys sys 1202761244 17972
+1202774522 6 c sys/src/cmd/ndb/dns.h - 664 sys sys 1202761152 11969
+1202774522 7 c sys/src/cmd/ndb/dnstcp.c - 664 sys sys 1202761262 7535
+1202774522 8 c sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1202761274 5828
