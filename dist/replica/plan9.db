@@ -7213,8 +7213,8 @@ sys/man/4/telco - 664 sys sys 1196638944 4359
 sys/man/4/u9fs - 664 sys sys 1196638944 4748
 sys/man/4/upasfs - 664 sys sys 1196638944 6212
 sys/man/4/usb - 664 sys sys 1196638944 4682
-sys/man/4/usbd - 664 sys sys 1196638944 712
-sys/man/4/usbdisk - 664 sys sys 1202256707 3025
+sys/man/4/usbd - 664 sys sys 1202846392 1035
+sys/man/4/usbdisk - 664 sys sys 1202847388 3041
 sys/man/4/vacfs - 664 sys sys 1196638944 1545
 sys/man/4/webcookies - 664 sys sys 1196638944 3525
 sys/man/4/webfs - 664 sys sys 1196638944 6518
@@ -7542,7 +7542,7 @@ sys/src/9/pc/devlpt.c - 664 sys sys 1184469951 4423
 sys/src/9/pc/devpccard.c - 664 sys sys 1184469910 39336
 sys/src/9/pc/devrtc.c - 664 sys sys 1015014515 7167
 sys/src/9/pc/devtv.c - 664 sys sys 1184469620 45423
-sys/src/9/pc/devusb.c - 664 sys sys 1202251756 20662
+sys/src/9/pc/devusb.c - 664 sys sys 1202856294 20831
 sys/src/9/pc/devvga.c - 664 sys sys 1181083003 9334
 sys/src/9/pc/dma.c - 664 sys sys 1142966373 5332
 sys/src/9/pc/ether2000.c - 664 sys sys 1173287379 4901
@@ -7630,7 +7630,7 @@ sys/src/9/pc/uartaxp.i - 664 sys sys 1155243528 111326
 sys/src/9/pc/uarti8250.c - 664 sys sys 1177676872 13957
 sys/src/9/pc/uartisa.c - 664 sys sys 1127126907 1777
 sys/src/9/pc/uartpci.c - 664 sys sys 1190235592 4685
-sys/src/9/pc/usb.h - 664 sys sys 1202251665 4590
+sys/src/9/pc/usb.h - 664 sys sys 1202865355 4630
 sys/src/9/pc/usbohci.c - 664 sys sys 1202323008 47570
 sys/src/9/pc/usbuhci.c - 664 sys sys 1202252076 31839
 sys/src/9/pc/vga.c - 664 sys sys 1131290595 5148
@@ -13741,8 +13741,8 @@ sys/src/cmd/usb/disk - 20000000775 sys sys 1193181450 0
 sys/src/cmd/usb/disk/disk.c - 664 sys sys 1202256113 20245
 sys/src/cmd/usb/disk/mkfile - 664 sys sys 1193181450 359
 sys/src/cmd/usb/lib - 20000000775 sys sys 1018369393 0
-sys/src/cmd/usb/lib/device.c - 664 sys sys 1202255312 3552
-sys/src/cmd/usb/lib/dump.c - 664 sys sys 1202255256 13075
+sys/src/cmd/usb/lib/device.c - 664 sys sys 1202846662 3549
+sys/src/cmd/usb/lib/dump.c - 664 sys sys 1202846653 13581
 sys/src/cmd/usb/lib/fmt.c - 664 sys sys 1091204978 291
 sys/src/cmd/usb/lib/mkfile - 664 sys sys 1091204979 204
 sys/src/cmd/usb/lib/setup.c - 664 sys sys 1202255323 1933
@@ -13761,7 +13761,7 @@ sys/src/cmd/usb/usbd/fns.h - 664 sys sys 1091204979 495
 sys/src/cmd/usb/usbd/hub.c - 664 sys sys 1202255474 4292
 sys/src/cmd/usb/usbd/mkfile - 664 sys sys 1091204979 304
 sys/src/cmd/usb/usbd/setup.c - 664 sys sys 1202255463 1351
-sys/src/cmd/usb/usbd/usbd.c - 664 sys sys 1202255449 5327
+sys/src/cmd/usb/usbd/usbd.c - 664 sys sys 1202846486 5467
 sys/src/cmd/va - 20000000775 sys sys 954038374 0
 sys/src/cmd/va/a.h - 664 sys sys 1089299166 2915
 sys/src/cmd/va/a.y - 664 sys sys 944961340 7211

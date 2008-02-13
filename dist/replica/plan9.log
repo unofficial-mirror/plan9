@@ -43506,3 +43506,10 @@
 1202774522 6 c sys/src/cmd/ndb/dns.h - 664 sys sys 1202761152 11969
 1202774522 7 c sys/src/cmd/ndb/dnstcp.c - 664 sys sys 1202761262 7535
 1202774522 8 c sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1202761274 5828
+1202877214 0 c sys/man/4/usbd - 664 sys sys 1202846392 1035
+1202877214 1 c sys/man/4/usbdisk - 664 sys sys 1202847388 3041
+1202877214 2 c sys/src/9/pc/devusb.c - 664 sys sys 1202856294 20831
+1202877214 3 c sys/src/9/pc/usb.h - 664 sys sys 1202865355 4630
+1202877214 4 c sys/src/cmd/usb/lib/device.c - 664 sys sys 1202846662 3549
+1202877214 5 c sys/src/cmd/usb/lib/dump.c - 664 sys sys 1202846653 13581
+1202877214 6 c sys/src/cmd/usb/usbd/usbd.c - 664 sys sys 1202846486 5467
