@@ -43513,3 +43513,12 @@
 1202877214 4 c sys/src/cmd/usb/lib/device.c - 664 sys sys 1202846662 3549
 1202877214 5 c sys/src/cmd/usb/lib/dump.c - 664 sys sys 1202846653 13581
 1202877214 6 c sys/src/cmd/usb/usbd/usbd.c - 664 sys sys 1202846486 5467
+1202951229 0 c rc/bin/usbfat: - 775 sys sys 1202933070 827
+1202951229 1 c sys/games/lib/fortunes - 664 sys sys 1202950617 268681
+1202951229 2 a sys/man/3/kbin - 664 sys sys 1202938916 654
+1202951229 3 c sys/man/4/usb - 664 sys sys 1202938916 5689
+1202951229 4 c sys/man/8/venti-backup - 664 sys sys 1202925137 2290
+1202951229 5 c sys/src/9/pc/kbd.c - 664 sys sys 1202939524 12721
+1202951229 6 a sys/src/9/pc/devkbin.c - 664 sys sys 1202939391 1806
+1202951229 7 c sys/src/9/port/portfns.h - 664 sys sys 1202939287 11060
+1202951229 8 c sys/src/cmd/venti/srv/rdarena.c - 664 sys sys 1202925159 1695
