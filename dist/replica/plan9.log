@@ -43522,3 +43522,10 @@
 1202951229 6 a sys/src/9/pc/devkbin.c - 664 sys sys 1202939391 1806
 1202951229 7 c sys/src/9/port/portfns.h - 664 sys sys 1202939287 11060
 1202951229 8 c sys/src/cmd/venti/srv/rdarena.c - 664 sys sys 1202925159 1695
+1203022924 0 c sys/src/9/boot/bootauth.c - 664 sys sys 1203021301 1168
+1203022924 1 c sys/src/9/boot/bootip.c - 664 sys sys 1203021335 3729
+1203022924 2 c sys/src/9/pc/kbd.c - 664 sys sys 1203021286 12940
+1203022924 3 a sys/src/cmd/usb/kb - 20000000775 sys sys 1203010067 0
+1203022924 4 a sys/src/cmd/usb/kb/hid.h - 664 sys sys 1203021357 1065
+1203022924 5 a sys/src/cmd/usb/kb/kb.c - 664 sys sys 1203021358 13508
+1203022924 6 a sys/src/cmd/usb/kb/mkfile - 664 sys sys 1203010067 260
