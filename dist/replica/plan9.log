@@ -43529,3 +43529,4 @@
 1203022924 4 a sys/src/cmd/usb/kb/hid.h - 664 sys sys 1203021357 1065
 1203022924 5 a sys/src/cmd/usb/kb/kb.c - 664 sys sys 1203021358 13508
 1203022924 6 a sys/src/cmd/usb/kb/mkfile - 664 sys sys 1203010067 260
+1203453648 0 c sys/src/cmd/con/con.c - 664 sys sys 1203451679 15318
