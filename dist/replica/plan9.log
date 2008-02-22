@@ -43547,3 +43547,8 @@
 1203568322 14 c sys/src/cmd/usb/misc/usbprobe - 775 sys sys 1196635629 173
 1203568322 15 c sys/src/cmd/usb/mkfile - 664 sys sys 1203553384 366
 1203570215 0 c sys/man/8/smtp - 664 sys sys 1203569669 5497
+1203714272 0 c rc/bin/iwhois - 775 sys sys 1203659863 1883
+1203714272 1 c sys/man/2/ip - 664 sys sys 1203659619 7257
+1203714272 2 c sys/src/cmd/upas/smtp/greylist.c - 664 sys sys 1203645194 7725
+1203714272 3 c sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1203645213 33362
+1203714272 4 c sys/src/libauthsrv/readnvram.c - 664 sys sys 1203659639 10383

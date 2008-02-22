@@ -4999,7 +4999,7 @@ rc/bin/ipconf/outside - 775 sys sys 1058790951 550
 rc/bin/ipconf/theworld - 775 sys sys 1058790940 1212
 rc/bin/ipso - 775 sys sys 1201722823 3048
 rc/bin/ipv6on - 775 sys sys 1186362803 2047
-rc/bin/iwhois - 775 sys sys 1188682646 1792
+rc/bin/iwhois - 775 sys sys 1203659863 1883
 rc/bin/juke - 775 sys sys 1105565140 1131
 rc/bin/kill - 775 sys sys 1143389260 142
 rc/bin/kmem - 775 sys sys 1190076660 544
@@ -7060,7 +7060,7 @@ sys/man/2/hypot - 664 sys sys 1196638938 302
 sys/man/2/intmap - 664 sys sys 1196638940 2622
 sys/man/2/ioproc - 664 sys sys 1196638940 3060
 sys/man/2/iounit - 664 sys sys 1196638940 1001
-sys/man/2/ip - 664 sys sys 1196638938 7246
+sys/man/2/ip - 664 sys sys 1203659619 7257
 sys/man/2/isalpharune - 664 sys sys 1196638940 1059
 sys/man/2/keyboard - 664 sys sys 1196638940 2065
 sys/man/2/lock - 664 sys sys 1196638938 5705
@@ -13715,14 +13715,14 @@ sys/src/cmd/upas/send/skipequiv.c - 664 sys sys 944961322 1747
 sys/src/cmd/upas/send/translate.c - 664 sys sys 944961322 804
 sys/src/cmd/upas/send/tryit - 664 sys sys 944961322 584
 sys/src/cmd/upas/smtp - 20000000775 sys sys 988250017 0
-sys/src/cmd/upas/smtp/greylist.c - 664 sys sys 1201502212 7114
+sys/src/cmd/upas/smtp/greylist.c - 664 sys sys 1203645194 7725
 sys/src/cmd/upas/smtp/mkfile - 664 sys sys 1108910002 801
 sys/src/cmd/upas/smtp/mxdial.c - 664 sys sys 1188509395 6813
 sys/src/cmd/upas/smtp/rfc822.y - 664 sys sys 1064589606 13417
 sys/src/cmd/upas/smtp/rmtdns.c - 664 sys sys 1188509396 1075
 sys/src/cmd/upas/smtp/smtp.c - 664 sys sys 1188509396 20717
 sys/src/cmd/upas/smtp/smtp.h - 664 sys sys 1188509396 1356
-sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1201499389 33282
+sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1203645213 33362
 sys/src/cmd/upas/smtp/smtpd.h - 664 sys sys 1201499389 1134
 sys/src/cmd/upas/smtp/smtpd.y - 664 sys sys 1181508390 6924
 sys/src/cmd/upas/smtp/spam.c - 664 sys sys 1139699502 10238
@@ -14269,7 +14269,7 @@ sys/src/libauthsrv/mkfile - 664 sys sys 1035389776 409
 sys/src/libauthsrv/nvcsum.c - 664 sys sys 1015091654 192
 sys/src/libauthsrv/opasstokey.c - 664 sys sys 1015091654 448
 sys/src/libauthsrv/passtokey.c - 664 sys sys 1143695654 488
-sys/src/libauthsrv/readnvram.c - 664 sys sys 1188416573 10295
+sys/src/libauthsrv/readnvram.c - 664 sys sys 1203659639 10383
 sys/src/libavl - 20000000775 sys sys 1193775561 0
 sys/src/libavl/avl.c - 664 sys sys 1181339688 6448
 sys/src/libavl/mkfile - 664 sys sys 1130789697 193
