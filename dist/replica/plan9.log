@@ -43552,3 +43552,17 @@
 1203714272 2 c sys/src/cmd/upas/smtp/greylist.c - 664 sys sys 1203645194 7725
 1203714272 3 c sys/src/cmd/upas/smtp/smtpd.c - 664 sys sys 1203645213 33362
 1203714272 4 c sys/src/libauthsrv/readnvram.c - 664 sys sys 1203659639 10383
+1203810002 0 c sys/man/1/venti - 664 sys sys 1203807503 2321
+1203810002 1 a sys/src/ape/lib/net/hangup.c - 664 sys sys 1203808760 278
+1203810002 2 c sys/src/ape/lib/net/mkfile - 664 sys sys 1203808760 208
+1203810002 3 a sys/src/ape/lib/net/netmkaddr.c - 664 sys sys 1203808759 957
+1203810002 4 c sys/src/cmd/mk/rule.c - 664 sys sys 1203808956 1945
+1203810002 5 c sys/src/cmd/ndb/cs.c - 664 sys sys 1203747782 33495
+1203810002 6 c sys/src/cmd/ndb/dn.c - 664 sys sys 1203748557 37967
+1203810002 7 c sys/src/cmd/ndb/dnnotify.c - 664 sys sys 1203748558 3052
+1203810002 8 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1203748559 35408
+1203810002 9 c sys/src/cmd/ndb/dns.c - 664 sys sys 1203745528 17970
+1203810002 10 c sys/src/cmd/ndb/dnudpserver.c - 664 sys sys 1203748560 5632
+1203810002 11 c sys/src/cmd/upas/smtp/mxdial.c - 664 sys sys 1203746163 7002
+1203810002 12 d sys/src/boot/pc/pbsdisklba - 775 sys sys 1015007954 0
+1203810002 13 d sys/src/boot/pc/pbsdisk - 775 sys sys 1017854325 0
