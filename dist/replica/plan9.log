@@ -43566,3 +43566,4 @@
 1203810002 11 c sys/src/cmd/upas/smtp/mxdial.c - 664 sys sys 1203746163 7002
 1203810002 12 d sys/src/boot/pc/pbsdisklba - 775 sys sys 1015007954 0
 1203810002 13 d sys/src/boot/pc/pbsdisk - 775 sys sys 1017854325 0
+1203874365 0 c sys/games/lib/fortunes - 664 sys sys 1203873355 268816
