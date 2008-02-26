@@ -43567,3 +43567,10 @@
 1203810002 12 d sys/src/boot/pc/pbsdisklba - 775 sys sys 1015007954 0
 1203810002 13 d sys/src/boot/pc/pbsdisk - 775 sys sys 1017854325 0
 1203874365 0 c sys/games/lib/fortunes - 664 sys sys 1203873355 268816
+1203984204 0 c lib/pci - 664 sys sys 1203978472 219265
+1203984204 1 c rc/bin/pci - 775 sys sys 1203980337 924
+1203984204 2 c sys/man/3/pnp - 664 sys sys 1203979528 4596
+1203984204 3 a sys/man/8/pci - 664 sys sys 1203983723 591
+1203984204 4 c sys/src/9/pc/mouse.c - 664 sys sys 1203981356 7190
+1203984204 5 c sys/src/9/pc/ether82598.c - 664 sys sys 1203982856 18364
+1203984204 6 c sys/src/9/pc/usbohci.c - 664 sys sys 1203981402 49005
