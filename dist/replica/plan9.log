@@ -43574,3 +43574,9 @@
 1203984204 4 c sys/src/9/pc/mouse.c - 664 sys sys 1203981356 7190
 1203984204 5 c sys/src/9/pc/ether82598.c - 664 sys sys 1203982856 18364
 1203984204 6 c sys/src/9/pc/usbohci.c - 664 sys sys 1203981402 49005
+1204058139 0 c sys/src/cmd/auth/convkeys.c - 664 sys sys 1204007234 2707
+1204058139 1 c sys/src/cmd/auth/debug.c - 664 sys sys 1204007269 8034
+1204058139 2 c sys/src/cmd/auth/lib/getauthkey.c - 664 sys sys 1204007339 448
+1204058139 3 c sys/src/cmd/auth/mkfile - 664 sys sys 1204007370 1772
+1204058139 4 c sys/src/cmd/upas/fs/imap4.c - 664 sys sys 1204007092 16319
+1204058139 5 c sys/src/cmd/usb/misc/usbmouse.c - 664 sys sys 1204006880 4826
