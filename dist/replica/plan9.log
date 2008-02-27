@@ -43580,3 +43580,4 @@
 1204058139 3 c sys/src/cmd/auth/mkfile - 664 sys sys 1204007370 1772
 1204058139 4 c sys/src/cmd/upas/fs/imap4.c - 664 sys sys 1204007092 16319
 1204058139 5 c sys/src/cmd/usb/misc/usbmouse.c - 664 sys sys 1204006880 4826
+1204143401 0 c rc/bin/addpsfonts - 775 sys sys 1204141960 266
