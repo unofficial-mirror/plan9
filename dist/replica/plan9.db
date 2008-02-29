@@ -6996,7 +6996,7 @@ sys/man/2/aes - 664 sys sys 1196638937 1149
 sys/man/2/allocimage - 664 sys sys 1196638937 7304
 sys/man/2/arg - 664 sys sys 1196638937 2184
 sys/man/2/arith3 - 664 sys sys 1196638939 4393
-sys/man/2/assert - 664 sys sys 1196638939 377
+sys/man/2/assert - 664 sys sys 1204322308 379
 sys/man/2/atof - 664 sys sys 1196638937 2778
 sys/man/2/auth - 664 sys sys 1196638939 7537
 sys/man/2/authsrv - 664 sys sys 1196638939 4583
@@ -7411,7 +7411,7 @@ sys/src/9/bitsy/devuda1341.c - 664 sys sys 1071245420 30346
 sys/src/9/bitsy/devµc.c - 664 sys sys 1068393562 8125
 sys/src/9/bitsy/etherif.h - 664 sys sys 1045501788 913
 sys/src/9/bitsy/etherwavelan.c - 664 sys sys 1071245513 870
-sys/src/9/bitsy/fns.h - 664 sys sys 1204232952 3052
+sys/src/9/bitsy/fns.h - 664 sys sys 1204259692 3052
 sys/src/9/bitsy/fpi.c - 664 sys sys 1017695513 5248
 sys/src/9/bitsy/fpi.h - 664 sys sys 1017695513 1679
 sys/src/9/bitsy/fpiarm.c - 664 sys sys 1173788243 9402
@@ -8653,7 +8653,7 @@ sys/src/boot/pc/ether589.c - 664 sys sys 1144961189 4624
 sys/src/boot/pc/ether79c970.c - 664 sys sys 1015007950 11717
 sys/src/boot/pc/ether8003.c - 664 sys sys 1015007950 6446
 sys/src/boot/pc/ether8139.c - 664 sys sys 1121393459 14823
-sys/src/boot/pc/ether8169.c - 664 sys sys 1156429147 21582
+sys/src/boot/pc/ether8169.c - 664 sys sys 1204324647 21870
 sys/src/boot/pc/ether82557.c - 664 sys sys 1140802406 19090
 sys/src/boot/pc/ether82563.c - 664 sys sys 1199772483 25481
 sys/src/boot/pc/ether83815.c - 664 sys sys 1144961190 21993
@@ -8699,7 +8699,7 @@ sys/src/boot/pc/queue.c - 664 sys sys 1015007954 566
 sys/src/boot/pc/sd.h - 664 sys sys 1200690169 2249
 sys/src/boot/pc/sd53c8xx.c - 664 sys sys 1186031515 52082
 sys/src/boot/pc/sd53c8xx.i - 664 sys sys 1015007955 27245
-sys/src/boot/pc/sdaoe.c - 664 sys sys 1199911246 11268
+sys/src/boot/pc/sdaoe.c - 664 sys sys 1204324647 11381
 sys/src/boot/pc/sdata.c - 664 sys sys 1199911580 38891
 sys/src/boot/pc/sdbios.c - 664 sys sys 1194145651 3282
 sys/src/boot/pc/sdiahci.c - 664 sys sys 1200349145 28259

@@ -43639,3 +43639,7 @@
 1204259553 55 c sys/src/libip/parseip.c - 664 sys sys 1204228369 3520
 1204259553 56 c sys/src/libndb/dnsquery.c - 664 sys sys 1204228421 2977
 1204259553 57 d sys/src/libip/ip.h - 664 sys sys 944961727 0
+1204326225 0 c sys/man/2/assert - 664 sys sys 1204322308 379
+1204326225 1 c sys/src/9/bitsy/fns.h - 664 sys sys 1204259692 3052
+1204326225 2 c sys/src/boot/pc/ether8169.c - 664 sys sys 1204324647 21870
+1204326225 3 c sys/src/boot/pc/sdaoe.c - 664 sys sys 1204324647 11381
