@@ -1,3 +1,4 @@
+# pcauth - pc kernel for our auth servers
 dev
 	root
 	cons
@@ -14,6 +15,7 @@ dev
 	tls
 	cap
 	kprof
+	fs
 
 	ether		netif
 	ip		arp chandial ip ipv6 ipaux iproute netlog nullmedium pktmedium ptclbsum386 inferno
@@ -23,7 +25,6 @@ dev
 	vga
 
 	sd
-	fs
 	floppy		dma
 
 	uart
@@ -52,6 +53,9 @@ ip
 	ipifc
 	icmp
 	icmp6
+	gre
+	ipmux
+	esp
 
 port
 	int cpuserver = 1;
@@ -66,4 +70,4 @@ bootdir
 	/386/bin/auth/factotum
 	/386/bin/fossil/fossil
 	/386/bin/venti/venti
-	/386/bin/disk/kfs
+#	/386/bin/disk/kfs
