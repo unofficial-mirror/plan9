@@ -43643,3 +43643,4 @@
 1204326225 1 c sys/src/9/bitsy/fns.h - 664 sys sys 1204259692 3052
 1204326225 2 c sys/src/boot/pc/ether8169.c - 664 sys sys 1204324647 21870
 1204326225 3 c sys/src/boot/pc/sdaoe.c - 664 sys sys 1204324647 11381
+1204424452 0 c sys/man/8/ipconfig - 664 sys sys 1204424262 8203
