@@ -43648,3 +43648,8 @@
 1204605248 1 c sys/src/cmd/proof/font.c - 664 sys sys 1204590145 8836
 1204605248 2 c sys/src/cmd/proof/main.c - 664 sys sys 1204590214 3199
 1204605248 3 c sys/src/cmd/proof/screen.c - 664 sys sys 1204590226 6673
+1204761856 0 c rc/bin/man - 775 sys sys 1204738776 2654
+1204761856 1 c sys/lib/lp/devices - 664 sys sys 1204761747 3854
+1204761856 2 c sys/lib/lp/process/generic - 775 sys sys 1204761143 4465
+1204761856 3 c sys/lib/lp/process/pdfgs - 775 sys sys 1204761083 1631
+1204761856 4 c sys/src/cmd/ip/ipconfig/main.c - 664 sys sys 1204698102 40286
