@@ -43653,3 +43653,4 @@
 1204761856 2 c sys/lib/lp/process/generic - 775 sys sys 1204761143 4465
 1204761856 3 c sys/lib/lp/process/pdfgs - 775 sys sys 1204761083 1631
 1204761856 4 c sys/src/cmd/ip/ipconfig/main.c - 664 sys sys 1204698102 40286
+1204837371 0 c sys/man/2/ip - 664 sys sys 1204837245 7271
