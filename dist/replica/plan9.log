@@ -43654,3 +43654,11 @@
 1204761856 3 c sys/lib/lp/process/pdfgs - 775 sys sys 1204761083 1631
 1204761856 4 c sys/src/cmd/ip/ipconfig/main.c - 664 sys sys 1204698102 40286
 1204837371 0 c sys/man/2/ip - 664 sys sys 1204837245 7271
+1204950722 0 c sys/src/cmd/9660srv/dat.h - 664 sys sys 1204937773 2129
+1204950722 1 c sys/src/cmd/9660srv/fns.h - 664 sys sys 1204937773 429
+1204950722 2 c sys/src/cmd/9660srv/iobuf.c - 664 sys sys 1204937829 3153
+1204950722 3 c sys/src/cmd/cdfs/dat.h - 664 sys sys 1204937945 2834
+1204950722 4 c sys/src/cmd/cdfs/main.c - 664 sys sys 1204937969 11147
+1204950722 5 c sys/src/cmd/cdfs/mkfile - 664 sys sys 1204937991 153
+1204950722 6 c sys/src/cmd/cdfs/mmc.c - 664 sys sys 1204938193 20926
+1204950722 7 c sys/src/cmd/scuzz/scsireq.h - 664 sys sys 1204949623 6861
