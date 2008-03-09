@@ -43662,3 +43662,8 @@
 1204950722 5 c sys/src/cmd/cdfs/mkfile - 664 sys sys 1204937991 153
 1204950722 6 c sys/src/cmd/cdfs/mmc.c - 664 sys sys 1204938193 20926
 1204950722 7 c sys/src/cmd/scuzz/scsireq.h - 664 sys sys 1204949623 6861
+1205037125 0 c sys/man/4/factotum - 664 sys sys 1205008879 14844
+1205037125 1 c sys/man/8/cron - 664 sys sys 1205008447 1959
+1205037125 2 c sys/src/9/port/master - 664 sys sys 1205009260 507
+1205037125 3 c sys/src/9/port/master.local - 664 sys sys 1205009250 117
+1205037125 4 c sys/src/cmd/auth/cron.c - 664 sys sys 1205008495 13189
