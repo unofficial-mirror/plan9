@@ -43667,3 +43667,12 @@
 1205037125 2 c sys/src/9/port/master - 664 sys sys 1205009260 507
 1205037125 3 c sys/src/9/port/master.local - 664 sys sys 1205009250 117
 1205037125 4 c sys/src/cmd/auth/cron.c - 664 sys sys 1205008495 13189
+1205208149 0 c rc/bin/thesaurus - 775 sys sys 1205183987 422
+1205208149 1 c sys/man/4/cdfs - 664 sys sys 1205203382 4352
+1205208149 2 c sys/src/9/pc/usbohci.c - 664 sys sys 1205184193 49042
+1205208149 3 c sys/src/cmd/cdfs/buf.c - 664 sys sys 1205203460 1851
+1205208149 4 c sys/src/cmd/cdfs/dat.h - 664 sys sys 1205203455 3753
+1205208149 5 c sys/src/cmd/cdfs/main.c - 664 sys sys 1205203482 11360
+1205208149 6 c sys/src/cmd/cdfs/mmc.c - 664 sys sys 1205203566 26493
+1205208149 7 c sys/src/cmd/troff/mkfile - 664 sys sys 1205186908 1034
+1205208149 8 c sys/src/cmd/col.c - 664 sys sys 1205188047 3850
