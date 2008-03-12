@@ -43676,3 +43676,9 @@
 1205208149 6 c sys/src/cmd/cdfs/mmc.c - 664 sys sys 1205203566 26493
 1205208149 7 c sys/src/cmd/troff/mkfile - 664 sys sys 1205186908 1034
 1205208149 8 c sys/src/cmd/col.c - 664 sys sys 1205188047 3850
+1205296355 0 c rc/bin/dmaon - 775 sys sys 1205288448 220
+1205296355 1 c sys/man/4/cdfs - 664 sys sys 1205253247 4351
+1205296355 2 c sys/src/cmd/cdfs/buf.c - 664 sys sys 1205271166 1923
+1205296355 3 c sys/src/cmd/cdfs/dat.h - 664 sys sys 1205281336 4538
+1205296355 4 c sys/src/cmd/cdfs/main.c - 664 sys sys 1205281456 11687
+1205296355 5 c sys/src/cmd/cdfs/mmc.c - 664 sys sys 1205295078 27297
