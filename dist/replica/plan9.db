@@ -5510,7 +5510,7 @@ sys/include/ape/fmt.h - 664 sys sys 1146097783 3361
 sys/include/ape/grp.h - 664 sys sys 944948759 389
 sys/include/ape/inttypes.h - 664 sys sys 1038237535 452
 sys/include/ape/keyboard.h - 664 sys sys 1146097783 115
-sys/include/ape/lib9.h - 664 sys sys 1014927764 1626
+sys/include/ape/lib9.h - 664 sys sys 1205552264 2374
 sys/include/ape/libl.h - 664 sys sys 944948760 331
 sys/include/ape/libnet.h - 664 sys sys 944948760 487
 sys/include/ape/libv.h - 664 sys sys 944948760 716
@@ -9484,11 +9484,11 @@ sys/src/cmd/cc/sub.c - 664 sys sys 1143759345 34268
 sys/src/cmd/cc/y.tab.h - 664 sys sys 1098501521 1680
 sys/src/cmd/cdfs - 20000000775 sys sys 959922196 0
 sys/src/cmd/cdfs/buf.c - 664 sys sys 1205271166 1923
-sys/src/cmd/cdfs/dat.h - 664 sys sys 1205446401 4603
+sys/src/cmd/cdfs/dat.h - 664 sys sys 1205470094 4603
 sys/src/cmd/cdfs/fns.h - 664 sys sys 969542122 297
-sys/src/cmd/cdfs/main.c - 664 sys sys 1205366951 11592
+sys/src/cmd/cdfs/main.c - 664 sys sys 1205470095 11592
 sys/src/cmd/cdfs/mkfile - 664 sys sys 1204937991 153
-sys/src/cmd/cdfs/mmc.c - 664 sys sys 1205450135 30641
+sys/src/cmd/cdfs/mmc.c - 664 sys sys 1205470177 30641
 sys/src/cmd/cec - 20000000775 sys sys 1193683647 0
 sys/src/cmd/cec/LICENSE - 664 sys sys 1186248056 1554
 sys/src/cmd/cec/Protocol - 664 sys sys 1186248056 2881
@@ -14557,7 +14557,7 @@ sys/src/libc/port/abs.c - 664 sys sys 1014927393 146
 sys/src/libc/port/asin.c - 664 sys sys 1014927393 567
 sys/src/libc/port/atan.c - 664 sys sys 1014927393 1559
 sys/src/libc/port/atan2.c - 664 sys sys 1014927393 339
-sys/src/libc/port/atexit.c - 664 sys sys 1130424722 772
+sys/src/libc/port/atexit.c - 664 sys sys 1205497562 776
 sys/src/libc/port/atnotify.c - 664 sys sys 1014927394 780
 sys/src/libc/port/atof.c - 664 sys sys 1014927395 83
 sys/src/libc/port/atol.c - 664 sys sys 1014927395 754
