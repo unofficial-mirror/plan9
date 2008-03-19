@@ -6858,7 +6858,7 @@ sys/man/1/dd - 664 sys sys 1196638931 3346
 sys/man/1/delkey - 664 sys sys 1196638931 779
 sys/man/1/deroff - 664 sys sys 1196638931 1826
 sys/man/1/diff - 664 sys sys 1196638935 3089
-sys/man/1/doc2txt - 664 sys sys 1198243815 2518
+sys/man/1/doc2txt - 664 sys sys 1205815382 2628
 sys/man/1/doctype - 664 sys sys 1196638931 860
 sys/man/1/du - 664 sys sys 1196638931 2281
 sys/man/1/echo - 664 sys sys 1196638932 430
@@ -7180,7 +7180,7 @@ sys/man/4 - 20000000775 sys sys 1018581459 0
 sys/man/4/0intro - 664 sys sys 1196638942 472
 sys/man/4/acme - 664 sys sys 1196638943 10435
 sys/man/4/archfs - 664 sys sys 1196638943 533
-sys/man/4/cdfs - 664 sys sys 1205450230 4352
+sys/man/4/cdfs - 664 sys sys 1205857355 4480
 sys/man/4/cfs - 664 sys sys 1196638943 2136
 sys/man/4/consolefs - 664 sys sys 1196638943 4389
 sys/man/4/cwfs - 664 sys sys 1196638943 6553
@@ -7217,7 +7217,7 @@ sys/man/4/u9fs - 664 sys sys 1196638944 4748
 sys/man/4/upasfs - 664 sys sys 1196638944 6212
 sys/man/4/usb - 664 sys sys 1203552814 5677
 sys/man/4/usbd - 664 sys sys 1202846392 1035
-sys/man/4/usbdisk - 664 sys sys 1202847388 3041
+sys/man/4/usbdisk - 664 sys sys 1205857582 3044
 sys/man/4/vacfs - 664 sys sys 1196638944 1545
 sys/man/4/webcookies - 664 sys sys 1196638944 3525
 sys/man/4/webfs - 664 sys sys 1196638944 6518
@@ -12963,7 +12963,7 @@ sys/src/cmd/ssh/ssh.h - 664 sys sys 1091904420 6086
 sys/src/cmd/ssh/sshnet.c - 664 sys sys 1078840016 17641
 sys/src/cmd/ssh/sshserve.c - 664 sys sys 1135487956 5772
 sys/src/cmd/ssh/util.c - 664 sys sys 1154722953 4522
-sys/src/cmd/stats.c - 664 sys sys 1194215006 28141
+sys/src/cmd/stats.c - 664 sys sys 1205873637 28451
 sys/src/cmd/strings.c - 664 sys sys 1167860903 1474
 sys/src/cmd/strip.c - 664 sys sys 1131293244 2502
 sys/src/cmd/sum.c - 664 sys sys 1014926615 5548

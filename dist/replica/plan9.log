@@ -43717,3 +43717,7 @@
 1205814770 14 d rc/bin/service.auth/tcp995 - 775 sys sys 1030586935 0
 1205814770 15 d rc/bin/service.auth/tcp22 - 775 sys sys 1016832620 0
 1205814770 16 d rc/bin/service.auth/tcp110 - 775 sys sys 1016832647 0
+1205897645 0 c sys/man/1/doc2txt - 664 sys sys 1205815382 2628
+1205897645 1 c sys/man/4/cdfs - 664 sys sys 1205857355 4480
+1205897645 2 c sys/man/4/usbdisk - 664 sys sys 1205857582 3044
+1205897645 3 c sys/src/cmd/stats.c - 664 sys sys 1205873637 28451
