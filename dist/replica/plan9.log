@@ -43735,3 +43735,7 @@
 1205987521 11 c sys/src/cmd/ndb/query.c - 664 sys sys 1205986702 1913
 1205987521 12 c sys/src/cmd/unix/u9fs/plan9.h - 664 sys sys 1205963190 5772
 1205987521 13 c sys/src/cmd/unix/u9fs/u9fs.c - 664 sys sys 1205963230 31901
+1206070430 0 c sys/man/4/cdfs - 664 sys sys 1206047086 4636
+1206070430 1 c sys/src/cmd/cdfs/dat.h - 664 sys sys 1206046829 4619
+1206070430 2 c sys/src/cmd/cdfs/main.c - 664 sys sys 1206046865 12396
+1206070430 3 c sys/src/cmd/cdfs/mmc.c - 664 sys sys 1206046883 32136
