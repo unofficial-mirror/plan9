@@ -43739,3 +43739,6 @@
 1206070430 1 c sys/src/cmd/cdfs/dat.h - 664 sys sys 1206046829 4619
 1206070430 2 c sys/src/cmd/cdfs/main.c - 664 sys sys 1206046865 12396
 1206070430 3 c sys/src/cmd/cdfs/mmc.c - 664 sys sys 1206046883 32136
+1206158656 0 c sys/man/4/cdfs - 664 sys sys 1206142208 4785
+1206158656 1 c sys/src/cmd/cdfs/main.c - 664 sys sys 1206142363 12381
+1206158656 2 c sys/src/cmd/cdfs/mmc.c - 664 sys sys 1206142343 31376
