@@ -43742,3 +43742,6 @@
 1206158656 0 c sys/man/4/cdfs - 664 sys sys 1206142208 4785
 1206158656 1 c sys/src/cmd/cdfs/main.c - 664 sys sys 1206142363 12381
 1206158656 2 c sys/src/cmd/cdfs/mmc.c - 664 sys sys 1206142343 31376
+1206226998 0 c sys/man/1/patch - 664 sys sys 1206212232 3469
+1206226998 1 c sys/src/9/port/portfns.h - 664 sys sys 1206225430 11095
+1206226998 2 c sys/src/cmd/upas/common/aux.c - 664 sys sys 1206163103 2304

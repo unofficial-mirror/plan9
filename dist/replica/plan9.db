@@ -6918,7 +6918,7 @@ sys/man/1/ns - 664 sys sys 1196638935 895
 sys/man/1/p - 664 sys sys 1196638933 504
 sys/man/1/page - 664 sys sys 1196638935 5839
 sys/man/1/passwd - 664 sys sys 1201730866 1591
-sys/man/1/patch - 664 sys sys 1205952914 3356
+sys/man/1/patch - 664 sys sys 1206212232 3469
 sys/man/1/pcc - 664 sys sys 1196638933 3478
 sys/man/1/pic - 664 sys sys 1196638933 8229
 sys/man/1/pipefile - 664 sys sys 1196638936 1861
@@ -7737,7 +7737,7 @@ sys/src/9/port/parse.c - 664 sys sys 1014931177 2026
 sys/src/9/port/pgrp.c - 664 sys sys 1138458260 4760
 sys/src/9/port/portclock.c - 664 sys sys 1204230761 4274
 sys/src/9/port/portdat.h - 664 sys sys 1204229767 22759
-sys/src/9/port/portfns.h - 664 sys sys 1202935714 11060
+sys/src/9/port/portfns.h - 664 sys sys 1206225430 11095
 sys/src/9/port/portmkfile - 664 sys sys 1184737233 2082
 sys/src/9/port/print.c - 664 sys sys 1014931178 227
 sys/src/9/port/proc.c - 664 sys sys 1176658321 28742
@@ -13628,7 +13628,7 @@ sys/src/cmd/upas/bayes/regcomp.c - 664 sys sys 1063951010 9707
 sys/src/cmd/upas/bayes/regen.c - 664 sys sys 1063951011 2452
 sys/src/cmd/upas/common - 20000000775 sys sys 1015088626 0
 sys/src/cmd/upas/common/appendfiletombox.c - 664 sys sys 1179946114 2563
-sys/src/cmd/upas/common/aux.c - 664 sys sys 1019498851 2300
+sys/src/cmd/upas/common/aux.c - 664 sys sys 1206163103 2304
 sys/src/cmd/upas/common/become.c - 664 sys sys 1015009623 430
 sys/src/cmd/upas/common/common.h - 664 sys sys 1098803897 2040
 sys/src/cmd/upas/common/config.c - 664 sys sys 944961316 254
