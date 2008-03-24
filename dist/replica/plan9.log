@@ -43745,3 +43745,15 @@
 1206226998 0 c sys/man/1/patch - 664 sys sys 1206212232 3469
 1206226998 1 c sys/src/9/port/portfns.h - 664 sys sys 1206225430 11095
 1206226998 2 c sys/src/cmd/upas/common/aux.c - 664 sys sys 1206163103 2304
+1206318768 0 c sys/src/9/alphapc/clock.c - 664 sys sys 1206317920 1527
+1206318768 1 c sys/src/9/alphapc/dat.h - 664 sys sys 1206317920 5217
+1206318768 2 c sys/src/9/bitsy/clock.c - 664 sys sys 1206317920 4890
+1206318768 3 c sys/src/9/bitsy/dat.h - 664 sys sys 1206317920 5849
+1206318768 4 c sys/src/9/bitsy/fns.h - 664 sys sys 1206317920 3052
+1206318768 5 c sys/src/9/mtx/clock.c - 664 sys sys 1206317920 1344
+1206318768 6 c sys/src/9/mtx/dat.h - 664 sys sys 1206317920 3825
+1206318768 7 c sys/src/9/pc/dat.h - 664 sys sys 1206317920 7549
+1206318768 8 c sys/src/9/pc/devarch.c - 664 sys sys 1206317920 19865
+1206318768 9 c sys/src/9/port/portclock.c - 664 sys sys 1206317920 4274
+1206318768 10 c sys/src/9/port/portdat.h - 664 sys sys 1206317920 22759
+1206318768 11 c sys/src/9/port/portfns.h - 664 sys sys 1206317920 11095
