@@ -9085,6 +9085,7 @@ sys/src/cmd/astro/uran.c - 664 sys sys 964307357 3291
 sys/src/cmd/astro/venus.c - 664 sys sys 944960761 2417
 sys/src/cmd/astro/venust.c - 664 sys sys 944960761 739
 sys/src/cmd/auth - 20000000775 sys sys 1015008432 0
+sys/src/cmd/auth/asn12dsa.c - 664 sys sys 1206419986 1142
 sys/src/cmd/auth/asn12rsa.c - 664 sys sys 1048614959 1192
 sys/src/cmd/auth/authcmdlib.h - 664 sys sys 1155994851 1421
 sys/src/cmd/auth/authsrv.c - 664 sys sys 1172776678 18383
@@ -9096,6 +9097,9 @@ sys/src/cmd/auth/convkeys2.c - 664 sys sys 1155994849 2444
 sys/src/cmd/auth/cron.c - 664 sys sys 1205426383 13334
 sys/src/cmd/auth/debug.c - 664 sys sys 1204007269 8034
 sys/src/cmd/auth/disable - 775 sys sys 1015008431 146
+sys/src/cmd/auth/dsa2pub.c - 664 sys sys 1206419986 668
+sys/src/cmd/auth/dsa2ssh.c - 664 sys sys 1206419986 784
+sys/src/cmd/auth/dsagen.c - 664 sys sys 1206419986 721
 sys/src/cmd/auth/enable - 775 sys sys 1015008430 134
 sys/src/cmd/auth/factotum - 20000000775 sys sys 1017165894 0
 sys/src/cmd/auth/factotum/apop.c - 664 sys sys 1171690118 6151
@@ -9137,7 +9141,7 @@ sys/src/cmd/auth/lib/readn.c - 664 sys sys 1155994851 264
 sys/src/cmd/auth/lib/readwrite.c - 664 sys sys 1155994851 1441
 sys/src/cmd/auth/lib/wrbio.c - 664 sys sys 1015008430 755
 sys/src/cmd/auth/login.c - 664 sys sys 1140272942 4002
-sys/src/cmd/auth/mkfile - 664 sys sys 1204007370 1772
+sys/src/cmd/auth/mkfile - 664 sys sys 1206419830 1880
 sys/src/cmd/auth/netkey.c - 664 sys sys 1155994849 758
 sys/src/cmd/auth/newns.c - 664 sys sys 1179368218 979
 sys/src/cmd/auth/none.c - 664 sys sys 1179405289 970
@@ -9146,8 +9150,8 @@ sys/src/cmd/auth/pemdecode.c - 664 sys sys 1084330528 947
 sys/src/cmd/auth/pemencode.c - 664 sys sys 1048614963 998
 sys/src/cmd/auth/printnetkey.c - 664 sys sys 1155994849 670
 sys/src/cmd/auth/respond.c - 664 sys sys 1015008432 472
-sys/src/cmd/auth/rsa2any.c - 664 sys sys 1140272943 3407
-sys/src/cmd/auth/rsa2any.h - 664 sys sys 1048616450 43
+sys/src/cmd/auth/rsa2any.c - 664 sys sys 1206420017 5768
+sys/src/cmd/auth/rsa2any.h - 664 sys sys 1206420009 277
 sys/src/cmd/auth/rsa2csr.c - 664 sys sys 1048614963 621
 sys/src/cmd/auth/rsa2pub.c - 664 sys sys 1048614964 651
 sys/src/cmd/auth/rsa2ssh.c - 664 sys sys 1048614964 483
@@ -9490,7 +9494,7 @@ sys/src/cmd/cdfs/dat.h - 664 sys sys 1206046829 4619
 sys/src/cmd/cdfs/fns.h - 664 sys sys 969542122 297
 sys/src/cmd/cdfs/main.c - 664 sys sys 1206379554 12449
 sys/src/cmd/cdfs/mkfile - 664 sys sys 1204937991 153
-sys/src/cmd/cdfs/mmc.c - 664 sys sys 1206142343 31376
+sys/src/cmd/cdfs/mmc.c - 664 sys sys 1206476551 31404
 sys/src/cmd/cec - 20000000775 sys sys 1193683647 0
 sys/src/cmd/cec/LICENSE - 664 sys sys 1186248056 1554
 sys/src/cmd/cec/Protocol - 664 sys sys 1186248056 2881
@@ -15124,7 +15128,7 @@ sys/src/libsec/mips/mkfile - 664 sys sys 1032061452 227
 sys/src/libsec/mips/sha1block.s - 664 sys sys 985124884 4143
 sys/src/libsec/mkfile - 664 sys sys 1134426497 554
 sys/src/libsec/port - 20000000775 sys sys 1015023365 0
-sys/src/libsec/port/aes.c - 664 sys sys 1188328427 64086
+sys/src/libsec/port/aes.c - 664 sys sys 1206474401 64093
 sys/src/libsec/port/blowfish.c - 664 sys sys 1016466467 19676
 sys/src/libsec/port/decodepem.c - 664 sys sys 1084318869 1831
 sys/src/libsec/port/des.c - 664 sys sys 1015013579 17496
