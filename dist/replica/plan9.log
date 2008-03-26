@@ -43771,3 +43771,4 @@
 1206480815 6 c sys/src/cmd/auth/rsa2any.h - 664 sys sys 1206420009 277
 1206480815 7 c sys/src/cmd/cdfs/mmc.c - 664 sys sys 1206476551 31404
 1206480815 8 c sys/src/libsec/port/aes.c - 664 sys sys 1206474401 64093
+1206560003 0 c sys/src/cmd/ndb/dblookup.c - 664 sys sys 1206554141 25262

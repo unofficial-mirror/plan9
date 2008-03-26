@@ -12302,7 +12302,7 @@ sys/src/cmd/ndb/convDNS2M.c - 664 sys sys 1205354106 7059
 sys/src/cmd/ndb/convM2DNS.c - 664 sys sys 1194216290 11959
 sys/src/cmd/ndb/cs.c - 664 sys sys 1203747782 33495
 sys/src/cmd/ndb/csquery.c - 664 sys sys 1174626119 1073
-sys/src/cmd/ndb/dblookup.c - 664 sys sys 1201927753 25262
+sys/src/cmd/ndb/dblookup.c - 664 sys sys 1206554141 25262
 sys/src/cmd/ndb/dn.c - 664 sys sys 1203748557 37967
 sys/src/cmd/ndb/dnarea.c - 664 sys sys 1175664421 2519
 sys/src/cmd/ndb/dnnotify.c - 664 sys sys 1204179585 3112
