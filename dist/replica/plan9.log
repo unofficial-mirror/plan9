@@ -43773,3 +43773,10 @@
 1206480815 8 c sys/src/libsec/port/aes.c - 664 sys sys 1206474401 64093
 1206560003 0 c sys/src/cmd/ndb/dblookup.c - 664 sys sys 1206554141 25262
 1206648429 0 c sys/games/lib/fortunes - 664 sys sys 1206647893 268958
+1206761659 0 c sys/man/4/usb - 664 sys sys 1206739773 5725
+1206761659 1 c sys/src/9/pc/devusb.c - 664 sys sys 1206740166 21073
+1206761659 2 c sys/src/cmd/9660srv/9660srv.c - 664 sys sys 1206721469 17203
+1206761659 3 c sys/src/cmd/usb/audio/audiofs.c - 664 sys sys 1206739707 18727
+1206761659 4 c sys/src/cmd/usb/audio/usbaudio.c - 664 sys sys 1206739761 10505
+1206761659 5 c sys/src/cmd/usb/audio/usbaudio.h - 664 sys sys 1206739688 1907
+1206761659 6 c sys/src/cmd/usb/audio/usbaudioctl.c - 664 sys sys 1206739741 18993
