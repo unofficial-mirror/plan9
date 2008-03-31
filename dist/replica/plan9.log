@@ -43780,3 +43780,7 @@
 1206761659 4 c sys/src/cmd/usb/audio/usbaudio.c - 664 sys sys 1206739761 10505
 1206761659 5 c sys/src/cmd/usb/audio/usbaudio.h - 664 sys sys 1206739688 1907
 1206761659 6 c sys/src/cmd/usb/audio/usbaudioctl.c - 664 sys sys 1206739741 18993
+1206925389 0 c sys/man/1/doc2txt - 664 sys sys 1206913741 2624
+1206925389 1 c sys/man/2/control - 664 sys sys 1206913705 43603
+1206925389 2 a sys/man/3/sdahci - 664 sys sys 1206923648 3212
+1206925389 3 c sys/man/4/u9fs - 664 sys sys 1206913743 5223
