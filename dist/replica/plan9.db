@@ -13863,7 +13863,7 @@ sys/src/cmd/venti/srv/graph.c - 664 sys sys 1177189436 4190
 sys/src/cmd/venti/srv/hdisk.c - 664 sys sys 1191257294 16482
 sys/src/cmd/venti/srv/hproc.c - 664 sys sys 1193855451 10662
 sys/src/cmd/venti/srv/httpd.c - 664 sys sys 1196369182 22877
-sys/src/cmd/venti/srv/icache.c - 664 sys sys 1196369136 10617
+sys/src/cmd/venti/srv/icache.c - 664 sys sys 1207153639 10618
 sys/src/cmd/venti/srv/icachewrite.c - 664 sys sys 1196382019 7477
 sys/src/cmd/venti/srv/ifile.c - 664 sys sys 1189307036 2592
 sys/src/cmd/venti/srv/index.c - 664 sys sys 1191257302 17933
