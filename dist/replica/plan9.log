@@ -43786,3 +43786,6 @@
 1206925389 3 c sys/man/4/u9fs - 664 sys sys 1206913743 5223
 1207002821 0 c sys/man/2/mp - 664 sys sys 1207002655 10770
 1207167006 0 c sys/src/cmd/venti/srv/icache.c - 664 sys sys 1207153639 10618
+1207254839 0 c sys/src/cmd/venti/srv/arena.c - 664 sys sys 1207253133 20156
+1207254839 1 c sys/src/cmd/venti/srv/conv.c - 664 sys sys 1207253152 15161
+1207254839 2 c sys/src/cmd/venti/srv/reseal.c - 664 sys sys 1207253699 6520
