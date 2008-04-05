@@ -43795,3 +43795,6 @@
 1207366456 3 c rc/bin/usbfat: - 775 sys sys 1207327063 829
 1207366456 4 c rc/bin/usbstart - 775 sys sys 1207327187 149
 1207366456 5 c sys/src/cmd/cpu.c - 664 sys sys 1207333028 20941
+1207420665 0 c sys/games/lib/fortunes - 664 sys sys 1207370998 268981
+1207420665 1 c sys/src/9/pc/uartaxp.c - 664 sys sys 1207419955 18931
+1207420665 2 c sys/src/cmd/ip/dhcpd/dhcpd.c - 664 sys sys 1207419933 35276
