@@ -43789,3 +43789,9 @@
 1207254839 0 c sys/src/cmd/venti/srv/arena.c - 664 sys sys 1207253133 20156
 1207254839 1 c sys/src/cmd/venti/srv/conv.c - 664 sys sys 1207253152 15161
 1207254839 2 c sys/src/cmd/venti/srv/reseal.c - 664 sys sys 1207253699 6520
+1207366456 0 c rc/bin/cpurc - 775 sys sys 1207348151 1975
+1207366456 1 c rc/bin/termrc - 775 sys sys 1207348859 2548
+1207366456 2 a rc/bin/dontkill - 775 sys sys 1207346989 293
+1207366456 3 c rc/bin/usbfat: - 775 sys sys 1207327063 829
+1207366456 4 c rc/bin/usbstart - 775 sys sys 1207327187 149
+1207366456 5 c sys/src/cmd/cpu.c - 664 sys sys 1207333028 20941

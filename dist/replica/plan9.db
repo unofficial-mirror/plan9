@@ -4974,7 +4974,7 @@ rc/bin/b: - 775 sys sys 1015089510 204
 rc/bin/broke - 775 sys sys 1143389260 142
 rc/bin/bundle - 775 sys sys 945617206 173
 rc/bin/c: - 775 sys sys 1015089511 86
-rc/bin/cpurc - 775 sys sys 1187226871 1901
+rc/bin/cpurc - 775 sys sys 1207348151 1975
 rc/bin/cpurc.local - 775 sys sys 1176827268 367
 rc/bin/delkey - 775 sys sys 1109429137 643
 rc/bin/dial - 20000000775 sys sys 1059180057 0
@@ -4985,6 +4985,7 @@ rc/bin/dmaon - 775 sys sys 1205288448 220
 rc/bin/doc2ps - 775 sys sys 1205813503 338
 rc/bin/doc2txt - 775 sys sys 1025197880 563
 rc/bin/doctype - 775 sys sys 1162921755 1727
+rc/bin/dontkill - 775 sys sys 1207346989 293
 rc/bin/dosmnt - 775 sys sys 1109288224 303
 rc/bin/dpost - 775 sys sys 1192741346 220
 rc/bin/eject - 775 sys sys 945617207 123
@@ -5100,7 +5101,7 @@ rc/bin/start - 775 sys sys 945617209 120
 rc/bin/stock - 775 sys sys 1143126371 292
 rc/bin/stop - 775 sys sys 945617209 110
 rc/bin/tel - 775 sys sys 1161209756 128
-rc/bin/termrc - 775 sys sys 1179769653 2479
+rc/bin/termrc - 775 sys sys 1207348859 2548
 rc/bin/termrc.local - 775 sys sys 1176500067 425
 rc/bin/thesaurus - 775 sys sys 1205183987 422
 rc/bin/tlsclienttunnel - 775 sys sys 1024375633 153
@@ -5111,8 +5112,8 @@ rc/bin/umem - 775 sys sys 1190076661 547
 rc/bin/uncompress - 775 sys sys 1158798931 30
 rc/bin/ups - 775 sys sys 1091021981 806
 rc/bin/uptime - 775 sys sys 1074730712 234
-rc/bin/usbfat: - 775 sys sys 1202933070 827
-rc/bin/usbstart - 775 sys sys 1044894155 81
+rc/bin/usbfat: - 775 sys sys 1207327063 829
+rc/bin/usbstart - 775 sys sys 1207327187 149
 rc/bin/usps - 775 sys sys 1016826030 450
 rc/bin/vwhois - 775 sys sys 1106409971 445
 rc/bin/wdoc2txt - 775 sys sys 1017431153 277
@@ -9555,7 +9556,7 @@ sys/src/cmd/cpp/mkfile - 664 sys sys 944960879 178
 sys/src/cmd/cpp/nlist.c - 664 sys sys 1188413849 4745
 sys/src/cmd/cpp/test.c - 664 sys sys 944960879 47
 sys/src/cmd/cpp/tokens.c - 664 sys sys 944960879 6755
-sys/src/cmd/cpu.c - 664 sys sys 1194215126 20932
+sys/src/cmd/cpu.c - 664 sys sys 1207333028 20941
 sys/src/cmd/crop.c - 664 sys sys 1134557476 4137
 sys/src/cmd/cwfs - 20000000775 sys sys 1174799196 0
 sys/src/cmd/cwfs/32bit.h - 664 sys sys 1171162581 594
