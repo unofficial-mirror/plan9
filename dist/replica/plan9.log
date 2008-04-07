@@ -43800,3 +43800,5 @@
 1207420665 2 c sys/src/cmd/ip/dhcpd/dhcpd.c - 664 sys sys 1207419933 35276
 1207509671 0 c sys/src/cmd/aux/timesync.c - 664 sys sys 1207506921 25991
 1207509671 1 c sys/src/cmd/ndb/dnresolve.c - 664 sys sys 1207506938 35403
+1207605949 0 c sys/man/2/mp - 664 sys sys 1207598511 10847
+1207605949 1 c sys/man/2/rsa - 664 sys sys 1207604338 4367

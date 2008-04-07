@@ -7073,7 +7073,7 @@ sys/man/2/memlayer - 664 sys sys 1196638940 6963
 sys/man/2/memory - 664 sys sys 1196638938 2145
 sys/man/2/mktemp - 664 sys sys 1196638938 669
 sys/man/2/mouse - 664 sys sys 1196638940 4952
-sys/man/2/mp - 664 sys sys 1207002655 10770
+sys/man/2/mp - 664 sys sys 1207598511 10847
 sys/man/2/muldiv - 664 sys sys 1196638940 639
 sys/man/2/nan - 664 sys sys 1196638938 937
 sys/man/2/ndb - 664 sys sys 1196638941 9743
@@ -7103,7 +7103,7 @@ sys/man/2/readv - 664 sys sys 1196638941 1454
 sys/man/2/regexp - 664 sys sys 1196638941 3548
 sys/man/2/remove - 664 sys sys 1196638938 518
 sys/man/2/rendezvous - 664 sys sys 1196638938 1336
-sys/man/2/rsa - 664 sys sys 1196638941 4336
+sys/man/2/rsa - 664 sys sys 1207604338 4367
 sys/man/2/rune - 664 sys sys 1196638938 3086
 sys/man/2/runestrcat - 664 sys sys 1196638941 1086
 sys/man/2/scribble - 664 sys sys 1196638941 3847
