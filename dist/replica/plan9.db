@@ -1016,6 +1016,7 @@ lib/face/48x48x8/u/unknown.us - 664 sys sys 1078952024 324
 lib/face/48x48x8/u/unknown.yu - 664 sys sys 1078952024 401
 lib/face/48x48x8/u/unknown.za - 664 sys sys 1078952024 487
 lib/face/48x48x8/u/uriel.2 - 664 sys sys 1176753394 987
+lib/face/48x48x8/u/usps.1 - 664 sys sys 1208359251 852
 lib/face/48x48x8/v - 20000000775 sys sys 944941834 0
 lib/face/48x48x8/v/victor.1 - 664 sys sys 1176753394 873
 lib/face/48x48x8/v/vitanuova.1 - 664 sys sys 1142017867 1054
@@ -12344,7 +12345,7 @@ sys/src/cmd/page/pdfprolog.ps - 664 sys sys 1137459166 519
 sys/src/cmd/page/ps.c - 664 sys sys 1190093304 9191
 sys/src/cmd/page/rotate.c - 664 sys sys 1136377361 10435
 sys/src/cmd/page/util.c - 664 sys sys 944961364 2090
-sys/src/cmd/page/view.c - 664 sys sys 1190093181 22159
+sys/src/cmd/page/view.c - 664 sys sys 1208359650 22159
 sys/src/cmd/paqfs - 20000000775 sys sys 1017696804 0
 sys/src/cmd/paqfs/mkfile - 664 sys sys 1032060366 228
 sys/src/cmd/paqfs/mkpaqfs.c - 664 sys sys 1072729575 8836
