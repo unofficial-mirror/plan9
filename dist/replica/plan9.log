@@ -43812,3 +43812,5 @@
 1208230515 1 c sys/man/8/ipserv - 664 sys sys 1208190062 3272
 1208230515 2 c sys/src/cmd/cdfs/main.c - 664 sys sys 1208195235 12480
 1208230515 3 c sys/src/cmd/ip/ftpd.c - 664 sys sys 1208210293 33592
+1208306387 0 c sys/src/cmd/ip/snoopy/tcp.c - 664 sys sys 1208305075 3580
+1208306387 1 c sys/src/cmd/ssh/sshserve.c - 664 sys sys 1208297712 5824
