@@ -43817,3 +43817,9 @@
 1208376253 0 a lib/face/48x48x8/u/usps.1 - 664 sys sys 1208359251 852
 1208376253 1 c sys/src/cmd/page/view.c - 664 sys sys 1208359650 22159
 1208489738 0 c sys/src/libndb/ndbipinfo.c - 664 sys sys 1208488938 5259
+1208574354 0 c sys/man/4/cdfs - 664 sys sys 1208538134 4809
+1208574354 1 c sys/src/cmd/9660srv/9660srv.c - 664 sys sys 1208574082 17189
+1208574354 2 c sys/src/cmd/9660srv/dat.h - 664 sys sys 1208573849 2131
+1208574354 3 c sys/src/cmd/9660srv/iobuf.c - 664 sys sys 1208573842 3224
+1208574354 4 c sys/src/cmd/9660srv/iso9660.h - 664 sys sys 1208573813 2713
+1208574354 5 c sys/src/cmd/cdfs/mmc.c - 664 sys sys 1208555777 31532
