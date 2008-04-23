@@ -43836,3 +43836,10 @@
 1208662331 10 c sys/src/cmd/disk/9660/write.c - 664 sys sys 1208580605 8905
 1208725738 0 c sys/man/2/auth - 664 sys sys 1208725235 7535
 1208882058 0 c sys/src/mkfile.proto - 664 sys sys 1208881081 266
+1208986886 0 c sys/games/lib/fortunes - 664 sys sys 1208978371 269327
+1208986886 1 a sys/src/cmd/venti/words - 20000000775 sys sys 1208985205 0
+1208986886 2 a sys/src/cmd/venti/words/backup.example - 775 sys sys 1045503662 521
+1208986886 3 a sys/src/cmd/venti/words/dumpvacroots - 775 sys sys 1163468045 571
+1208986886 4 a sys/src/cmd/venti/words/notes - 664 sys sys 1068500911 4032
+1208986886 5 a sys/src/cmd/venti/words/venti.conf - 664 sys sys 1019867537 397
+1208986886 6 a sys/src/cmd/venti/words/wrtape - 775 sys sys 1019678881 555
