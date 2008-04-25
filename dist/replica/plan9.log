@@ -43844,3 +43844,4 @@
 1208986886 5 a sys/src/cmd/venti/words/venti.conf - 664 sys sys 1019867537 397
 1208986886 6 a sys/src/cmd/venti/words/wrtape - 775 sys sys 1019678881 555
 1209078313 0 c sys/src/cmd/ramfs.c - 664 sys sys 1209077281 16050
+1209146538 0 c sys/src/cmd/venti/words/dumpvacroots - 775 sys sys 1209145281 609
