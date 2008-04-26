@@ -8660,7 +8660,7 @@ sys/src/boot/pc/ether8003.c - 664 sys sys 1015007950 6446
 sys/src/boot/pc/ether8139.c - 664 sys sys 1121393459 14823
 sys/src/boot/pc/ether8169.c - 664 sys sys 1204324647 21870
 sys/src/boot/pc/ether82557.c - 664 sys sys 1140802406 19090
-sys/src/boot/pc/ether82563.c - 664 sys sys 1199772483 25481
+sys/src/boot/pc/ether82563.c - 664 sys sys 1209184829 26037
 sys/src/boot/pc/ether83815.c - 664 sys sys 1144961190 21993
 sys/src/boot/pc/ether8390.c - 664 sys sys 1112382847 16209
 sys/src/boot/pc/ether8390.h - 664 sys sys 1015007951 1392
