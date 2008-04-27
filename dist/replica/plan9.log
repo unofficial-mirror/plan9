@@ -43846,3 +43846,5 @@
 1209078313 0 c sys/src/cmd/ramfs.c - 664 sys sys 1209077281 16050
 1209146538 0 c sys/src/cmd/venti/words/dumpvacroots - 775 sys sys 1209145281 609
 1209186641 0 c sys/src/boot/pc/ether82563.c - 664 sys sys 1209184829 26037
+1209324729 0 c sys/man/1/awk - 664 sys sys 1209274334 11077
+1209324729 1 c sys/src/cmd/awk/run.c - 664 sys sys 1209274332 42886

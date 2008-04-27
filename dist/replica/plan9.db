@@ -6831,7 +6831,7 @@ sys/man/1/acme - 664 sys sys 1196638934 18540
 sys/man/1/ap - 664 sys sys 1196638934 364
 sys/man/1/ar - 664 sys sys 1196638934 3153
 sys/man/1/ascii - 664 sys sys 1196638934 2726
-sys/man/1/awk - 664 sys sys 1205384921 11042
+sys/man/1/awk - 664 sys sys 1209274334 11077
 sys/man/1/basename - 664 sys sys 1196638931 535
 sys/man/1/bc - 664 sys sys 1196638934 3784
 sys/man/1/bind - 664 sys sys 1196638931 4009
@@ -9406,7 +9406,7 @@ sys/src/cmd/awk/parse.c - 664 sys sys 944960802 5068
 sys/src/cmd/awk/proctab.c - 664 sys sys 944960803 5123
 sys/src/cmd/awk/proto.h - 664 sys sys 944960802 6159
 sys/src/cmd/awk/re.c - 664 sys sys 964456820 6987
-sys/src/cmd/awk/run.c - 664 sys sys 1142009077 42795
+sys/src/cmd/awk/run.c - 664 sys sys 1209274332 42886
 sys/src/cmd/awk/tran.c - 664 sys sys 944960802 11855
 sys/src/cmd/basename.c - 664 sys sys 944961619 605
 sys/src/cmd/bc.y - 664 sys sys 1143696254 13463
