@@ -12113,12 +12113,12 @@ sys/src/cmd/jpg/jpg.c - 664 sys sys 1108938203 7411
 sys/src/cmd/jpg/mkfile - 664 sys sys 1079970080 1056
 sys/src/cmd/jpg/multichan.c - 664 sys sys 1039753047 825
 sys/src/cmd/jpg/onechan.c - 664 sys sys 1039753044 3732
-sys/src/cmd/jpg/png.c - 664 sys sys 1108939730 4834
+sys/src/cmd/jpg/png.c - 664 sys sys 1210194464 5020
 sys/src/cmd/jpg/ppm.c - 664 sys sys 1108852826 4204
 sys/src/cmd/jpg/readbmp.c - 664 sys sys 1166825626 13711
 sys/src/cmd/jpg/readgif.c - 664 sys sys 1143220941 10472
 sys/src/cmd/jpg/readjpg.c - 664 sys sys 1032060302 33009
-sys/src/cmd/jpg/readpng.c - 664 sys sys 1108852825 10117
+sys/src/cmd/jpg/readpng.c - 664 sys sys 1108852545 10117
 sys/src/cmd/jpg/readppm.c - 664 sys sys 1108851603 3645
 sys/src/cmd/jpg/readyuv.c - 664 sys sys 1190832519 4180
 sys/src/cmd/jpg/rgbrgbv.c - 664 sys sys 984718829 1236

@@ -43861,3 +43861,5 @@
 1210120463 5 c sys/lib/lp/process/tiffpost - 775 sys sys 1210119088 2333
 1210120463 6 c sys/src/cmd/cdfs/mmc.c - 664 sys sys 1210046871 31599
 1210120463 7 c sys/src/cmd/file.c - 664 sys sys 1210118716 28919
+1210196202 0 c sys/src/cmd/jpg/png.c - 664 sys sys 1210194464 5020
+1210196202 1 c sys/src/cmd/jpg/readpng.c - 664 sys sys 1108852545 10117
