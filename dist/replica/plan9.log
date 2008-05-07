@@ -43853,3 +43853,11 @@
 1209585729 1 c sys/lib/lp/process/generic - 775 sys sys 1209583971 4395
 1209585729 2 c sys/src/cmd/lp/lp.rc - 775 sys sys 1209583969 5273
 1209585729 3 c sys/src/libbio/binit.c - 664 sys sys 1209580916 1961
+1210120463 0 c sys/lib/lp/process/g3post - 775 sys sys 1210119087 2350
+1210120463 1 c sys/lib/lp/process/generic - 775 sys sys 1210119239 4568
+1210120463 2 c sys/lib/lp/process/gifpost - 775 sys sys 1210119055 2309
+1210120463 3 a sys/lib/lp/process/pngpost - 775 sys sys 1210119033 2310
+1210120463 4 c sys/lib/lp/process/ppost - 775 sys sys 1210119088 2873
+1210120463 5 c sys/lib/lp/process/tiffpost - 775 sys sys 1210119088 2333
+1210120463 6 c sys/src/cmd/cdfs/mmc.c - 664 sys sys 1210046871 31599
+1210120463 7 c sys/src/cmd/file.c - 664 sys sys 1210118716 28919
