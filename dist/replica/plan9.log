@@ -43963,3 +43963,5 @@
 1210476741 5 c sys/src/cmd/tapefs/v10fs.c - 664 sys sys 1210444711 4094
 1210476741 6 c sys/src/cmd/tapefs/v6fs.c - 664 sys sys 1210444711 3991
 1210476741 7 c sys/src/cmd/troff/t10.c - 664 sys sys 1210444712 9495
+1210539974 0 c sys/src/games/sokoban/route.c - 664 sys sys 1210538927 4389
+1210539974 1 c sys/src/games/sokoban/sokoban.c - 664 sys sys 1210538907 6225
