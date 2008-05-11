@@ -43955,3 +43955,11 @@
 1210372446 89 c sys/src/libthread/channel.c - 664 sys sys 1210371834 8521
 1210372446 90 c sys/src/libthread/lib.c - 664 sys sys 1210355837 709
 1210372446 91 c sys/src/mkfile - 664 sys sys 1210371890 1023
+1210476741 0 c rc/bin/lookman - 775 sys sys 1210445047 730
+1210476741 1 c sys/src/cmd/disk/format.c - 664 sys sys 1210445454 17679
+1210476741 2 c sys/src/cmd/eqn/main.c - 664 sys sys 1210444710 7123
+1210476741 3 c sys/src/cmd/jpg/readgif.c - 664 sys sys 1210444711 10511
+1210476741 4 c sys/src/cmd/tapefs/32vfs.c - 664 sys sys 1210444711 3897
+1210476741 5 c sys/src/cmd/tapefs/v10fs.c - 664 sys sys 1210444711 4094
+1210476741 6 c sys/src/cmd/tapefs/v6fs.c - 664 sys sys 1210444711 3991
+1210476741 7 c sys/src/cmd/troff/t10.c - 664 sys sys 1210444712 9495

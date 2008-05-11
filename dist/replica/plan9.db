@@ -5008,7 +5008,7 @@ rc/bin/kmem - 775 sys sys 1190076660 544
 rc/bin/label - 775 sys sys 1173737765 189
 rc/bin/lc - 775 sys sys 945617207 24
 rc/bin/leak - 775 sys sys 1172760642 1921
-rc/bin/lookman - 775 sys sys 1186528516 687
+rc/bin/lookman - 775 sys sys 1210445047 730
 rc/bin/lp - 775 sys sys 1209583966 5273
 rc/bin/mail - 775 sys sys 1045504003 138
 rc/bin/man - 775 sys sys 1204738776 2654
@@ -9718,7 +9718,7 @@ sys/src/cmd/disk/9660/unix.c - 664 sys sys 984788373 1352
 sys/src/cmd/disk/9660/util.c - 664 sys sys 1017679315 1294
 sys/src/cmd/disk/9660/write.c - 664 sys sys 1208580605 8905
 sys/src/cmd/disk/exsort.c - 664 sys sys 944960885 1964
-sys/src/cmd/disk/format.c - 664 sys sys 1134305454 17649
+sys/src/cmd/disk/format.c - 664 sys sys 1210445454 17679
 sys/src/cmd/disk/kfs - 20000000775 sys sys 1019072794 0
 sys/src/cmd/disk/kfs/9p1.c - 664 sys sys 1065916867 25359
 sys/src/cmd/disk/kfs/9p1.h - 664 sys sys 1091904426 2220
@@ -9806,7 +9806,7 @@ sys/src/cmd/eqn/input.c - 664 sys sys 944960989 5402
 sys/src/cmd/eqn/integral.c - 664 sys sys 944960989 774
 sys/src/cmd/eqn/lex.c - 664 sys sys 944960989 5090
 sys/src/cmd/eqn/lookup.c - 664 sys sys 944960990 4228
-sys/src/cmd/eqn/main.c - 664 sys sys 1141913958 7121
+sys/src/cmd/eqn/main.c - 664 sys sys 1210444710 7123
 sys/src/cmd/eqn/mark.c - 664 sys sys 944960989 292
 sys/src/cmd/eqn/matrix.c - 664 sys sys 944960989 1746
 sys/src/cmd/eqn/mkfile - 664 sys sys 944960989 530
@@ -12116,7 +12116,7 @@ sys/src/cmd/jpg/onechan.c - 664 sys sys 1039753044 3732
 sys/src/cmd/jpg/png.c - 664 sys sys 1210194464 5020
 sys/src/cmd/jpg/ppm.c - 664 sys sys 1108852826 4204
 sys/src/cmd/jpg/readbmp.c - 664 sys sys 1166825626 13711
-sys/src/cmd/jpg/readgif.c - 664 sys sys 1143220941 10472
+sys/src/cmd/jpg/readgif.c - 664 sys sys 1210444711 10511
 sys/src/cmd/jpg/readjpg.c - 664 sys sys 1032060302 33009
 sys/src/cmd/jpg/readpng.c - 664 sys sys 1108852545 10117
 sys/src/cmd/jpg/readppm.c - 664 sys sys 1108851603 3645
@@ -12984,7 +12984,7 @@ sys/src/cmd/syscall/mkfile - 664 sys sys 1037122264 549
 sys/src/cmd/syscall/syscall.c - 664 sys sys 1142958095 3954
 sys/src/cmd/tail.c - 664 sys sys 1123123922 6034
 sys/src/cmd/tapefs - 20000000775 sys sys 944962012 0
-sys/src/cmd/tapefs/32vfs.c - 664 sys sys 1141144939 3899
+sys/src/cmd/tapefs/32vfs.c - 664 sys sys 1210444711 3897
 sys/src/cmd/tapefs/cpiofs.c - 664 sys sys 1140814623 2491
 sys/src/cmd/tapefs/fs.c - 664 sys sys 1141003366 9887
 sys/src/cmd/tapefs/mkfile - 664 sys sys 1097914131 254
@@ -12993,8 +12993,8 @@ sys/src/cmd/tapefs/tapfs.c - 664 sys sys 1140814624 1924
 sys/src/cmd/tapefs/tarfs.c - 664 sys sys 1183421287 4542
 sys/src/cmd/tapefs/tpfs.c - 664 sys sys 1140814810 1999
 sys/src/cmd/tapefs/util.c - 664 sys sys 1140966088 2964
-sys/src/cmd/tapefs/v10fs.c - 664 sys sys 1166887348 4096
-sys/src/cmd/tapefs/v6fs.c - 664 sys sys 1140814625 3993
+sys/src/cmd/tapefs/v10fs.c - 664 sys sys 1210444711 4094
+sys/src/cmd/tapefs/v6fs.c - 664 sys sys 1210444711 3991
 sys/src/cmd/tapefs/zip.h - 664 sys sys 1097914153 1428
 sys/src/cmd/tapefs/zipfs.c - 664 sys sys 1140814625 6588
 sys/src/cmd/tar.c - 664 sys sys 1210370989 25771
@@ -13107,7 +13107,7 @@ sys/src/cmd/troff/n8.c - 664 sys sys 1178823422 10250
 sys/src/cmd/troff/n9.c - 664 sys sys 944961294 9076
 sys/src/cmd/troff/ni.c - 664 sys sys 944961294 8492
 sys/src/cmd/troff/suftab.c - 664 sys sys 944961294 19337
-sys/src/cmd/troff/t10.c - 664 sys sys 1116769866 9493
+sys/src/cmd/troff/t10.c - 664 sys sys 1210444712 9495
 sys/src/cmd/troff/t11.c - 664 sys sys 944961294 7081
 sys/src/cmd/troff/t6.c - 664 sys sys 944961294 15408
 sys/src/cmd/troff/tdef.h - 664 sys sys 1130848601 18335
