@@ -43965,3 +43965,13 @@
 1210476741 7 c sys/src/cmd/troff/t10.c - 664 sys sys 1210444712 9495
 1210539974 0 c sys/src/games/sokoban/route.c - 664 sys sys 1210538927 4389
 1210539974 1 c sys/src/games/sokoban/sokoban.c - 664 sys sys 1210538907 6225
+1210649531 0 a lib/bunny.bit - 664 sys sys 1210619897 191872
+1210649531 1 c sys/lib/tmac/tmac.s - 664 sys sys 1210619960 23057
+1210649531 2 c sys/src/9/bitsy/fpiarm.c - 664 sys sys 1210622023 11058
+1210649531 3 c sys/src/cmd/acme/util.c - 664 sys sys 1210619998 8080
+1210649531 4 c sys/src/cmd/upas/send/rewrite.c - 664 sys sys 1210614801 6391
+1210649531 5 c sys/src/games/music/playlistfs/player.c - 664 sys sys 1210620042 10541
+1210649531 6 a sys/src/libc/arm/cas.s - 664 sys sys 1210620494 509
+1210649531 7 c sys/src/libc/arm/mkfile - 664 sys sys 1210620494 409
+1210649531 8 c dist/replica/network - 664 sys sys 1210620438 1086
+1210649531 9 d sys/src/games/music/missing - 775 sys sys 1103793915 0
