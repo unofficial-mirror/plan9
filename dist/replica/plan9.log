@@ -43976,3 +43976,6 @@
 1210649531 8 c dist/replica/network - 664 sys sys 1210620438 1086
 1210649531 9 d sys/src/games/music/missing - 775 sys sys 1103793915 0
 1210712819 0 c sys/lib/tmac/tmac.s - 664 sys sys 1210711954 23080
+1210815139 0 c sys/lib/tmac/tmac.s - 664 sys sys 1210784977 23053
+1210815139 1 c sys/lib/tmac/tmac.v - 664 sys sys 1210797963 8965
+1210815139 2 c sys/man/8/ppp - 664 sys sys 1210814269 4464
