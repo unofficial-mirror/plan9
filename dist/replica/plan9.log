@@ -43984,3 +43984,4 @@
 1211226417 1 c sys/src/cmd/lex/ncform - 664 sys sys 1211224619 3973
 1211226417 2 c sys/src/cmd/venti/srv/arenas.c - 664 sys sys 1211224670 8048
 1211226417 3 c sys/src/cmd/venti/srv/dat.h - 664 sys sys 1211224696 19089
+1211409361 0 c sys/src/cmd/uniq.c - 664 sys sys 1211408347 2173
