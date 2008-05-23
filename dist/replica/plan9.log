@@ -43985,3 +43985,7 @@
 1211226417 2 c sys/src/cmd/venti/srv/arenas.c - 664 sys sys 1211224670 8048
 1211226417 3 c sys/src/cmd/venti/srv/dat.h - 664 sys sys 1211224696 19089
 1211409361 0 c sys/src/cmd/uniq.c - 664 sys sys 1211408347 2173
+1211560340 0 c sys/src/9/pc/sd53c8xx.c - 664 sys sys 1211521147 55313
+1211560340 1 c sys/src/cmd/cdfs/dat.h - 664 sys sys 1211521283 5591
+1211560340 2 c sys/src/cmd/cdfs/main.c - 664 sys sys 1211521244 12479
+1211560340 3 c sys/src/cmd/scuzz/scsireq.h - 664 sys sys 1211559652 6902
