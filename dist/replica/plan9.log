@@ -44001,3 +44001,13 @@
 1211855736 3 c sys/src/cmd/cdfs/fns.h - 664 sys sys 1211848622 300
 1211855736 4 c sys/src/cmd/cdfs/main.c - 664 sys sys 1211854425 12465
 1211855736 5 c sys/src/cmd/cdfs/mmc.c - 664 sys sys 1211854436 33195
+1211925771 0 c sys/man/4/cdfs - 664 sys sys 1211917385 5263
+1211925771 1 c sys/src/9/pc/ether82557.c - 664 sys sys 1211922643 30457
+1211925771 2 c sys/src/9/pc/sdata.c - 664 sys sys 1211924368 53297
+1211925771 3 c sys/src/9/pc/sdiahci.c - 664 sys sys 1211924442 38699
+1211925771 4 c sys/src/boot/pc/ether82557.c - 664 sys sys 1211922647 19136
+1211925771 5 c sys/src/boot/pc/sdata.c - 664 sys sys 1211924337 39003
+1211925771 6 c sys/src/boot/pc/sdiahci.c - 664 sys sys 1211924350 28355
+1211925771 7 c sys/src/cmd/cdfs/main.c - 664 sys sys 1211917389 12543
+1211925771 8 c sys/src/cmd/cdfs/mmc.c - 664 sys sys 1211863503 33393
+1211925771 9 c sys/src/cmd/test.c - 664 sys sys 1211912897 5681
