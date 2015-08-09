@@ -1,15 +1,14 @@
-#include <sys/types.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/wait.h>
-#include <fcntl.h>
-#include <stdlib.h>
 #include <stdio.h>
-#include <signal.h>
-#include <errno.h>
-#include <time.h>
+#include <stdlib.h>
 #include <string.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <signal.h>
 #include <stdarg.h>
+#include <time.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 /* for Plan 9 */
 #ifdef PLAN9
@@ -85,12 +84,11 @@ error(char *s1, ...)
 	chartime = ctime(&thetime);
 	fprintf(fp, "%.15s [%5.5d] ", &(chartime[4]), getpid());
 	va_start(ap, s1);
-	while((args[argno++] = va_arg(ap, char*)) && argno<8);
+	while((args[argno++] = va_arg(ap, char*)) && argno<8)
+		;
 	va_end(ap);
 	fprintf(fp, s1, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7]);
-	fflush(fp);
 	fclose(fp);
-	return;
 }
 
 void
@@ -125,7 +123,8 @@ forklp(int inputfd)
 		error("exec failed\n");
 		exit(3);
 	default:
-		while(wait((int *)0) != cpid);
+		while(wait((int *)0) != cpid)
+			;
 	}
 }
 
@@ -300,14 +299,14 @@ getjobinfo(int fd)
 				strncpy(info.host, "unknown", NAMELEN);
 			else
 				strncpy(info.host, (const char *)&ap[1], NAMELEN);
-			info.host[strlen(info.host)] = '\0';
+			info.host[NAMELEN] = '\0';
 			break;
 		case 'P':
 			if (ap[1] == '\0')
 				strncpy(info.user, "unknown", NAMELEN);
 			else
 				strncpy(info.user, (const char *)&ap[1], NAMELEN);
-			info.user[strlen(info.user)] = '\0';
+			info.user[NAMELEN] = '\0';
 			break;
 		}
 	}
@@ -320,14 +319,15 @@ alarmhandler(int sig) {
 	error("alarm at %d - %s\n", dbgstate, dbgstrings[dbgstate]);
 }
 
+void
 main()
 {
 	unsigned char *ap, *bp, *cp, *savbufpnt;
 	int i, blen, rv, saveflg, savargcnt;
 	struct jobinfo *jinfop;
 
-	signal(1, SIG_IGN);		/* SIGHUP not in lcc */
-	signal(14, alarmhandler);	/* SIGALRM not in lcc */
+	signal(SIGHUP, SIG_IGN);
+	signal(SIGALRM, alarmhandler);
 	cp = argvstr;
 	/* setup argv[0] for exec */
 	argvals[argcnt++] = cp;

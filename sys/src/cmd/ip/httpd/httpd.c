@@ -6,20 +6,32 @@
 #include "httpd.h"
 #include "httpsrv.h"
 
+enum {
+	Nbuckets	= 256,
+};
+
 typedef struct Strings		Strings;
+typedef struct System		System;
 
 struct Strings
 {
 	char	*s1;
 	char	*s2;
 };
+struct System {
+	char	*rsys;
+	ulong	reqs;
+	ulong	first;
+	ulong	last;
+	System	*next;			/* next in chain */
+};
 
 char	*netdir;
-char	*webroot;
 char	*HTTPLOG = "httpd/log";
 
 static	char		netdirb[256];
 static	char		*namespace;
+static	System		syss[Nbuckets];
 
 static	void		becomenone(char*);
 static	char		*csquery(char*, char*, char*);
@@ -38,7 +50,8 @@ PEMChain *certchain;
 void
 usage(void)
 {
-	fprint(2, "usage: httpd [-c certificate] [-C CAchain] [-a srvaddress] [-d domain] [-n namespace] [-w webroot]\n");
+	fprint(2, "usage: httpd [-c certificate] [-C CAchain] [-a srvaddress] "
+		"[-d domain] [-n namespace] [-w webroot]\n");
 	exits("usage");
 }
 
@@ -56,26 +69,26 @@ main(int argc, char **argv)
 	fmtinstall('U', hurlfmt);
 	ARGBEGIN{
 	case 'c':
-		certificate = readcert(ARGF(), &certlen);
+		certificate = readcert(EARGF(usage()), &certlen);
 		if(certificate == nil)
 			sysfatal("reading certificate: %r");
 		break;
 	case 'C':
-		certchain = readcertchain(ARGF());
+		certchain = readcertchain(EARGF(usage()));
 		if (certchain == nil)
 			sysfatal("reading certificate chain: %r");
 		break;
 	case 'n':
-		namespace = ARGF();
+		namespace = EARGF(usage());
 		break;
 	case 'a':
-		address = ARGF();
+		address = EARGF(usage());
 		break;
 	case 'd':
-		hmydomain = ARGF();
+		hmydomain = EARGF(usage());
 		break;
 	case 'w':
-		webroot = ARGF();
+		webroot = EARGF(usage());
 		break;
 	default:
 		usage();
@@ -142,7 +155,7 @@ becomenone(char *namespace)
 }
 
 static HConnect*
-mkconnect(void)
+mkconnect(char *scheme, char *port)
 {
 	HConnect *c;
 
@@ -150,6 +163,8 @@ mkconnect(void)
 	c->hpos = c->header;
 	c->hstop = c->header;
 	c->replog = writelog;
+	c->scheme = scheme;
+	c->port = port;
 	return c;
 }
 
@@ -162,14 +177,85 @@ mkhspriv(void)
 	return p;
 }
 
+static uint 
+hashstr(char* key)
+{
+	/* asu works better than pjw for urls */
+	uchar *k = (unsigned char*)key;
+	uint h = 0;
+
+	while(*k!=0)
+		h = 65599*h + *k++;
+        return h;
+}
+
+static System *
+hashsys(char *rsys)
+{
+	int notme;
+	System *sys;
+
+	sys = syss + hashstr(rsys) % nelem(syss);
+	/* if the bucket is empty, just use it, else find or allocate ours */
+	if(sys->rsys != nil) {
+		/* find match or chain end */
+		for(; notme = (strcmp(sys->rsys, rsys) != 0) &&
+		    sys->next != nil; sys = sys->next)
+			;
+		if(notme) {
+			sys->next = malloc(sizeof *sys);  /* extend chain */
+			sys = sys->next;
+		} else
+			return sys;
+	}
+	if(sys != nil) {
+		memset(sys, 0, sizeof *sys);
+		sys->rsys = strdup(rsys);
+	}
+	return sys;
+}
+
+/*
+ * be sure to call this at least once per listen in the parent,
+ * to update the hash chains.
+ * it's okay to call it in the child too, but then sys->reqs only gets
+ * updated in the child.
+ */
+static int
+isswamped(char *rsys)
+{
+	ulong period;
+	System *sys = hashsys(rsys);
+
+	if(sys == nil)
+		return 0;
+	sys->last = time(nil);
+	if(sys->first == 0)
+		sys->first = sys->last;
+	period = sys->first - sys->last;
+	return ++sys->reqs > 30 && period > 30 && sys->reqs / period >= 2;
+}
+
+/* must only be called in child */
+static void
+throttle(int nctl, NetConnInfo *nci, int swamped)
+{
+	if(swamped || isswamped(nci->rsys)) {		/* shed load */
+		syslog(0, HTTPLOG, "overloaded by %s", nci->rsys);
+		sleep(30);
+		close(nctl);
+		exits(nil);
+	}
+}
+
 static void
 dolisten(char *address)
 {
 	HSPriv *hp;
 	HConnect *c;
 	NetConnInfo *nci;
-	char ndir[NETPATHLEN], dir[NETPATHLEN], *p;
-	int ctl, nctl, data, t, ok, spotchk;
+	char ndir[NETPATHLEN], dir[NETPATHLEN], *p, *scheme;
+	int ctl, nctl, data, t, ok, spotchk, swamped;
 	TLSconn conn;
 
 	spotchk = 0;
@@ -201,6 +287,10 @@ dolisten(char *address)
 			syslog(0, HTTPLOG, "ctls = %d", ctl);
 			return;
 		}
+		swamped = 0;
+		nci = getnetconninfo(ndir, -1);
+		if (nci)
+			swamped = isswamped(nci->rsys);
 
 		/*
 		 *  start a process for the service
@@ -221,7 +311,9 @@ dolisten(char *address)
 				if (certchain != nil)
 					conn.chain = certchain;
 				data = tlsServer(data, &conn);
-			}
+				scheme = "https";
+			}else
+				scheme = "http";
 			if(data < 0){
 				syslog(0, HTTPLOG, "can't open %s/data: %r", ndir);
 				exits(nil);
@@ -233,8 +325,9 @@ dolisten(char *address)
 			close(ctl);
 			close(nctl);
 
-			nci = getnetconninfo(ndir, -1);
-			c = mkconnect();
+			if (nci == nil)
+				nci = getnetconninfo(ndir, -1);
+			c = mkconnect(scheme, nci->lserv);
 			hp = mkhspriv();
 			hp->remotesys = nci->rsys;
 			hp->remoteserv = nci->rserv;
@@ -249,6 +342,7 @@ dolisten(char *address)
 			 * only works for http/1.1 or later.
 			 */
 			for(t = 15*60*1000; ; t = 15*1000){
+				throttle(nctl, nci, swamped);
 				if(hparsereq(c, t) <= 0)
 					exits(nil);
 				ok = doreq(c);
@@ -285,16 +379,19 @@ doreq(HConnect *c)
 	char *magic, *uri, *newuri, *origuri, *newpath, *hb;
 	char virtualhost[100], logfd0[10], logfd1[10], vers[16];
 	int n, nredirect;
+	uint flags;
 
 	/*
 	 * munge uri for magic
 	 */
 	uri = c->req.uri;
 	nredirect = 0;
+	werrstr("");
 top:
 	if(++nredirect > 10){
 		if(hparseheaders(c, 15*60*1000) < 0)
 			exits("failed");
+		werrstr("redirection loop");
 		return hfail(c, HNotFound, uri);
 	}
 	ss = stripmagic(c, uri);
@@ -308,6 +405,7 @@ top:
 	 * Apply redirects.  Do this before reading headers
 	 * (if possible) so that we can redirect to magic invisibly.
 	 */
+	flags = 0;
 	if(origuri[0]=='/' && origuri[1]=='~'){
 		n = strlen(origuri) + 4 + UTFmax;
 		newpath = halloc(c, n);
@@ -315,20 +413,33 @@ top:
 		c->req.uri = newpath;
 		newuri = newpath;
 	}else if(origuri[0]=='/' && origuri[1]==0){
-		/* can't redirect / until we read the headers */
+		/* can't redirect / until we read the headers below */
 		newuri = nil;
 	}else
-		newuri = redirect(c, origuri);
-	
+		newuri = redirect(c, origuri, &flags);
+
 	if(newuri != nil){
-		if(newuri[0] == '@'){
-			c->req.uri = newuri+1;
-			uri = newuri+1;
+		if(flags & Redirsilent) {
+			c->req.uri = uri = newuri;
+			logit(c, "%s: silent replacement %s", origuri, uri);
 			goto top;
 		}
 		if(hparseheaders(c, 15*60*1000) < 0)
 			exits("failed");
-		return hmoved(c, newuri);
+		if(flags & Redirperm) {
+			logit(c, "%s: permanently moved to %s", origuri, newuri);
+			return hmoved(c, newuri);
+		} else if (flags & (Redironly | Redirsubord))
+			logit(c, "%s: top-level or many-to-one replacement %s",
+				origuri, uri);
+
+		/*
+		 * try temporary redirect instead of permanent
+		 */
+		if (http11(c))
+			return hredirected(c, "307 Temporary Redirect", newuri);
+		else
+			return hredirected(c, "302 Temporary Redirect", newuri);
 	}
 
 	/*
@@ -346,7 +457,9 @@ magic:
 			return -1;
 		}
 		hp = c->private;
-		execl(c->xferbuf, magic, "-d", hmydomain, "-w", webroot, "-r", hp->remotesys, "-N", netdir, "-b", hb,
+		execl(c->xferbuf, magic, "-d", hmydomain, "-w", webroot,
+			"-s", c->scheme, "-p", c->port,
+			"-r", hp->remotesys, "-N", netdir, "-b", hb,
 			"-L", logfd0, logfd1, "-R", c->header,
 			c->req.meth, vers, uri, c->req.search, nil);
 		logit(c, "no magic %s uri %s", magic, uri);
@@ -361,9 +474,9 @@ magic:
 		exits("failed");
 	if(origuri[0] == '/' && origuri[1] == 0){	
 		snprint(virtualhost, sizeof virtualhost, "http://%s/", c->head.host);
-		newuri = redirect(c, virtualhost);
+		newuri = redirect(c, virtualhost, nil);
 		if(newuri == nil)
-			newuri = redirect(c, origuri);
+			newuri = redirect(c, origuri, nil);
 		if(newuri)
 			return hmoved(c, newuri);
 	}
@@ -379,8 +492,10 @@ send(HConnect *c)
 	char *w, *w2, *p, *masque;
 	int fd, fd1, n, force301, ok;
 
+/*
 	if(c->req.search)
 		return hfail(c, HNoSearch, c->req.uri);
+ */
 	if(strcmp(c->req.meth, "GET") != 0 && strcmp(c->req.meth, "HEAD") != 0)
 		return hunallowed(c, "GET, HEAD");
 	if(c->head.expectother || c->head.expectcont)
@@ -524,7 +639,7 @@ static int
 notfound(HConnect *c, char *url)
 {
 	c->xferbuf[0] = 0;
-	errstr(c->xferbuf, sizeof c->xferbuf);
+	rerrstr(c->xferbuf, sizeof c->xferbuf);
 	if(strstr(c->xferbuf, "file does not exist") != nil)
 		return hfail(c, HNotFound, url);
 	if(strstr(c->xferbuf, "permission denied") != nil)

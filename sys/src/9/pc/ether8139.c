@@ -311,6 +311,8 @@ rtl8139ifstat(Ether* edev, void* a, long n, ulong offset)
 
 	ctlr = edev->ctlr;
 	p = malloc(READSTR);
+	if(p == nil)
+		error(Enomem);
 	l = snprint(p, READSTR, "rcr %#8.8ux\n", ctlr->rcr);
 	l += snprint(p+l, READSTR-l, "multicast %ud\n", ctlr->mcast);
 	l += snprint(p+l, READSTR-l, "ierrs %d\n", ctlr->ierrs);
@@ -349,6 +351,11 @@ rtl8139reset(Ctlr* ctlr)
 {
 	int timeo;
 
+	/* stop interrupts */
+	csr16w(ctlr, Imr, 0);
+	csr16w(ctlr, Isr, ~0);
+	csr32w(ctlr, TimerInt, 0);
+
 	/*
 	 * Soft reset the controller.
 	 */
@@ -370,6 +377,7 @@ rtl8139halt(Ctlr* ctlr)
 	csr8w(ctlr, Cr, 0);
 	csr16w(ctlr, Imr, 0);
 	csr16w(ctlr, Isr, ~0);
+	csr32w(ctlr, TimerInt, 0);
 
 	for(i = 0; i < Ntd; i++){
 		if(ctlr->td[i].bp == nil)
@@ -377,6 +385,18 @@ rtl8139halt(Ctlr* ctlr)
 		freeb(ctlr->td[i].bp);
 		ctlr->td[i].bp = nil;
 	}
+}
+
+static void
+rtl8139shutdown(Ether *edev)
+{
+	Ctlr *ctlr;
+
+	ctlr = edev->ctlr;
+	ilock(&ctlr->ilock);
+	rtl8139halt(ctlr);
+	rtl8139reset(ctlr);
+	iunlock(&ctlr->ilock);
 }
 
 static void
@@ -424,13 +444,6 @@ rtl8139init(Ether* edev)
 	ctlr->etxth = 128/32;
 
 	/*
-	 * Interrupts.
-	 */
-	csr32w(ctlr, TimerInt, 0);
-	csr16w(ctlr, Imr, Serr|Timerbit|Fovw|PunLc|Rxovw|Ter|Tok|Rer|Rok);
-	csr32w(ctlr, Mpc, 0);
-
-	/*
 	 * Enable receiver/transmitter.
 	 * Need to enable before writing the Rcr or it won't take.
 	 */
@@ -441,6 +454,13 @@ rtl8139init(Ether* edev)
 	csr32w(ctlr, Mar0+4, 0);
 	ctlr->mchash = 0;
 
+	/*
+	 * Interrupts.
+	 */
+	csr32w(ctlr, TimerInt, 0);
+	csr16w(ctlr, Imr, Serr|Timerbit|Fovw|PunLc|Rxovw|Ter|Tok|Rer|Rok);
+	csr32w(ctlr, Mpc, 0);
+
 	iunlock(&ctlr->ilock);
 }
 
@@ -449,11 +469,23 @@ rtl8139attach(Ether* edev)
 {
 	Ctlr *ctlr;
 
+	if(edev == nil) {
+		print("rtl8139attach: nil edev\n");
+		return;
+	}
 	ctlr = edev->ctlr;
+	if(ctlr == nil) {
+		print("rtl8139attach: nil ctlr for Ether %#p\n", edev);
+		return;
+	}
 	qlock(&ctlr->alock);
 	if(ctlr->alloc == nil){
 		ctlr->rblen = 1<<((Rblen>>RblenSHIFT)+13);
-		ctlr->alloc = mallocz(ctlr->rblen+16 + Ntd*Tdbsz + 32, 0);
+		ctlr->alloc = malloc(ctlr->rblen+16 + Ntd*Tdbsz + 32);
+		if(ctlr->alloc == nil) {
+			qunlock(&ctlr->alock);
+			error(Enomem);
+		}
 		rtl8139init(edev);
 	}
 	qunlock(&ctlr->alock);
@@ -519,6 +551,8 @@ rtl8139receive(Ether* edev)
 	 * Capr is where the host is reading from,
 	 * Cbr is where the NIC is currently writing.
 	 */
+	if(ctlr->rblen == 0)
+		return;		/* not attached yet (shouldn't happen) */
 	capr = (csr16r(ctlr, Capr)+16) % ctlr->rblen;
 	while(!(csr8r(ctlr, Cr) & Bufe)){
 		p = ctlr->rbstart+capr;
@@ -598,9 +632,19 @@ rtl8139interrupt(Ureg*, void* arg)
 
 	edev = arg;
 	ctlr = edev->ctlr;
+	if(ctlr == nil) {	/* not attached yet? (shouldn't happen) */
+		print("rtl8139interrupt: interrupt for unattached Ether %#p\n",
+			edev);
+		return;
+	}
 
 	while((isr = csr16r(ctlr, Isr)) != 0){
 		csr16w(ctlr, Isr, isr);
+		if(ctlr->alloc == nil) {
+			print("rtl8139interrupt: interrupt for unattached Ctlr "
+				"%#p port %#p\n", ctlr, (void *)ctlr->port);
+			return;	/* not attached yet (shouldn't happen) */
+		}
 		if(isr & (Fovw|PunLc|Rxovw|Rer|Rok)){
 			rtl8139receive(edev);
 			if(!(isr & Rok))
@@ -752,6 +796,8 @@ rtl8139pnp(Ether* edev)
 			if(p->ccrb != 0x02 || p->ccru != 0)
 				continue;
 			ctlr = malloc(sizeof(Ctlr));
+			if(ctlr == nil)
+				error(Enomem);
 			ctlr->pcidev = p;
 			ctlr->id = (p->did<<16)|p->vid;
 
@@ -807,15 +853,15 @@ rtl8139pnp(Ether* edev)
 		edev->ea[5] = i>>8;
 	}
 
+	edev->arg = edev;
 	edev->attach = rtl8139attach;
 	edev->transmit = rtl8139transmit;
 	edev->interrupt = rtl8139interrupt;
 	edev->ifstat = rtl8139ifstat;
 
-	edev->arg = edev;
 	edev->promiscuous = rtl8139promiscuous;
 	edev->multicast = rtl8139multicast;
-//	edev->shutdown = rtl8139shutdown;
+	edev->shutdown = rtl8139shutdown;
 
 	/*
 	 * This should be much more dynamic but will do for now.

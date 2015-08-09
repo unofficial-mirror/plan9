@@ -34,6 +34,9 @@ enum {
 };
 
 enum {
+	Nowaitlock,
+	Waitlock,
+
 	NilBlock	= (~0UL),
 	MaxBlock	= (1UL<<31),
 };
@@ -74,6 +77,7 @@ struct Fs {
 	Arch	*arch;		/* immutable */
 	Cache	*cache;		/* immutable */
 	int	mode;		/* immutable */
+	int	noatimeupd;	/* immutable */
 	int	blockSize;	/* immutable */
 	VtSession *z;		/* immutable */
 	Snap	*snap;		/* immutable */

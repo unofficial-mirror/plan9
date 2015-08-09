@@ -1,6 +1,8 @@
+# pccd - small kernel used to install from cd
 dev
 	root
 	cons
+
 	arch
 	pnp		pci
 	env
@@ -14,6 +16,7 @@ dev
 	tls
 	cap
 	kprof
+	fs
 
 	ether		netif
 	ip		arp chandial ip ipv6 ipaux iproute netlog nullmedium pktmedium ptclbsum386 inferno
@@ -22,6 +25,7 @@ dev
 	mouse		mouse
 	vga
 	kbmap
+	kbin
 
 	sd
 	floppy		dma
@@ -38,6 +42,10 @@ link
 	devpccard
 	devi82365
 	apm		apmjump
+
+# order of ethernet drivers should match that in ../pcboot/boot so that
+# devices are detected in the same order by bootstraps and kernels
+# and thus given the same controller numbers.
 	ether2000	ether8390
 	ether2114x	pci
 	ether589	etherelnk3
@@ -46,8 +54,8 @@ link
 	ether8139	pci
 	ether8169	pci ethermii
 	ether82543gc	pci
-	ether82563	pci
 	ether82557	pci
+	ether82563	pci
 	ether83815	pci
 	etherdp83820	pci
 	etherec2t	ether8390
@@ -55,17 +63,25 @@ link
 	etherga620	pci
 	etherigbe	pci ethermii
 	ethervgbe	pci ethermii
-	etherga620	pci
+	ethervt6102	pci ethermii
+	ethervt6105m	pci ethermii
 	ethersink
 	ethersmc	devi82365 cis
 	etherwavelan	wavelan devi82365 cis pci
+#	etherm10g	pci ethermii		# vast firmware
+#	ether82598	pci
+
 	ethermedium
 	pcmciamodem
 	netdevmedium
+
 	usbuhci
+	usbohci
+	usbehci		usbehcipc
 
 misc
-	archmp		mp apic
+	archmp		mp apic mpacpi
+	mtrr
 
 	sdata		pci sdscsi
 	sd53c8xx	pci sdscsi
@@ -74,6 +90,7 @@ misc
 
 	uarti8250
 	uartpci		pci
+	uartisa
 
 	vga3dfx		+cur
 	vgaark2000pv	+cur
@@ -90,6 +107,7 @@ misc
 	vgamga4xx	+cur
 	vganeomagic	+cur
 	vganvidia	+cur
+	vgaradeon	+cur
 	vgargb524	=cur
 	vgas3		+cur vgasavage
 	vgat2r4		+cur
@@ -104,18 +122,16 @@ ip
 	ipifc
 	icmp
 	icmp6
-#	il
 
 port
 	int cpuserver = 0;
 
 boot boot #S/sdD0/data
 	tcp
-#	il
 	local
 
 bootdir
-	bootpccd.out boot
+	boot$CONF.out boot
 	/386/bin/ip/ipconfig ipconfig
 	/386/bin/9660srv kfs
-
+	/386/bin/usb/usbd

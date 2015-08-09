@@ -29,12 +29,14 @@ char *syssigname[] = {
 	"term",
 	0
 };
-char Rcmain[]="/rc/lib/rcmain";
-char Fdprefix[]="/fd/";
+char *Rcmain = "/rc/lib/rcmain";
+char *Fdprefix = "/fd/";
+
 void execfinit(void);
 void execbind(void);
 void execmount(void);
 void execnewpgrp(void);
+
 builtin Builtin[] = {
 	"cd",		execcd,
 	"whatis",	execwhatis,
@@ -275,7 +277,7 @@ addenv(var *v)
 		else{
 			if(v->fn){
 				fd = openfd(f);
-				pfmt(fd, "fn %s %s\n", v->name, v->fn[v->pc-1].s);
+				pfmt(fd, "fn %q %s\n", v->name, v->fn[v->pc-1].s);
 				closeio(fd);
 			}
 			close(f);
@@ -303,6 +305,7 @@ Updenv(void)
 		updenvlocal(runq->local);
 }
 
+/* not used on plan 9 */
 int
 ForkExecute(char *file, char **argv, int sin, int sout, int serr)
 {
@@ -336,9 +339,11 @@ void
 Execute(word *args, word *path)
 {
 	char **argv = mkargv(args);
-	char file[1024];
+	char file[1024], errstr[1024];
 	int nc;
+
 	Updenv();
+	errstr[0] = '\0';
 	for(;path;path = path->next){
 		nc = strlen(path->word);
 		if(nc < sizeof file - 1){	/* 1 for / */
@@ -350,12 +355,24 @@ Execute(word *args, word *path)
 			if(nc + strlen(argv[1]) < sizeof file){
 				strcat(file, argv[1]);
 				exec(file, argv+1);
+				rerrstr(errstr, sizeof errstr);
+				/*
+				 * if file exists and is executable, exec should
+				 * have worked, unless it's a directory or an
+				 * executable for another architecture.  in
+				 * particular, if it failed due to lack of
+				 * swap/vm (e.g., arg. list too long) or other
+				 * allocation failure, stop searching and print
+				 * the reason for failure.
+				 */
+				if (strstr(errstr, " allocat") != nil ||
+				    strstr(errstr, " full") != nil)
+					break;
 			}
 			else werrstr("command name too long");
 		}
 	}
-	rerrstr(file, sizeof file);
-	pfmt(err, "%s: %s\n", argv[1], file);
+	pfmt(err, "%s: %s\n", argv[1], errstr);
 	efree((char *)argv);
 }
 #define	NDIR	256		/* shoud be a better way */
@@ -604,7 +621,7 @@ Memcpy(void *a, void *b, long n)
 void*
 Malloc(ulong n)
 {
-	return malloc(n);
+	return mallocz(n, 1);
 }
 
 int *waitpids;
@@ -645,4 +662,11 @@ havewaitpid(int pid)
 		if(waitpids[i] == pid)
 			return 1;
 	return 0;
+}
+
+/* avoid loading any floating-point library code */
+int
+_efgfmt(Fmt *)
+{
+	return -1;
 }

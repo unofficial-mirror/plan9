@@ -7,6 +7,8 @@
 #define	EXTERN	extern
 #endif
 
+#define	LIBNAMELEN	300
+
 typedef	struct	Adr	Adr;
 typedef	struct	Sym	Sym;
 typedef	struct	Autom	Auto;
@@ -250,10 +252,13 @@ extern	Optab	optab[];
 extern	char*	anames[];
 
 #pragma	varargck	type	"A"	int
+#pragma	varargck	type	"A"	uint
 #pragma	varargck	type	"D"	Adr*
 #pragma	varargck	type	"N"	Adr*
 #pragma	varargck	type	"P"	Prog*
 #pragma	varargck	type	"S"	char*
+
+#pragma	varargck	argpos	diag 1
 
 int	Aconv(Fmt*);
 int	Dconv(Fmt*);
@@ -263,6 +268,7 @@ int	Sconv(Fmt*);
 int	aclass(Adr*);
 void	addhist(long, int);
 void	histtoauto(void);
+void	addlibpath(char*);
 void	addnop(Prog*);
 void	append(Prog*, Prog*);
 void	asmb(void);
@@ -284,7 +290,9 @@ void	doprof2(void);
 long	entryvalue(void);
 void	errorexit(void);
 void	exchange(Prog*);
+int	fileexists(char*);
 int	find1(long, int);
+char*	findlib(char*);
 void	follow(void);
 void	gethunk(void);
 double	ieeedtod(Ieee*);

@@ -63,12 +63,12 @@ dumpmount(void)		/* DEBUGGING */
 	he = &pg->mnthash[MNTHASH];
 	for(h = pg->mnthash; h < he; h++){
 		for(f = *h; f; f = f->hash){
-			print("head: %p: %s 0x%llux.%lud %C %lud -> \n", f,
+			print("head: %#p: %s %#llux.%lud %C %lud -> \n", f,
 				f->from->path->s, f->from->qid.path,
 				f->from->qid.vers, devtab[f->from->type]->dc,
 				f->from->dev);
 			for(t = f->mount; t; t = t->next)
-				print("\t%p: %s (umh %p) (path %.8llux dev %C %lud)\n", t, t->to->path->s, t->to->umh, t->to->qid.path, devtab[t->to->type]->dc, t->to->dev);
+				print("\t%#p: %s (umh %#p) (path %#.8llux dev %C %lud)\n", t, t->to->path->s, t->to->umh, t->to->qid.path, devtab[t->to->type]->dc, t->to->dev);
 		}
 	}
 	poperror();
@@ -113,7 +113,7 @@ decref(Ref *r)
 	x = --r->ref;
 	unlock(r);
 	if(x < 0)
-		panic("decref pc=0x%lux", getcallerpc(&r));
+		panic("decref pc=%#p", getcallerpc(&r));
 
 	return x;
 }
@@ -168,7 +168,6 @@ kstrdup(char **p, char *s)
 {
 	int n;
 	char *t, *prev;
-	static Lock l;
 
 	n = strlen(s)+1;
 	/* if it's a user, we can wait for memory; if not, something's very wrong */
@@ -186,13 +185,24 @@ kstrdup(char **p, char *s)
 	free(prev);
 }
 
+static int debugstart = 1;
+
 void
 chandevreset(void)
 {
 	int i;
 
-	for(i=0; devtab[i] != nil; i++)
+	todinit();	/* avoid later reentry causing infinite recursion */
+	debugstart = getconf("*debugstart") != nil;
+	if(debugstart)
+		iprint("reset:");
+	for(i=0; devtab[i] != nil; i++) {
+		if(debugstart)
+			iprint(" %s", devtab[i]->name);
 		devtab[i]->reset();
+	}
+	if(debugstart)
+		iprint("\n");
 }
 
 void
@@ -200,8 +210,15 @@ chandevinit(void)
 {
 	int i;
 
-	for(i=0; devtab[i] != nil; i++)
+	if(debugstart)
+		iprint("init:");
+	for(i=0; devtab[i] != nil; i++) {
+		if(debugstart)
+			iprint(" %s", devtab[i]->name);
 		devtab[i]->init();
+	}
+	if(debugstart)
+		iprint("\n");
 }
 
 void
@@ -282,7 +299,7 @@ newpath(char *s)
 	 * allowed, but other names with / in them draw warnings.
 	 */
 	if(strchr(s, '/') && strcmp(s, "#/") != 0 && strcmp(s, "/") != 0)
-		print("newpath: %s from %lux\n", s, getcallerpc(&s));
+		print("newpath: %s from %#p\n", s, getcallerpc(&s));
 
 	p->mlen = 1;
 	p->malen = PATHMSLOP;
@@ -473,7 +490,7 @@ void
 cclose(Chan *c)
 {
 	if(c->flag&CFREE)
-		panic("cclose %lux", getcallerpc(&c));
+		panic("cclose %#p", getcallerpc(&c));
 
 	DBG("cclose %p name=%s ref=%ld\n", c, c->path->s, c->ref);
 	if(decref(c))
@@ -504,7 +521,7 @@ void
 ccloseq(Chan *c)
 {
 	if(c->flag&CFREE)
-		panic("cclose %lux", getcallerpc(&c));
+		panic("cclose %#p", getcallerpc(&c));
 
 	DBG("ccloseq %p name=%s ref=%ld\n", c, c->path->s, c->ref);
 
@@ -638,7 +655,7 @@ cmount(Chan **newp, Chan *old, int flag, char *spec)
 		error(Emount);
 
 	if(old->umh)
-		print("cmount: unexpected umh, caller %.8lux\n", getcallerpc(&newp));
+		print("cmount: unexpected umh, caller %#p\n", getcallerpc(&newp));
 
 	order = flag&MORDER;
 
@@ -912,7 +929,7 @@ undomount(Chan *c, Path *path)
 	Chan *nc;
 
 	if(path->ref != 1 || path->mlen == 0)
-		print("undomount: path %s ref %ld mlen %d caller %lux\n",
+		print("undomount: path %s ref %ld mlen %d caller %#p\n",
 			path->s, path->ref, path->mlen, getcallerpc(&c));
 
 	if(path->mlen>0 && (nc=path->mtpt[path->mlen-1]) != nil){
@@ -1013,7 +1030,8 @@ walk(Chan **cp, char **names, int nnames, int nomount, int *nerror)
 				 * mh->mount->to == c, so start at mh->mount->next
 				 */
 				rlock(&mh->lock);
-				for(f = mh->mount->next; f; f = f->next)
+				f = mh->mount;
+				for(f = (f? f->next: f); f; f = f->next)
 					if((wq = ewalk(f->to, nil, names+nhave, ntry)) != nil)
 						break;
 				runlock(&mh->lock);
@@ -1263,7 +1281,7 @@ namelenerror(char *aname, int len, char *err)
 			if(name <= aname)
 				panic("bad math in namelenerror");
 			/* walk out of current UTF sequence */
-			for(i=0; (*name&0xC0)==0x80 && i<3; i++)
+			for(i=0; (*name&0xC0)==0x80 && i<UTFmax; i++)
 				name++;
 		}
 		snprint(up->genbuf, sizeof up->genbuf, "...%.*s",
@@ -1360,7 +1378,11 @@ namec(char *aname, int amode, int omode, ulong perm)
 		t = devno(r, 1);
 		if(t == -1)
 			error(Ebadsharp);
+		if(debugstart && !devtab[t]->attached)
+			print("#%C...", devtab[t]->dc);
 		c = devtab[t]->attach(up->genbuf+n);
+		if(debugstart && c != nil)
+			devtab[t]->attached = 1;
 		break;
 
 	default:
@@ -1680,22 +1702,15 @@ char isfrog[256]={
 static char*
 validname0(char *aname, int slashok, int dup, ulong pc)
 {
-	char *p, *ename, *name, *s;
-	uint t;
+	char *ename, *name, *s;
 	int c, n;
 	Rune r;
 
 	name = aname;
 	if((ulong)name < KZERO){
-		validaddr((ulong)name, 1, 0);
 		if(!dup)
-			print("warning: validname called from %lux with user pointer", pc);
-		p = name;
-		t = BY2PG-((ulong)p&(BY2PG-1));
-		while((ename=vmemchr(p, 0, t)) == nil){
-			p += t;
-			t = BY2PG;
-		}
+			print("warning: validname called from %#p with user pointer", pc);
+		ename = vmemchr(name, 0, (1<<16));
 	}else
 		ename = memchr(name, 0, (1<<16));
 

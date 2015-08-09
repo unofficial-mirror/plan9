@@ -1,19 +1,22 @@
 #include "../port/portfns.h"
 
 void	aamloop(int);
+void	acpiscan(void (*func)(uchar *));
 Dirtab*	addarchfile(char*, int, long(*)(Chan*,void*,long,vlong), long(*)(Chan*,void*,long,vlong));
 void	archinit(void);
+void	archrevert(void);
 int	bios32call(BIOS32ci*, u16int[3]);
 int	bios32ci(BIOS32si*, BIOS32ci*);
 void	bios32close(BIOS32si*);
 BIOS32si* bios32open(char*);
 void	bootargs(void*);
 ulong	cankaddr(ulong);
+void	cgapost(int);
 void	clockintr(Ureg*, void*);
 int	(*cmpswap)(long*, long, long);
 int	cmpswap486(long*, long, long);
 void	(*coherence)(void);
-void	cpuid(char*, int*, int*);
+void	cpuid(int, ulong regs[]);
 int	cpuidentify(void);
 void	cpuidprint(void);
 void	(*cycles)(uvlong*);
@@ -23,14 +26,21 @@ int	dmadone(int);
 void	dmaend(int);
 int	dmainit(int, int);
 long	dmasetup(int, void*, long, int);
-#define	evenaddr(x)				/* x86 doesn't care */
 void	fpclear(void);
 void	fpenv(FPsave*);
 void	fpinit(void);
 void	fpoff(void);
-void	fprestore(FPsave*);
-void	fpsave(FPsave*);
+void	fpon(void);
+void	(*fprestore)(FPsave*);
+void	(*fpsave)(FPsave*);
+void	fpsavealloc(void);
+void	fpsserestore(FPsave*);
+void	fpsserestore0(FPsave*);
+void	fpssesave(FPsave*);
+void	fpssesave0(FPsave*);
 ulong	fpstatus(void);
+void	fpx87restore(FPsave*);
+void	fpx87save(FPsave*);
 ulong	getcr0(void);
 ulong	getcr2(void);
 ulong	getcr3(void);
@@ -43,6 +53,7 @@ int	i8042auxcmds(uchar*, int);
 void	i8042auxenable(void (*)(int, int));
 void	i8042reset(void);
 void	i8250console(void);
+void	i8250config(char *);
 void*	i8250alloc(int, int, int);
 void	i8250mouse(char*, int (*)(Queue*, int), int);
 void	i8250setmouseputc(char*, int (*)(Queue*, int));
@@ -96,6 +107,9 @@ void	mfence(void);
 #define mmuflushtlb(pdb) putcr3(pdb)
 void	mmuinit(void);
 ulong*	mmuwalk(ulong*, ulong, int, int);
+int	mtrr(uvlong, uvlong, char *);
+void	mtrrclock(void);
+int	mtrrprint(char *, long);
 uchar	nvramread(int);
 void	nvramwrite(int, uchar);
 void	outb(int, int);
@@ -139,6 +153,7 @@ int	pdbmap(ulong*, ulong, ulong, int);
 void	procrestore(Proc*);
 void	procsave(Proc*);
 void	procsetup(Proc*);
+void	putcr0(ulong);
 void	putcr3(ulong);
 void	putcr4(ulong);
 void*	rampage(void);
@@ -146,7 +161,10 @@ void	rdmsr(int, vlong*);
 void	realmode(Ureg*);
 void	screeninit(void);
 void	(*screenputs)(char*, int);
+void*	sigsearch(char*);
 void	syncclock(void);
+void	syscallfmt(int syscallno, ulong pc, va_list list);
+void	sysretfmt(int syscallno, va_list list, long ret, uvlong start, uvlong stop);
 void*	tmpmap(Page*);
 void	tmpunmap(void*);
 void	touser(void*);
@@ -163,15 +181,25 @@ ulong	upaalloc(int, int);
 void	upafree(ulong, int);
 void	upareserve(ulong, int);
 #define	userureg(ur) (((ur)->cs & 0xFFFF) == UESEL)
+void	validalign(uintptr, unsigned);
 void	vectortable(void);
 void*	vmap(ulong, int);
 int	vmapsync(ulong);
 void	vunmap(void*, int);
+void	wbinvd(void);
 void	wrmsr(int, vlong);
 int	xchgw(ushort*, int);
+
+#define PTR2UINT(p)	((uintptr)(p))
+#define UINT2PTR(i)	((void*)(i))
 
 #define	waserror()	(up->nerrlab++, setlabel(&up->errlab[up->nerrlab-1]))
 #define	KADDR(a)	kaddr(a)
 #define PADDR(a)	paddr((void*)(a))
 
 #define	dcflush(a, b)
+
+#define BIOSSEG(a)	KADDR(((uint)(a))<<4)
+
+#define L16GET(p)	(((p)[1]<<8)|(p)[0])
+#define L32GET(p)	(((u32int)L16GET((p)+2)<<16)|L16GET(p))

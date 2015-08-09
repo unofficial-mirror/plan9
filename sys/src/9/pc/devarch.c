@@ -38,6 +38,17 @@ enum {
 	Qmax = 16,
 };
 
+enum {
+	CR4Osfxsr = 1 << 9,
+};
+
+enum {				/* cpuid standard function codes */
+	Highstdfunc = 0,	/* also returns vendor string */
+	Procsig,
+	Proctlbcache,
+	Procserial,
+};
+
 typedef long Rdwrfn(Chan*, void*, long, vlong);
 
 static Rdwrfn *readfn[Qmax];
@@ -403,7 +414,8 @@ archread(Chan *c, void *a, long n, vlong offset)
 	for(m = iomap.m; n > 0 && m != nil; m = m->next){
 		if(offset-- > 0)
 			continue;
-		sprint(p, "%8lux %8lux %-12.12s\n", m->start, m->end-1, m->tag);
+		seprint(p, &buf[n], "%8lux %8lux %-12.12s\n", m->start,
+			m->end-1, m->tag);
 		p += Linelen;
 		n--;
 	}
@@ -498,6 +510,30 @@ nop(void)
 {
 }
 
+static void
+archreset(void)
+{
+	i8042reset();
+
+	/*
+	 * Often the BIOS hangs during restart if a conventional 8042
+	 * warm-boot sequence is tried. The following is Intel specific and
+	 * seems to perform a cold-boot, but at least it comes back.
+	 * And sometimes there is no keyboard...
+	 *
+	 * The reset register (0xcf9) is usually in one of the bridge
+	 * chips. The actual location and sequence could be extracted from
+	 * ACPI but why bother, this is the end of the line anyway.
+	 */
+	print("Takes a licking and keeps on ticking...\n");
+	*(ushort*)KADDR(0x472) = 0x1234;	/* BIOS warm-boot flag */
+	outb(0xcf9, 0x02);
+	outb(0xcf9, 0x06);
+
+	for(;;)
+		idle();
+}
+
 /*
  * 386 has no compare-and-swap instruction.
  * Run it with interrupts turned off instead.
@@ -532,7 +568,7 @@ extern PCArch* knownarch[];
 PCArch archgeneric = {
 .id=		"generic",
 .ident=		0,
-.reset=		i8042reset,
+.reset=		archreset,
 .serialpower=	unimplemented,
 .modempower=	unimplemented,
 
@@ -540,8 +576,8 @@ PCArch archgeneric = {
 .intrenable=	i8259enable,
 .intrvecno=	i8259vecno,
 .intrdisable=	i8259disable,
-.intron=		i8259on,
-.introff=		i8259off,
+.intron=	i8259on,
+.introff=	i8259off,
 
 .clockenable=	i8253enable,
 .fastclock=	i8253read,
@@ -556,6 +592,7 @@ struct X86type {
 	char*	name;
 };
 
+/* cpuid ax is 0x0ffMTFmS, where 0xffF is family, 0xMm is model */
 static X86type x86intel[] =
 {
 	{ 4,	0,	22,	"486DX", },	/* known chips */
@@ -580,9 +617,25 @@ static X86type x86intel[] =
 	{ 6,	7,	16,	"PentiumIII/Xeon", },
 	{ 6,	8,	16,	"PentiumIII/Xeon", },
 	{ 6,	0xB,	16,	"PentiumIII/Xeon", },
-	{ 6,	0xF,	16,	"Xeon5000-series", },
+	{ 6,	0xF,	16,	"Core 2/Xeon", },
+	{ 6,	0x16,	16,	"Celeron", },
+	{ 6,	0x17,	16,	"Core 2/Xeon", },
+	{ 6,	0x1A,	16,	"Core i7/Xeon", },
+	{ 6,	0x1C,	16,	"Atom", },
+	{ 6,	0x1D,	16,	"Xeon MP", },
+	{ 6,	0x1E,	16,	"Core i5/i7/Xeon", },
+	{ 6,	0x1F,	16,	"Core i7/Xeon", },
+	{ 6,	0x22,	16,	"Core i7", },
+	{ 6,	0x25,	16,	"Core i3/i5/i7", },
+	{ 6,	0x2A,	16,	"Core i7", },
+	{ 6,	0x2C,	16,	"Core i7/Xeon", },
+	{ 6,	0x2D,	16,	"Core i7", },
+	{ 6,	0x2E,	16,	"Xeon MP", },
+	{ 6,	0x2F,	16,	"Xeon MP", },
+	{ 6,	0x3A,	16,	"Core i7", },
 	{ 0xF,	1,	16,	"P4", },	/* P4 */
 	{ 0xF,	2,	16,	"PentiumIV/Xeon", },
+	{ 0xF,	6,	16,	"PentiumIV/Xeon", },
 
 	{ 3,	-1,	32,	"386", },	/* family defaults */
 	{ 4,	-1,	22,	"486", },
@@ -620,10 +673,13 @@ static X86type x86amd[] =
 	{ 6,	1,	11,	"AMD-Athlon", },/* trial and error */
 	{ 6,	2,	11,	"AMD-Athlon", },/* trial and error */
 
+	{ 0x1F,	9,	11,	"AMD-K10 Opteron G34", },/* guesswork */
+
 	{ 4,	-1,	22,	"Am486", },	/* guesswork */
 	{ 5,	-1,	23,	"AMD-K5/K6", },	/* guesswork */
 	{ 6,	-1,	11,	"AMD-Athlon", },/* guesswork */
-	{ 0xF,	-1,	11,	"AMD64", },	/* guesswork */
+	{ 0xF,	-1,	11,	"AMD-K8", },	/* guesswork */
+	{ 0x1F,	-1,	11,	"AMD-K10", },	/* guesswork */
 
 	{ -1,	-1,	11,	"unknown", },	/* total default */
 };
@@ -667,7 +723,8 @@ cpuidprint(void)
 	int i;
 	char buf[128];
 
-	i = sprint(buf, "cpu%d: %dMHz ", m->machno, m->cpumhz);
+	i = snprint(buf, sizeof buf, "cpu%d: %s%dMHz ", m->machno,
+		m->machno < 10? " ": "", m->cpumhz);
 	if(m->cpuidid[0])
 		i += sprint(buf+i, "%12.12s ", m->cpuidid);
 	seprint(buf+i, buf + sizeof buf - 1,
@@ -694,9 +751,19 @@ cpuidentify(void)
 	int family, model, nomce;
 	X86type *t, *tab;
 	ulong cr4;
+	ulong regs[4];
 	vlong mca, mct;
 
-	cpuid(m->cpuidid, &m->cpuidax, &m->cpuiddx);
+	cpuid(Highstdfunc, regs);
+	memmove(m->cpuidid,   &regs[1], BY2WD);	/* bx */
+	memmove(m->cpuidid+4, &regs[3], BY2WD);	/* dx */
+	memmove(m->cpuidid+8, &regs[2], BY2WD);	/* cx */
+	m->cpuidid[12] = '\0';
+
+	cpuid(Procsig, regs);
+	m->cpuidax = regs[0];
+	m->cpuiddx = regs[3];
+
 	if(strncmp(m->cpuidid, "AuthenticAMD", 12) == 0 ||
 	   strncmp(m->cpuidid, "Geode by NSC", 12) == 0)
 		tab = x86amd;
@@ -728,7 +795,7 @@ cpuidentify(void)
 	}
 
 	/*
- 	 *  use i8253 to guess our cpu speed
+	 *  use i8253 to guess our cpu speed
 	 */
 	guesscpuhz(t->aalcycles);
 
@@ -737,9 +804,9 @@ cpuidentify(void)
 	 * are supported enable them in CR4 and clear any other set extensions.
 	 * If machine check was enabled clear out any lingering status.
 	 */
-	if(m->cpuiddx & (Pge|Mce|0x8)){
+	if(m->cpuiddx & (Pge|Mce|Pse)){
 		cr4 = 0;
-		if(m->cpuiddx & 0x08)
+		if(m->cpuiddx & Pse)
 			cr4 |= 0x10;		/* page size extensions */
 		if(p = getconf("*nomce"))
 			nomce = strtoul(p, 0, 0);
@@ -778,6 +845,15 @@ cpuidentify(void)
 			rdmsr(0x01, &mct);
 	}
 
+	if(m->cpuiddx & Fxsr){			/* have sse fp? */
+		fpsave = fpssesave;
+		fprestore = fpsserestore;
+		putcr4(getcr4() | CR4Osfxsr);
+	} else {
+		fpsave = fpx87save;
+		fprestore = fpx87restore;
+	}
+
 	cputype = t;
 	return t->family;
 }
@@ -797,34 +873,43 @@ cputyperead(Chan*, void *a, long n, vlong offset)
 static long
 archctlread(Chan*, void *a, long nn, vlong offset)
 {
-	char buf[256];
 	int n;
+	char *buf, *p, *ep;
 
-	n = snprint(buf, sizeof buf, "cpu %s %lud%s\n",
+	p = buf = malloc(READSTR);
+	if(p == nil)
+		error(Enomem);
+	ep = p + READSTR;
+	p = seprint(p, ep, "cpu %s %lud%s\n",
 		cputype->name, (ulong)(m->cpuhz+999999)/1000000,
 		m->havepge ? " pge" : "");
-	n += snprint(buf+n, sizeof buf-n, "pge %s\n", getcr4()&0x80 ? "on" : "off");
-	n += snprint(buf+n, sizeof buf-n, "coherence ");
+	p = seprint(p, ep, "pge %s\n", getcr4()&0x80 ? "on" : "off");
+	p = seprint(p, ep, "coherence ");
 	if(coherence == mb386)
-		n += snprint(buf+n, sizeof buf-n, "mb386\n");
+		p = seprint(p, ep, "mb386\n");
 	else if(coherence == mb586)
-		n += snprint(buf+n, sizeof buf-n, "mb586\n");
+		p = seprint(p, ep, "mb586\n");
 	else if(coherence == mfence)
-		n += snprint(buf+n, sizeof buf-n, "mfence\n");
+		p = seprint(p, ep, "mfence\n");
 	else if(coherence == nop)
-		n += snprint(buf+n, sizeof buf-n, "nop\n");
+		p = seprint(p, ep, "nop\n");
 	else
-		n += snprint(buf+n, sizeof buf-n, "0x%p\n", coherence);
-	n += snprint(buf+n, sizeof buf-n, "cmpswap ");
+		p = seprint(p, ep, "0x%p\n", coherence);
+	p = seprint(p, ep, "cmpswap ");
 	if(cmpswap == cmpswap386)
-		n += snprint(buf+n, sizeof buf-n, "cmpswap386\n");
+		p = seprint(p, ep, "cmpswap386\n");
 	else if(cmpswap == cmpswap486)
-		n += snprint(buf+n, sizeof buf-n, "cmpswap486\n");
+		p = seprint(p, ep, "cmpswap486\n");
 	else
-		n += snprint(buf+n, sizeof buf-n, "0x%p\n", cmpswap);
-	n += snprint(buf+n, sizeof buf-n, "i8253set %s\n", doi8253set ? "on" : "off");
-	buf[n] = 0;
-	return readstr(offset, a, nn, buf);
+		p = seprint(p, ep, "0x%p\n", cmpswap);
+	p = seprint(p, ep, "i8253set %s\n", doi8253set ? "on" : "off");
+	n = p - buf;
+	n += mtrrprint(p, ep - p);
+	buf[n] = '\0';
+
+	n = readstr(offset, a, nn, buf);
+	free(buf);
+	return n;
 }
 
 enum
@@ -832,6 +917,7 @@ enum
 	CMpge,
 	CMcoherence,
 	CMi8253set,
+	CMcache,
 };
 
 static Cmdtab archctlmsg[] =
@@ -839,13 +925,16 @@ static Cmdtab archctlmsg[] =
 	CMpge,		"pge",		2,
 	CMcoherence,	"coherence",	2,
 	CMi8253set,	"i8253set",	2,
+	CMcache,		"cache",		4,
 };
 
 static long
 archctlwrite(Chan*, void *a, long n, vlong)
 {
+	uvlong base, size;
 	Cmdbuf *cb;
 	Cmdtab *ct;
+	char *ep;
 
 	cb = parsecmd(a, n);
 	if(waserror()){
@@ -891,6 +980,15 @@ archctlwrite(Chan*, void *a, long n, vlong)
 			(*arch->timerset)(0);
 		}else
 			cmderror(cb, "invalid i2853set ctl");
+		break;
+	case CMcache:
+		base = strtoull(cb->f[1], &ep, 0);
+		if(*ep)
+			error("cache: parse error: base not a number?");
+		size = strtoull(cb->f[2], &ep, 0);
+		if(*ep)
+			error("cache: parse error: size not a number?");
+		mtrr(base, size, cb->f[3]);
 		break;
 	}
 	free(cb);
@@ -946,6 +1044,12 @@ archinit(void)
 
 	addarchfile("cputype", 0444, cputyperead, nil);
 	addarchfile("archctl", 0664, archctlread, archctlwrite);
+}
+
+void
+archrevert(void)
+{
+	arch = &archgeneric;
 }
 
 /*

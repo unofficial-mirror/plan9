@@ -473,10 +473,10 @@ login(char *id, char *dest, int pass_stdin, int pass_nvram)
 		if(verbose)
 			fprint(2, "%ld\n", sn);
 		c->conn->write(c->conn, (uchar*)s, sn+3);
-		readstr(c->conn, s);
+		readstr(c->conn, s);	/* TODO: check for error? */
 	}
 	if(strcmp(s, "OK") != 0){
-		fprint(2, "%s\n", s);
+		fprint(2, "%s: %s\n", argv0, s);
 		c->conn->free(c->conn);
 		free(c);
 		return nil;

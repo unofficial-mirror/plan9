@@ -1,3 +1,8 @@
+/*
+ * Disable Unicode until the calls to FindFirstFile etc
+ * are changed to use wide character strings.
+ */
+#undef UNICODE
 #include	<windows.h>
 #include	<sys/types.h>
 #include	<sys/stat.h>
@@ -172,8 +177,7 @@ fswalk(Chan *c, Chan *nc, char **name, int nname)
 		cname = addelem(cname, name[i]);
 		wq->qid[i] = nc->qid;
 	}
-	nc->name = nil;
-	cnameclose(cname);
+	nc->name = cname;
 	if(i != nname){
 		cclose(nc);
 		wq->clone = nil;
@@ -594,7 +598,7 @@ fsdirread(Chan *c, uchar *va, int count, ulong offset)
 		d.length = stbuf.st_size;
 		d.type = 'U';
 		d.dev = c->dev;
-		n = convD2M(&d, (char*)va+i, count-i);
+		n = convD2M(&d, (uchar*)va+i, count-i);
 		if(n == BIT16SZ){
 			strcpy(uif->nextname, de);
 			break;
@@ -635,7 +639,7 @@ readdir(char *name, DIR *d)
 		if(FindNextFile(d->handle, &d->wfd) == FALSE)
 			return 0;
 	}
-	strcpy(name, d->wfd.cFileName);
+	strcpy(name, (char*)d->wfd.cFileName);
 	d->index++;
 
 	return 1;

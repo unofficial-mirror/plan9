@@ -2,7 +2,18 @@ typedef struct HSPriv	HSPriv;
 
 enum
 {
-	HSTIMEOUT	= 15 * 60 * 1000
+	HSTIMEOUT	= 15 * 60 * 1000,
+
+	/* rewrite replacement field modifiers */
+	Modsilent	= '@',	/* don't tell the browser about the redirect. */
+	Modperm		= '=',	/* generate permanent redirection */
+	Modsubord	= '*',	/* map page & all subordinates to same URL */
+	Modonly		= '>',	/* match only this page, not subordinates */
+
+	Redirsilent	= 1<<0,
+	Redirperm	= 1<<1,
+	Redirsubord	= 1<<2,
+	Redironly	= 1<<3,
 };
 
 struct HSPriv
@@ -51,9 +62,10 @@ vlong			Bfilelen(void*);
 
 /* redirect.c */
 void			redirectinit(void);
-char*			redirect(HConnect *hc, char*);
+char*			redirect(HConnect *hc, char*, uint *);
 char*			masquerade(char*);
 char*			authrealm(HConnect *hc, char *path);
+char			*undecorated(char *repl);
 
 /* log.c */
 void			logit(HConnect*, char*, ...);
@@ -63,3 +75,5 @@ void			writelog(HConnect*, char*, ...);
 
 /* authorize.c */
 int authorize(HConnect*, char*);
+
+char *webroot;

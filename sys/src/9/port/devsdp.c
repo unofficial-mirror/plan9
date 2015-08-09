@@ -557,7 +557,7 @@ sdpread(Chan *ch, void *a, long n, vlong off)
 		qunlock(c);
 		return n;
 	case Qctl:
-		sprint(buf, "%lud", CONV(ch->qid));
+		snprint(buf, sizeof buf, "%lud", CONV(ch->qid));
 		return readstr(off, a, n, buf);
 	case Qcontrol:
 		b = readcontrol(sdp->conv[CONV(ch->qid)], n);
@@ -627,11 +627,11 @@ sdpwrite(Chan *ch, void *a, long n, vlong off)
 		arg0 = cb->f[0];
 		if(strcmp(arg0, "accept") == 0) {
 			if(cb->nf != 2)
-				error("usage: accect file");
+				error("usage: accept file");
 			convopenchan(c, cb->f[1]);
 		} else if(strcmp(arg0, "dial") == 0) {
 			if(cb->nf != 2)
-				error("usage: accect file");
+				error("usage: dial file");
 			convopenchan(c, cb->f[1]);
 			convsetstate(c, CDial);
 		} else if(strcmp(arg0, "drop") == 0) {
@@ -1334,7 +1334,7 @@ conviconnect(Conv *c, int subtype, Block *b)
 	acceptid = nhgetl(b->rp + 4);
 	freeb(b);
 
-if(0)print("conviconnect: %s: %d %uld %uld\n", convstatename[c->state], subtype, dialid, acceptid);
+if(0)print("sdp: conviconnect: %s: %d %uld %uld\n", convstatename[c->state], subtype, dialid, acceptid);
 
 	if(subtype == ConReset) {
 		convsetstate(c, CClosed);
@@ -1421,7 +1421,7 @@ if(0)print("conviconnect: %s: %d %uld %uld\n", convstatename[c->state], subtype,
 	}
 Reset:
 	// invalid connection message - reset to sender
-if(1)print("invalid conviconnect - sending reset\n");
+if(1)print("sdp: invalid conviconnect - sending reset\n");
 	convoconnect(c, ConReset, dialid, acceptid);
 	convsetstate(c, CClosed);
 }
@@ -2283,6 +2283,7 @@ thwackuncomp(Conv *c, int subtype, ulong seq, Block **bp)
 		b = allocb(ThwMaxBlock);
 		n = unthwack(c->in.compstate, b->wp, ThwMaxBlock, bb->rp, BLEN(bb), seq);
 		freeb(bb);
+		*bp = nil;
 		if(n < 0) {
 if(0)print("unthwack failed: %d\n", n);
 			freeb(b);

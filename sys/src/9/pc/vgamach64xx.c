@@ -190,11 +190,23 @@ mach64xxenable(VGAscr* scr)
 static void
 mach64xxlinear(VGAscr* scr, int size, int)
 {
+	ulong mmiophys;
+
 	vgalinearpci(scr);
 	if(scr->paddr == 0)
 		return;
+	/*
+	 * vgalinearpci sets framebuffer into write combining mode.
+	 * Because mmio register page is inside framebuffer space,
+	 * set it back to uncached.
+	 */
+	mmiophys = scr->paddr + size - BY2PG;
+	if(!waserror()){
+		mtrr(mmiophys, BY2PG, "uc");
+		poperror();
+	}
 	scr->mmio = (ulong*)((uchar*)scr->vaddr+size-1024);
-	addvgaseg("mach64mmio", scr->paddr+size-BY2PG, BY2PG);
+	addvgaseg("mach64mmio", mmiophys, BY2PG);
 	addvgaseg("mach64screen", scr->paddr, scr->apsize);
 }
 
@@ -624,7 +636,7 @@ waitforfifo(VGAscr *scr, int entries)
 	while((ior32(scr, FifoStat)&0xFF) > (0x8000>>entries) && x++ < 1000000)
 		;
 	if(x >= 1000000)
-		iprint("fifo %d stat %.8lux %.8lux scrio %.8lux mmio %p scr %p pc %luX\n", entries, ior32(scr, FifoStat), scr->mmio[mmoffset[FifoStat]], scr->io, scr->mmio, scr, getcallerpc(&scr));
+		iprint("fifo %d stat %#.8lux %#.8lux scrio %#.8lux mmio %#p scr %#p pc %#p\n", entries, ior32(scr, FifoStat), scr->mmio[mmoffset[FifoStat]], scr->io, scr->mmio, scr, getcallerpc(&scr));
 }
 
 static void
@@ -637,7 +649,7 @@ waitforidle(VGAscr *scr)
 	while((ior32(scr, GuiStat)&1) && x++ < 1000000)
 		;
 	if(x >= 1000000)
-		iprint("idle stat %.8lux %.8lux scrio %.8lux mmio %p scr %p pc %luX\n", ior32(scr, GuiStat), scr->mmio[mmoffset[GuiStat]], scr->io, scr->mmio, scr, getcallerpc(&scr));
+		iprint("idle stat %#.8lux %#.8lux scrio %#.8lux mmio %#p scr %#p pc %#p\n", ior32(scr, GuiStat), scr->mmio[mmoffset[GuiStat]], scr->io, scr->mmio, scr, getcallerpc(&scr));
 }
 
 static void
@@ -1072,7 +1084,7 @@ ovl_enable(VGAscr *scr, Chan *c, char **field)
 static void
 ovl_status(VGAscr *scr, Chan *, char **field)
 {
-	pprint("%s: %s %.4uX, VT/GT %s, PRO %s, ovlclock %d, rev B %s, refclock %ld\n",
+	pprint("%s: %s %.4uX, VT/GT %s, PRO %s, ovlclock %lud, rev B %s, refclock %ld\n",
 		   scr->dev->name, field[0], mach64type->m64_id,
 		   mach64type->m64_vtgt? "yes": "no",
 		   mach64type->m64_pro? "yes": "no",

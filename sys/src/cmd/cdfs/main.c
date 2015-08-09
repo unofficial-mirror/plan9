@@ -192,7 +192,7 @@ fsremove(Req *r)
 	case Qwd:
 		if(drive->fixate(drive) < 0)
 			respond(r, geterrstr());
-// let us see if it can figure this out:	drive->writeok = 0;	
+// let us see if it can figure this out:	drive->writeok = No;	
 		else
 			respond(r, nil);
 		checktoc(drive);
@@ -204,11 +204,12 @@ fsremove(Req *r)
 }
 
 /* result is one word, so it can be used as a uid in Dir structs */
-static char *
+char *
 disctype(Drive *drive)
 {
-	char *type, *rw;
+	char *type, *rw, *laysfx;
 
+	rw = laysfx = "";
 	switch (drive->mmctype) {
 	case Mmccd:
 		type = "cd-";
@@ -219,6 +220,8 @@ disctype(Drive *drive)
 		break;
 	case Mmcbd:
 		type = "bd-";
+		if (drive->laysfx)
+			laysfx = drive->laysfx;
 		break;
 	case Mmcnone:
 		type = "no-disc";
@@ -227,15 +230,14 @@ disctype(Drive *drive)
 		type = "**GOK**";		/* traditional */
 		break;
 	}
-	rw = "";
 	if (drive->mmctype != Mmcnone && drive->dvdtype == nil)
-		if (drive->erasable)
+		if (drive->erasable == Yes)
 			rw = drive->mmctype == Mmcbd? "re": "rw";
-		else if (drive->recordable)
+		else if (drive->recordable == Yes)
 			rw = "r";
 		else
 			rw = "rom";
-	return smprint("%s%s", type, rw);
+	return smprint("%s%s%s", type, rw, laysfx);
 }
 
 int
@@ -271,7 +273,7 @@ fillstat(ulong qid, Dir *d)
 		break;
 
 	case Qwa:
-		if(drive->writeok == 0 ||
+		if(drive->writeok == No ||
 		    drive->mmctype != Mmcnone &&
 		    drive->mmctype != Mmccd)
 			return 0;
@@ -281,7 +283,7 @@ fillstat(ulong qid, Dir *d)
 		break;
 
 	case Qwd:
-		if(drive->writeok == 0)
+		if(drive->writeok == No)
 			return 0;
 		d->name = "wd";
 		d->qid.type = QTDIR;
@@ -340,6 +342,7 @@ static void
 readctl(Req *r)
 {
 	int i, isaudio;
+	ulong nwa;
 	char *p, *e, *ty;
 	char s[1024];
 	Msf *m;
@@ -375,9 +378,14 @@ readctl(Req *r)
 		ty = disctype(drive);
 		p = seprint(p, e, "%s", ty);
 		free(ty);
-		if (drive->mmctype != Mmcnone)
-			p = seprint(p, e, " next writable sector %lud",
-				getnwa(drive));
+		if (drive->mmctype != Mmcnone) {
+			nwa = getnwa(drive);
+			p = seprint(p, e, " next writable sector ");
+			if (nwa == ~0ul)
+				p = seprint(p, e, "none; disc full");
+			else
+				p = seprint(p, e, "%lud", nwa);
+		}
 		seprint(p, e, "\n");
 	}
 	readstr(r, s);
@@ -709,7 +717,8 @@ main(int argc, char **argv)
 				close(fd);
 			vflag++;
 			scsiverbose = 2; /* verbose but no Readtoc errs */
-		}
+		} else
+			fprint(2, "%s: can't open /tmp/cdfs.log: %r\n", argv0);
 		break;
 	default:
 		usage();
@@ -718,6 +727,7 @@ main(int argc, char **argv)
 	if(dev == nil || mtpt == nil || argc > 0)
 		usage();
 
+	werrstr("");
 	if((s = openscsi(dev)) == nil)
 		sysfatal("openscsi '%s': %r", dev);
 	if((drive = mmcprobe(s)) == nil)

@@ -6,6 +6,8 @@ enum {
 	BScdxa		= 2336,
 	BSmax		= 2352,
 
+	Maxfeatures	= 512,
+
 	/* scsi peripheral device types, SPC-3 §6.4.2 */
 	TypeDA		= 0,		/* Direct Access (SBC) */
 	TypeSA		= 1,		/* Sequential Access (SSC) */
@@ -29,6 +31,17 @@ enum {
 	TypeDwritable,
 	TypeDisk,
 	TypeBlank,
+
+	/* disc writability classes */
+	Readonly	= 0,		/* -ROM */
+	Write1,				/* -R: write once only */
+	Erasewrite,			/* -R[WE]: erase then write */
+	Ram,				/* -RAM: read & write unrestricted */
+
+	/* tri-state flags */
+	Unset		= -1,
+	No,
+	Yes,
 
 	/* offsets in Pagcapmechsts mode page; see MMC-3 §5.5.10 */
 	Capread		= 2,
@@ -88,7 +101,7 @@ enum {
 	Wtraw,
 	Wtlayerjump,
 
-	/* track modes (TODO: also track types?) */
+	/* track modes (determine: are these also track types?) */
 	Tmcdda	= 0,		/* audio cdda */
 	Tm2audio,		/* 2 audio channels */
 	Tmunintr = 4,		/* data, recorded uninterrupted */
@@ -121,14 +134,21 @@ enum {
 	CDNblock = 12,		/* chosen for CD */
 	DVDNblock = 16,		/* DVD ECC block is 16 sectors */
 	BDNblock = 32,		/* BD ECC block (`cluster') is 32 sectors */
+				/* BD-R are write-once in increments of 64KB */
+	/*
+	 * make a single transfer fit in a 9P rpc.  if we don't do this,
+	 * remote access (e.g., via /mnt/term/dev/sd*) fails mysteriously.
+	 */
+	Readblock = 8192/BScdrom,
 };
 
 typedef struct Buf Buf;
-typedef struct Drive Drive;
-typedef struct Track Track;
-typedef struct Otrack Otrack;
 typedef struct Dev Dev;
+typedef struct Drive Drive;
 typedef struct Msf Msf;		/* minute, second, frame */
+typedef struct Otrack Otrack;
+typedef struct Track Track;
+typedef schar Tristate;
 
 struct Msf {
 	int	m;
@@ -191,25 +211,29 @@ struct Drive
 	QLock;
 	Scsi;
 
-	int	type;			/* scsi peripheral device type */
+	int	type;			/* scsi peripheral device type: Type?? */
 
 	/* disc characteristics */
-	int	mmctype;
-	char	*dvdtype;
+	int	mmctype;		/* cd, dvd, or bd */
+	char	*dvdtype;		/* name of dvd flavour */
+	char	*laysfx;		/* layer suffix (e.g., -dl) */
 	int	firsttrack;
+	int	invistrack;
 	int	ntrack;
 	int	nchange;		/* compare with the members in Scsi */
 	ulong	changetime;		/* " */
+	int	relearn;		/* need to re-learn the disc? */
 	int	nameok;
-	int	writeok;
-	int	blank;			/* (not used for anything yet) */
-	int	blankset;
-	int	recordable;		/* writable by burning? */
-	int	recordableset;
-	int	erasable;		/* rewritable? */
-	int	erasableset;
+	int	writeok;		/* writable disc? */
+	/*
+	 * we could combine these attributes into a single variable except
+	 * that we discover them separately sometimes.
+	 */
+	Tristate recordable;		/* writable by burning? */
+	Tristate erasable;		/* writable after erasing? */
 
 	Track	track[Ntrack];
+	ulong	end;			/* # of blks on current disc */
 	ulong	cap;			/* drive capabilities */
 	uchar	blkbuf[BScdda];
 
@@ -218,6 +242,8 @@ struct Drive
 	int	readspeed;
 	int	writespeed;
 	Dev;
+
+	uchar	features[Maxfeatures/8];
 
 	void *aux;		/* kept by driver */
 };

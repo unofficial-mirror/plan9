@@ -190,11 +190,12 @@ if( p = (int *) calloc(1,n) )
 
 fatal("out of memory");
 /* NOTREACHED */
+return 0;
 }
 
 /* copy string a into b, substituting for arguments */
 char *
-subst(char *a, char *b)
+subst(char *a, char *b, char *e)
 {
 static depth	= 0;
 char *s;
@@ -225,10 +226,12 @@ if(a)  while(*a)
 		*s = '\0';
 		if( (vbp = varptr(vname)) ->varval != 0)
 			{
-			b = subst(vbp->varval, b);
+			b = subst(vbp->varval, b, e);
 			vbp->used = YES;
 			}
 		}
+		if(b >= e)
+			fatal("macro expanded too far");
 	}
 
 *b = '\0';

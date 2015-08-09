@@ -1,6 +1,6 @@
 .TH FOSSIL 4
 .SH NAME
-fossil \- archival file server
+fossil, flchk, flfmt \- archival file server
 .SH SYNOPSIS
 .B fossil/fossil
 [
@@ -13,6 +13,10 @@ fossil \- archival file server
 [
 .B -f
 .I file
+]
+[
+.B -m
+.I free-memory-percent
 ]
 .PP
 .B fossil/flchk
@@ -64,12 +68,12 @@ fossil \- archival file server
 .I file
 .SH DESCRIPTION
 .I Fossil
-will become the main file system for Plan 9.
+is the main file system for Plan 9.
 Unlike the Plan 9 file servers of old,
 .I fossil
 is a collection of user-space programs that run on a standard Plan 9 kernel.
 The name of the main fossil file server at Murray Hill is
-.BR yoshimi .
+.BR pie .
 The Plan 9 distribution file server,
 .BR sources ,
 is also a fossil server.
@@ -206,6 +210,8 @@ documented in
 .IR fossilcons (8).
 .PP
 The options are:
+.TF "-c\fI cmd
+.PD
 .TP
 .B -D
 Toggle the debugging flag, which is initially off.
@@ -226,7 +232,7 @@ This option may be repeated to give multiple
 commands.
 Typically the only commands given on the
 command line are
-.RB `` . \fIfile \fR,''
+.RB `` ".\fI file" ,''
 which executes a file containing commands,
 and
 .RB `` "srv -p" \fIcons \fR,''
@@ -242,6 +248,17 @@ Read and execute console commands stored in the Fossil disk
 .I Conf
 .RI ( q.v. )
 reads and writes the command set stored in the disk.
+.TP
+.B -m
+Allocate
+.I free-memory-percent
+percent of the available free RAM for buffers.
+This overrides all other memory sizing parameters,
+notably the
+.B -c
+option to
+.BR open .
+30% is a reasonable choice.
 .PD
 .PP
 .I Flchk
@@ -285,6 +302,8 @@ blocks and any inconsistencies involving the active file system
 should be taken with a grain of salt.
 .PP
 The options are:
+.TF "-h\fI host
+.PD
 .TP
 .B -f
 Fast mode.
@@ -321,6 +340,8 @@ and
 .BR snapshot ,
 as described above.
 The options are:
+.TF "-b\fI blocksize
+.PD
 .TP
 .B -y
 Yes mode.
@@ -411,7 +432,7 @@ checking turned off, create a users file, and mount the server:
 .EX
 fossil/flfmt /dev/sdC0/fossil
 fossil/conf -w /dev/sdC0/fossil <<EOF
-fsys main config /dev/sdC0/fossil
+fsys main config
 fsys main open -AWP
 fsys main
 create /active/adm adm sys d775
@@ -472,9 +493,10 @@ command to prepare the script.
 .IR fs (4),
 .IR srv (4),
 .IR fossilcons (8),
+.IR loadfossil (8),
 .IR venti (8)
 .SH BUGS
-It is likely that the disk format (but not the Venti format)
+It is possible that the disk format (but not the Venti format)
 will change in the future, to make the disk a full cache
 rather than just a write buffer.
 Changing to the new format will require reformatting
@@ -483,3 +505,10 @@ but note that this will preserve most of the file system
 (all but
 .BR /snapshot )
 with little effort.
+.PP
+The
+.B -m
+option currently assumes a block size of 8K bytes,
+and a single file system per
+.I fossil
+instance.

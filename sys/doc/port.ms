@@ -17,59 +17,14 @@ The first section discusses the compiler/assembler/loader suite for each machine
 The second talks about
 the operating system implemented on each of the various
 machines.
-.SH
-The Motorola MC68020 compiler
-.PP
-This is the oldest compiler of the bunch.  Relative to its
-competitors\(emcommercial compilers for the same machine\(emit generates
-quite good code.
-It assumes at least a 68020 architecture: some of the addressing
-modes it generates are not on the 68000 or 68010.
-.PP
-We also use this compiler for the 68040.  Except for a few
-instructions and registers available only from assembly language,
-the only user-visible difference between these machines is in
-floating point.  Our 68020s all have 68881 or 68882 floating
-point units attached, so to execute floating point programs we
-depend on there being appropriate hardware.
-Unfortunately, the 68040 is not quite so thorough in its implementation
-of the IEEE 754 standard or in its provision of built-in instructions
-for the
-transcendental functions.  The latter was easy to get around: we
-don't use them on the 68020 either, but we do have a library,
-.CW -l68881 ,
-that you can use if you need the performance (which can be
-substantial:
-.CW astro
-runs twice as fast).
-We don't use this library by default because we want to run the same
-binaries on both machines and don't want to emulate
-.CW FCOSH
-in the operating system.
-.PP
-The problem with IEEE is nastier.  We didn't really want to deal
-with gradual underflow and all that, especially since we had
-half a dozen machines we'd need to do it on, so on the 68040
-we implement non-trapping underflow as truncation to zero and
-do nothing about denormalized numbers and not-a-numbers.
-This means the 68020
-and the 68040 are not precisely compatible.
-.SH
-The Motorola MC68000 compiler
-.PP
-This compiler is a stripped-down version of the MC68020 compiler
-built for an abortive port to the Dragonball processor on the Palm Pilot.
-It generates position-independent code whose overall quality is much
-poorer than the code for the MC68020.
+.
 .SH
 The MIPS compiler
 .PP
 This compiler generates code for the R2000, R3000, and R4000 machines configured
 to be big-endians.  The compiler generates no R4000-specific instructions
 although the assembler and loader support the new user-mode instructions.
-There is no support for little-endian machines.
-(A little-endian port exists, but is not included in the distribution.
-Contact us if you need it.)
+There are options to generate code for little-endian machines.
 Considering its speed, the Plan 9 compiler generates good code,
 but the commercial
 MIPS compiler with all the stops pulled out consistently beats it
@@ -125,51 +80,20 @@ transcendentals.
 If you want them,
 build the code in
 .CW /sys/src/libc/386/387 .
+.
 .SH
-The Intel i960 compiler
+The AMD64 compiler
 .PP
-This compiler was built as a weekend hack to let us get the Cyclone
-boards running.  It has only been used to run one program\(emthe on-board
-code in the Cyclone\(emand is therefore likely to be buggy.
-There are a number of obvious optimizations to the code that have
-never been attempted.
-For example, the compiler does not support pipelining.
-The code runs in little-endian mode.
-.SH
-The DEC Alpha compiler
-.PP
-The Alpha compiler is based on a port done by David Hogan while
-studying at the Basser Department of Computer Science, University of Sydney.
-It has been used to build a running version of the operating system, but has
-not been stressed as much as some of the other compilers.
-.PP
-Although the Alpha is a 64-bit architecture, this compiler treats
-.CW int s,
-.CW long s
-and pointers as 32 bits.  Access to the 64-bit operations is available through the
-.CW vlong
-type, as with the other architectures.
-.PP
-The compiler assumes that the target CPU supports the optional byte and
-word memory operations (the ``BWX'' extension).
-If you have an old system, you can generate code without using the extension
-by passing the loader the
-.CW -x
-option.
-.PP
-There are a number of optimizations that the Alpha Architecture Handbook
-recommends, but this compiler does not do.  In particular, there is currently
-no support for the code alignment and code scheduling optimizations.
-.PP
-The compiler tries to conform to IEEE, but some Alpha CPUs do not implement
-all of the rounding and trapping modes in silicon.  Fixing this problem requires
-some software emulation code in the kernel; to date, this has not been attempted.
+The AMD64 compiler has been used to build 64-bit variants of Plan 9.
+It seems to be reasonably solid.
+.
 .SH
 The PowerPC compiler
 .PP
 The PowerPC compiler supports the 32-bit PowerPC architecture only;
 it does not support either the 64-bit extensions or the POWER compatibility instructions.
-It has been used for production operating system work on the 603, 603e, 604e, 821, 823, and 860.
+It has been used for production operating system work on the 603, 603e, 604e, 821, 823, and 860,
+and experimental work on the 405, 440 and 450.
 On the 8xx floating-point instructions must be emulated.
 Instruction scheduling is not implemented; otherwise the code generated
 is similar to that for the other load-store architectures.
@@ -177,32 +101,35 @@ The compiler makes little or no use of unusual PowerPC features such as the
 counter register, several condition code registers, and multiply-accumulate
 instructions, but they are sometimes
 used by assembly language routines in the libraries.
+.
 .SH
-The Acorn ARM compiler
+The PowerPC64 compiler
+.PP
+The PowerPC64 compiler supports the 64-bit PowerPC architecture only.
+It has been lightly used on IBM's Blue Gene machines.
+.
+.SH
+The ARM compiler
 .PP
 The ARM compiler is fairly solid; it has been used for some production
 operating system work including Inferno and the Plan 9 kernel
-for the iPAQ, which uses a StrongArm SA1.
-The compiler supports the ARMv4 architecture;
-it does not support the Thumb instruction set.
-It has been used on ARM7500FE processors and the Strongarm SA1 core machines.
-The compiler generates instructions for the ARM floating-point coprocessor.
-.SH
-The AMD 29000 compiler
-.PP
-This compiler was used to port an operating system to an AMD 29240 processor.
-The project is long abandoned, but the compiler lives on.
-.SH
-The Carrera operating system
-.PP
-We used to have a number of MIPS R4400 PC-like devices called Carreras,
-with custom-built frame buffers, that we used as terminals.
-They're almost all decommissioned now, but we're including the source as a reference
-in case someone wants to get another MIPS-based system running.
+for the iPAQ, which uses a StrongArm SA1, and the Sheevaplug,
+Guruplug, Dreamplug, Gumstix Overo, Compulab Trimslice and others.
+The compiler supports the ARMv4 and later 32-bit architectures;
+it does not support the Thumb instruction sets.
+It has been used on ARM7500FE, ARM926 and Cortex-A8 and -A9 processors
+and the Strongarm SA1 core machines.
+The compiler generates instructions for
+ARM 7500 FPA floating-point coprocessor 1 by default,
+but
+.CW 5l
+.CW -f
+instead generates VFP instructions for coprocessors 10 and 11.
+.
 .SH
 The IBM PC operating system
 .PP
-The PC version of Plan 9 can boot either from MS-DOS
+The PC version of Plan 9 can boot via PXE
 or directly from a disk created by the
 .CW format
 command; see
@@ -220,11 +147,11 @@ no guarantee that the machine you buy today will contain the
 same components as the one you bought yesterday.
 (For our lab, we buy components and assemble the machines
 ourselves in an attempt to lessen this effect.)
-Both IDE/ATA and SCSI disks are supported, and
-there is support for large ATA drives.
+IDE/ATA, SATA and SCSI disks are supported.
 CD-ROMs are supported two ways, either on the SCSI bus, or as ATA(PI) devices.
 The SCSI adapter must be a member of the Mylex Multimaster (old Buslogic BT-*) series
 or the Symbios 53C8XX series.
+.PP
 Supported Ethernet cards include the
 AMD79C790,
 3COM Etherlink III and 3C589 series,
@@ -232,14 +159,24 @@ Lucent Wavelan and compatibles,
 NE2000,
 WD8003,
 WD8013,
+Realtek 8139,
 SMC Elite and Elite Ultra,
 Linksys Combo EthernetCard and EtherFast 10/100,
 and a variety of controllers based on the
 Intel i8255[789] and Digital (now Intel) 21114x chips.
-We mostly use Etherlink III, i8255[789], and 21114x, so those drivers may be more robust.
+We support Gigabit Ethernet via
+Realtek 8110S/8169S,
+and
+Intel 8254[013467], 8256[36], and 8257[1-79] controllers.
+We support 10-Gigabit Ethernet via
+Intel's 8259[89],
+and
+Myricom's 10g-pcie-8a.
+We mostly use Intel and Realtek gigabit controllers,
+so those drivers may be more robust.
+.PP
 There must be an explicit Plan 9 driver for peripherals;
 it cannot use DOS or Windows drivers.
-Also,
 Plan 9 cannot exploit special hardware-related features that fall outside of the
 IBM PC model,
 such as power management,
@@ -251,10 +188,9 @@ Over the years,
 Plan 9 has run on a number of VGA cards.
 Recent changes to the graphics system have not been
 tested on most of the older cards; some effort may be needed to get them working again.
-In our lab, most of our machines use the ATI Mach64, S3 ViRGE, or S3 Savage chips,
+In our lab, most of our machines use the ATI or Nvidia chips,
 so such devices are probably
 the most reliable.
-We also use a few Matrox and TNT cards.
 The system requires a hardware cursor.
 For more details see
 .I vgadb (6)
@@ -274,34 +210,36 @@ Finally, it's important to have a three-button mouse with Plan 9.
 The system currently works only with mice on the PS/2 port or USB.
 Serial mouse support should return before long.
 .PP
-Once you have Plan 9 installed (see the wiki's installation document)
-run the program
-.CW ld
-from DOS
-or use a boot disk.  See
+Once you have Plan 9 installed (see the wiki's installation document),
+use PXE or a boot disk to load the system.  See
 .I booting (8),
-.I 9load (8),
+.I 9boot (8),
 and
 .I prep (8)
 for more information.
+.
 .SH
-The Alpha PC operating system
+The Routerboard 450G operating system
 .PP
-Plan 9 runs on the Alpha PC 164.
-The Alpha port has not been used as much as the others,
-and should be considered a preliminary release.
-.PP
-The port uses the OSF/1 flavor
-of PALcode, and should be booted from the SRM firmware (booting
-from ARC is not supported).
-Supported devices are a subset of the PC ones; currently
-this includes DECchip 2114x-based ethernet cards, S3 VGA cards,
-Sound Blaster 16-compatible audio, floppy drives, and ATA hard disks.
-.PP
-The system has to be booted via tftp.
-See
-.I booting (8)
-for details.
+This is a CPU kernel that runs on the Mikrotik Routerboard RB450G,
+which contains a MIPS 24K CPU
+(the Atheros 7161), which implements the MIPS32R2 architecture.
+It has 256MB of RAM and a serial port.
+The CPU lacks the 64-bit instructions of previous MIPS systems (e.g.,
+SGI Challenge and Carrera).
+There is no hardware floating-point, so we emulate the instructions.
+Only the first of the five Gigabit Ethernet ports is currently supported;
+the other four are connected via an internal switch.
+To avoid a bug in the CPU (erratum 48), we run the caches write-through,
+rather than write-back, and compiled
+.CW /mips
+with a
+.I vl
+modified to emit enough NOPs to avoid three consecutive store instructions
+(see
+.CW /sys/src/cmd/vl/noop.c
+to enable this).
+.
 .SH
 The PowerPC operating system
 .PP
@@ -316,28 +254,77 @@ The kernel has also been ported to the Motorola MTX embedded motherboard;
 that port is included in the distribution.
 The port only works with a 604e processor (the 603e is substantially different)
 and at present only a single CPU is permitted.
+.PP
+We have ports to the Xilinx Virtex 4 and 5 FPGAs
+which use PowerPC 405 and 440 processors, respectively.
+.
 .SH
-The Compaq iPAQ operating system
+The Marvell Kirkwood operating system
 .PP
-Plan 9 was ported to Compaq's iPAQ Pocket PC,
-which uses the StrongArm SA1 processor.
-The model we have is a 3630; neighboring models also work.
-The kernel can drive a PCMCIA sleeve with a WaveLAN card, but no other PCMCIA
-devices have been ported yet.
+This is an ARM kernel for the ARM926EJ-S processor
+and it emulates ARM 7500 floating-point and
+CAS (compare-and-swap) instructions.
+It is known to run on the Sheevaplug, Guruplug, Dreamplug
+and Openrd-client boards.
+It is derived from a port of native Inferno to the Sheevaplug
+by Salva Peir\f(Jpó\fP and Mechiel Lukkien.
+There are many features of the Kirkwood system-on-a-chip
+that it does not exploit.
+There are currently drivers for up to two
+Gigabit Ethernet interfaces,
+USB and the console serial port;
+we hope to add crypto acceleration, and a video driver for the Openrd-client.
+.SH
+The Marvell PXA168 operating system
 .PP
-The iPAQ runs
-.CW rio
-with a small keyboard application that allows Palm-style handwriting
-input as well as typing with the stylus on a miniature keyboard.
+This is an ARM kernel for the ARM-v5-architecture processor in the
+Marvell PXA168 system-on-a-chip
+and it emulates ARM 7500 floating-point and
+CAS (compare-and-swap) instructions.
+It is known to run on the Guruplug Display.
+There are many features of the system-on-a-chip
+that it does not exploit.
+There are currently drivers for
+a Fast Ethernet interface,
+and the console serial port;
+we hope to add crypto acceleration, and a video driver.
+.SH
+The TI OMAP35 operating system
 .PP
-Fco. J. Ballesteros
-.CW nemo@plan9.escet.urjc.es ) (
-added support for hibernation, but we haven't been able to
-get that to work again in the new kernel; the code is there, however,
-for volunteers to play with.
-See the file
-.CW /sys/src/9/bitsy/Booting101
-for information about installing Plan 9 on the iPAQ.
+This is an ARM kernel for the Cortex-A8 processor
+and it emulates ARM 7500 floating-point and
+CAS (compare-and-swap) instructions.
+It is known to run on the IGEPv2 board and the Gumstix Overo,
+and might eventually run on the Beagleboard, once USB is working.
+There are many features of the OMAP system-on-a-chip that it does not exploit.
+Initially, there are drivers for the SMSC 9221 100Mb/s Ethernet
+interface in the IGEPv2 and Overo,
+and the console serial port;
+we hope to add USB, flash memory and video drivers.
+.SH
+The Nvidia Tegra2 operating system
+.PP
+This is an ARM kernel for the dual Cortex-A9 processors
+in the Nvidia Tegra2 system-on-a-chip
+and it emulates ARM 7500 floating-point and
+CAS (compare-and-swap) instructions, but
+the hardware includes VFP3 floating-point.
+It runs on the Compulab Trimslice.
+There are many features of the system-on-a-chip that it does not exploit.
+Initially, there are drivers for the Ethernet interface
+and the console serial port;
+we hope to add USB, flash memory and video drivers.
+.SH
+The Broadcom 2835 operating system
+.PP
+This consists of terminal and CPU kernels for the ARM1176 processor
+in the Broadcom 2835 system-on-a-chip.
+The hardware includes VFP2 floating-point.
+It runs on the Raspberry Pi Models A and B.
+Since it relies upon USB Ethernet and the Plan 9 USB Ethernet
+driver doesn't implement multicast, this port can't speak IPv6.
+.
+.ig
 .SH
 The file server
 .PP
@@ -445,3 +432,4 @@ learn about the WORM software.
 Again, see
 .I fsconfig (8)
 for details.
+..

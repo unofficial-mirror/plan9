@@ -114,8 +114,10 @@ struct Cdimg {
 	uvlong bootcatptr;
 	ulong bootcatblock;
 	uvlong bootimageptr;
+	Direc *loaderdirec;
 	Direc *bootdirec;
 	char *bootimage;
+	char *loader;
 	
 	Biobuf brd;
 	Biobuf bwr;
@@ -133,6 +135,8 @@ enum {	/* Cdimg->flags, Cdinfo->flags */
 	CDnew = 1<<4,
 	CDdump = 1<<5,
 	CDbootable = 1<<6,
+	CDbootnoemu = 1<<7,
+	CDpbs= 1<<8,
 };
 
 typedef struct Tx Tx;
@@ -156,11 +160,8 @@ struct Cdinfo {
 	char *preparer;
 	char *application;
 	char *bootimage;
+	char *loader;
 };
-
-//enum {
-//	Blocklen = 2048,		/* unused */
-//};
 
 /*
  * This is a doubly binary tree.
@@ -293,7 +294,9 @@ void Cputbootvol(Cdimg*);
 void Cputbootcat(Cdimg*);
 void Cupdatebootvol(Cdimg*);
 void Cupdatebootcat(Cdimg*);
+void Cfillpbs(Cdimg*);
 void findbootimage(Cdimg*, Direc*);
+void findloader(Cdimg*, Direc*);
 
 /* cdrdwr.c */
 Cdimg *createcd(char*, Cdinfo);
@@ -303,12 +306,12 @@ ulong big(void*, int);
 ulong little(void*, int);
 int parsedir(Cdimg*, Direc*, uchar*, int, char *(*)(uchar*, int));
 void setroot(Cdimg*, ulong, ulong, ulong);
-void setvolsize(Cdimg*, ulong, ulong);
+void setvolsize(Cdimg*, uvlong, ulong);
 void setpathtable(Cdimg*, ulong, ulong, ulong, ulong);
 void Cputc(Cdimg*, int);
-void Cputnl(Cdimg*, ulong, int);
-void Cputnm(Cdimg*, ulong, int);
-void Cputn(Cdimg*, long, int);
+void Cputnl(Cdimg*, uvlong, int);
+void Cputnm(Cdimg*, uvlong, int);
+void Cputn(Cdimg*, uvlong, int);
 void Crepeat(Cdimg*, int, int);
 void Cputs(Cdimg*, char*, int);
 void Cwrite(Cdimg*, void*, int);

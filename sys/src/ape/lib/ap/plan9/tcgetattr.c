@@ -87,7 +87,7 @@ tcgetattr(int fd, struct termios *t)
 /* BUG: ignores optional actions */
 
 int
-tcsetattr(int fd, int optactions, const struct termios *t)
+tcsetattr(int fd, int, const struct termios *t)
 {
 	int n, i;
 	char buf[100];
@@ -144,6 +144,7 @@ tcsetpgrp(int fd, pid_t pgrpid)
 		_syserrno();
 		return -1;
 	}
+	return 0;
 }
 
 pid_t

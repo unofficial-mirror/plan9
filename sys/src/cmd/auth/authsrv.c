@@ -189,7 +189,7 @@ challengebox(Ticketreq *tr)
 	memset(buf, 0, sizeof(buf));
 	buf[0] = AuthOK;
 	chal = lnrand(MAXNETCHAL);
-	sprint(buf+1, "%lud", chal);
+	snprint(buf+1, sizeof buf - 1, "%lud", chal);
 	if(write(1, buf, NETCHLEN+1) < 0)
 		exits(0);
 	if(readn(0, buf, NETCHLEN) < 0)
@@ -508,7 +508,7 @@ vnc(Ticketreq *tr)
 	 */
 	randombytes(chal+6, VNCchallen);
 	chal[0] = AuthOKvar;
-	sprint((char*)chal+1, "%-5d", VNCchallen);
+	snprint((char*)chal+1, sizeof chal - 1, "%-5d", VNCchallen);
 	if(write(1, chal, sizeof(chal)) != sizeof(chal))
 		return;
 
@@ -641,7 +641,7 @@ mschap(Ticketreq *tr)
 	uchar hash2[MShashlen];
 	uchar resp[MSresplen];
 	OMSchapreply reply;
-	int lmok, ntok;
+	int dupe, lmok, ntok;
 	DigestState *s;
 	uchar digest[SHA1dlen];
 
@@ -664,24 +664,36 @@ mschap(Ticketreq *tr)
 	secret = findsecret(KEYDB, tr->uid, sbuf);
 	hkey = findkey(KEYDB, tr->hostid, hbuf);
 	if(hkey == 0 || secret == 0){
-		replyerror("mschap-fail bad response %s", raddr);
+		replyerror("mschap-fail bad response %s/%s(%s)",
+			tr->uid, tr->hostid, raddr);
 		logfail(tr->uid);
 		exits(0);
 	}
 
-	/*
-	 *  check for match on LM algorithm
-	 */
 	lmhash(hash, secret);
 	mschalresp(resp, hash, chal);
 	lmok = memcmp(resp, reply.LMresp, MSresplen) == 0;
-
 	nthash(hash, secret);
 	mschalresp(resp, hash, chal);
 	ntok = memcmp(resp, reply.NTresp, MSresplen) == 0;
+	dupe = memcmp(reply.LMresp, reply.NTresp, MSresplen) == 0;
 
-	if(!ntok){
-		replyerror("mschap-fail bad response %s %ux", raddr, (lmok<<1)|ntok);
+	/*
+	 * It is valid to send the same response in both the LM and NTLM 
+	 * fields provided one of them is correct, if neither matches,
+	 * or the two fields are different and either fails to match, 
+	 * the whole sha-bang fails.
+	 *
+	 * This is an improvement in security as it allows clients who
+	 * wish to do NTLM auth (which is insecure) not to send
+	 * LM tokens (which is very insecure).
+	 *
+	 * Windows servers supports clients doing this also though
+	 * windows clients don't seem to use the feature.
+	 */
+	if((!ntok && !lmok) || ((!ntok || !lmok) && !dupe)){
+		replyerror("mschap-fail bad response %s/%s(%s) %d,%d,%d",
+			tr->uid, tr->hostid, raddr, dupe, lmok, ntok);
 		logfail(tr->uid);
 		exits(0);
 	}
@@ -695,7 +707,8 @@ mschap(Ticketreq *tr)
 		exits(0);
 
 	if(debug)
-		syslog(0, AUTHLOG, "mschap-ok %s %s %ux", tr->uid, raddr, (lmok<<1)|ntok);
+		replyerror("mschap-ok %s/%s(%s) %ux",
+			tr->uid, tr->hostid, raddr);
 
 	nthash(hash, secret);
 	md4(hash, 16, hash2, 0);
@@ -796,8 +809,10 @@ speaksfor(char *speaker, char *user)
 	snprint(notuser, sizeof notuser, "!%s", user);
 	for(ntp = tp; ntp; ntp = ntp->entry)
 		if(strcmp(ntp->attr, "uid") == 0){
-			if(strcmp(ntp->val, notuser) == 0)
+			if(strcmp(ntp->val, notuser) == 0){
+				ok = 0;
 				break;
+			}
 			if(*ntp->val == '*' || strcmp(ntp->val, user) == 0)
 				ok = 1;
 		}

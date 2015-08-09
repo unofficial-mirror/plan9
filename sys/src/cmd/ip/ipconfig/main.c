@@ -620,7 +620,7 @@ doadd(int retry)
 	/* run dhcp if we need something */
 	if(dodhcp){
 		mkclientid();
-		for(tries = 0; tries < 6; tries++){
+		for(tries = 0; tries < 30; tries++){
 			dhcpquery(!noconfig, Sselecting);
 			if(conf.state == Sbound)
 				break;
@@ -974,7 +974,7 @@ dhcpwatch(int needconfig)
 		if(conf.lease > 0){
 			/*
 			 * during boot, the starttime can be bogus so avoid
-			 * spurious ipinconfig's
+			 * spurious ipunconfig's
 			 */
 			t = time(0) - conf.starttime;
 			if(t > (3*secs)/2)
@@ -1143,16 +1143,21 @@ dhcprecv(void)
 	uchar buf[8000], vopts[256], taddr[IPaddrlen];
 	Bootp *bp;
 
+	memset(buf, 0, sizeof buf);
 	alarm(1000);
 	n = read(conf.fd, buf, sizeof buf);
 	alarm(0);
 
 	if(n < 0){
-		errstr(err, sizeof err);
+		rerrstr(err, sizeof err);
 		if(strstr(err, "interrupt") == nil)
 			warning("dhcprecv: bad read: %s", err);
 		else
 			DEBUG("dhcprecv: read timed out");
+		return;
+	}
+	if(n == 0){
+		warning("dhcprecv: zero-length packet read");
 		return;
 	}
 
@@ -1607,11 +1612,12 @@ parsebootp(uchar *p, int n)
 
 	bp = (Bootp*)p;
 	if(n < bp->optmagic - p) {
-		warning("parsebootp: short bootp packet");
+		warning("parsebootp: short bootp packet; with options, "
+			"need %d bytes, got %d", bp->optmagic - p, n);
 		return nil;
 	}
 
-	if(conf.xid != nhgetl(bp->xid))
+	if(conf.xid != nhgetl(bp->xid))		/* not meant for us */
 		return nil;
 
 	if(bp->op != Bootreply) {

@@ -4,7 +4,7 @@ aoe \- ATA-over-Ethernet (AoE) interface
 .SH SYNOPSIS
 .nf
 .B bind -a #æ /dev
-
+.sp 0.3v
 .B /dev/aoe/ctl
 .B /dev/aoe/log
 .BI /dev/aoe/ shelf . slot /config
@@ -141,7 +141,7 @@ Number of consecutive lost jumbograms.
 .TP
 .BI if "n datamtu"
 Incorrect and unused.
-.SS Shelf-and-slot subdirectories
+.SS "Target subdirectories"
 Once configured, each AoE target is accessed via files in the directory named
 for its shelf and slot.  For example, shelf 42, slot 0 would be
 accessed through the path
@@ -154,7 +154,7 @@ The
 file contains the target's AoE configuration string.  Writing to this file
 sets the targets configuration string.
 .PP
-Reading a shelf and slot's
+Reading a target's
 .B ctl
 file returns a list of colon-separated lines
 with the following keywords and values:
@@ -174,7 +174,7 @@ Number of outstanding AoE frames.
 Maximum number of outstanding frames allowed.
 .TP
 .B nframes
-Maximum number of outstand frames.
+Maximum number of outstanding frames.
 .I Nframes
 is greater than
 .I nmaxout
@@ -209,10 +209,43 @@ they are being used.
 .I Maxbcount
 should be consulted for this purpose.
 .PP
+Writing to the
+.B ctl
+file, the following commands may be issued:
+.TF identify
+.PD
+.TP
+.B failio
+fail outstanding i/o.
+.TP
+.B identify
+send an ata
+.L "identify device"
+command to the target.
+.TP
+.BI maxbno " n"
+set the maximum number of block sent per
+packet.
+.TP
+.BI mtu  " n"
+set the maximum number of bytes (including
+header) sent per packet.
+.TP
+.B nofail
+never fail this target.  This is useful if your
+root device is on this target.
+.TP
+.BI setsize " n"
+with no arguments, reset the device size to
+the size claimed.  Otherwise, assume the
+device is the given size.
+.PP
 The
 .B data
-file may be read or written like a normal file.  Reads and
-writes to this file are sent as AoE commands to the target.
+file may be read or written like a normal file
+except that reads and writes to this file are converted to
+AoE commands to the target, so transfers should be 512 or 1024 bytes long
+(or a larger multiple of 512 iff jumbo packets are in use).
 The size of this file is the usable size of the target.
 .PP
 The
@@ -265,13 +298,14 @@ Unused.
 .SH SOURCE
 .B /sys/src/9/port/devaoe.c
 .SH SEE ALSO
-.\" .IR cec (1),
-.\" .IR vblade (1),
+.\" .IR cec (8),
+.\" .IR vblade (8),
 .IR sd (3),
 .IR sdaoe (3),
+.IR aoesrv (8),
 .IR snoopy (8)
 .br
-.BR http://www.coraid.com/documents/AoEr10.txt
+.BR http://support.coraid.com/documents/AoEr11.txt
 .br
 Van Jacobson and Michael J. Karels,
 .IR "``Congestion Avoidance and Control''" ,
@@ -281,3 +315,7 @@ Proceedings of the Sigcomm '88 Symposium in Stanford, CA, August, 1988.
 There is no
 .B raw
 file for executing arbitrary commands.
+.PP
+This is a fairly primitive interface;
+.IR sdaoe (3)
+is usually more suitable.

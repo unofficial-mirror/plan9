@@ -99,7 +99,7 @@ commands.
 .BI -m machine
 Assume instructions are for the given CPU type
 (any standard architecture name, such as
-.B alpha
+.B amd64
 or
 .BR 386 ,
 plus
@@ -358,7 +358,7 @@ print it,
 and advance (a local copy of) dot
 by the number of bytes fetched.
 The total number of bytes in a format becomes the
-.IR current increment .
+.IR "current increment" .
 .ta 2.5n .5i
 .RS
 .TP

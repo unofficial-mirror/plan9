@@ -5,6 +5,7 @@
  *	no luns
  *	and incomplete in many other ways
  */
+#include <disk.h>
 #include "scsireq.h"
 
 enum {
@@ -154,6 +155,13 @@ SRread(ScsiReq *rp, void *buf, long nbytes)
 	long n;
 
 	if((nbytes % rp->lbsize) || nbytes > maxiosize){
+		if(debug)
+			if (nbytes % rp->lbsize)
+				fprint(2, "scuzz: i/o size %ld %% %ld != 0\n",
+					nbytes, rp->lbsize);
+			else
+				fprint(2, "scuzz: i/o size %ld > %ld\n",
+					nbytes, maxiosize);
 		rp->status = Status_BADARG;
 		return -1;
 	}
@@ -215,6 +223,13 @@ SRwrite(ScsiReq *rp, void *buf, long nbytes)
 	long n;
 
 	if((nbytes % rp->lbsize) || nbytes > maxiosize){
+		if(debug)
+			if (nbytes % rp->lbsize)
+				fprint(2, "scuzz: i/o size %ld %% %ld != 0\n",
+					nbytes, rp->lbsize);
+			else
+				fprint(2, "scuzz: i/o size %ld > %ld\n",
+					nbytes, maxiosize);
 		rp->status = Status_BADARG;
 		return -1;
 	}
@@ -268,6 +283,8 @@ SRseek(ScsiReq *rp, long offset, int type)
 		/*FALLTHROUGH*/
 
 	default:
+		if(debug)
+			fprint(2, "scuzz: seek failed\n");
 		rp->status = Status_BADARG;
 		return -1;
 	}
@@ -545,6 +562,8 @@ int
 SRclose(ScsiReq *rp)
 {
 	if((rp->flags & Fopen) == 0){
+		if(debug)
+			fprint(2, "scuzz: closing closed file\n");
 		rp->status = Status_BADARG;
 		return -1;
 	}
@@ -553,16 +572,37 @@ SRclose(ScsiReq *rp)
 	return 0;
 }
 
+uint
+mkascq(ScsiReq *r)
+{
+	uchar *u;
+
+	u = r->sense;
+	return u[2]<<16 | u[12]<<8 | u[13];
+}
+
 static int
 dirdevopen(ScsiReq *rp)
 {
 	ulong blocks;
 	uchar data[8];
 
-	if(SRstart(rp, 1) == -1 || SRrcapacity(rp, data) == -1)
+	if(SRstart(rp, 1) == -1)
+		/*
+		 * it's okay for removable media to say
+		 * "check condition: medium not present".
+		 * 3a is "medium not present".
+		 */
+		return rp->inquiry[1] & 0x80 && (mkascq(rp) >> 8) == 0x023a?
+			0: -1;
+	memset(data, 0, sizeof data);
+	if(SRrcapacity(rp, data) == -1)
 		return -1;
 	rp->lbsize = GETBELONG(data+4);
 	blocks =     GETBELONG(data);
+	if(debug)
+		fprint(2, "scuzz: dirdevopen: logical block size %lud, "
+			"# blocks %lud\n", rp->lbsize, blocks);
 	/* some newer dev's don't support 6-byte commands */
 	if(blocks > Max24off && !force6bytecmds)
 		rp->flags |= Frw10;
@@ -579,6 +619,9 @@ seqdevopen(ScsiReq *rp)
 	if(limits[1] == 0 && limits[2] == limits[4] && limits[3] == limits[5]){
 		rp->flags |= Fbfixed;
 		rp->lbsize = limits[4]<<8 | limits[5];
+		if(debug)
+			fprint(2, "scuzz: seqdevopen: logical block size %lud\n",
+				rp->lbsize);
 		return 0;
 	}
 	/*
@@ -636,6 +679,9 @@ wormdevopen(ScsiReq *rp)
 	else
 		/* last 3 bytes of block 0 descriptor */
 		rp->lbsize = GETBE24(list+13);
+	if(debug)
+		fprint(2, "scuzz: wormdevopen: logical block size %lud\n",
+			rp->lbsize);
 	return status;
 }
 
@@ -645,6 +691,8 @@ SRopenraw(ScsiReq *rp, char *unit)
 	char name[128];
 
 	if(rp->flags & Fopen){
+		if(debug)
+			fprint(2, "scuzz: opening open file\n");
 		rp->status = Status_BADARG;
 		return -1;
 	}

@@ -3,6 +3,9 @@
 #define listen  pm_listen
 #define sleep	ksleep
 #define wakeup	kwakeup
+#ifdef strtod
+#undef strtod
+#endif
 #define strtod		fmtstrtod
 
 /* conflicts on some os's */
@@ -14,6 +17,7 @@
 #define log2	liblog2
 #define log	liblog
 #define reboot	libreboot
+#define strtoll libstrtoll
 #undef timeradd
 #define timeradd	xtimeradd
 
@@ -26,7 +30,7 @@ typedef unsigned int	p9_ulong;
 typedef int		p9_long;
 typedef signed char	p9_schar;
 typedef unsigned short	p9_ushort;
-typedef unsigned short	Rune;
+typedef unsigned int	Rune;
 typedef unsigned int	p9_u32int;
 typedef p9_u32int mpdigit;
 
@@ -49,10 +53,12 @@ typedef p9_u32int mpdigit;
 
 enum
 {
-	UTFmax		= 3,		/* maximum bytes per rune */
+	UTFmax		= 4,		/* maximum bytes per rune */
 	Runesync	= 0x80,		/* cannot represent part of a UTF sequence (<) */
 	Runeself	= 0x80,		/* rune and UTF sequences are the same (<) */
-	Runeerror	= 0x80		/* decoding error in UTF */
+	Runeerror	= 0xFFFD,	/* decoding error in UTF */
+	Runemax		= 0x10FFFF,	/* 21-bit rune */
+	Runemask	= 0x1FFFFF,	/* bits used by runes (see grep) */
 };
 
 /*
@@ -121,7 +127,12 @@ extern	char*	utfrrune(char*, long);
 
 typedef struct Lock
 {
+#ifdef PTHREAD
+	int init;
+	pthread_mutex_t mutex;
+#else
 	long	key;
+#endif
 } Lock;
 
 typedef struct QLock
@@ -222,6 +233,10 @@ extern	Rune*	runeseprint(Rune*, Rune*, char*, ...);
 extern	Rune*	runevseprint(Rune*, Rune*, char*, va_list);
 extern	Rune*	runesmprint(char*, ...);
 extern	Rune*	runevsmprint(char*, va_list);
+
+extern       Rune*	runestrchr(Rune*, Rune);
+extern       long	runestrlen(Rune*);
+extern       Rune*	runestrstr(Rune*, Rune*);
 
 extern	int	fmtfdinit(Fmt*, int, char*, int);
 extern	int	fmtfdflush(Fmt*);

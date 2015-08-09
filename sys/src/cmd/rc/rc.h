@@ -1,29 +1,35 @@
 /*
- * Plan9 is defined for plan 9
- * V9 is defined for 9th edition
- * Sun is defined for sun-os
- * Please don't litter the code with ifdefs.  The three below (and one in
- * getflags) should be enough.
+ * Assume plan 9 by default; if Unix is defined, assume unix.
+ * Please don't litter the code with ifdefs.  The five below should be enough.
  */
-#define	Plan9
-#ifdef	Plan9
+
+#ifndef Unix
+/* plan 9 */
 #include <u.h>
 #include <libc.h>
+
 #define	NSIG	32
 #define	SIGINT	2
 #define	SIGQUIT	3
+
+#define fcntl(fd, op, arg)	/* unix compatibility */
+#define F_SETFD
+#define FD_CLOEXEC
+#else
+#include "unix.h"
 #endif
-#ifdef	V9
-#include <signal.h>
-#include <libc.h>
+
+#ifndef ERRMAX
+#define ERRMAX 128
 #endif
-#ifdef Sun
-#include <signal.h>
-#endif
+
 #define	YYMAXDEPTH	500
+#ifndef YYPREFIX
 #ifndef PAREN
 #include "x.tab.h"
 #endif
+#endif
+
 typedef struct tree tree;
 typedef struct word word;
 typedef struct io io;
@@ -34,8 +40,10 @@ typedef struct redir redir;
 typedef struct thread thread;
 typedef struct builtin builtin;
 
+#ifndef Unix
 #pragma incomplete word
 #pragma incomplete io
+#endif
 
 struct tree{
 	int	type;
@@ -54,6 +62,7 @@ tree *mung3(tree*, tree*, tree*, tree*), *epimung(tree*, tree*);
 tree *simplemung(tree*), *heredoc(tree*);
 void freetree(tree*);
 tree *cmdtree;
+
 /*
  * The first word of any code vector is a reference count.
  * Always create a new reference to a code vector by calling codecopy(.).
@@ -68,9 +77,9 @@ union code{
 char *promptstr;
 int doprompt;
 
-#define	NTOK	8192
+#define	NTOK	8192		/* maximum bytes in a word (token) */
 
-char tok[NTOK];
+char tok[NTOK + UTFmax];
 
 #define	APPEND	1
 #define	WRITE	2
@@ -93,15 +102,13 @@ var *vlook(char*), *gvlook(char*), *newvar(char*, var*);
 
 #define	NVAR	521
 
-var *gvar[NVAR];				/* hash for globals */
+var *gvar[NVAR];		/* hash for globals */
 
 #define	new(type)	((type *)emalloc(sizeof(type)))
 
 void *emalloc(long);
 void *Malloc(ulong);
 void efree(void *);
-
-#define	NOFILE	128		/* should come from <param.h> */
 
 struct here{
 	tree	*tag;
@@ -118,14 +125,7 @@ int mypid;
  *	GLOB[...] matches anything in the brackets
  *	GLOBGLOB matches GLOB
  */
-#define	GLOB	((char)0x01)
-/*
- * onebyte(c), twobyte(c), threebyte(c)
- * Is c the first character of a one- two- or three-byte utf sequence?
- */
-#define	onebyte(c)	((c&0x80)==0x00)
-#define	twobyte(c)	((c&0xe0)==0xc0)
-#define	threebyte(c)	((c&0xf0)==0xe0)
+#define	GLOB	'\001'
 
 char **argp;
 char **args;
@@ -139,7 +139,8 @@ int doprompt;		/* is it time for a prompt? */
  */
 #define	PRD	0
 #define	PWR	1
-char Rcmain[], Fdprefix[];
+
+char *Rcmain, *Fdprefix;
 /*
  * How many dot commands have we executed?
  * Used to ensure that -v flag doesn't print rcmain.

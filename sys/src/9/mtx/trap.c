@@ -111,7 +111,7 @@ intrenable(int irq, void (*f)(Ureg*, void*), void* a, int tbdf, char *name)
 	}
 	if(vctl[vno]){
 		if(vctl[vno]->isr != v->isr || vctl[vno]->eoi != v->eoi)
-			panic("intrenable: handler: %s %s %luX %luX %luX %luX\n",
+			panic("intrenable: handler: %s %s %#p %#p %#p %#p",
 				vctl[vno]->name, v->name,
 				vctl[vno]->isr, v->isr, vctl[vno]->eoi, v->eoi);
 		v->next = vctl[vno];
@@ -232,7 +232,7 @@ trap(Ureg *ureg)
 		break;
 	case CSYSCALL:
 		if(!user)
-			panic("syscall in kernel: srr1 0x%4.4luX\n", ureg->srr1);
+			panic("syscall in kernel: srr1 0x%4.4luX", ureg->srr1);
 		syscall(ureg);
 		return;		/* syscall() calls notify itself, don't do it again */
 	case CFPU:
@@ -292,7 +292,7 @@ trap(Ureg *ureg)
 		dumpregs(ureg);
 		if(ecode < nelem(excname))
 			panic("%s", excname[ecode]);
-		panic("unknown trap/intr: %d\n", ecode);
+		panic("unknown trap/intr: %d", ecode);
 	}
 
 	/* restoreureg must execute at high IPL */
@@ -522,15 +522,32 @@ kprocchild(Proc *p, void (*func)(void*), void *arg)
 }
 
 /*
- * called in sysfile.c
+ * called in syscallfmt.c, sysfile.c, sysproc.c
  */
 void
-evenaddr(ulong addr)
+validalign(uintptr addr, unsigned align)
 {
-	if(addr & 3){
-		postnote(up, 1, "sys: odd address", NDebug);
-		error(Ebadarg);
-	}
+	/*
+	 * Plan 9 is a 32-bit O/S, and the hardware it runs on
+	 * does not usually have instructions which move 64-bit
+	 * quantities directly, synthesizing the operations
+	 * with 32-bit move instructions. Therefore, the compiler
+	 * (and hardware) usually only enforce 32-bit alignment,
+	 * if at all.
+	 *
+	 * Take this out if the architecture warrants it.
+	 */
+	if(align == sizeof(vlong))
+		align = sizeof(long);
+
+	/*
+	 * Check align is a power of 2, then addr alignment.
+	 */
+	if((align != 0 && !(align & (align-1))) && !(addr & (align-1)))
+		return;
+	postnote(up, 1, "sys: odd address", NDebug);
+	error(Ebadarg);
+	/*NOTREACHED*/
 }
 
 long
@@ -640,7 +657,8 @@ syscall(Ureg* ureg)
 	ret = -1;
 	if(!waserror()){
 		if(scallnr >= nsyscall || systab[scallnr] == nil){
-			pprint("bad sys call number %d pc %lux\n", scallnr, ureg->pc);
+			pprint("bad sys call number %lud pc %lux\n",
+				scallnr, ureg->pc);
 			postnote(up, 1, "sys: bad sys call", NDebug);
 			error(Ebadarg);
 		}

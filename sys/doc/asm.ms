@@ -10,11 +10,11 @@ rob@plan9.bell-labs.com
 .SH
 Machines
 .PP
-There is an assembler for each of the MIPS, SPARC, Intel 386,
-Intel 960, AMD 29000, Motorola 68020 and 68000, Motorola Power PC,
-AMD64, DEC Alpha, and Acorn ARM.
+There is an assembler for each of the MIPS, SPARC, Intel 386, AMD64,
+Power PC, and ARM.
 The 68020 assembler,
 .CW 2a ,
+(no longer distributed)
 is the oldest and in many ways the prototype.
 The assemblers are really just variations of a single program:
 they share many properties such as left-to-right assignment order for
@@ -476,13 +476,6 @@ notation, not Motorola's) see the file
 Despite its name, this file contains an enumeration of the
 instructions that appear in the intermediate files generated
 by the compiler, which correspond exactly to lines of assembly language.
-.PP
-The MC68000 assembler,
-.CW 1a ,
-is essentially the same, honoring the appropriate subset of the instructions
-and addressing modes.
-The definitions of these are, nonetheless, part of
-.CW 2.out.h .
 .SH
 Laying down instructions
 .PP
@@ -930,6 +923,7 @@ which allows 64-bit literals.
 The external registers in Plan 9's C are allocated from
 .CW R15
 down.
+.PP
 There are many new instructions, including the MMX and XMM media instructions,
 and conditional move instructions.
 MMX registers are
@@ -972,13 +966,18 @@ the registers might be 64 bits.
 The assembler often accepts the handbook's name to ease conversion
 of existing code (but remember that the operand order is uniformly
 source then destination).
+.PP
 C's
-.CW "long long"
+.CW long
+.CW long
 type is 64 bits, but passed and returned by value, not by reference.
 More notably, C pointer values are 64 bits, and thus
-.CW "long long"
+.CW long
+.CW long
 and
-.CW "unsigned long long"
+.CW unsigned
+.CW long
+.CW long
 are the only integer types wide enough to hold a pointer value.
 The C compiler and library use the XMM floating-point instructions, not
 the old 387 ones, although the latter are implemented by assembler and loader.
@@ -995,66 +994,7 @@ All parameters less than 8 bytes in length have 8 byte slots reserved on the sta
 to preserve alignment and simplify variable-length argument list access,
 including the first parameter when passed in a register,
 even though bytes 4 to 7 are not initialized.
-.SH
-Alpha
-.PP
-On the Alpha, all registers are 64 bits.  The architecture handles 32-bit values
-by giving them a canonical format (sign extension in the case of integer registers).
-Registers are numbered
-.CW R0
-through
-.CW R31 .
-.CW R0
-holds the return value from subroutines, and also the first parameter.
-.CW R30
-is the stack pointer,
-.CW R29
-is the static base,
-.CW R26
-is the link register, and
-.CW R27
-and
-.CW R28
-are linker temporaries.
-.PP
-Floating point registers are numbered
-.CW F0
-to
-.CW F31 .
-.CW F28
-contains
-.CW 0.5 ,
-.CW F29
-contains
-.CW 1.0 ,
-and
-.CW F30
-contains
-.CW 2.0 .
-.CW F31
-is always
-.CW 0.0
-on the Alpha.
-.PP
-The extension character for
-.CW MOV
-follows DEC's notation:
-.CW B
-for byte (8 bits),
-.CW W
-for word (16 bits),
-.CW L
-for long (32 bits),
-and
-.CW Q
-for quadword (64 bits).
-Byte and ``word'' loads and stores may be made unsigned
-by appending a
-.CW U .
-.CW S
-and
-.CW T
-refer to IEEE floating point single precision (32 bits) and double precision (64 bits), respectively.
+.
 .SH
 Power PC
 .PP
@@ -1300,6 +1240,11 @@ and the static base register is
 .CW R0
 is the return register and also the register holding
 the first argument to a subroutine.
+The external registers in Plan 9's C are allocated from
+.CW R10
+down.
+.CW R11
+is used by the loader as a temporary register.
 The assembler supports the
 .CW CPSR
 and
@@ -1385,7 +1330,8 @@ and so on, as in the ARM manual, with synonyms
 and
 .CW .LO
 (for
-.CW .CC ), for example
+.CW .CC ),
+for example
 .CW ADD.NE .
 Arithmetic
 and logical instructions
@@ -1423,8 +1369,3 @@ Conversion instructions are also specified by moves:
 .CW MOVFD ,
 and
 .CW MOVDF .
-.SH
-AMD 29000
-.PP
-For details about this assembly language, which was built for the AMD 29240,
-look at the sources or examine compiler output.

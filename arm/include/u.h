@@ -9,7 +9,7 @@ typedef	long long	vlong;
 typedef	unsigned long long uvlong;
 typedef unsigned long	uintptr;
 typedef unsigned long	usize;
-typedef	ushort		Rune;
+typedef	uint		Rune;
 typedef 	union FPdbleword FPdbleword;
 typedef long	jmp_buf[2];
 #define	JMPBUFSP	0
@@ -21,23 +21,23 @@ typedef unsigned short u16int;
 typedef unsigned int	u32int;
 typedef unsigned long long u64int;
 
-/* FCR */
-#define	FPINEX	(1<<20)
-#define	FPUNFL	(1<<19)
-#define	FPOVFL	(1<<18)
-#define	FPZDIV	(1<<17)
-#define	FPINVAL	(1<<16)
-#define	FPRNR	(0<<0)
-#define	FPRZ	(1<<0)
-#define	FPRPINF	(2<<0)
-#define	FPRNINF	(3<<0)
-#define	FPRMASK	(3<<0)
+/* VFP FCR */
+#define	FPINEX	(1<<12)			/* trap enables for exceptions */
+#define	FPUNFL	(1<<11)
+#define	FPOVFL	(1<<10)
+#define	FPZDIV	(1<<9)
+#define	FPINVAL	(1<<8)
+#define	FPRNR	(0<<22)
+#define	FPRZ	(1<<22)
+#define	FPRPINF	(2<<22)
+#define	FPRNINF	(3<<22)
+#define	FPRMASK	(3<<22)
 #define	FPPEXT	0
 #define	FPPSGL	0
 #define	FPPDBL	0
 #define	FPPMASK	0
 /* FSR */
-#define	FPAINEX	(1<<4)
+#define	FPAINEX	(1<<4)			/* accrued exceptions */
 #define	FPAUNFL	(1<<3)
 #define	FPAOVFL	(1<<2)
 #define	FPAZDIV	(1<<1)

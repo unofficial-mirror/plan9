@@ -2,11 +2,12 @@
 
 #include <u.h>
 #include <libc.h>
-#define 	stderr	2
 
-#define RDNETIMEOUT	60000
-#define WRNETIMEOUT	60000
-
+enum {
+	stderr = 2,
+	RDNETIMEOUT = 30*60*1000,
+	WRNETIMEOUT = RDNETIMEOUT,
+};
 #else
 
 /* not for plan 9 */
@@ -67,10 +68,10 @@ error(int level, char *s1, ...)
 		fprint(stderr, "%.15s ", &(chartime[4]));
 	}
 	va_start(ap, s1);
-	while(args[argno++] = va_arg(ap, char*));
+	while(args[argno++] = va_arg(ap, char*))
+		;
 	va_end(ap);
 	fprint(stderr, s1, *args);
-	return;
 }
 
 int
@@ -95,8 +96,7 @@ error(int level, char *s1, ...)
 		chartime = ctime(&thetime);
 		fprintf(stderr, "%.15s ", &(chartime[4]));
 	}
-	fprintf(stderr, s1, (&s1+1));
-	return;
+	fprintf(stderr, s1, &s1 + 1);
 }
 
 void
@@ -138,8 +138,7 @@ char jobbuf[RDSIZE];
 int
 pass(int inpfd, int outfd, int bsize)
 {
-	int bcnt = 0;
-	int rv = 0;
+	int rv, bcnt;
 
 	for(bcnt=bsize; bcnt > 0; bcnt -= rv) {
 		alarm(WRNETIMEOUT);	/* to break hanging */
@@ -186,27 +185,19 @@ tempfile(void)
 
 	sprint(tmpf, "/tmp/lp%d.%d", getpid(), tindx++);
 	if((tmpfd=create(tmpf,
-
 #ifdef plan9
-
-						ORDWR|OTRUNC,
-
+		ORDWR|OTRUNC,
 #endif
-
-												0666)) < 0) {
+	    0666)) < 0) {
 		error(0, "cannot create temp file %s\n", tmpf);
 		exits("cannot create temp file");
 	}
 	close(tmpfd);
 	if((tmpfd=open(tmpf, ORDWR
-
 #ifdef plan9
-
-						|ORCLOSE|OTRUNC
-
+		|ORCLOSE|OTRUNC
 #endif
-
-									)) < 0) {
+	    )) < 0) {
 		error(0, "cannot open temp file %s\n", tmpf);
 		exits("cannot open temp file");
 	}
@@ -225,7 +216,7 @@ recvACK(int netfd)
 		if (*jobbuf == '\0')
 			error(1, "read failed\n");
 		else
-			error(1, "received <0x%x> instead\n", *jobbuf);
+			error(1, "received <%#x> instead\n", (uchar)*jobbuf);
 		rv = 0;
 	} else rv = 1;
 	alarm(0);
@@ -235,20 +226,16 @@ recvACK(int netfd)
 void
 main(int argc, char *argv[])
 {
-	char *devdir;
-	int i, rv, netfd, bsize;
-	int datafd;
-
+	int i, rv, netfd, bsize, datafd;
 #ifndef plan9
-
 	void (*oldhandler)();
-
 #endif
 
 	/* make connection */
 	if (argc != 2) {
-		fprint(stderr, "usage: %s network!destination!service\n", argv[0]);
-		exits("incorrect number of arguments");
+		fprint(stderr, "usage: %s network!destination!service\n",
+			argv[0]);
+		exits("usage");
 	}
 
 	/* read options line from stdin into lnbuf */
@@ -259,16 +246,16 @@ main(int argc, char *argv[])
 	bsize = prereadfile(datafd);
 
 	/* network connection is opened after data is in to avoid timeout */
-	if ((netfd=dial(argv[1], 0, 0, 0)) < 0) {
-		fprint(stderr, "dialing %s\n", devdir);
-		perror("dial");
+	if ((netfd = dial(argv[1], 0, 0, 0)) < 0) {
+		fprint(stderr, "dialing ");
+		perror(argv[1]);
 		exits("can't dial");
 	}
 
 	/* write out the options we read above */
 	if (write(netfd, lnbuf, i) != i) {
 		error(0, "write error while sending options\n");
-		exits("write error while sending options");
+		exits("write error sending options");
 	}
 
 	/* send the size of the file to be sent */
@@ -277,7 +264,7 @@ main(int argc, char *argv[])
 	if ((rv=write(netfd, lnbuf, i)) != i) {
 		perror("write error while sending size");
 		error(0, "write returned %d\n", rv);
-		exits("write error while sending size");
+		exits("write error sending size");
 	}
 
 	if (seek(datafd, 0L, 0) < 0) {
@@ -287,13 +274,9 @@ main(int argc, char *argv[])
 	/* mirror performance in readfile() in lpdaemon */
 
 #ifdef plan9
-
 	atnotify(alarmhandler, 1);
-
 #else
-
 	oldhandler = signal(SIGALRM, alarmhandler);
-
 #endif
 
 	dbgstate = 1;
@@ -325,16 +308,11 @@ main(int argc, char *argv[])
 	dbgstate = 5;
 
 #ifdef plan9
-
 	atnotify(alarmhandler, 0);
 	/* close down network connections and go away */
 	exits("");
-
 #else
-
 	signal(SIGALRM, oldhandler);
 	exit(0);
-
 #endif
-
 }

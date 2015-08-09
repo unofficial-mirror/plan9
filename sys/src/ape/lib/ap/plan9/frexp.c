@@ -6,6 +6,7 @@
 #define	MASK	0x7ffL
 #define	SHIFT	20
 #define	BIAS	1022L
+#define	SIG	52
 
 typedef	union
 {
@@ -25,13 +26,18 @@ typedef	union
 double
 frexp(double d, int *ep)
 {
-	Cheat x;
+	Cheat x, a;
 
-	if(d == 0) {
-		*ep = 0;
-		return 0;
-	}
+	*ep = 0;
+	/* order matters: only isNaN can operate on NaN */
+	if(isNaN(d) || isInf(d, 0) || d == 0)
+		return d;
 	x.d = d;
+	a.d = fabs(d);
+	if((a.ms >> SHIFT) == 0){	/* normalize subnormal numbers */
+		x.d = (double)(1ULL<<SIG) * d;
+		*ep = -SIG;
+	}
 	*ep = ((x.ms >> SHIFT) & MASK) - BIAS;
 	x.ms &= ~(MASK << SHIFT);
 	x.ms |= BIAS << SHIFT;
@@ -67,6 +73,16 @@ modf(double d, double *ip)
 	Cheat x;
 	int e;
 
+	x.d = d;
+	e = (x.ms >> SHIFT) & MASK;
+	if(e == MASK){
+		*ip = d;
+		if(x.ls != 0 || (x.ms & 0xfffffL) != 0)	/* NaN */
+			return d;
+		/* ±Inf */
+		x.ms &= 0x80000000L;
+		return x.d;
+	}
 	if(d < 1) {
 		if(d < 0) {
 			f = modf(-d, ip);
@@ -76,8 +92,7 @@ modf(double d, double *ip)
 		*ip = 0;
 		return d;
 	}
-	x.d = d;
-	e = ((x.ms >> SHIFT) & MASK) - BIAS;
+	e -= BIAS;
 	if(e <= SHIFT+1) {
 		x.ms &= ~(0x1fffffL >> e);
 		x.ls = 0;

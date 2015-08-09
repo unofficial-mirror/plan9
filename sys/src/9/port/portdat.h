@@ -9,6 +9,7 @@ typedef struct Dirtab	Dirtab;
 typedef struct Edf	Edf;
 typedef struct Egrp	Egrp;
 typedef struct Evalue	Evalue;
+typedef struct Execvals	Execvals;
 typedef struct Fgrp	Fgrp;
 typedef struct DevConf	DevConf;
 typedef struct Image	Image;
@@ -47,6 +48,7 @@ typedef struct Uart	Uart;
 typedef struct Waitq	Waitq;
 typedef struct Walkqid	Walkqid;
 typedef struct Watchdog	Watchdog;
+typedef struct Watermark	Watermark;
 typedef int    Devgen(Chan*, char*, Dirtab*, int, int, Dir*);
 
 #pragma incomplete DevConf
@@ -57,6 +59,41 @@ typedef int    Devgen(Chan*, char*, Dirtab*, int, int, Dir*);
 #pragma incomplete Timers
 
 #include <fcall.h>
+
+#define HOWMANY(x, y)	(((x)+((y)-1))/(y))
+#define ROUNDUP(x, y)	(HOWMANY((x), (y))*(y))	/* ceiling */
+#define ROUNDDN(x, y)	(((x)/(y))*(y))		/* floor */
+#define	ROUND(s, sz)	(((s)+(sz-1))&~(sz-1))
+#define	PGROUND(s)	ROUNDUP(s, BY2PG)
+#define MIN(a, b)	((a) < (b)? (a): (b))
+#define MAX(a, b)	((a) > (b)? (a): (b))
+
+/*
+ * For multi-bit fields use FIELD(v, o, w) where 'v' is the value
+ * of the bit-field of width 'w' with LSb at bit offset 'o'.
+ */
+#define FIELD(v, o, w)	(((v) & ((1<<(w))-1))<<(o))
+
+#define FCLR(d, o, w)	((d) & ~(((1<<(w))-1)<<(o)))
+#define FEXT(d, o, w)	(((d)>>(o)) & ((1<<(w))-1))
+#define FINS(d, o, w, v) (FCLR((d), (o), (w))|FIELD((v), (o), (w)))
+#define FSET(d, o, w)	((d)|(((1<<(w))-1)<<(o)))
+
+#define FMASK(o, w)	(((1<<(w))-1)<<(o))
+
+/* let each port override any of these */
+#ifndef KMESGSIZE
+#define KMESGSIZE (16*1024)
+#endif
+#ifndef PCICONSSIZE
+#define PCICONSSIZE (16*1024)
+#endif
+#ifndef STAGESIZE
+#define STAGESIZE 64
+#endif
+#ifndef MAXBY2PG
+#define MAXBY2PG BY2PG		/* rounding for UTZERO in executables */
+#endif
 
 struct Ref
 {
@@ -76,6 +113,7 @@ struct QLock
 	Proc	*head;		/* next process waiting for object */
 	Proc	*tail;		/* last process waiting for object */
 	int	locked;		/* flag */
+	uintptr	qpc;		/* pc of the holder */
 };
 
 struct RWlock
@@ -145,6 +183,7 @@ struct Block
 	void	(*free)(Block*);
 	ushort	flag;
 	ushort	checksum;		/* IP checksum of complete packet (minus media header) */
+	ulong	magic;
 };
 
 #define BLEN(s)	((s)->wp - (s)->rp)
@@ -219,6 +258,9 @@ struct Dev
 	int	(*wstat)(Chan*, uchar*, int);
 	void	(*power)(int);	/* power mgt: power(1) => on, power (0) => off */
 	int	(*config)(int, char*, DevConf*);	/* returns nil on error */
+
+	/* not initialised */
+	int	attached;				/* debugging */
 };
 
 struct Dirtab
@@ -316,6 +358,7 @@ struct Page
 	ulong	pa;			/* Physical address in memory */
 	ulong	va;			/* Virtual address for user */
 	ulong	daddr;			/* Disc address on swap */
+	ulong	gen;			/* Generation counter for swap */
 	ushort	ref;			/* Reference count */
 	char	modref;			/* Simulated modify/reference bits */
 	char	color;			/* Cache coloring */
@@ -666,7 +709,7 @@ struct Proc
 
 	QLock	debug;		/* to access debugging elements of User */
 	Proc	*pdbg;		/* the debugging process */
-	ulong	procmode;	/* proc device file mode */
+	ulong	procmode;	/* proc device default file mode */
 	ulong	privatemem;	/* proc does not let anyone read mem */
 	int	hang;		/* hang at next exec for debug */
 	int	procctl;	/* Control for /proc debugging */
@@ -745,6 +788,7 @@ struct Proc
 	 *  machine specific MMU
 	 */
 	PMMU;
+	char	*syscalltrace;	/* syscall trace */
 };
 
 enum
@@ -753,7 +797,14 @@ enum
 	MAXCRYPT = 	127,
 	NUMSIZE	=	12,		/* size of formatted number */
 	MB =		(1024*1024),
-	READSTR =	1000,		/* temporary buffer size for device reads */
+	/* READSTR was 1000, which is way too small for usb's ctl file */
+	READSTR =	4000,		/* temporary buffer size for device reads */
+};
+
+struct Execvals {
+	uvlong	entry;
+	ulong	textsize;
+	ulong	datasize;
 };
 
 extern	Conf	conf;
@@ -769,11 +820,16 @@ extern	Queue*	kprintoq;
 extern 	Ref	noteidalloc;
 extern	int	nsyscall;
 extern	Palloc	palloc;
+	int	(*parseboothdr)(Chan *, ulong, Execvals *);
 extern	Queue*	serialoq;
 extern	char*	statename[];
 extern	Image	swapimage;
 extern	char*	sysname;
 extern	uint	qiomaxatomic;
+extern	char*	sysctab[];
+
+	Watchdog*watchdog;
+	int	watchdogon;
 
 enum
 {
@@ -849,7 +905,7 @@ struct PhysUart
 };
 
 enum {
-	Stagesize=	2048
+	Stagesize=	STAGESIZE
 };
 
 /*
@@ -914,6 +970,8 @@ struct Uart
 
 extern	Uart*	consuart;
 
+void (*lprint)(char *, int);
+
 /*
  *  performance timers, all units in perfticks
  */
@@ -936,6 +994,15 @@ struct Watchdog
 	void	(*stat)(char*, char*);	/* watchdog statistics */
 };
 
+struct Watermark
+{
+	int	highwater;
+	int	curr;
+	int	max;
+	int	hitmax;		/* count: how many times hit max? */
+	char	*name;
+};
+
 
 /* queue state bits,  Qmsg, Qcoalesce, and Qkick can be set in qopen */
 enum
@@ -945,45 +1012,13 @@ enum
 	Qmsg		= (1<<1),	/* message stream */
 	Qclosed		= (1<<2),	/* queue has been closed/hungup */
 	Qflow		= (1<<3),	/* producer flow controlled */
-	Qcoalesce	= (1<<4),	/* coallesce packets on read */
+	Qcoalesce	= (1<<4),	/* coalesce packets on read */
 	Qkick		= (1<<5),	/* always call the kick routine after qwrite */
 };
 
-
 #define DEVDOTDOT -1
 
-#pragma	varargck	argpos	print	1
-#pragma	varargck	argpos	snprint	3
-#pragma	varargck	argpos	sprint	2
-#pragma	varargck	argpos	fprint	2
-#pragma	varargck	argpos	panic	1
-
-#pragma	varargck	type	"lld"	vlong
-#pragma	varargck	type	"llx"	vlong
-#pragma	varargck	type	"lld"	uvlong
-#pragma	varargck	type	"llx"	uvlong
-#pragma	varargck	type	"lx"	void*
-#pragma	varargck	type	"ld"	long
-#pragma	varargck	type	"lx"	long
-#pragma	varargck	type	"ld"	ulong
-#pragma	varargck	type	"lx"	ulong
-#pragma	varargck	type	"d"	int
-#pragma	varargck	type	"x"	int
-#pragma	varargck	type	"c"	int
-#pragma	varargck	type	"C"	int
-#pragma	varargck	type	"d"	uint
-#pragma	varargck	type	"x"	uint
-#pragma	varargck	type	"c"	uint
-#pragma	varargck	type	"C"	uint
-#pragma	varargck	type	"s"	char*
-#pragma	varargck	type	"S"	Rune*
-#pragma	varargck	type	"r"	void
-#pragma	varargck	type	"%"	void
 #pragma	varargck	type	"I"	uchar*
 #pragma	varargck	type	"V"	uchar*
 #pragma	varargck	type	"E"	uchar*
 #pragma	varargck	type	"M"	uchar*
-#pragma	varargck	type	"p"	uintptr
-#pragma	varargck	type	"p"	void*
-#pragma	varargck	type	"q"	char*
-#pragma	varargck	flag	','

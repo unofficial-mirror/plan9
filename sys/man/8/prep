@@ -1,6 +1,6 @@
 .TH PREP 8
 .SH NAME
-prep, fdisk, format, mbr \- prepare hard and floppy diskettes, flashes
+prep, fdisk, format, mbr \- prepare disks, floppies and flashes
 .SH SYNOPSIS
 .B disk/prep
 [
@@ -65,7 +65,7 @@ prep, fdisk, format, mbr \- prepare hard and floppy diskettes, flashes
 ]
 .I disk
 .SH DESCRIPTION
-A partition table is stored on a hard disk to specify the division of
+A partition table is stored on a non-floppy disk to specify the division of
 the physical disk into a set of logical units.
 On PCs, the partition table is stored at the end of the master boot record
 of the disk.
@@ -122,6 +122,11 @@ A
 .IR venti (8)
 arenas partition.
 .TP
+.B bloom
+A
+.IR venti (8)
+bloom-filter partition.
+.TP
 .B cache
 A
 .IR cfs (4)
@@ -138,7 +143,7 @@ A
 file system.
 .TP
 .B fscfg
-A one-sector partition used to store an
+A few-sector partition used to store an
 .IR fs (3)
 configuration.
 .TP
@@ -160,7 +165,7 @@ A
 .IR swap (8)
 swap partition.
 .PD
-.PP
+.SS "fdisk and prep"
 .I Fdisk
 edits the PC partition table and is usually
 invoked with a disk like
@@ -183,6 +188,8 @@ works in units of disk sectors, which are almost always 512 bytes.
 and
 .I prep
 share most of their options:
+.TF -a
+.PD
 .TP
 .B -a
 Automatically partition the disk.
@@ -300,6 +307,8 @@ secondary partitions cannot exceed four.
 The commands are as follows.
 In the descriptions, read ``sector'' as ``cylinder'' when using
 .IR fdisk .
+.TF ".\fI newdot
+.PD
 .TP
 .B "a\fR \fIname\fR [ \fIstart\fR [ \fIend\fR ] ]"
 Create a partition named
@@ -359,21 +368,29 @@ is set to the maximum value that
 .I end
 can take on without running off the disk
 or into another partition.
+Numeric constants followed by
+.LR k ,
+.LR m ,
+.LR g ,
+or
+.LR t
+(or upper-case equivalents)
+are scaled to the respective size in kilo-, mega-, giga-, or tera-bytes.
 Finally, the expression
 .IB n %
 evaluates to
 .RI ( n × disksize )/100.
-As an example,
-.B a
-.B .
-.B .+20%
+As examples,
+.L "a . .+20%"
 creates a new partition starting at
 .B .
 that takes up a fifth of the disk,
+.L "a . .+21G"
+creates a new partition starting at
+.B .
+that takes up 21 gigabytes (21×2\u\s-130\s0\d bytes),
 and
-.B a
-.B 1000
-.B $
+.L "a 1000 $"
 creates a new partition starting at
 sector 1000 and
 extending as far as possible.
@@ -444,6 +461,8 @@ again will quit the program.
 .PP
 .I Fdisk
 also has the following commands.
+.TF "t \fR[\fI type \fR]
+.PD
 .TP
 .BI A " name
 Set the named partition active.
@@ -459,14 +478,14 @@ Set the partition type.  If it is not given,
 .I fdisk
 will display a list of choices and then prompt for it.
 .PD
-.PP
+.SS "format and pbs"
 .I Format
-prepares for use the floppy diskette or hard disk partition in the file named
+prepares for use the disk partition or the floppy diskette in the file named
 .IR disk ,
 for example
-.B /dev/fd0disk
+.B /dev/sdC0/9fat
 or
-.BR /dev/sdC0/9fat .
+.BR /dev/fd0disk .
 The options are:
 .TP
 .B -f
@@ -598,7 +617,7 @@ option prints debugging information.
 The file
 .B /386/pbs
 is an example of a suitable
-.I bfile
+.I bootblock
 to make the disk a boot disk.
 It gets loaded by the BIOS at 0x7C00,
 reads the first sector of the
@@ -613,7 +632,9 @@ The file
 .B /386/pbslba
 is similar, but because it uses LBA addressing (not supported
 by older BIOSes), it can access more than the first 8.5GB of the disk.
-.PP
+.B /386/pbsraw
+is suitable for CDs.
+.SS mbr
 .I Mbr
 installs a new boot block in sector 0 (the master boot record)
 of a disk such as
@@ -633,10 +654,12 @@ partition and then executes the boot block for
 that partition.
 The partition boot block then loads a bootstrap
 program such as
-.IR 9load (8),
+.I 9load
+(see
+.IR 9boot (8)),
 which then loads the operating system.
-If MS-DOS or Windows 9[58] is already installed
-on your hard disk, the master boot record
+If MS-DOS or Windows is already installed
+on your disk, the master boot record
 already has a suitable boot block.
 Otherwise,
 .B /386/mbr
@@ -672,14 +695,14 @@ for(disk in /dev/sd??) {
 }
 .EE
 .PP
-Create a Plan 9 boot floppy on a previously formatted diskette:
+Create a Plan 9 boot floppy on a previously formatted diskette.
 .IP
 .EX
 disk/format -b /386/pbs -df /dev/fd0disk \e
 	/386/9load /tmp/plan9.ini /386/9pcf.gz
 .EE
 .PP
-Initialize the blank hard disk
+Initialize the blank disk
 .BR /dev/sdC0/data .
 .IP
 .EX
@@ -689,23 +712,31 @@ disk/prep -bw -a^(9fat nvram fossil cache swap) /dev/sdC0/plan9
 disk/format -b /386/pbslba -d -r 2 /dev/sdC0/9fat \e
 	/386/9load /386/9pcf /tmp/plan9.ini
 .EE
-.PP
-Create a bootable USB disk or flash-memory device to be booted
-via the BIOS and with no partitions:
-.IP
-.EX
-usb/disk
-disk/format -b /386/pbslba -df /n/disk/0/data \e
-	/386/9load /386/9pcf.gz /tmp/plan9.ini
-.EE
+.SH FILES
+.TF /386/mbr.bootmgr
+.TP
+.B /386/mbr
+.TP
+.B /386/mbr.bootmgr
+self-configuring `smart boot manager'
 .SH SOURCE
+.TF /n/sources/extra/bootmgr.tgz
+.TP
 .B /sys/src/cmd/disk/prep
-.br
+.TP
 .B /sys/src/boot/pc
+.TP
+.B /n/sources/extra/bootmgr.tgz
+.I nasm
+assembler source for
+.B /386/mbr.bootmgr
 .SH SEE ALSO
 .IR floppy (3),
 .IR sd (3),
-.IR 9load (8),
+.IR usb (4),
+.IR 9boot (8),
+.IR mk9660 (8),
+.IR mkusbboot (8),
 .IR partfs (8)
 .SH BUGS
 .I Format
@@ -713,3 +744,16 @@ can create FAT12 and FAT16
 file systems, but not FAT32 file systems.
 The boot block can only read from
 FAT12 and FAT16 file systems.
+.PP
+If
+.L "prep -p"
+doesn't find a Plan 9 partition table,
+it will emit commands to delete
+.I all
+extant partitions.
+Similarly,
+.L "fdisk -p"
+will delete all partitions,
+including
+.LR data ,
+if there are no partitions defined in the MBR.

@@ -40,6 +40,10 @@ enum {
 	Miiadr		= 0x71,		/* MII Address */
 	Miidata		= 0x72,		/* MII Data */
 	Eecsr		= 0x74,		/* EEPROM Control and Status */
+	Stickhw		= 0x83,		/* Sticky Hardware Control */
+	Wolcrclr	= 0xA4,
+	Wolcgclr	= 0xA7,
+	Pwrcsrclr	= 0xAC,
 };
 
 enum {					/* Rcr */
@@ -292,7 +296,7 @@ typedef struct Ctlr {
 	uint	rxstats[Nrxstats];	/* statistics */
 	uint	txstats[Ntxstats];
 	uint	intr;
-	uint	lintr;			
+	uint	lintr;
 	uint	lsleep;
 	uint	rintr;
 	uint	tintr;
@@ -342,41 +346,43 @@ vt6102ifstat(Ether* edev, void* a, long n, ulong offset)
 
 	ctlr = edev->ctlr;
 
-	p = malloc(2*READSTR);
+	p = malloc(READSTR);
+	if(p == nil)
+		error(Enomem);
 	l = 0;
 	for(i = 0; i < Nrxstats; i++){
-		l += snprint(p+l, 2*READSTR-l, "%s: %ud\n",
+		l += snprint(p+l, READSTR-l, "%s: %ud\n",
 			rxstats[i], ctlr->rxstats[i]);
 	}
 	for(i = 0; i < Ntxstats; i++){
 		if(txstats[i] == nil)
 			continue;
-		l += snprint(p+l, 2*READSTR-l, "%s: %ud\n",
+		l += snprint(p+l, READSTR-l, "%s: %ud\n",
 			txstats[i], ctlr->txstats[i]);
 	}
-	l += snprint(p+l, 2*READSTR-l, "cls: %ud\n", ctlr->cls);
-	l += snprint(p+l, 2*READSTR-l, "intr: %ud\n", ctlr->intr);
-	l += snprint(p+l, 2*READSTR-l, "lintr: %ud\n", ctlr->lintr);
-	l += snprint(p+l, 2*READSTR-l, "lsleep: %ud\n", ctlr->lsleep);
-	l += snprint(p+l, 2*READSTR-l, "rintr: %ud\n", ctlr->rintr);
-	l += snprint(p+l, 2*READSTR-l, "tintr: %ud\n", ctlr->tintr);
-	l += snprint(p+l, 2*READSTR-l, "taligned: %ud\n", ctlr->taligned);
-	l += snprint(p+l, 2*READSTR-l, "tsplit: %ud\n", ctlr->tsplit);
-	l += snprint(p+l, 2*READSTR-l, "tcopied: %ud\n", ctlr->tcopied);
-	l += snprint(p+l, 2*READSTR-l, "txdw: %ud\n", ctlr->txdw);
-	l += snprint(p+l, 2*READSTR-l, "tft: %ud\n", ctlr->tft);
+	l += snprint(p+l, READSTR-l, "cls: %ud\n", ctlr->cls);
+	l += snprint(p+l, READSTR-l, "intr: %ud\n", ctlr->intr);
+	l += snprint(p+l, READSTR-l, "lintr: %ud\n", ctlr->lintr);
+	l += snprint(p+l, READSTR-l, "lsleep: %ud\n", ctlr->lsleep);
+	l += snprint(p+l, READSTR-l, "rintr: %ud\n", ctlr->rintr);
+	l += snprint(p+l, READSTR-l, "tintr: %ud\n", ctlr->tintr);
+	l += snprint(p+l, READSTR-l, "taligned: %ud\n", ctlr->taligned);
+	l += snprint(p+l, READSTR-l, "tsplit: %ud\n", ctlr->tsplit);
+	l += snprint(p+l, READSTR-l, "tcopied: %ud\n", ctlr->tcopied);
+	l += snprint(p+l, READSTR-l, "txdw: %ud\n", ctlr->txdw);
+	l += snprint(p+l, READSTR-l, "tft: %ud\n", ctlr->tft);
 
 	if(ctlr->mii != nil && ctlr->mii->curphy != nil){
-		l += snprint(p+l, 2*READSTR, "phy:   ");
+		l += snprint(p+l, READSTR, "phy:   ");
 		for(i = 0; i < NMiiPhyr; i++){
 			if(i && ((i & 0x07) == 0))
-				l += snprint(p+l, 2*READSTR-l, "\n       ");
+				l += snprint(p+l, READSTR-l, "\n       ");
 			r = miimir(ctlr->mii, i);
-			l += snprint(p+l, 2*READSTR-l, " %4.4uX", r);
+			l += snprint(p+l, READSTR-l, " %4.4uX", r);
 		}
-		snprint(p+l, 2*READSTR-l, "\n");
+		snprint(p+l, READSTR-l, "\n");
 	}
-	snprint(p+l, 2*READSTR-l, "\n");
+	snprint(p+l, READSTR-l, "\n");
 
 	n = readstr(offset, a, n, p);
 	free(p);
@@ -487,7 +493,7 @@ vt6102attach(Ether* edev)
 	alloc = malloc((ctlr->nrd+ctlr->ntd)*ctlr->cls + ctlr->ntd*Txcopy + ctlr->cls-1);
 	if(alloc == nil){
 		qunlock(&ctlr->alock);
-		return;
+		error(Enomem);
 	}
 	ctlr->alloc = alloc;
 	alloc = (uchar*)ROUNDUP((ulong)alloc, ctlr->cls);
@@ -837,7 +843,23 @@ vt6102miimiw(Mii* mii, int pa, int ra, int data)
 static int
 vt6102detach(Ctlr* ctlr)
 {
-	int timeo;
+	int revid, timeo;
+
+	/*
+	 * Reset power management registers.
+	 */
+	revid = pcicfgr8(ctlr->pcidev, PciRID);
+	if(revid >= 0x40){
+		/* Set power state D0. */
+		csr8w(ctlr, Stickhw, csr8r(ctlr, Stickhw) & 0xFC);
+
+		/* Disable force PME-enable. */
+		csr8w(ctlr, Wolcgclr, 0x80);
+
+		/* Clear WOL config and status bits. */
+		csr8w(ctlr, Wolcrclr, 0xFF);
+		csr8w(ctlr, Pwrcsrclr, 0xFF);
+	}
 
 	/*
 	 * Soft reset the controller.
@@ -853,6 +875,14 @@ vt6102detach(Ctlr* ctlr)
 		return -1;
 
 	return 0;
+}
+
+static void
+vt6102shutdown(Ether *ether)
+{
+	Ctlr *ctlr = ether->ctlr;
+
+	vt6102detach(ctlr);
 }
 
 static int
@@ -936,7 +966,6 @@ vt6102pci(void)
 		switch((p->did<<16)|p->vid){
 		default:
 			continue;
-		case (0x3053<<16)|0x1106:	/* Rhine III vt6105m (Soekris) */
 		case (0x3065<<16)|0x1106:	/* Rhine II */
 		case (0x3106<<16)|0x1106:	/* Rhine III */
 			break;
@@ -948,6 +977,10 @@ vt6102pci(void)
 			continue;
 		}
 		ctlr = malloc(sizeof(Ctlr));
+		if(ctlr == nil) {
+			iofree(port);
+			error(Enomem);
+		}
 		ctlr->port = port;
 		ctlr->pcidev = p;
 		ctlr->id = (p->did<<16)|p->vid;
@@ -1014,6 +1047,7 @@ vt6102pnp(Ether* edev)
 	edev->transmit = vt6102transmit;
 	edev->interrupt = vt6102interrupt;
 	edev->ifstat = vt6102ifstat;
+	edev->shutdown = vt6102shutdown;
 	edev->ctl = nil;
 
 	edev->arg = edev;

@@ -34,6 +34,8 @@ main(int argc, char **argv)
 	case 'v':
 		verbose++;
 		break;
+	default:
+		usage();
 	}ARGEND
 
 	if(argc == 0){
@@ -58,7 +60,7 @@ bunzipf(char *file, int stdout)
 	infile = file;
 	ifd = open(file, OREAD);
 	if(ifd < 0){
-		fprint(2, "gunzip: can't open %s: %r\n", file);
+		fprint(2, "bunzip2: can't open %s: %r\n", file);
 		return 0;
 	}
 

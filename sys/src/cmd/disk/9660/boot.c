@@ -145,10 +145,15 @@ Cputbootcat(Cdimg *cd)
 	Cpadblock(cd);
 }
 
+enum {
+	Emusectsz	= 512,		/* bytes per emulated sector */
+};
+
 void
 Cupdatebootcat(Cdimg *cd)
 {
 	uvlong o;
+	int n;
 
 	if(cd->bootdirec == nil)
 		return;
@@ -156,29 +161,62 @@ Cupdatebootcat(Cdimg *cd)
 	o = Cwoffset(cd);
 	Cwseek(cd, cd->bootimageptr);
 	Cputc(cd, 0x88);
-	switch(cd->bootdirec->length){
-	default:
-		fprint(2, "warning: boot image is not 1.44MB or 2.88MB; pretending 1.44MB\n");
-	case 1440*1024:
-		Cputc(cd, 0x02);	/* 1.44MB disk */
-		break;
-	case 2880*1024:
-		Cputc(cd, 0x03);	/* 2.88MB disk */
-		break;
-	}
+
+	if(cd->flags & CDbootnoemu)
+		Cputc(cd, 0);			/* no disk emulation */
+	else
+		switch(cd->bootdirec->length){
+		default:
+			fprint(2, "warning: boot image is not 1.44MB or 2.88MB; "
+				"pretending 1.44MB\n");
+			/* fall through */
+		case 1440*1024:
+			Cputc(cd, 0x02);	/* 1.44MB disk */
+			break;
+		case 2880*1024:
+			Cputc(cd, 0x03);	/* 2.88MB disk */
+			break;
+		}
 	Cputnl(cd, 0, 2);	/* load segment */
 	Cputc(cd, 0);	/* system type */
 	Cputc(cd, 0);	/* unused */
-	Cputnl(cd, 1, 2);	/* 512-byte sector count for load */
+
+	n = 1;
+	if(cd->flags & CDbootnoemu){
+		n = (cd->bootdirec->length + Emusectsz - 1) / Emusectsz;
+		if(n > 4){
+			fprint(2, "warning: boot image too big; "
+				"will only load the first 2K\n");
+			n = 4;
+		}
+	}
+	Cputnl(cd, n, 2);	/* Emusectsz-byte sector count for load */
 	Cputnl(cd, cd->bootdirec->block, 4);	/* ptr to disk image */
-	Cwseek(cd, o);	
+	Cwseek(cd, o);
+}
+
+void
+Cfillpbs(Cdimg *cd)
+{
+	uvlong o;
+	int n;
+
+	if(cd->bootdirec == nil || cd->loaderdirec == nil)
+		return;
+	o = Cwoffset(cd);
+	Cwseek(cd, 3 + cd->bootdirec->block * Blocksize); /* jmp over magic */
+
+	Cputnl(cd, cd->loaderdirec->block, 4);		/* ptr to loader */
+	n = (cd->loaderdirec->length + Blocksize - 1) / Blocksize;
+	Cputnl(cd, n, 4);				/* loader size */
+	Cputnl(cd, Blocksize, 4);			/* loader size */
+	Cwseek(cd, o);
 }
 
 void
 findbootimage(Cdimg *cd, Direc *root)
 {
 	Direc *d;
-
 	d = walkdirec(root, cd->bootimage);
 	if(d == nil){
 		fprint(2, "warning: did not encounter boot image\n");
@@ -186,4 +224,17 @@ findbootimage(Cdimg *cd, Direc *root)
 	}
 
 	cd->bootdirec = d;
+}
+
+void
+findloader(Cdimg *cd, Direc *root)
+{
+	Direc *d;
+
+	d = walkdirec(root, cd->loader);
+	if(d == nil){
+		fprint(2, "warning: did not encounter boot loader\n");
+		return;
+	}
+	cd->loaderdirec = d;
 }

@@ -80,7 +80,7 @@ enum {
 	Fdpmssuspend = 1<<2,	/* supports DPMS suspend mode */
 	Fdpmsactiveoff = 1<<3,	/* supports DPMS active off mode */
 	Fmonochrome = 1<<4,	/* is a monochrome display */
-	Fgtf = 1<<5,			/* supports VESA GTF: see /lib/vesa/gtf10.pdf */
+	Fgtf = 1<<5,		/* supports VESA GTF: see /public/doc/vesa/gtf10.pdf */
 };
 
 #define WORD(p) ((p)[0] | ((p)[1]<<8))
@@ -201,7 +201,7 @@ static void
 load(Vga* vga, Ctlr* ctlr)
 {
 	if(vbe == nil)
-		error("no vesa bios");
+		error("no vesa bios\n");
 	if(vbesetmode(vbe, atoi(dbattr(vga->mode->attr, "id"))) < 0){
 		ctlr->flag |= Ferror;
 		fprint(2, "vbesetmode: %r\n");
@@ -474,7 +474,10 @@ vbemodes(Vbe *vbe)
 int
 vbemodeinfo(Vbe *vbe, int id, Vmode *m)
 {
+	int o;
+	ulong d, c, x;
 	uchar *p;
+	char tmp[sizeof m->chan];
 	Ureg u;
 
 	p = vbesetup(vbe, &u, 0x4F01);
@@ -501,12 +504,43 @@ vbemodeinfo(Vbe *vbe, int id, Vmode *m)
 	m->paddr = LONG(p+40);
 	snprint(m->name, sizeof m->name, "%dx%dx%d",
 		m->dx, m->dy, m->depth);
-	if(m->depth <= 8)
+	if(m->depth <= 8) {
 		snprint(m->chan, sizeof m->chan, "m%d", m->depth);
-	else if(m->xo)
-		snprint(m->chan, sizeof m->chan, "x%dr%dg%db%d", m->x, m->r, m->g, m->b);
-	else
-		snprint(m->chan, sizeof m->chan, "r%dg%db%d", m->r, m->g, m->b);
+		return 0;
+	}
+
+	m->xo = m->x = 0;
+	d = 1 << (m->depth - 1);
+	d |= d - 1;
+	c  = ((1<<m->r)-1) << m->ro;
+	c |= ((1<<m->g)-1) << m->go;
+	c |= ((1<<m->b)-1) << m->bo;
+	x = d ^ c;
+	if(x != 0){
+		for(; (x & 1) == 0; x >>= 1)
+			m->xo++;
+		for(; x & 1; x >>= 1)
+			m->x++;
+	}
+
+	m->chan[0] = o = 0;
+	while(o < m->depth){
+		if(m->r && m->ro == o){
+			snprint(tmp, sizeof tmp, "r%d%s", m->r, m->chan);
+			o += m->r;
+		}else if(m->g && m->go == o){
+			snprint(tmp, sizeof tmp, "g%d%s", m->g, m->chan);
+			o += m->g;
+		}else if(m->b && m->bo == o){
+			snprint(tmp, sizeof tmp, "b%d%s", m->b, m->chan);
+			o += m->b;
+		}else if(m->x && m->xo == o){
+			snprint(tmp, sizeof tmp, "x%d%s", m->x, m->chan);
+			o += m->x;
+		}else
+			break;
+		strncpy(m->chan, tmp, sizeof m->chan);
+	}
 	return 0;
 }
 
@@ -684,7 +718,7 @@ addmode(Modelist *l, Mode m)
 /*
  * Parse VESA EDID information.  Based on the VESA
  * Extended Display Identification Data standard, Version 3,
- * November 13, 1997.  See /lib/vesa/edidv3.pdf.
+ * November 13, 1997.  See /public/doc/vesa/edidv3.pdf.
  *
  * This only handles 128-byte EDID blocks.  Until I find
  * a monitor that produces 256-byte blocks, I'm not going

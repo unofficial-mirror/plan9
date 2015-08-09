@@ -16,7 +16,7 @@ enum {
 	 * confused by a zero ttl, and instead of using the data and then
 	 * discarding the RR, they conclude that they don't have valid data.
 	 */
-	Ptrttl = 300,
+	Ptrttl = 120,
 };
 
 static Ndb *db;
@@ -100,26 +100,24 @@ dblookup(char *name, int class, int type, int auth, int ttl)
 	char buf[256];
 	RR *rp, *tp;
 	DN *dp, *ndp;
-	static int parallel;
-	static int parfd[2];
-	static char token[1];
 
 	/* so far only internet lookups are implemented */
 	if(class != Cin)
 		return 0;
 
 	err = Rname;
+	rp = nil;
 
 	if(type == Tall){
-		rp = nil;
 		for (type = Ta; type < Tall; type++)
-			/* HACK: exclude Taaaa (ipv6) for speed for now */
-			if(implemented[type] && (1 || type != Taaaa))
-				rrcat(&rp, dblookup(name, class, type, auth, ttl));
+			if(implemented[type]) {
+				tp = dblookup(name, class, type, auth, ttl);
+				lock(&dnlock);
+				rrcat(&rp, tp);
+				unlock(&dnlock);
+			}
 		return rp;
 	}
-
-	rp = nil;
 
 	lock(&dblock);
 	dp = dnlookup(name, class, 1);
@@ -210,6 +208,10 @@ dblookup1(char *name, int type, int auth, int ttl)
 		break;
 	case Ta:
 		attr = "ip";
+		f = addrrr;
+		break;
+	case Taaaa:
+		attr = "ipv6";
 		f = addrrr;
 		break;
 	case Tnull:
@@ -580,7 +582,8 @@ dbpair2cache(DN *dp, Ndbtuple *entry, Ndbtuple *pair)
 	static ulong ord;
 
 	rp = 0;
-	if(cistrcmp(pair->attr, "ip") == 0){
+	if(cistrcmp(pair->attr, "ip") == 0 ||
+	   cistrcmp(pair->attr, "ipv6") == 0){
 		dp->ordinal = ord++;
 		rp = addrrr(entry, pair);
 	} else 	if(cistrcmp(pair->attr, "ns") == 0)
@@ -602,6 +605,7 @@ dbpair2cache(DN *dp, Ndbtuple *entry, Ndbtuple *pair)
 		return;
 
 	rp->owner = dp;
+	dnagenever(dp, 1);
 	rp->db = 1;
 	rp->ttl = intval(entry, pair, "ttl", rp->ttl);
 	rrattach(rp, Notauthoritative);
@@ -670,7 +674,7 @@ loaddomsrvs(void)
 void
 db2cache(int doit)
 {
-	ulong youngest, temp;
+	ulong youngest;
 	Ndb *ndb;
 	Dir *d;
 	static ulong lastcheck, lastyoungest;
@@ -702,9 +706,8 @@ db2cache(int doit)
 			/* dirfstat avoids walking the mount table each time */
 			if((d = dirfstat(Bfildes(&ndb->b))) != nil ||
 			   (d = dirstat(ndb->file)) != nil){
-				temp = d->mtime;	/* ulong vs int crap */
-				if(temp > youngest)
-					youngest = temp;
+				if(d->mtime > youngest)
+					youngest = d->mtime;
 				free(d);
 			}
 		if(!doit && youngest == lastyoungest)
@@ -874,6 +877,7 @@ addlocaldnsserver(DN *dp, int class, char *ipaddr, int i)
 	DN *nsdp;
 	RR *rp;
 	char buf[32];
+	uchar ip[IPaddrlen];
 
 	/* reject our own ip addresses so we don't query ourselves via udp */
 	if (myaddr(ipaddr))
@@ -904,8 +908,11 @@ addlocaldnsserver(DN *dp, int class, char *ipaddr, int i)
 	rp->ttl = (1UL<<31)-1;
 	rrattach(rp, Authoritative);	/* will not attach rrs in my area */
 
-	/* A record */
-	rp = rralloc(Ta);
+	/* A or AAAA record */
+	if (parseip(ip, ipaddr) >= 0 && isv4(ip))
+		rp = rralloc(Ta);
+	else
+		rp = rralloc(Taaaa);
 	rp->ip = dnlookup(ipaddr, class, 1);
 	rp->owner = nsdp;
 	rp->local = 1;
@@ -1181,13 +1188,15 @@ insideaddr(char *dom)
 
 	if (!cfg.inside || !cfg.straddle || !cfg.serve)
 		return 1;
+	if (dom[0] == '\0' || strcmp(dom, ".") == 0)	/* dns root? */
+		return 1;			/* hack for initialisation */
 
 	lock(&dblock);
 	if (indoms == nil)
 		loaddomsrvs();
 	if (indoms == nil) {
 		unlock(&dblock);
-		return 1;	/* no "inside" sys, try inside nameservers */
+		return 1;  /* no "inside-dom" sys, try inside nameservers */
 	}
 
 	rv = 0;

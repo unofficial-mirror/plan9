@@ -77,14 +77,18 @@ openBox(char *name, char *fsname, int writable)
 	int n, new;
 
 	if(cistrcmp(name, "inbox") == 0)
-		name = "mbox";
-
+		if(access("msgs", AEXIST) == 0)
+			name = "msgs";
+		else
+			name = "mbox";
 	fsInit();
-	if(fprint(fsCtl, "open /mail/box/%s/%s %s", username, name, fsname) < 0){
+	debuglog("imap4d open %s %s\n", name, fsname);
+
+	if(fprint(fsCtl, "open '/mail/box/%s/%s' %s", username, name, fsname) < 0){
 //ZZZ
 		char err[ERRMAX];
 
-		errstr(err, sizeof err);
+		rerrstr(err, sizeof err);
 		if(strstr(err, "file does not exist") == nil)
 			fprint(2,
 		"imap4d at %lud: upas/fs open %s/%s as %s failed: '%s' %s",
@@ -785,8 +789,43 @@ static char *stoplist[] =
 	"pipeto",
 	"forward",
 	"names",
+	"pipefrom",
+	"headers",
+	"imap.ok",
 	0
 };
+
+enum {
+	Maxokbytes	= 4096,
+	Maxfolders	= Maxokbytes / 4,
+};
+
+static char *folders[Maxfolders];
+static char *folderbuff;
+
+static void
+readokfolders(void)
+{
+	int fd, nr;
+
+	fd = open("imap.ok", OREAD);
+	if(fd < 0)
+		return;
+	folderbuff = malloc(Maxokbytes);
+	if(folderbuff == nil) {
+		close(fd);
+		return;
+	}
+	nr = read(fd, folderbuff, Maxokbytes-1);	/* once is ok */
+	close(fd);
+	if(nr < 0){
+		free(folderbuff);
+		folderbuff = nil;
+		return;
+	}
+	folderbuff[nr] = 0;
+	tokenize(folderbuff, folders, nelem(folders));
+}
 
 /*
  * reject bad mailboxes based on mailbox name
@@ -797,11 +836,19 @@ okMbox(char *path)
 	char *name;
 	int i;
 
+	if(folderbuff == nil && access("imap.ok", AREAD) == 0)
+		readokfolders();
 	name = strrchr(path, '/');
 	if(name == nil)
 		name = path;
 	else
 		name++;
+	if(folderbuff != nil){
+		for(i = 0; i < nelem(folders) && folders[i] != nil; i++)
+			if(cistrcmp(folders[i], name) == 0)
+				return 1;
+		return 0;
+	}
 	if(strlen(name) + STRLEN(".imp") >= MboxNameLen)
 		return 0;
 	for(i = 0; stoplist[i]; i++)
@@ -812,7 +859,5 @@ okMbox(char *path)
 	|| strcmp("imap.subscribed", name) == 0
 	|| isdotdot(name) || name[0] == '/')
 		return 0;
-
 	return 1;
-
 }

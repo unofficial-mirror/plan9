@@ -141,7 +141,7 @@ Biobuf*	foutput;	/* y.output file */
 
 char*	infile;			/* input file name */
 int	numbval;		/* value of an input number */
-char	tokname[NAMESIZE+4];	/* input token name, slop for runes and 0 */
+char	tokname[NAMESIZE+UTFmax+1]; /* input token name, slop for runes and 0 */
 
 	/* structure declarations */
 
@@ -1918,17 +1918,22 @@ skipcom(void)
 
 	/* i is the number of lines skipped */
 	i = 0;
-	if(Bgetrune(finput) != '*')
-		error("illegal comment");
 	c = Bgetrune(finput);
-	while(c != Beof) {
-		while(c == '*')
-			if((c=Bgetrune(finput)) == '/')
-				return i;
-		if(c == '\n')
-			i++;
-		c = Bgetrune(finput);
-	}
+	if(c == '/'){			/* C++ //: skip to end of line */
+		while((c = Bgetrune(finput)) != Beof)
+			if(c == '\n')
+				return 1;
+	}else if(c == '*'){		/* normal C comment */
+		while((c = Bgetrune(finput)) != Beof) {
+			while(c == '*')
+				if((c = Bgetrune(finput)) == '/')
+					return i;
+			if(c == '\n')
+				i++;
+		}
+	}else
+		error("illegal comment");
+
 	error("EOF inside comment");
 	return 0;
 }
@@ -2057,7 +2062,7 @@ swt:
 		if(c != '*')
 			goto swt;
 
-		/* it really is a comment */
+		/* it really is a comment; copy it */
 		Bputrune(faction, c);
 		c = Bgetrune(finput);
 		while(c >= 0) {

@@ -42,7 +42,7 @@ int	qidcnt;
 int	qfreecnt;
 int	ncollision;
 
-int	netfd;
+int	netfd;				/* initially stdin */
 int	srvfd = -1;
 int	nonone = 1;
 char	*filterp;
@@ -54,13 +54,32 @@ int	readonly;
 static void	mksecret(char *, uchar *);
 static int localread9pmsg(int, void *, uint, ulong *);
 static char *anstring  = "tcp!*!0";
+
+char *netdir = "", *local = "", *remote = "";
+
 int	filter(int, char *);
 
 void
 usage(void)
 {
-	fprint(2, "usage:	%s [-adnsR] [-f dbgfile] [-m msize] [-r root] [-S srvfile] [-e 'crypt hash'] [-P exclusion-file] [-A announce-string] [-B address]\n", argv0);
+	fprint(2, "usage: %s [-adnsR] [-f dbgfile] [-m msize] [-r root] "
+		"[-S srvfile] [-e 'crypt hash'] [-P exclusion-file] "
+		"[-A announce-string] [-B address]\n", argv0);
 	fatal("usage");
+}
+
+static void
+noteconn(int fd)
+{
+	NetConnInfo *nci;
+
+	nci = getnetconninfo(nil, fd);
+	if (nci == nil)
+		return;
+	netdir = strdup(nci->dir);
+	local = strdup(nci->lsys);
+	remote = strdup(nci->rsys);
+	freenetconninfo(nci);
 }
 
 void
@@ -183,6 +202,8 @@ main(int argc, char **argv)
 		if(srv == nil)
 			sysfatal("-B requires -s");
 
+		local = "me";
+		remote = na;
 		if((fd = dial(netmkaddr(na, 0, "importfs"), 0, 0, 0)) < 0)
 			sysfatal("can't dial %s: %r", na);
 	
@@ -233,24 +254,30 @@ main(int argc, char **argv)
 		/* do nothing */
 	}
 	else if(srv) {
-		chdir(srv);
+		if(chdir(srv) < 0) {
+			errstr(ebuf, sizeof ebuf);
+			fprint(0, "chdir(\"%s\"): %s\n", srv, ebuf);
+			DEBUG(DFD, "chdir(\"%s\"): %s\n", srv, ebuf);
+			exits(ebuf);
+		}
 		DEBUG(DFD, "invoked as server for %s", srv);
 		strncpy(buf, srv, sizeof buf);
 	}
 	else {
+		noteconn(netfd);
 		buf[0] = 0;
 		n = read(0, buf, sizeof(buf)-1);
 		if(n < 0) {
 			errstr(buf, sizeof buf);
-			fprint(0, "read(0): %s", buf);
-			DEBUG(DFD, "read(0): %s", buf);
+			fprint(0, "read(0): %s\n", buf);
+			DEBUG(DFD, "read(0): %s\n", buf);
 			exits(buf);
 		}
 		buf[n] = 0;
 		if(chdir(buf) < 0) {
 			errstr(ebuf, sizeof ebuf);
-			fprint(0, "chdir(%d:\"%s\"): %s", n, buf, ebuf);
-			DEBUG(DFD, "chdir(%d:\"%s\"): %s", n, buf, ebuf);
+			fprint(0, "chdir(%d:\"%s\"): %s\n", n, buf, ebuf);
+			DEBUG(DFD, "chdir(%d:\"%s\"): %s\n", n, buf, ebuf);
 			exits(ebuf);
 		}
 	}
@@ -822,7 +849,7 @@ fatal(char *s, ...)
 
 	DEBUG(DFD, "%s\n", buf);
 	if (s) 
-		sysfatal(buf);
+		sysfatal("%s", buf);	/* caution: buf could contain '%' */
 	else
 		exits(nil);
 }

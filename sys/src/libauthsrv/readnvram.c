@@ -4,6 +4,8 @@
 
 static long	finddosfile(int, char*);
 
+static int nvramdebug;
+
 static int
 check(void *x, int len, uchar sum, char *msg)
 {
@@ -45,9 +47,11 @@ static struct {
 	"pc", "#f/fd1disk", -1, 512,
 	"mips", "#r/nvram", 1024+900, sizeof(Nvrsafe),
 	"power", "#F/flash/flash0", 0x440000, sizeof(Nvrsafe),
+	"power", "#F/flash/flash", 0x440000, sizeof(Nvrsafe),
 	"power", "#r/nvram", 4352, sizeof(Nvrsafe),	/* OK for MTX-604e */
 	"power", "/nvram", 0, sizeof(Nvrsafe),	/* OK for Ucu */
 	"arm", "#F/flash/flash0", 0x100000, sizeof(Nvrsafe),
+	"arm", "#F/flash/flash", 0x100000, sizeof(Nvrsafe),
 	"debug", "/tmp/nvram", 0, sizeof(Nvrsafe),
 };
 
@@ -129,15 +133,23 @@ typedef struct {
 	int	safelen;
 } Nvrwhere;
 
+static char *nvrfile = nil, *cputype = nil;
+
 /* returns with *locp filled in and locp->fd open, if possible */
 static void
 findnvram(Nvrwhere *locp)
 {
-	char *cputype, *nvrfile, *nvrlen, *nvroff, *v[2];
+	char *nvrlen, *nvroff, *nvrcopy, *db, *v[2];
 	int fd, i, safeoff, safelen;
 
-	nvrfile = getenv("nvram");
-	cputype = getenv("cputype");
+	if (nvrfile == nil) {
+		nvrfile = getenv("nvram");
+		db = getenv("nvramdebug");
+		nvramdebug = db != nil;
+		free(db);
+	}
+	if (cputype == nil)
+		cputype = getenv("cputype");
 	if(cputype == nil)
 		cputype = strdup("mips");
 	if(strcmp(cputype, "386")==0 || strcmp(cputype, "alpha")==0) {
@@ -150,12 +162,15 @@ findnvram(Nvrwhere *locp)
 	safelen = -1;
 	if(nvrfile != nil && *nvrfile != '\0'){
 		/* accept device and device!file */
-		i = gettokens(nvrfile, v, nelem(v), "!");
+		nvrcopy = strdup(nvrfile);
+		i = gettokens(nvrcopy, v, nelem(v), "!");
 		if (i < 1) {
 			i = 1;
 			v[0] = "";
 			v[1] = nil;
 		}
+		if(nvramdebug)
+			fprint(2, "nvram at %s?...", v[0]);
 		fd = open(v[0], ORDWR);
 		if (fd < 0)
 			fd = open(v[0], OREAD);
@@ -179,13 +194,17 @@ findnvram(Nvrwhere *locp)
 				fd = -1;
 			}
 		}
+		free(nvrcopy);
 		free(nvroff);
 		free(nvrlen);
-	}else
+	}else{
 		for(i=0; i<nelem(nvtab); i++){
 			if(strcmp(cputype, nvtab[i].cputype) != 0)
 				continue;
-			if((fd = open(nvtab[i].file, ORDWR)) < 0)
+			if(nvramdebug)
+				fprint(2, "nvram at %s?...", nvtab[i].file);
+			if((fd = open(nvtab[i].file, ORDWR)) < 0 &&
+			   (fd = open(nvtab[i].file, OREAD)) < 0)
 				continue;
 			safeoff = nvtab[i].off;
 			safelen = nvtab[i].len;
@@ -197,10 +216,12 @@ findnvram(Nvrwhere *locp)
 					continue;
 				}
 			}
+			nvrfile = strdup(nvtab[i].file);
 			break;
 		}
-	free(nvrfile);
-	free(cputype);
+		if(i >= nelem(nvtab))		/* tried them all? */
+			werrstr("");		/* ignore failed opens */
+	}
 	locp->fd = fd;
 	locp->safelen = safelen;
 	locp->safeoff = safeoff;
@@ -227,7 +248,7 @@ readnvram(Nvrsafe *safep, int flag)
 	else if (loc.safelen > sizeof buf)
 		loc.safelen = sizeof buf;
 	if (loc.safeoff < 0) {
-		fprint(2, "readnvram: couldn't find nvram\n");
+		fprint(2, "readnvram: can't find nvram\n");
 		if(!(flag&NVwritemem))
 			memset(safep, 0, sizeof(*safep));
 		safe = safep;
@@ -241,12 +262,24 @@ readnvram(Nvrsafe *safep, int flag)
 		safe = safep;
 	else {
 		memset(safep, 0, sizeof(*safep));
+		if(loc.fd >= 0)
+			werrstr("");
 		if(loc.fd < 0
 		|| seek(loc.fd, loc.safeoff, 0) < 0
 		|| read(loc.fd, buf, loc.safelen) != loc.safelen){
 			err = 1;
 			if(flag&(NVwrite|NVwriteonerr))
-				fprint(2, "can't read nvram: %r\n");
+				if(loc.fd < 0 && nvrfile != nil)
+					fprint(2, "can't open %s: %r\n", nvrfile);
+				else if(loc.fd < 0){
+					/* this will have been printed above */
+					// fprint(2, "can't find nvram: %r\n");
+				}else if (seek(loc.fd, loc.safeoff, 0) < 0)
+					fprint(2, "can't seek %s to %d: %r\n",
+						nvrfile, loc.safeoff);
+				else
+					fprint(2, "can't read %d bytes from %s: %r\n",
+						loc.safelen, nvrfile);
 			/* start from scratch */
 			memset(safep, 0, sizeof(*safep));
 			safe = safep;
@@ -256,9 +289,9 @@ readnvram(Nvrsafe *safep, int flag)
 
 			/* verify data read */
 			err |= check(safe->machkey, DESKEYLEN, safe->machsum,
-						"bad nvram key");
+						"bad authentication password");
 //			err |= check(safe->config, CONFIGLEN, safe->configsum,
-//						"bad secstore key");
+//						"bad secstore password");
 			err |= check(safe->authid, ANAMELEN, safe->authidsum,
 						"bad authentication id");
 			err |= check(safe->authdom, DOMLEN, safe->authdomsum,
@@ -277,15 +310,15 @@ readnvram(Nvrsafe *safep, int flag)
 					sizeof safe->authid);
 			readcons("authdom", nil, 0, safe->authdom,
 					sizeof safe->authdom);
-			readcons("secstore key", nil, 1, safe->config,
-					sizeof safe->config);
 			for(;;){
-				if(readcons("password", nil, 1, in, sizeof in)
-				    == nil)
+				if(readcons("auth password", nil, 1, in,
+				    sizeof in) == nil)
 					goto Out;
 				if(passtokey(safe->machkey, in))
 					break;
 			}
+			readcons("secstore password", nil, 1, safe->config,
+					sizeof safe->config);
 		}
 
 		// safe->authsum = nvcsum(safe->authkey, DESKEYLEN);
@@ -295,6 +328,8 @@ readnvram(Nvrsafe *safep, int flag)
 		safe->authdomsum = nvcsum(safe->authdom, sizeof safe->authdom);
 
 		*(Nvrsafe*)buf = *safe;
+		if(loc.fd >= 0)
+			werrstr("");
 		if(loc.fd < 0
 		|| seek(loc.fd, loc.safeoff, 0) < 0
 		|| write(loc.fd, buf, loc.safelen) != loc.safelen){

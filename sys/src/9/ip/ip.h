@@ -1,8 +1,12 @@
 typedef struct	Conv	Conv;
+typedef struct	Fragment4 Fragment4;
+typedef struct	Fragment6 Fragment6;
 typedef struct	Fs	Fs;
 typedef union	Hwaddr	Hwaddr;
 typedef struct	IP	IP;
 typedef struct	IPaux	IPaux;
+typedef struct	Ip4hdr	Ip4hdr;
+typedef struct	Ipfrag	Ipfrag;
 typedef struct	Ipself	Ipself;
 typedef struct	Ipselftab	Ipselftab;
 typedef struct	Iplink	Iplink;
@@ -34,7 +38,7 @@ enum
 	Addrlen=	64,
 	Maxproto=	20,
 	Nhash=		64,
-	Maxincall=	5,
+	Maxincall=	64,	/* max. conn.s in listen q not accepted yet */
 	Nchans=		1024,
 	MAClen=		16,		/* longest mac address */
 
@@ -72,8 +76,81 @@ enum
 	Connected=	4,
 };
 
+/* MIB II counters */
+enum
+{
+	Forwarding,
+	DefaultTTL,
+	InReceives,
+	InHdrErrors,
+	InAddrErrors,
+	ForwDatagrams,
+	InUnknownProtos,
+	InDiscards,
+	InDelivers,
+	OutRequests,
+	OutDiscards,
+	OutNoRoutes,
+	ReasmTimeout,
+	ReasmReqds,
+	ReasmOKs,
+	ReasmFails,
+	FragOKs,
+	FragFails,
+	FragCreates,
+
+	Nipstats,
+};
+
+struct Fragment4
+{
+	Block*	blist;
+	Fragment4*	next;
+	ulong 	src;
+	ulong 	dst;
+	ushort	id;
+	ulong 	age;
+};
+
+struct Fragment6
+{
+	Block*	blist;
+	Fragment6*	next;
+	uchar 	src[IPaddrlen];
+	uchar 	dst[IPaddrlen];
+	uint	id;
+	ulong 	age;
+};
+
+struct Ipfrag
+{
+	ushort	foff;
+	ushort	flen;
+
+	uchar	payload[];
+};
+
+#define IPFRAGSZ offsetof(Ipfrag, payload[0])
+
+/* an instance of IP */
+struct IP
+{
+	uvlong		stats[Nipstats];
+
+	QLock		fraglock4;
+	Fragment4*	flisthead4;
+	Fragment4*	fragfree4;
+	Ref		id4;
+
+	QLock		fraglock6;
+	Fragment6*	flisthead6;
+	Fragment6*	fragfree6;
+	Ref		id6;
+
+	int		iprouting;	/* true if we route like a gateway */
+};
+
 /* on the wire packet header */
-typedef struct Ip4hdr		Ip4hdr;
 struct Ip4hdr
 {
 	uchar	vihl;		/* Version and header length */
@@ -114,6 +191,8 @@ struct Conv
 	int	inuse;			/* opens of listen/data/ctl */
 	int	length;
 	int	state;
+
+	int	maxfragsize;		/* If set, used for fragmentation */
 
 	/* udp specific */
 	int	headers;		/* data src/dst headers in udp */
@@ -330,7 +409,6 @@ struct Proto
 	int		nc;		/* number of conversations */
 	int		ac;
 	Qid		qid;		/* qid for protocol directory */
-	ushort		nextport;
 	ushort		nextrport;
 
 	void		*priv;
@@ -434,6 +512,8 @@ long	ifclogread(Fs*, Chan *,void*, ulong, long);
 void	ifclog(Fs*, uchar *, int);
 void	ifclogopen(Fs*, Chan*);
 void	ifclogclose(Fs*, Chan*);
+
+#pragma varargck argpos netlog	3
 
 /*
  *  iproute.c
@@ -594,7 +674,6 @@ extern uchar IPallbits[IPaddrlen];
 extern Medium	ethermedium;
 extern Medium	nullmedium;
 extern Medium	pktmedium;
-extern Medium	tripmedium;
 
 /*
  *  ipifc.c
@@ -646,13 +725,11 @@ extern ulong	restrict_mtu(uchar*, ulong);
 /*
  * bootp.c
  */
-extern char*	bootp(Ipifc*);
 extern int	bootpread(char*, ulong, int);
 
 /*
  *  resolving inferno/plan9 differences
  */
-Chan*		commonfdtochan(int, int, int, int);
 char*		commonuser(void);
 char*		commonerror(void);
 

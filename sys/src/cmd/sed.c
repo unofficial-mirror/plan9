@@ -623,7 +623,7 @@ compsub(Rune *rhs, Rune *end)
 	while ((r = *cp++) != '\0') {
 		if(r == '\\') {
 			if (rhs < end)
-				*rhs++ = 0xFFFF;
+				*rhs++ = Runemax;
 			else
 				return 0;
 			r = *cp++;
@@ -995,7 +995,7 @@ match(Reprog *pattern, Rune *buf)
 		return 0;
 	subexp[0].rsp = buf;
 	subexp[0].ep = 0;
-	if (rregexec(pattern, linebuf, subexp, MAXSUB)) {
+	if (rregexec(pattern, linebuf, subexp, MAXSUB) > 0) {
 		loc1 = subexp[0].rsp;
 		loc2 = subexp[0].rep;
 		return 1;
@@ -1050,7 +1050,7 @@ dosub(Rune *rhsbuf)
 			sp = place(sp, loc1, loc2);
 			continue;
 		}
-		if (c == 0xFFFF && (c = *rp++) >= '1' && c < MAXSUB + '0') {
+		if (c == Runemax && (c = *rp++) >= '1' && c < MAXSUB + '0') {
 			n = c-'0';
 			if (subexp[n].rsp && subexp[n].rep) {
 				sp = place(sp, subexp[n].rsp, subexp[n].rep);

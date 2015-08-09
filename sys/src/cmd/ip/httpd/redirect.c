@@ -15,11 +15,43 @@ struct Redir
 	Redir	*next;
 	char	*pat;
 	char	*repl;
+	uint	flags;		/* generated from repl's decorations */
 };
 
 static Redir *redirtab[HASHSIZE];
 static Redir *vhosttab[HASHSIZE];
 static char emptystring[1];
+/* these two arrays must be kept in sync */
+static char decorations[] = { Modsilent, Modperm, Modsubord, Modonly, '\0' };
+static uint redirflags[] = { Redirsilent, Redirperm, Redirsubord, Redironly, };
+
+/* replacement field decorated with redirection modifiers? */
+static int
+isdecorated(char *repl)
+{
+	return strchr(decorations, repl[0]) != nil;
+}
+
+static uint
+decor2flags(char *repl)
+{
+	uint flags;
+	char *p;
+
+	flags = 0;
+	while ((p = strchr(decorations, *repl++)) != nil)
+		flags |= redirflags[p - decorations];
+	return flags;
+}
+
+/* return replacement without redirection modifiers */
+char *
+undecorated(char *repl)
+{
+	while (isdecorated(repl))
+		repl++;
+	return repl;
+}
 
 static int
 hashasu(char *key, int n)
@@ -44,7 +76,8 @@ insert(Redir **tab, char *pat, char *repl)
 		;
 	*l = srch = ezalloc(sizeof(Redir));
 	srch->pat = pat;
-	srch->repl = repl;
+	srch->flags = decor2flags(repl);
+	srch->repl = undecorated(repl);
 	srch->next = 0;
 }
 
@@ -70,6 +103,7 @@ redirectinit(void)
 	static Biobuf *b = nil;
 	static Qid qid;
 	char *file, *line, *s, *host, *field[3];
+	static char pfx[] = "http://";
 
 	file = "/sys/lib/httpd.rewrite";
 	if(b != nil){
@@ -88,13 +122,14 @@ redirectinit(void)
 	while((line = Brdline(b, '\n')) != nil){
 		line[Blinelen(b)-1] = 0;
 		s = strchr(line, '#');
-		if(s != nil)
-			*s = '\0'; 	/* chop comment */
+		if(s != nil && (s == line || s[-1] == ' ' || s[-1] == '\t'))
+			*s = '\0'; 	/* chop comment iff after whitespace */
 		if(tokenize(line, field, nelem(field)) == 2){
-			if(strncmp(field[0], "http://", STRLEN("http://")) == 0 &&
-					strncmp(field[1], "http://", STRLEN("http://")) != 0){
-				host = field[0]+STRLEN("http://");
-				s = strpbrk(host, "/");
+			if(strncmp(field[0], pfx, STRLEN(pfx)) == 0 &&
+			   strncmp(undecorated(field[1]), pfx, STRLEN(pfx)) != 0){
+				/* url -> filename */
+				host = field[0] + STRLEN(pfx);
+				s = strrchr(host, '/');
 				if(s)
 					*s = 0;  /* chop trailing slash */
 
@@ -108,15 +143,18 @@ redirectinit(void)
 }
 
 static Redir*
-lookup(Redir **tab, char *pat)
+lookup(Redir **tab, char *pat, int count)
 {
 	Redir *srch;
 	ulong hash;
 
 	hash = hashasu(pat,HASHSIZE);
 	for(srch = tab[hash]; srch != nil; srch = srch->next)
-		if(strcmp(pat, srch->pat) == 0)
-			return srch;
+		if(strcmp(pat, srch->pat) == 0) {
+			/* only exact match wanted? */
+			if (!(srch->flags & Redironly) || count == 0)
+				return srch;
+		}
 	return nil;
 }
 
@@ -129,38 +167,61 @@ prevslash(char *p, char *s)
 	return s;
 }
 
+/*
+ * find the longest match of path against the redirection table,
+ * chopping off the rightmost path component until success or
+ * there's nothing left.  return a copy of the replacement string
+ * concatenated with a slash and the portion of the path *not* matched.
+ * So a match of /who/gre/some/stuff.html matched against
+ *	/who/gre	http://gremlinsrus.org
+ * returns
+ *	http://gremlinsrus.org/some/stuff.html
+ *
+ * further flags: if Redironly, match only the named page and no
+ * subordinate ones.  if Redirsubord, map the named patch and any
+ * subordinate ones to the same replacement URL.
+ */
 char*
-redirect(HConnect *hc, char *path)
+redirect(HConnect *hc, char *path, uint *flagp)
 {
 	Redir *redir;
-	char *s, *newpath;
-	int c, n;
+	char *s, *newpath, *repl;
+	int c, n, count;
 
+	count = 0;
 	for(s = strchr(path, '\0'); s > path; s = prevslash(path, s)){
 		c = *s;
 		*s = '\0';
-		redir = lookup(redirtab, path);
+		redir = lookup(redirtab, path, count++);
 		*s = c;
 		if(redir != nil){
-			n = strlen(redir->repl) + strlen(s) + 2 + UTFmax;
+			if (flagp)
+				*flagp = redir->flags;
+			repl = redir->repl;
+			if(redir->flags & Redirsubord)
+				/* don't append s, all matches map to repl */
+				s = "";
+			n = strlen(repl) + strlen(s) + 2 + UTFmax;
 			newpath = halloc(hc, n);
-			snprint(newpath, n, "%s%s", redir->repl, s);
+			snprint(newpath, n, "%s%s", repl, s);
 			return newpath;
 		}
 	}
 	return nil;
 }
 
-// if host is virtual, return implicit prefix for URI within webroot.
-// if not, return empty string
-// return value should not be freed by caller
+/*
+ * if host is virtual, return implicit prefix for URI within webroot.
+ * if not, return empty string.
+ * return value should not be freed by caller.
+ */
 char*
 masquerade(char *host)
 {
 	Redir *redir;
 
-	redir = lookup(vhosttab, host);
-	if(redir != nil)
-		return redir->repl;
-	return emptystring;
+	redir = lookup(vhosttab, host, 0);
+	if(redir == nil)
+		return emptystring;
+	return redir->repl;
 }

@@ -1,3 +1,6 @@
+/*
+ * watchdog framework
+ */
 #include	"u.h"
 #include	"../port/lib.h"
 #include	"mem.h"
@@ -11,23 +14,103 @@ enum {
 	Qwdctl,
 };
 
+/*
+ * these are exposed so that delay() and the like can disable the watchdog
+ * before busy looping for a long time.
+ */
+Watchdog*watchdog;
+int	watchdogon;
+
 static Watchdog *wd;
+static int wdautopet;
+static int wdclock0called;
+static Ref refs;
 static Dirtab wddir[] = {
-	".",		{ Qdir, 0, QTDIR },	0,		0550,
-	"wdctl",	{ Qwdctl, 0 },		0,		0660,
+	".",		{ Qdir, 0, QTDIR },	0,		0555,
+	"wdctl",	{ Qwdctl, 0 },		0,		0664,
 };
 
 
 void
-addwatchdog(Watchdog *watchdog)
+addwatchdog(Watchdog *wdog)
 {
 	if(wd){
 		print("addwatchdog: watchdog already installed\n");
 		return;
 	}
-	wd = watchdog;
+	wd = watchdog = wdog;
 	if(wd)
 		wd->disable();
+}
+
+static int
+wdallowed(void)
+{
+	return getconf("*nowatchdog") == nil;
+}
+
+static void
+wdshutdown(void)
+{
+	if (wd) {
+		wd->disable();
+		watchdogon = 0;
+	}
+}
+
+/* called from clock interrupt, so restart needs ilock internally */
+static void
+wdpet(void)
+{
+	/* watchdog could be paused; if so, don't restart */
+	if (wdautopet && watchdogon)
+		wd->restart();
+}
+
+/*
+ * reassure the watchdog from the clock interrupt
+ * until the user takes control of it.
+ */
+static void
+wdautostart(void)
+{
+	if (wdautopet || !wd || !wdallowed())
+		return;
+	if (waserror()) {
+		print("watchdog: automatic enable failed\n");
+		return;
+	}
+	wd->enable();
+	poperror();
+
+	wdautopet = watchdogon = 1;
+	if (!wdclock0called) {
+		addclock0link(wdpet, 200);
+		wdclock0called = 1;
+	}
+}
+
+/*
+ * disable strokes from the clock interrupt.
+ * have to disable the watchdog to mark it `not in use'.
+ */
+static void
+wdautostop(void)
+{
+	if (!wdautopet)
+		return;
+	wdautopet = 0;
+	wdshutdown();
+}
+
+/*
+ * user processes exist and up is non-nil when the
+ * device init routines are called.
+ */
+static void
+wdinit(void)
+{
+	wdautostart();
 }
 
 static Chan*
@@ -51,19 +134,25 @@ wdstat(Chan *c, uchar *dp, int n)
 static Chan*
 wdopen(Chan* c, int omode)
 {
-	return devopen(c, omode, wddir, nelem(wddir), devgen);
+	wdautostop();
+	c = devopen(c, omode, wddir, nelem(wddir), devgen);
+	if (c->qid.path == Qwdctl)
+		incref(&refs);
+	return c;
 }
 
 static void
-wdclose(Chan*)
+wdclose(Chan *c)
 {
+	if(c->qid.path == Qwdctl && c->flag&COPEN && decref(&refs) <= 0)
+		wdshutdown();
 }
 
 static long
 wdread(Chan* c, void* a, long n, vlong off)
 {
-	char *p;
 	ulong offset = off;
+	char *p;
 
 	switch((ulong)c->qid.path){
 	case Qdir:
@@ -74,6 +163,8 @@ wdread(Chan* c, void* a, long n, vlong off)
 			return 0;
 
 		p = malloc(READSTR);
+		if(p == nil)
+			error(Enomem);
 		if(waserror()){
 			free(p);
 			nexterror();
@@ -81,8 +172,8 @@ wdread(Chan* c, void* a, long n, vlong off)
 
 		wd->stat(p, p + READSTR);
 		n = readstr(offset, a, n, p);
-		poperror();
 		free(p);
+		poperror();
 		return n;
 
 	default:
@@ -92,31 +183,11 @@ wdread(Chan* c, void* a, long n, vlong off)
 	return 0;
 }
 
-static void
-wdctl(char *a)
-{
-	int n;
-	char *field[6];
-
-	n = tokenize(a, field, nelem(field));
-	if(n < 1)
-		error(Ebadarg);
-
-	if(!strcmp(field[0], "enable"))
-		wd->enable();
-	else if(!strcmp(field[0], "disable"))
-		wd->disable();
-	else if(!strcmp(field[0], "restart"))
-		wd->restart();
-	else
-		error(Ebadarg);
-}
-
 static long
 wdwrite(Chan* c, void* a, long n, vlong off)
 {
-	char *p;
 	ulong offset = off;
+	char *p;
 
 	switch((ulong)c->qid.path){
 	case Qdir:
@@ -129,16 +200,23 @@ wdwrite(Chan* c, void* a, long n, vlong off)
 		if(offset || n >= READSTR)
 			error(Ebadarg);
 
-		p = malloc(READSTR);
-		if(waserror()){
-			free(p);
-			nexterror();
-		}
-		memmove(p, a, n);
-		p[n] = 0;
-		wdctl(p);
-		poperror();
-		free(p);
+		if((p = strchr(a, '\n')) != nil)
+			*p = 0;
+
+		if(strncmp(a, "enable", n) == 0) {
+			if (waserror()) {
+				print("watchdog: enable failed\n");
+				nexterror();
+			}
+			wd->enable();
+			poperror();
+			watchdogon = 1;
+		} else if(strncmp(a, "disable", n) == 0)
+			wdshutdown();
+		else if(strncmp(a, "restart", n) == 0)
+			wd->restart();
+		else
+			error(Ebadarg);
 		return n;
 
 	default:
@@ -154,8 +232,8 @@ Dev wddevtab = {
 	"watchdog",
 
 	devreset,
-	devinit,
-	devshutdown,
+	wdinit,
+	wdshutdown,
 	wdattach,
 	wdwalk,
 	wdstat,

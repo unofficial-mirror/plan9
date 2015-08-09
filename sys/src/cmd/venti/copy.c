@@ -71,7 +71,7 @@ markvisited(uchar score[VtScoreSize], int type)
 void
 usage(void)
 {
-	fprint(2, "usage: copy [-fir] [-t type] srchost dsthost score\n");
+	fprint(2, "usage: %s [-fimrv] [-t type] srchost dsthost score\n", argv0);
 	exits("usage");
 }
 
@@ -123,7 +123,7 @@ walk(uchar score[VtScoreSize], uint type, int base)
 		break;
 
 	case VtDirType:
-		for(i=0; i<n/VtEntrySize; i++){
+		for(i=0; i*VtEntrySize<n; i++){
 			if(vtentryunpack(&e, buf, i) < 0){
 				fprint(2, "warning: could not unpack entry #%d in %V %d\n", i, score, type);
 				continue;

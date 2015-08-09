@@ -66,7 +66,7 @@ an IP address on the originating network or subnetwork.
 .br
 \- a free dynamic address exists on the originating network or subnetwork.
 .PP
-A BOOTP request is honored it all of the following are true:
+A BOOTP request is honored if all of the following are true:
 .br
 \- there exists an NDB entry
 containing both the ethernet address of the requester and
@@ -146,7 +146,9 @@ a POP3 mail server
 an SMTP mail server
 .TP
 .B bootf
-the default boot file
+the default boot file;
+see
+.IR ndb (6)
 .PD
 .PP
 .I Dhcpd
@@ -201,11 +203,11 @@ just log them and what
 would have done.
 .TP
 .B s
-Sleep 2 seconds before answering requests for static addresses.
+Sleep roughly 1 to 2 seconds before answering requests for static addresses.
 This is used to make a server be a backup only.
 .TP
 .B S
-Sleep 2 seconds before answering requests for dynamic addresses.
+Sleep roughly 1 to 2 seconds before answering requests for dynamic addresses.
 .TP
 .B x
 The IP stack to use is mounted at 
@@ -248,6 +250,17 @@ transfers files to systems that are booting.
 It runs as user
 .B none
 and can only access files with global read permission.
+.L %C
+in a file name is replaced with the name of the
+booting system's
+.L /cfg/pxe
+file.
+Similarly,
+.L %E
+becomes the booting system's Ethernet MAC address
+and
+.L %I
+becomes its IP address.
 The options are:
 .TP
 .B d
@@ -292,4 +305,12 @@ Restricts access to only those files rooted in the
 .SH SOURCE
 .B /sys/src/cmd/ip
 .SH "SEE ALSO"
-.IR ndb (6)
+.IR ndb (6),
+.IR 9boot (8),
+.IR booting (8)
+.SH BUGS
+.I Dhcpd
+doesn't really understand a single interface having addresses
+on multiple subnets, as during renumbering of a subnet.
+It will only respond with addresses on the subnet
+of its primary IP address on that interface.

@@ -43,6 +43,7 @@ char *goodtypes[] = {
 	"message/rfc822",
 	"text/richtext",
 	"text/tab-separated-values",
+	"text/calendar",
 	"application/octet-stream",
 	nil,
 };
@@ -571,11 +572,11 @@ mesgsave(Message *m, char *s)
 	}
 	free(t);
 
-	all = emalloc(n+k+1);
+	all = emalloc(k+n+1);
 	memmove(all, unixheader, k);
 	memmove(all+k, raw, n);
 	memmove(all+k+n, "\n", 1);
-	n = k+n+1;
+	n += k+1;
 	free(unixheader);
 	free(raw);
 	ret = 1;
@@ -949,7 +950,7 @@ ext(char *type)
 void
 mimedisplay(Message *m, char *name, char *rootdir, Window *w, int fileonly)
 {
-	char *dest;
+	char *dest, *maildest;
 
 	if(strcmp(m->disposition, "file")==0 || strlen(m->filename)!=0){
 		if(strlen(m->filename) == 0){
@@ -957,8 +958,14 @@ mimedisplay(Message *m, char *name, char *rootdir, Window *w, int fileonly)
 			dest[strlen(dest)-1] = '\0';
 		}else
 			dest = estrdup(m->filename);
-		if(m->filename[0] != '/')
+		if(maildest = getenv("maildest")){
+			maildest = eappend(maildest, "/", dest);
+			Bprint(w->body, "\tcp %s%sbody%s %q\n", rootdir, name, ext(m->type), maildest);
+			free(maildest);
+		}
+		if(m->filename[0] != '/'){
 			dest = egrow(estrdup(home), "/", dest);
+		}
 		Bprint(w->body, "\tcp %s%sbody%s %q\n", rootdir, name, ext(m->type), dest);
 		free(dest);
 	}else if(!fileonly)
@@ -981,6 +988,48 @@ printheader(char *dir, Biobuf *b, char **okheaders)
 			if(cistrncmp(lines[i], okheaders[j], strlen(okheaders[j])) == 0)
 				Bprint(b, "%s\n", lines[i]);
 	free(s);
+}
+
+/*
+ * find the best alternative part.
+ *
+ * turkeys have started emitting empty text/plain parts,
+ * with the actual content in a text/html part, which complicates the choice.
+ *
+ * bigger turkeys emit a tiny base64-encoded text/plain part,
+ * a small base64-encoded text/html part, and the real content is in
+ * a text/calendar part.
+ *
+ * the magic lengths are empirically derived.
+ * as turkeys devolve and mutate, this will only get worse.
+ */
+static Message*
+bestalt(Message *m, char *dir)
+{
+	int len;
+	char *subdir;
+	Message *nm;
+	Message *realplain, *realhtml, *realcal;
+
+	realplain = realhtml = realcal = nil;
+	for(nm = m->head; nm != nil; nm = nm->next){
+		subdir = estrstrdup(dir, nm->name);
+		len = 0;
+		free(readbody(nm->type, subdir, &len));
+		free(subdir);
+		if(strcmp(nm->type, "text/plain") == 0 && len >= 8)
+			realplain = nm;
+		else if(strcmp(nm->type, "text/html") == 0 && len >= 600)
+			realhtml = nm;
+		else if(strcmp(nm->type, "text/calendar") == 0)
+			realcal = nm;
+	}
+	if(realplain == nil && realhtml == nil && realcal)
+		return realcal;			/* super-turkey */
+	else if(realplain == nil && realhtml)
+		return realhtml;		/* regular turkey */
+	else
+		return realplain;
 }
 
 void
@@ -1023,12 +1072,15 @@ mesgload(Message *m, char *rootdir, char *file, Window *w)
 		/* multi-part message, either multipart/* or message/rfc822 */
 		thisone = nil;
 		if(strcmp(m->type, "multipart/alternative") == 0){
-			thisone = m->head;	/* in case we can't find a good one */
-			for(mp=m->head; mp!=nil; mp=mp->next)
-				if(isprintable(mp->type)){
-					thisone = mp;
-					break;
-				}
+			thisone = bestalt(m, dir);
+			if(thisone == nil){
+				thisone = m->head; /* in case we can't find a good one */
+				for(mp=m->head; mp!=nil; mp=mp->next)
+					if(isprintable(mp->type)){
+						thisone = mp;
+						break;
+					}
+			}
 		}
 		for(mp=m->head; mp!=nil; mp=mp->next){
 			if(thisone!=nil && mp!=thisone)
@@ -1037,8 +1089,11 @@ mesgload(Message *m, char *rootdir, char *file, Window *w)
 			name = estrstrdup(file, mp->name);
 			/* skip first element in name because it's already in window name */
 			if(mp != m->head)
-				Bprint(w->body, "\n===> %s (%s) [%s]\n", strchr(name, '/')+1, mp->type, mp->disposition);
-			if(strcmp(mp->type, "text")==0 || strncmp(mp->type, "text/", 5)==0){
+				Bprint(w->body, "\n===> %s (%s) [%s]\n",
+					strchr(name, '/')+1, mp->type,
+					mp->disposition);
+			if(strcmp(mp->type, "text")==0 ||
+			    strncmp(mp->type, "text/", 5)==0){
 				mimedisplay(mp, name, rootdir, w, 1);
 				printheader(subdir, w->body, okheaders);
 				printheader(subdir, w->body, extraheaders);
@@ -1047,7 +1102,8 @@ mesgload(Message *m, char *rootdir, char *file, Window *w)
 				winwritebody(w, s, n);
 				free(s);
 			}else{
-				if(strncmp(mp->type, "multipart/", 10)==0 || strcmp(mp->type, "message/rfc822")==0){
+				if(strncmp(mp->type, "multipart/", 10)==0 ||
+				    strcmp(mp->type, "message/rfc822")==0){
 					mp->w = w;
 					mesgload(mp, rootdir, name, w);
 					mp->w = nil;

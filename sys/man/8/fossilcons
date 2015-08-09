@@ -93,7 +93,9 @@ con /srv/fscons
 .B fsys
 .I name
 .B config
+[
 .I device
+]
 .PP
 .B fsys
 .I name
@@ -106,7 +108,7 @@ con /srv/fscons
 .I name
 .B open
 [
-.B -APVWr
+.B -APVWar
 ]
 [
 .B -c
@@ -479,6 +481,8 @@ manipulates entries in the user table.
 There is no distinction between users and groups:
 a user is a group with one member.
 For each user, the user table records:
+.TF \fImembers
+.PD
 .TP
 .I id
 the string used to represent this user in the on-disk structures
@@ -525,6 +529,8 @@ is the
 .I name
 of a user.
 The second argument is a verb, one of:
+.TF \fI%newname
+.PD
 .TP
 .I id
 create a user with name
@@ -681,8 +687,21 @@ operate on unopened file systems; they require the prefix.
 creates a new file system named
 .I name
 using disk file
-.I device .
+.IR device .
 This just adds an entry to fossil's internal table.
+If
+.I device
+is missing,
+the
+.I file
+argument to
+.IR fossil 's
+.B -f
+option will be used instead;
+this allows the
+.I fossil
+configuration file to avoid naming the partition that it is embedded in,
+making it more portable.
 .PP
 .I Venti
 establishes a connection to the Venti server
@@ -712,6 +731,8 @@ opens the file system, reading the
 root and super blocks and allocating an in-memory
 cache for disk and Venti blocks.
 The options are:
+.TF "-c\fI ncache
+.PD
 .TP
 .B -A
 run with no authentication
@@ -724,6 +745,10 @@ do not attempt to connect to a Venti server
 .TP
 .B -W
 allow wstat to make arbitrary changes to the user and group fields
+.TP
+.B -a
+do not update file access times;
+primarily to avoid wear on flash memories
 .TP
 .B -r
 open the file system read-only
@@ -748,6 +773,8 @@ and then closes the device file.
 .I Unconfig
 removes the named file system (which must be closed)
 from fossil's internal table.
+.br
+.ne 3
 .SS File system maintenance
 .I Bfree
 marks the block at disk address

@@ -31,6 +31,7 @@ static int	showdrec(int, int, void*);
 static long	gtime(uchar*);
 static long	l16(void*);
 static long	l32(void*);
+static vlong	l64(void *);
 static void	newdrec(Xfile*, Drec*);
 static int	rzdir(Xfs*, Dir*, int, Drec*);
 
@@ -39,6 +40,14 @@ Xfsub	isosub =
 	ireset, iattach, iclone, iwalkup, iwalk, iopen, icreate,
 	ireaddir, iread, iwrite, iclunk, iremove, istat, iwstat
 };
+
+static vlong
+fakemax(vlong len)
+{
+	if(len == (1UL << 31) - 1)	/* max. 9660 size? */
+		len = (1ULL << 63) - 1;	/* pretend it's vast */
+	return len;
+}
 
 static void
 ireset(void)
@@ -203,7 +212,7 @@ iclone(Xfile *of, Xfile *nf)
 static void
 iwalkup(Xfile *f)
 {
-	long paddr;
+	vlong paddr;
 	uchar dbuf[256];
 	Drec *d = (Drec *)dbuf;
 	Xfile pf, ppf;
@@ -234,25 +243,9 @@ iwalkup(Xfile *f)
 static int
 casestrcmp(int isplan9, char *a, char *b)
 {
-	int ca, cb;
-
 	if(isplan9)
 		return strcmp(a, b);
-	for(;;) {
-		ca = *a++;
-		cb = *b++;
-		if(ca >= 'A' && ca <= 'Z')
-			ca += 'a' - 'A';
-		if(cb >= 'A' && cb <= 'Z')
-			cb += 'a' - 'A';
-		if(ca != cb) {
-			if(ca > cb)
-				return 1;
-			return -1;
-		}
-		if(ca == 0)
-			return 0;
-	}
+	return cistrcmp(a, b);
 }
 
 static void
@@ -362,12 +355,11 @@ static long
 iread(Xfile *f, char *buf, vlong offset, long count)
 {
 	int n, o, rcnt = 0;
-	long size;
-	vlong addr;
+	vlong size, addr;
 	Isofile *ip = f->ptr;
 	Iobuf *p;
 
-	size = l32(ip->d.size);
+	size = fakemax(l32(ip->d.size));
 	if(offset >= size)
 		return 0;
 	if(offset+count > size)
@@ -494,15 +486,15 @@ getdrec(Xfile *f, void *buf)
 {
 	Isofile *ip = f->ptr;
 	int len = 0, boff = 0;
-	ulong size;
 	vlong addr;
+	uvlong size;
 	Iobuf *p = 0;
 
 	if(!ip)
 		return -1;
-	size = l32(ip->d.size);
+	size = fakemax(l32(ip->d.size));
 	while(ip->offset < size){
-		addr = (l32(ip->d.addr)+ip->d.attrlen)*ip->blksize + ip->offset;
+		addr = ((vlong)l32(ip->d.addr)+ip->d.attrlen)*ip->blksize + ip->offset;
 		boff = addr % Sectorsize;
 		if(boff > Sectorsize-34){
 			ip->offset += Sectorsize-boff;
@@ -745,8 +737,8 @@ rzdir(Xfs *fs, Dir *d, int fmt, Drec *dp)
 		}
 	}
 	d->length = 0;
-	if((d->mode & DMDIR) == 0)
-		d->length = l32(dp->size);
+	if((d->mode & DMDIR) == 0)	
+		d->length = fakemax(l32(dp->size));
 	d->type = 0;
 	d->dev = 0;
 	d->atime = gtime(dp->date);
@@ -757,13 +749,13 @@ rzdir(Xfs *fs, Dir *d, int fmt, Drec *dp)
 static int
 getcontin(Xdata *dev, uchar *p, uchar **s)
 {
-	long bn, off, len;
+	vlong bn, off, len;
 	Iobuf *b;
 
 	bn = l32(p+4);
 	off = l32(p+12);
 	len = l32(p+20);
-	chat("getcontin %d...", bn);
+	chat("getcontin %lld...", bn);
 	b = getbuf(dev, bn);
 	if(b == 0){
 		*s = 0;
@@ -880,7 +872,16 @@ l16(void *arg)
 static long
 l32(void *arg)
 {
-	return ((((((long)p[3]<<8)|p[2])<<8)|p[1])<<8)|p[0];
+	return (((long)p[3]<<8 | p[2])<<8 | p[1])<<8 | p[0];
 }
 
 #undef	p
+
+static vlong
+l64(void *arg)
+{
+	uchar *p;
+
+	p = arg;
+	return (vlong)l32(p+4) << 32 | (ulong)l32(p);
+}

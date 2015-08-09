@@ -4,7 +4,7 @@
 #include	"dat.h"
 #include	"fns.h"
 #include	"../port/error.h"
-#include	"edf.h"
+#include	"../port/edf.h"
 #include	<trace.h>
 
 int	schedgain = 30;	/* units in seconds */
@@ -115,11 +115,12 @@ sched(void)
 	Proc *p;
 
 	if(m->ilockdepth)
-		panic("ilockdepth %d, last lock 0x%p at 0x%lux, sched called from 0x%lux",
-			m->ilockdepth, up?up->lastilock:nil,
-			(up && up->lastilock)?up->lastilock->pc:0,
+		panic("cpu%d: ilockdepth %d, last lock %#p at %#p, sched called from %#p",
+			m->machno,
+			m->ilockdepth,
+			up? up->lastilock: nil,
+			(up && up->lastilock)? up->lastilock->pc: 0,
 			getcallerpc(&p+2));
-
 	if(up){
 		/*
 		 * Delay the sched until the process gives up the locks
@@ -418,7 +419,7 @@ ready(Proc *p)
 		return;
 	}
 
-	if(up != p)
+	if(up != p && (p->wired == nil || p->wired == m))
 		m->readied = p;	/* group scheduling */
 
 	updatecpu(p);
@@ -504,6 +505,7 @@ runproc(void)
 
 	/* cooperative scheduling until the clock ticks */
 	if((p=m->readied) && p->mach==0 && p->state==Ready
+	&& (p->wired == nil || p->wired == m)
 	&& runq[Nrq-1].head == nil && runq[Nrq-2].head == nil){
 		skipscheds++;
 		rq = &runq[p->priority];
@@ -579,6 +581,24 @@ canpage(Proc *p)
 	return ok;
 }
 
+void
+noprocpanic(char *msg)
+{
+	/*
+	 * setting exiting will make hzclock() on each processor call exit(0).
+	 * clearing our bit in machs avoids calling exit(0) from hzclock()
+	 * on this processor.
+	 */
+	lock(&active);
+	active.machs &= ~(1<<m->machno);
+	active.exiting = 1;
+	unlock(&active);
+
+	procdump();
+	delay(1000);
+	panic(msg);
+}
+
 Proc*
 newproc(void)
 {
@@ -586,13 +606,19 @@ newproc(void)
 	Proc *p;
 
 	lock(&procalloc);
-	for(;;) {
-		if(p = procalloc.free)
-			break;
+	while((p = procalloc.free) == nil) {
+		unlock(&procalloc);
 
 		snprint(msg, sizeof msg, "no procs; %s forking",
 			up? up->text: "kernel");
-		unlock(&procalloc);
+		/*
+		 * the situation is unlikely to heal itself.
+		 * dump the proc table and restart by default.
+		 * *noprocspersist in plan9.ini will yield the old
+		 * behaviour of trying forever.
+		 */
+		if(getconf("*noprocspersist") == nil)
+			noprocpanic(msg);
 		resrcwait(msg);
 		lock(&procalloc);
 	}
@@ -614,7 +640,11 @@ newproc(void)
 	p->pdbg = 0;
 	p->fpstate = FPinit;
 	p->kp = 0;
-	p->procctl = 0;
+	if(up && up->procctl == Proc_tracesyscall)
+		p->procctl = Proc_tracesyscall;
+	else
+		p->procctl = 0;
+	p->syscalltrace = 0;	
 	p->notepending = 0;
 	p->ureg = 0;
 	p->privatemem = 0;
@@ -737,12 +767,12 @@ sleep(Rendez *r, int (*f)(void*), void *arg)
 	s = splhi();
 
 	if(up->nlocks.ref)
-		print("process %lud sleeps with %lud locks held, last lock 0x%p locked at pc 0x%lux, sleep called from 0x%lux\n",
+		print("process %lud sleeps with %lud locks held, last lock %#p locked at pc %#lux, sleep called from %#p\n",
 			up->pid, up->nlocks.ref, up->lastlock, up->lastlock->pc, getcallerpc(&r));
 	lock(r);
 	lock(&up->rlock);
 	if(r->p){
-		print("double sleep called from 0x%lux, %lud %lud\n", getcallerpc(&r), r->p->pid, up->pid);
+		print("double sleep called from %#p, %lud %lud\n", getcallerpc(&r), r->p->pid, up->pid);
 		dumpstack();
 	}
 
@@ -827,7 +857,7 @@ void
 tsleep(Rendez *r, int (*fn)(void*), void *arg, ulong ms)
 {
 	if (up->tt){
-		print("tsleep: timer active: mode %d, tf 0x%lux\n", up->tmode, up->tf);
+		print("tsleep: timer active: mode %d, tf %#p\n", up->tmode, up->tf);
 		timerdel(up);
 	}
 	up->tns = MS2NS(ms);
@@ -843,7 +873,7 @@ tsleep(Rendez *r, int (*fn)(void*), void *arg, ulong ms)
 		nexterror();
 	}
 	sleep(r, tfn, arg);
-	if (up->tt)
+	if(up->tt)
 		timerdel(up);
 	up->twhen = 0;
 	poperror();
@@ -1040,6 +1070,8 @@ pexit(char *exitstr, int freemem)
 	Chan *dot;
 	void (*pt)(Proc*, int, vlong);
 
+	if(up->syscalltrace)
+		free(up->syscalltrace);
 	up->alarm = 0;
 	if (up->tt)
 		timerdel(up);
@@ -1371,13 +1403,6 @@ kproc(char *name, void (*func)(void *), void *arg)
 	memset(p->time, 0, sizeof(p->time));
 	p->time[TReal] = MACHP(0)->ticks;
 	ready(p);
-	/*
-	 *  since the bss/data segments are now shareable,
-	 *  any mmu info about this process is now stale
-	 *  and has to be discarded.
-	 */
-	p->newtlb = 1;
-	flushmmu();
 }
 
 /*
@@ -1449,7 +1474,7 @@ exhausted(char *resource)
 {
 	char buf[ERRMAX];
 
-	sprint(buf, "no free %s", resource);
+	snprint(buf, sizeof buf, "no free %s", resource);
 	iprint("%s\n", buf);
 	error(buf);
 }

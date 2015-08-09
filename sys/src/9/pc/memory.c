@@ -53,13 +53,6 @@ static RMap rmapupa = {
 	&mapupa[nelem(mapupa)-1],
 };
 
-static Map xmapupa[16];
-static RMap xrmapupa = {
-	"unbacked physical memory",
-	xmapupa,
-	&xmapupa[nelem(xmapupa)-1],
-};
-
 static Map mapram[16];
 static RMap rmapram = {
 	"physical memory",
@@ -262,7 +255,7 @@ umbexclude(void)
 static void
 umbscan(void)
 {
-	uchar *p;
+	uchar o[2], *p;
 
 	/*
 	 * Scan the Upper Memory Blocks (0xA0000->0xF0000) for pieces
@@ -281,31 +274,31 @@ umbscan(void)
 	p = KADDR(0xD0000);
 	while(p < (uchar*)KADDR(0xE0000)){
 		/*
-		 * Test for 0x55 0xAA before poking obtrusively,
-		 * some machines (e.g. Thinkpad X20) seem to map
-		 * something dynamic here (cardbus?) causing weird
-		 * problems if it is changed.
+		 * Check for the ROM signature, skip if valid.
 		 */
 		if(p[0] == 0x55 && p[1] == 0xAA){
 			p += p[2]*512;
 			continue;
 		}
 
+		/*
+		 * Is it writeable? If yes, then stick it in
+		 * the UMB device memory map. A floating bus will
+		 * return 0xff, so add that to the map of the
+		 * UMB space available for allocation.
+		 * If it is neither of those, ignore it.
+		 */
+		o[0] = p[0];
 		p[0] = 0xCC;
+		o[1] = p[2*KB-1];
 		p[2*KB-1] = 0xCC;
-		if(p[0] != 0xCC || p[2*KB-1] != 0xCC){
-			p[0] = 0x55;
-			p[1] = 0xAA;
-			p[2] = 4;
-			if(p[0] == 0x55 && p[1] == 0xAA){
-				p += p[2]*512;
-				continue;
-			}
-			if(p[0] == 0xFF && p[1] == 0xFF)
-				mapfree(&rmapumb, PADDR(p), 2*KB);
-		}
-		else
+		if(p[0] == 0xCC && p[2*KB-1] == 0xCC){
+			p[0] = o[0];
+			p[2*KB-1] = o[1];
 			mapfree(&rmapumbrw, PADDR(p), 2*KB);
+		}
+		else if(p[0] == 0xFF && p[1] == 0xFF)
+			mapfree(&rmapumb, PADDR(p), 2*KB);
 		p += 2*KB;
 	}
 
@@ -318,6 +311,54 @@ umbscan(void)
 	}
 
 	umbexclude();
+}
+
+static void*
+sigscan(uchar* addr, int len, char* signature)
+{
+	int sl;
+	uchar *e, *p;
+
+	e = addr+len;
+	sl = strlen(signature);
+	for(p = addr; p+sl < e; p += 16)
+		if(memcmp(p, signature, sl) == 0)
+			return p;
+	return nil;
+}
+
+void*
+sigsearch(char* signature)
+{
+	uintptr p;
+	uchar *bda;
+	void *r;
+
+	/*
+	 * Search for the data structure:
+	 * 1) within the first KiB of the Extended BIOS Data Area (EBDA), or
+	 * 2) within the last KiB of system base memory if the EBDA segment
+	 *    is undefined, or
+	 * 3) within the BIOS ROM address space between 0xf0000 and 0xfffff
+	 *    (but will actually check 0xe0000 to 0xfffff).
+	 */
+	bda = BIOSSEG(0x40);
+	if(memcmp(KADDR(0xfffd9), "EISA", 4) == 0){
+		if((p = (bda[0x0f]<<8)|bda[0x0e]) != 0){
+			if((r = sigscan(BIOSSEG(p), 1024, signature)) != nil)
+				return r;
+		}
+	}
+
+	if((p = ((bda[0x14]<<8)|bda[0x13])*1024) != 0){
+		if((r = sigscan(KADDR(p-1024), 1024, signature)) != nil)
+			return r;
+	}
+	/* hack for virtualbox: look in KiB below 0xa0000 */
+	if((r = sigscan(KADDR(0xa0000-1024), 1024, signature)) != nil)
+		return r;
+
+	return sigscan(BIOSSEG(0xe000), 0x20000, signature);
 }
 
 static void
@@ -821,7 +862,7 @@ ulong
 umbrwmalloc(ulong addr, int size, int align)
 {
 	ulong a;
-	uchar *p;
+	uchar o[2], *p;
 
 	if(a = mapalloc(&rmapumbrw, addr, size, align))
 		return(ulong)KADDR(a);
@@ -833,10 +874,15 @@ umbrwmalloc(ulong addr, int size, int align)
 	if((a = umbmalloc(addr, size, align)) == 0)
 		return 0;
 	p = (uchar*)a;
+	o[0] = p[0];
 	p[0] = 0xCC;
+	o[1] = p[size-1];
 	p[size-1] = 0xCC;
-	if(p[0] == 0xCC && p[size-1] == 0xCC)
+	if(p[0] == 0xCC && p[size-1] == 0xCC){
+		p[0] = o[0];
+		p[size-1] = o[1];
 		return a;
+	}
 	umbfree(a, size);
 
 	return 0;

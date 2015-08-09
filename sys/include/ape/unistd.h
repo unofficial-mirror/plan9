@@ -61,6 +61,7 @@ typedef long ssize_t;
 #define	_SC_JOB_CONTROL		8	/* posix job control */
 #define	_SC_SAVED_IDS		9	/* saved suid/sgid per process */
 #define	_SC_VERSION		10	/* this version */
+#define _SC_LOGIN_NAME_MAX	11	/* max length of a login name */
 
 /* pathconf argument */
 #define _PC_LINK_MAX		1
@@ -140,6 +141,7 @@ extern int close(int);
 extern ssize_t read(int, void *, size_t);
 extern ssize_t write(int, const void *, size_t);
 #ifdef __TYPES_H
+extern int ftruncate(int, off_t);
 extern off_t lseek(int, off_t, int);
 #endif
 
@@ -147,6 +149,10 @@ extern off_t lseek(int, off_t, int);
 #ifdef __TYPES_H
 extern pid_t tcgetpgrp(int);
 extern int tcsetpgrp(int, pid_t);
+#endif
+
+#ifdef _REENTRANT_SOURCE
+extern char *getlogin_r(char *, int);
 #endif
 
 /* berkeley specific functions */

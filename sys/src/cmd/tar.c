@@ -8,6 +8,7 @@
 
 #include <u.h>
 #include <libc.h>
+#include <ctype.h>
 #include <fcall.h>		/* for %M */
 #include <String.h>
 
@@ -29,8 +30,8 @@
 	USED(argv); USED(argc); }
 #define	TARGC() (_argc)
 
-#define ROUNDUP(a, b)	(((a) + (b) - 1)/(b))
-#define BYTES2TBLKS(bytes) ROUNDUP(bytes, Tblock)
+#define HOWMANY(a, size)	(((a) + (size) - 1) / (size))
+#define BYTES2TBLKS(bytes)	HOWMANY(bytes, Tblock)
 
 /* read big-endian binary integers; args must be (uchar *) */
 #define	G2BEBYTE(x)	(((x)[0]<<8)  |  (x)[1])
@@ -123,7 +124,7 @@ typedef struct {
 	int	open;
 } Pushstate;
 
-#define OTHER(rdwr) (rdwr == Rd? Wr: Rd)
+#define OTHER(rdwr) ((rdwr) == Rd? Wr: Rd)
 
 static int debug;
 static int fixednblock;
@@ -142,6 +143,7 @@ static Off blkoff;		/* offset of the current archive block (not Tblock) */
 static Off nexthdr;
 
 static int nblock = Dblock;
+static int resync;
 static char *usefile, *arname = "archive";
 static char origdir[Maxname*2];
 static Hdr *tpblk, *endblk;
@@ -150,7 +152,7 @@ static Hdr *curblk;
 static void
 usage(void)
 {
-	fprint(2, "usage: %s {crtx}[PRTfgikmpuvz] [archive] file1 file2...\n",
+	fprint(2, "usage: %s {crtx}[PRTfgikmpsuvz] [archive] [file1 file2...]\n",
 		argv0);
 	exits("usage");
 }
@@ -215,16 +217,19 @@ ewrite(char *name, int fd, void *buf, long len)
 static Compress *
 compmethod(char *name)
 {
-	int i, nmlen = strlen(name), sfxlen;
+	int i, nmlen, sfxlen;
 	Compress *cp;
 
-	for (cp = comps; cp < comps + nelem(comps); cp++)
-		for (i = 0; i < nelem(cp->sfx) && cp->sfx[i]; i++) {
-			sfxlen = strlen(cp->sfx[i]);
-			if (nmlen > sfxlen &&
-			    strcmp(cp->sfx[i], name + nmlen - sfxlen) == 0)
-				return cp;
-		}
+	if (name != nil) {
+		nmlen = strlen(name);
+		for (cp = comps; cp < comps + nelem(comps); cp++)
+			for (i = 0; i < nelem(cp->sfx) && cp->sfx[i]; i++) {
+				sfxlen = strlen(cp->sfx[i]);
+				if (nmlen > sfxlen &&
+				    strcmp(cp->sfx[i], name+nmlen-sfxlen) == 0)
+					return cp;
+			}
+	}
 	return docompress? comps: nil;
 }
 
@@ -319,10 +324,10 @@ refill(int ar, char *bufs, int justhdr)
 	if (first && usefile && !fixednblock) {
 		n = eread(arname, ar, bufs, bytes);
 		if (n == 0)
-			sysfatal("EOF reading archive: %r");
+			sysfatal("EOF reading archive %s: %r", arname);
 		i = n;
 		if (i % Tblock != 0)
-			sysfatal("archive block size (%d) error", i);
+			sysfatal("%s: archive block size (%d) error", arname, i);
 		i /= Tblock;
 		if (i != nblock) {
 			nblock = i;
@@ -333,16 +338,16 @@ refill(int ar, char *bufs, int justhdr)
 	} else if (justhdr && seekable && nexthdr - blkoff >= bytes) {
 		/* optimisation for huge archive members on seekable media */
 		if (seek(ar, bytes, 1) < 0)
-			sysfatal("can't seek on archive: %r");
+			sysfatal("can't seek on archive %s: %r", arname);
 		n = bytes;
 	} else
 		n = ereadn(arname, ar, bufs, bytes);
 	first = 0;
 
 	if (n == 0)
-		sysfatal("unexpected EOF reading archive");
+		sysfatal("unexpected EOF reading archive %s", arname);
 	if (n % Tblock != 0)
-		sysfatal("partial block read from archive");
+		sysfatal("partial block read from archive %s", arname);
 	if (n != bytes) {
 		done = 1;
 		memset(bufs + n, 0, bytes - n);
@@ -485,8 +490,8 @@ static char *
 name(Hdr *hp)
 {
 	int pfxlen, namlen;
-	static char fullnamebuf[2+Maxname+1];  /* 2+ for ./ on relative names */
 	char *fullname;
+	static char fullnamebuf[2+Maxname+1];  /* 2+ for ./ on relative names */
 
 	fullname = fullnamebuf+2;
 	namlen = strnlen(hp->name, sizeof hp->name);
@@ -542,6 +547,28 @@ putbe(uchar *dest, uvlong vl, int size)
 }
 
 /*
+ * cautious parsing of octal numbers as ascii strings in
+ * a tar header block.  this is particularly important for
+ * trusting the checksum when trying to resync.
+ */
+static uvlong
+hdrotoull(char *st, char *end, uvlong errval, char *name, char *field)
+{
+	char *numb;
+
+	for (numb = st; (*numb == ' ' || *numb == '\0') && numb < end; numb++)
+		;
+	if (numb < end && isascii(*numb) && isdigit(*numb))
+		return strtoull(numb, nil, 8);
+	else if (numb >= end)
+		fprint(2, "%s: %s: empty %s in header\n", argv0, name, field);
+	else
+		fprint(2, "%s: %s: %s: non-numeric %s in header\n",
+			argv0, name, numb, field);
+	return errval;
+}
+
+/*
  * return the nominal size from the header block, which is not always the
  * size in the archive (the archive size may be zero for some file types
  * regardless of the nominal size).
@@ -563,8 +590,10 @@ hdrsize(Hdr *hp)
 		p = (uchar *)hp->size + sizeof hp->size - 1 -
 			sizeof(vlong);		/* -1 for terminating space */
 		return G8BEBYTE(p);
-	} else
-		return strtoull(hp->size, nil, 8);
+	}
+
+	return hdrotoull(hp->size, hp->size + sizeof hp->size, 0,
+		name(hp), "size");
 }
 
 /*
@@ -578,6 +607,15 @@ arsize(Hdr *hp)
 	return hdrsize(hp);
 }
 
+static long
+parsecksum(char *cksum, char *name)
+{
+	Hdr *hp;
+
+	return hdrotoull(cksum, cksum + sizeof hp->chksum, (uvlong)-1LL,
+		name, "checksum");
+}
+
 static Hdr *
 readhdr(int ar)
 {
@@ -586,13 +624,28 @@ readhdr(int ar)
 
 	hp = getblkrd(ar, Alldata);
 	if (hp == nil)
-		sysfatal("unexpected EOF instead of archive header");
+		sysfatal("unexpected EOF instead of archive header in %s",
+			arname);
 	if (eotar(hp))			/* end-of-archive block? */
 		return nil;
-	hdrcksum = strtoul(hp->chksum, nil, 8);
-	if (chksum(hp) != hdrcksum)
-		sysfatal("bad archive header checksum: name %.64s...",
-			hp->name);
+
+	hdrcksum = parsecksum(hp->chksum, name(hp));
+	if (hdrcksum == -1 || chksum(hp) != hdrcksum) {
+		if (!resync)
+			sysfatal("bad archive header checksum in %s: "
+				"name %.100s...; expected %#luo got %#luo",
+				arname, hp->name, hdrcksum, chksum(hp));
+		fprint(2, "%s: skipping past archive header with bad checksum in %s...",
+			argv0, arname);
+		do {
+			hp = getblkrd(ar, Alldata);
+			if (hp == nil)
+				sysfatal("unexpected EOF looking for archive header in %s",
+					arname);
+			hdrcksum = parsecksum(hp->chksum, name(hp));
+		} while (hdrcksum == -1 || chksum(hp) != hdrcksum);
+		fprint(2, "found %s\n", name(hp));
+	}
 	nexthdr += Tblock*(1 + BYTES2TBLKS(arsize(hp)));
 	return hp;
 }
@@ -664,6 +717,8 @@ putfullname(Hdr *hp, char *name)
 static int
 mkhdr(Hdr *hp, Dir *dir, char *file)
 {
+	int r;
+
 	/*
 	 * some of these fields run together, so we format them left-to-right
 	 * and don't use snprint.
@@ -686,7 +741,7 @@ mkhdr(Hdr *hp, Dir *dir, char *file)
 		sprint(hp->size, "%11lluo ", dir->length);
 	sprint(hp->mtime, "%11luo ", dir->mtime);
 	hp->linkflag = (dir->mode&DMDIR? LF_DIR: LF_PLAIN1);
-	putfullname(hp, file);
+	r = putfullname(hp, file);
 	if (posix) {
 		strncpy(hp->magic, "ustar", sizeof hp->magic);
 		strncpy(hp->version, "00", sizeof hp->version);
@@ -694,7 +749,7 @@ mkhdr(Hdr *hp, Dir *dir, char *file)
 		strncpy(hp->gname, dir->gid, sizeof hp->gname);
 	}
 	sprint(hp->chksum, "%6luo", chksum(hp));
-	return 0;
+	return r;
 }
 
 static void addtoar(int ar, char *file, char *shortf);
@@ -811,52 +866,76 @@ addtoar(int ar, char *file, char *shortf)
 		s_free(name);
 }
 
+static void
+skip(int ar, Hdr *hp, char *msg)
+{
+	ulong blksleft, blksread;
+	Off bytes;
+
+	bytes = arsize(hp);
+	for (blksleft = BYTES2TBLKS(bytes); blksleft > 0; blksleft -= blksread) {
+		if (getblkrd(ar, Justnxthdr) == nil)
+			sysfatal("unexpected EOF on archive %s %s", arname, msg);
+		blksread = gothowmany(blksleft);
+		putreadblks(ar, blksread);
+	}
+}
+
+static void
+skiptoend(int ar)
+{ 
+	Hdr *hp;
+
+	while ((hp = readhdr(ar)) != nil)
+		skip(ar, hp, "skipping to end");
+
+	/*
+	 * we have just read the end-of-archive Tblock.
+	 * now seek back over the (big) archive block containing it,
+	 * and back up curblk ptr over end-of-archive Tblock in memory.
+	 */
+	if (seek(ar, blkoff, 0) < 0)
+		sysfatal("can't seek back over end-of-archive in %s: %r", arname);
+	curblk--;
+}
+
 static char *
 replace(char **argv)
 {
 	int i, ar;
-	ulong blksleft, blksread;
-	Off bytes;
-	Hdr *hp;
+	char *arg;
 	Compress *comp = nil;
 	Pushstate ps;
 
-	if (usefile && docreate) {
+	/* open archive to be updated */
+	if (usefile && docreate)
 		ar = create(usefile, OWRITE, 0666);
+	else if (usefile) {
 		if (docompress)
-			comp = compmethod(usefile);
-	} else if (usefile)
+			sysfatal("cannot update compressed archive");
 		ar = open(usefile, ORDWR);
-	else
+	} else
 		ar = Stdout;
-	if (comp)
-		ar = push(ar, comp->comp, Output, &ps);
+
+	/* push compression filter, if requested */
+	if (docompress) {
+		comp = compmethod(usefile);
+		if (comp)
+			ar = push(ar, comp->comp, Output, &ps);
+	}
 	if (ar < 0)
 		sysfatal("can't open archive %s: %r", usefile);
 
-	if (usefile && !docreate) {
-		/* skip quickly to the end */
-		while ((hp = readhdr(ar)) != nil) {
-			bytes = arsize(hp);
-			for (blksleft = BYTES2TBLKS(bytes);
-			     blksleft > 0 && getblkrd(ar, Justnxthdr) != nil;
-			     blksleft -= blksread) {
-				blksread = gothowmany(blksleft);
-				putreadblks(ar, blksread);
-			}
-		}
-		/*
-		 * we have just read the end-of-archive Tblock.
-		 * now seek back over the (big) archive block containing it,
-		 * and back up curblk ptr over end-of-archive Tblock in memory.
-		 */
-		if (seek(ar, blkoff, 0) < 0)
-			sysfatal("can't seek back over end-of-archive: %r");
-		curblk--;
-	}
+	if (usefile && !docreate)
+		skiptoend(ar);
 
 	for (i = 0; argv[i] != nil; i++) {
-		addtoar(ar, argv[i], argv[i]);
+		arg = argv[i];
+		cleanname(arg);
+		if (strcmp(arg, "..") == 0 || strncmp(arg, "../", 3) == 0)
+			fprint(2, "%s: name starting with .. is a bad idea\n",
+				argv0);
+		addtoar(ar, arg, arg);
 		chdir(origdir);		/* for correctness & profiling */
 	}
 
@@ -1030,8 +1109,8 @@ copyfromar(int ar, int fd, char *fname, ulong blksleft, Off bytes)
 	for (; blksleft > 0; blksleft -= blksread) {
 		hbp = getblkrd(ar, (fd >= 0? Alldata: Justnxthdr));
 		if (hbp == nil)
-			sysfatal("unexpected EOF on archive extracting %s",
-				fname);
+			sysfatal("unexpected EOF on archive extracting %s from %s",
+				fname, arname);
 		blksread = gothowmany(blksleft);
 		if (blksread <= 0) {
 			fprint(2, "%s: got %ld blocks reading %s!\n",
@@ -1050,22 +1129,25 @@ copyfromar(int ar, int fd, char *fname, ulong blksleft, Off bytes)
 		assert(bytes >= 0);
 	}
 	if (bytes > 0)
-		fprint(2,
-	"%s: %lld bytes uncopied at EOF on archive; %s not fully extracted\n",
-			argv0, bytes, fname);
+		fprint(2, "%s: %lld bytes uncopied at EOF on archive %s; "
+			"%s not fully extracted\n", argv0, bytes, arname, fname);
 }
 
 static void
-wrmeta(int fd, Hdr *hp, long mtime)		/* update metadata */
+wrmeta(int fd, Hdr *hp, long mtime, int mode)		/* update metadata */
 {
 	Dir nd;
 
 	nulldir(&nd);
 	nd.mtime = mtime;
+	nd.mode = mode;
 	dirfwstat(fd, &nd);
 	if (isustar(hp)) {
 		nulldir(&nd);
 		nd.gid = hp->gname;
+		dirfwstat(fd, &nd);
+		nulldir(&nd);
+		nd.uid = hp->uname;
 		dirfwstat(fd, &nd);
 	}
 }
@@ -1123,25 +1205,8 @@ extract1(int ar, Hdr *hp, char *fname)
 		 * creating files in them, but we don't do that.
 		 */
 		if (settime)
-			wrmeta(fd, hp, mtime);
+			wrmeta(fd, hp, mtime, mode);
 		close(fd);
-	}
-}
-
-static void
-skip(int ar, Hdr *hp, char *fname)
-{
-	ulong blksleft, blksread;
-	Hdr *hbp;
-
-	for (blksleft = BYTES2TBLKS(arsize(hp)); blksleft > 0;
-	     blksleft -= blksread) {
-		hbp = getblkrd(ar, Justnxthdr);
-		if (hbp == nil)
-			sysfatal("unexpected EOF on archive extracting %s",
-				fname);
-		blksread = gothowmany(blksleft);
-		putreadblks(ar, blksread);
 	}
 }
 
@@ -1150,15 +1215,19 @@ extract(char **argv)
 {
 	int ar;
 	char *longname;
+	char msg[Maxname + 40];
+	Compress *comp;
 	Hdr *hp;
-	Compress *comp = nil;
 	Pushstate ps;
 
-	if (usefile) {
+	/* open archive to be read */
+	if (usefile)
 		ar = open(usefile, OREAD);
-		comp = compmethod(usefile);
-	} else
+	else
 		ar = Stdin;
+
+	/* push decompression filter if requested or extension is known */
+	comp = compmethod(usefile);
 	if (comp)
 		ar = push(ar, comp->decomp, Input, &ps);
 	if (ar < 0)
@@ -1168,8 +1237,10 @@ extract(char **argv)
 		longname = name(hp);
 		if (match(longname, argv))
 			extract1(ar, hp, longname);
-		else
-			skip(ar, hp, longname);
+		else {
+			snprint(msg, sizeof msg, "extracting %s", longname);
+			skip(ar, hp, msg);
+		}
 	}
 
 	if (comp)
@@ -1218,6 +1289,9 @@ main(int argc, char *argv[])
 		break;
 	case 'R':
 		relative = 0;
+		break;
+	case 's':
+		resync++;
 		break;
 	case 't':
 		verb = Toc;

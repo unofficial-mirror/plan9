@@ -335,10 +335,11 @@ enum {					/* extsts bits */
 };
 
 enum {
-	Nrd		= 256,
-	Nrb		= 4*Nrd,
 	Rbsz		= ROUNDUP(sizeof(Etherpkt)+8, 8),
-	Ntd		= 128,
+	/* were 256, 4*Nrd & 64, but 52, 253 and 9 are ample. */
+	Nrd		= 128,
+	Nrb		= 512,
+	Ntd		= 32,
 };
 
 typedef struct Ctlr Ctlr;
@@ -511,6 +512,7 @@ dp83820rballoc(Desc* desc)
 		}
 		dp83820rbpool = bp->next;
 		bp->next = nil;
+		_xinc(&bp->ref);	/* prevent bp from being freed */
 		iunlock(&dp83820rblock);
 	
 		desc->bufptr = PCIWADDR(bp->rp);
@@ -920,6 +922,8 @@ dp83820ifstat(Ether* edev, void* a, long n, ulong offset)
 		return 0;
 
 	p = malloc(READSTR);
+	if(p == nil)
+		error(Enomem);
 	l = 0;
 	for(i = 0; i < Nmibd; i++){
 		r = csr32r(ctlr, Mibd+(i*sizeof(int)));
@@ -1058,6 +1062,8 @@ reread:
 	if(ctlr->eepromsz == 0){
 		ctlr->eepromsz = 8-size;
 		ctlr->eeprom = malloc((1<<ctlr->eepromsz)*sizeof(ushort));
+		if(ctlr->eeprom == nil)
+			error(Enomem);
 		goto reread;
 	}
 
@@ -1164,6 +1170,10 @@ dp83820pci(void)
 		}
 
 		ctlr = malloc(sizeof(Ctlr));
+		if(ctlr == nil) {
+			vunmap(mem, p->mem[1].size);
+			error(Enomem);
+		}
 		ctlr->port = p->mem[1].bar & ~0x0F;
 		ctlr->pcidev = p;
 		ctlr->id = (p->did<<16)|p->vid;
@@ -1171,6 +1181,7 @@ dp83820pci(void)
 		ctlr->nic = mem;
 		if(dp83820reset(ctlr)){
 			free(ctlr);
+			vunmap(mem, p->mem[1].size);
 			continue;
 		}
 		pcisetbme(p);

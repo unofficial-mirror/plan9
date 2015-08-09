@@ -1,9 +1,8 @@
 #include "stdinc.h"
+#include <bio.h>
 #include "dat.h"
 #include "fns.h"
 #include "9.h"
-
-typedef struct Fsys Fsys;
 
 struct Fsys {
 	VtLock* lock;
@@ -22,6 +21,10 @@ struct Fsys {
 
 	Fsys*	next;
 };
+
+int mempcnt;			/* from fossil.c */
+
+int	fsGetBlockSize(Fs *fs);
 
 static struct {
 	VtLock*	lock;
@@ -46,10 +49,10 @@ static char *
 ventihost(char *host)
 {
 	if(host != nil)
-		return strdup(host);
+		return vtStrDup(host);
 	host = getenv("venti");
 	if(host == nil)
-		host = strdup("$venti");
+		host = vtStrDup("$venti");
 	return host;
 }
 
@@ -657,7 +660,7 @@ fsysLabel(Fsys* fsys, int argc, char* argv[])
 			goto Out1;
 		n = 0;
 		for(;;){
-			if(blockWrite(bb)){
+			if(blockWrite(bb, Waitlock)){
 				while(bb->iostate != BioClean){
 					assert(bb->iostate == BioWriting);
 					vtSleep(bb->ioready);
@@ -839,9 +842,9 @@ fsysDf(Fsys *fsys, int argc, char* argv[])
 
 	fs = fsys->fs;
 	cacheCountUsed(fs->cache, fs->elo, &used, &tot, &bsize);
-	consPrint("\t%s: %,llud used + %,llud free = %,llud (%llud%% used)\n",
+	consPrint("\t%s: %,llud used + %,llud free = %,llud (%.1f%% used)\n",
 		fsys->name, used*(vlong)bsize, (tot-used)*(vlong)bsize,
-		tot*(vlong)bsize, used*100LL/tot);
+		tot*(vlong)bsize, used*100.0/tot);
 	return 1;
 }
 
@@ -1496,17 +1499,54 @@ out:
 	return r;
 }
 
+static ulong
+freemem(void)
+{
+	int nf, pgsize = 0;
+	uvlong size, userpgs = 0, userused = 0;
+	char *ln, *sl;
+	char *fields[2];
+	Biobuf *bp;
+
+	size = 64*1024*1024;
+	bp = Bopen("#c/swap", OREAD);
+	if (bp != nil) {
+		while ((ln = Brdline(bp, '\n')) != nil) {
+			ln[Blinelen(bp)-1] = '\0';
+			nf = tokenize(ln, fields, nelem(fields));
+			if (nf != 2)
+				continue;
+			if (strcmp(fields[1], "pagesize") == 0)
+				pgsize = atoi(fields[0]);
+			else if (strcmp(fields[1], "user") == 0) {
+				sl = strchr(fields[0], '/');
+				if (sl == nil)
+					continue;
+				userpgs = atoll(sl+1);
+				userused = atoll(fields[0]);
+			}
+		}
+		Bterm(bp);
+		if (pgsize > 0 && userpgs > 0)
+			size = (userpgs - userused) * pgsize;
+	}
+	/* cap it to keep the size within 32 bits */
+	if (size >= 3840UL * 1024 * 1024)
+		size = 3840UL * 1024 * 1024;
+	return size;
+}
+
 static int
 fsysOpen(char* name, int argc, char* argv[])
 {
 	char *p, *host;
 	Fsys *fsys;
+	int noauth, noventi, noperm, rflag, wstatallow, noatimeupd;
 	long ncache;
-	int noauth, noventi, noperm, rflag, wstatallow;
 	char *usage = "usage: fsys name open [-APVWr] [-c ncache]";
 
 	ncache = 1000;
-	noauth = noperm = wstatallow = noventi = 0;
+	noauth = noperm = wstatallow = noventi = noatimeupd = 0;
 	rflag = OReadWrite;
 
 	ARGBEGIN{
@@ -1523,6 +1563,9 @@ fsysOpen(char* name, int argc, char* argv[])
 		break;
 	case 'W':
 		wstatallow = 1;
+		break;
+	case 'a':
+		noatimeupd = 1;
 		break;
 	case 'c':
 		p = ARGF();
@@ -1541,6 +1584,14 @@ fsysOpen(char* name, int argc, char* argv[])
 
 	if((fsys = _fsysGet(name)) == nil)
 		return 0;
+
+	/* automatic memory sizing? */
+	if(mempcnt > 0) {
+		/* TODO: 8K is a hack; use the actual block size */
+		ncache = (((vlong)freemem() * mempcnt) / 100) / (8*1024);
+		if (ncache < 100)
+			ncache = 100;
+	}
 
 	vtLock(fsys->lock);
 	if(fsys->fs != nil){
@@ -1575,6 +1626,7 @@ fsysOpen(char* name, int argc, char* argv[])
 	fsys->noauth = noauth;
 	fsys->noperm = noperm;
 	fsys->wstatallow = wstatallow;
+	fsys->fs->noatimeupd = noatimeupd;
 	vtUnlock(fsys->lock);
 	fsysPut(fsys);
 
@@ -1636,16 +1688,22 @@ static int
 fsysConfig(char* name, int argc, char* argv[])
 {
 	Fsys *fsys;
-	char *usage = "usage: fsys name config dev";
+	char *part;
+	char *usage = "usage: fsys name config [dev]";
 
 	ARGBEGIN{
 	default:
 		return cliError(usage);
 	}ARGEND
-	if(argc != 1)
+	if(argc > 1)
 		return cliError(usage);
 
-	if((fsys = _fsysGet(argv[0])) != nil){
+	if(argc == 0)
+		part = foptname;
+	else
+		part = argv[0];
+
+	if((fsys = _fsysGet(part)) != nil){
 		vtLock(fsys->lock);
 		if(fsys->fs != nil){
 			vtSetError(EFsysBusy, fsys->name);
@@ -1654,14 +1712,13 @@ fsysConfig(char* name, int argc, char* argv[])
 			return 0;
 		}
 		vtMemFree(fsys->dev);
-		fsys->dev = vtStrDup(argv[0]);
+		fsys->dev = vtStrDup(part);
 		vtUnlock(fsys->lock);
 	}
-	else if((fsys = fsysAlloc(name, argv[0])) == nil)
+	else if((fsys = fsysAlloc(name, part)) == nil)
 		return 0;
 
 	fsysPut(fsys);
-
 	return 1;
 }
 
@@ -1794,6 +1851,7 @@ cmdFsys(int argc, char* argv[])
 
 	if(argc == 0){
 		vtRLock(sbox.lock);
+		currfsysname = sbox.head->name;
 		for(fsys = sbox.head; fsys != nil; fsys = fsys->next)
 			consPrint("\t%s\n", fsys->name);
 		vtRUnlock(sbox.lock);

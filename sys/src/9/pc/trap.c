@@ -60,7 +60,7 @@ intrenable(int irq, void (*f)(Ureg*, void*), void* a, int tbdf, char *name)
 	}
 	if(vctl[vno]){
 		if(vctl[vno]->isr != v->isr || vctl[vno]->eoi != v->eoi)
-			panic("intrenable: handler: %s %s %luX %luX %luX %luX\n",
+			panic("intrenable: handler: %s %s %#p %#p %#p %#p",
 				vctl[vno]->name, v->name,
 				vctl[vno]->isr, v->isr, vctl[vno]->eoi, v->eoi);
 		v->next = vctl[vno];
@@ -85,7 +85,7 @@ intrdisable(int irq, void (*f)(Ureg *, void *), void *a, int tbdf, char *name)
 	vno = arch->intrvecno(irq);
 	ilock(&vctllock);
 	pv = &vctl[vno];
-	while (*pv && 
+	while (*pv &&
 		  ((*pv)->irq != irq || (*pv)->tbdf != tbdf || (*pv)->f != f || (*pv)->a != a ||
 		   strcmp((*pv)->name, name)))
 		pv = &((*pv)->next);
@@ -93,7 +93,7 @@ intrdisable(int irq, void (*f)(Ureg *, void *), void *a, int tbdf, char *name)
 
 	v = *pv;
 	*pv = (*pv)->next;	/* Link out the entry */
-	
+
 	if(vctl[vno] == nil && arch->intrdisable != nil)
 		arch->intrdisable(irq);
 	iunlock(&vctllock);
@@ -134,7 +134,7 @@ irqallocread(Chan*, void *vbuf, long n, vlong offset)
 
 				if(n == 0)
 					return oldn;
-			}	
+			}
 		}
 	}
 	return oldn - n;
@@ -146,7 +146,7 @@ trapenable(int vno, void (*f)(Ureg*, void*), void* a, char *name)
 	Vctl *v;
 
 	if(vno < 0 || vno >= VectorPIC)
-		panic("trapenable: vno %d\n", vno);
+		panic("trapenable: vno %d", vno);
 	v = xalloc(sizeof(Vctl));
 	v->tbdf = BUSUNKNOWN;
 	v->f = f;
@@ -155,8 +155,7 @@ trapenable(int vno, void (*f)(Ureg*, void*), void* a, char *name)
 	v->name[KNAMELEN-1] = 0;
 
 	ilock(&vctllock);
-	if(vctl[vno])
-		v->next = vctl[vno]->next;
+	v->next = vctl[vno];
 	vctl[vno] = v;
 	iunlock(&vctllock);
 }
@@ -179,7 +178,7 @@ nmienable(void)
 
 /*
  * Minimal trap setup.  Just enough so that we can panic
- * on traps (bugs) during kernel initialization.  
+ * on traps (bugs) during kernel initialization.
  * Called very early - malloc is not yet available.
  */
 void
@@ -363,7 +362,7 @@ trap(Ureg* ureg)
 	}
 	else if(vno < nelem(excname) && user){
 		spllo();
-		sprint(buf, "sys: trap: %s", excname[vno]);
+		snprint(buf, sizeof buf, "sys: trap: %s", excname[vno]);
 		postnote(up, 1, buf, NDebug);
 	}
 	else if(vno >= VectorPIC && vno != VectorSYSCALL){
@@ -420,7 +419,7 @@ trap(Ureg* ureg)
 			 * Don't re-enable, it confuses the crash dumps.
 			nmienable();
 			 */
-			iprint("cpu%d: PC %#8.8lux\n", m->machno, ureg->pc);
+			iprint("cpu%d: NMI PC %#8.8lux\n", m->machno, ureg->pc);
 			while(m->machno != 0)
 				;
 		}
@@ -431,7 +430,7 @@ trap(Ureg* ureg)
 		}
 		if(vno < nelem(excname))
 			panic("%s", excname[vno]);
-		panic("unknown trap/intr: %d\n", vno);
+		panic("unknown trap/intr: %d", vno);
 	}
 	splhi();
 
@@ -487,15 +486,15 @@ dumpregs(Ureg* ureg)
 	 */
 	iprint("  CR0 %8.8lux CR2 %8.8lux CR3 %8.8lux",
 		getcr0(), getcr2(), getcr3());
-	if(m->cpuiddx & 0x9A){
+	if(m->cpuiddx & (Mce|Tsc|Pse|Vmex)){
 		iprint(" CR4 %8.8lux", getcr4());
-		if((m->cpuiddx & 0xA0) == 0xA0){
+		if((m->cpuiddx & (Mce|Cpumsr)) == (Mce|Cpumsr)){
 			rdmsr(0x00, &mca);
 			rdmsr(0x01, &mct);
 			iprint("\n  MCA %8.8llux MCT %8.8llux", mca, mct);
 		}
 	}
-	iprint("\n  ur %lux up %lux\n", ureg, up);
+	iprint("\n  ur %#p up %#p\n", ureg, up);
 }
 
 
@@ -591,7 +590,7 @@ debugbpt(Ureg* ureg, void*)
 		panic("kernel bpt");
 	/* restore pc to instruction that caused the trap */
 	ureg->pc--;
-	sprint(buf, "sys: breakpoint");
+	snprint(buf, sizeof buf, "sys: breakpoint");
 	postnote(up, 1, buf, NDebug);
 }
 
@@ -637,11 +636,11 @@ fault386(Ureg* ureg, void*)
 	if(n < 0){
 		if(!user){
 			dumpregs(ureg);
-			panic("fault: 0x%lux\n", addr);
+			panic("fault: 0x%lux", addr);
 		}
 		checkpages();
 		checkfault(addr, ureg->pc);
-		sprint(buf, "sys: trap: fault %s addr=0x%lux",
+		snprint(buf, sizeof buf, "sys: trap: fault %s addr=0x%lux",
 			read ? "read" : "write", addr);
 		postnote(up, 1, buf, NDebug);
 	}
@@ -664,9 +663,10 @@ syscall(Ureg* ureg)
 	long	ret;
 	int	i, s;
 	ulong scallnr;
+	vlong startns, stopns;
 
 	if((ureg->cs & 0xFFFF) != UESEL)
-		panic("syscall: cs 0x%4.4luX\n", ureg->cs);
+		panic("syscall: cs 0x%4.4luX", ureg->cs);
 
 	cycles(&up->kentry);
 
@@ -675,25 +675,41 @@ syscall(Ureg* ureg)
 	up->pc = ureg->pc;
 	up->dbgreg = ureg;
 
-	if(up->procctl == Proc_tracesyscall){
-		up->procctl = Proc_stopme;
-		procctl(up);
-	}
-
+	sp = ureg->usp;
 	scallnr = ureg->ax;
 	up->scallnr = scallnr;
+
+	if(up->procctl == Proc_tracesyscall){
+		/*
+		 * Redundant validaddr.  Do we care?
+		 * Tracing syscalls is not exactly a fast path...
+		 * Beware, validaddr currently does a pexit rather
+		 * than an error if there's a problem; that might
+		 * change in the future.
+		 */
+		if(sp < (USTKTOP-BY2PG) || sp > (USTKTOP-sizeof(Sargs)-BY2WD))
+			validaddr(sp, sizeof(Sargs)+BY2WD, 0);
+
+		syscallfmt(scallnr, ureg->pc, (va_list)(sp+BY2WD));
+		up->procctl = Proc_stopme;
+		procctl(up);
+		if(up->syscalltrace)
+			free(up->syscalltrace);
+		up->syscalltrace = nil;
+		startns = todget(nil);
+	}
+
 	if(scallnr == RFORK && up->fpstate == FPactive){
 		fpsave(&up->fpsave);
 		up->fpstate = FPinactive;
 	}
 	spllo();
 
-	sp = ureg->usp;
 	up->nerrlab = 0;
 	ret = -1;
 	if(!waserror()){
 		if(scallnr >= nsyscall || systab[scallnr] == 0){
-			pprint("bad sys call number %d pc %lux\n",
+			pprint("bad sys call number %lud pc %lux\n",
 				scallnr, ureg->pc);
 			postnote(up, 1, "sys: bad sys call", NDebug);
 			error(Ebadarg);
@@ -732,10 +748,15 @@ syscall(Ureg* ureg)
 	ureg->ax = ret;
 
 	if(up->procctl == Proc_tracesyscall){
+		stopns = todget(nil);
 		up->procctl = Proc_stopme;
+		sysretfmt(scallnr, (va_list)(sp+BY2WD), ret, startns, stopns);
 		s = splhi();
 		procctl(up);
 		splx(s);
+		if(up->syscalltrace)
+			free(up->syscalltrace);
+		up->syscalltrace = nil;
 	}
 
 	up->insyscall = 0;
@@ -784,7 +805,8 @@ notify(Ureg* ureg)
 		l = strlen(n->msg);
 		if(l > ERRMAX-15)	/* " pc=0x12345678\0" */
 			l = ERRMAX-15;
-		sprint(n->msg+l, " pc=0x%.8lux", ureg->pc);
+		seprint(n->msg+l, &n->msg[sizeof n->msg], " pc=0x%.8lux",
+			ureg->pc);
 	}
 
 	if(n->flag!=NUser && (up->notified || up->notify==0)){
@@ -807,17 +829,16 @@ notify(Ureg* ureg)
 	sp = ureg->usp;
 	sp -= 256;	/* debugging: preserve context causing problem */
 	sp -= sizeof(Ureg);
-if(0) print("%s %lud: notify %.8lux %.8lux %.8lux %s\n", 
+if(0) print("%s %lud: notify %.8lux %.8lux %.8lux %s\n",
 	up->text, up->pid, ureg->pc, ureg->usp, sp, n->msg);
 
 	if(!okaddr((ulong)up->notify, 1, 0)
 	|| !okaddr(sp-ERRMAX-4*BY2WD, sizeof(Ureg)+ERRMAX+4*BY2WD, 1)){
-		pprint("suicide: bad address in notify\n");
 		qunlock(&up->debug);
+		pprint("suicide: bad address in notify\n");
 		pexit("Suicide", 0);
 	}
 
-	up->ureg = (void*)sp;
 	memmove((Ureg*)sp, ureg, sizeof(Ureg));
 	*(Ureg**)(sp-BY2WD) = up->ureg;	/* word under Ureg is old up->ureg */
 	up->ureg = (void*)sp;
@@ -863,8 +884,8 @@ noted(Ureg* ureg, ulong arg0)
 	/* sanity clause */
 	oureg = (ulong)nureg;
 	if(!okaddr((ulong)oureg-BY2WD, BY2WD+sizeof(Ureg), 0)){
-		pprint("bad ureg in noted or call to noted when not notified\n");
 		qunlock(&up->debug);
+		pprint("bad ureg in noted or call to noted when not notified\n");
 		pexit("Suicide", 0);
 	}
 
@@ -878,8 +899,8 @@ noted(Ureg* ureg, ulong arg0)
 	if((nureg->cs & 0xFFFF) != UESEL || (nureg->ss & 0xFFFF) != UDSEL
 	  || (nureg->ds & 0xFFFF) != UDSEL || (nureg->es & 0xFFFF) != UDSEL
 	  || (nureg->fs & 0xFFFF) != UDSEL || (nureg->gs & 0xFFFF) != UDSEL){
-		pprint("bad segment selector in noted\n");
 		qunlock(&up->debug);
+		pprint("bad segment selector in noted\n");
 		pexit("Suicide", 0);
 	}
 
@@ -891,7 +912,7 @@ noted(Ureg* ureg, ulong arg0)
 	switch(arg0){
 	case NCONT:
 	case NRSTR:
-if(0) print("%s %lud: noted %.8lux %.8lux\n", 
+if(0) print("%s %lud: noted %.8lux %.8lux\n",
 	up->text, up->pid, nureg->pc, nureg->usp);
 		if(!okaddr(nureg->pc, 1, 0) || !okaddr(nureg->usp, BY2WD, 0)){
 			qunlock(&up->debug);
@@ -921,15 +942,41 @@ if(0) print("%s %lud: noted %.8lux %.8lux\n",
 		pprint("unknown noted arg 0x%lux\n", arg0);
 		up->lastnote.flag = NDebug;
 		/* fall through */
-		
+
 	case NDFLT:
-		if(up->lastnote.flag == NDebug){ 
+		if(up->lastnote.flag == NDebug){
 			qunlock(&up->debug);
 			pprint("suicide: %s\n", up->lastnote.msg);
 		} else
 			qunlock(&up->debug);
 		pexit(up->lastnote.msg, up->lastnote.flag!=NDebug);
 	}
+}
+
+void
+validalign(uintptr addr, unsigned align)
+{
+	/*
+	 * Plan 9 is a 32-bit O/S, and the hardware it runs on
+	 * does not usually have instructions which move 64-bit
+	 * quantities directly, synthesizing the operations
+	 * with 32-bit move instructions. Therefore, the compiler
+	 * (and hardware) usually only enforce 32-bit alignment,
+	 * if at all.
+	 *
+	 * Take this out if the architecture warrants it.
+	 */
+	if(align == sizeof(vlong))
+		align = sizeof(long);
+
+	/*
+	 * Check align is a power of 2, then addr alignment.
+	 */
+	if((align != 0 && !(align & (align-1))) && !(addr & (align-1)))
+		return;
+	postnote(up, 1, "sys: odd address", NDebug);
+	error(Ebadarg);
+	/*NOTREACHED*/
 }
 
 long
@@ -968,16 +1015,22 @@ userpc(void)
 void
 setregisters(Ureg* ureg, char* pureg, char* uva, int n)
 {
-	ulong flags;
-	ulong cs;
-	ulong ss;
+	ulong cs, ds, es, flags, fs, gs, ss;
 
+	ss = ureg->ss;
 	flags = ureg->flags;
 	cs = ureg->cs;
-	ss = ureg->ss;
+	ds = ureg->ds;
+	es = ureg->es;
+	fs = ureg->fs;
+	gs = ureg->gs;
 	memmove(pureg, uva, n);
-	ureg->flags = (ureg->flags & 0x00FF) | (flags & 0xFF00);
+	ureg->gs = gs;
+	ureg->fs = fs;
+	ureg->es = es;
+	ureg->ds = ds;
 	ureg->cs = cs;
+	ureg->flags = (ureg->flags & 0x00FF) | (flags & 0xFF00);
 	ureg->ss = ss;
 }
 

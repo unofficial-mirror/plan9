@@ -1,6 +1,6 @@
 .TH NDB 8
 .SH NAME
-query, ipquery, mkhash, mkdb, mkhosts, cs, csquery, dns, dnstcp, dnsquery, dnsdebug \- network database
+query, ipquery, mkhash, mkdb, mkhosts, cs, csquery, dns, dnstcp, dnsquery, dnsdebug, inform \- network database
 .SH SYNOPSIS
 .B ndb/query
 [
@@ -35,7 +35,7 @@ query, ipquery, mkhash, mkdb, mkhosts, cs, csquery, dns, dnstcp, dnsquery, dnsde
 .br
 .B ndb/cs
 [
-.B -n
+.B -4n
 ] [
 .B -f
 .I dbfile
@@ -103,6 +103,12 @@ query, ipquery, mkhash, mkdb, mkhosts, cs, csquery, dns, dnstcp, dnsquery, dnsde
 [
 .I type
 ] ]
+.br
+.B ndb/inform
+[
+.B -x
+.I netmtpt
+]
 .SH DESCRIPTION
 The network database holds administrative information used by
 network programs such as
@@ -156,6 +162,19 @@ with entries of attribute type
 and
 value
 .IR value .
+.PP
+.I Ndb/inform
+sends an RFC2136 DNS
+.I inform
+packet to a nameserver to associate the host's IPv4 address with its DNS name.
+This is required if the domain's nameserver is
+a Microsoft Windows Active Directory controller.
+The host's domain name will be sent to the AD controller unless 
+a tuple of the form
+.BI inform= xxx
+is found in the host's
+.I ndb
+entry.
 .SS "Database maintenance"
 .I Ndb/mkhash
 creates a hash file for all entries with attribute
@@ -222,6 +241,15 @@ also sets the system name in
 if it can figure it out.
 The options are:
 .TF -n
+.TP
+.B -4
+Only look up IPv4 addresses (A records) when consulting DNS.
+The default is to also look up v6 addresses (AAAA records).
+Writing
+.L ipv6
+to
+.B /net/cs
+will toggle IP v6 look-ups.
 .TP
 .B -f
 supplies the name of the data base file to use,
@@ -290,7 +318,7 @@ default
 .BR /lib/ndb/local .
 .TP
 .B -n
-whenever a zone that we serve changes, send UDP NOTIFY
+whenever a DNS zone that we serve changes, send UDP NOTIFY
 messages to any dns slaves for that zone
 (see the
 .L dnsslave
@@ -478,7 +506,7 @@ dom=ns1.cs.bell-labs.com ip=135.104.1.11
 .EE
 .LP
 will automatically create both forward and reverse entries for
-.B ns1.cs.bell-labs.com .
+.BR ns1.cs.bell-labs.com .
 Unlike other DNS servers, there's no way to generate
 inconsistent forward and reverse entries.
 .SS "Classless reverse delegation"
@@ -718,17 +746,17 @@ and its IP address in the DNS.
 .EX
 % ndb/dnsquery
 > plan9.bell-labs.com ip
-plan9.bell-labs.com ip	204.178.31.2
-> 204.178.31.2 ptr
-2.31.178.204.in-addr.arpa ptr	plan9.bell-labs.com
-2.31.178.204.in-addr.arpa ptr	ampl.com
+plan9.bell-labs.com ip	135.104.24.16
+> 135.104.24.16 ptr
+16.24.104.135.in-addr.arpa ptr	plan9.bell-labs.com
+16.24.104.135.in-addr.arpa ptr	ampl.com
 >
 .EE
 .LP
-Print the names of all systems that boot via PXE.
+Print the names of all PCs that boot via PXE.
 .IP
 .EX
-% ndb/query -a bootf /386/9pxeload sys
+% ndb/query -a bootf /386/9boot sys
 .EE
 .SH FILES
 .TF /lib/ndb/local.*xxx

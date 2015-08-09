@@ -20,8 +20,12 @@
 #include "etherif.h"
 
 enum {
-	Nrfd		= 64,		/* receive frame area */
-	Ncb		= 64,		/* maximum control blocks queued */
+	/*
+	 * these were both 64.  increased them to try to improve lookout's
+	 * reliability as a pxe booter.
+	 */
+	Nrfd		= 128,		/* receive frame area */
+	Ncb		= 128,		/* maximum control blocks queued */
 
 	NullPointer	= 0xFFFFFFFF,	/* 82557 NULL pointer */
 };
@@ -341,7 +345,7 @@ rfdalloc(ulong link)
 }
 
 static void
-watchdog(void* arg)
+ethwatchdog(void* arg)
 {
 	Ether *ether;
 	Ctlr *ctlr;
@@ -393,7 +397,7 @@ attach(Ether* ether)
 		 */
 		if((ctlr->eeprom[0x03] & 0x0003) != 0x0003){
 			snprint(name, KNAMELEN, "#l%dwatchdog", ether->ctlrno);
-			kproc(name, watchdog, ether);
+			kproc(name, ethwatchdog, ether);
 		}
 	}
 	unlock(&ctlr->slock);
@@ -435,6 +439,8 @@ ifstat(Ether* ether, void* a, long n, ulong offset)
 	unlock(&ctlr->dlock);
 
 	p = malloc(READSTR);
+	if(p == nil)
+		error(Enomem);
 	len = snprint(p, READSTR, "transmit good frames: %lud\n", dump[0]);
 	len += snprint(p+len, READSTR-len, "transmit maximum collisions errors: %lud\n", dump[1]);
 	len += snprint(p+len, READSTR-len, "transmit late collisions errors: %lud\n", dump[2]);
@@ -795,6 +801,10 @@ ctlrinit(Ctlr* ctlr)
 	 */
 	ilock(&ctlr->cblock);
 	ctlr->cbr = malloc(ctlr->ncb*sizeof(Cb));
+	if(ctlr->cbr == nil) {
+		iunlock(&ctlr->cblock);
+		error(Enomem);
+	}
 	for(i = 0; i < ctlr->ncb; i++){
 		ctlr->cbr[i].status = CbC|CbOK;
 		ctlr->cbr[i].command = CbS|CbNOP;
@@ -911,6 +921,8 @@ reread:
 	if(ctlr->eepromsz == 0){
 		ctlr->eepromsz = 8-size;
 		ctlr->eeprom = malloc((1<<ctlr->eepromsz)*sizeof(ushort));
+		if(ctlr->eeprom == nil)
+			error(Enomem);
 		goto reread;
 	}
 
@@ -931,6 +943,8 @@ i82557pci(void)
 		default:
 			continue;
 		case 0x1031:		/* Intel 82562EM */
+		case 0x103B:		/* Intel 82562EM */
+		case 0x103C:		/* Intel 82562EM */
 		case 0x1050:		/* Intel 82562EZ */
 		case 0x1039:		/* Intel 82801BD PRO/100 VE */
 		case 0x103A:		/* Intel 82562 PRO/100 VE */
@@ -969,6 +983,8 @@ i82557pci(void)
 		}
 
 		ctlr = malloc(sizeof(Ctlr));
+		if(ctlr == nil)
+			error(Enomem);
 		ctlr->port = port;
 		ctlr->pcidev = p;
 		ctlr->nop = nop;
@@ -1288,7 +1304,7 @@ reset(Ether* ether)
 	 * Load the chip configuration and start it off.
 	 */
 	if(ether->oq == 0)
-		ether->oq = qopen(256*1024, Qmsg, 0, 0);
+		ether->oq = qopen(64*1024, Qmsg, 0, 0);
 	configure(ether, 0);
 	command(ctlr, CUstart, PADDR(&ctlr->cbr->status));
 

@@ -1,6 +1,6 @@
 #define	INS	32768		/* input buffer */
 #define	OBS	4096		/* outbut buffer */
-#define	NARG	32		/* Max number arguments to a macro */
+#define	NARG	128		/* Max number arguments to a macro */
 #define	NINCLUDE 64		/* Max number of include directories (-I) */
 #define	NIF	32		/* depth of nesting of #if */
 #ifndef EOF
@@ -20,7 +20,7 @@ enum toktype { END, UNCLASS, NAME, NUMBER, STRING, CCON, NL, WS, DSHARP,
 		DSHARP1, NAME1, DEFINED, UMINUS };
 
 enum kwtype { KIF, KIFDEF, KIFNDEF, KELIF, KELSE, KENDIF, KINCLUDE, KDEFINE,
-		KUNDEF, KLINE, KERROR, KPRAGMA, KDEFINED,
+		KUNDEF, KLINE, KERROR, KWARNING, KPRAGMA, KDEFINED,
 		KLINENO, KFILE, KDATE, KTIME, KSTDC, KEVAL };
 
 #define	ISDEFINED	01	/* has #defined value */

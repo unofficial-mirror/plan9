@@ -154,7 +154,7 @@ addtok(char *p, int val)
 {
 	if(p==0)
 		return 0;
-	if(p==&tok[NTOK-1]){
+	if(p >= &tok[NTOK]){
 		*p = 0;
 		yyerror("token buffer too short");
 		return 0;
@@ -166,15 +166,25 @@ addtok(char *p, int val)
 char*
 addutf(char *p, int c)
 {
-	p = addtok(p, c);
-	if(twobyte(c))	 /* 2-byte escape */
-		return addtok(p, advance());
-	if(threebyte(c)){	/* 3-byte escape */
+	uchar b, m;
+	int i;
+
+	p = addtok(p, c);	/* 1-byte UTF runes are special */
+	if(c < Runeself)
+		return p;
+
+	m = 0xc0;
+	b = 0x80;
+	for(i=1; i < UTFmax; i++){
+		if((c&m) == b)
+			break;
 		p = addtok(p, advance());
-		return addtok(p, advance());
+		b = m;
+		m = (m >> 1)|0x80;
 	}
 	return p;
 }
+
 int lastdol;	/* was the last token read '$' or '$#' or '"'? */
 int lastword;	/* was the last token read a word or compound word terminator? */
 
@@ -356,8 +366,7 @@ yylex(void)
 		return c;
 	}
 	for(;;){
-		/* next line should have (char)c==GLOB, but ken's compiler is broken */
-		if(c=='*' || c=='[' || c=='?' || c==(unsigned char)GLOB)
+		if(c=='*' || c=='[' || c=='?' || c==GLOB)
 			w = addtok(w, GLOB);
 		w = addutf(w, c);
 		c = nextc();

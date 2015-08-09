@@ -7,82 +7,7 @@
 
 #include	"ip.h"
 
-typedef struct IP		IP;
-typedef struct Fragment4	Fragment4;
-typedef struct Fragment6	Fragment6;
-typedef struct Ipfrag		Ipfrag;
-
 #define BLKIPVER(xp)	(((Ip4hdr*)((xp)->rp))->vihl&0xF0)
-
-/* MIB II counters */
-enum
-{
-	Forwarding,
-	DefaultTTL,
-	InReceives,
-	InHdrErrors,
-	InAddrErrors,
-	ForwDatagrams,
-	InUnknownProtos,
-	InDiscards,
-	InDelivers,
-	OutRequests,
-	OutDiscards,
-	OutNoRoutes,
-	ReasmTimeout,
-	ReasmReqds,
-	ReasmOKs,
-	ReasmFails,
-	FragOKs,
-	FragFails,
-	FragCreates,
-
-	Nstats,
-};
-
-struct Fragment4
-{
-	Block*	blist;
-	Fragment4*	next;
-	ulong 	src;
-	ulong 	dst;
-	ushort	id;
-	ulong 	age;
-};
-
-struct Fragment6
-{
-	Block*	blist;
-	Fragment6*	next;
-	uchar 	src[IPaddrlen];
-	uchar 	dst[IPaddrlen];
-	uint	id;
-	ulong 	age;
-};
-
-struct Ipfrag
-{
-	ushort	foff;
-	ushort	flen;
-};
-
-/* an instance of IP */
-struct IP
-{
-	ulong		stats[Nstats];
-
-	QLock		fraglock4;
-	Fragment4*	flisthead4;
-	Fragment4*	fragfree4;
-	Ref		id4;
-
-	QLock		fraglock6;
-	Fragment6*	flisthead6;
-	Fragment6*	fragfree6;
-	Ref		id6;
-
-	int		iprouting;	/* true if we route like a gateway */
-};
 
 static char *statnames[] =
 {
@@ -268,7 +193,10 @@ ipoput4(Fs *f, Block *bp, int gating, int ttl, int tos, Conv *c)
 		goto raise;
 
 	/* If we dont need to fragment just send it */
-	medialen = ifc->maxtu - ifc->m->hsize;
+	if(c && c->maxfragsize && c->maxfragsize < ifc->maxtu)
+		medialen = c->maxfragsize - ifc->m->hsize;
+	else
+		medialen = ifc->maxtu - ifc->m->hsize;
 	if(len <= medialen) {
 		if(!gating)
 			hnputs(eh->id, incref(&ip->id4));
@@ -280,13 +208,15 @@ ipoput4(Fs *f, Block *bp, int gating, int ttl, int tos, Conv *c)
 		eh->cksum[0] = 0;
 		eh->cksum[1] = 0;
 		hnputs(eh->cksum, ipcsum(&eh->vihl));
+		assert(bp->next == nil);
 		ifc->m->bwrite(ifc, bp, V4, gate);
 		runlock(ifc);
 		poperror();
 		return 0;
 	}
 
-if((eh->frag[0] & (IP_DF>>8)) && !gating) print("%V: DF set\n", eh->dst);
+	if((eh->frag[0] & (IP_DF>>8)) && !gating)
+		print("%V: DF set\n", eh->dst);
 
 	if(eh->frag[0] & (IP_DF>>8)){
 		ip->stats[FragFails]++;
@@ -388,6 +318,7 @@ ipiput4(Fs *f, Ipifc *ifc, Block *bp)
 	uchar *dp, v6dst[IPaddrlen];
 	IP *ip;
 	Route *r;
+	Conv conv;
 
 	if(BLKIPVER(bp) != IP_VER4) {
 		ipiput6(f, ifc, bp);
@@ -448,14 +379,13 @@ ipiput4(Fs *f, Ipifc *ifc, Block *bp)
 
 	/* route */
 	if(notforme) {
-		Conv conv;
-
 		if(!ip->iprouting){
-			freeb(bp);
+			freeblist(bp);
 			return;
 		}
 
 		/* don't forward to source's network */
+		memset(&conv, 0, sizeof conv);
 		conv.r = nil;
 		r = v4lookup(f, h->dst, &conv);
 		if(r == nil || r->ifc == ifc){
@@ -534,8 +464,8 @@ ipstats(Fs *f, char *buf, int len)
 
 	p = buf;
 	e = p+len;
-	for(i = 0; i < Nstats; i++)
-		p = seprint(p, e, "%s: %lud\n", statnames[i], ip->stats[i]);
+	for(i = 0; i < Nipstats; i++)
+		p = seprint(p, e, "%s: %llud\n", statnames[i], ip->stats[i]);
 	return p - buf;
 }
 
@@ -590,9 +520,9 @@ ip4reassemble(IP *ip, int offset, Block *bp, Ip4hdr *ih)
 		return bp;
 	}
 
-	if(bp->base+sizeof(Ipfrag) >= bp->rp){
-		bp = padblock(bp, sizeof(Ipfrag));
-		bp->rp += sizeof(Ipfrag);
+	if(bp->base+IPFRAGSZ >= bp->rp){
+		bp = padblock(bp, IPFRAGSZ);
+		bp->rp += IPFRAGSZ;
 	}
 
 	BKFG(bp)->foff = offset<<3;

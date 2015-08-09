@@ -81,13 +81,15 @@ mmuinit(void)
 
 	didmmuinit = 1;
 
-	if(0) print("vpt=%#.8ux vpd=%#.8lux kmap=%#.8ux\n",
-		VPT, (ulong)vpd, KMAP);
+	if(0) print("vpt=%#.8ux vpd=%#p kmap=%#.8ux\n",
+		VPT, vpd, KMAP);
 
 	memglobal();
 	m->pdb[PDX(VPT)] = PADDR(m->pdb)|PTEWRITE|PTEVALID;
 	
 	m->tss = malloc(sizeof(Tss));
+	if(m->tss == nil)
+		panic("mmuinit: no memory");
 	memset(m->tss, 0, sizeof(Tss));
 	m->tss->iomap = 0xDFFF<<16;
 
@@ -334,9 +336,9 @@ mmurelease(Proc* proc)
 		if(proc->mmupdb == nil)
 			panic("mmurelease: no mmupdb");
 		if(--proc->kmaptable->ref)
-			panic("mmurelease: kmap ref %d\n", proc->kmaptable->ref);
+			panic("mmurelease: kmap ref %d", proc->kmaptable->ref);
 		if(proc->nkmap)
-			panic("mmurelease: nkmap %d\n", proc->nkmap);
+			panic("mmurelease: nkmap %d", proc->nkmap);
 		/*
 		 * remove kmaptable from pdb before putting pdb up for reuse.
 		 */
@@ -360,7 +362,7 @@ mmurelease(Proc* proc)
 	for(page = proc->mmufree; page; page = next){
 		next = page->next;
 		if(--page->ref)
-			panic("mmurelease: page->ref %d\n", page->ref);
+			panic("mmurelease: page->ref %d", page->ref);
 		pagechainhead(page);
 	}
 	if(proc->mmufree && palloc.r.p)
@@ -450,7 +452,7 @@ putmmu(ulong va, ulong pa, Page*)
 	if(old&PTEVALID)
 		flushpg(va);
 	if(getcr3() != up->mmupdb->pa)
-		print("bad cr3 %.8lux %.8lux\n", getcr3(), up->mmupdb->pa);
+		print("bad cr3 %#.8lux %#.8lux\n", getcr3(), up->mmupdb->pa);
 	splx(s);
 }
 
@@ -466,7 +468,7 @@ checkmmu(ulong va, ulong pa)
 	if(!(vpd[PDX(va)]&PTEVALID) || !(vpt[VPTX(va)]&PTEVALID))
 		return;
 	if(PPN(vpt[VPTX(va)]) != pa)
-		print("%ld %s: va=0x%08lux pa=0x%08lux pte=0x%08lux\n",
+		print("%ld %s: va=%#08lux pa=%#08lux pte=%#08lux\n",
 			up->pid, up->text,
 			va, pa, vpt[VPTX(va)]);
 }
@@ -500,7 +502,7 @@ mmuwalk(ulong* pdb, ulong va, int level, int create)
 
 	case 2:
 		if(*table & PTESIZE)
-			panic("mmuwalk2: va %luX entry %luX\n", va, *table);
+			panic("mmuwalk2: va %luX entry %luX", va, *table);
 		if(!(*table & PTEVALID)){
 			/*
 			 * Have to call low-level allocator from
@@ -552,7 +554,7 @@ vmap(ulong pa, int size)
 
 	size = ROUND(size, BY2PG);
 	if(pa == 0){
-		print("vmap pa=0 pc=%#.8lux\n", getcallerpc(&pa));
+		print("vmap pa=0 pc=%#p\n", getcallerpc(&pa));
 		return nil;
 	}
 	ilock(&vmaplock);
@@ -645,8 +647,8 @@ vunmap(void *v, int size)
 	size = ROUND(size, BY2PG);
 	
 	if(size < 0 || va < VMAP || va+size > VMAP+VMAPSIZE)
-		panic("vunmap va=%#.8lux size=%#x pc=%#.8lux\n",
-			va, size, getcallerpc(&va));
+		panic("vunmap va=%#.8lux size=%#x pc=%#.8lux",
+			va, size, getcallerpc(&v));
 
 	pdbunmap(MACHP(0)->pdb, va, size);
 	
@@ -696,7 +698,7 @@ pdbmap(ulong *pdb, ulong pa, ulong va, int size)
 	flag = pa&0xFFF;
 	pa &= ~0xFFF;
 
-	if((MACHP(0)->cpuiddx & 0x08) && (getcr4() & 0x10))
+	if((MACHP(0)->cpuiddx & Pse) && (getcr4() & 0x10))
 		pse = 1;
 	else
 		pse = 0;
@@ -860,9 +862,9 @@ kunmap(KMap *k)
 	if(up->mmupdb == nil || !(vpd[PDX(KMAP)]&PTEVALID))
 		panic("kunmap: no kmaps");
 	if(va < KMAP || va >= KMAP+KMAPSIZE)
-		panic("kunmap: bad address %#.8lux pc=%#.8lux", va, getcallerpc(&k));
+		panic("kunmap: bad address %#.8lux pc=%#p", va, getcallerpc(&k));
 	if(!(vpt[VPTX(va)]&PTEVALID))
-		panic("kunmap: not mapped %#.8lux pc=%#.8lux", va, getcallerpc(&k));
+		panic("kunmap: not mapped %#.8lux pc=%#p", va, getcallerpc(&k));
 	up->nkmap--;
 	if(up->nkmap < 0)
 		panic("kunmap %lud %s: nkmap=%d", up->pid, up->text, up->nkmap);
@@ -899,7 +901,7 @@ tmpmap(Page *p)
 	entry = &vpt[VPTX(TMPADDR)];
 	if(!(*entry&PTEVALID)){
 		for(i=KZERO; i<=CPU0MACH; i+=BY2PG)
-			print("%.8lux: *%.8lux=%.8lux (vpt=%.8lux index=%.8lux)\n", i, &vpt[VPTX(i)], vpt[VPTX(i)], vpt, VPTX(i));
+			print("%#p: *%#p=%#p (vpt=%#p index=%#p)\n", i, &vpt[VPTX(i)], vpt[VPTX(i)], vpt, VPTX(i));
 		panic("tmpmap: no entry");
 	}
 	if(PPN(*entry) != PPN(TMPADDR-KZERO))
@@ -946,7 +948,7 @@ paddr(void *v)
 	
 	va = (ulong)v;
 	if(va < KZERO)
-		panic("paddr: va=%#.8lux pc=%#.8lux", va, getcallerpc(&v));
+		panic("paddr: va=%#.8lux pc=%#p", va, getcallerpc(&v));
 	return va-KZERO;
 }
 

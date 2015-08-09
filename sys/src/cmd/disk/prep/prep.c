@@ -70,11 +70,13 @@ Auto autox[] =
 {
 	{	"9fat",		10*MB,	100*MB,	10,	},
 	{	"nvram",	512,	512,	1,	},
-	{	"fscfg",	512,	512,	1,	},
+	{	"fscfg",	1024,	8192,	1,	},
 	{	"fs",		200*MB,	0,	10,	},
 	{	"fossil",	200*MB,	0,	4,	},
 	{	"arenas",	500*MB,	0,	20,	},
 	{	"isect",	25*MB,	0,	1,	},
+	{	"bloom",	4*MB,	512*MB,	1,	},
+
 	{	"other",	200*MB,	0,	4,	},
 	{	"swap",		100*MB,	512*MB,	1,	},
 	{	"cache",	50*MB,	1*GB,	2,	},
@@ -83,7 +85,7 @@ Auto autox[] =
 void
 usage(void)
 {
-	fprint(2, "usage: disk/prep [bcfprw] [-a partname]... [-s sectorsize] /dev/sdC0/plan9\n");
+	fprint(2, "usage: disk/prep [-bcfprw] [-a partname]... [-s sectorsize] /dev/sdC0/plan9\n");
 	exits("usage");
 }
 
@@ -110,7 +112,7 @@ main(int argc, char **argv)
 			}
 		}
 		if(i == nelem(autox)){
-			fprint(2, "don't know how to create autoxmatic partition %s\n", p);
+			fprint(2, "don't know how to create automatic partition %s\n", p);
 			usage();
 		}
 		doautox = 1;
@@ -148,10 +150,8 @@ main(int argc, char **argv)
 		usage();
 
 	disk = opendisk(argv[0], rdonly, file);
-	if(disk == nil) {
-		fprint(2, "cannot open disk: %r\n");
-		exits("opendisk");
-	}
+	if(disk == nil)
+		sysfatal("cannot open disk: %r");
 
 	if(secsize != 0) {
 		disk->secsize = secsize;
@@ -219,6 +219,8 @@ cmdsum(Edit *edit, Part *p, vlong a, vlong b)
 		suf = "KB";
 		div = KB;
 	}else{
+		if (sz < 0)
+			fprint(2, "%s: negative size!\n", argv0);
 		suf = "B ";
 		div = 1;
 	}

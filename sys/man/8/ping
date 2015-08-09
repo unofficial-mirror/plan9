@@ -2,7 +2,7 @@
 .SH NAME
 ping, gping, traceroute, hogports \- probe the Internet
 .SH SYNOPSIS
-.B ping
+.B ip/ping
 [
 .B -6aflqr
 ] [
@@ -14,10 +14,13 @@ ping, gping, traceroute, hogports \- probe the Internet
 ] [
 .B -s
 .I size
+] [
+.B -w
+.I waittime
 ]
 .I destination
 .PP
-.B gping
+.B ip/gping
 [
 .B -r
 ] [
@@ -31,7 +34,7 @@ ping, gping, traceroute, hogports \- probe the Internet
 .I destination
 \&... ]
 .PP
-.B traceroute
+.B ip/traceroute
 [
 .B -dn
 ][
@@ -46,7 +49,7 @@ ping, gping, traceroute, hogports \- probe the Internet
 ]
 .I dest
 .PP
-.B hogports
+.B ip/hogports
 .B [\fImtpt\fP/]\fIproto\fP!\fIaddress\fP!\fIstartport\fP[-\fIendport\fP]
 .SH DESCRIPTION
 .I Ping
@@ -109,6 +112,10 @@ sets the length of the message to be
 bytes, ICMP header included.
 The size cannot be smaller than 32 or
 larger than 8192.  The default is 64.
+.TP
+.B w
+sets the additional time in milliseconds to wait
+after all packets are sent.
 .PP
 .I Gping
 is a

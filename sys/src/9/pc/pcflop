@@ -1,6 +1,10 @@
+# pcflop - tiny kernel used to install from floppy.
+# has minimal vga drivers, no usb support and only some ether drivers,
+# and in general no frills.  probably only useful in quite old systems.
 dev
 	root
 	cons
+
 	arch
 	pnp		pci
 	env
@@ -10,10 +14,7 @@ dev
 	srv
 	dup
 	rtc
-#	ssl
-#	tls
 	cap
-#	kprof
 
 	ether		netif
 	ip		arp chandial ip ipv6 ipaux iproute netlog nullmedium pktmedium ptclbsum386 inferno
@@ -21,23 +22,22 @@ dev
 	draw		screen vga vgax
 	mouse		mouse
 	vga
-	kbmap
 
 	sd
 	floppy		dma
-#	lpt
 
-#	audio		dma
 	pccard
 	i82365		cis
 	uart
-#	usb
 
 link
 	realmode
 	devpccard
 	devi82365
-#	apm		apmjump
+
+# order of ethernet drivers should match that in ../pcboot/boot so that
+# devices are detected in the same order by bootstraps and kernels
+# and thus given the same controller numbers.
 	ether2000	ether8390
 	ether2114x	pci
 	ether589	etherelnk3
@@ -45,58 +45,41 @@ link
 	ether8003	ether8390
 	ether8139	pci
 	ether8169	pci ethermii
-	ether82543gc	pci
-#	ether82563	pci
+#	ether82543gc	pci
 	ether82557	pci
+#	ether82563	pci
 	ether83815	pci
-	etherdp83820	pci
+#	etherdp83820	pci
 	etherec2t	ether8390
 	etherelnk3	pci
-	etherga620	pci
-	ethervgbe	pci ethermii
+# vast firmware
+#	etherga620
 	etherigbe	pci ethermii
+	ethervgbe	pci ethermii
 	ethervt6102	pci ethermii
+#	ethervt6105m	pci ethermii
 #	ethersink
 	ethersmc	devi82365 cis
 	etherwavelan	wavelan devi82365 cis pci
+#	etherm10g	pci ethermii		# vast firmware
+#	ether82598	pci
+
 	ethermedium
 	pcmciamodem
 	netdevmedium
 	loopbackmedium
-#	usbuhci
 
 misc
-#	archmp		mp apic
+	mtrr
 
 	sdata		pci sdscsi
 	sd53c8xx	pci sdscsi
 	sdmylex		pci sdscsi
+#	sdiahci		pci sdscsi
 
 	uarti8250
-#	uartpci		pci
 
-	vga3dfx		+cur
-	vgaark2000pv	+cur
-	vgabt485	=cur
-	vgaclgd542x	+cur
-	vgaclgd546x	+cur
-	vgact65545	+cur
-	vgacyber938x	+cur
-	vgaet4000	+cur
-	vgahiqvideo	+cur
-	vgai81x		+cur
-	vgamach64xx	+cur
-	vgamga2164w	+cur
-	vgamga4xx	+cur
-	vganeomagic	+cur
-	vganvidia	+cur
-	vgargb524	=cur
-	vgas3		+cur vgasavage
-	vgat2r4		+cur
-	vgatvp3020	=cur
-	vgatvp3026	=cur
 	vgavesa
-	vgavmware	+cur
 
 ip
 	tcp
@@ -104,7 +87,6 @@ ip
 	ipifc
 	icmp
 	icmp6
-#	il
 
 port
 	int cpuserver = 0;
@@ -113,6 +95,6 @@ boot glenda boot #f/fd0disk
 	local
 
 bootdir
-	bootpcflop.out boot
+	boot$CONF.out boot
 	/sys/lib/dist/bin/386/bzfs kfs
 	/sys/lib/dist/pc/root.bz2 bzroot

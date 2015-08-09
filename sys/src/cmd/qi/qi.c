@@ -2,6 +2,7 @@
 #include <libc.h>
 #include <bio.h>
 #include <mach.h>
+#include <tos.h>
 #define Extern
 #include "power.h"
 
@@ -47,13 +48,15 @@ main(int argc, char **argv)
 	for(i=0; i<32; i++)
 		bits[i] = 1L << (31-i);
 
-	reg.fd[27] = 4503601774854144.0;
-	reg.fd[29] = 0.5;	/* Normally initialised by the kernel */
-	reg.fd[28] = 0.0;
-	reg.fd[30] = 1.0;
-	reg.fd[31] = 2.0;
+	fpreginit();
 	cmd();
 }
+
+/*
+ * we're rounding segment boundaries to the nearest 1MB on power now,
+ * and mach->pgsize is actually what to round segment boundaries up to.
+ */
+#define SEGROUND mach->pgsize
 
 void
 initmap(void)
@@ -62,10 +65,10 @@ initmap(void)
 	ulong t, d, b, bssend;
 	Segment *s;
 
-	t = (fhdr.txtaddr+fhdr.txtsz+(BY2PG-1)) & ~(BY2PG-1);
-	d = (t + fhdr.datsz + (BY2PG-1)) & ~(BY2PG-1);
+	t = (fhdr.txtaddr+fhdr.txtsz+(SEGROUND-1)) & ~(SEGROUND-1);
+	d = (t + fhdr.datsz + (SEGROUND-1)) & ~(SEGROUND-1);
 	bssend = t + fhdr.datsz + fhdr.bsssz;
-	b = (bssend + (BY2PG-1)) & ~(BY2PG-1);
+	b = (bssend + (SEGROUND-1)) & ~(SEGROUND-1);
 
 	s = &memory.seg[Text];
 	s->type = Text;
@@ -263,11 +266,7 @@ reset(void)
 	Breakpoint *b;
 
 	memset(&reg, 0, sizeof(Registers));
-	reg.fd[27] = 4503601774854144.0;
-	reg.fd[29] = 0.5;	/* Normally initialised by the kernel */
-	reg.fd[28] = 0.0;
-	reg.fd[30] = 1.0;
-	reg.fd[31] = 2.0;
+	fpreginit();
 	for(i = 0; i > Nseg; i++) {
 		s = &memory.seg[i];
 		l = ((s->end-s->base)/BY2PG)*sizeof(uchar*);
@@ -286,12 +285,22 @@ reset(void)
 void
 initstk(int argc, char *argv[])
 {
-	ulong size, sp, ap;
+	ulong size, sp, ap, tos;
 	int i;
 	char *p;
 
 	initmap();
-	sp = STACKTOP - 4;
+	tos = STACKTOP - sizeof(Tos)*2;	/* we'll assume twice the host's is big enough */
+	sp = tos;
+	for (i = 0; i < sizeof(Tos)*2; i++)
+		putmem_b(tos + i, 0);
+
+	/*
+	 * pid is second word from end of tos and needs to be set for nsec().
+	 * we know power is a 32-bit cpu, so we'll assume knowledge of the Tos
+	 * struct for now, and use our pid.
+	 */
+	putmem_w(tos + 4*4 + 2*sizeof(ulong) + 3*sizeof(uvlong), getpid());
 
 	/* Build exec stack */
 	size = strlen(file)+1+BY2WD+BY2WD+(BY2WD*2);	
@@ -301,7 +310,7 @@ initstk(int argc, char *argv[])
 	sp -= size;
 	sp &= ~7;
 	reg.r[1] = sp;
-	reg.r[3] = STACKTOP-4;	/* Plan 9 profiling clock */
+	reg.r[3] = tos;		/* Plan 9 profiling clock, etc. */
 
 	/* Push argc */
 	putmem_w(sp, argc+1);
@@ -356,7 +365,8 @@ itrace(char *fmt, ...)
 	va_start(ap, fmt);
 	vseprint(buf, buf+sizeof(buf), fmt, ap);
 	va_end(ap);
-	Bprint(bioout, "%8lux %.8lux %s\n", reg.pc, reg.ir, buf);	
+	Bprint(bioout, "%8lux %.8lux %s\n", reg.pc, reg.ir, buf);
+Bflush(bioout);
 }
 
 void
@@ -386,13 +396,16 @@ dumpdreg(void)
 {
 	int i;
 	char buf[64];
+	FPdbleword d;
 
 	i = 0;
 	while(i < 32) {
-		ieeedftos(buf, sizeof(buf), (ulong)(reg.dv[i]>>32), (ulong)reg.dv[i]);
+		d.x = reg.fd[i];
+		ieeedftos(buf, sizeof(buf), d.hi, d.lo);
 		Bprint(bioout, "F%-2d %s\t", i, buf);
 		i++;
-		ieeedftos(buf, sizeof(buf), (ulong)(reg.dv[i]>>32), (ulong)reg.dv[i]);
+		d.x = reg.fd[i];
+		ieeedftos(buf, sizeof(buf), d.hi, d.lo);
 		Bprint(bioout, "\tF%-2d %s\n", i, buf);
 		i++;
 	}

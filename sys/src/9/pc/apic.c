@@ -100,12 +100,16 @@ struct
 static ulong
 lapicr(int r)
 {
+	if(lapicbase == 0)
+		panic("lapicr: no lapic");
 	return *(lapicbase+(r/sizeof(*lapicbase)));
 }
 
 static void
 lapicw(int r, ulong data)
 {
+	if(lapicbase == 0)
+		panic("lapicw: no lapic");
 	*(lapicbase+(r/sizeof(*lapicbase))) = data;
 	data = *(lapicbase+(LapicID/sizeof(*lapicbase)));
 	USED(data);
@@ -156,6 +160,7 @@ lapictimerinit(void)
 					lapictimer.hz, hz);
 			lapictimer.hz = hz;
 		}
+		assert(lapictimer.hz != 0);
 		lapictimer.div = hz/lapictimer.hz;
 	}
 }
@@ -163,15 +168,28 @@ lapictimerinit(void)
 void
 lapicinit(Apic* apic)
 {
-	ulong r, lvt;
+	ulong dfr, ldr, lvt;
 
 	if(lapicbase == 0)
 		lapicbase = apic->addr;
+	if(lapicbase == 0) {
+		print("lapicinit: no lapic\n");
+		return;
+	}
 
-	lapicw(LapicDFR, 0xFFFFFFFF);
-	r = (lapicr(LapicID)>>24) & 0xFF;
-	lapicw(LapicLDR, (1<<r)<<24);
-	lapicw(LapicTPR, 0xFF);
+	/*
+	 * These don't really matter in Physical mode;
+	 * set the defaults anyway.
+	 */
+	if(strncmp(m->cpuidid, "AuthenticAMD", 12) == 0)
+		dfr = 0xf0000000;
+	else
+		dfr = 0xffffffff;
+	ldr = 0x00000000;
+
+	lapicw(LapicDFR, dfr);
+	lapicw(LapicLDR, ldr);
+	lapicw(LapicTPR, 0xff);
 	lapicw(LapicSVR, LapicENABLE|(VectorPIC+IrqSPURIOUS));
 
 	lapictimerinit();
@@ -200,7 +218,7 @@ lapicinit(Apic* apic)
 
 	lvt = (lapicr(LapicVER)>>16) & 0xFF;
 	if(lvt >= 4)
-		lapicw(LapicPCINT, ApicIMASK);
+		lapicw(LapicPCINT, ApicIMASK|(VectorPIC+IrqPCINT));
 	lapicw(LapicERROR, VectorPIC+IrqERROR);
 	lapicw(LapicESR, 0);
 	lapicr(LapicESR);
@@ -216,7 +234,7 @@ lapicinit(Apic* apic)
 	/*
 	 * Do not allow acceptance of interrupts until all initialisation
 	 * for this processor is done. For the bootstrap processor this can be
-	 * early duing initialisation. For the application processors this should
+	 * early during initialisation. For the application processors this should
 	 * be after the bootstrap processor has lowered priority and is accepting
 	 * interrupts.
 	lapicw(LapicTPR, 0);
@@ -229,6 +247,7 @@ lapicstartap(Apic* apic, int v)
 	int i;
 	ulong crhi;
 
+	/* make apic's processor do a warm reset */
 	crhi = apic->apicno<<24;
 	lapicw(LapicICRHI, crhi);
 	lapicw(LapicICRLO, LapicFIELD|ApicLEVEL|LapicASSERT|ApicINIT);
@@ -236,8 +255,10 @@ lapicstartap(Apic* apic, int v)
 	lapicw(LapicICRLO, LapicFIELD|ApicLEVEL|LapicDEASSERT|ApicINIT);
 	delay(10);
 
+	/* assumes apic is not an 82489dx */
 	for(i = 0; i < 2; i++){
 		lapicw(LapicICRHI, crhi);
+		/* make apic's processor start at v in real mode */
 		lapicw(LapicICRLO, LapicFIELD|ApicEDGE|ApicSTARTUP|(v/BY2PG));
 		microdelay(200);
 	}
@@ -363,6 +384,8 @@ lapictimerset(uvlong next)
 	period = lapictimer.max;
 	if(next != 0){
 		period = next - fastticks(nil);
+		if (lapictimer.div == 0)
+			panic("lapictimerset: zero lapictimer.div");
 		period /= lapictimer.div;
 
 		if(period < lapictimer.min)
@@ -379,6 +402,11 @@ lapictimerset(uvlong next)
 void
 lapicclock(Ureg *u, void*)
 {
+	/*
+	 * since the MTRR updates need to be synchronized across processors,
+	 * we want to do this within the clock tick.
+	 */
+	mtrrclock();
 	timerintr(u, 0);
 }
 
@@ -397,11 +425,25 @@ lapicintroff(void)
 void
 lapicnmienable(void)
 {
-	lapicw(LapicPCINT, ApicNMI);
+	/*
+	 * On the one hand the manual says the vector information
+	 * is ignored if the delivery mode is NMI, and on the other
+	 * a "Receive Illegal Vector" should be generated for a
+	 * vector in the range 0 through 15.
+	 * Some implementations generate the error interrupt if the
+	 * NMI vector is invalid, so always give a valid value.
+	 */
+	if (lapicbase)
+		lapicw(LapicPCINT, ApicNMI|(VectorPIC+IrqPCINT));
+	else
+		print("lapicnmienable: no lapic\n");
 }
 
 void
 lapicnmidisable(void)
 {
-	lapicw(LapicPCINT, ApicIMASK);
+	if (lapicbase)
+		lapicw(LapicPCINT, ApicIMASK|(VectorPIC+IrqPCINT));
+	else
+		print("lapicnmidisable: no lapic\n");
 }

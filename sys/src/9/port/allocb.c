@@ -1,3 +1,4 @@
+/* Block allocation */
 #include	"u.h"
 #include	"../port/lib.h"
 #include	"mem.h"
@@ -5,10 +6,13 @@
 #include	"fns.h"
 #include	"error.h"
 
+#define ALIGNUP(a)	ROUND((uintptr)(a), BLOCKALIGN)
+
 enum
 {
 	Hdrspc		= 64,		/* leave room for high-level headers */
 	Bdead		= 0x51494F42,	/* "QIOB" */
+	Bmagic		= 0x0910b10c,
 };
 
 struct
@@ -17,38 +21,59 @@ struct
 	ulong	bytes;
 } ialloc;
 
-static Block*
-_allocb(int size)
+/*
+ * convert the size of a desired buffer to the size needed
+ * to include Block overhead and alignment.
+ */
+ulong
+blocksize(ulong size)
+{
+	return ALIGNUP(sizeof(Block)) + Hdrspc + ALIGNUP(size);
+}
+
+/*
+ * convert malloced or non-malloced buffer to a Block.
+ * used to build custom Block allocators.
+ *
+ * buf must be at least blocksize(usable) bytes.
+ */
+Block *
+mem2block(void *buf, ulong usable, int malloced)
 {
 	Block *b;
-	ulong addr;
 
-	if((b = mallocz(sizeof(Block)+size+Hdrspc, 0)) == nil)
+	if(buf == nil)
 		return nil;
 
+	b = (Block *)buf;
 	b->next = nil;
 	b->list = nil;
 	b->free = 0;
 	b->flag = 0;
+	b->ref = 0;
+	b->magic = Bmagic;
+	_xinc(&b->ref);
 
 	/* align start of data portion by rounding up */
-	addr = (ulong)b;
-	addr = ROUND(addr + sizeof(Block), BLOCKALIGN);
-	b->base = (uchar*)addr;
+	b->base = (uchar*)ALIGNUP((ulong)b + sizeof(Block));
 
 	/* align end of data portion by rounding down */
-	b->lim = ((uchar*)b) + msize(b);
-	addr = (ulong)(b->lim);
-	addr = addr & ~(BLOCKALIGN-1);
-	b->lim = (uchar*)addr;
+	b->lim = (uchar*)b + (malloced? msize(b): blocksize(usable));
+	b->lim = (uchar*)((ulong)b->lim & ~(BLOCKALIGN-1));
 
 	/* leave sluff at beginning for added headers */
-	b->rp = b->lim - ROUND(size, BLOCKALIGN);
+	b->wp = b->rp = b->lim - ALIGNUP(usable);
 	if(b->rp < b->base)
-		panic("_allocb");
-	b->wp = b->rp;
-
+		panic("mem2block: b->rp < b->base");
+	if(b->lim > (uchar*)b + (malloced? msize(b): blocksize(usable)))
+		panic("mem2block: b->lim beyond Block end");
 	return b;
+}
+
+static Block*
+_allocb(int size)
+{
+	return mem2block(mallocz(blocksize(size), 0), size, 1);
 }
 
 Block*
@@ -61,11 +86,14 @@ allocb(int size)
 	 * Can still error out of here, though.
 	 */
 	if(up == nil)
-		panic("allocb without up: %luX\n", getcallerpc(&size));
+		panic("allocb without up: %#p", getcallerpc(&size));
 	if((b = _allocb(size)) == nil){
+		splhi();
 		xsummary();
 		mallocsummary();
-		panic("allocb: no memory for %d bytes\n", size);
+		delay(500);
+		panic("allocb: no memory for %d bytes; caller %#p", size,
+			getcallerpc(&size));
 	}
 	setmalloctag(b, getcallerpc(&size));
 
@@ -115,9 +143,20 @@ void
 freeb(Block *b)
 {
 	void *dead = (void*)Bdead;
+	long ref;
 
 	if(b == nil)
 		return;
+	if(Bmagic && b->magic != Bmagic)
+		panic("freeb: bad magic %#lux in Block %#p; caller pc %#p",
+			b->magic, b, getcallerpc(&b));
+
+	if((ref = _xdec(&b->ref)) > 0)
+		return;
+	if(ref < 0){
+		dumpstack();
+		panic("freeb: ref %ld; caller pc %#p", ref, getcallerpc(&b));
+	}
 
 	/*
 	 * drivers which perform non cache coherent DMA manage their own buffer
@@ -139,6 +178,7 @@ freeb(Block *b)
 	b->wp = dead;
 	b->lim = dead;
 	b->base = dead;
+	b->magic = 0;
 
 	free(b);
 }
@@ -149,26 +189,26 @@ checkb(Block *b, char *msg)
 	void *dead = (void*)Bdead;
 
 	if(b == dead)
-		panic("checkb b %s %lux", msg, b);
+		panic("checkb b %s %#p", msg, b);
 	if(b->base == dead || b->lim == dead || b->next == dead
 	  || b->rp == dead || b->wp == dead){
-		print("checkb: base 0x%8.8luX lim 0x%8.8luX next 0x%8.8luX\n",
+		print("checkb: base %#p lim %#p next %#p\n",
 			b->base, b->lim, b->next);
-		print("checkb: rp 0x%8.8luX wp 0x%8.8luX\n", b->rp, b->wp);
-		panic("checkb dead: %s\n", msg);
+		print("checkb: rp %#p wp %#p\n", b->rp, b->wp);
+		panic("checkb dead: %s", msg);
 	}
-
+	if(Bmagic && b->magic != Bmagic)
+		panic("checkb: bad magic %#lux in Block %#p", b->magic, b);
 	if(b->base > b->lim)
-		panic("checkb 0 %s %lux %lux", msg, b->base, b->lim);
+		panic("checkb 0 %s %#p %#p", msg, b->base, b->lim);
 	if(b->rp < b->base)
-		panic("checkb 1 %s %lux %lux", msg, b->base, b->rp);
+		panic("checkb 1 %s %#p %#p", msg, b->base, b->rp);
 	if(b->wp < b->base)
-		panic("checkb 2 %s %lux %lux", msg, b->base, b->wp);
+		panic("checkb 2 %s %#p %#p", msg, b->base, b->wp);
 	if(b->rp > b->lim)
-		panic("checkb 3 %s %lux %lux", msg, b->rp, b->lim);
+		panic("checkb 3 %s %#p %#p", msg, b->rp, b->lim);
 	if(b->wp > b->lim)
-		panic("checkb 4 %s %lux %lux", msg, b->wp, b->lim);
-
+		panic("checkb 4 %s %#p %#p", msg, b->wp, b->lim);
 }
 
 void

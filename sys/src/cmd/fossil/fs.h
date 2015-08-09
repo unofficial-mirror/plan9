@@ -14,6 +14,9 @@ enum {
 	OOverWrite,
 };
 
+extern char *currfsysname;
+extern char *foptname;
+
 void	fsClose(Fs*);
 int	fsEpochLow(Fs*, u32int);
 File	*fsGetRoot(Fs*);
@@ -42,6 +45,9 @@ File	*fileGetParent(File*);
 int	fileGetSize(File*, uvlong*);
 File	*fileIncRef(File*);
 int	fileIsDir(File*);
+int	fileIsTemporary(File*);
+int	fileIsAppend(File*);
+int	fileIsExclusive(File*);
 int	fileIsRoFs(File*);
 int	fileIsRoot(File*);
 int	fileMapBlock(File*, ulong, uchar[VtScoreSize], ulong);

@@ -159,15 +159,18 @@ combinerect(Rectangle *r1, Rectangle r2)
 		r1->max.y = r2.max.y;
 }
 
-extern ulong
-drawld2chan[] = {
+ulong drawld2chan[] = {
 	GREY1,
 	GREY2,
 	GREY4,
 	CMAP8,
 };
 
-int log2[] = { -1, 0, 1, -1, 2, -1, -1, -1, 3, -1, -1, -1, -1, -1, -1, -1, 4, -1, -1, -1, -1, -1, -1, -1, 4 /* BUG */, -1, -1, -1, -1, -1, -1, -1, 5 };
+/*
+ * was used by libmemlayer/line.c; made static, instead of deleting it,
+ * to avoid updating many binaries on sources.
+ */
+static int log2[] = { -1, 0, 1, -1, 2, -1, -1, -1, 3, -1, -1, -1, -1, -1, -1, -1, 4, -1, -1, -1, -1, -1, -1, -1, 4 /* BUG */, -1, -1, -1, -1, -1, -1, -1, 5 };
 
 ulong
 setalpha(ulong color, uchar alpha)

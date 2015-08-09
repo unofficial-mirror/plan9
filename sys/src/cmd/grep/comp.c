@@ -215,7 +215,7 @@ pcmp(void *va, void *vb)
 Re2
 re2class(char *s)
 {
-	Rune pairs[200], *p, *q, ov;
+	Rune pairs[200+2], *p, *q, ov;
 	int nc;
 	Re2 x;
 
@@ -234,6 +234,8 @@ re2class(char *s)
 			break;
 		p[1] = *p;
 		p += 2;
+		if(p >= pairs + nelem(pairs) - 2)
+			error("class too big");
 		s += chartorune(p, s);
 		if(*p != '-')
 			continue;
@@ -273,7 +275,7 @@ re2class(char *s)
 			x = re2or(x, rclass(ov, p[0]-1));
 			ov = p[1]+1;
 		}
-		x = re2or(x, rclass(ov, 0xffff));
+		x = re2or(x, rclass(ov, Runemask));
 	} else {
 		x = rclass(p[0], p[1]);
 		for(p+=2; *p; p+=2)

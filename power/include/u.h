@@ -8,7 +8,7 @@ typedef	long long	vlong;
 typedef	unsigned long long uvlong;
 typedef unsigned long	uintptr;
 typedef unsigned long	usize;
-typedef	ushort		Rune;
+typedef	uint		Rune;
 typedef union FPdbleword FPdbleword;
 typedef long		jmp_buf[2];
 #define	JMPBUFSP	0
@@ -78,8 +78,8 @@ typedef	char*	va_list;
 #define va_end(list)\
 	USED(list)
 #define va_arg(list, mode)\
-	((sizeof(mode) == 1)?\
+	((sizeof(mode) <= 4)?\
 		((list += 4), (mode*)list)[-1]:\
-	(sizeof(mode) == 2)?\
-		((list += 4), (mode*)list)[-1]:\
-		((list += sizeof(mode)), (mode*)list)[-1])
+	(signof(mode) != signof(double))?\
+		((list += sizeof(mode)), (mode*)list)[-1]:\
+		((list = (char*)((uintptr)(list+7) & ~7) + sizeof(mode)), (mode*)list)[-1])

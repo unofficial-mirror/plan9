@@ -339,7 +339,7 @@ enum {					/* Tdesc status */
 
 enum {
 	Nrdesc		= 256,		/* multiple of 8 */
-	Ntdesc		= 256,		/* multiple of 8 */
+	Ntdesc		= 64,		/* multiple of 8 */
 	Nblocks		= 4098,		/* total number of blocks to use */
 
 	SBLOCKSIZE	= 2048,
@@ -506,7 +506,11 @@ gc82543ifstat(Ether* edev, void* a, long n, ulong offset)
 
 	ctlr = edev->ctlr;
 	lock(&ctlr->slock);
-	p = malloc(2*READSTR);
+	p = malloc(READSTR);
+	if(p == nil) {
+		unlock(&ctlr->slock);
+		error(Enomem);
+	}
 	l = 0;
 	for(i = 0; i < Nstatistics; i++){
 		r = csr32r(ctlr, Statistics+i*4);
@@ -526,7 +530,7 @@ gc82543ifstat(Ether* edev, void* a, long n, ulong offset)
 				continue;
 			ctlr->statistics[i] = tuvl;
 			ctlr->statistics[i+1] = tuvl>>32;
-			l += snprint(p+l, 2*READSTR-l, "%s: %llud %llud\n",
+			l += snprint(p+l, READSTR-l, "%s: %llud %llud\n",
 				s, tuvl, ruvl);
 			i++;
 			break;
@@ -535,20 +539,20 @@ gc82543ifstat(Ether* edev, void* a, long n, ulong offset)
 			ctlr->statistics[i] += r;
 			if(ctlr->statistics[i] == 0)
 				continue;
-			l += snprint(p+l, 2*READSTR-l, "%s: %ud %ud\n",
+			l += snprint(p+l, READSTR-l, "%s: %ud %ud\n",
 				s, ctlr->statistics[i], r);
 			break;
 		}
 	}
 
-	l += snprint(p+l, 2*READSTR-l, "eeprom:");
+	l += snprint(p+l, READSTR-l, "eeprom:");
 	for(i = 0; i < 0x40; i++){
 		if(i && ((i & 0x07) == 0))
-			l += snprint(p+l, 2*READSTR-l, "\n       ");
-		l += snprint(p+l, 2*READSTR-l, " %4.4uX", ctlr->eeprom[i]);
+			l += snprint(p+l, READSTR-l, "\n       ");
+		l += snprint(p+l, READSTR-l, " %4.4uX", ctlr->eeprom[i]);
 	}
 
-	snprint(p+l, 2*READSTR-l, "\ntxstalled %d\n", ctlr->txstalled);
+	snprint(p+l, READSTR-l, "\ntxstalled %d\n", ctlr->txstalled);
 	n = readstr(offset, a, n, p);
 	free(p);
 	unlock(&ctlr->slock);
@@ -757,6 +761,7 @@ gc82543allocb(Ctlr* ctlr)
 	if((bp = *(ctlr->freehead)) != nil){
 		*(ctlr->freehead) = bp->next;
 		bp->next = nil;
+		_xinc(&bp->ref);	/* prevent bp from being freed */
 	}
 	iunlock(&freelistlock);
 	return bp;
@@ -1270,17 +1275,18 @@ gc82543pci(void)
 		}
 		cls = pcicfgr8(p, PciCLS);
 		switch(cls){
-			case 0x00:
-			case 0xFF:
-				print("82543gc: unusable cache line size\n");
-				continue;
-			case 0x08:
-				break;
-			default:
-				print("82543gc: cache line size %d, expected 32\n",
-					cls*4);
+		default:
+			print("82543gc: p->cls %#ux, setting to 0x10\n", p->cls);
+			p->cls = 0x10;
+			pcicfgw8(p, PciCLS, p->cls);
+			break;
+		case 0x08:
+		case 0x10:
+			break;
 		}
 		ctlr = malloc(sizeof(Ctlr));
+		if(ctlr == nil)
+			error(Enomem);
 		ctlr->port = p->mem[0].bar & ~0x0F;
 		ctlr->pcidev = p;
 		ctlr->id = (p->did<<16)|p->vid;

@@ -12,7 +12,6 @@
  *	finish autonegotiation code;
  *	integrate fiber stuff back in (this ONLY handles
  *	the CAT5 cards at the moment);
- *	add checksum-offload;
  *	add tuning control via ctl file;
  *	this driver is little-endian specific.
  */
@@ -32,16 +31,19 @@ enum {
 	i82542		= (0x1000<<16)|0x8086,
 	i82543gc	= (0x1004<<16)|0x8086,
 	i82544ei	= (0x1008<<16)|0x8086,
-	i82547ei	= (0x1019<<16)|0x8086,
+	i82544eif	= (0x1009<<16)|0x8086,
+	i82544gc	= (0x100d<<16)|0x8086,
 	i82540em	= (0x100E<<16)|0x8086,
 	i82540eplp	= (0x101E<<16)|0x8086,
 	i82545em	= (0x100F<<16)|0x8086,
 	i82545gmc	= (0x1026<<16)|0x8086,
+	i82547ei	= (0x1019<<16)|0x8086,
 	i82547gi	= (0x1075<<16)|0x8086,
+	i82541ei	= (0x1013<<16)|0x8086,
 	i82541gi	= (0x1076<<16)|0x8086,
 	i82541gi2	= (0x1077<<16)|0x8086,
-	i82546gb	= (0x1079<<16)|0x8086,
 	i82541pi	= (0x107c<<16)|0x8086,
+	i82546gb	= (0x1079<<16)|0x8086,
 	i82546eb	= (0x1010<<16)|0x8086,
 };
 
@@ -441,14 +443,15 @@ enum {					/* Td status */
 };
 
 enum {
-	Nrd		= 256,		/* multiple of 8 */
-	Ntd		= 64,		/* multiple of 8 */
-	Nrb		= 1024,		/* private receive buffers per Ctlr */
 	Rbsz		= 2048,
+	/* were 256, 1024 & 64, but 52, 253 and 9 are ample. */
+	Nrd		= 128,		/* multiple of 8 */
+	Nrb		= 512,		/* private receive buffers per Ctlr */
+	Ntd		= 32,		/* multiple of 8 */
 };
 
 typedef struct Ctlr Ctlr;
-typedef struct Ctlr {
+struct Ctlr {
 	int	port;
 	Pcidev*	pcidev;
 	Ctlr*	next;
@@ -463,7 +466,7 @@ typedef struct Ctlr {
 	void*	alloc;			/* receive/transmit descriptors */
 	int	nrd;
 	int	ntd;
-	int	nrb;			/* how many this Ctlr has in the pool */
+	int	nrb;			/* # bufs this Ctlr has in the pool */
 
 	int*	nic;
 	Lock	imlock;
@@ -474,6 +477,10 @@ typedef struct Ctlr {
 	int	lim;
 
 	int	link;
+
+	Watermark wmrb;
+	Watermark wmrd;
+	Watermark wmtd;
 
 	QLock	slock;
 	uint	statistics[Nstatistics];
@@ -492,7 +499,7 @@ typedef struct Ctlr {
 
 	Rendez	rrendez;
 	int	rim;
-	int	rdfree;
+	int	rdfree;			/* rx descriptors awaiting packets */
 	Rd*	rdba;			/* receive descriptor base address */
 	Block**	rb;			/* receive buffers */
 	int	rdh;			/* receive descriptor head */
@@ -500,7 +507,6 @@ typedef struct Ctlr {
 	int	rdtr;			/* receive delay timer ring value */
 
 	Lock	tlock;
-	int	tbusy;
 	int	tdfree;
 	Td*	tdba;			/* transmit descriptor base address */
 	Block**	tb;			/* transmit buffers */
@@ -510,7 +516,7 @@ typedef struct Ctlr {
 	int	txcw;
 	int	fcrtl;
 	int	fcrth;
-} Ctlr;
+};
 
 #define csr32r(c, r)	(*((c)->nic+((r)/4)))
 #define csr32w(c, r, v)	(*((c)->nic+((r)/4)) = (v))
@@ -520,6 +526,7 @@ static Ctlr* igbectlrtail;
 
 static Lock igberblock;		/* free receive Blocks */
 static Block* igberbpool;	/* receive Blocks for all igbe controllers */
+static int nrbfull;	/* # of rcv Blocks with data awaiting processing */
 
 static char* statistics[Nstatistics] = {
 	"CRC Error",
@@ -592,13 +599,17 @@ static long
 igbeifstat(Ether* edev, void* a, long n, ulong offset)
 {
 	Ctlr *ctlr;
-	char *p, *s;
+	char *p, *s, *e;
 	int i, l, r;
 	uvlong tuvl, ruvl;
 
 	ctlr = edev->ctlr;
 	qlock(&ctlr->slock);
-	p = malloc(2*READSTR);
+	p = malloc(READSTR);
+	if(p == nil) {
+		qunlock(&ctlr->slock);
+		error(Enomem);
+	}
 	l = 0;
 	for(i = 0; i < Nstatistics; i++){
 		r = csr32r(ctlr, Statistics+i*4);
@@ -618,7 +629,7 @@ igbeifstat(Ether* edev, void* a, long n, ulong offset)
 				continue;
 			ctlr->statistics[i] = tuvl;
 			ctlr->statistics[i+1] = tuvl>>32;
-			l += snprint(p+l, 2*READSTR-l, "%s: %llud %llud\n",
+			l += snprint(p+l, READSTR-l, "%s: %llud %llud\n",
 				s, tuvl, ruvl);
 			i++;
 			break;
@@ -627,41 +638,48 @@ igbeifstat(Ether* edev, void* a, long n, ulong offset)
 			ctlr->statistics[i] += r;
 			if(ctlr->statistics[i] == 0)
 				continue;
-			l += snprint(p+l, 2*READSTR-l, "%s: %ud %ud\n",
+			l += snprint(p+l, READSTR-l, "%s: %ud %ud\n",
 				s, ctlr->statistics[i], r);
 			break;
 		}
 	}
 
-	l += snprint(p+l, 2*READSTR-l, "lintr: %ud %ud\n",
+	l += snprint(p+l, READSTR-l, "lintr: %ud %ud\n",
 		ctlr->lintr, ctlr->lsleep);
-	l += snprint(p+l, 2*READSTR-l, "rintr: %ud %ud\n",
+	l += snprint(p+l, READSTR-l, "rintr: %ud %ud\n",
 		ctlr->rintr, ctlr->rsleep);
-	l += snprint(p+l, 2*READSTR-l, "tintr: %ud %ud\n",
+	l += snprint(p+l, READSTR-l, "tintr: %ud %ud\n",
 		ctlr->tintr, ctlr->txdw);
-	l += snprint(p+l, 2*READSTR-l, "ixcs: %ud %ud %ud\n",
+	l += snprint(p+l, READSTR-l, "ixcs: %ud %ud %ud\n",
 		ctlr->ixsm, ctlr->ipcs, ctlr->tcpcs);
-	l += snprint(p+l, 2*READSTR-l, "rdtr: %ud\n", ctlr->rdtr);
-	l += snprint(p+l, 2*READSTR-l, "Ctrlext: %08x\n", csr32r(ctlr, Ctrlext));
+	l += snprint(p+l, READSTR-l, "rdtr: %ud\n", ctlr->rdtr);
+	l += snprint(p+l, READSTR-l, "Ctrlext: %08x\n", csr32r(ctlr, Ctrlext));
 
-	l += snprint(p+l, 2*READSTR-l, "eeprom:");
+	l += snprint(p+l, READSTR-l, "eeprom:");
 	for(i = 0; i < 0x40; i++){
 		if(i && ((i & 0x07) == 0))
-			l += snprint(p+l, 2*READSTR-l, "\n       ");
-		l += snprint(p+l, 2*READSTR-l, " %4.4uX", ctlr->eeprom[i]);
+			l += snprint(p+l, READSTR-l, "\n       ");
+		l += snprint(p+l, READSTR-l, " %4.4uX", ctlr->eeprom[i]);
 	}
-	l += snprint(p+l, 2*READSTR-l, "\n");
+	l += snprint(p+l, READSTR-l, "\n");
 
 	if(ctlr->mii != nil && ctlr->mii->curphy != nil){
-		l += snprint(p+l, 2*READSTR, "phy:   ");
+		l += snprint(p+l, READSTR-l, "phy:   ");
 		for(i = 0; i < NMiiPhyr; i++){
 			if(i && ((i & 0x07) == 0))
-				l += snprint(p+l, 2*READSTR-l, "\n       ");
+				l += snprint(p+l, READSTR-l, "\n       ");
 			r = miimir(ctlr->mii, i);
-			l += snprint(p+l, 2*READSTR-l, " %4.4uX", r);
+			l += snprint(p+l, READSTR-l, " %4.4uX", r);
 		}
-		snprint(p+l, 2*READSTR-l, "\n");
+		snprint(p+l, READSTR-l, "\n");
 	}
+	e = p + READSTR;
+	s = p + l + 1;
+	s = seprintmark(s, e, &ctlr->wmrb);
+	s = seprintmark(s, e, &ctlr->wmrd);
+	s = seprintmark(s, e, &ctlr->wmtd);
+	USED(s);
+
 	n = readstr(offset, a, n, p);
 	free(p);
 	qunlock(&ctlr->slock);
@@ -701,7 +719,7 @@ igbectl(Ether* edev, void* buf, long n)
 		v = strtol(cb->f[1], &p, 0);
 		if(v < 0 || p == cb->f[1] || v > 0xFFFF)
 			error(Ebadarg);
-		ctlr->rdtr = v;;
+		ctlr->rdtr = v;
 		csr32w(ctlr, Rdtr, Fpd|v);
 		break;
 	}
@@ -767,6 +785,7 @@ igberballoc(void)
 	if((bp = igberbpool) != nil){
 		igberbpool = bp->next;
 		bp->next = nil;
+		_xinc(&bp->ref);	/* prevent bp from being freed */
 	}
 	iunlock(&igberblock);
 
@@ -778,10 +797,12 @@ igberbfree(Block* bp)
 {
 	bp->rp = bp->lim - Rbsz;
 	bp->wp = bp->rp;
+ 	bp->flag &= ~(Bipck | Budpck | Btcpck | Bpktck);
 
 	ilock(&igberblock);
 	bp->next = igberbpool;
 	igberbpool = bp;
+	nrbfull--;
 	iunlock(&igberblock);
 }
 
@@ -811,8 +832,10 @@ igbelproc(void* arg)
 	edev = arg;
 	ctlr = edev->ctlr;
 	for(;;){
-		if(ctlr->mii == nil || ctlr->mii->curphy == nil)
+		if(ctlr->mii == nil || ctlr->mii->curphy == nil) {
+			sched();
 			continue;
+		}
 
 		/*
 		 * To do:
@@ -832,6 +855,7 @@ igbelproc(void* arg)
 		switch(ctlr->id){
 		case i82543gc:
 		case i82544ei:
+		case i82544eif:
 		default:
 			if(!(ctrl & Asde)){
 				ctrl &= ~(SspeedMASK|Ilos|Fd);
@@ -896,9 +920,11 @@ igbetxinit(Ctlr* ctlr)
 		break;
 	case i82543gc:
 	case i82544ei:
-	case i82547ei:
+	case i82544eif:
+	case i82544gc:
 	case i82540em:
 	case i82540eplp:
+	case i82541ei:
 	case i82541gi:
 	case i82541gi2:
 	case i82541pi:
@@ -906,6 +932,7 @@ igbetxinit(Ctlr* ctlr)
 	case i82545gmc:
 	case i82546gb:
 	case i82546eb:
+	case i82547ei:
 	case i82547gi:
 		r = 8;
 		break;
@@ -1000,6 +1027,8 @@ igbetransmit(Ether* edev)
 		td->control = ((BLEN(bp) & LenMASK)<<LenSHIFT);
 		td->control |= Dext|Ifcs|Teop|DtypeDD;
 		ctlr->tb[tdt] = bp;
+		/* note size of queue of tds awaiting transmission */
+		notemark(&ctlr->wmtd, (tdt + Ntd - tdh) % Ntd);
 		tdt = NEXT(tdt, ctlr->ntd);
 		if(NEXT(tdt, ctlr->ntd) == tdh){
 			td->control |= Rs;
@@ -1072,6 +1101,7 @@ igberxinit(Ctlr* ctlr)
 		}
 	}
 	igbereplenish(ctlr);
+	nrbfull = 0;
 
 	switch(ctlr->id){
 	case i82540em:
@@ -1090,9 +1120,9 @@ igberxinit(Ctlr* ctlr)
 	csr32w(ctlr, Rxdctl, (8<<WthreshSHIFT)|(8<<HthreshSHIFT)|4);
 
 	/*
-	 * Enable checksum offload.
+	 * Disable checksum offload as it has known bugs.
 	 */
-	csr32w(ctlr, Rxcsum, Tuofl|Ipofl|(ETHERHDRSIZE<<PcssSHIFT));
+	csr32w(ctlr, Rxcsum, ETHERHDRSIZE<<PcssSHIFT);
 }
 
 static int
@@ -1107,7 +1137,7 @@ igberproc(void* arg)
 	Rd *rd;
 	Block *bp;
 	Ctlr *ctlr;
-	int r, rdh;
+	int r, rdh, passed;
 	Ether *edev;
 
 	edev = arg;
@@ -1117,7 +1147,6 @@ igberproc(void* arg)
 	r = csr32r(ctlr, Rctl);
 	r |= Ren;
 	csr32w(ctlr, Rctl, r);
-
 	for(;;){
 		ctlr->rim = 0;
 		igbeim(ctlr, Rxt0|Rxo|Rxdmt0|Rxseq);
@@ -1125,6 +1154,7 @@ igberproc(void* arg)
 		sleep(&ctlr->rrendez, igberim, ctlr);
 
 		rdh = ctlr->rdh;
+		passed = 0;
 		for(;;){
 			rd = &ctlr->rdba[rdh];
 
@@ -1138,12 +1168,15 @@ igberproc(void* arg)
 			 * an indication of whether the checksums were
 			 * calculated and valid.
 			 */
+			/* ignore checksum offload as it has known bugs. */
+			rd->errors &= ~(Ipe | Tcpe);
 			if((rd->status & Reop) && rd->errors == 0){
 				bp = ctlr->rb[rdh];
 				ctlr->rb[rdh] = nil;
 				bp->wp += rd->length;
 				bp->next = nil;
-				if(!(rd->status & Ixsm)){
+				/* ignore checksum offload as it has known bugs. */
+				if(0 && !(rd->status & Ixsm)){
 					ctlr->ixsm++;
 					if(rd->status & Ipcs){
 						/*
@@ -1164,7 +1197,12 @@ igberproc(void* arg)
 					bp->checksum = rd->checksum;
 					bp->flag |= Bpktck;
 				}
+				ilock(&igberblock);
+				nrbfull++;
+				iunlock(&igberblock);
+				notemark(&ctlr->wmrb, nrbfull);
 				etheriq(edev, bp, 1);
+				passed++;
 			}
 			else if(ctlr->rb[rdh] != nil){
 				freeb(ctlr->rb[rdh]);
@@ -1180,6 +1218,8 @@ igberproc(void* arg)
 
 		if(ctlr->rdfree < ctlr->nrd/2 || (ctlr->rim & Rxdmt0))
 			igbereplenish(ctlr);
+		/* note how many rds had full buffers */
+		notemark(&ctlr->wmrd, passed);
 	}
 }
 
@@ -1198,25 +1238,10 @@ igbeattach(Ether* edev)
 		return;
 	}
 
-	ctlr->nrd = ROUND(Nrd, 8);
-	ctlr->ntd = ROUND(Ntd, 8);
-	ctlr->alloc = malloc(ctlr->nrd*sizeof(Rd)+ctlr->ntd*sizeof(Td) + 127);
-	if(ctlr->alloc == nil){
-		print("igbe: can't allocate ctlr->alloc\n");
-		qunlock(&ctlr->alock);
-		return;
-	}
-	ctlr->rdba = (Rd*)ROUNDUP((uintptr)ctlr->alloc, 128);
-	ctlr->tdba = (Td*)(ctlr->rdba+ctlr->nrd);
-
-	ctlr->rb = malloc(ctlr->nrd*sizeof(Block*));
-	ctlr->tb = malloc(ctlr->ntd*sizeof(Block*));
-	if (ctlr->rb == nil || ctlr->tb == nil) {
-		print("igbe: can't allocate ctlr->rb or ctlr->tb\n");
-		qunlock(&ctlr->alock);
-		return;
-	}
-
+	ctlr->tb = nil;
+	ctlr->rb = nil;
+	ctlr->alloc = nil;
+	ctlr->nrb = 0;
 	if(waserror()){
 		while(ctlr->nrb > 0){
 			bp = igberballoc();
@@ -1234,12 +1259,32 @@ igbeattach(Ether* edev)
 		nexterror();
 	}
 
+	ctlr->nrd = ROUND(Nrd, 8);
+	ctlr->ntd = ROUND(Ntd, 8);
+	ctlr->alloc = malloc(ctlr->nrd*sizeof(Rd)+ctlr->ntd*sizeof(Td) + 127);
+	if(ctlr->alloc == nil) {
+		print("igbe: can't allocate ctlr->alloc\n");
+		error(Enomem);
+	}
+	ctlr->rdba = (Rd*)ROUNDUP((uintptr)ctlr->alloc, 128);
+	ctlr->tdba = (Td*)(ctlr->rdba+ctlr->nrd);
+
+	ctlr->rb = malloc(ctlr->nrd*sizeof(Block*));
+	ctlr->tb = malloc(ctlr->ntd*sizeof(Block*));
+	if (ctlr->rb == nil || ctlr->tb == nil) {
+		print("igbe: can't allocate ctlr->rb or ctlr->tb\n");
+		error(Enomem);
+	}
+
 	for(ctlr->nrb = 0; ctlr->nrb < Nrb; ctlr->nrb++){
 		if((bp = allocb(Rbsz)) == nil)
 			break;
 		bp->free = igberbfree;
 		freeb(bp);
 	}
+	initmark(&ctlr->wmrb, Nrb, "rcv bufs unprocessed");
+	initmark(&ctlr->wmrd, Nrd-1, "rcv descrs processed at once");
+	initmark(&ctlr->wmtd, Ntd-1, "xmit descr queue len");
 
 	snprint(name, KNAMELEN, "#l%dlproc", edev->ctlrno);
 	kproc(name, igbelproc, edev);
@@ -1460,8 +1505,10 @@ igbemii(Ctlr* ctlr)
 		 * so bail.
 		 */
 		r = csr32r(ctlr, Ctrlext);
-		if(!(r & Mdro))
+		if(!(r & Mdro)) {
+			print("igbe: 82543gc Mdro not set\n");
 			return -1;
+		}
 		csr32w(ctlr, Ctrlext, r);
 		delay(20);
 		r = csr32r(ctlr, Ctrlext);
@@ -1477,10 +1524,13 @@ igbemii(Ctlr* ctlr)
 		ctlr->mii->miw = i82543miimiw;
 		break;
 	case i82544ei:
-	case i82547ei:
+	case i82544eif:
+	case i82544gc:
 	case i82540em:
 	case i82540eplp:
+	case i82547ei:
 	case i82547gi:
+	case i82541ei:
 	case i82541gi:
 	case i82541gi2:
 	case i82541pi:
@@ -1647,17 +1697,18 @@ at93c46r(Ctlr* ctlr)
 	default:
 		areq = 0;
 		break;
-	case i82541gi:
-	case i82547gi:
 	case i82540em:
 	case i82540eplp:
-	case i82541pi:
+	case i82541ei:
+	case i82541gi:
 	case i82541gi2:
+	case i82541pi:
 	case i82545em:
 	case i82545gmc:
 	case i82546gb:
 	case i82546eb:
 	case i82547ei:
+	case i82547gi:
 		areq = 1;
 		csr32w(ctlr, Eecd, eecd|Areq);
 		for(i = 0; i < 1000; i++){
@@ -1738,11 +1789,11 @@ igbedetach(Ctlr* ctlr)
 	case i82540em:
 	case i82540eplp:
 	case i82541gi:
-	case i82541pi:
-	case i82547gi:
 	case i82541gi2:
+	case i82541pi:
 	case i82545em:
 	case i82545gmc:
+	case i82547gi:
 	case i82546gb:
 	case i82546eb:
 		r = csr32r(ctlr, Manc);
@@ -1916,11 +1967,14 @@ igbepci(void)
 			continue;
 		case i82543gc:
 		case i82544ei:
+		case i82544eif:
+		case i82544gc:
 		case i82547ei:
+		case i82547gi:
 		case i82540em:
 		case i82540eplp:
+		case i82541ei:
 		case i82541gi:
-		case i82547gi:
 		case i82541gi2:
 		case i82541pi:
 		case i82545em:
@@ -1937,18 +1991,20 @@ igbepci(void)
 		}
 		cls = pcicfgr8(p, PciCLS);
 		switch(cls){
-			default:
-				print("igbe: unexpected CLS - %d\n", cls*4);
-				break;
-			case 0x00:
-			case 0xFF:
-				print("igbe: unusable CLS\n");
-				continue;
-			case 0x08:
-			case 0x10:
-				break;
+		default:
+			print("igbe: p->cls %#ux, setting to 0x10\n", p->cls);
+			p->cls = 0x10;
+			pcicfgw8(p, PciCLS, p->cls);
+			break;
+		case 0x08:
+		case 0x10:
+			break;
 		}
 		ctlr = malloc(sizeof(Ctlr));
+		if(ctlr == nil) {
+			vunmap(mem, p->mem[0].size);
+			error(Enomem);
+		}
 		ctlr->port = p->mem[0].bar & ~0x0F;
 		ctlr->pcidev = p;
 		ctlr->id = (p->did<<16)|p->vid;

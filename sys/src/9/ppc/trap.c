@@ -11,6 +11,18 @@
 static Lock vctllock;
 Vctl *vctl[256];
 
+int intrstack[5];
+uvlong intrtime[5];
+vlong lastoffset;
+int inintr;
+int nintr[10];
+int nintro;
+int dblintr[64];
+ulong thisto[32];
+ulong thistoo;
+vlong vnot[64];
+ulong vnon[64];
+
 void
 intrenable(int irq, void (*f)(Ureg*, void*), void* a, char *name)
 {
@@ -389,6 +401,63 @@ setmvec(int v, void (*r)(void), void (*t)(void))
 		vp[n] = (18<<26)|(pa&0x3FFFFFC)|3;	/* bla */
 }
 
+
+void
+intr(Ureg *ureg)
+{
+	int vno, pvno, i;
+	Vctl *ctl, *v;
+	void (*pt)(Proc*, int, vlong);
+	uvlong tt, x;
+
+	cycles(&tt);
+	pt = proctrace;
+	pvno = -1;
+	for(i = 0; i < 64; i++){
+		vno = intvec();
+		if(vno == 0)
+			break;
+		cycles(&x);
+		vnot[vno] -= x;
+		if(vno == pvno)
+			dblintr[vno]++;
+		pvno = vno;
+		if(pt && up && up->trace)
+			pt(up, (vno << 16) | SInts, 0);
+	
+		if(vno > nelem(vctl) || (ctl = vctl[vno]) == 0) {
+			iprint("spurious intr %d\n", vno);
+			return;
+		}
+
+		for(v = ctl; v != nil; v = v->next)
+			if(v->f)
+				v->f(ureg, v->a);
+
+		intend(vno);	/* reenable the interrupt */
+
+		if(pt && up && up->trace)
+			pt(up, (vno << 16) | SInte, 0);
+		cycles(&x);
+		vnot[vno] += x;
+		vnon[vno]++;
+	}
+	if(i < nelem(nintr))
+		nintr[i]++;
+	else
+		nintro++;
+	cycles(&x);
+	tt = x - tt;
+	i = tt / 3600;	 /* 100 microseconds units */
+	if(i < nelem(thisto))
+		thisto[i]++;
+	else
+		thistoo++;
+
+	if(up)
+		preempted();
+}
+
 char*
 fpexcname(Ureg *ur, ulong fpscr, char *buf)
 {
@@ -514,15 +583,32 @@ kprocchild(Proc *p, void (*func)(void*), void *arg)
 }
 
 /*
- * called in sysfile.c
+ * called in syscallfmt.c, sysfile.c, sysproc.c
  */
 void
-evenaddr(ulong addr)
+validalign(uintptr addr, unsigned align)
 {
-	if(addr & 3){
-		postnote(up, 1, "sys: odd address", NDebug);
-		error(Ebadarg);
-	}
+	/*
+	 * Plan 9 is a 32-bit O/S, and the hardware it runs on
+	 * does not usually have instructions which move 64-bit
+	 * quantities directly, synthesizing the operations
+	 * with 32-bit move instructions. Therefore, the compiler
+	 * (and hardware) usually only enforce 32-bit alignment,
+	 * if at all.
+	 *
+	 * Take this out if the architecture warrants it.
+	 */
+	if(align == sizeof(vlong))
+		align = sizeof(long);
+
+	/*
+	 * Check align is a power of 2, then addr alignment.
+	 */
+	if((align != 0 && !(align & (align-1))) && !(addr & (align-1)))
+		return;
+	postnote(up, 1, "sys: odd address", NDebug);
+	error(Ebadarg);
+	/*NOTREACHED*/
 }
 
 long
@@ -644,7 +730,7 @@ syscall(Ureg* ureg)
 	ret = -1;
 	if(!waserror()){
 		if(scallnr >= nsyscall || systab[scallnr] == nil){
-			pprint("bad sys call number %d pc %lux\n", scallnr, ureg->pc);
+			pprint("bad sys call number %ld pc %lux\n", scallnr, ureg->pc);
 			postnote(up, 1, "sys: bad sys call", NDebug);
 			error(Ebadarg);
 		}

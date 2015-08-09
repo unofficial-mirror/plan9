@@ -106,7 +106,7 @@
 .if !\\n(IM .if !\\n(MN .pn 0
 .so \\*(sd/tmac.scover
 .if !\\n(IM .if !\\n(MN .rm IM MF MR
-.if n .if !\\n(.T .pi /usr/bin/col
+.if n .if !\\n(.T .pi /bin/col
 .nr ST 1
 .ds QF TECHNICAL MEMORANDUM
 .br
@@ -850,6 +850,7 @@ Computing Science Technical Report No. \\*(MN
 .vs \\n(VSp
 .vs \\nvu
 .ft 1
+.in 0
 .di
 .br
 .sp \\n(DVu
@@ -1100,6 +1101,10 @@ Murray Hill, New Jersey 07974
 Bell Laboratories
 Piscataway, New Jersey 08854
 ..
+.de AW
+Bell Laboratories
+2018 Antwerp, Belgium
+..
 .de BT
 .nr PX \\n(.s
 .nr PF \\n(.f
@@ -1115,6 +1120,7 @@ Piscataway, New Jersey 08854
 .de PP
 .RT
 .if \\n(1T .sp \\n(PDu
+.ne 2v
 .ti +\\n(PIu
 ..
 .	\"SH - (unnumbered) section heading

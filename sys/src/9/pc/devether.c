@@ -182,11 +182,15 @@ etheriq(Ether* ether, Block* bp, int fromwire)
 				else if(xbp = iallocb(len)){
 					memmove(xbp->wp, pkt, len);
 					xbp->wp += len;
-					if(qpass(f->in, xbp) < 0)
+					if(qpass(f->in, xbp) < 0){
+						// print("soverflow for f->in\n");
 						ether->soverflows++;
+					}
 				}
-				else
+				else{
+					// print("soverflow iallocb\n");
 					ether->soverflows++;
+				}
 			}
 			else
 				etherrtrace(f, pkt, len);
@@ -194,8 +198,10 @@ etheriq(Ether* ether, Block* bp, int fromwire)
 	}
 
 	if(fx){
-		if(qpass(fx->in, bp) < 0)
+		if(qpass(fx->in, bp) < 0){
+			// print("soverflow for fx->in\n");
 			ether->soverflows++;
+		}
 		return 0;
 	}
 	if(fromwire){
@@ -233,6 +239,8 @@ etheroq(Ether* ether, Block* bp)
 	}
 
 	if(!loopback){
+		if(qfull(ether->oq))
+			print("etheroq: WARNING: ether->oq full!\n");
 		qbwrite(ether->oq, bp);
 		if(ether->transmit != nil)
 			ether->transmit(ether);
@@ -266,13 +274,13 @@ etherwrite(Chan* chan, void* buf, long n, vlong)
 			return n;
 		}
 		free(cb);
-		if(ether->ctl!=nil)
-			return ether->ctl(ether,buf,n);
+		if(ether->ctl != nil)
+			return ether->ctl(ether, buf, n);
 
 		error(Ebadctl);
 	}
 
-	if(n > ether->maxmtu)
+	if(n > ether->mtu)
 		error(Etoobig);
 	if(n < ether->minmtu)
 		error(Etoosmall);
@@ -309,7 +317,7 @@ etherbwrite(Chan* chan, Block* bp, ulong)
 	}
 	ether = etherxx[chan->dev];
 
-	if(n > ether->maxmtu){
+	if(n > ether->mtu){
 		freeb(bp);
 		error(Etoobig);
 	}
@@ -370,12 +378,15 @@ etherprobe(int cardno, int ctlrno)
 	char buf[128], name[32];
 
 	ether = malloc(sizeof(Ether));
+	if(ether == nil)
+		error(Enomem);
 	memset(ether, 0, sizeof(Ether));
 	ether->ctlrno = ctlrno;
 	ether->tbdf = BUSUNKNOWN;
 	ether->mbps = 10;
 	ether->minmtu = ETHERMINTU;
 	ether->maxmtu = ETHERMAXTU;
+	ether->mtu = ETHERMAXTU;
 
 	if(cardno < 0){
 		if(isaconfig("ether", ctlrno, ether) == 0){
@@ -420,8 +431,12 @@ etherprobe(int cardno, int ctlrno)
 	if(ether->irq >= 0)
 		intrenable(ether->irq, ether->interrupt, ether, ether->tbdf, name);
 
-	i = sprint(buf, "#l%d: %s: %dMbps port 0x%luX irq %d",
-		ctlrno, cards[cardno].type, ether->mbps, ether->port, ether->irq);
+	i = sprint(buf, "#l%d: %s: ", ctlrno, cards[cardno].type);
+	if(ether->mbps >= 1000)
+		i += sprint(buf+i, "%dGbps", ether->mbps/1000);
+	else
+		i += sprint(buf+i, "%dMbps", ether->mbps);
+	i += sprint(buf+i, " port 0x%luX irq %d", ether->port, ether->irq);
 	if(ether->mem)
 		i += sprint(buf+i, " addr 0x%luX", ether->mem);
 	if(ether->size)
@@ -432,26 +447,32 @@ etherprobe(int cardno, int ctlrno)
 	sprint(buf+i, "\n");
 	print(buf);
 
+	/*
+	 * input queues are allocated by ../port/netif.c:/^openfile.
+	 * the size will be the last argument to netifinit() below.
+	 *
+	 * output queues should be small, to minimise `bufferbloat',
+	 * which confuses tcp's feedback loop.  at 1Gb/s, it only takes
+	 * ~15µs to transmit a full-sized non-jumbo packet.
+	 */
+
 	/* compute log10(ether->mbps) into lg */
 	for(lg = 0, mb = ether->mbps; mb >= 10; lg++)
 		mb /= 10;
-	if (lg > 0)
-		lg--;
-	if (lg > 14)			/* 2^(14+17) = 2⁳ⁱ */
+	if (lg > 14)			/* sanity cap; 2**(14+15) = 2²⁹ */
 		lg = 14;
-	/* allocate larger output queues for higher-speed interfaces */
-	bsz = 1UL << (lg + 17);		/* 2ⁱ⁷ = 128K, bsz = 2ⁿ × 128K */
-	while (bsz > mainmem->maxsize && bsz >= 128*1024)
-		bsz /= 2;
 
-	netifinit(ether, name, Ntypes, bsz);
-	while (ether->oq == nil && bsz >= 128*1024) {
+	/* allocate larger input queues for higher-speed interfaces */
+	bsz = 1UL << (lg + 15);		/* 2ⁱ⁵ = 32K, bsz = 2ⁿ × 32K */
+	while (bsz > mainmem->maxsize / 8 && bsz > 128*1024)	/* sanity */
 		bsz /= 2;
-		ether->oq = qopen(bsz, Qmsg, 0, 0);
-		ether->limit = bsz;
-	}
+	netifinit(ether, name, Ntypes, bsz);
+
 	if(ether->oq == nil)
-		panic("etherreset %s", name);
+		ether->oq = qopen(1 << (lg + 13), Qmsg, 0, 0);
+	if(ether->oq == nil)
+		panic("etherreset %s: can't allocate output queue", name);
+
 	ether->alen = Eaddrlen;
 	memmove(ether->addr, ether->ea, Eaddrlen);
 	memset(ether->bcast, 0xFF, Eaddrlen);
@@ -500,7 +521,7 @@ ethershutdown(void)
 		if(ether == nil)
 			continue;
 		if(ether->shutdown == nil) {
-			print("#l%d: no shutdown fuction\n", i);
+			print("#l%d: no shutdown function\n", i);
 			continue;
 		}
 		(*ether->shutdown)(ether);

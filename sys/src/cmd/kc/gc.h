@@ -54,7 +54,7 @@ struct	Prog
 struct	Case
 {
 	Case*	link;
-	long	val;
+	vlong	val;
 	long	label;
 	char	def;
 	char isv;
@@ -63,7 +63,7 @@ struct	Case
 
 struct	C1
 {
-	long	val;
+	vlong	val;
 	long	label;
 };
 
@@ -259,7 +259,7 @@ int	swcmp(const void*, const void*);
 void	doswit(Node*);
 void	swit1(C1*, int, long, Node*);
 void	swit2(C1*, int, long, Node*, Node*);
-void	cas(void);
+void	casf(void);
 void	bitload(Node*, Node*, Node*, Node*, Node*);
 void	bitstore(Node*, Node*, Node*, Node*, Node*);
 long	outstring(char*, long);
@@ -267,7 +267,6 @@ int	mulcon(Node*, Node*);
 Multab*	mulcon0(Node*, long);
 int	mulcon1(Node*, long, Node*);
 void	nullwarn(Node*, Node*);
-void	sextern(Sym*, Node*, long, long);
 void	gextern(Sym*, Node*, long, long);
 void	outcode(void);
 void	ieeedtod(Ieee*, double);

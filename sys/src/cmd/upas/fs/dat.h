@@ -111,6 +111,8 @@ extern Message	*root;
 extern Mailboxinit	plan9mbox;
 extern Mailboxinit	pop3mbox;
 extern Mailboxinit	imap4mbox;
+extern Mailboxinit	planbmbox;
+extern Mailboxinit	planbvmbox;
 
 char*		syncmbox(Mailbox*, int);
 char*		geterrstr(void);

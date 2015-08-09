@@ -71,6 +71,13 @@ neomagicenable(VGAscr* scr)
 			ioaddr = p->mem[1].bar & ~0x0F;
 			iosize = p->mem[1].size;
 			break;
+		case 0x0016:		/* MagicMedia 256XL+ */
+			curoff = 0x1000;
+			/* Vaio VESA BIOS says 6080, but then hwgc doesn't work */
+			vmsize = 4096*1024;
+			ioaddr = p->mem[1].bar & ~0x0F;
+			iosize = p->mem[1].size;
+			break;
 		default:
 			return;
 		}
@@ -337,7 +344,7 @@ waitforidle(VGAscr *scr)
 	while((mmio[BltStat] & NEO_BS0_BLT_BUSY) && x++ < 1000000)
 		;
 	//if(x >= 1000000)
-	//	iprint("idle stat %lud scrmmio %.8lux scr %p pc %luX\n", mmio[BltStat], scr->mmio, scr, getcallerpc(&scr));
+	//	iprint("idle stat %lud scrmmio %#.8lux scr %#p pc %#p\n", mmio[BltStat], scr->mmio, scr, getcallerpc(&scr));
 }
 
 static void
@@ -351,7 +358,7 @@ waitforfifo(VGAscr *scr, int entries)
 	while(((mmio[BltStat]>>8) < entries) && x++ < 1000000)
 		;
 	//if(x >= 1000000)
-	//	iprint("fifo stat %d scrmmio %.8lux scr %p pc %luX\n", mmio[BltStat]>>8, scr->mmio, scr, getcallerpc(&scr));
+	//	iprint("fifo stat %d scrmmio %#.8lux scr %#p pc %#p\n", mmio[BltStat]>>8, scr->mmio, scr, getcallerpc(&scr));
 	/* DirectFB says the above doesn't work.  if so... */
 	/* waitforidle(scr); */
 }

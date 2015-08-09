@@ -1,3 +1,4 @@
+/* vl - mips linker */
 #define	EXTERN
 #include	"l.h"
 #include	<ar.h>
@@ -10,24 +11,36 @@ char	*noname		= "<none>";
 char	symname[]	= SYMDEF;
 char	thechar		= 'v';
 char	*thestring 	= "mips";
+int little;
+
+char**	libdir;
+int	nlibdir	= 0;
+static	int	maxlibdir = 0;
 
 /*
- *	-H0 -T0x40004C -D0x10000000	is abbrev unix
- *	-H1 -T0x80020000 -R4		is bootp() format for 3k
- *	-H2 -T4128 -R4096		is plan9 format
- *	-H3 -T0x80020000 -R8		is bootp() format for 4k
- *	-H4 -T0x400000 -R4		is sgi unix coff executable
- *	-H5 -T0x4000A0 -R4		is sgi unix elf executable
- *	-H6						is headerless
+ * -H0 -T0x40004C -D0x10000000 is abbrev unix		(boot image)
+ * -H1 -T0x80020000 -R4	is bootp() format for 3k	(boot image)
+ * -H2 -T16416 -R16384	is plan9 format
+ * -H3 -T0x80020000 -R8	is bootp() format for 4k	(4k boot image)
+ * -H4 -T0x400000 -R4	is sgi unix coff executable	(4k boot image)
+ * -H5 -T0x4000A0 -R4	is sgi unix elf executable
+ * -H6			is headerless
+ * -H7			is 64-bit elf executable
  */
 
-int little;
+void
+usage(void)
+{
+	diag("usage: %s [-options] objects", argv0);
+	errorexit();
+}
 
 void
 main(int argc, char *argv[])
 {
 	int c;
 	char *a;
+	char name[LIBNAMELEN];
 
 	Binit(&bso, 1, OWRITE);
 	cout = -1;
@@ -37,6 +50,7 @@ main(int argc, char *argv[])
 	curtext = P;
 	HEADTYPE = -1;
 	INITTEXT = -1;
+	INITTEXTP = -1;
 	INITDAT = -1;
 	INITRND = -1;
 	INITENTRY = 0;
@@ -55,7 +69,7 @@ main(int argc, char *argv[])
 		if(a)
 			INITENTRY = a;
 		break;
-	case  'L':			/* for little-endian mips */
+	case  'm':			/* for little-endian mips */
 		thechar = '0';
 		thestring = "spim";
 		little = 1;
@@ -64,6 +78,11 @@ main(int argc, char *argv[])
 		a = ARGF();
 		if(a)
 			INITTEXT = atolwhex(a);
+		break;
+	case 'P':
+		a = ARGF();
+		if(a)
+			INITTEXTP = atolwhex(a);
 		break;
 	case 'D':
 		a = ARGF();
@@ -81,16 +100,27 @@ main(int argc, char *argv[])
 			HEADTYPE = atolwhex(a);
 		/* do something about setting INITTEXT */
 		break;
+	case 'L':
+		addlibpath(EARGF(usage()));
+		break;
 	} ARGEND
 
 	USED(argc);
 
-	if(*argv == 0) {
-		diag("usage: %cl [-options] objects", thechar);
-		errorexit();
-	}
+	if(*argv == 0)
+		usage();
 	if(!debug['9'] && !debug['U'] && !debug['B'])
 		debug[DEFAULT] = 1;
+	a = getenv("ccroot");
+	if(a != nil && *a != '\0') {
+		if(!fileexists(a)) {
+			diag("nonexistent $ccroot: %s", a);
+			errorexit();
+		}
+	}else
+		a = "";
+	snprint(name, sizeof(name), "%s/%s/lib", a, thestring);
+	addlibpath(name);
 	if(HEADTYPE == -1) {
 		if(debug['U'])
 			HEADTYPE = 0;
@@ -124,12 +154,12 @@ main(int argc, char *argv[])
 		break;
 	case 2:	/* plan 9 */
 		HEADR = 32L;
-		if(INITTEXT == -1)
-			INITTEXT = 4128;
 		if(INITDAT == -1)
 			INITDAT = 0;
 		if(INITRND == -1)
-			INITRND = 4096;
+			INITRND = 16*1024;
+		if(INITTEXT == -1)
+			INITTEXT = INITRND + HEADR;
 		break;
 	case 3:	/* boot for 4k */
 		HEADR = 20L+56L+3*40L;
@@ -150,7 +180,7 @@ main(int argc, char *argv[])
 			INITRND = 0;
 		break;
 	case 5:	/* sgi unix elf executable */
-		HEADR = rnd(52L+3*32L, 16);
+		HEADR = rnd(Ehdr32sz+3*Phdr32sz, 16);
 		if(INITTEXT == -1)
 			INITTEXT = 0x00400000L+HEADR;
 		if(INITDAT == -1)
@@ -167,12 +197,23 @@ main(int argc, char *argv[])
 		if(INITRND == -1)
 			INITRND = 4096;
 		break;
+	case 7:	/* 64-bit elf executable */
+		HEADR = rnd(Ehdr64sz+3*Phdr64sz, 16);
+		if(INITTEXT == -1)
+			INITTEXT = 0x00400000L+HEADR;
+		if(INITDAT == -1)
+			INITDAT = 0x10000000;
+		if(INITRND == -1)
+			INITRND = 0;
+		break;
 	}
+	if (INITTEXTP == -1)
+		INITTEXTP = INITTEXT;
 	if(INITDAT != 0 && INITRND != 0)
-		print("warning: -D0x%lux is ignored because of -R0x%lux\n",
+		print("warning: -D%#llux is ignored because of -R%#llux\n",
 			INITDAT, INITRND);
 	if(debug['v'])
-		Bprint(&bso, "HEADER = -H0x%d -T0x%lux -D0x%lux -R0x%lux\n",
+		Bprint(&bso, "HEADER = -H%d -T%#llux -D%#llux -R%#llux\n",
 			HEADTYPE, INITTEXT, INITDAT, INITRND);
 	Bflush(&bso);
 	zprg.as = AGOK;
@@ -195,7 +236,7 @@ main(int argc, char *argv[])
 	}
 	cout = create(outfile, 1, 0775);
 	if(cout < 0) {
-		diag("%s: cannot create", outfile);
+		diag("cannot create %s: %r", outfile);
 		errorexit();
 	}
 	nuxiinit();
@@ -212,7 +253,7 @@ main(int argc, char *argv[])
 			INITENTRY = "_mainp";
 		if(!debug['l'])
 			lookup(INITENTRY, 0)->type = SXREF;
-	} else
+	} else if(!(*INITENTRY >= '0' && *INITENTRY <= '9'))
 		lookup(INITENTRY, 0)->type = SXREF;
 
 	while(*argv)
@@ -246,6 +287,42 @@ out:
 	}
 	Bflush(&bso);
 	errorexit();
+}
+
+void
+addlibpath(char *arg)
+{
+	char **p;
+
+	if(nlibdir >= maxlibdir) {
+		if(maxlibdir == 0)
+			maxlibdir = 8;
+		else
+			maxlibdir *= 2;
+		p = malloc(maxlibdir*sizeof(*p));
+		if(p == nil) {
+			diag("out of memory");
+			errorexit();
+		}
+		memmove(p, libdir, nlibdir*sizeof(*p));
+		free(libdir);
+		libdir = p;
+	}
+	libdir[nlibdir++] = strdup(arg);
+}
+
+char*
+findlib(char *file)
+{
+	int i;
+	char name[LIBNAMELEN];
+
+	for(i = 0; i < nlibdir; i++) {
+		snprint(name, sizeof(name), "%s/%s", libdir[i], file);
+		if(fileexists(name))
+			return libdir[i];
+	}
+	return nil;
 }
 
 void
@@ -367,7 +444,8 @@ objfile(char *file)
 			l |= (e[3] & 0xff) << 16;
 			l |= (e[4] & 0xff) << 24;
 			seek(f, l, 0);
-			l = read(f, &arhdr, SAR_HDR);
+			/* need readn to read the dumps (at least) */
+			l = readn(f, &arhdr, SAR_HDR);
 			if(l != SAR_HDR)
 				goto bad;
 			if(strncmp(arhdr.fmag, ARFMAG, sizeof(arhdr.fmag)))
@@ -394,7 +472,7 @@ int
 zaddr(uchar *p, Adr *a, Sym *h[])
 {
 	int i, c;
-	long l;
+	int l;
 	Sym *s;
 	Auto *u;
 
@@ -498,25 +576,24 @@ zaddr(uchar *p, Adr *a, Sym *h[])
 void
 addlib(char *obj)
 {
-	char name[1024], comp[256], *p;
-	int i;
+	char fn1[LIBNAMELEN], fn2[LIBNAMELEN], comp[LIBNAMELEN], *p, *name;
+	int i, search;
 
 	if(histfrogp <= 0)
 		return;
 
+	name = fn1;
+	search = 0;
 	if(histfrog[0]->name[1] == '/') {
 		sprint(name, "");
 		i = 1;
-	} else
-	if(histfrog[0]->name[1] == '.') {
+	} else if(histfrog[0]->name[1] == '.') {
 		sprint(name, ".");
 		i = 0;
 	} else {
-		if(debug['9'])
-			sprint(name, "/%s/lib", thestring);
-		else
-			sprint(name, "/usr/%clib", thechar);
+		sprint(name, "");
 		i = 0;
+		search = 1;
 	}
 
 	for(; i<histfrogp; i++) {
@@ -539,13 +616,25 @@ addlib(char *obj)
 			memmove(p+strlen(thestring), p+2, strlen(p+2)+1);
 			memmove(p, thestring, strlen(thestring));
 		}
-		if(strlen(name) + strlen(comp) + 3 >= sizeof(name)) {
+		if(strlen(fn1) + strlen(comp) + 3 >= sizeof(fn1)) {
 			diag("library component too long");
 			return;
 		}
-		strcat(name, "/");
-		strcat(name, comp);
+		if(i > 0 || !search)
+			strcat(fn1, "/");
+		strcat(fn1, comp);
 	}
+
+	cleanname(name);
+
+	if(search){
+		p = findlib(name);
+		if(p != nil){
+			snprint(fn2, sizeof(fn2), "%s/%s", p, name);
+			name = fn2;
+		}
+	}
+
 	for(i=0; i<libraryp; i++)
 		if(strcmp(name, library[i]) == 0)
 			return;
@@ -667,7 +756,7 @@ readsome(int f, uchar *buf, uchar *good, uchar *stop, int max)
 void
 ldobj(int f, long c, char *pn)
 {
-	long ipc;
+	vlong ipc;
 	Prog *p, *t;
 	uchar *bloc, *bsize, *stop;
 	Sym *h[NSYM], *s, *di;
@@ -697,7 +786,7 @@ loop:
 	}
 	o = bloc[0];		/* as */
 	if(o <= AXXX || o >= ALAST) {
-		diag("%s: line %ld: opcode out of range %d", pn, pc-ipc, o);
+		diag("%s: line %lld: opcode out of range %d", pn, pc-ipc, o);
 		print("	probably not a .%c file\n", thechar);
 		errorexit();
 	}
@@ -1017,8 +1106,7 @@ lookup(char *symb, int v)
 	for(p=symb; c = *p; p++)
 		h = h+h+h + c;
 	l = (p - symb) + 1;
-	if(h < 0)
-		h = ~h;
+	h &= 0xffffff;
 	h %= NHASH;
 	for(s = hash[h]; s != S; s = s->link)
 		if(s->version == v)
@@ -1171,15 +1259,24 @@ void
 doprof2(void)
 {
 	Sym *s2, *s4;
-	Prog *p, *q, *ps2, *ps4;
+	Prog *p, *q, *q2, *ps2, *ps4;
 
 	if(debug['v'])
 		Bprint(&bso, "%5.2f profile 2\n", cputime());
 	Bflush(&bso);
-	s2 = lookup("_profin", 0);
-	s4 = lookup("_profout", 0);
+
+	if(debug['e']){
+		s2 = lookup("_tracein", 0);
+		s4 = lookup("_traceout", 0);
+	}else{
+		s2 = lookup("_profin", 0);
+		s4 = lookup("_profout", 0);
+	}
 	if(s2->type != STEXT || s4->type != STEXT) {
-		diag("_profin/_profout not defined");
+		if(debug['e'])
+			diag("_tracein/_traceout not defined %d %d", s2->type, s4->type);
+		else
+			diag("_profin/_profout not defined");
 		return;
 	}
 
@@ -1218,7 +1315,20 @@ doprof2(void)
 			q->line = p->line;
 			q->pc = p->pc;
 			q->link = p->link;
-			p->link = q;
+			if(debug['e']){		/* embedded tracing */
+				q2 = prg();
+				p->link = q2;
+				q2->link = q;
+
+				q2->line = p->line;
+				q2->pc = p->pc;
+
+				q2->as = AJMP;
+				q2->to.type = D_BRANCH;
+				q2->to.sym = p->to.sym;
+				q2->cond = q->link;
+			}else
+				p->link = q;
 			p = q;
 			p->as = AJAL;
 			p->to.type = D_BRANCH;
@@ -1228,6 +1338,17 @@ doprof2(void)
 			continue;
 		}
 		if(p->as == ARET) {
+			/*
+			 * RET (default)
+			 */
+			if(debug['e']){		/* embedded tracing */
+				q = prg();
+				q->line = p->line;
+				q->pc = p->pc;
+				q->link = p->link;
+				p->link = q;
+				p = q;
+			}
 			/*
 			 * RET
 			 */

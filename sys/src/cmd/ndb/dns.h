@@ -1,5 +1,10 @@
 #include <thread.h>		/* for Ref */
 
+#define NS2MS(ns) ((ns) / 1000000L)
+#define S2MS(s)   ((s)  * 1000LL)
+
+#define timems()	NS2MS(nsec())
+
 typedef struct Ndbtuple Ndbtuple;
 
 enum
@@ -131,9 +136,17 @@ enum
 	/* reserved time (can't be timed out earlier) */
 	Reserved=	5*Min,
 
-	/* packet sizes */
-	Maxudp=		512,	/* maximum bytes per udp message */
-	Maxudpin=	2048,	/* maximum bytes per udp message */
+	/* tcp & udp port number */
+	Dnsport=	53,
+
+	/*
+	 * payload size.  originally, 512 bytes was the upper bound, to
+	 * eliminate fragmentation when using udp transport.
+	 * with edns (rfc 6891), that has been raised to 4096.
+	 * we don't currently generate edns, but we might be sent edns packets.
+	 */
+	Maxdnspayload=	512,
+	Maxpayload=	4096,
 
 	/* length of domain name hash table */
 	HTLEN= 		4*1024,
@@ -147,8 +160,8 @@ enum
 	/* parallelism: tune; was 32; allow lots */
 	Maxactive=	250,
 
-	/* tune; was 60; keep it short */
-	Maxreqtm=	10,	/* max. seconds to process a request */
+	/* tune; was 60*1000; keep it short */
+	Maxreqtm=	8*1000,	/* max. ms to process a request */
 
 	Notauthoritative = 0,
 	Authoritative,
@@ -175,7 +188,7 @@ typedef struct Txt	Txt;
 struct Request
 {
 	int	isslave;	/* pid of slave */
-	ulong	aborttime;	/* time at which we give up */
+	uvlong	aborttime;	/* time in ms at which we give up */
 	jmp_buf	mret;		/* where master jumps to after starting a slave */
 	int	id;
 	char	*from;		/* who asked us? */
@@ -338,6 +351,7 @@ struct Srv
 	ushort	weight;
 };
 
+typedef struct Rrlist Rrlist;
 struct Rrlist
 {
 	int	count;
@@ -446,6 +460,7 @@ extern char	*rrtname[];
 extern char	*rname[];
 extern unsigned	nrname;
 extern char	*opname[];
+extern Lock	dnlock;
 
 void	abort(); /* char*, ... */;
 void	addserver(Server**, char*);
@@ -454,7 +469,8 @@ void	db2cache(int);
 void	dnage(DN*);
 void	dnageall(int);
 void	dnagedb(void);
-void	dnagenever(void);
+void	dnageallnever(void);
+void	dnagenever(DN *, int);
 void	dnauthdb(void);
 void	dncheck(void*, int);
 void	dndump(char*);
@@ -524,6 +540,8 @@ RR*	dnresolve(char*, int, int, Request*, RR**, int, int, int, int*);
 int	udpport(char *);
 int	mkreq(DN *dp, int type, uchar *buf, int flags, ushort reqno);
 int	seerootns(void);
+void	initdnsmsg(DNSmsg *mp, RR *rp, int flags, ushort reqno);
+DNSmsg*	newdnsmsg(RR *rp, int flags, ushort reqno);
 
 /* dnserver.c */
 void	dnserver(DNSmsg*, DNSmsg*, Request*, uchar *, int);

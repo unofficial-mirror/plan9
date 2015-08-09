@@ -36,11 +36,13 @@ static void	uartflow(void*);
 /*
  *  enable/disable uart and add/remove to list of enabled uarts
  */
-static Uart*
+Uart*
 uartenable(Uart *p)
 {
 	Uart **l;
 
+	if(p->enabled)
+		return p;
 	if(p->iq == nil){
 		if((p->iq = qopen(8*1024, 0, uartflow, p)) == nil)
 			return nil;
@@ -80,7 +82,11 @@ uartenable(Uart *p)
 		uartctl(p, "b9600");
 	(*p->phys->enable)(p, 1);
 
-	lock(&uartalloc);
+	/*
+	 * use ilock because uartclock can otherwise interrupt here
+	 * and would hang on an attempt to lock uartalloc.
+	 */
+	ilock(&uartalloc);
 	for(l = &uartalloc.elist; *l; l = &(*l)->elist){
 		if(*l == p)
 			break;
@@ -90,7 +96,7 @@ uartenable(Uart *p)
 		uartalloc.elist = p;
 	}
 	p->enabled = 1;
-	unlock(&uartalloc);
+	iunlock(&uartalloc);
 
 	return p;
 }
@@ -100,9 +106,11 @@ uartdisable(Uart *p)
 {
 	Uart **l;
 
+	if(!p->enabled)
+		return;
 	(*p->phys->disable)(p);
 
-	lock(&uartalloc);
+	ilock(&uartalloc);
 	for(l = &uartalloc.elist; *l; l = &(*l)->elist){
 		if(*l == p){
 			*l = p->elist;
@@ -110,7 +118,7 @@ uartdisable(Uart *p)
 		}
 	}
 	p->enabled = 0;
-	unlock(&uartalloc);
+	iunlock(&uartalloc);
 }
 
 void
@@ -181,12 +189,15 @@ uartreset(void)
 		uartnuart++;
 	}
 
-	if(uartnuart)
+	if(uartnuart) {
 		uart = xalloc(uartnuart*sizeof(Uart*));
+		if (uart == nil)
+			panic("uartreset: no memory");
+	}
 
 	uartndir = 1 + 3*uartnuart;
 	uartdir = xalloc(uartndir * sizeof(Dirtab));
-	if (uart == nil || uartdir == nil)
+	if (uartdir == nil)
 		panic("uartreset: no memory");
 	dp = uartdir;
 	strcpy(dp->name, ".");
@@ -197,15 +208,15 @@ uartreset(void)
 	p = uartlist;
 	for(i = 0; i < uartnuart; i++){
 		/* 3 directory entries per port */
-		sprint(dp->name, "eia%d", i);
+		snprint(dp->name, sizeof dp->name, "eia%d", i);
 		dp->qid.path = NETQID(i, Ndataqid);
 		dp->perm = 0660;
 		dp++;
-		sprint(dp->name, "eia%dctl", i);
+		snprint(dp->name, sizeof dp->name, "eia%dctl", i);
 		dp->qid.path = NETQID(i, Nctlqid);
 		dp->perm = 0660;
 		dp++;
-		sprint(dp->name, "eia%dstatus", i);
+		snprint(dp->name, sizeof dp->name, "eia%dstatus", i);
 		dp->qid.path = NETQID(i, Nstatqid);
 		dp->perm = 0444;
 		dp++;
@@ -505,6 +516,8 @@ uartwrite(Chan *c, void *buf, long n, vlong)
 		break;
 	case Nctlqid:
 		cmd = malloc(n+1);
+		if(cmd == nil)
+			error(Enomem);
 		memmove(cmd, buf, n);
 		cmd[n] = 0;
 		qlock(p);
@@ -707,7 +720,7 @@ uartclock(void)
 {
 	Uart *p;
 
-	lock(&uartalloc);
+	ilock(&uartalloc);
 	for(p = uartalloc.elist; p; p = p->elist){
 
 		/* this hopefully amortizes cost of qproduce to many chars */
@@ -734,7 +747,7 @@ uartclock(void)
 			iunlock(&p->tlock);
 		}
 	}
-	unlock(&uartalloc);
+	iunlock(&uartalloc);
 }
 
 /*
@@ -754,8 +767,14 @@ uartgetc(void)
 void
 uartputc(int c)
 {
-	if(consuart == nil || consuart->phys->putc == nil)
+	char c2;
+
+	if(consuart == nil || consuart->phys->putc == nil) {
+		c2 = c;
+		if (lprint)
+			(*lprint)(&c2, 1);
 		return;
+	}
 	consuart->phys->putc(consuart, c);
 }
 
@@ -764,9 +783,11 @@ uartputs(char *s, int n)
 {
 	char *e;
 
-	if(consuart == nil || consuart->phys->putc == nil)
+	if(consuart == nil || consuart->phys->putc == nil) {
+		if (lprint)
+			(*lprint)(s, n);
 		return;
-
+	}
 	e = s+n;
 	for(; s<e; s++){
 		if(*s == '\n')
