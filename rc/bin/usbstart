@@ -1,0 +1,12 @@
+#!/bin/rc
+
+if(test -r '#U'/usb0) {
+	if(! test -r /dev/usb0)
+		bind -a '#U' /dev
+	usb/usbd
+	usb/usbmouse -a 2
+	usb/kb -k
+	usb/usbaudio -s usbaudio.$sysname # -V
+	# usb/print
+}
+exit ''
