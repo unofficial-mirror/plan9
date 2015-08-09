@@ -6,6 +6,7 @@
 #include <fcntl.h>
 #include <string.h>
 #include <errno.h>
+#include <sys/stat.h>
 
 /* bsd extensions */
 #include <sys/uio.h>
@@ -16,7 +17,7 @@
 #include "priv.h"
 
 int
-getpeername(int fd, struct sockaddr *addr, int *alen)
+getpeername(int fd, void *addr, int *alen)
 {
 	Rock *r;
 	int i;

@@ -1,4 +1,4 @@
-.TH CONS 3 
+.TH CONS 3
 .SH NAME
 cons \- console, clocks, process/process group ids, user, null, reboot, etc.
 .SH SYNOPSIS
@@ -6,6 +6,7 @@ cons \- console, clocks, process/process group ids, user, null, reboot, etc.
 .B bind #c /dev
 
 .B /dev/bintime
+.B /dev/config
 .B /dev/cons
 .B /dev/consctl
 .B /dev/cputime
@@ -50,7 +51,7 @@ and a backspace
 the previous non-kill, non-erase character from the input buffer.
 Killing and erasing only delete characters back to, but not including,
 the last newline.
-Characters typed at the keyboard actually produce 16-bit runes (see
+Characters typed at the keyboard actually produce 21-bit runes (see
 .IR utf (6)),
 but the runes are translated into the variable-length
 .SM UTF
@@ -111,6 +112,10 @@ The
 file contains a textual representation of the operating system's version and parameters.
 At the moment, it contains one field: the 9P protocol version, currently
 .BR 2000 .
+.PP
+The
+.B config
+file contains a copy of the kernel configuration file used to build the kernel.
 .PP
 The
 .B kmesg
@@ -202,6 +207,12 @@ variable is set to
 .IR kernelpath .
 Only the host
 owner has the ability to open this file.
+The named kernel may be a Plan 9 executable or
+a 32-bit or 64-bit ELF executable.
+On some architectures
+(e.g.,
+.BR mips ),
+it may also be a Plan 9 boot image.
 .PP
 .B Bintime
 is a binary interface that provides
@@ -237,7 +248,7 @@ seconds.
 Set the frequency for interpreting clock ticks to be
 .I freq
 ticks per second.
-.PP
+.SS "Statistics and Dynamic Status"
 The rest of the files contain (mostly) read-only strings.
 Each string has a fixed length: a
 .IR read (2)
@@ -257,7 +268,7 @@ If the binary number fits in 32 bits, it is formatted as an
 leading blanks and one trailing blank; totaling 12 bytes.
 Otherwise, it
 is formatted as 21 digit decimal numbers with leading blanks and one
-trailing blank; totaling 22 bytes.  
+trailing blank; totaling 22 bytes.
 .PP
 The
 .B cputime

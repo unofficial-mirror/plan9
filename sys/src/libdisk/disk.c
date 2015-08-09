@@ -9,7 +9,7 @@ mkwidth(Disk *disk)
 {
 	char buf[40];
 
-	sprint(buf, "%lld", disk->size);
+	snprint(buf, sizeof buf, "%lld", disk->size);
 	disk->width = strlen(buf);
 	return disk;
 }
@@ -62,6 +62,9 @@ partitiongeometry(Disk *disk)
 	int i, h, rawfd, s;
 	uchar buf[512];
 	Table *t;
+
+	if(disk->c == 0 || disk->h == 0 || disk->s == 0)
+		return -1;
 
 	t = (Table*)(buf + Toffset);
 

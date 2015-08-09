@@ -60,15 +60,15 @@ and
 .I NNN
 is the track number.
 .PP
-If the device is capable of writing discs
-and contains a writable disc, the top level
+If the device can write discs
+and contains a writable disc, the top-level
 directory also contains an empty directory
 .B wd
 and, for CDs only,
 an empty directory
 .BR wa .
 Files created in these directories
-appear in the top level directory
+appear in the top-level directory
 as new data or audio tracks, respectively, regardless of name.
 .PP
 At any time, any number of tracks
@@ -80,6 +80,12 @@ new data to avoid buffer underruns,
 but modern drives will be told to cope with underruns transparently.
 To ensure saturation, copying from a file system
 stored on local disk or memory is recommended.
+.PP
+BD-R discs are `formatted' upon first use,
+for sequential writing with spare sectors
+for hardware defect management,
+so BD drives should not report errors when writing BD-R discs;
+any such errors may be a sign that the laser of an old drive is fading.
 .PP
 To fixate a disc (close a recordable disc by writing
 its permanent table of contents), simply
@@ -100,7 +106,7 @@ also contains a
 file, into which control messages
 may be echoed.
 The current control messages are:
-.TF \fLformat
+.TF \fLquickblank
 .TP
 .B format
 Format the rewritable disc (\c
@@ -173,19 +179,17 @@ to get a table of contents.
 Subsequent lines contain the current and maximum
 reading and writing speeds.
 Additional lines may further describe the current disc.
-.PD
 .PP
 .I Aux/cddb
 takes 4 optional arguments.
 The
 .B -s
-option causes
+option makes
 .I aux/cddb
-to use a different
+use
 .I server
-for the query
-(default is
-.LR freedb.freedb.org ).
+for the query instead of
+.LR freedb.freedb.org .
 The
 .B -D
 option causes the raw database response from the server to be dumped
@@ -196,10 +200,13 @@ option causes the time of each track to be appended to the normal output.
 .B -T
 is like
 .B -t
-but prints a line with the total time at the end.
-.PD
-.SH EXAMPLE
+but prints a final line with the total time.
+.br
+.ne 6
+.SH EXAMPLES
 Backup to a BD-R disc:
+.br
+.ne 3
 .IP
 .EX
 9fs boot
@@ -227,17 +234,21 @@ rm /mnt/cd/wa
 .SH SOURCE
 .B /sys/src/cmd/cdfs
 .SH SEE ALSO
-.TF "\fLhttp://www.t10.org\fP"
-.TP
-.B http://www.t10.org
-optical disc interface standards
-.PP
-.PD
+.IR pump (1),
 .IR sd (3),
 .I 9660srv
 (in
 .IR dossrv (4)),
 .IR mk9660 (8)
+.PD 0
+.TF "\fLhttp://www.t10.org\fP"
+.TP
+.B http://www.t10.org
+optical disc interface standards,
+notably
+.I "Multi-Media Commands"
+(MMC)
+.PD
 .SH BUGS
 Fixating a BD-R disc records only the first track in the disc's TOC.
 Any other tracks are still there and their data accessible via
@@ -250,12 +261,19 @@ while the drive burns the unused part of the track reservation
 Thus only a single DVD-R track can be written on a DVD-R disc;
 use other media if you need more than one track per disc.
 .PP
-There are too many combinations of optical media, approximately
+There are too many combinations of optical media, each with unique quirks,
+approximately
 the cross-product of these tuples:
 (CD DVD- DVD+ BD),
+(-ROM -R -RW),
 (single-layer dual-layer),
-(-ROM -R -RW).
+plus oddities like DVD-RAM.
+Triple- and quad-layer BD drives and discs are starting to appear.
 .PP
 Only MMC-compliant disc readers and writers
 are supported, but it would be easy to add
 support for early CD writers if desired.
+.PP
+.I Cdfs
+can take some seconds to figure out that it has
+a BD in the drive and how many layers are on the disc.

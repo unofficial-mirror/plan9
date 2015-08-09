@@ -4,7 +4,7 @@ objtype=arm
 LIB=/$objtype/lib/libc.a
 SFILES=\
 	argv0.s\
-	cas.s\
+	atom.s\
 	div.s\
 	getcallerpc.s\
 	getfcr.s\

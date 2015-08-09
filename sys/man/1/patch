@@ -34,18 +34,21 @@ patch \- simple patch creation and tracking system
 .SH DESCRIPTION
 These scripts are a simple patch submission and tracking system
 used to propose additions or changes to Plan 9.
+There is no guarantee that any patch will be accepted, nor
+that it will be accepted verbatim.
 Each patch has a 
 .I name
 (lowercase letters, numbers, dash, dot, and underscore only)
 and is stored in
-.BI /n/sources/patch/ name \fR.
+.BI /n/sources/patch/ name.
 .PP
 .I Patch/create
 creates a new patch consisting of the changes to
-the listed files from the distribution, reading
+the listed text files from the distribution, reading
 a description of the patch from standard input:
 please provide an explanation of what the change is supposed to do,
 some context, and a rationale for the change.
+Please do not submit binary files.
 Test data or pointers to same to verify that the fix works are also welcome.
 When sending a patch, follow these guidelines:
 .IP • 3
@@ -87,8 +90,8 @@ source files and the patched source files.
 .PP
 .I Patch/apply
 applies the patch to the current source tree.
-It is intended to be run by the Plan 9 developers  with
-.B yoshimi
+It is intended to be run by the Plan 9 developers with
+.B pie
 as their root file system.
 If the source has changed since the patch was
 created,

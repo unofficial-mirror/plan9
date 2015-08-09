@@ -59,6 +59,7 @@ Ctype ctype[] = {
 	{ "text/tab-separated-values",	"tsv",	1,	0	},
 	{ "text/richtext",		"rtx",	1,	0	},
 	{ "text/rtf",			"rtf",	1,	0	},
+	{ "text/calendar",		"ics",	1,	0	},
 	{ "text",			"txt",	1,	0	},
 	{ "message/rfc822",		"msg",	0,	0	},
 	{ "image/bmp",			"bmp",	0,	"image"	},
@@ -212,12 +213,12 @@ main(int argc, char **argv)
 	char cmdline[4*1024];
 	Cmd cmd;
 	Ctype *cp;
-	char *err;
 	int n, cflag;
 	char *av[4];
 	String *prompt;
-	char *file, *singleton;
+	char *err, *file, *singleton;
 
+	quotefmtinstall();
 	Binit(&out, 1, OWRITE);
 
 	file = nil;
@@ -765,7 +766,7 @@ snprintheader(char *buf, int len, Message *m)
 {
 	char timebuf[32];
 	String *id;
-	char *p, *q;;
+	char *p, *q;
 
 	// create id
 	id = s_new();
@@ -877,12 +878,44 @@ parsesearch(char **pp)
 	return regcomp(p);
 }
 
+static char *
+num2msg(Message **mp, int sign, int n, Message *first, Message *cur)
+{
+	Message *m;
+
+	m = nil;
+	switch(sign){
+	case 0:
+		for(m = first; m != nil; m = m->next)
+			if(m->id == n)
+				break;
+		break;
+	case -1:
+		if(cur != &top)
+			for(m = cur; m != nil && n > 0; n--)
+				m = m->prev;
+		break;
+	case 1:
+		if(cur == &top){
+			n--;
+			cur = first;
+		}
+		for(m = cur; m != nil && n > 0; n--)
+			m = m->next;
+		break;
+	}
+	if(m == nil)
+		return "address";
+	*mp = m;
+	return nil;
+}
+
 char*
 parseaddr(char **pp, Message *first, Message *cur, Message *unspec, Message **mp)
 {
 	int n;
 	Message *m;
-	char *p;
+	char *p, *err;
 	Reprog *prog;
 	int c, sign;
 	char buf[256];
@@ -900,6 +933,17 @@ parseaddr(char **pp, Message *first, Message *cur, Message *unspec, Message **mp
 		*pp = p;
 	} else
 		sign = 0;
+
+	/*
+	 * TODO: verify & install this.
+	 * make + and - mean +1 and -1, as in ed.  then -,.d won't
+	 * delete all messages up to the current one.  - geoff
+	 */
+	if(sign && (!isascii(*p) || !isdigit(*p))) {
+		err = num2msg(mp, sign, 1, first, cur);
+		if (err != nil)
+			return err;
+	}
 
 	switch(*p){
 	default:
@@ -919,31 +963,11 @@ parseaddr(char **pp, Message *first, Message *cur, Message *unspec, Message **mp
 				*mp = &top;
 			break;
 		}
+		/* fall through */
 	number:
-		m = nil;
-		switch(sign){
-		case 0:
-			for(m = first; m != nil; m = m->next)
-				if(m->id == n)
-					break;
-			break;
-		case -1:
-			if(cur != &top)
-				for(m = cur; m != nil && n > 0; n--)
-					m = m->prev;
-			break;
-		case 1:
-			if(cur == &top){
-				n--;
-				cur = first;
-			}
-			for(m = cur; m != nil && n > 0; n--)
-				m = m->next;
-			break;
-		}
-		if(m == nil)
-			return "address";
-		*mp = m;
+		err = num2msg(mp, sign, n, first, cur);
+		if (err != nil)
+			return err;
 		break;
 	case '%':
 	case '/':
@@ -991,7 +1015,8 @@ parseaddr(char **pp, Message *first, Message *cur, Message *unspec, Message **mp
 		*pp = p+1;
 		break;
 	case ',':
-		*mp = first;
+		if (*mp == nil)
+			*mp = first;
 		*pp = p;
 		break;
 	}
@@ -1142,7 +1167,7 @@ parsecmd(char *p, Cmd *cmd, Message *first, Message *cur)
 			err = parseaddr(&p, first, cur, last, &e);
 			if(err != nil)
 				return err;
-	
+
 			// select all messages in the range
 			for(; s != nil; s = s->next){
 				*l = s;
@@ -1297,6 +1322,24 @@ ncmd(Cmd*, Message *m)
 	return m->next;
 }
 
+/* turn crlfs into newlines */
+int
+decrlf(char *buf, int n)
+{
+	char *nl;
+	int left;
+
+	for(nl = buf, left = n;
+	    left >= 2 && (nl = memchr(nl, '\r', left)) != nil;
+	    left = n - (nl - buf))
+		if(nl[1] == '\n'){	/* newline? delete the cr */
+			--n;	/* portion left is about to get smaller */
+			memmove(nl, nl+1, n - (nl - buf));
+		}else
+			nl++;
+	return n;
+}
+
 int
 printpart(String *s, char *part)
 {
@@ -1315,7 +1358,8 @@ printpart(String *s, char *part)
 	while((n = read(fd, buf, sizeof(buf))) > 0){
 		if(interrupted)
 			break;
-		if(Bwrite(&out, buf, n) <= 0)
+		n = decrlf(buf, n);
+		if(n > 0 && Bwrite(&out, buf, n) <= 0)
 			break;
 		tot += n;
 	}
@@ -1364,6 +1408,65 @@ compress(char *p)
 	*np = 0;
 }
 
+/*
+ * find the best alternative part.
+ *
+ * turkeys have started emitting empty text/plain parts,
+ * with the actual content in a text/html part, which complicates the choice.
+ *
+ * bigger turkeys emit a tiny base64-encoded text/plain part,
+ * a small base64-encoded text/html part, and the real content is in
+ * a text/calendar part.
+ *
+ * the magic lengths are empirically derived.
+ * as turkeys devolve and mutate, this will only get worse.
+ */
+static Message*
+bestalt(Message *m)
+{
+	Message *nm, *realplain, *realhtml, *realcal;
+	Ctype *cp;
+
+	realplain = realhtml = realcal = nil;
+	for(nm = m->child; nm != nil; nm = nm->next){
+		cp = findctype(nm);
+		if(cp->ext != nil)
+			if(strncmp(cp->ext, "txt", 3) == 0 && nm->len >= 88)
+				realplain = nm;
+			else if(strncmp(cp->ext, "html", 3) == 0 &&
+			    nm->len >= 670)
+				realhtml = nm;
+			else if(strncmp(cp->ext, "ics", 3) == 0)
+				realcal = nm;
+	}
+	if(realplain == nil && realhtml == nil && realcal)
+		return realcal;			/* super-turkey */
+	else if(realplain == nil && realhtml)
+		return realhtml;		/* regular turkey */
+	else
+		return realplain;
+}
+
+static void
+pralt(Message *m)
+{
+	Message *nm;
+	Ctype *cp;
+
+	nm = bestalt(m);
+	if(nm == nil)
+		/* no winner.  print the first displayable part. */
+		for(nm = m->child; nm != nil; nm = nm->next){
+			cp = findctype(nm);
+			if(cp->display)
+				break;
+		}
+	if(nm != nil)
+		pcmd(nil, nm);
+	else
+		hcmd(nil, m);
+}
+
 Message*
 pcmd(Cmd*, Message *m)
 {
@@ -1372,6 +1475,8 @@ pcmd(Cmd*, Message *m)
 	String *s;
 	char buf[128];
 
+	if(m == nil)
+		return m;
 	if(m == &top)
 		return &top;
 	if(m->parent == &top)
@@ -1384,23 +1489,9 @@ pcmd(Cmd*, Message *m)
 			printhtml(m);
 		else
 			printpart(m->path, "body");
-	} else if(strcmp(m->type, "multipart/alternative") == 0){
-		for(nm = m->child; nm != nil; nm = nm->next){
-			cp = findctype(nm);
-			if(cp->ext != nil && strncmp(cp->ext, "txt", 3) == 0)
-				break;
-		}
-		if(nm == nil)
-			for(nm = m->child; nm != nil; nm = nm->next){
-				cp = findctype(nm);
-				if(cp->display)
-					break;
-			}
-		if(nm != nil)
-			pcmd(nil, nm);
-		else
-			hcmd(nil, m);
-	} else if(strncmp(m->type, "multipart/", 10) == 0){
+	} else if(strcmp(m->type, "multipart/alternative") == 0)
+		pralt(m);
+	else if(strncmp(m->type, "multipart/", 10) == 0){
 		nm = m->child;
 		if(nm != nil){
 			// always print first part
@@ -1438,7 +1529,6 @@ pcmd(Cmd*, Message *m)
 		Bprint(&out, "\n!--- using plumber to display message of type %s\n", m->type);
 	else
 		Bprint(&out, "\n!--- cannot display messages of type %s\n", m->type);
-		
 	return m;
 }
 
@@ -1685,12 +1775,8 @@ tomailer(char **av)
 		return -1;
 	case 0:
 		Bprint(&out, "!/bin/upas/marshal");
-		for(i = 1; av[i]; i++){
-			if(strchr(av[i], ' ') != nil)
-				Bprint(&out, " '%s'", av[i]);
-			else
-				Bprint(&out, " %s", av[i]);
-		}
+		for(i = 1; av[i]; i++)
+			Bprint(&out, " %q", av[i]);
 		Bprint(&out, "\n");
 		Bflush(&out);
 		av[0] = "marshal";
@@ -1758,35 +1844,38 @@ tokenize822(char *str, char **args, int max)
 		}
 }
 
+/* return reply-to address & set *nmp to corresponding Message */
+static char *
+getreplyto(Message *m, Message **nmp)
+{
+	Message *nm;
+
+	for(nm = m; nm != &top; nm = nm->parent)
+ 		if(*nm->replyto != 0)
+			break;
+	*nmp = nm;
+	return nm? nm->replyto: nil;
+}
+
 Message*
 rcmd(Cmd *c, Message *m)
 {
+	char *addr;
 	char *av[128];
 	int i, ai = 1;
+	String *from, *rpath, *path = nil, *subject = nil;
 	Message *nm;
-	char *addr;
-	String *path = nil;
-	String *rpath;
-	String *subject = nil;
-	String *from;
 
 	if(m == &top){
 		Bprint(&out, "!address\n");
 		return nil;
 	}
 
-	addr = nil;
-	for(nm = m; nm != &top; nm = nm->parent){
- 		if(*nm->replyto != 0){
-			addr = nm->replyto;
-			break;
-		}
-	}
+	addr = getreplyto(m, &nm);
 	if(addr == nil){
 		Bprint(&out, "!no reply address\n");
 		return nil;
 	}
-
 	if(nm == &top){
 		print("!noone to reply to\n");
 		return nil;
@@ -1796,7 +1885,7 @@ rcmd(Cmd *c, Message *m)
 		if(*nm->subject){
 			av[ai++] = "-s";
 			subject = addrecolon(nm->subject);
-			av[ai++] = s_to_c(subject);;
+			av[ai++] = s_to_c(subject);
 			break;
 		}
 	}
@@ -1881,20 +1970,24 @@ Message*
 acmd(Cmd *c, Message *m)
 {
 	char *av[128];
-	int i, ai;
-	String *from, *to, *cc, *path = nil, *subject = nil;
+	int i, ai = 1;
+	String *from, *rpath, *path = nil, *subject = nil;
+	String *to, *cc;
 
 	if(m == &top){
 		Bprint(&out, "!address\n");
 		return nil;
 	}
 
-	ai = 1;
 	if(*m->subject){
 		av[ai++] = "-s";
 		subject = addrecolon(m->subject);
 		av[ai++] = s_to_c(subject);
 	}
+
+	av[ai++] = "-R";
+	rpath = rooted(s_clone(m->path));
+	av[ai++] = s_to_c(rpath);
 
 	if(strchr(c->av[0], 'A') != nil){
 		av[ai++] = "-t";
@@ -1914,12 +2007,13 @@ acmd(Cmd *c, Message *m)
 	ai += tokenize822(s_to_c(cc), &av[ai], nelem(av) - ai);
 	av[ai] = 0;
 	if(tomailer(av) < 0)
-		return nil;
+		m = nil;
+	s_free(path);
+	s_free(rpath);
+	s_free(subject);
 	s_free(from);
 	s_free(to);
 	s_free(cc);
-	s_free(subject);
-	s_free(path);
 	return m;
 }
 
@@ -2383,7 +2477,7 @@ switchmb(char *file, char *singleton)
 		strcpy(mbname, "mbox");
 	}
 
-	sprint(root, "/mail/fs/%s", mbname);
+	snprint(root, sizeof root, "/mail/fs/%s", mbname);
 	if(getwd(wd, sizeof(wd)) == 0)
 		wd[0] = 0;
 	if(singleton == nil && chdir(root) >= 0)

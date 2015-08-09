@@ -808,7 +808,8 @@ rTwalk(Msg* m)
 	if(t->fid != t->newfid){
 		nfid = fidGet(m->con, t->newfid, FidFWlock|FidFCreate);
 		if(nfid == nil){
-			vtSetError("walk: newfid 0x%ud in use", t->newfid);
+			vtSetError("%s: walk: newfid 0x%ud in use",
+				argv0, t->newfid);
 			fidPut(ofid);
 			return 0;
 		}
@@ -866,6 +867,12 @@ rTwalk(Msg* m)
 		qid.type = QTFILE;
 		if(fileIsDir(file))
 			qid.type = QTDIR;
+		if(fileIsAppend(file))
+			qid.type |= QTAPPEND;
+		if(fileIsTemporary(file))
+			qid.type |= QTTMP;
+		if(fileIsExclusive(file))
+			qid.type |= QTEXCL;
 		qid.vers = fileGetMcount(file);
 		qid.path = fileGetId(file);
 		r->wqid[r->nwqid++] = qid;
@@ -1132,7 +1139,7 @@ rTversion(Msg* m)
 		/*
 		 * Currently, the only defined version
 		 * is "9P2000"; ignore any later versions.
-          	 */
+		 */
 		v = strtol(&t->version[2], 0, 10);
 		if(v >= 2000){
 			r->version = VERSION9P;

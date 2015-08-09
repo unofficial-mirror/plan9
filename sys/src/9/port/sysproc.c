@@ -5,7 +5,7 @@
 #include	"dat.h"
 #include	"fns.h"
 #include	"../port/error.h"
-#include	"edf.h"
+#include	"../port/edf.h"
 
 #include	<a.out.h>
 
@@ -140,7 +140,7 @@ sysrfork(ulong *arg)
 		incref(p->pgrp);
 	}
 	if(flag & RFNOMNT)
-		up->pgrp->noattach = 1;
+		p->pgrp->noattach = 1;
 
 	if(flag & RFREND)
 		p->rgrp = newrgrp();
@@ -180,7 +180,8 @@ sysrfork(ulong *arg)
 	if((flag&RFNOTEG) == 0)
 		p->noteid = up->noteid;
 
-	p->fpstate = up->fpstate;
+	/* don't penalize the child, it hasn't done FP in a note handler. */
+	p->fpstate = up->fpstate & ~FPillegal;
 	pid = p->pid;
 	memset(p->time, 0, sizeof(p->time));
 	p->time[TReal] = MACHP(0)->ticks;
@@ -205,7 +206,7 @@ sysrfork(ulong *arg)
 	return pid;
 }
 
-static ulong
+ulong
 l2be(long l)
 {
 	uchar *cp;
@@ -222,7 +223,7 @@ sysexec(ulong *arg)
 	int i;
 	Chan *tc;
 	char **argv, **argp;
-	char *a, *charp, *args, *file;
+	char *a, *charp, *args, *file, *file0;
 	char *progarg[sizeof(Exec)/2+1], *elem, progelem[64];
 	ulong ssize, spage, nargs, nbytes, n, bssend;
 	int indir;
@@ -233,14 +234,16 @@ sysexec(ulong *arg)
 	ulong magic, text, entry, data, bss;
 	Tos *tos;
 
-	validaddr(arg[0], 1, 0);
-	file = (char*)arg[0];
 	indir = 0;
 	elem = nil;
+	validaddr(arg[0], 1, 0);
+	file0 = validnamedup((char*)arg[0], 1);
 	if(waserror()){
+		free(file0);
 		free(elem);
 		nexterror();
 	}
+	file = file0;
 	for(;;){
 		tc = namec(file, Aopen, OEXEC, 0);
 		if(waserror()){
@@ -292,7 +295,7 @@ sysexec(ulong *arg)
 
 	data = l2be(exec.data);
 	bss = l2be(exec.bss);
-	t = (UTZERO+sizeof(Exec)+text+(BY2PG-1)) & ~(BY2PG-1);
+	t = UTROUND(UTZERO+sizeof(Exec)+text);
 	d = (t + data + (BY2PG-1)) & ~(BY2PG-1);
 	bssend = t + data + bss;
 	b = (bssend + (BY2PG-1)) & ~(BY2PG-1);
@@ -312,7 +315,7 @@ sysexec(ulong *arg)
 			nargs++;
 		}
 	}
-	evenaddr(arg[1]);
+	validalign(arg[1], sizeof(char**));
 	argp = (char**)arg[1];
 	validaddr((ulong)argp, BY2WD, 0);
 	while(*argp){
@@ -373,6 +376,7 @@ sysexec(ulong *arg)
 		memmove(charp, *argp++, n);
 		charp += n;
 	}
+	free(file0);
 
 	free(up->text);
 	up->text = elem;
@@ -587,7 +591,7 @@ sys_wait(ulong *arg)
 		return pwait(nil);
 
 	validaddr(arg[0], sizeof(OWaitmsg), 1);
-	evenaddr(arg[0]);
+	validalign(arg[0], BY2WD);			/* who cares? */
 	pid = pwait(&w);
 	if(pid >= 0){
 		ow = (OWaitmsg*)arg[0];
@@ -1027,6 +1031,50 @@ semacquire(Segment *s, long *addr, int block)
 	return 1;
 }
 
+/* Acquire semaphore or time-out */
+static int
+tsemacquire(Segment *s, long *addr, ulong ms)
+{
+	int acquired, timedout;
+	ulong t, elms;
+	Sema phore;
+
+	if(canacquire(addr))
+		return 1;
+	if(ms == 0)
+		return 0;
+	acquired = timedout = 0;
+	semqueue(s, addr, &phore);
+	for(;;){
+		phore.waiting = 1;
+		coherence();
+		if(canacquire(addr)){
+			acquired = 1;
+			break;
+		}
+		if(waserror())
+			break;
+		t = m->ticks;
+		tsleep(&phore, semawoke, &phore, ms);
+		elms = TK2MS(m->ticks - t);
+		poperror();
+		if(elms >= ms){
+			timedout = 1;
+			break;
+		}
+		ms -= elms;
+	}
+	semdequeue(s, &phore);
+	coherence();	/* not strictly necessary due to lock in semdequeue */
+	if(!phore.waiting)
+		semwakeup(s, addr, 1);
+	if(timedout)
+		return 0;
+	if(!acquired)
+		nexterror();
+	return 1;
+}
+
 long
 syssemacquire(ulong *arg)
 {
@@ -1035,7 +1083,7 @@ syssemacquire(ulong *arg)
 	Segment *s;
 
 	validaddr(arg[0], sizeof(long), 1);
-	evenaddr(arg[0]);
+	validalign(arg[0], sizeof(long));
 	addr = (long*)arg[0];
 	block = arg[1];
 	
@@ -1047,19 +1095,50 @@ syssemacquire(ulong *arg)
 }
 
 long
+systsemacquire(ulong *arg)
+{
+	long *addr;
+	ulong ms;
+	Segment *s;
+
+	validaddr(arg[0], sizeof(long), 1);
+	validalign(arg[0], sizeof(long));
+	addr = (long*)arg[0];
+	ms = arg[1];
+
+	if((s = seg(up, (ulong)addr, 0)) == nil)
+		error(Ebadarg);
+	if(*addr < 0)
+		error(Ebadarg);
+	return tsemacquire(s, addr, ms);
+}
+
+long
 syssemrelease(ulong *arg)
 {
 	long *addr, delta;
 	Segment *s;
 
 	validaddr(arg[0], sizeof(long), 1);
-	evenaddr(arg[0]);
+	validalign(arg[0], sizeof(long));
 	addr = (long*)arg[0];
 	delta = arg[1];
 
 	if((s = seg(up, (ulong)addr, 0)) == nil)
 		error(Ebadarg);
+	/* delta == 0 is a no-op, not a release */
 	if(delta < 0 || *addr < 0)
 		error(Ebadarg);
-	return semrelease(s, addr, arg[1]);
+	return semrelease(s, addr, delta);
+}
+
+long
+sysnsec(ulong *arg)
+{
+	validaddr(arg[0], sizeof(vlong), 1);
+	validalign(arg[0], sizeof(vlong));
+
+	*(vlong*)arg[0] = todget(nil);
+
+	return 0;
 }

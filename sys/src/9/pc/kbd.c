@@ -53,10 +53,14 @@ enum {
 	Scroll=		KF|21,
 
 	Nscan=	128,
+
+	Int=	0,			/* kbscans indices */
+	Ext,
+	Nscans,
 };
 
 /*
- * The codes at 0x79 and 0x81 are produed by the PFU Happy Hacking keyboard.
+ * The codes at 0x79 and 0x7b are produced by the PFU Happy Hacking keyboard.
  * A 'standard' keyboard doesn't produce anything above 0x58.
  */
 Rune kbtab[Nscan] = 
@@ -176,6 +180,7 @@ void (*kbdmouse)(int);
 static Lock i8042lock;
 static uchar ccc;
 static void (*auxputc)(int, int);
+static int nokbd = 1;			/* flag: no PS/2 keyboard */
 
 /*
  *  wait for output no longer busy
@@ -210,15 +215,30 @@ inready(void)
 }
 
 /*
+ *  ask 8042 to enable the use of address bit 20
+ */
+void
+i8042a20(void)
+{
+	outready();
+	outb(Cmd, 0xD1);
+	outready();
+	outb(Data, 0xDF);
+	outready();
+}
+
+/*
  *  ask 8042 to reset the machine
  */
 void
 i8042reset(void)
 {
-	ushort *s = KADDR(0x472);
 	int i, x;
 
-	*s = 0x1234;		/* BIOS warm-boot flag */
+	if(nokbd)
+		return;
+
+	*((ushort*)KADDR(0x472)) = 0x1234;	/* BIOS warm-boot flag */
 
 	/*
 	 *  newer reset the machine command
@@ -246,7 +266,10 @@ i8042auxcmd(int cmd)
 {
 	unsigned int c;
 	int tries;
+	static int badkbd;
 
+	if(badkbd)
+		return -1;
 	c = 0;
 	tries = 0;
 
@@ -270,6 +293,7 @@ i8042auxcmd(int cmd)
 
 	if(c != 0xFA){
 		print("i8042: %2.2ux returned to the %2.2ux command\n", c, cmd);
+		badkbd = 1;	/* don't keep trying; there might not be one */
 		return -1;
 	}
 	return 0;
@@ -309,8 +333,48 @@ struct Kbscan {
 	int	buttons;
 };
 
-Kbscan kbscans[2];	/* kernel and external scan code state */
+Kbscan kbscans[Nscans];	/* kernel and external scan code state */
+
 static int kdebug;
+
+/*
+ * set keyboard's leds for lock states (scroll, numeric, caps).
+ *
+ * at least one keyboard (from Qtronics) also sets its numeric-lock
+ * behaviour to match the led state, though it has no numeric keypad,
+ * and some BIOSes bring the system up with numeric-lock set and no
+ * setting to change that.  this combination steals the keys for these
+ * characters and makes it impossible to generate them: uiolkjm&*().
+ * thus we'd like to be able to force the numeric-lock led (and behaviour) off.
+ */
+static void
+setleds(Kbscan *kbscan)
+{
+	int leds;
+
+	if(nokbd || kbscan != &kbscans[Int])
+		return;
+	leds = 0;
+	if(kbscan->num)
+		leds |= 1<<1;
+	if(0 && kbscan->caps)		/* we don't implement caps lock */
+		leds |= 1<<2;
+
+	ilock(&i8042lock);
+	outready();
+	outb(Data, 0xed);		/* `reset keyboard lock states' */
+	if(inready() == 0)
+		inb(Data);
+
+	outready();
+	outb(Data, leds);
+	if(inready() == 0)
+		inb(Data);
+
+	outready();
+	iunlock(&i8042lock);
+}
+
 /*
  * Scan code processing
  */
@@ -321,9 +385,9 @@ kbdputsc(int c, int external)
 	Kbscan *kbscan;
 
 	if(external)
-		kbscan = &kbscans[1];
+		kbscan = &kbscans[Ext];
 	else
-		kbscan = &kbscans[0];
+		kbscan = &kbscans[Int];
 
 	if(kdebug)
 		print("sc %x ms %d\n", c, mouseshifted);
@@ -377,8 +441,8 @@ kbdputsc(int c, int external)
 		case Shift:
 			kbscan->shift = 0;
 			mouseshifted = 0;
-if(kdebug)
-	print("shiftclr\n");
+			if(kdebug)
+				print("shiftclr\n");
 			break;
 		case Ctrl:
 			kbscan->ctl = 0;
@@ -400,7 +464,7 @@ if(kdebug)
 	}
 
 	/*
- 	 *  normal character
+	 *  normal character
 	 */
 	if(!(c & (Spec|KF))){
 		if(kbscan->ctl)
@@ -429,11 +493,13 @@ if(kdebug)
 			return;
 		case Num:
 			kbscan->num ^= 1;
+			if(!external)
+				setleds(kbscan);
 			return;
 		case Shift:
 			kbscan->shift = 1;
-if(kdebug)
-	print("shift\n");
+			if(kdebug)
+				print("shift\n");
 			mouseshifted = 1;
 			return;
 		case Latin:
@@ -469,6 +535,7 @@ if(kdebug)
 				kbdmouse(kbscan->buttons);
 			return;
 		case KF|11:
+			print("kbd debug on, F12 turns it off\n");
 			kdebug = 1;
 			break;
 		case KF|12:
@@ -508,11 +575,11 @@ i8042intr(Ureg*, void*)
 	 */
 	if(s & Minready){
 		if(auxputc != nil)
-			auxputc(c, kbscans[0].shift);	/* internal source */
+			auxputc(c, kbscans[Int].shift);
 		return;
 	}
 
-	kbdputsc(c, 0);			/* internal source */
+	kbdputsc(c, Int);
 }
 
 void
@@ -533,7 +600,7 @@ i8042auxenable(void (*putc)(int, int))
 	outb(Data, ccc);
 	if(outready() < 0)
 		print(err);
-	outb(Cmd, 0xA8);			/* auxilliary device enable */
+	outb(Cmd, 0xA8);			/* auxiliary device enable */
 	if(outready() < 0){
 		iunlock(&i8042lock);
 		return;
@@ -543,35 +610,63 @@ i8042auxenable(void (*putc)(int, int))
 	iunlock(&i8042lock);
 }
 
+static char *initfailed = "i8042: kbdinit failed\n";
+
+static int
+outbyte(int port, int c)
+{
+	outb(port, c);
+	if(outready() < 0) {
+		print(initfailed);
+		return -1;
+	}
+	return 0;
+}
+
 void
 kbdinit(void)
 {
-	int c;
+	int c, try;
 
 	/* wait for a quiescent controller */
-	while((c = inb(Status)) & (Outbusy | Inready))
+	try = 500;
+	while(try-- > 0 && (c = inb(Status)) & (Outbusy | Inready)) {
 		if(c & Inready)
 			inb(Data);
+		delay(1);
+	}
+	if (try <= 0) {
+		print(initfailed);
+		return;
+	}
 
 	/* get current controller command byte */
 	outb(Cmd, 0x20);
 	if(inready() < 0){
-		print("kbdinit: can't read ccc\n");
+		print("i8042: kbdinit can't read ccc\n");
 		ccc = 0;
 	} else
 		ccc = inb(Data);
 
 	/* enable kbd xfers and interrupts */
-	/* disable mouse */
 	ccc &= ~Ckbddis;
 	ccc |= Csf | Ckbdint | Cscs1;
-	if(outready() < 0)
-		print("kbd init failed\n");
-	outb(Cmd, 0x60);
-	if(outready() < 0)
-		print("kbd init failed\n");
-	outb(Data, ccc);
-	outready();
+	if(outready() < 0) {
+		print(initfailed);
+		return;
+	}
+
+	nokbd = 0;
+
+	/* disable mouse */
+	if (outbyte(Cmd, 0x60) < 0 || outbyte(Data, ccc) < 0)
+		print("i8042: kbdinit mouse disable failed\n");
+
+	/* see http://www.computer-engineering.org/ps2keyboard for codes */
+	if(getconf("*typematic") != nil)
+		/* set typematic rate/delay (0 -> delay=250ms & rate=30cps) */
+		if(outbyte(Data, 0xf3) < 0 || outbyte(Data, 0) < 0)
+			print("i8042: kbdinit set typematic rate failed\n");
 }
 
 void
@@ -586,6 +681,9 @@ kbdenable(void)
 	ioalloc(Cmd, 1, 0, "kbd");
 
 	intrenable(IrqKBD, i8042intr, 0, BUSUNKNOWN, "kbd");
+
+	kbscans[Int].num = 0;
+	setleds(&kbscans[Int]);
 }
 
 void

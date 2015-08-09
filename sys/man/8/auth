@@ -1,6 +1,6 @@
 .TH AUTH 8
 .SH NAME
-changeuser, convkeys, convkeys2, printnetkey, status, enable, disable, authsrv, guard.srv, wrkey, login, newns, none \- maintain or query authentication databases
+changeuser, convkeys, convkeys2, printnetkey, status, enable, disable, authsrv, guard.srv, debug, wrkey, login, newns, none, as \- maintain or query authentication databases
 .SH SYNOPSIS
 .B auth/changeuser
 .RB [ -np ]
@@ -30,6 +30,8 @@ changeuser, convkeys, convkeys2, printnetkey, status, enable, disable, authsrv, 
 .PP
 .B auth/guard.srv
 .PP
+.B auth/debug
+.PP
 .B auth/wrkey
 .PP
 .B auth/login
@@ -54,6 +56,10 @@ changeuser, convkeys, convkeys2, printnetkey, status, enable, disable, authsrv, 
 .I command
 .I arg
 \&...
+.PP
+.B auth/as
+.I user
+.I command
 .SH DESCRIPTION
 These administrative commands run only on the authentication server.
 .IR Changeuser
@@ -73,7 +79,7 @@ installs or changes
 .I user
 in an authentication database.
 It does not install a user on a Plan 9 file server; see
-.IR fs (8)
+.IR fossilcons (8)
 for that.
 .PP
 Option
@@ -181,8 +187,16 @@ described in
 .I Guard.srv
 is similar.  It is called whenever a foreign (e.g. Unix) system wants
 to do a SecureNet challenge/response authentication.
+.SS Anywhere commands
 .PP
 The remaining commands need not be run on an authentication server.
+.PP
+.I Debug
+attempts to authenticate using each
+.B p9sk1
+key found in
+.I factotum
+and prints progress reports.
 .PP
 .I Wrkey
 prompts for a machine key, host owner, and host domain and stores them in
@@ -235,6 +249,21 @@ If there are no arguments, it
 .BR /bin/rc .
 It's an easy way to run a command as
 .IR none .
+.PP
+.I As
+executes
+.I command
+as
+.IR user .
+.I Command
+is a single argument to
+.IR rc ,
+containing an arbitrary
+.I rc
+command.
+This only works for the hostowner and only if
+.L #¤/caphash
+still exists.
 .SH FILES
 .TF /sys/lib/httppasswords
 .TP
@@ -261,3 +290,18 @@ in
 .IR securenet (8)
 .SH BUGS
 Only CPU kernels permit changing userid.
+.PP
+Ensure that
+.I keyfs
+is not running when you run
+.I convkeys
+or
+.IR convkeys2 .
+.PP
+.I Login
+has the string
+.L "cs.bell-labs.com"
+embedded in it.
+You'll want to change that to your local domain
+(or fix
+.IR login ).

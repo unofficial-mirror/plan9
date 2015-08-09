@@ -12,7 +12,6 @@ tar, dircp \- archiver
 .I fromdir
 .I todir
 .SH DESCRIPTION
-.PP
 .I Tar
 saves and restores file trees.
 It is most often used to transport a tree of files from one
@@ -98,10 +97,16 @@ Do not generate the POSIX ustar format.
 When extracting, respect leading slash on file names.
 By default, files are always extracted relative to the current directory.
 .TP
+.B s
+When extracting, attempt to resynchronise after not finding a tape header
+block where expected.
+.TP
 .B T
 Modifies the behavior of
 .B x
-to set the modified time
+to set the modified time,
+mode and, for POSIX archives and filesystem permitting,
+the user and group
 of each file to that specified in the archive.
 .TP
 .B u
@@ -118,7 +123,9 @@ give more details about the
 archive entries.
 .TP
 .B z
-Operate on compressed tar archives.
+Operate on compressed
+.I tar
+archives.
 The type of compression is inferred from the file name extension:
 .IR gzip (1)
 for
@@ -156,7 +163,7 @@ verbs on archives with recognized extensions.
 can be used to copy hierarchies thus:
 .IP
 .EX
-@{cd fromdir && tar cp .} | @{cd todir && tar xT}
+@{cd fromdir && tar c .} | @{cd todir && tar xT}
 .EE
 .PP
 .I Dircp
@@ -178,7 +185,9 @@ File path names are limited to
 100 characters
 (256 when using ustar format).
 .PP
-The tar format allows specification of links and symbolic links,
+The
+.I tar
+format allows specification of links and symbolic links,
 concepts foreign to Plan 9: they are ignored.
 .PP
 The

@@ -21,6 +21,18 @@ struct Inprogress
 };
 Inprogress inprog[Maxactive+2];
 
+typedef struct Forwtarg Forwtarg;
+struct Forwtarg {
+	char	*host;
+	uchar	addr[IPaddrlen];
+	int	fd;
+	ulong	lastdial;
+};
+Forwtarg forwtarg[10];
+int currtarg;
+
+static char *hmsg = "headers";
+
 /*
  *  record client id and ignore retransmissions.
  *  we're still single thread at this point.
@@ -39,15 +51,17 @@ clientrxmit(DNSmsg *req, uchar *buf)
 				empty = p;
 			continue;
 		}
-		if(req->id == p->id)
-		if(req->qd->owner == p->owner)
-		if(req->qd->type == p->type)
-		if(memcmp(uh, &p->uh, Udphdrsize) == 0)
+		if(req->id == p->id && req->qd != nil &&
+		    req->qd->owner == p->owner && req->qd->type == p->type &&
+		    memcmp(uh, &p->uh, Udphdrsize) == 0)
 			return nil;
 	}
 	if(empty == nil)
 		return nil; /* shouldn't happen: see slave() & Maxactive def'n */
-
+	if(req->qd == nil) {
+		dnslog("clientrxmit: nil req->qd");
+		return nil;
+	}
 	empty->id = req->id;
 	empty->owner = req->qd->owner;
 	empty->type = req->qd->type;
@@ -56,6 +70,59 @@ clientrxmit(DNSmsg *req, uchar *buf)
 	memmove(&empty->uh, uh, Udphdrsize);
 	empty->inuse = 1;
 	return empty;
+}
+
+int
+addforwtarg(char *host)
+{
+	Forwtarg *tp;
+
+	if (currtarg >= nelem(forwtarg)) {
+		dnslog("too many forwarding targets");
+		return -1;
+	}
+	tp = forwtarg + currtarg;
+	if (parseip(tp->addr, host) < 0) {
+		dnslog("can't parse ip %s", host);
+		return -1;
+	}
+	tp->lastdial = time(nil);
+	tp->fd = udpport(mntpt);
+	if (tp->fd < 0)
+		return -1;
+
+	free(tp->host);
+	tp->host = estrdup(host);
+	currtarg++;
+	return 0;
+}
+
+/*
+ * fast forwarding of incoming queries to other dns servers.
+ * intended primarily for debugging.
+ */
+static void
+redistrib(uchar *buf, int len)
+{
+	Forwtarg *tp;
+	Udphdr *uh;
+	static uchar outpkt[1500];
+
+	assert(len <= sizeof outpkt);
+	memmove(outpkt, buf, len);
+	uh = (Udphdr *)outpkt;
+	for (tp = forwtarg; tp < forwtarg + currtarg; tp++)
+		if (tp->fd > 0) {
+			memmove(outpkt, tp->addr, sizeof tp->addr);
+			hnputs(uh->rport, Dnsport);
+			if (write(tp->fd, outpkt, len) != len) {
+				close(tp->fd);
+				tp->fd = -1;
+			}
+		} else if (tp->host && time(nil) - tp->lastdial > 60) {
+			tp->lastdial = time(nil);
+			tp->fd = udpport(mntpt);
+		}
 }
 
 /*
@@ -67,7 +134,7 @@ dnudpserver(char *mntpt)
 	volatile int fd, len, op, rcode;
 	char *volatile err;
 	volatile char tname[32];
-	volatile uchar buf[Udphdrsize + Maxudp + 1024];
+	volatile uchar buf[Udphdrsize + Maxpayload];
 	volatile DNSmsg reqmsg, repmsg;
 	Inprogress *volatile p;
 	volatile Request req;
@@ -114,13 +181,16 @@ restart:
 		alarm(0);
 		if(len <= Udphdrsize)
 			goto restart;
+
+		redistrib(buf, len);
+
 		uh = (Udphdr*)buf;
 		len -= Udphdrsize;
 
 		// dnslog("read received UDP from %I to %I",
 		//	((Udphdr*)buf)->raddr, ((Udphdr*)buf)->laddr);
 		getactivity(&req, 0);
-		req.aborttime = now + Maxreqtm;
+		req.aborttime = timems() + Maxreqtm;
 //		req.from = smprint("%I", ((Udphdr*)buf)->raddr);
 		req.from = smprint("%I", buf);
 		rcode = 0;
@@ -170,7 +240,7 @@ restart:
 					uh->rport[1], reqmsg.id,
 					reqmsg.qd->owner->name,
 					rrname(reqmsg.qd->type, tname,
-					sizeof tname));	// DEBUG
+					sizeof tname));
 		}
 		/* loop through each question */
 		while(reqmsg.qd){
@@ -203,8 +273,6 @@ freereq:
 /*
  *  announce on well-known dns udp port and set message style interface
  */
-static char *hmsg = "headers";
-
 static int
 udpannounce(char *mntpt)
 {
@@ -217,19 +285,21 @@ udpannounce(char *mntpt)
 	ctl = announce(datafile, dir);
 	if(ctl < 0){
 		if(!whined++)
-			warning("can't announce on dns udp port");
+			warning("can't announce on %s", datafile);
 		return -1;
 	}
-	snprint(datafile, sizeof(datafile), "%s/data", dir);
 
 	/* turn on header style interface */
-	if(write(ctl, hmsg, strlen(hmsg)) , 0)
+	if(write(ctl, hmsg, strlen(hmsg)) != strlen(hmsg))
 		abort();			/* hmsg */
+
+	snprint(datafile, sizeof(datafile), "%s/data", dir);
 	data = open(datafile, ORDWR);
 	if(data < 0){
 		close(ctl);
 		if(!whined++)
-			warning("can't announce on dns udp port");
+			warning("can't open %s to announce on dns udp port",
+				datafile);
 		return -1;
 	}
 
@@ -250,7 +320,7 @@ reply(int fd, uchar *buf, DNSmsg *rep, Request *reqp)
 			rrname(rep->qd->type, tname, sizeof tname),
 			rep->qd, rep->an, rep->ns, rep->ar);
 
-	len = convDNS2M(rep, &buf[Udphdrsize], Maxudp);
+	len = convDNS2M(rep, &buf[Udphdrsize], Maxdnspayload);
 	len += Udphdrsize;
 	if(write(fd, buf, len) != len)
 		dnslog("error sending reply: %r");

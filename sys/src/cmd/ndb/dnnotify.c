@@ -50,7 +50,7 @@ send_notify(char *slave, RR *soa, Request *req)
 {
 	int i, len, n, reqno, status, fd;
 	char *err;
-	uchar ibuf[Maxudp+Udphdrsize], obuf[Maxudp+Udphdrsize];
+	uchar ibuf[Maxpayload+Udphdrsize], obuf[Maxpayload+Udphdrsize];
 	RR *rp;
 	Udphdr *up = (Udphdr*)obuf;
 	DNSmsg repmsg;
@@ -65,6 +65,8 @@ send_notify(char *slave, RR *soa, Request *req)
 			dnslog("bad address %s to notify", slave);
 	} else {
 		rp = dnresolve(slave, Cin, Ta, req, nil, 0, 1, 1, &status);
+		if(rp == nil)
+			rp = dnresolve(slave, Cin, Taaaa, req, nil, 0, 1, 1, &status);
 		if(rp == nil)
 			return;
 		parseip(up->raddr, rp->ip->name);

@@ -9,6 +9,8 @@ void big5_in(int fd, long *notused, struct convert *out);
 void big5_out(Rune *base, int n, long *notused);
 void gb_in(int fd, long *notused, struct convert *out);
 void gb_out(Rune *base, int n, long *notused);
+void gbk_in(int fd, long *notused, struct convert *out);
+void gbk_out(Rune *base, int n, long *notused);
 void uksc_in(int fd, long *notused, struct convert *out);
 void uksc_out(Rune *base, int n, long *notused);
 void html_in(int fd, long *notused, struct convert *out);
@@ -17,6 +19,6 @@ void tune_in(int fd, long *notused, struct convert *out);
 void tune_out(Rune *base, int n, long *notused);
 
 #define		emit(x)		*(*r)++ = (x)
-#define		NRUNE		65536
+#define		NRUNE		(Runemax+1)
 
 extern long tab[];		/* common table indexed by Runes for reverse mappings */

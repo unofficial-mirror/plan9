@@ -205,6 +205,8 @@ ifstat(Ether* ether, void* a, long n, ulong offset)
 		return 0;
 
 	p = malloc(READSTR);
+	if(p == nil)
+		error(Enomem);
 	len = snprint(p, READSTR, "Rxbuff: %ld\n", ctlr->rxbuff);
 	len += snprint(p+len, READSTR-len, "Crc: %ld\n", ctlr->crc);
 	len += snprint(p+len, READSTR-len, "Oflo: %ld\n", ctlr->oflo);
@@ -304,6 +306,18 @@ static void
 multicast(void* arg, uchar*, int)
 {
 	promiscuous(arg, 1);
+}
+
+static void
+shutdown(Ether *ether)
+{
+	Ctlr *ctlr;
+
+	ctlr = ether->ctlr;
+	ilock(ctlr);
+	io32r(ctlr, Sreset);
+	io16r(ctlr, Sreset);
+	iunlock(ctlr);
 }
 
 static void
@@ -470,6 +484,8 @@ amd79c970pci(void)
 			continue;
 		}
 		ctlr = malloc(sizeof(Ctlr));
+		if(ctlr == nil)
+			error(Enomem);
 		ctlr->port = p->mem[0].bar & ~0x01;
 		ctlr->pcidev = p;
 
@@ -514,11 +530,9 @@ reset(Ether* ether)
 	ether->irq = ctlr->pcidev->intl;
 	ether->tbdf = ctlr->pcidev->tbdf;
 	pcisetbme(ctlr->pcidev);
+	shutdown(ether);
 	ilock(ctlr);
 	ctlr->init = 1;
-
-	io32r(ctlr, Sreset);
-	io16r(ctlr, Sreset);
 
 	if(io16w(ctlr, Rap, 0), io16r(ctlr, Rdp) == 4){
 		ctlr->ior = io16r;
@@ -540,9 +554,10 @@ reset(Ether* ether)
 	switch(x&0xFFFFFFF){
 	case 0x2420003:	/* PCnet/PCI 79C970 */
 	case 0x2621003:	/* PCnet/PCI II 79C970A */
+	case 0x2625003:	/* PCnet-FAST III 79C973 */
 		break;
 	default:
-		print("#l%d: unknown PCnet card version %.7ux\n",
+		print("#l%d: unknown PCnet card version 0x%.7ux\n",
 			ether->ctlrno, x&0xFFFFFFF);
 		iunlock(ctlr);
 		return -1;
@@ -633,7 +648,7 @@ reset(Ether* ether)
 	ether->arg = ether;
 	ether->promiscuous = promiscuous;
 	ether->multicast = multicast;
-//	ether->shutdown = shutdown;
+	ether->shutdown = shutdown;
 
 	return 0;
 }

@@ -11,6 +11,10 @@ char	symname[]	= SYMDEF;
 char	thechar		= 'k';
 char	*thestring 	= "sparc";
 
+char**	libdir;
+int	nlibdir	= 0;
+static	int	maxlibdir = 0;
+
 /*
  *	-H0 -T0x200000 -R0		is boot
  *	-H2 -T4128 -R4096		is plan9 format
@@ -18,10 +22,18 @@ char	*thestring 	= "sparc";
  */
 
 void
+usage(void)
+{
+	diag("usage: %s [-options] objects", argv0);
+	errorexit();
+}
+
+void
 main(int argc, char *argv[])
 {
 	int c;
 	char *a;
+	char name[LIBNAMELEN];
 
 	Binit(&bso, 1, OWRITE);
 	cout = -1;
@@ -69,14 +81,25 @@ main(int argc, char *argv[])
 		if(a)
 			HEADTYPE = atolwhex(a);
 		break;
+	case 'L':
+		addlibpath(EARGF(usage()));
+		break;
 	} ARGEND
 	USED(argc);
-	if(*argv == 0) {
-		diag("usage: vl [-options] objects");
-		errorexit();
-	}
+	if(*argv == 0)
+		usage();
 	if(!debug['9'] && !debug['U'] && !debug['B'])
 		debug[DEFAULT] = 1;
+	a = getenv("ccroot");
+	if(a != nil && *a != '\0') {
+		if(!fileexists(a)) {
+			diag("nonexistent $ccroot: %s", a);
+			errorexit();
+		}
+	}else
+		a = "";
+	snprint(name, sizeof(name), "%s/%s/lib", a, thestring);
+	addlibpath(name);
 	if(HEADTYPE == -1) {
 		if(debug['U'])
 			HEADTYPE = 0;
@@ -150,7 +173,7 @@ main(int argc, char *argv[])
 		outfile = "k.out";
 	cout = create(outfile, 1, 0775);
 	if(cout < 0) {
-		diag("%s: cannot create", outfile);
+		diag("cannot create %s: %r", outfile);
 		errorexit();
 	}
 	nuxiinit();
@@ -166,7 +189,7 @@ main(int argc, char *argv[])
 			INITENTRY = "_mainp";
 		if(!debug['l'])
 			lookup(INITENTRY, 0)->type = SXREF;
-	} else
+	} else if(!(*INITENTRY >= '0' && *INITENTRY <= '9'))
 		lookup(INITENTRY, 0)->type = SXREF;
 
 	while(*argv)
@@ -199,6 +222,42 @@ out:
 		Bprint(&bso, "%d sizeof prog\n", sizeof(Prog));
 	}
 	errorexit();
+}
+
+void
+addlibpath(char *arg)
+{
+	char **p;
+
+	if(nlibdir >= maxlibdir) {
+		if(maxlibdir == 0)
+			maxlibdir = 8;
+		else
+			maxlibdir *= 2;
+		p = malloc(maxlibdir*sizeof(*p));
+		if(p == nil) {
+			diag("out of memory");
+			errorexit();
+		}
+		memmove(p, libdir, nlibdir*sizeof(*p));
+		free(libdir);
+		libdir = p;
+	}
+	libdir[nlibdir++] = strdup(arg);
+}
+
+char*
+findlib(char *file)
+{
+	int i;
+	char name[LIBNAMELEN];
+
+	for(i = 0; i < nlibdir; i++) {
+		snprint(name, sizeof(name), "%s/%s", libdir[i], file);
+		if(fileexists(name))
+			return libdir[i];
+	}
+	return nil;
 }
 
 void
@@ -242,25 +301,26 @@ objfile(char *file)
 	int f, work;
 	Sym *s;
 	char magbuf[SARMAG];
-	char name[100], pname[150];
+	char name[LIBNAMELEN], pname[LIBNAMELEN];
 	struct ar_hdr arhdr;
 	char *e, *start, *stop;
 
-	if(file[0] == '-' && file[1] == 'l') {
-		if(debug['9'])
-			sprint(name, "/%s/lib/lib", thestring);
-		else
-			sprint(name, "/usr/%clib/lib", thechar);
-		strcat(name, file+2);
-		strcat(name, ".a");
-		file = name;
-	}
 	if(debug['v'])
 		Bprint(&bso, "%5.2f ldobj: %s\n", cputime(), file);
 	Bflush(&bso);
+	if(file[0] == '-' && file[1] == 'l') {
+		snprint(pname, sizeof(pname), "lib%s.a", file+2);
+		e = findlib(pname);
+		if(e == nil) {
+			diag("cannot find library: %s", file);
+			errorexit();
+		}
+		snprint(name, sizeof(name), "%s/%s", e, pname);
+		file = name;
+	}
 	f = open(file, 0);
 	if(f < 0) {
-		diag("cannot open file: %s", file);
+		diag("cannot open %s: %r", file);
 		errorexit();
 	}
 	l = read(f, magbuf, SARMAG);
@@ -319,7 +379,8 @@ objfile(char *file)
 			l |= (e[3] & 0xff) << 16;
 			l |= (e[4] & 0xff) << 24;
 			seek(f, l, 0);
-			l = read(f, &arhdr, SAR_HDR);
+			/* need readn to read the dumps (at least) */
+			l = readn(f, &arhdr, SAR_HDR);
 			if(l != SAR_HDR)
 				goto bad;
 			if(strncmp(arhdr.fmag, ARFMAG, sizeof(arhdr.fmag)))
@@ -346,7 +407,7 @@ int
 zaddr(uchar *p, Adr *a, Sym *h[])
 {
 	int i, c;
-	long l;
+	int l;
 	Sym *s;
 	Auto *u;
 
@@ -433,25 +494,24 @@ out:
 void
 addlib(char *obj)
 {
-	char name[1024], comp[256], *p;
-	int i;
+	char fn1[LIBNAMELEN], fn2[LIBNAMELEN], comp[LIBNAMELEN], *p, *name;
+	int i, search;
 
 	if(histfrogp <= 0)
 		return;
 
+	name = fn1;
+	search = 0;
 	if(histfrog[0]->name[1] == '/') {
 		sprint(name, "");
 		i = 1;
-	} else
-	if(histfrog[0]->name[1] == '.') {
+	} else if(histfrog[0]->name[1] == '.') {
 		sprint(name, ".");
 		i = 0;
 	} else {
-		if(debug['9'])
-			sprint(name, "/%s/lib", thestring);
-		else
-			sprint(name, "/usr/%clib", thechar);
+		sprint(name, "");
 		i = 0;
+		search = 1;
 	}
 
 	for(; i<histfrogp; i++) {
@@ -474,13 +534,25 @@ addlib(char *obj)
 			memmove(p+strlen(thestring), p+2, strlen(p+2)+1);
 			memmove(p, thestring, strlen(thestring));
 		}
-		if(strlen(name) + strlen(comp) + 3 >= sizeof(name)) {
+		if(strlen(fn1) + strlen(comp) + 3 >= sizeof(fn1)) {
 			diag("library component too long");
 			return;
 		}
-		strcat(name, "/");
-		strcat(name, comp);
+		if(i > 0 || !search)
+			strcat(fn1, "/");
+		strcat(fn1, comp);
 	}
+
+	cleanname(name);
+
+	if(search){
+		p = findlib(name);
+		if(p != nil){
+			snprint(fn2, sizeof(fn2), "%s/%s", p, name);
+			name = fn2;
+		}
+	}
+
 	for(i=0; i<libraryp; i++)
 		if(strcmp(name, library[i]) == 0)
 			return;
@@ -932,8 +1004,7 @@ lookup(char *symb, int v)
 	for(p=symb; c = *p; p++)
 		h = h+h+h + c;
 	l = (p - symb) + 1;
-	if(h < 0)
-		h = ~h;
+	h &= 0xffffff;
 	h %= NHASH;
 	for(s = hash[h]; s != S; s = s->link)
 		if(s->version == v)
@@ -1090,16 +1161,24 @@ void
 doprof2(void)
 {
 	Sym *s2, *s4;
-	Prog *p, *q, *ps2, *ps4;
+	Prog *p, *q, *q2, *ps2, *ps4;
 
 	if(debug['v'])
 		Bprint(&bso, "%5.2f profile 2\n", cputime());
 	Bflush(&bso);
 
-	s2 = lookup("_profin", 0);
-	s4 = lookup("_profout", 0);
+	if(debug['e']){
+		s2 = lookup("_tracein", 0);
+		s4 = lookup("_traceout", 0);
+	}else{
+		s2 = lookup("_profin", 0);
+		s4 = lookup("_profout", 0);
+	}
 	if(s2->type != STEXT || s4->type != STEXT) {
-		diag("_profin/_profout not defined");
+		if(debug['e'])
+			diag("_tracein/_traceout not defined %d %d", s2->type, s4->type);
+		else
+			diag("_profin/_profout not defined");
 		return;
 	}
 
@@ -1140,7 +1219,20 @@ doprof2(void)
 			q->line = p->line;
 			q->pc = p->pc;
 			q->link = p->link;
-			p->link = q;
+			if(debug['e']){		/* embedded tracing */
+				q2 = prg();
+				p->link = q2;
+				q2->link = q;
+
+				q2->line = p->line;
+				q2->pc = p->pc;
+
+				q2->as = AJMP;
+				q2->to.type = D_BRANCH;
+				q2->to.sym = p->to.sym;
+				q2->cond = q->link;
+			}else
+				p->link = q;
 			p = q;
 			p->as = AJMPL;
 			p->to.type = D_BRANCH;
@@ -1150,7 +1242,17 @@ doprof2(void)
 			continue;
 		}
 		if(p->as == ARETURN) {
-
+			/*
+			 * RETURN (default)
+			 */
+			if(debug['e']){		/* embedded tracing */
+				q = prg();
+				q->line = p->line;
+				q->pc = p->pc;
+				q->link = p->link;
+				p->link = q;
+				p = q;
+			}
 			/*
 			 * RETURN
 			 */

@@ -115,7 +115,7 @@ initdraw(void(*error)(Display*, char*), char *fontname , char *label)
 	char *dev = "/dev";
 
 	if(access("/dev/draw/new", AEXIST)<0 && bind("#i", "/dev", MAFTER)<0){
-		fprint(2, "imageinit: can't bind /dev/draw: %r");
+		fprint(2, "imageinit: can't bind /dev/draw: %r\n");
 		return -1;
 	}
 	return geninitdraw(dev, error, fontname, label, dev, Refnone);
@@ -240,7 +240,7 @@ initdisplay(char *dev, char *win, void(*error)(Display*, char*))
 	}
 	if(n==NINFO+1)
 		n = NINFO;
-	buf[n] = '\0';
+	info[n] = '\0';
 	isnew = 0;
 	if(n < NINFO)	/* this will do for now, we need something better here */
 		isnew = 1;

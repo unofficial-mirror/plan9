@@ -30,7 +30,6 @@ realmode(Ureg *ureg)
 	int s;
 	ulong cr3;
 	extern void realmode0(void);	/* in l.s */
-	extern void i8259off(void), i8259on(void);
 
 	if(getconf("*norealmode"))
 		return;
@@ -45,14 +44,20 @@ realmode(Ureg *ureg)
 	m->pdb[PDX(0)] = m->pdb[PDX(KZERO)];	/* identity map low */
 	cr3 = getcr3();
 	putcr3(PADDR(m->pdb));
-	i8259off();
+	if (arch)
+		arch->introff();
+	else
+		i8259off();
 	realmode0();
 	if(m->tss){
 		/*
 		 * Called from memory.c before initialization of mmu.
 		 * Don't turn interrupts on before the kernel is ready!
 		 */
-		i8259on();
+		if (arch)
+			arch->intron();
+		else
+			i8259on();
 	}
 	m->pdb[PDX(0)] = 0;	/* remove low mapping */
 	putcr3(cr3);
@@ -95,18 +100,19 @@ rtrapwrite(Chan*, void *a, long n, vlong off)
 static long
 rmemrw(int isr, void *a, long n, vlong off)
 {
-	if(off >= 1024*1024 || off+n >= 1024*1024)
-		return 0;
 	if(off < 0 || n < 0)
 		error("bad offset/count");
-	if(isr)
+	if(isr){
+		if(off >= MB)
+			return 0;
+		if(off+n >= MB)
+			n = MB - off;
 		memmove(a, KADDR((ulong)off), n);
-	else{
-		/* writes are more restricted */
-		if(LORMBUF <= off && off < LORMBUF+BY2PG
-		&& off+n <= LORMBUF+BY2PG)
-			{}
-		else
+	}else{
+		/* realmode buf page ok, allow vga framebuf's access */
+		if(off >= MB || off+n > MB ||
+		    (off < LORMBUF || off+n > LORMBUF+BY2PG) &&
+		    (off < 0xA0000 || off+n > 0xB0000+0x10000))
 			error("bad offset/count in write");
 		memmove(KADDR((ulong)off), a, n);
 	}

@@ -40,47 +40,50 @@ Cursor	arrow = {
 
 int didswcursorinit;
 
+static void *softscreen;
+
 int
 screensize(int x, int y, int z, ulong chan)
 {
 	VGAscr *scr;
+	void *oldsoft;
 
 	lock(&vgascreenlock);
+	if(waserror()){
+		unlock(&vgascreenlock);
+		nexterror();
+	}
+
 	memimageinit();
 	scr = &vgascreen[0];
+	oldsoft = softscreen;
 
-	/*
-	 * BUG: need to check if any xalloc'ed memory needs to
-	 * be given back if aperture is set.
-	 */
 	if(scr->paddr == 0){
 		int width = (x*z)/BI2WD;
+		void *p;
 
-		gscreendata.bdata = xalloc(width*BY2WD*y);
-		if(gscreendata.bdata == 0)
-			error("screensize: vga soft memory");
-/*		memset(gscreendata.bdata, 0x72, width*BY2WD*y);	/* not really black */
+		p = xalloc(width*BY2WD*y);
+		if(p == nil)
+			error("no memory for vga soft screen");
+		gscreendata.bdata = softscreen = p;
+		if(scr->dev && scr->dev->page){
+			scr->vaddr = KADDR(VGAMEM());
+			scr->apsize = 1<<16;
+		}
 		scr->useflush = 1;
-		scr->paddr = VGAMEM();
-		scr->vaddr = KADDR(scr->paddr);
-		scr->apsize = 1<<16;
 	}
-	else
+	else{
 		gscreendata.bdata = scr->vaddr;
+		scr->useflush = scr->dev && scr->dev->flush;
+	}
 
+	scr->gscreen = nil;
 	if(gscreen)
 		freememimage(gscreen);
-	scr->gscreen = nil;
-
 	gscreen = allocmemimaged(Rect(0,0,x,y), chan, &gscreendata);
+	if(gscreen == nil)
+		error("no memory for vga memimage");
 	vgaimageinit(chan);
-	if(gscreen == nil){
-		unlock(&vgascreenlock);
-		return -1;
-	}
-
-	if(scr->dev && scr->dev->flush)
-		scr->useflush = 1;
 
 	scr->palettedepth = 6;	/* default */
 	scr->gscreendata = &gscreendata;
@@ -89,6 +92,12 @@ screensize(int x, int y, int z, ulong chan)
 
 	physgscreenr = gscreen->r;
 	unlock(&vgascreenlock);
+	poperror();
+	if(oldsoft)
+		xfree(oldsoft);
+
+	memimagedraw(gscreen, gscreen->r, memblack, ZP, nil, ZP, S);
+	flushmemscreen(gscreen->r);
 
 	if(didswcursorinit)
 		swcursorinit();
@@ -363,6 +372,11 @@ hwdraw(Memdrawparam *par)
 		return 0;
 
 	if(scr->cur == &swcursor){
+		/*
+		 * always calling swcursorhide here doesn't cure
+		 * leaving cursor tracks nor failing to refresh menus
+		 * with the latest libmemdraw/draw.c.
+		 */
 		if(dst->data->bdata == gscreendata.bdata)
 			swcursoravoid(par->r);
 		if(src->data->bdata == gscreendata.bdata)
@@ -523,6 +537,11 @@ vgalinearaddr(VGAscr *scr, ulong paddr, int size)
 	scr->vaddr = (char*)scr->vaddr+x;
 	scr->paddr = paddr;
 	scr->apsize = nsize;
+	/* let mtrr harmlessly fail on old CPUs, e.g., P54C */
+	if(!waserror()){
+		mtrr(npaddr, nsize, "wc");
+		poperror();
+	}
 }
 
 
@@ -559,6 +578,7 @@ swcursorhide(void)
 		return;
 	swvisible = 0;
 	memimagedraw(gscreen, swrect, swback, ZP, memopaque, ZP, S);
+	flushmemscreen(swrect);
 }
 
 void
@@ -583,6 +603,7 @@ swcursordraw(void)
 	swrect = rectaddpt(Rect(0,0,16,16), swvispt);
 	memimagedraw(swback, swback->r, gscreen, swpt, memopaque, ZP, S);
 	memimagedraw(gscreen, swrect, swimg1, ZP, swmask1, ZP, SoverD);
+	flushmemscreen(swrect);
 	swvisible = 1;
 }
 

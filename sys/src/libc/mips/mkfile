@@ -4,6 +4,8 @@ objtype=mips
 LIB=/$objtype/lib/libc.a
 SFILES=\
 	argv0.s\
+	atom.s\
+	c_fcr0.s\
 	getcallerpc.s\
 	getfcr.s\
 	main9.s\
@@ -22,7 +24,6 @@ SFILES=\
 
 CFILES=\
 	cycles.c\
-	lock.c\
 	notejmp.c\
 	sqrt.c\
 	vlrt.c\

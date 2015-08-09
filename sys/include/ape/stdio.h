@@ -88,12 +88,18 @@ extern int fscanf(FILE *, const char *, ...);
 extern int printf(const char *, ...);
 extern int scanf(const char *, ...);
 extern int sprintf(char *, const char *, ...);
+
+/*
+ * NB: C99 now *requires *snprintf to return the number of characters
+ * that would have been written, had there been room.
+ */
 extern int snprintf(char *, size_t, const char *, ...);
+extern int vsnprintf(char *, size_t, const char *, va_list);
+
 extern int sscanf(const char *, const char *, ...);
 extern int vfprintf(FILE *, const char *, va_list);
 extern int vprintf(const char *, va_list);
 extern int vsprintf(char *, const char *, va_list);
-extern int vsnprintf(char *, size_t, const char *, va_list);
 extern int vfscanf(FILE *, const char *, va_list);
 extern int fgetc(FILE *);
 extern char *fgets(char *, int, FILE *);
@@ -131,6 +137,11 @@ extern FILE _IO_stream[FOPEN_MAX];
 extern int fileno(FILE *);
 extern FILE* fdopen(int, const char*);
 extern char *ctermid(char *);
+#endif
+
+#ifdef _REENTRANT_SOURCE
+extern char *tmpnam_r(char *);
+extern char *ctermid_r(char *);
 #endif
 
 #ifdef _BSD_EXTENSION

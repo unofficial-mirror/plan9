@@ -68,6 +68,7 @@ extern int sargc;
 extern char **sargv;
 extern uchar buf[520];
 extern int yyline;		/* line number of file */
+extern char *yyfile;		/* file name of file */
 extern int sect;
 extern int eof;
 extern int lgatflg;
@@ -154,7 +155,7 @@ extern void	mkmatch(void);
 extern int	mn0(int);
 extern int	mn1(int, int);
 extern int	mnp(int, void*);
-extern int	mn2(int, int, int);
+extern int	mn2(int, int, uintptr);
 extern void	munputc(int);
 extern void	munputs(uchar *);
 extern void	*myalloc(int, int);

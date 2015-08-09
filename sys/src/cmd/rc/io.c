@@ -12,15 +12,17 @@ pfmt(io *f, char *fmt, ...)
 {
 	va_list ap;
 	char err[ERRMAX];
+
 	va_start(ap, fmt);
 	pfmtnest++;
-	for(;*fmt;fmt++)
-		if(*fmt!='%')
+	for(;*fmt;fmt++) {
+		if(*fmt!='%') {
 			pchr(f, *fmt);
-		else switch(*++fmt){
-		case '\0':
-			va_end(ap);
-			return;
+			continue;
+		}
+		if(*++fmt == '\0')		/* "blah%"? */
+			break;
+		switch(*fmt){
 		case 'c':
 			pchr(f, va_arg(ap, int));
 			break;
@@ -55,6 +57,7 @@ pfmt(io *f, char *fmt, ...)
 			pchr(f, *fmt);
 			break;
 		}
+	}
 	va_end(ap);
 	if(--pfmtnest==0)
 		flush(f);
@@ -76,6 +79,35 @@ rchr(io *b)
 	return *b->bufp++;
 }
 
+int
+rutf(io *b, char *buf, Rune *r)
+{
+	int n, i, c;
+
+	c = rchr(b);
+	if(c == EOF)
+		return EOF;
+	*buf = c;
+	if(c < Runesync){
+		*r = c;
+		return 1;
+	}
+	for(i = 1; (c = rchr(b)) != EOF; ){
+		buf[i++] = c;
+		buf[i] = 0;
+		if(fullrune(buf, i)){
+			n = chartorune(r, buf);
+			b->bufp -= i - n;	/* push back unconsumed bytes */
+			assert(b->fd == -1 || b->bufp > b->buf);
+			return n;
+		}
+	}
+	/* at eof */
+	b->bufp -= i - 1;			/* consume 1 byte */
+	*r = Runeerror;
+	return runetochar(buf, r);
+}
+
 void
 pquo(io *f, char *s)
 {
@@ -91,7 +123,7 @@ void
 pwrd(io *f, char *s)
 {
 	char *t;
-	for(t = s;*t;t++) if(!wordchr(*t)) break;
+	for(t = s;*t;t++) if(*t >= 0 && needsrcquote(*t)) break;
 	if(t==s || *t)
 		pquo(f, s);
 	else pstr(f, s);

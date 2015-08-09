@@ -8,6 +8,8 @@
 #include	"init.h"
 #include	"pool.h"
 #include	"reboot.h"
+#include	"mp.h"
+#include	<tos.h>
 
 Mach *m;
 
@@ -23,6 +25,11 @@ Mach *m;
 #define	BOOTARGSLEN	(4096-0x200-BOOTLINELEN)
 #define	MAXCONF		64
 
+enum {
+	/* space for syscall args, return PC, top-of-stack struct */
+	Ustkheadroom	= sizeof(Sargs) + sizeof(uintptr) + sizeof(Tos),
+};
+
 char bootdisk[KNAMELEN];
 Conf conf;
 char *confname[MAXCONF];
@@ -30,6 +37,7 @@ char *confval[MAXCONF];
 int nconf;
 uchar *sp;	/* user stack of init proc */
 int delaylink;
+int idle_spin, idle_if_nproc;
 
 static void
 options(void)
@@ -74,8 +82,38 @@ extern void mmuinit0(void);
 extern void (*i8237alloc)(void);
 
 void
+fpsavealloc(void)
+{
+	m->fpsavalign = mallocalign(sizeof(FPssestate), FPalign, 0, 0);
+	if (m->fpsavalign == nil)
+		panic("cpu%d: can't allocate fpsavalign", m->machno);
+}
+
+static int
+isa20on(void)
+{
+	int r;
+	ulong o;
+	ulong *zp, *mb1p;
+
+	zp = (ulong *)KZERO;
+	mb1p = (ulong *)(KZERO|MB);
+	o = *zp;
+
+	*zp = 0x1234;
+	*mb1p = 0x8765;
+	coherence();
+	wbinvd();
+	r = *zp != *mb1p;
+
+	*zp = o;
+	return r;
+}
+
+void
 main(void)
 {
+	cgapost(0);
 	mach0init();
 	options();
 	ioinit();
@@ -94,6 +132,8 @@ main(void)
 	meminit();
 	confinit();
 	archinit();
+	if(!isa20on())
+		panic("bootstrap didn't leave a20 address line enabled");
 	xinit();
 	if(i8237alloc != nil)
 		i8237alloc();
@@ -101,6 +141,7 @@ main(void)
 	printinit();
 	cpuidprint();
 	mmuinit();
+	fpsavealloc();
 	if(arch->intrinit)	/* launches other processors on an mp */
 		arch->intrinit();
 	timersinit();
@@ -117,11 +158,15 @@ main(void)
 		links();
 	conf.monitor = 1;
 	chandevreset();
+	cgapost(0xcd);
+
 	pageinit();
 	i8253link();
 	swapinit();
 	userinit();
 	active.thunderbirdsarego = 1;
+
+	cgapost(0x99);
 	schedinit();
 }
 
@@ -201,6 +246,7 @@ init0(void)
 		poperror();
 	}
 	kproc("alarm", alarmkproc, 0);
+	cgapost(0x9);
 	touser(sp);
 }
 
@@ -289,7 +335,7 @@ bootargs(void *base)
 	char *cp = BOOTLINE;
 	char buf[64];
 
-	sp = (uchar*)base + BY2PG - MAXSYSARG*BY2WD;
+	sp = (uchar*)base + BY2PG - Ustkheadroom;
 
 	ac = 0;
 	av[ac++] = pusharg("/386/9dos");
@@ -298,10 +344,11 @@ bootargs(void *base)
 	cp[BOOTLINELEN-1] = 0;
 	buf[0] = 0;
 	if(strncmp(cp, "fd", 2) == 0){
-		sprint(buf, "local!#f/fd%lddisk", strtol(cp+2, 0, 0));
+		snprint(buf, sizeof buf, "local!#f/fd%lddisk",
+			strtol(cp+2, 0, 0));
 		av[ac++] = pusharg(buf);
 	} else if(strncmp(cp, "sd", 2) == 0){
-		sprint(buf, "local!#S/sd%c%c/fs", *(cp+2), *(cp+3));
+		snprint(buf, sizeof buf, "local!#S/sd%c%c/fs", *(cp+2), *(cp+3));
 		av[ac++] = pusharg(buf);
 	} else if(strncmp(cp, "ether", 5) == 0)
 		av[ac++] = pusharg("-n");
@@ -363,7 +410,8 @@ confinit(void)
 {
 	char *p;
 	int i, userpcnt;
-	ulong kpages;
+	unsigned mb;
+	ulong kpages, ksize;
 
 	if(p = getconf("*kernelpercent"))
 		userpcnt = 100 - strtol(p, 0, 0);
@@ -396,10 +444,13 @@ confinit(void)
 		 * The patch of nimage is a band-aid, scanning the whole
 		 * page list in imagereclaim just takes too long.
 		 */
-		if(kpages > (64*MB + conf.npage*sizeof(Page))/BY2PG){
-			kpages = (64*MB + conf.npage*sizeof(Page))/BY2PG;
-			conf.nimage = 2000;
-			kpages += (conf.nproc*KSTACK)/BY2PG;
+		for (mb = 400; mb >= 100; mb /= 2) {
+			ksize = mb*MB + conf.npage*sizeof(Page);
+			if(kpages > ksize/BY2PG && cankaddr(ksize)) {
+				kpages = ksize/BY2PG + (conf.nproc*KSTACK)/BY2PG;
+				conf.nimage = 2000;
+				break;
+			}
 		}
 	} else {
 		if(userpcnt < 10) {
@@ -461,13 +512,36 @@ static char* mathmsg[] =
 };
 
 static void
+mathstate(ulong *stsp, ulong *pcp, ulong *ctlp)
+{
+	ulong sts, fpc, ctl;
+	FPsave *f = &up->fpsave;
+
+	if(fpsave == fpx87save){
+		sts = f->status;
+		fpc = f->pc;
+		ctl = f->control;
+	} else {
+		sts = f->fsw;
+		fpc = f->fpuip;
+		ctl = f->fcw;
+	}
+	if(stsp)
+		*stsp = sts;
+	if(pcp)
+		*pcp = fpc;
+	if(ctlp)
+		*ctlp = ctl;
+}
+
+static void
 mathnote(void)
 {
 	int i;
-	ulong status;
+	ulong status, pc;
 	char *msg, note[ERRMAX];
 
-	status = up->fpsave.status;
+	mathstate(&status, &pc, nil);
 
 	/*
 	 * Some attention should probably be paid here to the
@@ -489,9 +563,44 @@ mathnote(void)
 		}else
 			msg = "invalid operation";
 	}
-	snprint(note, sizeof note, "sys: fp: %s fppc=0x%lux status=0x%lux",
-		msg, up->fpsave.pc, status);
+	snprint(note, sizeof note, "sys: fp: %s fppc=%#lux status=%#lux",
+		msg, pc, status);
 	postnote(up, 1, note, NDebug);
+}
+
+/*
+ * sse fp save and restore buffers have to be 16-byte (FPalign) aligned,
+ * so we shuffle the data down as needed or make copies.
+ */
+
+void
+fpssesave(FPsave *fps)
+{
+	FPsave *afps;
+
+	fps->magic = 0x1234;
+	afps = (FPsave *)ROUND(((uintptr)fps), FPalign);
+	fpssesave0(afps);
+	if (fps != afps)  /* not aligned? shuffle down from aligned buffer */
+		memmove(fps, afps, sizeof(FPssestate));
+	if (fps->magic != 0x1234)
+		print("fpssesave: magic corrupted\n");
+}
+
+void
+fpsserestore(FPsave *fps)
+{
+	FPsave *afps;
+
+	fps->magic = 0x4321;
+	afps = (FPsave *)ROUND(((uintptr)fps), FPalign);
+	if (fps != afps) {
+		afps = m->fpsavalign;
+		memmove(afps, fps, sizeof(FPssestate));	/* make aligned copy */
+	}
+	fpsserestore0(afps);
+	if (fps->magic != 0x4321)
+		print("fpsserestore: magic corrupted\n");
 }
 
 /*
@@ -500,22 +609,27 @@ mathnote(void)
 static void
 matherror(Ureg *ur, void*)
 {
+	ulong status, pc;
+
 	/*
 	 *  a write cycle to port 0xF0 clears the interrupt latch attached
 	 *  to the error# line from the 387
 	 */
-	if(!(m->cpuiddx & 0x01))
+	if(!(m->cpuiddx & Fpuonchip))
 		outb(0xF0, 0xFF);
 
 	/*
 	 *  save floating point state to check out error
 	 */
-	fpenv(&up->fpsave);
+	fpenv(&up->fpsave);	/* result ignored, but masks fp exceptions */
+	fpsave(&up->fpsave);		/* also turns fpu off */
+	fpon();
 	mathnote();
 
-	if((ur->pc & 0xf0000000) == KZERO)
-		panic("fp: status %ux fppc=0x%lux pc=0x%lux",
-			up->fpsave.status, up->fpsave.pc, ur->pc);
+	if((ur->pc & 0xf0000000) == KZERO){
+		mathstate(&status, &pc, nil);
+		panic("fp: status %#lux fppc=%#lux pc=%#lux", status, pc, ur->pc);
+	}
 }
 
 /*
@@ -524,6 +638,8 @@ matherror(Ureg *ur, void*)
 static void
 mathemu(Ureg *ureg, void*)
 {
+	ulong status, control;
+
 	if(up->fpstate & FPillegal){
 		/* someone did floating point in a note handler */
 		postnote(up, 1, "sys: floating point in note handler", NDebug);
@@ -542,7 +658,8 @@ mathemu(Ureg *ureg, void*)
 		 * More attention should probably be paid here to the
 		 * exception masks and error summary.
 		 */
-		if((up->fpsave.status & ~up->fpsave.control) & 0x07F){
+		mathstate(&status, nil, &control);
+		if((status & ~control) & 0x07F){
 			mathnote();
 			break;
 		}
@@ -550,7 +667,7 @@ mathemu(Ureg *ureg, void*)
 		up->fpstate = FPactive;
 		break;
 	case FPactive:
-		panic("math emu pid %ld %s pc 0x%lux", 
+		panic("math emu pid %ld %s pc %#lux",
 			up->pid, up->text, ureg->pc);
 		break;
 	}
@@ -648,12 +765,21 @@ shutdown(int ispanic)
 	else if(m->machno == 0 && (active.machs & (1<<m->machno)) == 0)
 		active.ispanic = 0;
 	once = active.machs & (1<<m->machno);
+	/*
+	 * setting exiting will make hzclock() on each processor call exit(0),
+	 * which calls shutdown(0) and arch->reset(), which on mp systems is
+	 * mpshutdown, which idles non-bootstrap cpus and returns on bootstrap
+	 * processors (to permit a reboot).  clearing our bit in machs avoids
+	 * calling exit(0) from hzclock() on this processor.
+	 */
 	active.machs &= ~(1<<m->machno);
 	active.exiting = 1;
 	unlock(&active);
 
 	if(once)
 		iprint("cpu%d: exiting\n", m->machno);
+
+	/* wait for any other processors to shutdown */
 	spllo();
 	for(ms = 5*1000; ms > 0; ms -= TK2MS(2)){
 		delay(TK2MS(2));
@@ -661,14 +787,14 @@ shutdown(int ispanic)
 			break;
 	}
 
-	if(getconf("*debug"))
-		delay(5*60*1000);
-
 	if(active.ispanic){
 		if(!cpuserver)
 			for(;;)
 				halt();
-		delay(10000);
+		if(getconf("*debug"))
+			delay(5*60*1000);
+		else
+			delay(10000);
 	}else
 		delay(1000);
 }
@@ -681,11 +807,38 @@ reboot(void *entry, void *code, ulong size)
 
 	writeconf();
 
-	shutdown(0);
+	/*
+	 * the boot processor is cpu0.  execute this function on it
+	 * so that the new kernel has the same cpu0.  this only matters
+	 * because the hardware has a notion of which processor was the
+	 * boot processor and we look at it at start up.
+	 */
+	if (m->machno != 0) {
+		procwired(up, 0);
+		sched();
+	}
+
+	if(conf.nmach > 1) {
+		/*
+		 * the other cpus could be holding locks that will never get
+		 * released (e.g., in the print path) if we put them into
+		 * reset now, so force them to shutdown gracefully first.
+		 */
+		lock(&active);
+		active.rebooting = 1;
+		unlock(&active);
+		shutdown(0);
+		if(arch->resetothers)
+			arch->resetothers();
+		delay(20);
+	}
 
 	/*
 	 * should be the only processor running now
 	 */
+	active.machs = 0;
+	if (m->machno != 0)
+		print("on cpu%d (not 0)!\n", m->machno);
 
 	print("shutting down...\n");
 	delay(200);
@@ -697,6 +850,7 @@ reboot(void *entry, void *code, ulong size)
 
 	/* shutdown devices */
 	chandevshutdown();
+	arch->introff();
 
 	/*
 	 * Modify the machine page table to directly map the low 4MB of memory
@@ -713,6 +867,7 @@ reboot(void *entry, void *code, ulong size)
 	print("rebooting...\n");
 
 	/* off we go - never to return */
+	coherence();
 	(*f)(PADDR(entry), PADDR(code), size);
 }
 
@@ -811,6 +966,17 @@ cistrncmp(char *a, char *b, int n)
 void
 idlehands(void)
 {
-	if(conf.nmach == 1)
+	/*
+	 * we used to halt only on single-core setups. halting in an smp system 
+	 * can result in a startup latency for processes that become ready.
+	 * if idle_spin is zero, we care more about saving energy
+	 * than reducing this latency.
+	 *
+	 * the performance loss with idle_spin == 0 seems to be slight
+	 * and it reduces lock contention (thus system time and real time)
+	 * on many-core systems with large values of NPROC.
+	 */
+	if(conf.nmach == 1 || idle_spin == 0 ||
+	    idle_if_nproc && conf.nmach >= idle_if_nproc)
 		halt();
 }

@@ -6,6 +6,7 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <string.h>
+#include <sys/stat.h>
 
 /* bsd extensions */
 #include <sys/uio.h>
@@ -22,8 +23,8 @@ accept(int fd, void *a, int *alen)
 	Rock *r, *nr;
 	struct sockaddr_in *ip;
 	char name[Ctlsize];
-	char file[Ctlsize];
-	char *p, *net;
+	char file[8+Ctlsize+1];
+	char *net;
 
 	r = _sock_findrock(fd, 0);
 	if(r == 0){
@@ -39,6 +40,9 @@ accept(int fd, void *a, int *alen)
 			break;
 		case SOCK_STREAM:
 			net = "tcp";
+			break;
+		default:
+			net = "gok";
 			break;
 		}
 

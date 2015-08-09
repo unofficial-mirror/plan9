@@ -2,7 +2,9 @@ typedef struct BIOS32si	BIOS32si;
 typedef struct BIOS32ci	BIOS32ci;
 typedef struct Conf	Conf;
 typedef struct Confmem	Confmem;
-typedef struct FPsave	FPsave;
+typedef union FPsave	FPsave;
+typedef struct FPssestate FPssestate;
+typedef struct FPstate	FPstate;
 typedef struct ISAConf	ISAConf;
 typedef struct Label	Label;
 typedef struct Lock	Lock;
@@ -17,6 +19,7 @@ typedef struct Page	Page;
 typedef struct PMMU	PMMU;
 typedef struct Proc	Proc;
 typedef struct Segdesc	Segdesc;
+typedef struct SFPssestate SFPssestate;
 typedef vlong		Tval;
 typedef struct Ureg	Ureg;
 typedef struct Vctl	Vctl;
@@ -26,6 +29,9 @@ typedef struct Vctl	Vctl;
 #pragma incomplete Ureg
 
 #define MAXSYSARG	5	/* for mount(fd, afd, mpt, flag, arg) */
+
+#define KMESGSIZE (256*1024)	/* lots, for acpi debugging */
+#define STAGESIZE 2048
 
 /*
  *  parameters for sysproc.c
@@ -64,7 +70,7 @@ enum
 	FPillegal=	0x100,
 };
 
-struct	FPsave
+struct	FPstate			/* x87 fpu state */
 {
 	ushort	control;
 	ushort	r1;
@@ -79,6 +85,39 @@ struct	FPsave
 	ushort	oselector;
 	ushort	r5;
 	uchar	regs[80];	/* floating point registers */
+};
+
+struct	FPssestate		/* SSE fp state */
+{
+	ushort	fcw;		/* control */
+	ushort	fsw;		/* status */
+	ushort	ftw;		/* tag */
+	ushort	fop;		/* opcode */
+	ulong	fpuip;		/* pc */
+	ushort	cs;		/* pc segment */
+	ushort	r1;		/* reserved */
+	ulong	fpudp;		/* data pointer */
+	ushort	ds;		/* data pointer segment */
+	ushort	r2;
+	ulong	mxcsr;		/* MXCSR register state */
+	ulong	mxcsr_mask;	/* MXCSR mask register */
+	uchar	xregs[480];	/* extended registers */
+};
+
+struct	SFPssestate		/* SSE fp state with alignment slop */
+{
+	FPssestate;
+	uchar	alignpad[FPalign]; /* slop to allow copying to aligned addr */
+	ulong	magic;		/* debugging: check for overrun */
+};
+
+/*
+ * the FP regs must be stored here, not somewhere pointed to from here.
+ * port code assumes this.
+ */
+union FPsave {
+	FPstate;
+	SFPssestate;
 };
 
 struct Confmem
@@ -222,6 +261,7 @@ struct Mach
 	uvlong	tscticks;
 	int	pdballoc;
 	int	pdbfree;
+	FPsave	*fpsavalign;
 
 	vlong	mtrrcap;
 	vlong	mtrrdef;
@@ -246,6 +286,7 @@ struct
 	int	exiting;		/* shutdown */
 	int	ispanic;		/* shutdown in response to a panic */
 	int	thunderbirdsarego;	/* lets the added processors continue to schedinit */
+	int	rebooting;		/* just idle cpus > 0 */
 }active;
 
 /*
@@ -269,13 +310,16 @@ struct PCArch
 	void	(*clockenable)(void);
 	uvlong	(*fastclock)(uvlong*);
 	void	(*timerset)(uvlong);
+
+	void	(*resetothers)(void);	/* put other cpus into reset */
 };
 
 /* cpuid instruction result register bits */
 enum {
 	/* dx */
 	Fpuonchip = 1<<0,
-//	Pse	= 1<<3,		/* page size extensions */
+	Vmex	= 1<<1,		/* virtual-mode extensions */
+	Pse	= 1<<3,		/* page size extensions */
 	Tsc	= 1<<4,		/* time-stamp counter */
 	Cpumsr	= 1<<5,		/* model-specific registers, rdmsr/wrmsr */
 	Pae	= 1<<6,		/* physical-addr extensions */
@@ -284,9 +328,10 @@ enum {
 	Cpuapic	= 1<<9,
 	Mtrr	= 1<<12,	/* memory-type range regs.  */
 	Pge	= 1<<13,	/* page global extension */
-//	Pse2	= 1<<17,	/* more page size extensions */
+	Pse2	= 1<<17,	/* more page size extensions */
 	Clflush = 1<<19,
 	Mmx	= 1<<23,
+	Fxsr	= 1<<24,	/* have SSE FXSAVE/FXRSTOR */
 	Sse	= 1<<25,	/* thus sfence instr. */
 	Sse2	= 1<<26,	/* thus mfence & lfence instr.s */
 };

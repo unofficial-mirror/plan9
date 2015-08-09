@@ -55,6 +55,7 @@ int rcvdmsgs;
 int rint;
 ushort firstseq;
 vlong sum;
+int waittime = 5000;
 
 static char *network, *target;
 
@@ -262,9 +263,13 @@ sender(int fd, int msglen, int interval, int n)
 	if (addresses)
 		print("\t%I -> %s\n", me, target);
 
+	if(rint != 0 && interval <= 0)
+		rint = 0;
+	extra = 0;
 	for(i = 0; i < n; i++){
 		if(i != 0){
-			extra = rint? nrand(interval): 0;
+			if(rint != 0)
+				extra = nrand(interval);
 			sleep(interval + extra);
 		}
 		r = malloc(sizeof *r);
@@ -304,7 +309,7 @@ rcvr(int fd, int msglen, int interval, int nmsg)
 
 	sum = 0;
 	while(lostmsgs+rcvdmsgs < nmsg){
-		alarm((nmsg-lostmsgs-rcvdmsgs)*interval+5000);
+		alarm((nmsg-lostmsgs-rcvdmsgs)*interval+waittime);
 		n = read(fd, buf, sizeof buf);
 		alarm(0);
 		now = nsec();
@@ -507,12 +512,16 @@ main(int argc, char **argv)
 		break;
 	case 'i':
 		interval = atoi(EARGF(usage()));
+		if(interval < 0)
+			usage();
 		break;
 	case 'l':
 		lostonly++;
 		break;
 	case 'n':
 		nmsg = atoi(EARGF(usage()));
+		if(nmsg < 0)
+			usage();
 		break;
 	case 'q':
 		quiet = 1;
@@ -522,6 +531,11 @@ main(int argc, char **argv)
 		break;
 	case 's':
 		msglen = atoi(EARGF(usage()));
+		break;
+	case 'w':
+		waittime = atoi(EARGF(usage()));
+		if(waittime < 0)
+			usage();
 		break;
 	default:
 		usage();

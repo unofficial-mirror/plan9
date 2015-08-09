@@ -139,7 +139,7 @@ ctlr
 	# vid=0x5333 did=0x8A21		# Savage 3DMV, not supported
 	vid=0x5333 did=0x8A22		# Savage 4
 	vid=0x5333 did=0x8A25		# ProSavage PN133
-	vid=0x5333 did=0x8A26		# ProSavage KN133 
+	vid=0x5333 did=0x8A26		# ProSavage KN133
 	vid=0x5333 did=0x883D		# ViRGE VX
 	vid=0x5333 did=0x8C01		# ViRGE MX
 	vid=0x5333 did=0x8C03		# ViRGE MXP
@@ -202,7 +202,7 @@ ctlr							# CL-GD542x
 	hwgc=clgd542xhwgc
 ctlr
 	0xC0039="CL-GD5436/46 PCI VGA BIOS Version"
-	0xC0039="CL-GD5446 PCI VGA BIOS Version"	
+	0xC0039="CL-GD5446 PCI VGA BIOS Version"
 	vid=0x1013 did=0x00b8		# CL-GD5446, at least in QEMU
 	link=vga
 	ctlr=clgd542x linear=1
@@ -291,7 +291,7 @@ ctlr
 	0xC0093="Trident TGUI96xx"
 	0xC0044="GL A6.00E"
 	0xC68A5="TVGA BIOS LS  6.0 (08)"		# Sharp Actius A250, Cyber 9525/DVD
-	0xC7E5F="TVGA BIOS 1.14"				# iTuner 
+	0xC7E5F="TVGA BIOS 1.14"				# iTuner
 	link=vga
 	ctlr=cyber938x linear=1
 	hwgc=cyber938xhwgc
@@ -327,6 +327,7 @@ ctlr
 	vid=0x10C8 did=0x0004		# MagicGraph 128 XD
 	vid=0x10C8 did=0x0005		# MagicMedia 256 AV
 	vid=0x10C8 did=0x0006		# MagicMedia 256 ZX
+	vid=0x10C8 did=0x0016		# MagicMedia 256 XL+
 	0xC0048="MagicGraph 128XD"	# IBM Thinkpad 560X
 	0xC0048="MagicMedia 256AV"	# IBM Thinkpad 600E
 	0xC0048="MagicGraph 256 AV"	# IBM Thinkpad 570, 600E
@@ -387,6 +388,46 @@ ctlr
 	ctlr=mga4xx linear=1
 	hwgc=mga4xxhwgc
 
+
+ctlr
+	vid=0x1002 did=0x4242	# [BB] Radeon All in Wonder 8500DV
+ 	vid=0x1002 did=0x4964	# [Id] Radeon 9000
+ 	vid=0x1002 did=0x4965	# [Ie] Radeon 9000
+  	vid=0x1002 did=0x4966	# [If] Radeon 9000
+	vid=0x1002 did=0x4967	# [Ig] Radeon 9000
+  	vid=0x1002 did=0x4c57	# [LW] Radeon Mobility 7500
+	vid=0x1002 did=0x4c58	# [LX] Radeon Mobility FireGL 7800
+ 	vid=0x1002 did=0x4c59	# [LY] Radeon M6
+	vid=0x1002 did=0x4c5a	# [LZ] Radeon M6
+	vid=0x1002 did=0x4c64	# [Ld] Radeon Mobility 9000
+	vid=0x1002 did=0x4c65	# [Le] Radeon Mobility 9000
+	vid=0x1002 did=0x4c66	# [Lf] Radeon Mobility 9000
+	vid=0x1002 did=0x4c67	# [Lg] Radeon Mobility 9000
+	vid=0x1002 did=0x4e44	# [ND] Radeon 9700
+	vid=0x1002 did=0x4e45	# [NE] Radeon 9700
+	vid=0x1002 did=0x4e46	# [NF] Radeon 9700
+	vid=0x1002 did=0x4e47	# [NG] Radeon 9700
+	vid=0x1002 did=0x5144	# [QD] Radeon 64 DDR
+	vid=0x1002 did=0x5145	# [QE] Radeon 64 DDR
+	vid=0x1002 did=0x5146	# [QF] Radeon 64 DDR
+	vid=0x1002 did=0x5147	# [QG] Radeon 64 DDR
+	vid=0x1002 did=0x5148	# [QH] Radeon 8500
+	vid=0x1002 did=0x5149	# [QI] Radeon 8500
+	vid=0x1002 did=0x514A	# [QJ] Radeon 8500
+	vid=0x1002 did=0x514B	# [QK] Radeon 8500
+	vid=0x1002 did=0x514C	# [QL] Radeon 8500
+	vid=0x1002 did=0x5157	# [QW] Radeon RV200 7500
+	vid=0x1002 did=0x5158	# [QX] Radeon RV200 7500
+	vid=0x1002 did=0x5159	# [QY] Radeon VE
+	vid=0x1002 did=0x515a	# [QK] Radeon VE
+	vid=0x1002 did=0x5168	# [Qh] Radeon R200
+	vid=0x1002 did=0x5169	# [Qi] Radeon R200
+	vid=0x1002 did=0x516a	# [Qj] Radeon R200
+	vid=0x1002 did=0x516b	# [Qk] Radeon R200
+	link=vga
+	ctlr=radeon linear=1
+	hwgc=radeonhwgc
+
 #
 # mode:
 # These entries specify a monitor operating mode.
@@ -426,7 +467,7 @@ include=640x480					# 60Hz, 31.5KHz
 include=640x480@72Hz					# 72Hz, 38.5KHz
 	clock=32
 	shb=664 ehb=704 ht=832
-	vrs=489 vre=492 vt=520 
+	vrs=489 vre=492 vt=520
 
 include=800x600					# 60Hz, 37.9KHz
 	defaultclock=40
@@ -601,7 +642,7 @@ vs17x=1024x768					# ??Hz, ??.?KHz
 
 #
 # Dell UltraScan 21TE (MODEL No. D2130T-HS)
-# Horizontal timing: 
+# Horizontal timing:
 #	Allowable frequency range: 30-93KHz
 # Vertical timing:
 #	Allowable frequency range: 50-152Hz
@@ -629,6 +670,21 @@ dell2001fp=1600x1200
 	defaultclock=162
 	shb=1624 ehb=1976 ht=2160
 	vrs=1201 vre=1204 vt=1250
+
+#
+# Dell 2007FP at 1600x1200
+#
+# Horz=30-81kHz
+# Vert=56-76Hz, 1600x1200 at 60Hz only
+#
+dell2007fp
+	videobw=200					# actually 162
+	alias=multisync
+dell2007fp=1600x1200					# 60Hz, 75KHz
+	defaultclock=160
+	shb=1864 ehb=1888 ht=2144
+	shs=1648
+	vrs=1202 vre=1208 vt=1240
 
 #
 # EIZO (Nanao) FlexScan 6600 (greyscale)
@@ -665,7 +721,7 @@ cm751u=1600x1200					# 75Hz, 93.75 kHz
 
 #
 # Hitachi CM801U
-# Horizontal timing: 
+# Horizontal timing:
 #	Allowable frequency range: 31-96KHz
 # Vertical timing:
 #	Allowable frequency range: 50-160Hz
@@ -691,7 +747,7 @@ cm801u=1376x1024						# ??Hz, ??.?KHz
 #
 # We can't seem to set the clock higher than 100MHz here.
 # Maybe it's because we don't have clock doubling code in aux/vga,
-# maybe it's because the chip won't go that high.  
+# maybe it's because the chip won't go that high.
 # Using a clock of 75 produces noticeable refresh pulsing on the LCD,
 # a clock of 100 seems okay.  I'd like to go higher.
 # If only we had documentation.  -rsc
@@ -732,7 +788,7 @@ ms8617
 
 #
 # IDEK Vision Master 21 (model no. MF-8221E)
-# Horizontal timing: 
+# Horizontal timing:
 #	Allowable frequency range: 24.8-94.0KHz
 # Vertical timing:
 #	Allowable frequency range: 50-160Hz
@@ -788,14 +844,14 @@ pro400=1600x1200					# 76Hz, 90.0KHz
 	vrs=1202 vre=1208 vt=1240
 pro400=1280x1024
 	defaultclock=135				# 90hz, 103Khz
-	shb=1352 ehb=1544 ht=1712			# 
+	shb=1352 ehb=1544 ht=1712			#
 	shs=1328
 	vrs=1028 vre=1034 vt=1075
 pro400=1024x768
 
 #
 # Micron 17FGx
-# Horizontal timing: 
+# Horizontal timing:
 #	Allowable frequency range: 30-64KHz
 # Vertical timing:
 #	Allowable frequency range: 50-100Hz
@@ -925,7 +981,7 @@ versalx=1024x768
 	shb=664 ehb=760 ht=800
 	vrs=491 vre=493 vt=525
 
-# 
+#
 # Panasonic E70i 17" monitor
 # from aam396@mail.usask.ca
 #
@@ -940,7 +996,7 @@ e70i=1280x1024
 #
 #
 # Sampo KDM-1788
-# Horizontal timing: 
+# Horizontal timing:
 #	Allowable frequency range: 30-82KHz
 # Vertical timing:
 #	Allowable frequency range: 50-120Hz
@@ -953,7 +1009,7 @@ kdm-1788
 
 #
 # Samsung SyncMaster 17GLsi
-# Horizontal timing: 
+# Horizontal timing:
 #	Allowable frequency range: 30-85KHz
 # Vertical timing:
 #	Allowable frequency range: 50-120Hz
@@ -1015,6 +1071,14 @@ sm931bw=1440x900
 cpd-1304
 	videobw=65
 	alias=multisync
+
+#
+# Sony CPD-4410 CRT
+#
+cpd-4410=1600x1200
+	defaultclock=161.00
+	shb=1664 ehb=1856 ht=2160
+	vrs=1201 vre=1204 vt=1250
 
 #
 # Viewsonic 17 (model no. 1782)
@@ -1108,7 +1172,7 @@ multilink=1600x1024
 multilinx=1600x1024
 	clock=103.125
 	shb=1592 ehb=1624 ht=1672
-	shs=1592 
+	shs=1592
 	vrs=1024 vre=1029 vt=1029
 	hsync=+ vsync=+
 #
@@ -1231,49 +1295,49 @@ planar=1280x1024
 #
 # Dell 2405FPW LCD
 #
-2405fpw=640x480				# 60Hz 
+2405fpw=640x480				# 60Hz
 	clock=25.175
 	shb=648 ehb=792 ht=800
 	vrs=490 vre=492 vt=525
-	hsync=- vsync=- 
-2405fpw=640x480				# 75Hz 
-	clock=31.5
-	shb=640 ehb=840 ht=840
-	vrs=481 vre=484 vt=500
-	hsync=- vsync=- 
-2405fpw=800x600				# 60Hz 
+	hsync=- vsync=-
+#2405fpw=640x480				# 75Hz
+#	clock=31.5
+#	shb=640 ehb=840 ht=840
+#	vrs=481 vre=484 vt=500
+#	hsync=- vsync=-
+2405fpw=800x600				# 60Hz
 	clock=40
 	shb=800 ehb=1056 ht=1056
 	vrs=601 vre=605 vt=628
-	hsync=+ vsync=+ 
-2405fpw=800x600				# 75Hz 
-	clock=49.5
-	shb=800 ehb=1056 ht=1056
-	vrs=601 vre=604 vt=625
-	hsync=+ vsync=+ 
+	hsync=+ vsync=+
+#2405fpw=800x600				# 75Hz
+#	clock=49.5
+#	shb=800 ehb=1056 ht=1056
+#	vrs=601 vre=604 vt=625
+#	hsync=+ vsync=+
 2405fpw=1024x768			# 60Hz
 	clock=65
 	shb=1024 ehb=1344 ht=1344
 	vrs=771 vre=777 vt=806
-	hsync=- vsync=- 
-2405fpw=1024x768			# 75Hz
-	clock=78.75
-	shb=1024 ehb=1312 ht=1312
-	vrs=769 vre=772 vt=800
-	hsync=+ vsync=+ 
+	hsync=- vsync=-
+#2405fpw=1024x768			# 75Hz
+#	clock=78.75
+#	shb=1024 ehb=1312 ht=1312
+#	vrs=769 vre=772 vt=800
+#	hsync=+ vsync=+
 2405fpw=1280x1024			# 75Hz
 	clock=135
 	shb=1280 ehb=1688 ht=1688
 	vrs=1025 vre=1028 vt=1066
-	hsync=+ vsync=+ 
+	hsync=+ vsync=+
 2405fpw=1920x1200			# 60Hz
 	clock=154
 	shb=1968 ehb=2000 ht=2080
 	vrs=1203 vre=1209 vt=1235
-	hsync=+ vsync=- 
+	hsync=+ vsync=-
 
 #
-# Viewsonic VP201(b) at 1600x1200 
+# Viewsonic VP201(b) at 1600x1200
 #
 vp201
 	videobw=200
@@ -1313,6 +1377,244 @@ a1097c=1360x1024		#	78.125 kHz / 72.005 Hz, 4:3 resolution
 	vrs=1025 vre=1028 vt=1066
 	hsync=+ vsync=+
 
+#
+# Dell E198WFP LCD monitor (1440x900 native)
+#
+e198wfp
+	videobw=140
+
+e198wfp=1024x768	# 70Hz
+	clock=75
+	shb=1024 ehb=1328 ht=1328
+	vrs=771 vre=777 vt=806
+	hsync=- vsync=-
+
+e198wfp=1440x900	# 60 Hz
+	clock=106.5
+	shb=1520 ehb=1672 ht=1904
+	vrs=903 vre=909 vt=934
+	hsync=- vsync=+
+
+#
+# Dell E228WFP LCD monitor (1680x1050 native)
+#
+e228wfp
+	videobw=150
+
+e228wfp=640x480		# 60Hz
+	clock=25.175
+	shb=648 ehb=792 ht=800
+	vrs=490 vre=492 vt=525
+	hsync=- vsync=-
+
+#e228wfp=640x480		# 75Hz
+#	clock=31.5
+#	shb=640 ehb=840 ht=840
+#	vrs=481 vre=484 vt=500
+#	hsync=- vsync=-
+
+e228wfp=800x600		# 60Hz
+	clock=40
+	shb=800 ehb=1056 ht=1056
+	vrs=601 vre=605 vt=628
+	hsync=+ vsync=+
+
+#e228wfp=800x600		# 75Hz
+#	clock=49.5
+#	shb=800 ehb=1056 ht=1056
+#	vrs=601 vre=604 vt=625
+#	hsync=+ vsync=+
+
+e228wfp=1024x768	# 60Hz
+	clock=65
+	shb=1024 ehb=1344 ht=1344
+	vrs=771 vre=777 vt=806
+	hsync=- vsync=-
+
+#e228wfp=1024x768	# 75Hz
+#	clock=78.75
+#	shb=1024 ehb=1312 ht=1312
+#	vrs=769 vre=772 vt=800
+#	hsync=+ vsync=+
+
+e228wfp=1280x1024	# 75Hz
+	clock=135
+	shb=1280 ehb=1688 ht=1688
+	vrs=1025 vre=1028 vt=1066
+	hsync=+ vsync=+
+
+e228wfp=1680x1050	# 60Hz
+	clock=146.25
+	shb=1784 ehb=1960 ht=2240
+	vrs=1053 vre=1059 vt=1089
+	hsync=- vsync=+
+
+# Philips 220BW flat panel
+p220bw=1680x1050	# 60Hz
+	clock=119
+	shb=1728 ehb=1760 ht=1840
+	vrs=1053 vre=1059 vt=1080
+	hsync=- vsync=+
+
+#
+# HannsG JC199D LCD monitor (1280x1024 native)
+#
+jc199d
+	videobw=140
+
+jc199d=800x600		# 60 Hz
+	defaultclock=40
+	shb=800 ehb=1056 ht=1056
+	vrs=601 vre=605 vt=628
+	hsync=+ vsync=+
+
+jc199d=1024x768		# 60 Hz
+	defaultclock=65
+	shb=1024 ehb=1344 ht=1344
+	vrs=771 vre=777 vt=806
+	hsync=- vsync=-
+
+jc199d=1280x1024	# 60 Hz
+	defaultclock=108
+	shb=1328 ehb=1440 ht=1688
+	vrs=1025 vre=1028 vt=1066
+	hsync=+ vsync=+
+
+#
+#	Acer AL1706 17" LCD
+#
+al1706
+	videobw=75
+	alias=multisync
+
+al1706=640x480			# 60Hz
+	clock=25.175
+	shb=648 ehb=792 ht=800
+	vrs=490 vre=492 vt=525
+	hsync=- vsync=-
+al1706=640x480			# 73Hz
+	clock=31.5
+	shb=648 ehb=824 ht=832
+	vrs=489 vre=492 vt=520
+	hsync=- vsync=-
+al1706=640x480			# 75Hz
+	clock=31.5
+	shb=640 ehb=840 ht=840
+	vrs=481 vre=484 vt=500
+	hsync=- vsync=-
+al1706=800x600			# 56Hz
+	clock=36
+	shb=800 ehb=1024 ht=1024
+	vrs=601 vre=603 vt=625
+	hsync=+ vsync=+
+al1706=800x600			# 60Hz
+	clock=40
+	shb=800 ehb=1056 ht=1056
+	vrs=601 vre=605 vt=628
+	hsync=+ vsync=+
+al1706=800x600			# 72Hz
+	clock=50
+	shb=800 ehb=1040 ht=1040
+	vrs=637 vre=643 vt=666
+	hsync=+ vsync=+
+al1706=800x600			# 75Hz
+	clock=49.5
+	shb=800 ehb=1056 ht=1056
+	vrs=601 vre=604 vt=625
+	hsync=+ vsync=+
+al1706=1024x768			# 60Hz
+	clock=65
+	shb=1024 ehb=1344 ht=1344
+	vrs=771 vre=777 vt=806
+	hsync=- vsync=-
+al1706=1024x768			# 70Hz
+	clock=75
+	shb=1024 ehb=1328 ht=1328
+	vrs=771 vre=777 vt=806
+	hsync=- vsync=-
+al1706=1024x768			# 75Hz
+	clock=78.75
+	shb=1024 ehb=1312 ht=1312
+	vrs=769 vre=772 vt=800
+	hsync=+ vsync=+
+al1706=1280x1024		# 75Hz
+	clock=135
+	shb=1280 ehb=1688 ht=1688
+	vrs=1025 vre=1028 vt=1066
+	hsync=+ vsync=+
+al1706=1280x1024		# 60Hz
+	clock=108
+	shb=1328 ehb=1440 ht=1688
+	vrs=1025 vre=1028 vt=1066
+	hsync=+ vsync=+
+
+#
+# Philips 109 B6: 19" CRT
+#
+p109b6
+	videobw=230
+	alias=multisync
+
+p109b6=640x480			# 60Hz
+	clock=25.175
+	shb=648 ehb=792 ht=800
+	vrs=490 vre=492 vt=525
+	hsync=- vsync=-
+p109b6=640x480			# 73Hz
+	clock=31.5
+	shb=648 ehb=824 ht=832
+	vrs=489 vre=492 vt=520
+	hsync=- vsync=-
+p109b6=640x480			# 75Hz
+	clock=31.5
+	shb=640 ehb=840 ht=840
+	vrs=481 vre=484 vt=500
+	hsync=- vsync=-
+p109b6=800x600			# 56Hz
+	clock=36
+	shb=800 ehb=1024 ht=1024
+	vrs=601 vre=603 vt=625
+	hsync=+ vsync=+
+p109b6=800x600			# 60Hz
+	clock=40
+	shb=800 ehb=1056 ht=1056
+	vrs=601 vre=605 vt=628
+	hsync=+ vsync=+
+p109b6=800x600			# 72Hz
+	clock=50
+	shb=800 ehb=1040 ht=1040
+	vrs=637 vre=643 vt=666
+	hsync=+ vsync=+
+p109b6=800x600			# 75Hz
+	clock=49.5
+	shb=800 ehb=1056 ht=1056
+	vrs=601 vre=604 vt=625
+	hsync=+ vsync=+
+p109b6=1024x768			# 60Hz
+	clock=65
+	shb=1024 ehb=1344 ht=1344
+	vrs=771 vre=777 vt=806
+	hsync=- vsync=-
+p109b6=1024x768			# 70Hz
+	clock=75
+	shb=1024 ehb=1328 ht=1328
+	vrs=771 vre=777 vt=806
+	hsync=- vsync=-
+p109b6=1024x768			# 75Hz
+	clock=78.75
+	shb=1024 ehb=1312 ht=1312
+	vrs=769 vre=772 vt=800
+	hsync=+ vsync=+
+p109b6=1280x1024		# 75Hz
+	clock=135
+	shb=1280 ehb=1688 ht=1688
+	vrs=1025 vre=1028 vt=1066
+	hsync=+ vsync=+
+p109b6=1600x1200		# 75Hz
+	clock=202
+	shb=1664 ehb=1856 ht=2160
+	vrs=1201 vre=1204 vt=1250
+	hsync=+ vsync=+
 
 #
 # QVGA		320x240		Quarter Video Graphics Array
@@ -1324,8 +1626,8 @@ a1097c=1360x1024		#	78.125 kHz / 72.005 Hz, 4:3 resolution
 # UXGA		1600x1200	Ultra eXtended Graphics Array
 # WSXGA+	1680x1050	Wide SXGA+
 # WUXGA		1920x1200	Wide UXGA
-# QXGA		2048x1536	Quad XGA 
-# QSXGA		2560x2048	Quad SXGA 
+# QXGA		2048x1536	Quad XGA
+# QSXGA		2560x2048	Quad SXGA
 # QUXGA		3200x2400	Quad UXGA
 # QUXGA-W	3840x2400	Wide-QUXGA
 #

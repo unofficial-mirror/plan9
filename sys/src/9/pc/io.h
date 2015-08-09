@@ -1,6 +1,7 @@
 #define X86STEPPING(x)	((x) & 0x0F)
-#define X86MODEL(x)	(((x)>>4) & 0x0F)
-#define X86FAMILY(x)	(((x)>>8) & 0x0F)
+/* incorporates extended-model and -family bits */
+#define X86MODEL(x)	((((x)>>4) & 0x0F) | (((x)>>16) & 0x0F)<<4)
+#define X86FAMILY(x)	((((x)>>8) & 0x0F) | (((x)>>20) & 0xFF)<<4)
 
 enum {
 	VectorNMI	= 2,		/* non-maskable interrupt */
@@ -142,6 +143,7 @@ enum {
 	/* mass storage */
 	Pciscscsi	= 0,		/* SCSI */
 	Pciscide	= 1,		/* IDE (ATA) */
+	Pciscsata	= 6,		/* SATA */
 
 	/* network */
 	Pciscether	= 0,		/* Ethernet */
@@ -259,6 +261,15 @@ struct Pcidev
 	int	pmrb;			/* power management register block */
 };
 
+enum {
+	/* vendor ids */
+	Vatiamd	= 0x1002,
+	Vintel	= 0x8086,
+	Vjmicron= 0x197b,
+	Vmarvell= 0x1b4b,
+	Vmyricom= 0x14c1,
+};
+
 #define PCIWINDOW	0
 #define PCIWADDR(va)	(PADDR(va)+PCIWINDOW)
 #define ISAWINDOW	0
@@ -368,3 +379,6 @@ struct PCMslot
 	int	time;
 	PCMmap	mmap[4];	/* maps, last is always for the kernel */
 };
+
+#pragma varargck	type	"T"	int
+#pragma varargck	type	"T"	uint

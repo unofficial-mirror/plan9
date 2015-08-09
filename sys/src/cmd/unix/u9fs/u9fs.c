@@ -60,6 +60,7 @@ struct Fid {
 	int diroffset;
 	int fd;
 	struct dirent *dirent;
+	int direof;
 	Fid *next;
 	Fid *prev;
 	int auth;
@@ -400,6 +401,8 @@ rattach(Fcall *rx, Fcall *tx)
 			seterror(tx, Eauth);
 			return;
 		}
+		if (none != nil)
+			rx->uname = none->name;
 	} else {
 		if((e = auth->attach(rx, tx)) != nil){
 			seterror(tx, e);
@@ -739,6 +742,11 @@ rread(Fcall *rx, Fcall *tx)
 			}
 			rewinddir(fid->dir);
 			fid->diroffset = 0;
+			fid->direof = 0;
+		}
+		if(fid->direof){
+			tx->count = 0;
+			return;
 		}
 
 		p = (uchar*)tx->data;
@@ -747,8 +755,10 @@ rread(Fcall *rx, Fcall *tx)
 			if(p+BIT16SZ >= ep)
 				break;
 			if(fid->dirent == nil)	/* one entry cache for when convD2M fails */
-				if((fid->dirent = readdir(fid->dir)) == nil)
+				if((fid->dirent = readdir(fid->dir)) == nil){
+					fid->direof = 1;
 					break;
+				}
 			if(strcmp(fid->dirent->d_name, ".") == 0
 			|| strcmp(fid->dirent->d_name, "..") == 0){
 				fid->dirent = nil;
@@ -1597,7 +1607,7 @@ usercreate(Fid *fid, char *elem, int omode, long perm, char **ep)
 			return -1;
 		}
 		/* race */
-		if(mkdir(npath, perm&0777) < 0){
+		if(mkdir(npath, (perm|0400)&0777) < 0){
 			*ep = strerror(errno);
 			free(npath);
 			return -1;
@@ -1751,6 +1761,8 @@ main(int argc, char **argv)
 			sysfatal("chroot '%s' failed", argv[0]);
 
 	none = uname2user("none");
+	if(none == nil)
+		none = uname2user("nobody");
 
 	serve(0, 1);
 	return 0;

@@ -35,10 +35,12 @@ extern	int	cistrncmp(char*, char*, int);
 
 enum
 {
-	UTFmax		= 3,	/* maximum bytes per rune */
-	Runesync	= 0x80,	/* cannot represent part of a UTF sequence */
-	Runeself	= 0x80,	/* rune and UTF sequences are the same (<) */
-	Runeerror	= 0x80,	/* decoding error in UTF */
+	UTFmax		= 4,		/* maximum bytes per rune */
+	Runesync	= 0x80,		/* cannot represent part of a UTF sequence (<) */
+	Runeself	= 0x80,		/* rune and UTF sequences are the same (<) */
+	Runeerror	= 0xFFFD,	/* decoding error in UTF */
+	Runemax		= 0x10FFFF,	/* 24 bit rune */
+	Runemask	= 0x1FFFFF,	/* bits used by runes (see grep) */
 };
 
 /*
@@ -79,18 +81,42 @@ extern	int	snprint(char*, int, char*, ...);
 extern	int	vsnprint(char*, int, char*, va_list);
 extern	int	sprint(char*, char*, ...);
 
-extern	int	fmtinstall(int, int (*)(Fmt*));
-extern	void	quotefmtinstall(void);
-extern	int	fmtprint(Fmt*, char*, ...);
-extern	int	fmtstrcpy(Fmt*, char*);
-extern	int	encodefmt(Fmt*);
-
 #pragma	varargck	argpos	fmtprint	2
 #pragma	varargck	argpos	print		1
 #pragma	varargck	argpos	seprint		3
 #pragma	varargck	argpos	snprint		3
 #pragma	varargck	argpos	sprint		2
-#pragma varargck	type	"H" void*
+
+#pragma	varargck	type	"lld"	vlong
+#pragma	varargck	type	"llx"	vlong
+#pragma	varargck	type	"lld"	uvlong
+#pragma	varargck	type	"llx"	uvlong
+#pragma	varargck	type	"ld"	long
+#pragma	varargck	type	"lx"	long
+#pragma	varargck	type	"ld"	ulong
+#pragma	varargck	type	"lx"	ulong
+#pragma	varargck	type	"d"	int
+#pragma	varargck	type	"x"	int
+#pragma	varargck	type	"c"	int
+#pragma	varargck	type	"C"	int
+#pragma	varargck	type	"d"	uint
+#pragma	varargck	type	"x"	uint
+#pragma	varargck	type	"c"	uint
+#pragma	varargck	type	"C"	uint
+#pragma	varargck	type	"s"	char*
+#pragma	varargck	type	"q"	char*
+#pragma	varargck	type	"S"	Rune*
+#pragma	varargck	type	"%"	void
+#pragma	varargck	type	"p"	uintptr
+#pragma	varargck	type	"p"	void*
+#pragma	varargck	flag	','
+
+extern	int	fmtstrinit(Fmt*);
+extern	int	fmtinstall(int, int (*)(Fmt*));
+extern	void	quotefmtinstall(void);
+extern	int	fmtprint(Fmt*, char*, ...);
+extern	int	fmtstrcpy(Fmt*, char*);
+extern	char*	fmtstrflush(Fmt*);
 
 /*
  * one-of-a-kind
@@ -108,6 +134,7 @@ extern	char	end[];
 extern	int	getfields(char*, char**, int, int, char*);
 extern	int	tokenize(char*, char**, int);
 extern	int	dec64(uchar*, int, char*, int);
+extern	int	encodefmt(Fmt*);
 extern	void	qsort(void*, long, long, int (*)(void*, void*));
 
 /*

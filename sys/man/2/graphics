@@ -3,7 +3,6 @@
 Display, Point, Rectangle, Cursor, initdraw, geninitdraw, drawerror, initdisplay, closedisplay, getdefont, getwindow, gengetwindow, flushimage, bufimage, lockdisplay, unlockdisplay, openfont, buildfont, freefont, Pfmt, Rfmt, strtochan, chantostr, chantodepth \- interactive graphics
 .SH SYNOPSIS
 .nf
-.PP
 .ft L
 #include <u.h>
 #include <libc.h>
@@ -19,11 +18,8 @@ int	initdraw(void (*errfun)(Display*, char*), char *font,
 .PP
 .B
 int	geninitdraw(char *devdir, void(*errfun)(Display*, char*),
-.PP
 .B
-	   char *font, char *label, char *mousedir, char *windir,
-.B
-	   int ref)
+	   char *font, char *label, char *windir, int ref)
 .PP
 .B
 int	newwindow(char *str)
@@ -38,13 +34,13 @@ Display*	initdisplay(char *devdir, char *win, void(*errfun)(Display*, char*))
 void	closedisplay(Display *d)
 .PP
 .B
-Font*	getdefont(Display *d)
+Subfont*	getdefont(Display *d)
 .PP
 .B
 int	flushimage(Display *d, int vis)
 .PP
 .B
-int	bufimage(Display *d, int n)
+uchar*	bufimage(Display *d, int n)
 .PP
 .B
 void	lockdisplay(Display *d)
@@ -369,12 +365,8 @@ and
 .I label
 are as in
 .IR initdraw ;
-.I mousedir
-and
 .I windir
-are the directories holding the
-.B mouse
-and
+is the directory holding the
 .B winname
 files; and
 .I ref
@@ -416,8 +408,8 @@ in which the files associated with the window reside.
 disconnects the display and frees the associated data structures.
 .I Getdefont
 builds a
-.B Font
-structure from in-core data describing a default font.
+.B Subfont
+structure from in-core data describing a default subfont.
 None of these routines is needed by most programs, since
 .I initdraw
 calls them as needed.

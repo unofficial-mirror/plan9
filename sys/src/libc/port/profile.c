@@ -142,7 +142,7 @@ _profdump(void)
 		break;
 	case Profuser:
 		cycles((uvlong*)&_tos->prof.first->time);
-		_tos->prof.first->time = _tos->prof.first->time + _tos->kcycles;
+		_tos->prof.first->time = _tos->prof.first->time - _tos->kcycles;
 		break;
 	case Proftime:
 		cycles((uvlong*)&_tos->prof.first->time);
@@ -268,7 +268,8 @@ _profmain(void)
 	_tos->clock = 1;
 }
 
-void prof(void (*fn)(void*), void *arg, int entries, int what)
+void
+prof(void (*fn)(void*), void *arg, int entries, int what)
 {
 	_profinit(entries, what);
 	_tos->prof.pp = _tos->prof.next;

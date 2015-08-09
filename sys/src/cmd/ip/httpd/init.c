@@ -6,7 +6,10 @@
 void
 usage(void)
 {
-	fprint(2, "usage: httpd [-b inbuf] [-d domain] [-r remoteip] [-w webroot] [-N netdir] [-R reqline] [-L logfd0 logfd1] method version uri [search]\n");
+	fprint(2, "usage: %s [-b inbuf] [-d domain] [-p localport]"
+		" [-r remoteip] [-s uri-scheme] [-w webroot]"
+		" [-L logfd0 logfd1] [-N netdir] [-R reqline]"
+		" method version uri [search]\n", argv0);
 	exits("usage");
 }
 
@@ -20,12 +23,14 @@ static	HSPriv		priv;
 HConnect*
 init(int argc, char **argv)
 {
-	char *s, *vs;
+	char *vs;
 
 	hinit(&connect.hin, 0, Hread);
 	hinit(&connect.hout, 1, Hwrite);
 	hmydomain = nil;
 	connect.replog = writelog;
+	connect.scheme = "http";
+	connect.port = "80";
 	connect.private = &priv;
 	priv.remotesys = nil;
 	priv.remoteserv = nil;
@@ -35,37 +40,33 @@ init(int argc, char **argv)
 	netdir = "/net";
 	ARGBEGIN{
 	case 'b':
-		s = ARGF();
-		if(s != nil)
-			hload(&connect.hin, s);
+		hload(&connect.hin, EARGF(usage()));
 		break;
 	case 'd':
-		hmydomain = ARGF();
+		hmydomain = EARGF(usage());
+		break;
+	case 'p':
+		connect.port = EARGF(usage());
 		break;
 	case 'r':
-		priv.remotesys = ARGF();
+		priv.remotesys = EARGF(usage());
+		break;
+	case 's':
+		connect.scheme = EARGF(usage());
 		break;
 	case 'w':
-		webroot = ARGF();
-		break;
-	case 'N':
-		netdir = ARGF();
+		webroot = EARGF(usage());
 		break;
 	case 'L':
-		s = ARGF();
-		if(s == nil)
-			usage();
-		logall[0] = strtol(s, nil, 10);
-		s = ARGF();
-		if(s == nil)
-			usage();
-		logall[1] = strtol(s, nil, 10);
+		logall[0] = strtol(EARGF(usage()), nil, 10);
+		logall[1] = strtol(EARGF(usage()), nil, 10);
+		break;
+	case 'N':
+		netdir = EARGF(usage());
 		break;
 	case 'R':
-		s = ARGF();
-		if(s == nil)
-			usage();
-		snprint((char*)connect.header, sizeof(connect.header), "%s", s);
+		snprint((char*)connect.header, sizeof(connect.header), "%s",
+			EARGF(usage()));
 		break;
 	default:
 		usage();

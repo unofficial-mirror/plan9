@@ -33,6 +33,7 @@ struct	kwtab {
 	"undef",	KUNDEF,		ISKW,
 	"line",		KLINE,		ISKW,
 	"error",	KERROR,		ISKW,
+	"warning",	KWARNING,	ISKW,		// extension to ANSI
 	"pragma",	KPRAGMA,	ISKW,
 	"eval",		KEVAL,		ISKW,
 	"defined",	KDEFINED,	ISDEFINED+ISUNCHANGE,
@@ -160,6 +161,8 @@ setup(int argc, char **argv)
 	dp = ".";
 	fp = "<stdin>";
 	fd = 0;
+	if (argc > 2)
+		error(FATAL, "Too many file arguments; see cpp(1)");
 	if (argc > 0) {
 		if ((fp = strrchr(argv[0], '/')) != NULL) {
 			int len = fp - argv[0];
@@ -167,7 +170,7 @@ setup(int argc, char **argv)
 			dp[len] = '\0';
 		}
 		fp = (char*)newstring((uchar*)argv[0], strlen(argv[0]), 0);
-		if ((fd = open(fp, 0)) <= 0)
+		if ((fd = open(fp, 0)) < 0)
 			error(FATAL, "Can't open input file %s", fp);
 	}
 	if (argc > 1) {

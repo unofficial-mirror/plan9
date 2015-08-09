@@ -190,18 +190,20 @@ int	(*call[])(void) =
 	isas,		/* assembler key words */
 	isp9font,	/* plan 9 font */
 	isp9bit,	/* plan 9 image (as from /dev/window) */
-	ismung,		/* entropy compressed/encrypted */
-	isenglish,	/* char frequency English */
 	isrtf,		/* rich text format */
 	ismsdos,	/* msdos exe (virus file attachement) */
 	isface,		/* ascii face file */
+
+	/* last resorts */
+	ismung,		/* entropy compressed/encrypted */
+	isenglish,	/* char frequency English */
 	0
 };
 
 int mime;
 
-#define OCTET	"application/octet-stream\n"
-#define PLAIN	"text/plain\n"
+char OCTET[] =	"application/octet-stream\n";
+char PLAIN[] =	"text/plain\n";
 
 void
 main(int argc, char *argv[])
@@ -258,71 +260,17 @@ type(char *file, int nlen)
 	}
 	fname = file;
 	if ((fd = open(file, OREAD)) < 0) {
-		print("cannot open\n");
+		print("cannot open: %r\n");
 		return;
 	}
 	filetype(fd);
 	close(fd);
 }
 
-/*
- * Unicode 4.0 4-byte runes.
- */
-typedef int Rune1;
-
-enum {
-	UTFmax1 = 4,
-};
-
-int
-fullrune1(char *p, int n)
-{
-	int c;
-
-	if(n >= 1) {
-		c = *(uchar*)p;
-		if(c < 0x80)
-			return 1;
-		if(n >= 2 && c < 0xE0)
-			return 1;
-		if(n >= 3 && c < 0xF0)
-			return 1;
-		if(n >= 4)
-			return 1;
-	}
-	return 0;
-}
-
-int
-chartorune1(Rune1 *rune, char *str)
-{
-	int c, c1, c2, c3, n;
-	Rune r;
-
-	c = *(uchar*)str;
-	if(c < 0xF0){
-		r = 0;
-		n = chartorune(&r, str);
-		*rune = r;
-		return n;
-	}
-	c &= ~0xF0;
-	c1 = *(uchar*)(str+1) & ~0x80;
-	c2 = *(uchar*)(str+2) & ~0x80;
-	c3 = *(uchar*)(str+3) & ~0x80;
-	n = (c<<18) | (c1<<12) | (c2<<6) | c3;
-	if(n < 0x10000 || n > 0x10FFFF){
-		*rune = Runeerror;
-		return 1;
-	}
-	*rune = n;
-	return 4;
-}
-
 void
 filetype(int fd)
 {
-	Rune1 r;
+	Rune r;
 	int i, f, n;
 	char *p, *eob;
 
@@ -333,18 +281,18 @@ filetype(int fd)
 		return;
 	}
 	if(mbuf->mode & DMDIR) {
-		print(mime ? "text/directory\n" : "directory\n");
+		print(mime ? OCTET : "directory\n");
 		return;
 	}
 	if(mbuf->type != 'M' && mbuf->type != '|') {
-		print(mime ? OCTET : "special file #%c/%s\n",
+		print(mime ? OCTET : "special file #%C/%s\n",
 			mbuf->type, mbuf->name);
 		return;
 	}
 	/* may be reading a pipe on standard input */
 	nbuf = readn(fd, buf, sizeof(buf)-1);
 	if(nbuf < 0) {
-		print("cannot read\n");
+		print("cannot read: %r\n");
 		return;
 	}
 	if(nbuf == 0) {
@@ -361,9 +309,9 @@ filetype(int fd)
 		language[i].count = 0;
 	eob = (char *)buf+nbuf;
 	for(n = 0, p = (char *)buf; p < eob; n++) {
-		if (!fullrune1(p, eob-p) && eob-p < UTFmax1)
+		if (!fullrune(p, eob-p) && eob-p < UTFmax)
 			break;
-		p += chartorune1(&r, p);
+		p += chartorune(&r, p);
 		if (r == 0)
 			f = Cnull;
 		else if (r <= 0x7f) {
@@ -584,20 +532,33 @@ Filemagic long0tab[] = {
 	/* "pXc2 */
 	0x32630070,	0xFFFF00FF,	"pac4 audio file\n",	OCTET,
 	0xBA010000,	0xFFFFFFFF,	"mpeg system stream\n",	OCTET,
+	0x43614c66,	0xFFFFFFFF,	"FLAC audio file\n",	OCTET,
 	0x30800CC0,	0xFFFFFFFF,	"inferno .dis executable\n", OCTET,
 	0x04034B50,	0xFFFFFFFF,	"zip archive\n", "application/zip",
 	070707,		0xFFFF,		"cpio archive\n", OCTET,
 	0x2F7,		0xFFFF,		"tex dvi\n", "application/dvi",
 	0xfaff,		0xfeff,		"mp3 audio\n",	"audio/mpeg",
+	0xf0ff,		0xf6ff,		"aac audio\n",	"audio/mpeg",
 	0xfeff0000,	0xffffffff,	"utf-32be\n",	"text/plain charset=utf-32be",
 	0xfffe,		0xffffffff,	"utf-32le\n",	"text/plain charset=utf-32le",
 	0xfeff,		0xffff,		"utf-16be\n",	"text/plain charset=utf-16be",
 	0xfffe,		0xffff,		"utf-16le\n",	"text/plain charset=utf-16le",
+	/* 0xfeedface: this could alternately be a Next Plan 9 boot image */
+	0xcefaedfe,	0xFFFFFFFF,	"32-bit power Mach-O executable\n", OCTET,
+	/* 0xfeedfacf */
+	0xcffaedfe,	0xFFFFFFFF,	"64-bit power Mach-O executable\n", OCTET,
+	/* 0xcefaedfe */
+	0xfeedface,	0xFFFFFFFF,	"386 Mach-O executable\n", OCTET,
+	/* 0xcffaedfe */
+	0xfeedfacf,	0xFFFFFFFF,	"amd64 Mach-O executable\n", OCTET,
+	/* 0xcafebabe */
+	0xbebafeca,	0xFFFFFFFF,	"Mach-O universal executable\n", OCTET,
 	/*
-	 * venti & fossil magic numbers are stored big-endian on disk,
+	 * these magic numbers are stored big-endian on disk,
 	 * thus the numbers appear reversed in this table.
 	 */
 	0xad4e5cd1,	0xFFFFFFFF,	"venti arena\n", OCTET,
+	0x2bb19a52,	0xFFFFFFFF,	"paq archive\n", OCTET,
 };
 
 int
@@ -631,12 +592,13 @@ struct Fileoffmag {
  */
 Fileoffmag longofftab[] = {
 	/*
-	 * venti & fossil magic numbers are stored big-endian on disk,
+	 * these magic numbers are stored big-endian on disk,
 	 * thus the numbers appear reversed in this table.
 	 */
 	256*1024, 0xe7a5e4a9, 0xFFFFFFFF, "venti arenas partition\n", OCTET,
 	256*1024, 0xc75e5cd1, 0xFFFFFFFF, "venti index section\n", OCTET,
 	128*1024, 0x89ae7637, 0xFFFFFFFF, "fossil write buffer\n", OCTET,
+	4,	  0x31647542, 0xFFFFFFFF, "OS X finder properties\n", OCTET,
 };
 
 int
@@ -770,6 +732,7 @@ struct	FILE_STRING
 	"x T utf",		"troff output for UTF",		7,	"application/troff",
 	"x T 202",		"troff output for 202",		7,	"application/troff",
 	"x T aps",		"troff output for aps",		7,	"application/troff",
+	"x T ",			"troff output",			4,	"application/troff",
 	"GIF",			"GIF image", 			3,	"image/gif",
 	"\0PC Research, Inc\0",	"ghostscript fax file",		18,	"application/ghostscript",
 	"%PDF",			"PDF",				4,	"application/pdf",
@@ -783,7 +746,10 @@ struct	FILE_STRING
 	"BM",			"bmp",				2,	"image/bmp",
 	"\xD0\xCF\x11\xE0\xA1\xB1\x1A\xE1",	"microsoft office document",	8,	"application/octet-stream",
 	"<MakerFile ",		"FrameMaker file",		11,	"application/framemaker",
+	"\033E\033",	"HP PCL printer data",		3,	OCTET,
+	"\033&",	"HP PCL printer data",		2,	OCTET,
 	"\033%-12345X",	"HPJCL file",		9,	"application/hpjcl",
+	"\033Lua",		"Lua bytecode",		4,	OCTET,
 	"ID3",			"mp3 audio with id3",	3,	"audio/mpeg",
 	"\211PNG",		"PNG image",		4,	"image/png",
 	"P3\n",			"ppm",				3,	"image/ppm",
@@ -810,6 +776,8 @@ struct	FILE_STRING
 				"pem x.509 certificate", -1,	"text/plain",
 	"subject=/C=",		"pem certificate with header", -1, "text/plain",
 	"process snapshot ",	"process snapshot",	-1,	"application/snapfs",
+	"BEGIN:VCARD\r\n",	"vCard",		13,	"text/directory;profile=vcard",
+	"BEGIN:VCARD\n",	"vCard",		12,	"text/directory;profile=vcard",
 	0,0,0,0
 };
 
@@ -884,6 +852,16 @@ iff(void)
 	if (strncmp((char*)buf, "FORM", 4) == 0 &&
 	    strncmp((char*)buf+8, "AIFF", 4) == 0) {
 		print("%s\n", mime? "audio/x-aiff": "aiff audio");
+		return 1;
+	}
+	if (strncmp((char*)buf, "RIFF", 4) == 0) {
+		if (strncmp((char*)buf+8, "WAVE", 4) == 0)
+			print("%s\n", mime? "audio/wave": "wave audio");
+		else if (strncmp((char*)buf+8, "AVI ", 4) == 0)
+			print("%s\n", mime? "video/avi": "avi video");
+		else
+			print("%s\n", mime? "application/octet-stream":
+				"riff file");
 		return 1;
 	}
 	return 0;
@@ -1479,7 +1457,7 @@ iself(void)
 
 			if(n>0 && n < nelem(type) && type[n])
 				t = type[n];
-			print("%s ELF %s\n", p, t);
+			print("%s ELF%s %s\n", p, (buf[4] == 2? "64": "32"), t);
 		}
 		else
 			print("application/x-elf-executable");

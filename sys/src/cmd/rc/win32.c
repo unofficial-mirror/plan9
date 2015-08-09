@@ -24,8 +24,9 @@ char *syssigname[] = {
 	"term",
 	0
 };
-char Rcmain[]="/rc/lib/rcmain";
-char Fdprefix[]="/fd/";
+char *Rcmain = "/rc/lib/rcmain";
+char *Fdprefix = "/fd/";
+
 void execfinit(void);
 void execbind(void);
 
@@ -211,7 +212,7 @@ addenv(var *v)
 		else{
 			if(v->fn){
 				fd = openfd(f);
-				pfmt(fd, "fn %s %s\n", v->name, v->fn[v->pc-1].s);
+				pfmt(fd, "fn %q %s\n", v->name, v->fn[v->pc-1].s);
 				closeio(fd);
 			}
 			close(f);

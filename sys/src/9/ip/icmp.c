@@ -46,7 +46,7 @@ enum {			/* Packet Types */
 
 enum
 {
-	MinAdvise	= 24,	/* minimum needed for us to advise another protocol */ 
+	MinAdvise	= 24,	/* minimum needed for us to advise another protocol */
 };
 
 char *icmpnames[Maxtype+1] =
@@ -177,9 +177,9 @@ icmpkick(void *x, Block *bp)
 	p = (Icmp *)(bp->rp);
 	p->vihl = IP_VER4;
 	ipriv = c->p->priv;
-	if(p->type <= Maxtype)	
+	if(p->type <= Maxtype)
 		ipriv->out[p->type]++;
-	
+
 	v6tov4(p->dst, c->raddr);
 	v6tov4(p->src, c->laddr);
 	p->proto = IP_ICMPPROTO;
@@ -332,11 +332,13 @@ icmpiput(Proto *icmp, Ipifc*, Block *bp)
 	Icmppriv *ipriv;
 
 	ipriv = icmp->priv;
-	
+
 	ipriv->stats[InMsgs]++;
 
 	p = (Icmp *)bp->rp;
-	netlog(icmp->f, Logicmp, "icmpiput %d %d\n", p->type, p->code);
+	netlog(icmp->f, Logicmp, "icmpiput %s (%d) %d\n",
+		(p->type < nelem(icmpnames)? icmpnames[p->type]: ""),
+		p->type, p->code);
 	n = blocklen(bp);
 	if(n < ICMP_IPSIZE+ICMP_HDRSIZE){
 		ipriv->stats[InErrors]++;
@@ -345,7 +347,7 @@ icmpiput(Proto *icmp, Ipifc*, Block *bp)
 		goto raise;
 	}
 	iplen = nhgets(p->length);
-	if(iplen > n || (iplen % 1)){
+	if(iplen > n){
 		ipriv->stats[LenErrs]++;
 		ipriv->stats[InErrors]++;
 		netlog(icmp->f, Logicmp, "icmp length %d\n", iplen);
@@ -364,7 +366,7 @@ icmpiput(Proto *icmp, Ipifc*, Block *bp)
 	case EchoRequest:
 		if (iplen < n)
 			bp = trimblock(bp, 0, iplen);
-		r = mkechoreply(bp);
+		r = mkechoreply(concatblock(bp));
 		ipriv->out[EchoReply]++;
 		ipoput4(icmp->f, r, 0, MAXTTL, DFLTTOS, nil);
 		break;
@@ -391,7 +393,7 @@ icmpiput(Proto *icmp, Ipifc*, Block *bp)
 		break;
 	case TimeExceed:
 		if(p->code == 0){
-			sprint(m2, "ttl exceeded at %V", p->src);
+			snprint(m2, sizeof m2, "ttl exceeded at %V", p->src);
 
 			bp->rp += ICMP_IPSIZE+ICMP_HDRSIZE;
 			if(blocklen(bp) < MinAdvise){
@@ -463,7 +465,7 @@ icmpstats(Proto *icmp, char *buf, int len)
 	}
 	return p - buf;
 }
-	
+
 void
 icmpinit(Fs *fs)
 {

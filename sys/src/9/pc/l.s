@@ -16,6 +16,9 @@
 #define RDMSR		BYTE $0x0F; BYTE $0x32	/* RDMSR, result in AX/DX (lo/hi) */
 #define HLT		BYTE $0xF4
 #define INVLPG	BYTE $0x0F; BYTE $0x01; BYTE $0x39	/* INVLPG (%ecx) */
+#define WBINVD	BYTE $0x0F; BYTE $0x09
+#define FXSAVE		BYTE $0x0f; BYTE $0xae; BYTE $0x00  /* SSE FP save */
+#define FXRSTOR		BYTE $0x0f; BYTE $0xae; BYTE $0x08  /* SSE FP restore */
 
 /*
  * Macros for calculating offsets within the page directory base
@@ -400,6 +403,7 @@ TEXT now16real(SB), $0
 
 TEXT realmodeintrinst(SB), $0
 	INT $0x00
+	CLI			/* who knows what evil the bios got up to */
 
 	/* save the registers after the call */
 
@@ -622,6 +626,11 @@ TEXT getcr3(SB), $0				/* CR3 - page directory base */
 	MOVL	CR3, AX
 	RET
 
+TEXT putcr0(SB), $0
+	MOVL	cr0+0(FP), AX
+	MOVL	AX, CR0
+	RET
+
 TEXT putcr3(SB), $0
 	MOVL	cr3+0(FP), AX
 	MOVL	AX, CR3
@@ -640,6 +649,10 @@ TEXT invlpg(SB), $0
 	/* 486+ only */
 	MOVL	va+0(FP), CX
 	INVLPG
+	RET
+
+TEXT wbinvd(SB), $0
+	WBINVD
 	RET
 
 TEXT _cycles(SB), $0				/* time stamp counter */
@@ -680,20 +693,17 @@ TEXT wrmsr(SB), $0
  * a 386 (Ac bit can't be set). If it's not a 386 and the Id bit can't be
  * toggled then it's an older 486 of some kind.
  *
- *	cpuid(id[], &ax, &dx);
+ *	cpuid(fun, regs[4]);
  */
 TEXT cpuid(SB), $0
 	MOVL	$0x240000, AX
 	PUSHL	AX
 	POPFL					/* set Id|Ac */
-
 	PUSHFL
 	POPL	BX				/* retrieve value */
-
 	MOVL	$0, AX
 	PUSHL	AX
 	POPFL					/* clear Id|Ac, EFLAGS initialised */
-
 	PUSHFL
 	POPL	AX				/* retrieve value */
 	XORL	BX, AX
@@ -701,32 +711,33 @@ TEXT cpuid(SB), $0
 	JZ	_cpu386				/* can't set this bit on 386 */
 	TESTL	$0x200000, AX			/* Id */
 	JZ	_cpu486				/* can't toggle this bit on some 486 */
-
-	MOVL	$0, AX
-	CPUID
-	MOVL	id+0(FP), BP
-	MOVL	BX, 0(BP)			/* "Genu" "Auth" "Cyri" */
-	MOVL	DX, 4(BP)			/* "ineI" "enti" "xIns" */
-	MOVL	CX, 8(BP)			/* "ntel" "cAMD" "tead" */
-
-	MOVL	$1, AX
+	/* load registers */
+	MOVL	regs+4(FP), BP
+	MOVL	fn+0(FP), AX			/* cpuid function */
+	MOVL	4(BP), BX
+	MOVL	8(BP), CX			/* typically an index */
+	MOVL	12(BP), DX
 	CPUID
 	JMP	_cpuid
-
 _cpu486:
 	MOVL	$0x400, AX
-	MOVL	$0, DX
-	JMP	_cpuid
-
+	JMP	_maybezapax
 _cpu386:
 	MOVL	$0x300, AX
-	MOVL	$0, DX
-
+_maybezapax:
+	CMPL	fn+0(FP), $1
+	JE	_zaprest
+	XORL	AX, AX
+_zaprest:
+	XORL	BX, BX
+	XORL	CX, CX
+	XORL	DX, DX
 _cpuid:
-	MOVL	ax+4(FP), BP
+	MOVL	regs+4(FP), BP
 	MOVL	AX, 0(BP)
-	MOVL	dx+8(FP), BP
-	MOVL	DX, 0(BP)
+	MOVL	BX, 4(BP)
+	MOVL	CX, 8(BP)
+	MOVL	DX, 12(BP)
 	RET
 
 /*
@@ -762,7 +773,11 @@ l:								 ;\
 	MOVL	CR0, AX						 ;\
 	ANDL	$~0xC, AX			/* EM=0, TS=0 */ ;\
 	MOVL	AX, CR0
-	
+
+TEXT fpon(SB), $0				/* enable */
+	FPON
+	RET
+
 TEXT fpoff(SB), $0				/* disable */
 	FPOFF(l1)
 	RET
@@ -779,13 +794,13 @@ TEXT fpinit(SB), $0				/* enable and init */
 	WAIT
 	RET
 
-TEXT fpsave(SB), $0				/* save state and disable */
+TEXT fpx87save(SB), $0				/* save state and disable */
 	MOVL	p+0(FP), AX
 	FSAVE	0(AX)				/* no WAIT */
 	FPOFF(l2)
 	RET
 
-TEXT fprestore(SB), $0				/* enable and restore state */
+TEXT fpx87restore(SB), $0			/* enable and restore state */
 	FPON
 	MOVL	p+0(FP), AX
 	FRSTOR	0(AX)
@@ -798,13 +813,26 @@ TEXT fpstatus(SB), $0				/* get floating point status */
 
 TEXT fpenv(SB), $0				/* save state without waiting */
 	MOVL	p+0(FP), AX
-	FSTENV	0(AX)
+	FSTENV	0(AX)				/* also masks FP exceptions */
 	RET
 
 TEXT fpclear(SB), $0				/* clear pending exceptions */
 	FPON
 	FCLEX					/* no WAIT */
 	FPOFF(l3)
+	RET
+
+TEXT fpssesave0(SB), $0				/* save state and disable */
+	MOVL	p+0(FP), AX
+	FXSAVE					/* no WAIT */
+	FPOFF(l4)
+	RET
+
+TEXT fpsserestore0(SB), $0			/* enable and restore state */
+	FPON
+	MOVL	p+0(FP), AX
+	FXRSTOR
+	WAIT
 	RET
 
 /*

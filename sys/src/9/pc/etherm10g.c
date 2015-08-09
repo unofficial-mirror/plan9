@@ -1,10 +1,12 @@
 /*
- * myricom 10 Gb ethernet driver
+ * myricom 10g-pcie-8a 10 Gb ethernet driver
  * © 2007 erik quanstrom, coraid
  *
  * the card is big endian.
  * we use uvlong rather than uintptr to hold addresses so that
  * we don't get "warning: stupid shift" on 32-bit architectures.
+ *
+ * appears to have massively-bloated buffers.
  */
 #include "u.h"
 #include "../port/lib.h"
@@ -34,9 +36,9 @@ static char	Etimeout[]	= "timeout";
 
 enum {
 	Epromsz	= 256,
-	Maxslots= 1024,
+	Maxslots= 1024,		/* rcv descriptors; wasteful: only 9 needed */
 	Align	= 4096,
-	Maxmtu	= 9000,
+	Maxmtu	= 9000,		/* jumbos; bad idea */
 	Noconf	= 0xffffffff,
 
 	Fwoffset= 1*MiB,
@@ -303,13 +305,13 @@ pciecap(Pcidev *p, int cap)
 	uint off, i;
 
 	off = 0x100;
-	while(((i = pcicfgr32(p, off))&0xffff) != cap){
+	while(((i = pcicfgr32(p, off)) & 0xffff) != cap){
 		off = i >> 20;
-		print("pciecap offset = %ud\n",  off);
+		print("m10g: pciecap offset = %ud",  off);
 		if(off < 0x100 || off >= 4*KiB - 1)
 			return 0;
 	}
-	print("pciecap found = %ud\n",  off);
+	print("m10g: pciecap found = %ud",  off);
 	return off;
 }
 
@@ -344,33 +346,30 @@ whichfw(Pcidev *p)
 
 	/* check AERC register.  we need it on.  */
 	off = pciecap(p, PcieAERC);
-	print("%d offset\n", off);
+	print("; offset %d returned\n", off);
 	cap = 0;
 	if(off != 0){
 		off += AercCCR;
 		cap = pcicfgr32(p, off);
-		print("%lud cap\n", cap);
+		print("m10g: %lud cap\n", cap);
 	}
 	ecrc = (cap>>4) & 0xf;
 	/* if we don't like the aerc, kick it here. */
 
-	print("m10g %d lanes; ecrc=%d; ", lanes, ecrc);
+	print("m10g: %d lanes; ecrc=%d; ", lanes, ecrc);
 	if(s = getconf("myriforce")){
 		i = atoi(s);
 		if(i != 4*KiB || i != 2*KiB)
 			i = 2*KiB;
-		print("fw=%d [forced]\n", i);
+		print("fw = %d [forced]\n", i);
 		return i;
 	}
-	if(lanes <= 4){
+	if(lanes <= 4)
 		print("fw = 4096 [lanes]\n");
-		return 4*KiB;
-	}
-	if(ecrc & 10){
+	else if(ecrc & 10)
 		print("fw = 4096 [ecrc set]\n");
-		return 4*KiB;
-	}
-	print("fw = 4096 [default]\n");
+	else
+		print("fw = 4096 [default]\n");
 	return 4*KiB;
 }
 
@@ -487,8 +486,10 @@ cmd(Ctlr *c, int type, uvlong data)
 	coherence();
 	memmove(c->ram + Cmdoff, buf, sizeof buf);
 
-	if(waserror())
+	if(waserror()){
+		qunlock(&c->cmdl);
 		nexterror();
+	}
 	for(i = 0; i < 15; i++){
 		if(cmd->i[1] != Noconf){
 			poperror();
@@ -496,11 +497,10 @@ cmd(Ctlr *c, int type, uvlong data)
 			qunlock(&c->cmdl);
 			if(cmd->i[1] != 0)
 				dprint("[%lux]", i);
-			return i;
+			return i;	/* normal return */
 		}
 		tsleep(&up->sleep, return0, 0, 1);
 	}
-	qunlock(&c->cmdl);
 	iprint("m10g: cmd timeout [%ux %ux] cmd=%d\n",
 		cmd->i[0], cmd->i[1], type);
 	error(Etimeout);
@@ -526,8 +526,10 @@ maccmd(Ctlr *c, int type, uchar *m)
 	coherence();
 	memmove(c->ram + Cmdoff, buf, sizeof buf);
 
-	if(waserror())
+	if(waserror()){
+		qunlock(&c->cmdl);
 		nexterror();
+	}
 	for(i = 0; i < 15; i++){
 		if(cmd->i[1] != Noconf){
 			poperror();
@@ -535,11 +537,10 @@ maccmd(Ctlr *c, int type, uchar *m)
 			qunlock(&c->cmdl);
 			if(cmd->i[1] != 0)
 				dprint("[%lux]", i);
-			return i;
+			return i;	/* normal return */
 		}
 		tsleep(&up->sleep, return0, 0, 1);
 	}
-	qunlock(&c->cmdl);
 	iprint("m10g: maccmd timeout [%ux %ux] cmd=%d\n",
 		cmd->i[0], cmd->i[1], type);
 	error(Etimeout);
@@ -569,15 +570,12 @@ dmatestcmd(Ctlr *c, int type, uvlong addr, int len)
 	coherence();
 	memmove(c->ram + Cmdoff, buf, sizeof buf);
 
-	if(waserror())
-		nexterror();
 	for(i = 0; i < 15; i++){
 		if(c->cmd->i[1] != Noconf){
 			i = gbit32(c->cmd->c);
 			if(i == 0)
 				error(Eio);
-			poperror();
-			return i;
+			return i;	/* normal return */
 		}
 		tsleep(&up->sleep, return0, 0, 5);
 	}
@@ -602,17 +600,13 @@ rdmacmd(Ctlr *c, int on)
 	prepcmd(buf, 6);
 	memmove(c->ram + Rdmaoff, buf, sizeof buf);
 
-	if(waserror())
-		nexterror();
 	for(i = 0; i < 20; i++){
-		if(c->cmd->i[0] == Noconf){
-			poperror();
-			return gbit32(c->cmd->c);
-		}
+		if(c->cmd->i[0] == Noconf)
+			return gbit32(c->cmd->c);	/* normal return */
 		tsleep(&up->sleep, return0, 0, 1);
 	}
-	error(Etimeout);
 	iprint("m10g: rdmacmd timeout\n");
+	error(Etimeout);
 	return ~0;			/* silence! */
 }
 
@@ -778,11 +772,11 @@ reset(Ether *e, Ctlr *c)
 	rdmacmd(c, 1);
 	sz = c->tx.segsz;
 	i = dmatestcmd(c, DMAread, c->done.busaddr, sz);
-	print("\t" "read: %lud MB/s\n", ((i>>16)*sz*2) / (i&0xffff));
+	print("m10g: read %lud MB/s;", ((i>>16)*sz*2) / (i&0xffff));
 	i = dmatestcmd(c, DMAwrite, c->done.busaddr, sz);
-	print("\t" "write: %lud MB/s\n", ((i>>16)*sz*2) / (i&0xffff));
+	print(" write %lud MB/s;", ((i>>16)*sz*2) / (i&0xffff));
 	i = dmatestcmd(c, DMAwrite|DMAread, c->done.busaddr, sz);
-	print("\t" "r/w: %lud MB/s\n", ((i>>16)*sz*2*2) / (i&0xffff));
+	print(" r/w %lud MB/s\n", ((i>>16)*sz*2*2) / (i&0xffff));
 	memset(c->done.entry, 0, c->done.n * sizeof *c->done.entry);
 
 	maccmd(c, CSmac, c->ra);
@@ -861,46 +855,43 @@ whichrx(Ctlr *c, int sz)
 static Block*
 balloc(Rx* rx)
 {
-	Block *b;
+	Block *bp;
 
 	ilock(rx->pool);
-	if((b = rx->pool->head) != nil){
-		rx->pool->head = b->next;
-		b->next = nil;
+	if((bp = rx->pool->head) != nil){
+		rx->pool->head = bp->next;
+		bp->next = nil;
+		_xinc(&bp->ref);	/* prevent bp from being freed */
 		rx->pool->n--;
 	}
 	iunlock(rx->pool);
-	return b;
+	return bp;
+}
+
+static void
+rbfree(Block *b, Bpool *p)
+{
+	b->rp = b->wp = (uchar*)PGROUND((uintptr)b->base);
+ 	b->flag &= ~(Bipck | Budpck | Btcpck | Bpktck);
+
+	ilock(p);
+	b->next = p->head;
+	p->head = b;
+	p->n++;
+	p->cnt++;
+	iunlock(p);
 }
 
 static void
 smbfree(Block *b)
 {
-	Bpool *p;
-
-	b->rp = b->wp = (uchar*)PGROUND((uintptr)b->base);
-	p = &smpool;
-	ilock(p);
-	b->next = p->head;
-	p->head = b;
-	p->n++;
-	p->cnt++;
-	iunlock(p);
+	rbfree(b, &smpool);
 }
 
 static void
 bgbfree(Block *b)
 {
-	Bpool *p;
-
-	b->rp = b->wp = (uchar*)PGROUND((uintptr)b->base);
-	p = &bgpool;
-	ilock(p);
-	b->next = p->head;
-	p->head = b;
-	p->n++;
-	p->cnt++;
-	iunlock(p);
+	rbfree(b, &bgpool);
 }
 
 static void
@@ -931,7 +922,7 @@ replenish(Rx *rx)
 		e -= 8;
 	}
 	if(e && p->n > 7+1)
-		print("should panic? pool->n = %d\n", p->n);
+		print("m10g: should panic? pool->n = %d\n", p->n);
 }
 
 /*
@@ -1123,7 +1114,7 @@ txcleanup(Tx *tx, ulong n)
 		if(tx->cnt == tx->i)
 			return;
 		if(l++ == m){
-			iprint("tx ovrun: %lud %lud\n", n, tx->npkt);
+			iprint("m10g: tx ovrun: %lud %lud\n", n, tx->npkt);
 			return;
 		}
 	}
@@ -1350,7 +1341,7 @@ m10gdetach(Ctlr *c)
 	dprint("m10gdetach\n");
 //	reset(e->ctlr);
 	vunmap(c->ram, c->pcidev->mem[0].size);
-	ctlrfree(c);
+	ctlrfree(c);		/* this is a bad idea: don't free c */
 	return -1;
 }
 
@@ -1368,20 +1359,18 @@ lstcount(Block *b)
 static long
 m10gifstat(Ether *e, void *v, long n, ulong off)
 {
-	int l, lim;
 	char *p;
 	Ctlr *c;
 	Stats s;
 
 	c = e->ctlr;
-	lim = 2*READSTR-1;
-	p = malloc(lim+1);
-	l = 0;
+	p = malloc(READSTR+1);
+	if(p == nil)
+		error(Enomem);
 	/* no point in locking this because this is done via dma. */
 	memmove(&s, c->stats, sizeof s);
 
-	// l +=
-	snprint(p+l, lim,
+	snprint(p, READSTR,
 		"txcnt = %lud\n"  "linkstat = %lud\n" 	"dlink = %lud\n"
 		"derror = %lud\n" "drunt = %lud\n" 	"doverrun = %lud\n"
 		"dnosm = %lud\n"  "dnobg = %lud\n"	"nrdma = %lud\n"
@@ -1560,17 +1549,30 @@ m10gpci(void)
 	Ctlr *t, *c;
 
 	t = 0;
-	for(p = 0; p = pcimatch(p, 0x14c1, 0x0008); ){
+	for(p = 0; p = pcimatch(p, Vmyricom, 0); ){
+		switch(p->did){
+		case 0x8:		/* 8a */
+			break;
+		case 0x9:		/* 8a with msi-x fw */
+		case 0xa:		/* 8b */
+		case 0xb:		/* 8b2 */
+		case 0xc:		/* 2-8b2 */
+			/* untested */
+			break;
+		default:
+			print("etherm10g: unknown myricom did %#ux\n", p->did);
+			continue;
+		}
 		c = malloc(sizeof *c);
 		if(c == nil)
-			continue;
+			break;
 		c->pcidev = p;
 		c->id = p->did<<16 | p->vid;
 		c->boot = pcicap(p, PciCapVND);
 //		kickthebaby(p, c);
 		pcisetbme(p);
 		if(setmem(p, c) == -1){
-			print("m10g failed\n");
+			print("m10g: setmem failed\n");
 			free(c);
 			/* cleanup */
 			continue;
@@ -1613,13 +1615,11 @@ m10gpnp(Ether *e)
 	e->interrupt = m10ginterrupt;
 	e->ifstat = m10gifstat;
 	e->ctl = m10gctl;
-//	e->power = m10gpower;
 	e->shutdown = m10gshutdown;
 
 	e->arg = e;
 	e->promiscuous = m10gpromiscuous;
 	e->multicast = m10gmulticast;
-
 	return 0;
 }
 

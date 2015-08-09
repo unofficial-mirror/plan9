@@ -130,7 +130,7 @@ execfunc(var *func)
 	starval = runq->argv->words;
 	runq->argv->words = 0;
 	poplist();
-	start(func->fn, func->pc, (struct var *)0);
+	start(func->fn, func->pc, runq->local);
 	runq->local = newvar(strdup("*"), runq->local);
 	runq->local->val = starval;
 	runq->local->changed = 1;
@@ -145,10 +145,29 @@ dochdir(char *word)
 	if(flag['i']!=0){
 		if(wdirfd==-2)	/* try only once */
 			wdirfd = open("/dev/wdir", OWRITE|OCEXEC);
-		if(wdirfd>=0)
+		if(wdirfd>=0) {
+			fcntl(wdirfd, F_SETFD, FD_CLOEXEC);
 			write(wdirfd, word, strlen(word));
+		}
 	}
 	return 1;
+}
+
+static char *
+appfile(char *dir, char *comp)
+{
+	int dirlen, complen;
+	char *s, *p;
+
+	dirlen = strlen(dir);
+	complen = strlen(comp);
+	s = emalloc(dirlen + 1 + complen + 1);
+	memmove(s, dir, dirlen);
+	p = s + dirlen;
+	*p++ = '/';
+	memmove(p, comp, complen);
+	p[complen] = '\0';
+	return s;
 }
 
 void
@@ -169,8 +188,7 @@ execcd(void)
 			cdpath = &nullpath;
 		for(; cdpath; cdpath = cdpath->next){
 			if(cdpath->word[0] != '\0')
-				dir = smprint("%s/%s", cdpath->word,
-					a->next->word);
+				dir = appfile(cdpath->word, a->next->word);
 			else
 				dir = strdup(a->next->word);
 
@@ -360,7 +378,7 @@ execdot(void)
 	fd = -1;
 	for(path = searchpath(zero); path; path = path->next){
 		if(path->word[0] != '\0')
-			file = smprint("%s/%s", path->word, zero);
+			file = appfile(path->word, zero);
 		else
 			file = strdup(zero);
 
@@ -442,6 +460,7 @@ execwhatis(void){	/* mildly wrong -- should fork before writing */
 		return;
 	}
 	setstatus("");
+	memset(out, 0, sizeof out);
 	out->fd = mapfd(1);
 	out->bufp = out->buf;
 	out->ebuf = &out->buf[NBUF];
@@ -466,7 +485,7 @@ execwhatis(void){	/* mildly wrong -- should fork before writing */
 			found = 0;
 		v = gvlook(a->word);
 		if(v->fn)
-			pfmt(out, "fn %s %s\n", v->name, v->fn[v->pc-1].s);
+			pfmt(out, "fn %q %s\n", v->name, v->fn[v->pc-1].s);
 		else{
 			for(bp = Builtin;bp->name;bp++)
 				if(strcmp(a->word, bp->name)==0){
@@ -477,8 +496,8 @@ execwhatis(void){	/* mildly wrong -- should fork before writing */
 				for(path = searchpath(a->word); path;
 				    path = path->next){
 					if(path->word[0] != '\0')
-						file = smprint("%s/%s",
-							path->word, a->word);
+						file = appfile(path->word,
+							a->word);
 					else
 						file = strdup(a->word);
 					if(Executable(file)){

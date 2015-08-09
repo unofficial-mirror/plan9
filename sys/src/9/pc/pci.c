@@ -8,15 +8,16 @@
 #include "dat.h"
 #include "fns.h"
 #include "io.h"
-#include "../port/error.h"
 
 #define DBG	if(0) pcilog
 
 struct
 {
-	char	output[16384];
+	char	output[PCICONSSIZE];
 	int	ptr;
 }PCICONS;
+
+int pcivga;
 
 int
 pcilog(char *fmt, ...)
@@ -97,13 +98,12 @@ static char* bustypes[] = {
 	"XPRESS",
 };
 
-#pragma	varargck	type	"T"	int
-
 static int
 tbdffmt(Fmt* fmt)
 {
 	char *p;
-	int l, r, type, tbdf;
+	int l, r;
+	uint type, tbdf;
 
 	if((p = malloc(READSTR)) == nil)
 		return fmtstrcpy(fmt, "(tbdfconv)");
@@ -111,13 +111,17 @@ tbdffmt(Fmt* fmt)
 	switch(fmt->r){
 	case 'T':
 		tbdf = va_arg(fmt->args, int);
-		type = BUSTYPE(tbdf);
-		if(type < nelem(bustypes))
-			l = snprint(p, READSTR, bustypes[type]);
-		else
-			l = snprint(p, READSTR, "%d", type);
-		snprint(p+l, READSTR-l, ".%d.%d.%d",
-			BUSBNO(tbdf), BUSDNO(tbdf), BUSFNO(tbdf));
+		if(tbdf == BUSUNKNOWN)
+			snprint(p, READSTR, "unknown");
+		else{
+			type = BUSTYPE(tbdf);
+			if(type < nelem(bustypes))
+				l = snprint(p, READSTR, bustypes[type]);
+			else
+				l = snprint(p, READSTR, "%d", type);
+			snprint(p+l, READSTR-l, ".%d.%d.%d",
+				BUSBNO(tbdf), BUSDNO(tbdf), BUSFNO(tbdf));
+		}
 		break;
 
 	default:
@@ -197,6 +201,8 @@ pcibusmap(Pcidev *root, ulong *pmema, ulong *pioa, int wrreg)
 
 	ntb *= (PciCIS-PciBAR0)/4;
 	table = malloc(2*ntb*sizeof(Pcisiz));
+	if(table == nil)
+		panic("pcibusmap: no memory");
 	itb = table;
 	mtb = table+ntb;
 
@@ -361,6 +367,7 @@ pcibusmap(Pcidev *root, ulong *pmema, ulong *pioa, int wrreg)
 	}
 }
 
+/* side effect: if a video controller is seen, set pcivga non-zero */
 static int
 pcilscan(int bno, Pcidev** list)
 {
@@ -386,6 +393,8 @@ pcilscan(int bno, Pcidev** list)
 			if(l == 0xFFFFFFFF || l == 0)
 				continue;
 			p = malloc(sizeof(*p));
+			if(p == nil)
+				panic("pcilscan: no memory");
 			p->tbdf = tbdf;
 			p->vid = l;
 			p->did = l>>16;
@@ -419,9 +428,11 @@ pcilscan(int bno, Pcidev** list)
 			 * and work out the sizes.
 			 */
 			switch(p->ccrb) {
+			case 0x03:		/* display controller */
+				pcivga = 1;
+				/* fall through */
 			case 0x01:		/* mass storage controller */
 			case 0x02:		/* network controller */
-			case 0x03:		/* display controller */
 			case 0x04:		/* multimedia device */
 			case 0x07:		/* simple comm. controllers */
 			case 0x08:		/* base system peripherals */
@@ -637,15 +648,28 @@ static Bridge southbridges[] = {
 	{ 0x8086, 0x2410, pIIxget, pIIxset },	/* Intel 82801AA */
 	{ 0x8086, 0x2420, pIIxget, pIIxset },	/* Intel 82801AB */
 	{ 0x8086, 0x2440, pIIxget, pIIxset },	/* Intel 82801BA */
+	{ 0x8086, 0x2448, pIIxget, pIIxset },	/* Intel 82801BAM/CAM/DBM */
 	{ 0x8086, 0x244c, pIIxget, pIIxset },	/* Intel 82801BAM */
+	{ 0x8086, 0x244e, pIIxget, pIIxset },	/* Intel 82801 */
 	{ 0x8086, 0x2480, pIIxget, pIIxset },	/* Intel 82801CA */
 	{ 0x8086, 0x248c, pIIxget, pIIxset },	/* Intel 82801CAM */
 	{ 0x8086, 0x24c0, pIIxget, pIIxset },	/* Intel 82801DBL */
 	{ 0x8086, 0x24cc, pIIxget, pIIxset },	/* Intel 82801DBM */
 	{ 0x8086, 0x24d0, pIIxget, pIIxset },	/* Intel 82801EB */
+	{ 0x8086, 0x25a1, pIIxget, pIIxset },	/* Intel 6300ESB */
 	{ 0x8086, 0x2640, pIIxget, pIIxset },	/* Intel 82801FB */
+	{ 0x8086, 0x2641, pIIxget, pIIxset },	/* Intel 82801FBM */
 	{ 0x8086, 0x27b8, pIIxget, pIIxset },	/* Intel 82801GB */
 	{ 0x8086, 0x27b9, pIIxget, pIIxset },	/* Intel 82801GBM */
+	{ 0x8086, 0x27bd, pIIxget, pIIxset },	/* Intel 82801GB/GR */
+	{ 0x8086, 0x3a16, pIIxget, pIIxset },	/* Intel 82801JIR */
+	{ 0x8086, 0x3a40, pIIxget, pIIxset },	/* Intel 82801JI */
+	{ 0x8086, 0x3a42, pIIxget, pIIxset },	/* Intel 82801JI */
+	{ 0x8086, 0x3a48, pIIxget, pIIxset },	/* Intel 82801JI */
+	{ 0x8086, 0x2916, pIIxget, pIIxset },	/* Intel 82801? */
+	{ 0x8086, 0x1c02, pIIxget, pIIxset },	/* Intel 6 Series/C200 */
+	{ 0x8086, 0x1c44, pIIxget, pIIxset },	/* Intel 6 Series/Z68 Express */
+	{ 0x8086, 0x1e53, pIIxget, pIIxset },	/* Intel 7 Series/C216 */
 	{ 0x1106, 0x0586, viaget, viaset },	/* Viatech 82C586 */
 	{ 0x1106, 0x0596, viaget, viaset },	/* Viatech 82C596 */
 	{ 0x1106, 0x0686, viaget, viaset },	/* Viatech 82C686 */
@@ -659,6 +683,7 @@ static Bridge southbridges[] = {
 	{ 0x1022, 0x746B, nil, nil },		/* AMD 8111 */
 	{ 0x10DE, 0x00D1, nil, nil },		/* NVIDIA nForce 3 */
 	{ 0x10DE, 0x00E0, nil, nil },		/* NVIDIA nForce 3 250 Series */
+	{ 0x10DE, 0x00E1, nil, nil },		/* NVIDIA nForce 3 250 Series */
 	{ 0x1166, 0x0200, nil, nil },		/* ServerWorks ServerSet III LE */
 	{ 0x1002, 0x4377, nil, nil },		/* ATI Radeon Xpress 200M */
 	{ 0x1002, 0x4372, nil, nil },		/* ATI SB400 */
@@ -704,13 +729,16 @@ pcirouting(void)
 		if(p[0] == '$' && p[1] == 'P' && p[2] == 'I' && p[3] == 'R')
 			break;
 
-	if(p >= (uchar *)KADDR(0xfffff))
+	if(p >= (uchar *)KADDR(0xfffff)) {
+		// print("no PCI intr routing table found\n");
 		return;
+	}
 
 	r = (Router *)p;
 
-	// print("PCI interrupt routing table version %d.%d at %.6uX\n",
-	//	r->version[0], r->version[1], (ulong)r & 0xfffff);
+	if (0)
+		print("PCI interrupt routing table version %d.%d at %#.6luX\n",
+			r->version[0], r->version[1], (ulong)r & 0xfffff);
 
 	tbdf = (BusPCI << 24)|(r->bus << 16)|(r->devfn << 8);
 	sbpci = pcimatchtbdf(tbdf);

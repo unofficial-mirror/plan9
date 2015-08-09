@@ -1,11 +1,14 @@
 .HTML "How to Use the Plan 9 C Compiler
 .TL
-How to Use the Plan 9 C Compiler
+How to Use the Plan 9 C Compiler*
 .AU
 Rob Pike
 rob@plan9.bell-labs.com
 .SH
 Introduction
+.FS
+* This paper has been revised to reflect the move to 21-bit Unicode.
+.FE
 .PP
 The C compiler on Plan 9 is a wholly new program; in fact
 it was the first piece of software written for what would
@@ -15,7 +18,7 @@ a number of differences in both the language the Plan 9 compiler
 accepts and in how the compiler is used.
 .PP
 The compiler is really a set of compilers, one for each
-architecture \(em MIPS, SPARC, Motorola 68020, Intel 386, etc. \(em
+architecture \(em MIPS, SPARC, Intel 386, Power PC, ARM, etc. \(em
 that accept a dialect of ANSI C and efficiently produce
 fairly good code for the target machine.
 There is a packaging of the compiler that accepts strict ANSI C for
@@ -25,7 +28,7 @@ almost all the utilities are written.
 .SH
 Source
 .PP
-The language accepted by the compilers is the core ANSI C language
+The language accepted by the compilers is the core 1989 ANSI C language
 with some modest extensions,
 a greatly simplified preprocessor,
 a smaller library that includes system calls and related facilities,
@@ -114,7 +117,7 @@ abbreviations for
 and so on.
 .PP
 Here is an excerpt from
-.CW /68020/include/u.h :
+.CW /386/include/u.h :
 .P1
 #define nil		((void*)0)
 typedef	unsigned short	ushort;
@@ -281,59 +284,53 @@ arbitrary, alphanumeric character:
 .CW k
 for SPARC,
 .CW q
-for Motorola Power PC 630 and 640,
+for 32-bit Power PC,
 .CW v
 for MIPS,
 .CW 0
 for little-endian MIPS,
-.CW 1
-for Motorola 68000,
-.CW 2
-for Motorola 68020 and 68040,
 .CW 5
-for Acorn ARM 7500,
+for ARM v5 and later 32-bit architectures,
 .CW 6
-for AMD 64,
-.CW 7
-for DEC Alpha,
+for AMD64,
 .CW 8
 for Intel 386, and
 .CW 9
-for AMD 29000.
+for 64-bit Power PC.
 The character labels the support tools and files for that architecture.
-For instance, for the 68020 the compiler is
-.CW 2c ,
+For instance, for the 386 the compiler is
+.CW 8c ,
 the assembler is
-.CW 2a ,
+.CW 8a ,
 the link editor/loader is
-.CW 2l ,
+.CW 8l ,
 the object files are suffixed
-.CW \&.2 ,
+.CW \&.8 ,
 and the default name for an executable file is
-.CW 2.out .
+.CW 8.out .
 Before we can use the compiler we therefore need to know which
 machine we are compiling for.
 The next section explains how this decision is made; for the moment
-assume we are building 68020 binaries and make the mental substitution for
-.CW 2
+assume we are building 386 binaries and make the mental substitution for
+.CW 8
 appropriate to the machine you are actually using.
 .PP
 To convert source to an executable binary is a two-step process.
 First run the compiler,
-.CW 2c ,
+.CW 8c ,
 on the source, say
 .CW file.c ,
 to generate an object file
-.CW file.2 .
+.CW file.8 .
 Then run the loader,
-.CW 2l ,
+.CW 8l ,
 to generate an executable
-.CW 2.out
-that may be run (on a 680X0 machine):
+.CW 8.out
+that may be run (on a 386 machine):
 .P1
-2c file.c
-2l file.2
-2.out
+8c file.c
+8l file.8
+8.out
 .P2
 The loader automatically links with whatever libraries the program
 needs, usually including the standard C library as defined by
@@ -357,7 +354,7 @@ and writes the final executable.
 There is no separate C preprocessor and no assembler in the usual pipeline.
 Instead the intermediate object file
 (here a
-.CW \&.2
+.CW \&.8
 file) is a type of binary assembly language.
 The instructions in the intermediate format are not exactly those in
 the machine.  For example, on the 68020 the object file may specify
@@ -366,7 +363,7 @@ the MOVE instruction \(em MOVE immediate, MOVE quick, MOVE address,
 etc. \(em is most efficient.
 .PP
 The assembler,
-.CW 2a ,
+.CW 8a ,
 is just a translator between the textual and binary
 representations of the object file format.
 It is not an assembler in the traditional sense.  It has limited
@@ -430,8 +427,8 @@ The configuration process is controlled by an environment variable,
 .CW $cputype ,
 with value such as
 .CW mips ,
-.CW 68020 ,
 .CW 386 ,
+.CW arm ,
 or
 .CW sparc .
 For each architecture there is a directory in the root,
@@ -463,7 +460,7 @@ There is a version of
 .CW vc
 compiled for each architecture:
 .CW /mips/bin/vc ,
-.CW /68020/bin/vc ,
+.CW /arm/bin/vc ,
 .CW /sparc/bin/vc ,
 and so on,
 each capable of producing MIPS object files regardless of the native
@@ -569,9 +566,9 @@ which contains general definitions:
 # common mkfile parameters shared by all architectures
 #
 
-OS=v486xq7
-CPUS=mips 386 power alpha
-CFLAGS=-FVw
+OS=5689qv
+CPUS=arm amd64 386 power mips
+CFLAGS=-FTVw
 LEX=lex
 YACC=yacc
 MK=/bin/mk
@@ -840,11 +837,11 @@ see the Programmer's Manual.
 Perhaps the most dramatic difference in the I/O interface of Plan 9 from other
 systems' is that text is not ASCII.
 The format for
-text in Plan 9 is a byte-stream encoding of 16-bit characters.
+text in Plan 9 is a byte-stream encoding of 21-bit characters.
 The character set is based on the Unicode Standard and is backward compatible with
 ASCII:
 characters with value 0 through 127 are the same in both sets.
-The 16-bit characters, called
+The 21-bit characters, called
 .I runes
 in Plan 9, are encoded using a representation called
 UTF,
@@ -854,7 +851,7 @@ throughout Plan 9 it's just called
 UTF.)
 UTF
 defines multibyte sequences to
-represent character values from 0 to 65535.
+represent character values from 0 to 1,114,111.
 In
 UTF,
 character values up to 127 decimal, 7F hexadecimal, represent themselves,
@@ -917,7 +914,7 @@ and
 to transform the external byte stream
 UTF
 format to and from
-internal 16-bit runes.
+internal 21-bit runes.
 Also, the
 .CW %s
 format to
@@ -930,7 +927,7 @@ The
 .CW %S
 format prints a null-terminated sequence of runes;
 .CW %C
-prints a character after narrowing it to 16 bits.
+prints a character after narrowing it to 21 bits.
 For more information, see the Programmer's Manual, in particular
 .I utf (6)
 and
@@ -974,7 +971,7 @@ Rune *rp = L"abcÿ";
 .P2
 initializes the variable
 .CW rp
-to point to an array of unsigned short integers holding the 16-bit
+to point to an array of unsigned long integers holding the 21-bit
 values of the characters
 .CW abcÿ .
 Note that in both these declarations the characters in the source
@@ -1075,8 +1072,9 @@ main(int argc, char *argv[])
 .SH
 Extensions
 .PP
-The compiler has several extensions to ANSI C, all of which are used
+The compiler has several extensions to 1989 ANSI C, all of which are used
 extensively in the system source.
+Some of these have been adopted in later ANSI C standards.
 First,
 .I structure
 .I displays
@@ -1299,7 +1297,7 @@ not for example
 and
 .CW vacid .
 They also support cross-architecture debugging comfortably:
-one may debug a 68020 binary on a MIPS.
+one may debug a 386 binary on a MIPS.
 .PP
 Imagine a program has crashed mysteriously:
 .P1
@@ -1392,7 +1390,7 @@ acid: include("sourcedirectory/syms")
 to read in the relevant definitions.
 (For multi-file source, you need to be a little fancier;
 see
-.I 2c (1)).
+.I 8c (1)).
 This text includes, for each defined compound
 type, a function with that name that may be called with the address of a structure
 of that type to display its contents.

@@ -258,7 +258,15 @@ isdir(char *f)
 int
 isreg(char *f)
 {
-	return !isdir(f);
+	int r;
+	Dir *dir;
+
+	dir = dirstat(f);
+	if (dir == nil)
+		return 0;
+	r = (dir->mode & DMDIR) == 0;
+	free(dir);
+	return r;
 }
 
 int
@@ -319,7 +327,7 @@ isint(char *s, int *pans)
 int
 isolder(char *pin, char *f)
 {
-	int r;
+	int r, rel;
 	ulong n, m;
 	char *p = pin;
 	Dir *dir;
@@ -330,6 +338,7 @@ isolder(char *pin, char *f)
 
 	/* parse time */
 	n = 0;
+	rel = 0;
 	while(*p){
 		m = strtoul(p, &p, 0);
 		switch(*p){
@@ -354,13 +363,22 @@ isolder(char *pin, char *f)
 		case 's':
 			n += m;
 			p++;
+			rel = 1;
 			break;
 		default:
 			synbad("bad time syntax, ", pin);
 		}
 	}
-
-	r = dir->mtime + n < time(0);
+	if (!rel)
+		m = n;
+	else{
+		m = time(0);
+		if (n > m)		/* before epoch? */
+			m = 0;
+		else
+			m -= n;
+	}
+	r = dir->mtime < m;
 	free(dir);
 	return r;
 }

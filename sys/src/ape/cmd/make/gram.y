@@ -377,7 +377,8 @@ lastchp = t;
 lastch = *t;
 *t = '\0';	/* replace the semi with a null so subst will stop */
 
-subst(yytext, templin);		/* Substitute for macros on dependency lines */
+/* Substitute for macros on dependency lines */
+subst(yytext, templin, &templin[sizeof templin - 1]);
 
 if(lastch)	/* copy the stuff after the semicolon */
 	{
@@ -438,4 +439,5 @@ char buf[100];
 sprintf(buf, "line %d of file %s: %s",
 		yylineno, filestack[ninclude-1].fname, s);
 fatal(buf);
+return 0;
 }

@@ -1,9 +1,11 @@
 #include "../port/portfns.h"
 
+ulong	cankaddr(ulong);
 int	cistrcmp(char*, char*);
 int	cistrncmp(char*, char*, int);
 void	clockinit(void);
 void	clockintr(Ureg*);
+int	cmpswap(long*, long, long);
 void	cpuidprint(void);
 void	cycles(uvlong*);
 void	dbgputc(int c);
@@ -15,7 +17,6 @@ void	delayloopinit(void);
 void	dmiss(void);
 void	dumpregs(Ureg*);
 void	eieio(void);
-void	evenaddr(ulong);
 void	faultpower(Ureg*, ulong addr, int read);
 void	flashprogpower(int);
 void	fpgareset(void);
@@ -109,6 +110,7 @@ void	touser(void*);
 void	trapinit(void);
 void	trapvec(void);
 #define	userureg(ur) (((ur)->status & MSR_PR) != 0)
+void	validalign(uintptr, unsigned);
 #define	waserror()	(up->nerrlab++, setlabel(&up->errlab[up->nerrlab-1]))
 #define KADDR(a)	((void*)((ulong)(a)|KZERO))
 #define PADDR(a)	((((ulong)(a)&0xf0000000)==0xf0000000)?(ulong)(a):((ulong)(a)&~KZERO))

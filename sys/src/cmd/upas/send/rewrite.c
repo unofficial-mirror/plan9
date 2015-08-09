@@ -168,7 +168,7 @@ findrule(String *addrp, int authorized)
 			continue;
 		memset(rp->subexp, 0, sizeof(rp->subexp));
 		if(debug)
-			print("matching %s against %s\n", s_to_c(addrp),
+			fprint(2, "matching %s against %s\n", s_to_c(addrp),
 				rp->matchre->base);
 		if(regexec(rp->program, s_to_c(addrp), rp->subexp, NSUBEXP))
 		if(s_to_c(addrp) == rp->subexp[0].sp)
@@ -204,12 +204,12 @@ rewrite(dest *dp, message *mp)
 	dp->repl2 = substitute(rp->repl2, rp->subexp, mp);
 	dp->status = rp->type;
 	if(debug){
-		print("\t->");
+		fprint(2, "\t->");
 		if(dp->repl1)
-			print("%s", s_to_c(dp->repl1));
+			fprint(2, "%s", s_to_c(dp->repl1));
 		if(dp->repl2)
-			print("%s", s_to_c(dp->repl2));
-		print("\n");
+			fprint(2, "%s", s_to_c(dp->repl2));
+		fprint(2, "\n");
 	}
 	s_free(lower);
 	return 0;
@@ -284,7 +284,7 @@ regerror(char* s)
 {
 	fprint(2, "rewrite: %s\n", s);
 	/* make sure the message is seen locally */
-	syslog(0, "mail", "error in rewrite: %s", s);
+	syslog(0, "mail", "regexp error in rewrite: %s", s);
 }
 
 extern void

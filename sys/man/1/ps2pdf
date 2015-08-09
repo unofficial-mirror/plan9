@@ -2,7 +2,7 @@
 .SH NAME
 ps2pdf, pdf2ps \- convert between PostScript and PDF
 .SH SYNOPSIS
-.B pdf2ps
+.B ps2pdf
 [
 .I gs-options
 ]
@@ -14,6 +14,9 @@ ps2pdf, pdf2ps \- convert between PostScript and PDF
 ]
 .PP
 .B pdf2ps
+[
+.B -e
+]
 [
 .I gs-options
 ]
@@ -37,6 +40,11 @@ If neither
 nor
 .I output-file
 is not specified, they read from standard input and write to standard output.
+.PP
+Under
+.BR -e ,
+.I pdf2ps
+emits Encapsulated Postscript (eps).
 .PP
 The
 .I gs-options
@@ -81,3 +89,10 @@ command-line option.
 .B /rc/bin/pdf2ps
 .SH SEE ALSO
 .IR gs (1)
+.SH BUGS
+.IR Gs 's
+.I pdfwrite
+sometimes emits bad PDF at the default level 1.2.
+Adding
+.BR '-dCompatibilityLevel=1.4'
+should cure it.

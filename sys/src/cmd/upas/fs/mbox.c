@@ -79,6 +79,8 @@ enum
 Mailboxinit *boxinit[] = {
 	imap4mbox,
 	pop3mbox,
+	planbmbox,
+	planbvmbox,
 	plan9mbox,
 };
 
@@ -478,6 +480,7 @@ headerline(char **pp, String *hl)
 	return 1;
 }
 
+/* returns nil iff there are no addressees */
 static String*
 addr822(char *p)
 {
@@ -571,7 +574,7 @@ addr822(char *p)
 	}
 	s_free(s);
 
-	if(n == 0){
+	if(n == 0){		/* no addressees given, just the keyword */
 		s_free(list);
 		return nil;
 	}
@@ -592,7 +595,7 @@ to822(Message *m, Header *h, char *p)
 	s = addr822(p);
 	if (m->to822 == nil)
 		m->to822 = s;
-	else {
+	else if (s != nil) {
 		s_append(m->to822, " ");
 		s_append(m->to822, s_to_c(s));
 		s_free(s);
@@ -608,7 +611,7 @@ cc822(Message *m, Header *h, char *p)
 	s = addr822(p);
 	if (m->cc822 == nil)
 		m->cc822 = s;
-	else {
+	else if (s != nil) {
 		s_append(m->cc822, " ");
 		s_append(m->cc822, s_to_c(s));
 		s_free(s);
@@ -624,7 +627,7 @@ bcc822(Message *m, Header *h, char *p)
 	s = addr822(p);
 	if (m->bcc822 == nil)
 		m->bcc822 = s;
-	else {
+	else if (s != nil) {
 		s_append(m->bcc822, " ");
 		s_append(m->bcc822, s_to_c(s));
 		s_free(s);
@@ -1119,7 +1122,7 @@ hex2int(int x)
 		return (x - 'A') + 10;
 	if(x >= 'a' && x <= 'f')
 		return (x - 'a') + 10;
-	return 0;
+	return -1;
 }
 
 // underscores are translated in 2047 headers (uscores=1) 
@@ -1127,7 +1130,7 @@ hex2int(int x)
 static char*
 decquotedline(char *out, char *in, char *e, int uscores)
 {
-	int c, soft;
+	int c, c2, soft;
 
 	/* dump trailing white space */
 	while(e >= in && (*e == ' ' || *e == '\t' || *e == '\r' || *e == '\n'))
@@ -1152,9 +1155,14 @@ decquotedline(char *out, char *in, char *e, int uscores)
 			*out++ = c;
 			break;
 		case '=':
-			c = hex2int(*in++)<<4;
-			c |= hex2int(*in++);
-			*out++ = c;
+			c  = hex2int(*in++);
+			c2 = hex2int(*in++);
+			if (c != -1 && c2 != -1)
+				*out++ = c<<4 | c2;
+			else {
+				*out++ = '=';
+				in -= 2;
+			}
 			break;
 		}
 	}

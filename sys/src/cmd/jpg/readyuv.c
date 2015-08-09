@@ -8,16 +8,16 @@
 
 
 enum {
-	pixels = 720,
-	r601pal = 576,
-	r601ntsc = 486,
+	Pixels = 720,
+	R601pal = 576,
+	R601ntsc = 486,
 	Shift = 13
 };
 
 
 static int lsbtab[] = { 6, 4, 2, 0};
 
-int
+static int
 looksize(char *file, vlong size, int *pixels, int *lines, int *bits)
 {
 	Biobuf *bp;
@@ -37,6 +37,7 @@ looksize(char *file, vlong size, int *pixels, int *lines, int *bits)
 			continue;
 		p = atoll(a[3]);
 		l = atoll(a[5]);
+		l += atoll(a[7]);
 		if (l*p*2 == size){
 			*pixels = p;
 			*lines = l;
@@ -75,17 +76,28 @@ Breadyuv(Biobuf *bp, int colourspace)
 	Dir *d;
 	uvlong sz;
 	Rawimage *a, **array;
-	char *e, ebuf[128];
 	ushort * mux, *end, *frm;
 	uchar *buf, *r, *g, *b;
 	int y1, y2, cb, cr, c, l, w, base;
 	int bits, lines, pixels;
 	int F1, F2, F3, F4;
 
-	frm = nil;
+	if ((d = dirfstat(Bfildes(bp))) != nil){
+		sz = d->length;
+		free(d);
+	}
+	else{
+		fprint(2, "cannot stat input, assuming pixelsx576x10bit\n");
+		sz = Pixels * R601pal * 2L + (Pixels * R601pal / 2L);
+	}
+
+	if (looksize("/lib/video.specs", sz, &pixels, &lines, &bits) == -1){
+		werrstr("file size not listed in /lib/video.specs");
+		return nil;
+	}
+
 	buf = nil;
 	if (colourspace != CYCbCr) {
-		errstr(ebuf, sizeof ebuf);	/* throw it away */
 		werrstr("ReadYUV: unknown colour space %d", colourspace);
 		return nil;
 	}
@@ -98,26 +110,11 @@ Breadyuv(Biobuf *bp, int colourspace)
 	array[0] = a;
 	array[1] = nil;
 
-	if ((d = dirfstat(Bfildes(bp))) != nil) {
-		sz = d->length;
-		free(d);
-	} else {
-		fprint(2, "cannot stat input, assuming pixelsx576x10bit\n");
-		sz = pixels * r601pal * 2L + (pixels * r601pal / 2L);
-	}
-
-	if (looksize("/lib/video.specs", sz, &pixels, &lines, &bits) == -1){
-		e = "file size not listed in /lib/video.specs";
-		goto Error;
-	}
-
-
 	a->nchans = 3;
 	a->chandesc = CRGB;
 	a->chanlen = pixels * lines;
 	a->r = Rect(0, 0, pixels, lines);
 
-	e = "no memory";
 	if ((frm = malloc(pixels*2*lines*sizeof(ushort))) == nil)
 		goto Error;
 
@@ -128,7 +125,6 @@ Breadyuv(Biobuf *bp, int colourspace)
 	if ((buf = malloc(pixels*2)) == nil)
 		goto Error;
 
-	e = "read file";
 	for (l = 0; l < lines; l++) {
 		if (Bread(bp, buf, pixels *2) == -1)
 			goto Error;
@@ -156,7 +152,7 @@ Breadyuv(Biobuf *bp, int colourspace)
 	g = a->chans[1];
 	b = a->chans[2];
 
-	if(pixels * lines != 414720){	// 625
+	if(pixels == Pixels && lines != R601pal){	// 625
 		F1 = floor(1.402 * (1 << Shift));
 		F2 = floor(0.34414 * (1 << Shift));
 		F3 = floor(0.71414 * (1 << Shift));
@@ -192,12 +188,6 @@ Breadyuv(Biobuf *bp, int colourspace)
 	return array;
 
 Error:
-
-	errstr(ebuf, sizeof ebuf);
-//	if (ebuf[0] == 0)
-		strcpy(ebuf, e);
-	errstr(ebuf, sizeof ebuf);
-
 	for (c = 0; c < 3; c++)
 		free(a->chans[c]);
 	free(a->cmap);

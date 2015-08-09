@@ -8,7 +8,7 @@ typedef	long long	vlong;
 typedef	unsigned long long uvlong;
 typedef unsigned long	uintptr;
 typedef unsigned long	usize;
-typedef	ushort		Rune;
+typedef	uint		Rune;
 typedef 	union FPdbleword FPdbleword;
 typedef long	jmp_buf[2];
 #define	JMPBUFSP	0
@@ -20,13 +20,13 @@ typedef unsigned short u16int;
 typedef unsigned int	u32int;
 typedef unsigned long long u64int;
 
-/* FCR */
-#define	FPINEX	(1<<7)
+/* FCR (FCR31) */
+#define	FPINEX	(1<<7)		/* enables */
 #define	FPUNFL	(1<<8)
 #define	FPOVFL	(1<<9)
 #define	FPZDIV	(1<<10)
 #define	FPINVAL	(1<<11)
-#define	FPRNR	(0<<0)
+#define	FPRNR	(0<<0)		/* rounding modes */
 #define	FPRZ	(1<<0)
 #define	FPRPINF	(2<<0)
 #define	FPRNINF	(3<<0)
@@ -35,12 +35,15 @@ typedef unsigned long long u64int;
 #define	FPPSGL	0
 #define	FPPDBL	0
 #define	FPPMASK	0
-/* FSR */
-#define	FPAINEX	(1<<2)
+#define FPCOND	(1<<23)
+
+/* FSR (also FCR31) */
+#define	FPAINEX	(1<<2)		/* flags */
 #define	FPAOVFL	(1<<4)
 #define	FPAUNFL	(1<<3)
 #define	FPAZDIV	(1<<5)
-#define	FPAINVAL	(1<<6)
+#define	FPAINVAL (1<<6)
+
 union FPdbleword
 {
 	double	x;

@@ -61,7 +61,7 @@ static	int	arminstlen(Map*, uvlong);
  */
 Machdata armmach =
 {
-	{0, 0, 0, 0xD},		/* break point */
+	{0x70, 0x00, 0x20, 0xE1},		/* break point */	/* E1200070 */
 	4,			/* break point size */
 
 	leswab,			/* short to local byte order */
@@ -93,7 +93,7 @@ armexcep(Map *map, Rgetter rget)
 	case 0x13:
 		return "SVC/SWI Exception";
 	case 0x17:
-		return "Prefetch Abort/Data Abort";
+		return "Prefetch Abort/Breakpoint";
 	case 0x18:
 		return "Data Abort";
 	case 0x1b:
@@ -135,18 +135,36 @@ char*	addsub[2] =
 int
 armclass(long w)
 {
-	int op;
+	int op, done, cp;
 
 	op = (w >> 25) & 0x7;
 	switch(op) {
 	case 0:	/* data processing r,r,r */
+		if((w & 0x0ff00080) == 0x01200000) {
+			op = (w >> 4) & 0x7;
+			if(op == 7)
+				op = 124;	/* bkpt */
+			else if (op > 0 && op < 4)
+				op += 124;	/* bx, blx */
+			else
+				op = 92;	/* unk */
+			break;
+		}
 		op = ((w >> 4) & 0xf);
 		if(op == 0x9) {
-			op = 48+16;		/* mul */
+			op = 48+16;		/* mul, swp or *rex */
+			if((w & 0x0ff00fff) == 0x01900f9f) {
+				op = 93;	/* ldrex */
+				break;
+			}
+			if((w & 0x0ff00ff0) == 0x01800f90) {
+				op = 94;	/* strex */
+				break;
+			}
 			if(w & (1<<24)) {
 				op += 2;
 				if(w & (1<<22))
-					op++;	/* swap */
+					op++;	/* swpb */
 				break;
 			}
 			if(w & (1<<23)) {	/* mullu */
@@ -174,21 +192,101 @@ armclass(long w)
 		op = (48) + ((w >> 21) & 0xf);
 		break;
 	case 2:	/* load/store byte/word i(r) */
+		if ((w & 0xffffff8f) == 0xf57ff00f) {	/* barriers, clrex */
+			done = 1;
+			switch ((w >> 4) & 7) {
+			case 1:
+				op = 95;	/* clrex */
+				break;
+			case 4:
+				op = 96;	/* dsb */
+				break;
+			case 5:
+				op = 97;	/* dmb */
+				break;
+			case 6:
+				op = 98;	/* isb */
+				break;
+			default:
+				done = 0;
+				break;
+			}
+			if (done)
+				break;
+		}
 		op = (48+24) + ((w >> 22) & 0x1) + ((w >> 19) & 0x2);
 		break;
 	case 3:	/* load/store byte/word (r)(r) */
 		op = (48+24+4) + ((w >> 22) & 0x1) + ((w >> 19) & 0x2);
 		break;
 	case 4:	/* block data transfer (r)(r) */
+		if ((w & 0xfe50ffff) == 0xf8100a00) {	/* v7 RFE */
+			op = 99;
+			break;
+		}
 		op = (48+24+4+4) + ((w >> 20) & 0x1);
 		break;
 	case 5:	/* branch / branch link */
 		op = (48+24+4+4+2) + ((w >> 24) & 0x1);
 		break;
 	case 7:	/* coprocessor crap */
+		cp = (w >> 8) & 0xF;
+		if(cp == 10 || cp == 11){	/* vfp */
+			if((w >> 4) & 0x1){
+				/* vfp register transfer */
+				switch((w >> 21) & 0x7){
+				case 0:
+					op = 118 + ((w >> 20) & 0x1);
+					break;
+				case 7:
+					op = 118+2 + ((w >> 20) & 0x1);
+					break;
+				default:
+					op = (48+24+4+4+2+2+4+4);
+					break;
+				}
+				break;
+			}
+			/* vfp data processing */
+			if(((w >> 23) & 0x1) == 0){
+				op = 100 + ((w >> 19) & 0x6) + ((w >> 6) & 0x1);
+				break;
+			}
+			switch(((w >> 19) & 0x6) + ((w >> 6) & 0x1)){
+			case 0:
+				op = 108;
+				break;
+			case 7:
+				if(((w >> 19) & 0x1) == 0){
+					if(((w >> 17) & 0x1) == 0)
+						op = 109 + ((w >> 16) & 0x4) +
+							((w >> 15) & 0x2) +
+							((w >> 7) & 0x1);
+					else if(((w >> 16) & 0x7) == 0x7)
+						op = 117;
+				}else
+					switch((w >> 16) & 0x7){
+					case 0:
+					case 4:
+					case 5:
+						op = 117;
+						break;
+					}
+				break;
+			}
+			if(op == 7)
+				op = (48+24+4+4+2+2+4+4);
+			break;
+		}
 		op = (48+24+4+4+2+2) + ((w >> 3) & 0x2) + ((w >> 20) & 0x1);
 		break;
-	default:
+	case 6:	/* vfp load / store */
+		if(((w >> 21) &0x9) == 0x8){
+			op = 122 + ((w >> 20) & 0x1);
+			break;
+		}
+		/* fall through */
+	default:	  
 		op = (48+24+4+4+2+2+4+4);
 		break;
 	}
@@ -264,7 +362,7 @@ plocal(Instr *i)
  * Print value v as name[+offset]
  */
 static int
-gsymoff(char *buf, int n, long v, int space)
+gsymoff(char *buf, int n, ulong v, int space)
 {
 	Symbol s;
 	int r;
@@ -314,6 +412,16 @@ armdps(Opcode *o, Instr *i)
 		} else
 		if(i->op == 11) {
 			format("MOVW", i, "R%s, SPSR");
+			return;
+		}
+	}
+	if(i->rd == 15) {
+		if(i->op == 120) {
+			format("MOVW", i, "PSR, %x");
+			return;
+		} else
+		if(i->op == 121) {
+			format("MOVW", i, "%x, PSR");
 			return;
 		}
 	}
@@ -368,6 +476,20 @@ armsdti(Opcode *o, Instr *i)
 		format("RET%C%p", i, "%I");
 		return;
 	}
+	format(o->o, i, o->a);
+}
+
+static void
+armvstdi(Opcode *o, Instr *i)
+{
+	ulong v;
+
+	v = (i->w & 0xff) << 2;
+	if(!(i->w & (1<<23)))
+		v = -v;
+	i->imm = v;
+	i->rn = (i->w >> 16) & 0xf;
+	i->rd = (i->w >> 12) & 0xf;
 	format(o->o, i, o->a);
 }
 
@@ -438,6 +560,13 @@ armb(Opcode *o, Instr *i)
 }
 
 static void
+armbpt(Opcode *o, Instr *i)
+{
+	i->imm = ((i->w >> 4) & 0xfff0) | (i->w &0xf);
+	format(o->o, i, o->a);
+}
+
+static void
 armco(Opcode *o, Instr *i)		/* coprocessor instructions */
 {
 	int op, p, cp;
@@ -451,10 +580,10 @@ armco(Opcode *o, Instr *i)		/* coprocessor instructions */
 	p = (i->w >> 5) & 0x7;
 	if(i->w&(1<<4)) {
 		op = (i->w >> 21) & 0x07;
-		snprint(buf, sizeof(buf), "#%x, #%x, R%d, C(%d), C(%d), #%x\n", cp, op, i->rd, i->rn, i->rs, p);
+		snprint(buf, sizeof(buf), "#%x, #%x, R%d, C(%d), C(%d), #%x", cp, op, i->rd, i->rn, i->rs, p);
 	} else {
 		op = (i->w >> 20) & 0x0f;
-		snprint(buf, sizeof(buf), "#%x, #%x, C(%d), C(%d), C(%d), #%x\n", cp, op, i->rd, i->rn, i->rs, p);
+		snprint(buf, sizeof(buf), "#%x, #%x, C(%d), C(%d), C(%d), #%x", cp, op, i->rd, i->rn, i->rs, p);
 	}
 	format(o->o, i, buf);
 }
@@ -489,7 +618,7 @@ armcondpass(Map *map, Rgetter rget, uchar cond)
 	case 10:	return n == v;
 	case 11:	return n != v;
 	case 12:	return !z && (n == v);
-	case 13:	return z && (n != v);
+	case 13:	return z || (n != v);
 	case 14:	return 1;
 	case 15:	return 0;
 	}
@@ -602,19 +731,16 @@ armaddr(Map *map, Rgetter rget, Instr *i)
 	char buf[8];
 	ulong rn;
 
-	sprint(buf, "R%ld", (i->w >> 16) & 0xf);
+	snprint(buf, sizeof(buf), "R%ld", (i->w >> 16) & 0xf);
 	rn = rget(map, buf);
 
-	if((i->w & (1<<24)) == 0) {			/* POSTIDX */
-		sprint(buf, "R%ld", rn);
-		return rget(map, buf);
-	}
+	if((i->w & (1<<24)) == 0)			/* POSTIDX */
+		return rn;
 
 	if((i->w & (1<<25)) == 0) {			/* OFFSET */
-		sprint(buf, "R%ld", rn);
 		if(i->w & (1U<<23))
-			return rget(map, buf) + (i->w & BITS(0,11));
-		return rget(map, buf) - (i->w & BITS(0,11));
+			return rn + (i->w & BITS(0,11));
+		return rn - (i->w & BITS(0,11));
 	} else {					/* REGOFF */
 		ulong index = 0;
 		uchar c;
@@ -656,6 +782,19 @@ armfadd(Map *map, Rgetter rget, Instr *i, uvlong pc)
 	sprint(buf, "R%d", r);
 
 	return rget(map, buf) + armshiftval(map, rget, i);
+}
+
+static uvlong
+armfbx(Map *map, Rgetter rget, Instr *i, uvlong pc)
+{
+	char buf[8];
+	int r;
+
+	if(!armcondpass(map, rget, (i->w>>28)&0xf))
+		return pc+4;
+	r = (i->w >> 0) & 0xf;
+	sprint(buf, "R%d", r);
+	return rget(map, buf);
 }
 
 static uvlong
@@ -823,8 +962,62 @@ static Opcode opcodes[] =
 	"MULL%C%S",	armdpi, 0,	"R%M,R%s,(R%n,R%d)",
 	"MULAL%C%S",	armdpi, 0,	"R%M,R%s,(R%n,R%d)",
 
-/* 48+24+4+4+2+2+4+4 */
+/* 48+24+4+4+2+2+4+4 = 92 */
 	"UNK",		armunk, 0,	"",
+
+	/* new v7 arch instructions */
+/* 93 */
+	"LDREX",	armdpi, 0,	"(R%n),R%d",
+	"STREX",	armdpi, 0,	"R%s,(R%n),R%d",
+	"CLREX",	armunk, 0,	"",
+
+/* 96 */
+	"DSB",		armunk, 0,	"",
+	"DMB",		armunk, 0,	"",
+	"ISB",		armunk, 0,	"",
+
+/* 99 */
+	"RFEV7%P%a",	armbdt, 0,	"(R%n)",
+
+/* 100 */
+	"MLA%f%C",	armdps,	0,	"F%s,F%n,F%d",
+	"MLS%f%C",	armdps,	0,	"F%s,F%n,F%d",
+	"NMLS%f%C",	armdps,	0,	"F%s,F%n,F%d",
+	"NMLA%f%C",	armdps,	0,	"F%s,F%n,F%d",
+	"MUL%f%C",	armdps,	0,	"F%s,F%n,F%d",
+	"NMUL%f%C",	armdps,	0,	"F%s,F%n,F%d",
+	"ADD%f%C",	armdps,	0,	"F%s,F%n,F%d",
+	"SUB%f%C",	armdps,	0,	"F%s,F%n,F%d",
+	"DIV%f%C",	armdps,	0,	"F%s,F%n,F%d",
+
+/* 109 */
+	"MOV%f%C",	armdps,	0,	"F%s,F%d",
+	"ABS%f%C",	armdps,	0,	"F%s,F%d",
+	"NEG%f%C",	armdps,	0,	"F%s,F%d",
+	"SQRT%f%C",	armdps,	0,	"F%s,F%d",
+	"CMP%f%C",	armdps,	0,	"F%s,F%d",
+	"CMPE%f%C",	armdps,	0,	"F%s,F%d",
+	"CMP%f%C",	armdps,	0,	"$0.0,F%d",
+	"CMPE%f%C",	armdps,	0,	"$0.0,F%d",
+
+/* 117 */
+	"MOV%F%R%C",	armdps, 0,	"F%s,F%d",
+
+/* 118 */
+	"MOVW%C",	armdps, 0,	"R%d,F%n",
+	"MOVW%C",	armdps, 0,	"F%n,R%d",
+	"MOVW%C",	armdps, 0,	"R%d,%x",
+	"MOVW%C",	armdps, 0,	"%x,R%d",
+
+/* 122 */
+	"MOV%f%C",	armvstdi,	0,	"F%d,%I",
+	"MOV%f%C",	armvstdi,	0,	"%I,F%d",
+
+/* 124 */
+	"BKPT%C",	armbpt,	0,		"$#%i",
+	"BX%C",		armdps,	armfbx,	"(R%s)",
+	"BXJ%C",	armdps,	armfbx,	"(R%s)",
+	"BLX%C",	armdps,	armfbx,	"(R%s)",
 };
 
 static void
@@ -966,12 +1159,74 @@ format(char *mnemonic, Instr *i, char *f)
 
 		case 'b':
 			i->curr += symoff(i->curr, i->end-i->curr,
-				i->imm, CTEXT);
+				(ulong)i->imm, CTEXT);
 			break;
 
 		case 'g':
 			i->curr += gsymoff(i->curr, i->end-i->curr,
 				i->imm, CANY);
+			break;
+
+		case 'f':
+			switch((i->w >> 8) & 0xF){
+			case 10:
+				bprint(i, "F");
+				break;
+			case 11:
+				bprint(i, "D");
+				break;
+			}
+			break;
+
+		case 'F':
+			switch(((i->w >> 15) & 0xE) + ((i->w >> 8) & 0x1)){
+			case 0x0:
+				bprint(i, ((i->w >> 7) & 0x1)? "WF" : "WF.U");
+				break;
+			case 0x1:
+				bprint(i, ((i->w >> 7) & 0x1)? "WD" : "WD.U");
+				break;
+			case 0x8:
+				bprint(i, "FW.U");
+				break;
+			case 0x9:
+				bprint(i, "DW.U");
+				break;
+			case 0xA:
+				bprint(i, "FW");
+				break;
+			case 0xB:
+				bprint(i, "DW");
+				break;
+			case 0xE:
+				bprint(i, "FD");
+				break;
+			case 0xF:
+				bprint(i, "DF");
+				break;
+			}
+			break;
+
+		case 'R':
+			if(((i->w >> 7) & 0x1) == 0)
+				bprint(i, "R");
+			break;
+
+		case 'x':
+			switch(i->rn){
+			case 0:
+				bprint(i, "FPSID");
+				break;
+			case 1:
+				bprint(i, "FPSCR");
+				break;
+			case 2:
+				bprint(i, "FPEXC");
+				break;
+			default:
+				bprint(i, "FPS(%d)", i->rn);
+				break;
+			}
 			break;
 
 		case 'r':

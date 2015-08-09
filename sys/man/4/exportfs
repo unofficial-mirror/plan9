@@ -44,14 +44,16 @@ gives the appearance of exporting a name space from a remote machine
 into a local file tree.
 .PP
 The options are:
-.TP
+.TF "-A \fIaddress"
 .PD
+.TP
 .B -A \fIaddress
-Use the address
+Use the network
 .I address
-for
+to announce
 .IR aan (8)
-connections.
+connections,
+if requested by the initial protocol.
 .TP
 .B -a
 Authenticate the user with the
@@ -137,17 +139,27 @@ Make the served name space read only.
 .B -r \fIroot
 Bypass the initial protocol, serving the name space rooted at
 .IR root .
+A corresponding
+.IR import (4)
+must use the
+.B -m
+option.
 .TP
 .B -S \fIservice
-bypass the initial protocol, serving the result of mounting
+Bypass the initial protocol, serving the result of mounting
 .IR service .
 A separate mount is used for each
 .IR attach (5)
 message,
 to correctly handle servers in which each mount
 corresponds to a different client
-.IR e.g. , (
+(e.g.,
 .IR rio (4)).
+A corresponding
+.IR import (4)
+must use the
+.B -m
+option.
 .TP
 .B -s
 equivalent to
@@ -249,6 +261,7 @@ cd /n/spy; ls
 .br
 .B /sys/src/cmd/srvfs.c
 .SH SEE ALSO
+.IR dial (2),
 .IR import (4),
 .IR aan (8),
 .IR listen (8)

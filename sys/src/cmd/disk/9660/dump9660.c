@@ -23,9 +23,13 @@ void
 usage(void)
 {
 	if(mk9660)
-		fprint(2, "usage: disk/mk9660 [-D:] [-9cjr] [-b bootfile] [-o offset blocksize] [-p proto] [-s src] cdimage\n");
+		fprint(2, "usage: disk/mk9660 [-D:] [-9cjr] "
+			"[-[bB] bootfile] [-o offset blocksize] "
+			"[-p proto] [-s src] cdimage\n");
 	else
-		fprint(2, "usage: disk/dump9660 [-D:] [-9cjr] [-m maxsize] [-n now] [-p proto] [-s src] cdimage\n");
+		fprint(2, "usage: disk/dump9660 [-D:] [-9cjr] "
+			"[-m maxsize] [-n now] "
+			"[-p proto] [-s src] cdimage\n");
 	exits("usage");
 }
 
@@ -77,6 +81,9 @@ main(int argc, char **argv)
 	case 'a':
 		doabort = 1;
 		break;
+	case 'B':
+		info.flags |= CDbootnoemu;
+		/* fall through */
 	case 'b':
 		if(!mk9660)
 			usage();
@@ -117,9 +124,16 @@ main(int argc, char **argv)
 	case 'v':
 		info.volumename = atom(EARGF(usage()));
 		break;
+	case 'x':
+		info.flags |= CDpbs;
+		info.loader = EARGF(usage());
+		break;
 	default:
 		usage();
 	}ARGEND
+
+	if(info.flags & CDpbs && !(info.flags & CDbootnoemu))
+		usage();
 
 	if(mk9660 && (fix || now || maxsize))
 		usage();
@@ -203,9 +217,11 @@ main(int argc, char **argv)
 
 	if(cd->bootimage){
 		findbootimage(cd, &iroot);
+		if(cd->loader)
+			findloader(cd, &iroot);
 		Cupdatebootcat(cd);
 	}
-		
+
 	/* create Joliet tree */
 	if(cd->flags & CDjoliet)
 		copydirec(&jroot, &iroot);
@@ -260,6 +276,8 @@ Dofix:
 		 */
 		newnull = Cputdumpblock(cd);
 	}
+	if(info.flags & CDpbs)
+		Cfillpbs(cd);
 
 	/*
 	 * Write _conform.map.
@@ -304,11 +322,10 @@ Dofix:
 		 * Patch in root directories.
 		 */
 		setroot(cd, cd->iso9660pvd, iroot.block, iroot.length);
-		setvolsize(cd, cd->iso9660pvd, (vlong)cd->nextblock * Blocksize);
+		setvolsize(cd, cd->iso9660pvd, cd->nextblock);
 		if(cd->flags & CDjoliet){
 			setroot(cd, cd->jolietsvd, jroot.block, jroot.length);
-			setvolsize(cd, cd->jolietsvd,
-				(vlong)cd->nextblock * Blocksize);
+			setvolsize(cd, cd->jolietsvd, cd->nextblock);
 		}
 	}else{
 		/*
@@ -333,16 +350,15 @@ Dofix:
 		writedumpdirs(cd, &idumproot, Cputisodir);
 		if(cd->flags & CDjoliet)
 			writedumpdirs(cd, &jdumproot, Cputjolietdir);
-	
+
 		/*
 		 * Patch in new root directory entry.
 		 */
 		setroot(cd, cd->iso9660pvd, idumproot.block, idumproot.length);
-		setvolsize(cd, cd->iso9660pvd, (vlong)cd->nextblock * Blocksize);
+		setvolsize(cd, cd->iso9660pvd, cd->nextblock);
 		if(cd->flags & CDjoliet){
 			setroot(cd, cd->jolietsvd, jdumproot.block, jdumproot.length);
-			setvolsize(cd, cd->jolietsvd,
-				(vlong)cd->nextblock * Blocksize);
+			setvolsize(cd, cd->jolietsvd, cd->nextblock);
 		}
 	}
 	writepathtables(cd);	

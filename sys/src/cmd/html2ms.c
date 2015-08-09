@@ -82,6 +82,7 @@ Goobie gtab[] =
 	"dd",		g_ignore,	g_unexpected,
 	"dfn",		g_ignore,	g_ignore,
 	"dir",		g_list,		g_listend,
+	"div",		g_ignore,		g_br,
 	"dl",		g_indent,	g_exdent,
 	"dt",		g_dt,		g_unexpected,
 	"em",		g_ignore,	g_ignore,
@@ -114,7 +115,9 @@ Goobie gtab[] =
 	"plaintext",	g_ignore,	g_unexpected,
 	"pre",		g_pre,		g_displayend,
 	"samp",		g_ignore,	g_ignore,
+	"script",	g_ignore,	g_ignore,
 	"select",	g_ignore,	g_ignore,
+	"span",		g_ignore,	g_ignore,
 	"strong",	g_ignore,	g_ignore,
 	"table",	g_table,	g_tableend,
 	"textarea",	g_ignore,	g_ignore,
@@ -147,6 +150,7 @@ Entity pl_entity[]=
 "aring",  L'å', "atilde", L'ã', "auml",   L'ä', "ccedil", L'ç', "eacute", L'é',
 "ecirc",  L'ê', "egrave", L'è', "eth",    L'ð', "euml",   L'ë', "gt",     L'>',
 "iacute", L'í', "icirc",  L'î', "igrave", L'ì', "iuml",   L'ï', "lt",     L'<',
+"nbsp", L' ',
 "ntilde", L'ñ', "oacute", L'ó', "ocirc",  L'ô', "ograve", L'ò', "oslash", L'ø',
 "otilde", L'õ', "ouml",   L'ö', "szlig",  L'ß', "thorn",  L'þ', "uacute", L'ú',
 "ucirc",  L'û', "ugrave", L'ù', "uuml",   L'ü', "yacute", L'ý', "yuml",   L'ÿ',
@@ -249,11 +253,12 @@ dogoobie(void)
 void
 main(void)
 {
-	int c;
+	int c, pos;
 
 	Binit(&in, 0, OREAD);
 	Binit(&out, 1, OWRITE);
 
+	pos = 0;
 	for(;;){
 		c = Bgetc(&in);
 		if(c < 0)
@@ -266,6 +271,7 @@ main(void)
 			escape();
 			break;
 		case '\r':
+			pos = 0;
 			break;
 		case '\n':
 			if(quoting){
@@ -280,7 +286,13 @@ main(void)
 			lastc = c;
 			break;
 		default:
-			Bputc(&out, c);
+			++pos;
+			if(!inpre && isascii(c) && isspace(c) && pos > 80){
+				Bputc(&out, '\n');
+				eatwhite();
+				pos = 0;
+			}else
+				Bputc(&out, c);
 			lastc = c;
 			break;
 		}
@@ -290,6 +302,7 @@ main(void)
 void
 escape(void)
 {
+	int c;
 	Entity *e;
 	char buf[8];
 
@@ -302,6 +315,13 @@ escape(void)
 			Bprint(&out, "%C", e->value);
 			return;
 		}
+	if(*buf == '#'){
+		c = atoi(buf+1);
+		if(isascii(c) && isprint(c)){
+			Bputc(&out, c);
+			return;
+		}
+	}
 	Bprint(&out, "&%s;", buf);
 }
 

@@ -1,6 +1,4 @@
 ARCH=\
-	alphapc\
-	bitsy\
 	pc\
 
 all:V:

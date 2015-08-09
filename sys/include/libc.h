@@ -41,10 +41,12 @@ extern	int	tokenize(char*, char**, int);
 
 enum
 {
-	UTFmax		= 3,		/* maximum bytes per rune */
+	UTFmax		= 4,		/* maximum bytes per rune */
 	Runesync	= 0x80,		/* cannot represent part of a UTF sequence (<) */
 	Runeself	= 0x80,		/* rune and UTF sequences are the same (<) */
 	Runeerror	= 0xFFFD,	/* decoding error in UTF */
+	Runemax		= 0x10FFFF,	/* 21-bit rune */
+	Runemask	= 0x1FFFFF,	/* bits used by runes (see grep) */
 };
 
 /*
@@ -78,7 +80,10 @@ extern	Rune*	runestrstr(Rune*, Rune*);
 extern	Rune	tolowerrune(Rune);
 extern	Rune	totitlerune(Rune);
 extern	Rune	toupperrune(Rune);
+extern	Rune	tobaserune(Rune);
 extern	int	isalpharune(Rune);
+extern	int	isbaserune(Rune);
+extern	int	isdigitrune(Rune);
 extern	int	islowerrune(Rune);
 extern	int	isspacerune(Rune);
 extern	int	istitlerune(Rune);
@@ -176,16 +181,23 @@ extern	Rune*	runefmtstrflush(Fmt*);
 #pragma	varargck	argpos	sprint		2
 
 #pragma	varargck	type	"lld"	vlong
+#pragma	varargck	type	"llo"	vlong
 #pragma	varargck	type	"llx"	vlong
+#pragma	varargck	type	"llb"	vlong
 #pragma	varargck	type	"lld"	uvlong
+#pragma	varargck	type	"llo"	uvlong
 #pragma	varargck	type	"llx"	uvlong
+#pragma	varargck	type	"llb"	uvlong
 #pragma	varargck	type	"ld"	long
+#pragma	varargck	type	"lo"	long
 #pragma	varargck	type	"lx"	long
 #pragma	varargck	type	"lb"	long
 #pragma	varargck	type	"ld"	ulong
+#pragma	varargck	type	"lo"	ulong
 #pragma	varargck	type	"lx"	ulong
 #pragma	varargck	type	"lb"	ulong
 #pragma	varargck	type	"d"	int
+#pragma	varargck	type	"o"	int
 #pragma	varargck	type	"x"	int
 #pragma	varargck	type	"c"	int
 #pragma	varargck	type	"C"	int
@@ -208,6 +220,7 @@ extern	Rune*	runefmtstrflush(Fmt*);
 #pragma	varargck	type	"p"	uintptr
 #pragma	varargck	type	"p"	void*
 #pragma	varargck	flag	','
+#pragma	varargck	flag	' '
 #pragma	varargck	flag	'h'
 #pragma varargck	type	"<"	void*
 #pragma varargck	type	"["	void*
@@ -399,11 +412,21 @@ enum {
 extern	void	prof(void (*fn)(void*), void *arg, int entries, int what);
 
 /*
+ * atomic
+ */
+long	ainc(long*);
+long	adec(long*);
+int	cas32(u32int*, u32int, u32int);
+int	casp(void**, void*, void*);
+int	casl(ulong*, ulong, ulong);
+
+/*
  *  synchronization
  */
 typedef
 struct Lock {
-	int	val;
+	long	key;
+	long	sem;
 } Lock;
 
 extern int	_tas(int*);
@@ -527,6 +550,7 @@ extern	void		freenetconninfo(NetConnInfo*);
 #define	OCEXEC	32	/* or'ed in, close on exec */
 #define	ORCLOSE	64	/* or'ed in, remove on close */
 #define	OEXCL	0x1000	/* or'ed in, exclusive use (create only) */
+// #define	OBEHIND	0x2000	/* use write behind for writes [for 9n] */
 
 #define	AEXIST	0	/* accessible: exists */
 #define	AEXEC	1	/* execute access */
@@ -647,6 +671,7 @@ extern	int	noted(int);
 extern	int	notify(void(*)(void*, char*));
 extern	int	open(char*, int);
 extern	int	fd2path(int, char*, int);
+// extern	int	fdflush(int);
 extern	int	pipe(int*);
 extern	long	pread(int, void*, long, vlong);
 extern	long	preadv(int, IOchunk*, int, vlong);
@@ -668,6 +693,7 @@ extern	int	semacquire(long*, int);
 extern	long	semrelease(long*, long);
 extern	int	sleep(long);
 extern	int	stat(char*, uchar*, int);
+extern	int	tsemacquire(long*, ulong);
 extern	Waitmsg*	wait(void);
 extern	int	waitpid(void);
 extern	long	write(int, void*, long);

@@ -380,8 +380,12 @@ imap4login(Imap *imap)
 static char*
 imaperrstr(char *host, char *port)
 {
-	static char mess[256];
-	char err[64];
+	/*
+	 * make mess big enough to hold a TLS certificate fingerprint
+	 * plus quite a bit of slop.
+	 */
+	static char mess[3 * Errlen];
+	char err[Errlen];
 
 	err[0] = '\0';
 	errstr(err, sizeof(err));
@@ -408,7 +412,11 @@ starttls(Imap *imap, TLSconn *connp)
 		return -1;
 	}
 	sha1(connp->cert, connp->certlen, digest, nil);
-	if(!imap->thumb || !okThumbprint(digest, imap->thumb)){
+	/*
+	 * don't do this any more.  our local it people are rotating their
+	 * certificates faster than we can keep up.
+	 */
+	if(0 && (!imap->thumb || !okThumbprint(digest, imap->thumb))){
 		close(sfd);
 		werrstr("server certificate %.*H not recognized",
 			SHA1dlen, digest);

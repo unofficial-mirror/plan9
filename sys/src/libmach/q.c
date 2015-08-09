@@ -3,6 +3,7 @@
  *	forsyth@terzarima.net
  */
 #include <u.h>
+#include <libc.h>
 #include <bio.h>
 #include "/power/include/ureg.h"
 #include <mach.h>
@@ -111,7 +112,7 @@ Mach mpower =
 	"LR",		/* name of link register */
 	"setSB",	/* static base register name */
 	0,		/* value */
-	0x1000,		/* page size */
+	0x100000,	/* page size */
 	0x80000000ULL,	/* kernel base */
 	0xF0000000ULL,	/* kernel text mask */
 	0x7FFFFFFFULL,	/* user stack top */

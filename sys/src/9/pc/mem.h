@@ -11,13 +11,18 @@
 #define	BY2V		8			/* bytes per double word */
 #define	BY2PG		4096			/* bytes per page */
 #define	WD2PG		(BY2PG/BY2WD)		/* words per page */
-#define	BY2XPG		(4096*1024)	/* bytes per big page */
+#define	BY2XPG		(4096*1024)		/* bytes per big page */
 #define	PGSHIFT		12			/* log(BY2PG) */
-#define	ROUND(s, sz)	(((s)+((sz)-1))&~((sz)-1))
-#define	PGROUND(s)	ROUND(s, BY2PG)
+#define CACHELINESZ	32			/* pentium & later */
 #define	BLOCKALIGN	8
+#define FPalign		16			/* required for FXSAVE */
 
-#define	MAXMACH		8			/* max # cpus system can run */
+/*
+ * In 32-bit mode, the MAXMACH limit is 32 without
+ * changing the way active.machs is defined and used
+ * (unfortunately, it is also used in the port code).
+ */
+#define	MAXMACH		32			/* max # cpus system can run */
 #define	KSTACK		4096			/* Size of kernel stack */
 
 /*
@@ -31,8 +36,8 @@
  *  Address spaces
  */
 #define	KZERO		0xF0000000		/* base of kernel address space */
-#define	KTZERO		(KZERO+0x100000)		/* first address in kernel text - 9load sits below */
-#define	VPT			(KZERO-VPTSIZE)
+#define	KTZERO		(KZERO+0x100000)	/* first address in kernel text - 9load sits below */
+#define	VPT		(KZERO-VPTSIZE)
 #define	VPTSIZE		BY2XPG
 #define	NVPT		(VPTSIZE/BY2WD)
 #define	KMAP		(VPT-KMAPSIZE)
@@ -41,10 +46,11 @@
 #define	VMAPSIZE	(0x10000000-VPTSIZE-KMAPSIZE)
 #define	UZERO		0			/* base of user address space */
 #define	UTZERO		(UZERO+BY2PG)		/* first address in user text */
+#define UTROUND(t)	ROUNDUP((t), BY2PG)
 #define	USTKTOP		(VMAP-BY2PG)		/* byte just beyond user stack */
 #define	USTKSIZE	(16*1024*1024)		/* size of user stack */
 #define	TSTKTOP		(USTKTOP-USTKSIZE)	/* end of new stack in sysexec */
-#define	TSTKSIZ 	100
+#define	TSTKSIZ 	100			/* pages in new stack; limits exec args */
 
 /*
  * Fundamental addresses - bottom 64kB saved for return to real mode

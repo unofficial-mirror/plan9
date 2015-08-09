@@ -18,13 +18,13 @@ Named files ending with
 are preprocessed with
 .IR cpp (1),
 then compiled with one of the compilers described in
-.IR 2c (1),
+.IR 8c (1),
 as specified by the environment variable
 .BR $objtype .
 The object files are then loaded using one of the loaders described in
-.IR 2l (1).
+.IR 8l (1).
 The options are:
-.TP \w'\fL-D\ \fIname=def\ 'u
+.TP \w'\fL-D\ \fIname\ 'u
 .B "-+
 Accept C++
 .B //
@@ -34,7 +34,7 @@ comments.
 Place loader output in file
 .I out
 instead of the default
-.BR 2.out ,
+.BR 8.out ,
 .BR v.out ,
 etc.
 .TP
@@ -59,6 +59,11 @@ Insert profiling code into the executable output.
 .B -w
 Print compiler warning messages.
 .TP
+.B -W
+Print all the messages that
+.B -w
+would print as warnings, but make them errors.
+.TP
 .BI -l lib
 Include
 .BI / $objtype /lib/ape/lib lib .a
@@ -72,11 +77,15 @@ ANSI function prototypes.
 Enable
 .B void*
 conversion warnings, as in
-.IR 2c (1).
+.IR 8c (1).
 .TP
 .B -v
 Echo the preprocessing, compiling, and loading commands
 before they are executed.
+.TP
+.BI -x " file"
+Produce an export file in the executable, as described in
+.IR 8l (1).
 .TP
 .BI -D name=def
 .br
@@ -120,6 +129,14 @@ Don't optimize compiled code.
 Print an assembly language version of the object code
 on standard output.
 .TP
+.B -T
+Pass type signatures on all external and global entities.
+The signature is based on the C
+.B signof
+operator.
+See
+.IR dynld (2).
+.TP
 .B -a
 Instead of compiling, print on standard output acid functions (see
 .IR acid (1))
@@ -133,10 +150,13 @@ are omitted.
 .TP
 .B -F
 Enable vararg type checking as described in 
-.IR 2c (1).
+.IR 8c (1).
 This is of limited use without the appropriate 
 .B #pragma 
 definitions.
+.TP
+.B -f
+(ARM only) Generate VFP hardware floating point instructions.
 .PP
 The APE environment contains all of the include
 files and library routines specified in the ANSI C standard
@@ -162,15 +182,15 @@ files.
 ANSI C/POSIX library.
 .SH "SEE ALSO"
 .IR cpp (1),
-.IR 2c (1),
-.IR 2a (1),
-.IR 2l (1),
+.IR 8c (1),
+.IR 8a (1),
+.IR 8l (1),
 .IR mk (1),
 .IR nm (1),
 .IR acid (1),
 .IR db (1),
 .IR prof (1)
-.PP
+.br
 Howard Trickey,
 ``APE \(em The ANSI/POSIX Environment''
 .SH SOURCE

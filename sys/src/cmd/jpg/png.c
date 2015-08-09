@@ -196,7 +196,8 @@ show(int fd, char *name, int outc)
 			return "allocimage";
 		}
 		if(loadimage(i, i->r, c->chans[0], c->chanlen) < 0){
-			fprint(2, "png: loadimage %s failed: %r\n", name);
+			fprint(2, "png: loadimage %s of %d bytes failed: %r\n",
+				name, c->chanlen);
 			return "loadimage";
 		}
 		i2 = allocimage(display, c->r, outchan, 0, 0);
@@ -213,6 +214,20 @@ show(int fd, char *name, int outc)
 	if(nineflag){
 		chantostr(buf, outchan);
 		len = (c->r.max.x - c->r.min.x) * (c->r.max.y - c->r.min.y);
+		switch(c->chandesc){
+		case CY:
+			// len *= 1;
+			break;
+		case CYA16:
+			len *= 2;
+			break;
+		case CRGB24:
+			len *= 3;
+			break;
+		case CRGBA32:
+			len *= 4;
+			break;
+		}
 		if(c->chanlen != len)
 			fprint(2, "%s: writing %d bytes for len %ld chan %s\n",
 				argv0, c->chanlen, len, buf);

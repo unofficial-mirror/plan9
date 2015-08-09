@@ -401,13 +401,15 @@ vgbeifstat(Ether* edev, void* a, long n, ulong offset)
 
 	ctlr = edev->ctlr;
 
-	p = malloc(2*READSTR);
+	p = malloc(READSTR);
+	if(p == nil)
+		error(Enomem);
 	l = 0;
-	l += snprint(p+l, 2*READSTR-l, "tx: %uld\n", ctlr->stats.tx);
-	l += snprint(p+l, 2*READSTR-l, "tx [errs]: %uld\n", ctlr->stats.txe);
-	l += snprint(p+l, 2*READSTR-l, "rx: %uld\n", ctlr->stats.rx);
-	l += snprint(p+l, 2*READSTR-l, "intr: %uld\n", ctlr->stats.intr);
-	snprint(p+l, 2*READSTR-l, "\n");
+	l += snprint(p+l, READSTR-l, "tx: %uld\n", ctlr->stats.tx);
+	l += snprint(p+l, READSTR-l, "tx [errs]: %uld\n", ctlr->stats.txe);
+	l += snprint(p+l, READSTR-l, "rx: %uld\n", ctlr->stats.rx);
+	l += snprint(p+l, READSTR-l, "intr: %uld\n", ctlr->stats.intr);
+	snprint(p+l, READSTR-l, "\n");
 
 	n = readstr(offset, a, n, p);
 	free(p);
@@ -465,14 +467,24 @@ vgbedumpisr(ulong isr)
 	}
 }
 
+static void
+noop(Block *)
+{
+}
+
 static int
 vgbenewrx(Ctlr* ctlr, int i)
 {
 	Block* block;
 	RxDesc* desc;
 
-	/* Allocate Rx block. (TODO: Alignment ?) */
+	/*
+	 * allocate a receive Block.  we're maintaining
+	 * a private pool of Blocks, so we don't want freeb
+	 * to actually free them, thus we set block->free.
+	 */
 	block = allocb(RxSize);
+	block->free = noop;
 
 	/* Remember that block. */
 	ctlr->rx_blocks[i] = block;
@@ -524,7 +536,7 @@ vgberxeof(Ether* edev)
 			block->wp = block->rp + length;
 
 			ctlr->stats.rx++;
-			etheriq(edev, block, 0);
+			etheriq(edev, block, 1);
 		}
 		else
 			print("vgbe: Rx-desc[%#02x] *BAD FRAME* status=%#08ulx ctl=%#08ulx\n",
@@ -729,7 +741,7 @@ vgbetransmit(Ether* edev)
 	if(ctlr->tx_count)
 		wiob(ctlr, TxCsrS, TxCsr_Wakeup);
 
-	if(count == 0)
+	if((ctlr->debugflags & DumpTx) && count == 0)
 		print("vgbe: transmit: no Tx entry available\n");
 }
 
@@ -1099,6 +1111,12 @@ vgbemulticast(void*, uchar*, int)
 {
 }
 
+static void
+vgbeshutdown(Ether* ether)
+{
+	vgbereset(ether->ctlr);
+}
+
 static int
 vgbepnp(Ether* edev)
 {
@@ -1136,7 +1154,7 @@ vgbepnp(Ether* edev)
 	edev->ifstat = vgbeifstat;
 //	edev->promiscuous = vgbepromiscuous;
 	edev->multicast = vgbemulticast;
-//	edev->shutdown = vgbeshutdown;
+	edev->shutdown = vgbeshutdown;
 	edev->ctl = vgbectl;
 
 	edev->arg = edev;

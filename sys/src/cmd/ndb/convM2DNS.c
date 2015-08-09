@@ -6,9 +6,9 @@
 typedef struct Scan	Scan;
 struct Scan
 {
-	uchar	*base;
-	uchar	*p;
-	uchar	*ep;
+	uchar	*base;		/* input buffer */
+	uchar	*p;		/* current position */
+	uchar	*ep;		/* byte after the end */
 
 	char	*err;
 	char	errbuf[256];	/* hold a formatted error sometimes */
@@ -16,16 +16,6 @@ struct Scan
 	int	stop;		/* flag: stop processing */
 	int	trunc;		/* flag: input truncated */
 };
-
-#define NAME(x)		gname(x, rp, sp)
-#define SYMBOL(x)	(x = gsym(rp, sp))
-#define STRING(x)	(x = gstr(rp, sp))
-#define USHORT(x)	(x = gshort(rp, sp))
-#define ULONG(x)	(x = glong(rp, sp))
-#define UCHAR(x)	(x = gchar(rp, sp))
-#define V4ADDR(x)	(x = gv4addr(rp, sp))
-#define V6ADDR(x)	(x = gv6addr(rp, sp))
-#define BYTES(x, y)	(y = gbytes(rp, sp, &x, len - (sp->p - data)))
 
 static int
 errneg(RR *rp, Scan *sp, int actual)
@@ -51,11 +41,19 @@ errtoolong(RR *rp, Scan *sp, int remain, int need, char *where)
 			rrname(rp->type, ptype, sizeof ptype));
 	p = seprint(p, ep, "%d bytes needed; %d remain", need, remain);
 	if (rp)
-		seprint(p, ep, ": %R", rp);
-	sp->err = sp->errbuf;
-	/* hack to cope with servers that don't set Ftrunc when they should */
-	if (remain < Maxudp && need > Maxudp)
+		p = seprint(p, ep, ": %R", rp);
+	/*
+	 * hack to cope with servers that don't set Ftrunc when they should:
+	 * if the (udp) packet is full-sized, if must be truncated because
+	 * it is incomplete.  otherwise, it's just garbled.
+	 */
+	if (sp->ep - sp->base >= Maxpayload) {
 		sp->trunc = 1;
+		seprint(p, ep, " (truncated)");
+	}
+	if (debug && rp)
+		dnslog("malformed rr: %R", rp);
+	sp->err = sp->errbuf;
 	return 0;
 }
 
@@ -234,6 +232,10 @@ gname(char *to, RR *rp, Scan *sp)
 		goto err;
 	pointer = 0;
 	p = sp->p;
+	if (p == nil) {
+		dnslog("gname: %R: nil sp->p", rp);
+		goto err;
+	}
 	toend = to + Domlen;
 	for(len = 0; *p && p < sp->ep; len += (pointer? 0: n+1)) {
 		n = 0;
@@ -260,7 +262,7 @@ gname(char *to, RR *rp, Scan *sp)
 				*to++ = '.';
 			}
 			break;
-		case 0100:		/* edns extended label type, rfc 2671 */
+		case 0100:		/* edns extended label type, rfc 6891 */
 			/*
 			 * treat it like an EOF for now; it seems to be at
 			 * the end of a long tcp reply.
@@ -301,17 +303,29 @@ err:
  * ms windows 2000 seems to get the bytes backward in the type field
  * of ptr records, so return a format error as feedback.
  */
-static void
-mstypehack(Scan *sp, int type, char *where)
+static ushort
+mstypehack(Scan *sp, ushort type, char *where)
 {
-	if ((uchar)type == 0 && (uchar)(type>>8) != 0) {
+	if ((uchar)type == 0 && (type>>8) != 0) {
 		USED(where);
 //		dnslog("%s: byte-swapped type field in ptr rr from win2k",
 //			where);
-		if (sp->rcode == 0)
+		if (sp->rcode == Rok)
 			sp->rcode = Rformat;
+		type >>= 8;
 	}
+	return type;
 }
+
+#define NAME(x)		gname(x, rp, sp)
+#define SYMBOL(x)	((x) = gsym(rp, sp))
+#define STRING(x)	((x) = gstr(rp, sp))
+#define USHORT(x)	((x) = gshort(rp, sp))
+#define ULONG(x)	((x) = glong(rp, sp))
+#define UCHAR(x)	((x) = gchar(rp, sp))
+#define V4ADDR(x)	((x) = gv4addr(rp, sp))
+#define V6ADDR(x)	((x) = gv6addr(rp, sp))
+#define BYTES(x, y)	((y) = gbytes(rp, sp, &(x), len - (sp->p - data)))
 
 /*
  *  convert the next RR from a message
@@ -319,26 +333,30 @@ mstypehack(Scan *sp, int type, char *where)
 static RR*
 convM2RR(Scan *sp, char *what)
 {
-	int type, class, len;
+	int type, class, len, left;
+	char *dn;
 	char dname[Domlen+1];
 	uchar *data;
-	RR *rp = nil;
+	RR *rp;
 	Txt *t, **l;
 
 retry:
+	rp = nil;
 	NAME(dname);
 	USHORT(type);
 	USHORT(class);
 
-	mstypehack(sp, type, "convM2RR");
+	type = mstypehack(sp, type, "convM2RR");
 	rp = rralloc(type);
 	rp->owner = dnlookup(dname, class, 1);
 	rp->type = type;
 
 	ULONG(rp->ttl);
 	rp->ttl += now;
-	USHORT(len);
+	USHORT(len);			/* length of data following */
 	data = sp->p;
+	assert(data != nil);
+	left = sp->ep - sp->p;
 
 	/*
 	 * ms windows generates a lot of badly-formatted hints.
@@ -346,21 +364,23 @@ retry:
 	 * it also generates answers in which p overshoots ep by exactly
 	 * one byte; this seems to be harmless, so don't log them either.
 	 */
-	if (sp->ep - sp->p < len &&
+	if (len > left &&
 	   !(strcmp(what, "hints") == 0 ||
 	     sp->p == sp->ep + 1 && strcmp(what, "answers") == 0))
-		errtoolong(rp, sp, sp->ep - sp->p, len, "convM2RR");
+		errtoolong(rp, sp, left, len, "convM2RR");
 	if(sp->err || sp->rcode || sp->stop){
 		rrfree(rp);
 		return nil;
 	}
+	/* even if we don't log an error message, truncate length to fit data */
+	if (len > left)
+		len = left;
 
 	switch(type){
 	default:
 		/* unknown type, just ignore it */
 		sp->p = data + len;
 		rrfree(rp);
-		rp = nil;
 		goto retry;
 	case Thinfo:
 		SYMBOL(rp->cpu);
@@ -383,7 +403,12 @@ retry:
 		break;
 	case Tmx:
 		USHORT(rp->pref);
-		rp->host = dnlookup(NAME(dname), Cin, 1);
+		dn = NAME(dname);
+		rp->host = dnlookup(dn, Cin, 1);
+		if(strchr((char *)rp->host, '\n') != nil) {
+			dnslog("newline in mx text for %s", dn);
+			sp->trunc = 1;		/* try again via tcp */
+		}
 		break;
 	case Ta:
 		V4ADDR(rp->ip);
@@ -467,10 +492,8 @@ retry:
 		 * 235.9.104.135.in-addr.arpa cname
 		 *	235.9.104.135.in-addr.arpa from 135.104.9.235
 		 */
-		if (type == Tcname && sp->p - data == 2 && len == 0) {
-			// dnslog("convM2RR: got %R", rp);
+		if (type == Tcname && sp->p - data == 2 && len == 0)
 			return rp;
-		}
 		if (len > sp->p - data){
 			dnslog("bad %s RR len (%d bytes nominal, %lud actual): %R",
 				rrname(type, ptype, sizeof ptype), len,
@@ -491,15 +514,16 @@ convM2Q(Scan *sp)
 {
 	char dname[Domlen+1];
 	int type, class;
-	RR *rp = nil;
+	RR *rp;
 
+	rp = nil;
 	NAME(dname);
 	USHORT(type);
 	USHORT(class);
 	if(sp->err || sp->rcode || sp->stop)
 		return nil;
 
-	mstypehack(sp, type, "convM2Q");
+	type = mstypehack(sp, type, "convM2Q");
 	rp = rralloc(type);
 	rp->owner = dnlookup(dname, class, 1);
 
@@ -521,6 +545,11 @@ rrloop(Scan *sp, char *what, int count, int quest)
 		if(rp == nil)
 			break;
 		setmalloctag(rp, getcallerpc(&sp));
+		/*
+		 * it might be better to ignore the bad rr, possibly break out,
+		 * but return the previous rrs, if any.  that way our callers
+		 * would know that they had got a response, however ill-formed.
+		 */
 		if(sp->err || sp->rcode || sp->stop){
 			rrfree(rp);
 			break;
@@ -528,7 +557,8 @@ rrloop(Scan *sp, char *what, int count, int quest)
 		*l = rp;
 		l = &rp->next;
 	}
-//	setmalloctag(first, getcallerpc(&sp));
+//	if(first)
+//		setmalloctag(first, getcallerpc(&sp));
 	return first;
 }
 
@@ -537,6 +567,8 @@ rrloop(Scan *sp, char *what, int count, int quest)
  *  if there are formatting errors or the like during parsing of the message,
  *  set *codep to the outgoing response code (e.g., Rformat), which will
  *  abort processing and reply immediately with the outgoing response code.
+ *
+ *  ideally would note if len == Maxpayload && query was via UDP, for errtoolong.
  */
 char*
 convM2DNS(uchar *buf, int len, DNSmsg *m, int *codep)
@@ -546,15 +578,15 @@ convM2DNS(uchar *buf, int len, DNSmsg *m, int *codep)
 	Scan scan;
 	Scan *sp;
 
-	if (codep)
-		*codep = 0;
 	assert(len >= 0);
+	assert(buf != nil);
 	sp = &scan;
 	memset(sp, 0, sizeof *sp);
 	sp->base = sp->p = buf;
 	sp->ep = buf + len;
 	sp->err = nil;
 	sp->errbuf[0] = '\0';
+	sp->rcode = Rok;
 
 	memset(m, 0, sizeof *m);
 	USHORT(m->id);
@@ -575,7 +607,7 @@ convM2DNS(uchar *buf, int len, DNSmsg *m, int *codep)
 	if (sp->trunc)
 		m->flags |= Ftrunc;
 	if (sp->stop)
-		sp->rcode = 0;
+		sp->rcode = Rok;
 	if (codep)
 		*codep = sp->rcode;
 	return err;

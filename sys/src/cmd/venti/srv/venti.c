@@ -3,10 +3,20 @@
 #include <signal.h>
 #endif
 #include "stdinc.h"
+#include <bio.h>
 #include "dat.h"
 #include "fns.h"
 
 #include "whack.h"
+
+typedef struct Allocs Allocs;
+struct Allocs {
+	u32int	mem;
+	u32int	bcmem;
+	u32int	icmem;
+	u32int	stfree;				/* free memory at start */
+	uint	mempcnt;
+};
 
 int debug;
 int nofork;
@@ -15,27 +25,152 @@ VtSrv *ventisrv;
 
 static void	ventiserver(void*);
 
+static ulong
+freemem(void)
+{
+	int nf, pgsize = 0;
+	uvlong size, userpgs = 0, userused = 0;
+	char *ln, *sl;
+	char *fields[2];
+	Biobuf *bp;
+
+	size = 64*1024*1024;
+	bp = Bopen("#c/swap", OREAD);
+	if (bp != nil) {
+		while ((ln = Brdline(bp, '\n')) != nil) {
+			ln[Blinelen(bp)-1] = '\0';
+			nf = tokenize(ln, fields, nelem(fields));
+			if (nf != 2)
+				continue;
+			if (strcmp(fields[1], "pagesize") == 0)
+				pgsize = atoi(fields[0]);
+			else if (strcmp(fields[1], "user") == 0) {
+				sl = strchr(fields[0], '/');
+				if (sl == nil)
+					continue;
+				userpgs = atoll(sl+1);
+				userused = atoll(fields[0]);
+			}
+		}
+		Bterm(bp);
+		if (pgsize > 0 && userpgs > 0 && userused > 0)
+			size = (userpgs - userused) * pgsize;
+	}
+	/* cap it to keep the size within 32 bits */
+	if (size >= 3840UL * 1024 * 1024)
+		size = 3840UL * 1024 * 1024;
+	return size;
+}
+
+static void
+allocminima(Allocs *all)			/* enforce minima for sanity */
+{
+	if (all->icmem < 6 * 1024 * 1024)
+		all->icmem = 6 * 1024 * 1024;
+	if (all->mem < 1024 * 1024 || all->mem == Unspecified)  /* lumps */
+		all->mem = 1024 * 1024;
+	if (all->bcmem < 2 * 1024 * 1024)
+		all->bcmem = 2 * 1024 * 1024;
+}
+
+/* automatic memory allocations sizing per venti(8) guidelines */
+static Allocs
+allocbypcnt(u32int mempcnt, u32int stfree)
+{
+	u32int avail;
+	vlong blmsize;
+	Allocs all;
+	static u32int free;
+
+	all.mem = Unspecified;
+	all.bcmem = all.icmem = 0;
+	all.mempcnt = mempcnt;
+	all.stfree = stfree;
+
+	if (free == 0)
+		free = freemem();
+	blmsize = stfree - free;
+	if (blmsize <= 0)
+		blmsize = 0;
+	avail = ((vlong)stfree * mempcnt) / 100;
+	if (blmsize >= avail || (avail -= blmsize) <= (1 + 2 + 6) * 1024 * 1024)
+		fprint(2, "%s: bloom filter bigger than mem pcnt; "
+			"resorting to minimum values (9MB total)\n", argv0);
+	else {
+		if (avail >= 3840UL * 1024 * 1024)
+			avail = 3840UL * 1024 * 1024;	/* sanity */
+		avail /= 2;
+		all.icmem = avail;
+		avail /= 3;
+		all.mem = avail;
+		all.bcmem = 2 * avail;
+	}
+	return all;
+}
+
+/*
+ * we compute default values for allocations,
+ * which can be overridden by (in order):
+ *	configuration file parameters,
+ *	command-line options other than -m, and -m.
+ */
+static Allocs
+sizeallocs(Allocs opt, Config *cfg)
+{
+	Allocs all;
+
+	/* work out sane defaults */
+	all = allocbypcnt(20, opt.stfree);
+
+	/* config file parameters override */
+	if (cfg->mem && cfg->mem != Unspecified)
+		all.mem = cfg->mem;
+	if (cfg->bcmem)
+		all.bcmem = cfg->bcmem;
+	if (cfg->icmem)
+		all.icmem = cfg->icmem;
+
+	/* command-line options override */
+	if (opt.mem && opt.mem != Unspecified)
+		all.mem = opt.mem;
+	if (opt.bcmem)
+		all.bcmem = opt.bcmem;
+	if (opt.icmem)
+		all.icmem = opt.icmem;
+
+	/* automatic memory sizing? */
+	if(opt.mempcnt > 0)
+		all = allocbypcnt(opt.mempcnt, opt.stfree);
+
+	allocminima(&all);
+	return all;
+}
+
 void
 usage(void)
 {
 	fprint(2, "usage: venti [-Ldrsw] [-a ventiaddr] [-c config] "
-"[-h httpaddr] [-B blockcachesize] [-C cachesize] [-I icachesize] [-W webroot]\n");
+"[-h httpaddr] [-m %%mem] [-B blockcachesize] [-C cachesize] [-I icachesize] "
+"[-W webroot]\n");
 	threadexitsall("usage");
 }
+
 void
 threadmain(int argc, char *argv[])
 {
 	char *configfile, *haddr, *vaddr, *webroot;
-	u32int mem, icmem, bcmem, minbcmem;
+	u32int mem, icmem, bcmem, minbcmem, mempcnt, stfree;
+	Allocs allocs;
 	Config config;
 
 	traceinit();
 	threadsetname("main");
+	mempcnt = 0;
 	vaddr = nil;
 	haddr = nil;
 	configfile = nil;
 	webroot = nil;
-	mem = 0;
+	mem = Unspecified;
 	icmem = 0;
 	bcmem = 0;
 	ARGBEGIN{
@@ -60,6 +195,11 @@ threadmain(int argc, char *argv[])
 		break;
 	case 'h':
 		haddr = EARGF(usage());
+		break;
+	case 'm':
+		mempcnt = atoi(EARGF(usage()));
+		if (mempcnt <= 0 || mempcnt >= 100)
+			usage();
 		break;
 	case 'I':
 		icmem = unittoull(EARGF(usage()));
@@ -106,18 +246,31 @@ threadmain(int argc, char *argv[])
 	if(configfile == nil)
 		configfile = "venti.conf";
 
+	/* remember free memory before initventi & loadbloom, for auto-sizing */
+	stfree = freemem(); 	 
 	fprint(2, "conf...");
 	if(initventi(configfile, &config) < 0)
 		sysfatal("can't init server: %r");
+	/*
+	 * load bloom filter
+	 */
 	if(mainindex->bloom && loadbloom(mainindex->bloom) < 0)
 		sysfatal("can't load bloom filter: %r");
 
-	if(mem == 0)
-		mem = config.mem;
-	if(bcmem == 0)
-		bcmem = config.bcmem;
-	if(icmem == 0)
-		icmem = config.icmem;
+	/*
+	 * size memory allocations; assumes bloom filter is loaded
+	 */
+	allocs = sizeallocs((Allocs){mem, bcmem, icmem, stfree, mempcnt},
+		&config);
+	mem = allocs.mem;
+	bcmem = allocs.bcmem;
+	icmem = allocs.icmem;
+	fprint(2, "%s: mem %,ud bcmem %,ud icmem %,ud...",
+		argv0, mem, bcmem, icmem);
+
+	/*
+	 * default other configuration-file parameters
+	 */
 	if(haddr == nil)
 		haddr = config.haddr;
 	if(vaddr == nil)
@@ -134,26 +287,28 @@ threadmain(int argc, char *argv[])
 		if(httpdinit(haddr, webroot) < 0)
 			fprint(2, "warning: can't start http server: %r");
 	}
-
 	fprint(2, "init...");
 
-	if(mem == 0xffffffffUL)
-		mem = 1 * 1024 * 1024;
+	/*
+	 * lump cache
+	 */
 	if(0) fprint(2, "initialize %d bytes of lump cache for %d lumps\n",
 		mem, mem / (8 * 1024));
 	initlumpcache(mem, mem / (8 * 1024));
 
+	/*
+	 * index cache
+	 */
 	initicache(icmem);
 	initicachewrite();
 
 	/*
-	 * need a block for every arena and every process
+	 * block cache: need a block for every arena and every process
 	 */
 	minbcmem = maxblocksize * 
 		(mainindex->narenas + mainindex->nsects*4 + 16);
 	if(bcmem < minbcmem)
 		bcmem = minbcmem;
-
 	if(0) fprint(2, "initialize %d bytes of disk block cache\n", bcmem);
 	initdcache(bcmem);
 

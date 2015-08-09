@@ -2,11 +2,17 @@
 #include	<libc.h>
 #include	<bio.h>
 #include	"../5c/5.out.h"
+#include	"../8l/elf.h"
 
 #ifndef	EXTERN
 #define	EXTERN	extern
 #endif
 
+#define	LIBNAMELEN	300
+
+void	addlibpath(char*);
+int	fileexists(char*);
+char*	findlib(char*);
 
 typedef	struct	Adr	Adr;
 typedef	struct	Sym	Sym;
@@ -134,6 +140,7 @@ enum
 	LTO		= 1<<1,
 	LPOOL		= 1<<2,
 	V4		= 1<<3,	/* arm v4 arch */
+	VFP		= 1<<4,	/* arm vfpv3 floating point */
 
 	C_NONE		= 0,
 	C_REG,
@@ -218,6 +225,7 @@ EXTERN	int	HEADTYPE;		/* type of header */
 EXTERN	long	INITDAT;		/* data location */
 EXTERN	long	INITRND;		/* data round above text location */
 EXTERN	long	INITTEXT;		/* text location */
+EXTERN	long	INITTEXTP;		/* text location (physical) */
 EXTERN	char*	INITENTRY;		/* entry point */
 EXTERN	long	autosize;
 EXTERN	Biobuf	bso;
@@ -269,6 +277,7 @@ EXTERN	char	xcmp[C_GOK+1][C_GOK+1];
 EXTERN	Prog	zprg;
 EXTERN	int	dtype;
 EXTERN	int	armv4;
+EXTERN	int vfp;
 
 EXTERN	int	doexp, dlm;
 EXTERN	int	imports, nimports;
@@ -292,11 +301,14 @@ EXTERN	Prog*	prog_mod;
 EXTERN	Prog*	prog_modu;
 
 #pragma	varargck	type	"A"	int
+#pragma	varargck	type	"A"	uint
 #pragma	varargck	type	"C"	int
 #pragma	varargck	type	"D"	Adr*
 #pragma	varargck	type	"N"	Adr*
 #pragma	varargck	type	"P"	Prog*
 #pragma	varargck	type	"S"	char*
+
+#pragma	varargck	argpos	diag 1
 
 int	Aconv(Fmt*);
 int	Cconv(Fmt*);
@@ -306,6 +318,7 @@ int	Pconv(Fmt*);
 int	Sconv(Fmt*);
 int	aclass(Adr*);
 void	addhist(long, int);
+void	addlibpath(char*);
 void	append(Prog*, Prog*);
 void	asmb(void);
 void	asmdyn(void);
@@ -333,7 +346,9 @@ long	entryvalue(void);
 void	errorexit(void);
 void	exchange(Prog*);
 void	export(void);
+int	fileexists(char*);
 int	find1(long, int);
+char*	findlib(char*);
 void	follow(void);
 void	gethunk(void);
 void	histtoauto(void);
@@ -346,6 +361,8 @@ void	loadlib(void);
 void	listinit(void);
 Sym*	lookup(char*, int);
 void	cput(int);
+void	llput(vlong);
+void	llputl(vlong);
 void	lput(long);
 void	lputl(long);
 void	mkfwd(void);
@@ -358,6 +375,7 @@ int	ocmp(const void*, const void*);
 long	opirr(int);
 Optab*	oplook(Prog*);
 long	oprrr(int, int);
+long	opvfprrr(int, int);
 long	olr(long, int, int, int);
 long	olhr(long, int, int, int);
 long	olrr(int, int, int, int);
@@ -383,6 +401,7 @@ void	strnput(char*, int);
 void	undef(void);
 void	undefsym(Sym*);
 void	wput(long);
+void	wputl(long);
 void	xdefine(char*, int, long);
 void	xfol(Prog*);
 void	zerosig(char*);

@@ -75,7 +75,7 @@ runconfig(char *file, Config *config)
 	if(readifile(&f, file) < 0)
 		return -1;
 	memset(config, 0, sizeof *config);
-	config->mem = 0xFFFFFFFFUL;
+	config->mem = Unspecified;
 	ok = -1;
 	line = nil;
 	for(;;){
@@ -140,7 +140,7 @@ runconfig(char *file, Config *config)
 					flds[1], file);
 				break;
 			}
-			if(config->mem != 0xFFFFFFFFUL){
+			if(config->mem != Unspecified){
 				seterr(EAdmin, "duplicate mem lines in config file %s", file);
 				break;
 			}
@@ -177,6 +177,10 @@ runconfig(char *file, Config *config)
 			}
 			config->vaddr = estrdup(flds[1]);
 		}else{
+			/*
+			 * this is insanely paranoid.  a single typo should not
+			 * prevent venti from starting.
+			 */
 			seterr(EAdmin, "illegal line '%s' in configuration file %s", line, file);
 			break;
 		}

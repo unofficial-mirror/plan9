@@ -412,6 +412,7 @@ mntwalk(Chan *c, Chan *nc, char **name, int nname)
 		alloc = 1;
 	}
 	wq->clone = nc;
+	nc->flag |= c->flag&CCACHE;
 
 	if(waserror()) {
 		mntfree(r);
@@ -759,7 +760,7 @@ mountrpc(Mnt *m, Mntrpc *r)
 		cn = "?";
 		if(r->c != nil && r->c->path != nil)
 			cn = r->c->path->s;
-		print("mnt: proc %s %lud: mismatch from %s %s rep 0x%lux tag %d fid %d T%d R%d rp %d\n",
+		print("mnt: proc %s %lud: mismatch from %s %s rep %#p tag %d fid %d T%d R%d rp %d\n",
 			up->text, up->pid, sn, cn,
 			r, r->request.tag, r->request.fid, r->request.type,
 			r->reply.type, r->reply.tag);
@@ -1094,8 +1095,8 @@ mntfree(Mntrpc *r)
 	lock(&mntalloc);
 	if(mntalloc.nrpcfree >= 10){
 		free(r->rpc);
-		free(r);
 		freetag(r->request.tag);
+		free(r);
 	}
 	else{
 		r->list = mntalloc.rpcfree;

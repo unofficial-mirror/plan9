@@ -72,13 +72,14 @@ timeconv(Fmt *f)
 		sign = "";
 	if (t > Onesecond){
 		t += OneRound;
-		sprint(buf, "%s%d.%.3ds", sign, (int)(t / Onesecond),
+		snprint(buf, sizeof buf, "%s%d.%.3ds", sign,
+			(int)(t / Onesecond),
 			(int)(t % Onesecond)/Onemillisecond);
 	}else if (t > Onemillisecond)
-		sprint(buf, "%s%d.%.3dms", sign, (int)(t / Onemillisecond),
-			(int)(t % Onemillisecond));
+		snprint(buf, sizeof buf, "%s%d.%.3dms", sign,
+			(int)(t / Onemillisecond), (int)(t % Onemillisecond));
 	else
-		sprint(buf, "%s%dµs", sign, (int)t);
+		snprint(buf, sizeof buf, "%s%dµs", sign, (int)t);
 	return fmtstrcpy(f, buf);
 }
 
@@ -201,7 +202,7 @@ release(Proc *p)
 			pt(p, SDeadline, nowns + 1000LL*e->D);
 		}
 	}else{
-		DPRINT("%lud release %lud[%s], too late t=%lud, called from 0x%lux\n",
+		DPRINT("%lud release %lud[%s], too late t=%lud, called from %#p\n",
 			now, p->pid, statename[p->state], e->t, getcallerpc(&p));
 	}
 }
@@ -490,7 +491,7 @@ edfyield(void)
 		up->trend = &up->sleep;
 		timeradd(up);
 	}else if(up->tf != releaseintr)
-		print("edfyield: surprise! 0x%lux\n", up->tf);
+		print("edfyield: surprise! %#p\n", up->tf);
 	edfunlock();
 	sleep(&up->sleep, yfn, nil);
 }

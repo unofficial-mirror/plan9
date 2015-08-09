@@ -6,7 +6,7 @@ smtp, smtpd \-  mail transport
 .ti -0.5i
 .B upas/smtp
 [
-.B -aAdfips
+.B -aAdfiops
 ] [
 .B -b
 .I busted-mx
@@ -55,7 +55,7 @@ sends the mail message from standard input
 to the users
 .I rcpt-list
 on the host at network address
-.I address 
+.I address
 using the Simple Mail Transfer Protocol.
 The options are:
 .TF -
@@ -108,6 +108,11 @@ under
 .BR -a ,
 authenticate even if we can't start TLS.
 .TP
+.B -o
+under
+.BR -s ,
+use TLS even if we don't know the remote system.
+.TP
 .B -p
 ping: just verify that the users named in the
 .I rcpt-list
@@ -151,7 +156,9 @@ specifies a certificate to use for TLS.  Without this
 option, the capability to start TLS will not be advertised.
 .TP
 .B -d
-turns on debugging output to standard error.
+turns on debugging output,
+with each connection's output going to a uniquely-named file in
+.BR /sys/log/smtpdb .
 .TP
 .B -D
 sleeps for 15 seconds usually at the start of the SMTP dialogue;

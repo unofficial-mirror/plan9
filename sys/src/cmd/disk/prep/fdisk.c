@@ -192,6 +192,12 @@ struct Tentry {
 	uchar	xsize[4];		/* size in sectors */
 };
 
+struct Table {
+	Tentry	entry[NTentry];
+	uchar	magic[2];
+	uchar	size[];
+};
+
 enum {
 	Active		= 0x80,		/* partition is active */
 	Primary		= 0x01,		/* internal flag */
@@ -228,10 +234,11 @@ enum {
 	TypeLINUXSWAP	= 0x82,
 	TypeLINUX	= 0x83,
 	TypeLINUXEXT	= 0x85,
+	TypeLINUXLVM	= 0x8E,		/* logical volume manager */
 	TypeAMOEBA	= 0x93,
 	TypeAMOEBABB	= 0x94,
 	TypeBSD386	= 0xA5,
-	TypeNETBSD	= 0XA9,
+	TypeNETBSD	= 0xA9,
 	TypeBSDI	= 0xB7,
 	TypeBSDISWAP	= 0xB8,
 	TypeOTHER	= 0xDA,
@@ -239,6 +246,8 @@ enum {
 	TypeDellRecovery= 0xDE,
 	TypeSPEEDSTOR12	= 0xE1,
 	TypeSPEEDSTOR16	= 0xE4,
+	TypeEFIProtect	= 0xEE,
+	TypeEFI		= 0xEF,
 	TypeLANSTEP	= 0xFE,
 
 	Type9		= 0x39,
@@ -246,11 +255,8 @@ enum {
 	Toffset		= 446,		/* offset of partition table in sector */
 	Magic0		= 0x55,
 	Magic1		= 0xAA,
-};
 
-struct Table {
-	Tentry	entry[NTentry];
-	uchar	magic[2];
+	Tablesz		= offsetof(Table, size[0]),
 };
 
 struct Type {
@@ -305,6 +311,7 @@ static Type types[256] = {
 	[TypeLINUXSWAP]		{ "LINUXSWAP", "linuxswap" },
 	[TypeLINUX]		{ "LINUX", "linux" },
 	[TypeLINUXEXT]		{ "LINUXEXTENDED", "" },
+	[TypeLINUXLVM]		{ "LINUXLVM", "linuxlvm" },
 	[TypeAMOEBA]		{ "AMOEBA", "amoeba" },
 	[TypeAMOEBABB]		{ "AMOEBABB", "amoebaboot" },
 	[TypeBSD386]		{ "BSD386", "bsd386" },
@@ -316,6 +323,8 @@ static Type types[256] = {
 	[TypeDellRecovery]	{ "DELLRECOVERY", "dell" },
 	[TypeSPEEDSTOR12]	{ "SPEEDSTOR12", "speedstor" },
 	[TypeSPEEDSTOR16]	{ "SPEEDSTOR16", "speedstor" },
+	[TypeEFIProtect]	{ "EFIPROTECT", "efiprotect" },
+	[TypeEFI]		{ "EFI", "efi" },
 	[TypeLANSTEP]		{ "LANSTEP", "lanstep" },
 
 	[Type9]			{ "PLAN9", "plan9" },
@@ -444,7 +453,7 @@ recover(Edit *edit)
 
 	err = 0;
 	for(i=0; i<nrtab; i++)
-		if(diskwrite(edit->disk, &rtab[i].table, sizeof(Table), rtab[i].lba, Toffset) < 0)
+		if(diskwrite(edit->disk, &rtab[i].table, Tablesz, rtab[i].lba, Toffset) < 0)
 			err = 1;
 	if(err) {
 		fprint(2, "warning: some writes failed during restoration of old partition tables\n");
@@ -489,7 +498,7 @@ rdpart(Edit *edit, uvlong lba, uvlong xbase)
 	if(xbase == 0)
 		xbase = lba;
 
-	diskread(edit->disk, &table, sizeof table, mbroffset+lba, Toffset);
+	diskread(edit->disk, &table, Tablesz, mbroffset+lba, Toffset);
 	addrecover(table, mbroffset+lba);
 
 	if(table.magic[0] != Magic0 || table.magic[1] != Magic1) {
@@ -527,7 +536,7 @@ findmbr(Edit *edit)
 	Table table;
 	Tentry *tp;
 
-	diskread(edit->disk, &table, sizeof(Table), 0, Toffset);
+	diskread(edit->disk, &table, Tablesz, 0, Toffset);
 	if(table.magic[0] != Magic0 || table.magic[1] != Magic1)
 		sysfatal("did not find master boot record");
 
@@ -1010,7 +1019,7 @@ wrextend(Edit *edit, int i, vlong xbase, vlong startlba, vlong *endlba)
 	Finish:
 		if(startlba < *endlba){
 			disk = edit->disk;
-			diskread(disk, &table, sizeof table, mbroffset+startlba, Toffset);
+			diskread(disk, &table, Tablesz, mbroffset+startlba, Toffset);
 			tp = table.entry;
 			ep = tp+NTentry;
 			for(; tp<ep; tp++)
@@ -1018,7 +1027,7 @@ wrextend(Edit *edit, int i, vlong xbase, vlong startlba, vlong *endlba)
 			table.magic[0] = Magic0;
 			table.magic[1] = Magic1;
 
-			if(diskwrite(edit->disk, &table, sizeof table, mbroffset+startlba, Toffset) < 0)
+			if(diskwrite(edit->disk, &table, Tablesz, mbroffset+startlba, Toffset) < 0)
 				recover(edit);
 		}
 		return i;
@@ -1031,7 +1040,7 @@ wrextend(Edit *edit, int i, vlong xbase, vlong startlba, vlong *endlba)
 	}
 
 	disk = edit->disk;
-	diskread(disk, &table, sizeof table, mbroffset+startlba, Toffset);
+	diskread(disk, &table, Tablesz, mbroffset+startlba, Toffset);
 	tp = table.entry;
 	ep = tp+NTentry;
 
@@ -1053,7 +1062,7 @@ wrextend(Edit *edit, int i, vlong xbase, vlong startlba, vlong *endlba)
 	table.magic[0] = Magic0;
 	table.magic[1] = Magic1;
 
-	if(diskwrite(edit->disk, &table, sizeof table, mbroffset+startlba, Toffset) < 0)
+	if(diskwrite(edit->disk, &table, Tablesz, mbroffset+startlba, Toffset) < 0)
 		recover(edit);
 	return ni;
 }	
@@ -1070,7 +1079,7 @@ wrpart(Edit *edit)
 
 	disk = edit->disk;
 
-	diskread(disk, &table, sizeof table, mbroffset, Toffset);
+	diskread(disk, &table, Tablesz, mbroffset, Toffset);
 
 	tp = table.entry;
 	ep = tp+NTentry;
@@ -1103,7 +1112,7 @@ wrpart(Edit *edit)
 	if(i != edit->npart)
 		sysfatal("cannot happen #1");
 
-	if(diskwrite(disk, &table, sizeof table, mbroffset, Toffset) < 0)
+	if(diskwrite(disk, &table, Tablesz, mbroffset, Toffset) < 0)
 		recover(edit);
 
 	/* bring parts up to date */

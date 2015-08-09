@@ -11,13 +11,27 @@ char	symname[]	= SYMDEF;
 char	thechar		= '5';
 char	*thestring 	= "arm";
 
+char**	libdir;
+int	nlibdir	= 0;
+static	int	maxlibdir = 0;
+
 /*
+ *	-H0				no header
  *	-H1 -T0x10005000 -R4		is aif for risc os
  *	-H2 -T4128 -R4096		is plan9 format
  *	-H3 -T0xF0000020 -R4		is NetBSD format
  *	-H4				is IXP1200 (raw)
  *	-H5 -T0xC0008010 -R1024		is ipaq
+ *	-H6 -R4096			no header with segments padded to pages
+ *	-H7				is elf
  */
+
+void
+usage(void)
+{
+	diag("usage: %s [-options] objects", argv0);
+	errorexit();
+}
 
 static int
 isobjfile(char *f)
@@ -46,6 +60,7 @@ main(int argc, char *argv[])
 {
 	int c;
 	char *a;
+	char name[LIBNAMELEN];
 
 	Binit(&bso, 1, OWRITE);
 	cout = -1;
@@ -55,6 +70,7 @@ main(int argc, char *argv[])
 	curtext = P;
 	HEADTYPE = -1;
 	INITTEXT = -1;
+	INITTEXTP = -1;
 	INITDAT = -1;
 	INITRND = -1;
 	INITENTRY = 0;
@@ -73,10 +89,18 @@ main(int argc, char *argv[])
 		if(a)
 			INITENTRY = a;
 		break;
+	case 'L':
+		addlibpath(EARGF(usage()));
+		break;
 	case 'T':
 		a = ARGF();
 		if(a)
 			INITTEXT = atolwhex(a);
+		break;
+	case 'P':
+		a = ARGF();
+		if(a)
+			INITTEXTP = atolwhex(a);
 		break;
 	case 'D':
 		a = ARGF();
@@ -108,12 +132,20 @@ main(int argc, char *argv[])
 
 	USED(argc);
 
-	if(*argv == 0) {
-		diag("usage: 5l [-options] objects");
-		errorexit();
-	}
+	if(*argv == 0)
+		usage();
 	if(!debug['9'] && !debug['U'] && !debug['B'])
 		debug[DEFAULT] = 1;
+	a = getenv("ccroot");
+	if(a != nil && *a != '\0') {
+		if(!fileexists(a)) {
+			diag("nonexistent $ccroot: %s", a);
+			errorexit();
+		}
+	}else
+		a = "";
+	snprint(name, sizeof(name), "%s/%s/lib", a, thestring);
+	addlibpath(name);
 	if(HEADTYPE == -1) {
 		if(debug['U'])
 			HEADTYPE = 0;
@@ -127,6 +159,7 @@ main(int argc, char *argv[])
 		diag("unknown -H option");
 		errorexit();
 	case 0:	/* no header */
+	case 6:	/* no header, padded segments */
 		HEADR = 0L;
 		if(INITTEXT == -1)
 			INITTEXT = 0;
@@ -180,7 +213,18 @@ main(int argc, char *argv[])
 		if(INITRND == -1)
 			INITRND = 1024;
 		break;
+	case 7:	/* elf executable */
+		HEADR = rnd(Ehdr32sz+3*Phdr32sz, 16);
+		if(INITTEXT == -1)
+			INITTEXT = 4096+HEADR;
+		if(INITDAT == -1)
+			INITDAT = 0;
+		if(INITRND == -1)
+			INITRND = 4;
+		break;
 	}
+	if (INITTEXTP == -1)
+		INITTEXTP = INITTEXT;
 	if(INITDAT != 0 && INITRND != 0)
 		print("warning: -D0x%lux is ignored because of -R0x%lux\n",
 			INITDAT, INITRND);
@@ -205,7 +249,7 @@ main(int argc, char *argv[])
 		outfile = "5.out";
 	cout = create(outfile, 1, 0775);
 	if(cout < 0) {
-		diag("%s: cannot create", outfile);
+		diag("cannot create %s: %r", outfile);
 		errorexit();
 	}
 	nuxiinit();
@@ -222,7 +266,7 @@ main(int argc, char *argv[])
 			INITENTRY = "_mainp";
 		if(!debug['l'])
 			lookup(INITENTRY, 0)->type = SXREF;
-	} else
+	} else if(!(*INITENTRY >= '0' && *INITENTRY <= '9'))
 		lookup(INITENTRY, 0)->type = SXREF;
 
 	while(*argv)
@@ -277,6 +321,42 @@ out:
 }
 
 void
+addlibpath(char *arg)
+{
+	char **p;
+
+	if(nlibdir >= maxlibdir) {
+		if(maxlibdir == 0)
+			maxlibdir = 8;
+		else
+			maxlibdir *= 2;
+		p = malloc(maxlibdir*sizeof(*p));
+		if(p == nil) {
+			diag("out of memory");
+			errorexit();
+		}
+		memmove(p, libdir, nlibdir*sizeof(*p));
+		free(libdir);
+		libdir = p;
+	}
+	libdir[nlibdir++] = strdup(arg);
+}
+
+char*
+findlib(char *file)
+{
+	int i;
+	char name[LIBNAMELEN];
+
+	for(i = 0; i < nlibdir; i++) {
+		snprint(name, sizeof(name), "%s/%s", libdir[i], file);
+		if(fileexists(name))
+			return libdir[i];
+	}
+	return nil;
+}
+
+void
 loadlib(void)
 {
 	int i;
@@ -316,25 +396,26 @@ objfile(char *file)
 	int f, work;
 	Sym *s;
 	char magbuf[SARMAG];
-	char name[100], pname[150];
+	char name[LIBNAMELEN], pname[LIBNAMELEN];
 	struct ar_hdr arhdr;
 	char *e, *start, *stop;
 
-	if(file[0] == '-' && file[1] == 'l') {
-		if(debug['9'])
-			sprint(name, "/%s/lib/lib", thestring);
-		else
-			sprint(name, "/usr/%clib/lib", thechar);
-		strcat(name, file+2);
-		strcat(name, ".a");
-		file = name;
-	}
 	if(debug['v'])
 		Bprint(&bso, "%5.2f ldobj: %s\n", cputime(), file);
 	Bflush(&bso);
+	if(file[0] == '-' && file[1] == 'l') {
+		snprint(pname, sizeof(pname), "lib%s.a", file+2);
+		e = findlib(pname);
+		if(e == nil) {
+			diag("cannot find library: %s", file);
+			errorexit();
+		}
+		snprint(name, sizeof(name), "%s/%s", e, pname);
+		file = name;
+	}
 	f = open(file, 0);
 	if(f < 0) {
-		diag("cannot open file: %s", file);
+		diag("cannot open %s: %r", file);
 		errorexit();
 	}
 	l = read(f, magbuf, SARMAG);
@@ -395,7 +476,8 @@ objfile(char *file)
 			l |= (e[3] & 0xff) << 16;
 			l |= (e[4] & 0xff) << 24;
 			seek(f, l, 0);
-			l = read(f, &arhdr, SAR_HDR);
+			/* need readn to read the dumps (at least) */
+			l = readn(f, &arhdr, SAR_HDR);
 			if(l != SAR_HDR)
 				goto bad;
 			if(strncmp(arhdr.fmag, ARFMAG, sizeof(arhdr.fmag)))
@@ -422,7 +504,7 @@ int
 zaddr(uchar *p, Adr *a, Sym *h[])
 {
 	int i, c;
-	long l;
+	int l;
 	Sym *s;
 	Auto *u;
 
@@ -530,25 +612,24 @@ zaddr(uchar *p, Adr *a, Sym *h[])
 void
 addlib(char *obj)
 {
-	char name[1024], comp[256], *p;
-	int i;
+	char fn1[LIBNAMELEN], fn2[LIBNAMELEN], comp[LIBNAMELEN], *p, *name;
+	int i, search;
 
 	if(histfrogp <= 0)
 		return;
 
+	name = fn1;
+	search = 0;
 	if(histfrog[0]->name[1] == '/') {
 		sprint(name, "");
 		i = 1;
-	} else
-	if(histfrog[0]->name[1] == '.') {
+	} else if(histfrog[0]->name[1] == '.') {
 		sprint(name, ".");
 		i = 0;
 	} else {
-		if(debug['9'])
-			sprint(name, "/%s/lib", thestring);
-		else
-			sprint(name, "/usr/%clib", thechar);
+		sprint(name, "");
 		i = 0;
+		search = 1;
 	}
 
 	for(; i<histfrogp; i++) {
@@ -571,13 +652,25 @@ addlib(char *obj)
 			memmove(p+strlen(thestring), p+2, strlen(p+2)+1);
 			memmove(p, thestring, strlen(thestring));
 		}
-		if(strlen(name) + strlen(comp) + 3 >= sizeof(name)) {
+		if(strlen(fn1) + strlen(comp) + 3 >= sizeof(fn1)) {
 			diag("library component too long");
 			return;
 		}
-		strcat(name, "/");
-		strcat(name, comp);
+		if(i > 0 || !search)
+			strcat(fn1, "/");
+		strcat(fn1, comp);
 	}
+
+	cleanname(name);
+
+	if(search){
+		p = findlib(name);
+		if(p != nil){
+			snprint(fn2, sizeof(fn2), "%s/%s", p, name);
+			name = fn2;
+		}
+	}
+
 	for(i=0; i<libraryp; i++)
 		if(strcmp(name, library[i]) == 0)
 			return;
@@ -985,6 +1078,11 @@ loop:
 		}
 		goto casedef;
 
+	case AMOVDF:
+		if(!vfp || p->from.type != D_FCONST)
+			goto casedef;
+		p->as = AMOVF;
+		/* fall through */
 	case AMOVF:
 		if(skip)
 			goto casedef;
@@ -1075,8 +1173,7 @@ lookup(char *symb, int v)
 	for(p=symb; c = *p; p++)
 		h = h+h+h + c;
 	l = (p - symb) + 1;
-	if(h < 0)
-		h = ~h;
+	h &= 0xffffff;
 	h %= NHASH;
 	for(s = hash[h]; s != S; s = s->link)
 		if(s->version == v)
@@ -1226,21 +1323,33 @@ doprof1(void)
 	s->value = n*4;
 }
 
+static int brcond[] = {ABEQ, ABNE, ABCS, ABCC, ABMI, ABPL, ABVS, ABVC, ABHI, ABLS, ABGE, ABLT, ABGT, ABLE};
+
 void
 doprof2(void)
 {
 	Sym *s2, *s4;
-	Prog *p, *q, *ps2, *ps4;
+	Prog *p, *q, *q2, *ps2, *ps4;
 
 	if(debug['v'])
 		Bprint(&bso, "%5.2f profile 2\n", cputime());
 	Bflush(&bso);
-	s2 = lookup("_profin", 0);
-	s4 = lookup("_profout", 0);
+
+	if(debug['e']){
+		s2 = lookup("_tracein", 0);
+		s4 = lookup("_traceout", 0);
+	}else{
+		s2 = lookup("_profin", 0);
+		s4 = lookup("_profout", 0);
+	}
 	if(s2->type != STEXT || s4->type != STEXT) {
-		diag("_profin/_profout not defined");
+		if(debug['e'])
+			diag("_tracein/_traceout not defined %d %d", s2->type, s4->type);
+		else
+			diag("_profin/_profout not defined");
 		return;
 	}
+
 	ps2 = P;
 	ps4 = P;
 	for(p = firstp; p != P; p = p->link) {
@@ -1270,13 +1379,26 @@ doprof2(void)
 			}
 
 			/*
-			 * BL	profin, R2
+			 * BL	profin
 			 */
 			q = prg();
 			q->line = p->line;
 			q->pc = p->pc;
 			q->link = p->link;
-			p->link = q;
+			if(debug['e']){		/* embedded tracing */
+				q2 = prg();
+				p->link = q2;
+				q2->link = q;
+
+				q2->line = p->line;
+				q2->pc = p->pc;
+
+				q2->as = AB;
+				q2->to.type = D_BRANCH;
+				q2->to.sym = p->to.sym;
+				q2->cond = q->link;
+			}else
+				p->link = q;
 			p = q;
 			p->as = ABL;
 			p->to.type = D_BRANCH;
@@ -1287,27 +1409,64 @@ doprof2(void)
 		}
 		if(p->as == ARET) {
 			/*
+			 * RET (default)
+			 */
+			if(debug['e']){		/* embedded tracing */
+				q = prg();
+				q->line = p->line;
+				q->pc = p->pc;
+				q->link = p->link;
+				p->link = q;
+				p = q;
+			}
+
+			/*
 			 * RET
 			 */
 			q = prg();
 			q->as = ARET;
 			q->from = p->from;
 			q->to = p->to;
+			q->cond = p->cond;
 			q->link = p->link;
+			q->reg = p->reg;
 			p->link = q;
 
-			/*
-			 * BL	profout
-			 */
-			p->as = ABL;
-			p->from = zprg.from;
-			p->to = zprg.to;
-			p->to.type = D_BRANCH;
-			p->cond = ps4;
-			p->to.sym = s4;
+			if(p->scond != 14) {
+				q = prg();
+				q->as = ABL;
+				q->from = zprg.from;
+				q->to = zprg.to;
+				q->to.type = D_BRANCH;
+				q->cond = ps4;
+				q->to.sym = s4;
+				q->link = p->link;
+				p->link = q;
 
-			p = q;
+				p->as = brcond[p->scond^1];	/* complement */
+				p->scond = 14;
+				p->from = zprg.from;
+				p->to = zprg.to;
+				p->to.type = D_BRANCH;
+				p->cond = q->link->link;	/* successor of RET */
+				p->to.offset = q->link->link->pc;
 
+				p = q->link->link;
+			} else {
+
+				/*
+				 * BL	profout
+				 */
+				p->as = ABL;
+				p->from = zprg.from;
+				p->to = zprg.to;
+				p->to.type = D_BRANCH;
+				p->cond = ps4;
+				p->to.sym = s4;
+				p->scond = 14;
+
+				p = q;
+			}
 			continue;
 		}
 	}

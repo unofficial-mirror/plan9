@@ -170,6 +170,8 @@ vgaread(Chan* c, void* a, long n, vlong off)
 		scr = &vgascreen[0];
 
 		p = malloc(READSTR);
+		if(p == nil)
+			error(Enomem);
 		if(waserror()){
 			free(p);
 			nexterror();
@@ -291,7 +293,6 @@ vgactl(Cmdbuf *cb)
 		return;
 
 	case CMsize:
-
 		x = strtoul(cb->f[1], &p, 0);
 		if(x == 0 || x > 10240)
 			error(Ebadarg);
@@ -352,8 +353,9 @@ vgactl(Cmdbuf *cb)
 		return;
 
 	case CMdrawinit:
-		memimagedraw(scr->gscreen, scr->gscreen->r, memblack, ZP, nil, ZP, S);
-		if(scr && scr->dev && scr->dev->drawinit)
+		if(scr->gscreen == nil)
+			error("drawinit: no gscreen");
+		if(scr->dev && scr->dev->drawinit)
 			scr->dev->drawinit(scr);
 		return;
 	

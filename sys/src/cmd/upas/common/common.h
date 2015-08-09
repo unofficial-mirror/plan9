@@ -16,9 +16,10 @@ extern int DATEMATCH;
 enum
 {
 	Elemlen= 28,
-	Errlen=	128,
+	Errlen=	ERRMAX,
 	Pathlen= 256,
 };
+enum { Atnoteunknown, Atnoterecog };
 
 /*
  *  routines in mail.c
