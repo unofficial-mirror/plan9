@@ -51,7 +51,7 @@ struct	Prog
 	Adr	to;
 	Prog*	link;
 	long	lineno;
-	char	as;
+	uchar	as;
 	char	reg;
 	uchar	scond;
 };
