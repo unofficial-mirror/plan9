@@ -298,6 +298,7 @@ cgenrel(Node *n, Node *nn, int inrel)
 		break;
 
 	case OFUNC:
+		l = uncomma(l);
 		if(l->complex >= FNX) {
 			if(l->op != OIND)
 				diag(n, "bad function call");
