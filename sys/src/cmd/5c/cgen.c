@@ -246,7 +246,7 @@ cgenrel(Node *n, Node *nn, int inrel)
 				reglcgen(&nod2, l, Z);
 			else
 				nod2 = *l;
-			regalloc(&nod, r, nn);
+			regalloc(&nod, l, nn);
 			gopcode(OAS, &nod2, Z, &nod);
 			gopcode(o, r, Z, &nod);
 			gopcode(OAS, &nod, Z, &nod2);
