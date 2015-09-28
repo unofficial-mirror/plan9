@@ -53,6 +53,7 @@ struct	Prog
 	long	lineno;
 	uchar	as;
 	char	reg;
+	char	reghi;	/* for long multiply, double loads */
 	uchar	scond;
 };
 #define	P	((Prog*)0)
@@ -172,6 +173,8 @@ EXTERN	int	suppress;
 #define	STORE(r)	(~r->calbehind.b[z] & r->calahead.b[z])
 
 #define	bset(a,n)	((a).b[(n)/32]&(1L<<(n)%32))
+
+#define	isbigendian()	align(0, types[TCHAR], Aarg1)
 
 #define	CLOAD	4
 #define	CREF	5
