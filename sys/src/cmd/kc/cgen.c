@@ -1,6 +1,6 @@
 #include "gc.h"
 
-static void genasop(int, Node*, Node*, Node *);
+static void genasop(int, Node*, Node*, Node*);
 
 void
 cgen(Node *n, Node *nn)
