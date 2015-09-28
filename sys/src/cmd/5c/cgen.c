@@ -931,12 +931,12 @@ sugen(Node *n, Node *nn, long w)
 
 	case OSTRUCT:
 		/*
-		 * rewrite so lhs has no fn call
+		 * rewrite so lhs has no side effects
 		 */
-		if(nn != Z && nn->complex >= FNX) {
+		if(nn != Z && side(nn)) {
 			nod1 = *n;
 			nod1.type = typ(TIND, n->type);
-			regret(&nod2, &nod1);
+			regalloc(&nod2, &nod1, Z);
 			lcgen(nn, &nod2);
 			regsalloc(&nod0, &nod1);
 			gopcode(OAS, &nod2, Z, &nod0);
