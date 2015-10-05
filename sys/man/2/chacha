@@ -25,10 +25,12 @@ void chacha_encrypt2(uchar *src, uchar *dst, int len, Chachastate *s)
 void chacha_setblock(Chachastate *s, u32int blockno)
 .SH DESCRIPTION
 .PP
-Chacha is D J Berstein's symmetric stream cipher, as modified by RFC7539. It supports
+Chacha is D J Berstein's symmetric stream cipher, as modified by RFC7539. It uses
 keys of 256 bits (128 bits is supported here for special purposes). It has an underlying block size of 64 bytes
 (named as constant
 .BR ChachaBsize ).
+It is a potential replacement for
+.IR rc4 (2).
 .PP
 .I SetupChachastate
 takes a reference to a
