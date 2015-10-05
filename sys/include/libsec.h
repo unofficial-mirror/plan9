@@ -78,6 +78,7 @@ void	bfECBdecrypt(uchar*, int, BFstate*);
  */
 
 enum{
+	ChachaBsize=	64,
 	ChachaKeylen=	256/8,
 	ChachaIVlen=	96/8
 };
