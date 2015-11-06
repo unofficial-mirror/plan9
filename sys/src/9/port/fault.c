@@ -290,7 +290,7 @@ okaddr(ulong addr, ulong len, int write)
 {
 	Segment *s;
 
-	if((long)len >= 0) {
+	if((long)len >= 0 && addr+len >= addr) {
 		for(;;) {
 			s = seg(up, addr, 0);
 			if(s == 0 || (write && (s->type&SG_RONLY)))
