@@ -94,6 +94,9 @@ addr(Biobuf *bp)
 	case D_FREG:
 	case D_PSR:
 	case D_FPCR:
+	case D_VFPCR:
+	case D_SFREG:
+	case D_QREG:
 		break;
 	case D_OREG:
 	case D_CONST:
