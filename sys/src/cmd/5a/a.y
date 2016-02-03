@@ -9,6 +9,7 @@
 	char	sval[8];
 	Gen	gen;
 }
+%left	','
 %left	'|'
 %left	'^'
 %left	'&'
@@ -19,15 +20,16 @@
 %token	<lval>	LTYPE6 LTYPE7 LTYPE8 LTYPE9 LTYPEA
 %token	<lval>	LTYPEB LTYPEC LTYPED LTYPEE LTYPEF
 %token	<lval>	LTYPEG LTYPEH LTYPEI LTYPEJ LTYPEK
-%token	<lval>	LTYPEL LTYPEM LTYPEN LTYPEBX
+%token	<lval>	LTYPEL LTYPEM LTYPEN LTYPEO LTYPEP
+%token	<lval>	LTYPEQ LTYPER LTYPES LTYPET LTYPEU LTYPEBX
 %token	<lval>	LCONST LSP LSB LFP LPC
-%token	<lval>	LTYPEX LR LREG LF LFREG LC LCREG LPSR LFCR
-%token	<lval>	LCOND LS LAT
+%token	<lval>	LTYPEX LR LREG LF LFREG LSFREG LC LCREG LPSR LFCR LVFCR
+%token	<lval>	LCOND LS LSF LAT
 %token	<dval>	LFCONST
 %token	<sval>	LSCONST
 %token	<sym>	LNAME LLAB LVAR
 %type	<lval>	con expr oexpr pointer offset sreg spreg creg
-%type	<lval>	rcon cond reglist
+%type	<lval>	rcon cond reglist freglist
 %type	<gen>	gen rel reg regreg freg shift fcon frcon
 %type	<gen>	imm ximm name oreg ireg nireg ioreg imsr
 %%
@@ -119,7 +121,7 @@ inst:
 		outcode($1, Always, &nullgen, NREG, &$3);
 	}
 /*
- * SWI
+ * SVC/SWI
  */
 |	LTYPE6 cond comma gen
 	{
@@ -154,6 +156,42 @@ inst:
 		outcode($1, $2, &g, NREG, &$7);
 	}
 /*
+ * MOVMF
+ */
+|	LTYPET cond ioreg ',' '[' freglist ']'
+	{
+		Gen g;
+
+		g = nullgen;
+		g.type = D_CONST;
+		g.offset = $6;
+		outcode($1, $2, &$3, NREG, &g);
+	}
+|	LTYPET cond '[' freglist ']' ',' ioreg
+	{
+		Gen g;
+
+		g = nullgen;
+		g.type = D_CONST;
+		g.offset = $4;
+		outcode($1, $2, &g, NREG, &$7);
+	}
+/*
+ * POPF/PUSHF
+ */
+|	LTYPEU cond '[' freglist ']'
+	{
+		Gen g;
+
+		g = nullgen;
+		g.type = D_CONST;
+		g.offset = $4;
+		if($1 == APUSHF || $1 == APUSHD)
+			outcode($1, $2, &g, NREG, &nullgen);
+		else
+			outcode($1, $2, &nullgen, NREG, &g);
+	}
+/*
  * SWAP
  */
 |	LTYPE9 cond reg ',' ireg ',' reg
@@ -169,7 +207,14 @@ inst:
 		outcode($1, $2, &$4, $6.reg, &$6);
 	}
 /*
- * RET
+ * STREX
+ */
+|	LTYPES cond reg ',' ireg ',' reg
+	{
+		outcode($1, $2, &$5, $3.reg, &$7);
+	}
+/*
+ * RET/RFE/ERET/WFE/WFI/CLREX
  */
 |	LTYPEA cond comma
 	{
@@ -201,7 +246,7 @@ inst:
 		outcode($1, $2, &$3, NREG, &nullgen);
 	}
 /*
- * word
+ * WORD
  */
 |	LTYPEH comma ximm
 	{
@@ -227,7 +272,7 @@ inst:
 		outcode($1, $2, &$3, $5.reg, &nullgen);
 	}
 /*
- * MCR MRC
+ * MCR/MRC
  */
 |	LTYPEJ cond con ',' expr ',' spreg ',' creg ',' creg oexpr
 	{
@@ -263,6 +308,42 @@ inst:
 		$7.type = D_REGREG;
 		$7.offset = $9;
 		outcode($1, $2, &$3, $5.reg, &$7);
+	}
+/*
+ * CPS
+ */
+|	LTYPEO imm
+	{
+		outcode($1, Always, &$2, NREG, &nullgen);
+	}
+/*
+ * CPSID/CPSIE
+ */
+|	LTYPEP imm
+	{
+		outcode($1, Always, &$2, NREG, &nullgen);
+	}
+|	LTYPEP imm ',' imm
+	{
+		outcode($1, Always, &$2, NREG, &$4);
+	}
+/*
+ * DMB/DSB/ISB
+ */
+|	LTYPEQ cond comma
+	{
+		outcode($1, $2, &nullgen, NREG, &nullgen);
+	}
+|	LTYPEQ cond imm
+	{
+		outcode($1, $2, &$3, NREG, &nullgen);
+	}
+/*
+ * CLZ
+ */
+|	LTYPER cond reg ',' reg
+	{
+		outcode($1, $2, &$3, NREG, &$5);
 	}
 /*
  * END
@@ -364,9 +445,28 @@ reglist:
 		for(i=$3; i<=$1; i++)
 			$$ |= 1<<i;
 	}
-|	spreg comma reglist
+|	reglist ',' reglist
 	{
-		$$ = (1<<$1) | $3;
+		$$ = $1 | $3;
+	}
+
+freglist:
+	freg
+	{
+		$$ = 1 << $1.reg;
+	}
+|	freg '-' freg
+	{
+		int i;
+		$$=0;
+		for(i=$1.reg; i<=$3.reg; i++)
+			$$ |= 1<<i;
+		for(i=$3.reg; i<=$1.reg; i++)
+			$$ |= 1<<i;
+	}
+|	freglist ',' freglist
+	{
+		$$ = $1 | $3;
 	}
 
 gen:
@@ -388,6 +488,12 @@ gen:
 	{
 		$$ = nullgen;
 		$$.type = D_FPCR;
+		$$.reg = $1;
+	}
+|	LVFCR
+	{
+		$$ = nullgen;
+		$$.type = D_VFPCR;
 		$$.reg = $1;
 	}
 |	con
@@ -552,6 +658,19 @@ freg:
 		$$.type = D_FREG;
 		$$.reg = $3;
 	}
+|	LSFREG
+	{
+		$$ = nullgen;
+		$$.type = D_SFREG;
+		$$.reg = $1;
+	}
+|	LSF '(' con ')'
+	{
+		$$ = nullgen;
+		$$.type = D_SFREG;
+		$$.reg = $3;
+	}
+
 
 name:
 	con '(' pointer ')'
