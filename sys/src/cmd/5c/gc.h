@@ -347,6 +347,7 @@ int	predicable(Prog *p);
 int	modifiescpsr(Prog *p); 
 
 #pragma	varargck	type	"A"	int
+#pragma	varargck	type	"A"	uint
 #pragma	varargck	type	"B"	Bits
 #pragma	varargck	type	"D"	Adr*
 #pragma	varargck	type	"N"	Adr*
