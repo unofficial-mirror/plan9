@@ -29,6 +29,7 @@ struct	Instr
 	uchar	rs;			/* bits 0-11 (shifter operand) */
 
 	long	imm;			/* rotated imm */
+
 	char*	curr;			/* fill point in buffer */
 	char*	end;			/* end of buffer */
 	char*	err;			/* error message */
@@ -71,8 +72,8 @@ Machdata armmach =
 	riscframe,		/* Frame finder */
 	armexcep,			/* print exception */
 	0,			/* breakpoint fixup */
-	0,			/* single precision float printer */
-	0,			/* double precision float printer */
+	leieeesftos,			/* single precision float printer */
+	leieeedftos,			/* double precision float printer */
 	armfoll,		/* following addresses */
 	arminst,		/* print instruction */
 	armdas,			/* dissembler */
@@ -176,8 +177,7 @@ armclass(long w)
 				op++;		/* mla */
 			break;
 		}
-		if((op & 0x9) == 0x9)		/* ld/st byte/half s/u */
-		{
+		if((op & 0x9) == 0x9) {		/* ld/st byte/half s/u */
 			op = (48+16+4) + ((w >> 22) & 0x1) + ((w >> 19) & 0x2);
 			break;
 		}
@@ -231,7 +231,7 @@ armclass(long w)
 		break;
 	case 7:	/* coprocessor crap */
 		cp = (w >> 8) & 0xF;
-		if(cp == 10 || cp == 11){	/* vfp */
+		if(cp == 0xa || cp == 0xb){	/* vfp */
 			if((w >> 4) & 0x1){
 				/* vfp register transfer */
 				switch((w >> 21) & 0x7){
@@ -246,6 +246,12 @@ armclass(long w)
 					break;
 				}
 				break;
+			}
+			if(((w >> 20) & 0xb) == 0xb) {	/* other vfp */
+				if((w & (1<<6)) == 0) {	/* vmov imm */
+					op = 128;
+					break;
+				}
 			}
 			/* vfp data processing */
 			if(((w >> 23) & 0x1) == 0){
@@ -291,6 +297,15 @@ armclass(long w)
 		break;
 	}
 	return op;
+}
+
+static int
+isvfp(ulong w)
+{
+	int c;
+
+	c = (w>>25)&7;
+	return c == 7 || c == 6;
 }
 
 static int
@@ -471,8 +486,7 @@ armsdti(Opcode *o, Instr *i)
 	i->rn = (i->w >> 16) & 0xf;
 	i->rd = (i->w >> 12) & 0xf;
 		/* RET is encoded as LW.P x,R13,R15 */
-	if ((i->w & 0x0ffff000) == 0x049df000)
-	{
+	if ((i->w & 0x0ffff000) == 0x049df000) {
 		format("RET%C%p", i, "%I");
 		return;
 	}
@@ -493,12 +507,38 @@ armvstdi(Opcode *o, Instr *i)
 	format(o->o, i, o->a);
 }
 
+static void
+armvmovi(Opcode *o, Instr *i)
+{
+	ulong v, h;
+
+	v = (i->w >> 12) & 0xf0;
+	v |= i->w & 0xf;
+	i->rd = (i->w >> 12) & 0xf;
+	h = (v&0x80)<<24;
+	if(i->w & (1<<8)) {	/* double */
+		if(v & 0x40)
+			h |= 0x3FC<<20;
+		else
+			h |= 0x400<<20;
+		h |= (v & 0x3F) << 16;
+	} else {
+		if(v & 0x40)
+			h |= 0x3E<<24;
+		else
+			h |= 0x40<<24;
+		h |= (v & 0x3F) << 19;
+	}
+	i->imm = h;
+	format(o->o, i, o->a);
+}
+
 /* arm V4 ld/st halfword, signed byte */
 static void
 armhwby(Opcode *o, Instr *i)
 {
 	i->store = ((i->w >> 23) & 0x2) | ((i->w >>21) & 0x1);
-	i->imm = (i->w & 0xf) | ((i->w >> 8) & 0xf);
+	i->imm = (i->w & 0xf) | ((i->w >> 4) & 0xf0);
 	if (!(i->w & (1 << 23)))
 		i->imm = - i->imm;
 	i->rn = (i->w >> 16) & 0xf;
@@ -1018,6 +1058,9 @@ static Opcode opcodes[] =
 	"BX%C",		armdps,	armfbx,	"(R%s)",
 	"BXJ%C",	armdps,	armfbx,	"(R%s)",
 	"BLX%C",	armdps,	armfbx,	"(R%s)",
+
+/* 128 */
+	"MOV%f%C",	armvmovi, 0,	"$%D,F%d",
 };
 
 static void
@@ -1025,6 +1068,30 @@ gaddr(Instr *i)
 {
 	*i->curr++ = '$';
 	i->curr += gsymoff(i->curr, i->end-i->curr, i->imm, CANY);
+}
+
+static int
+armgetfp(Instr *i, double *v)
+{
+	ulong l, h;
+	FPdbleword w;
+	float f;
+	uvlong a;
+
+	a = i->addr + i->imm + 8;
+	if(get4(i->map, a, &l) < 0)
+		return -1;
+	if(i->w & (1<<8)) {
+		if(get4(i->map, a+4, &h) < 0)
+			return -1;
+		w.hi = h;
+		w.lo = l;
+		*v = w.x;
+	} else {
+		memmove(&f, &l, sizeof(f));
+		*v = f;
+	}
+	return 0;
 }
 
 static	char *mode[] = { 0, "IA", "DB", "IB" };
@@ -1037,6 +1104,8 @@ format(char *mnemonic, Instr *i, char *f)
 	int j, k, m, n;
 	int g;
 	char *fmt;
+	double d;
+	char buf[30];
 
 	if(mnemonic)
 		format(0, i, mnemonic);
@@ -1098,6 +1167,14 @@ format(char *mnemonic, Instr *i, char *f)
 			bprint(i, hb[(i->w>>5) & 0x3]);
 			break;
 
+		case 'D':		/* fp immediate */
+			if(i->w & (1<<8))
+				ieeedftos(buf, sizeof(buf), i->imm, 0);
+			else
+				ieeesftos(buf, sizeof(buf), i->imm);
+			bprint(i, buf);
+			break;
+
 		case 'I':
 			if (i->rn == 13) {
 				if (plocal(i))
@@ -1107,14 +1184,18 @@ format(char *mnemonic, Instr *i, char *f)
 			fmt = "#%lx(R%d)";
 			if (i->rn == 15) {
 				/* convert load of offset(PC) to a load immediate */
-				if (get4(i->map, i->addr+i->imm+8, (ulong*)&i->imm) > 0)
-				{
+				if(isvfp(i->w)) {
+					if(armgetfp(i, &d) >= 0) {
+						bprint(i, "$%e", d);
+						break;
+					}
+				}
+				if (get4(i->map, i->addr+i->imm+8, (ulong*)&i->imm) > 0) {
 					g = 1;
 					fmt = "";
 				}
 			}
-			if (mach->sb)
-			{
+			if (mach->sb) {
 				if (i->rd == 11) {
 					ulong nxti;
 
@@ -1126,19 +1207,16 @@ format(char *mnemonic, Instr *i, char *f)
 						}
 					}
 				}
-				if (i->rn == 12)
-				{
+				if (i->rn == 12) {
 					i->imm += mach->sb;
 					g = 1;
 					fmt = "-SB(SB)";
 				}
 			}
-			if (g)
-			{
+			if (g) {
 				gaddr(i);
 				bprint(i, fmt, i->rn);
-			}
-			else
+			} else
 				bprint(i, fmt, i->imm, i->rn);
 			break;
 		case 'U':		/* Add/subtract from base */
@@ -1220,7 +1298,7 @@ format(char *mnemonic, Instr *i, char *f)
 			case 1:
 				bprint(i, "FPSCR");
 				break;
-			case 2:
+			case 8:
 				bprint(i, "FPEXC");
 				break;
 			default:
