@@ -1,12 +1,14 @@
 #include	"l.h"
 
 static struct {
-	ulong	start;
+	ulong	start;	/* address of first reference */
 	ulong	size;
+	int	hasfp;	/* any fp constants mean smaller 1k range */
 } pool;
 
-void	checkpool(Prog*);
-void 	flushpool(Prog*, int);
+static void	 checkpool(Prog*);
+static void  flushpool(Prog*, int);
+static void addfpool(Prog*, Adr*);
 
 void
 span(void)
@@ -45,20 +47,28 @@ span(void)
 		}
 		switch(o->flag & (LFROM|LTO|LPOOL)) {
 		case LFROM:
-			addpool(p, &p->from);
+			if(p->from.type == D_FCONST) {
+				if(!pool.hasfp) {	/* might already be too big: check */
+					pool.hasfp = 1;
+					checkpool(p);
+				}
+				pool.hasfp = 1;
+				addfpool(p, &p->from);
+			}else
+				addpool(p, &p->from);
 			break;
 		case LTO:
 			addpool(p, &p->to);
 			break;
 		case LPOOL:
-			if ((p->scond&C_SCOND) == 14)
+			if(always(p))
 				flushpool(p, 0);
 			break;
 		}
-		if(p->as==AMOVW && p->to.type==D_REG && p->to.reg==REGPC && (p->scond&C_SCOND) == 14)
+		if(ismovpc(p) && always(p))
 			flushpool(p, 0);
 		c += m;
-		if(blitrl)
+		if(blitrl != nil)
 			checkpool(p);
 	}
 
@@ -76,7 +86,7 @@ span(void)
 		for(p = firstp; p != P; p = p->link) {
 			p->pc = c;
 			o = oplook(p);
-/* very larg branches
+/* very large branches
 			if(o->type == 6 && p->cond) {
 				otxt = p->cond->pc - c;
 				if(otxt < 0)
@@ -150,18 +160,26 @@ span(void)
  * when the first reference to the literal pool threatens
  * to go out of range of a 12-bit PC-relative offset,
  * drop the pool now, and branch round it.
- * this happens only in extended basic blocks that exceed 4k.
+ * this happens only in extended basic blocks that exceed 4k
+ * (or 1k if floating point ops are used)
  */
-void
+static void
 checkpool(Prog *p)
 {
-	if(pool.size >= 0xffc || immaddr((p->pc+4)+4+pool.size - pool.start+8) == 0)
+	long t;
+
+	/* if it's fp and a double, it's enough to reach the low word */
+	t = immaddr((p->pc+4)+4+pool.size - pool.start+8);
+//print("t=%#lux\n", t);
+	if(pool.hasfp && (pool.size >= 0x3fc || !immfloat(t)))
+		flushpool(p, 1);
+	else if(pool.size >= 0xffc || t == 0)
 		flushpool(p, 1);
 	else if(p->link == P)
 		flushpool(p, 2);
 }
 
-void
+static void
 flushpool(Prog *p, int skip)
 {
 	Prog *q;
@@ -177,7 +195,7 @@ flushpool(Prog *p, int skip)
 			q->link = blitrl;
 			blitrl = q;
 		}
-		else if(p->pc+pool.size-pool.start < 2048)
+		else if(p->pc+pool.size-pool.start < (pool.hasfp? 512: 2048))
 			return;
 		elitrl->link = p->link;
 		p->link = blitrl;
@@ -185,7 +203,26 @@ flushpool(Prog *p, int skip)
 		elitrl = 0;
 		pool.size = 0;
 		pool.start = 0;
+		pool.hasfp = 0;
 	}
+}
+
+static Prog*
+addword(ulong pc, Prog *t)
+{
+	Prog *q;
+
+	q = prg();
+	*q = *t;
+	q->pc = pool.size;
+	if(blitrl == P) {
+		blitrl = q;
+		pool.start = pc;
+	} else
+		elitrl->link = q;
+	elitrl = q;
+	pool.size += 4;
+	return q;
 }
 
 void
@@ -200,41 +237,60 @@ addpool(Prog *p, Adr *a)
 	t.as = AWORD;
 
 	switch(c) {
-	default:
+	case C_LCON:
+	case C_LEXT:
+	case C_ADDR:
 		t.to = *a;
 		break;
 
-	case C_SROREG:
-	case C_LOREG:
-	case C_ROREG:
-	case C_FOREG:
-	case C_SOREG:
-	case C_FAUTO:
-	case C_SAUTO:
-	case C_LAUTO:
-	case C_LACON:
+	default:
 		t.to.type = D_CONST;
 		t.to.offset = instoffset;
 		break;
 	}
 
-	for(q = blitrl; q != P; q = q->link)	/* could hash on t.t0.offset */
-		if(memcmp(&q->to, &t.to, sizeof(t.to)) == 0) {
+	for(q = blitrl; q != P; q = q->link)
+		if(memcmp(&q->to, &t.to, sizeof(t.to)) == 0) {	/* need only the same bit pattern */
 			p->cond = q;
 			return;
 		}
 
-	q = prg();
-	*q = t;
-	q->pc = pool.size;
+	q = addword(p->pc, &t);
+	p->cond = q;
+}
 
-	if(blitrl == P) {
-		blitrl = q;
-		pool.start = p->pc;
+static void
+addfpool(Prog *p, Adr *a)
+{
+	Prog *q, t;
+	int sz;
+	ulong w[2];
+
+	pool.hasfp = 1;
+
+	sz = a->reg;
+	if(sz == 8) {
+		w[0] = a->ieee->l;
+		w[1] = a->ieee->h;
 	} else
-		elitrl->link = q;
-	elitrl = q;
-	pool.size += 4;
+		w[0] = ieeedtof(a->ieee);
+
+	for(q = blitrl; q != P; q = q->link)
+		if(q->to.offset == w[0] && (sz == 4 || q->link != nil && q->link->to.offset == w[1])) {
+			p->cond = q;
+			return;
+		}
+
+	t = zprg;
+	t.as = AWORD;
+	t.to.type = D_CONST;
+	t.to.offset = w[0];
+
+	q = addword(p->pc, &t);
+	if(sz == 8) {
+		t.to.offset = w[1];
+		addword(q->pc, &t);
+	}
 
 	p->cond = q;
 }
@@ -306,6 +362,22 @@ immhalf(long v)
 }
 
 int
+isfpzero(Ieee *e)
+{
+	return e->l == 0 && e->h == 0;
+}
+
+int
+fpconstclass(Ieee *e)
+{
+	if(isfpzero(e))
+		return C_ZFCON;
+	if(chipfloat(e) >= 0)
+		return C_SFCON;
+	return C_LFCON;
+}
+
+int
 aclass(Adr *a)
 {
 	Sym *s;
@@ -327,8 +399,21 @@ aclass(Adr *a)
 	case D_FREG:
 		return C_FREG;
 
+	case D_SFREG:
+		return C_SFREG;
+
+	case D_QREG:
+		return C_QREG;
+
 	case D_FPCR:
+		if(vfp)
+			diag("use of old fp in vfp mode");
 		return C_FCR;
+
+	case D_VFPCR:
+		if(!vfp)
+			diag("use of vfp in old fp mode");
+		return C_VFCR;
 
 	case D_OREG:
 		switch(a->name) {
@@ -438,7 +523,7 @@ aclass(Adr *a)
 		return C_GOK;
 
 	case D_FCONST:
-		return C_FCON;
+		return fpconstclass(a->ieee);
 
 	case D_CONST:
 		switch(a->name) {
@@ -454,6 +539,8 @@ aclass(Adr *a)
 			t = immrot(~instoffset);
 			if(t)
 				return C_NCON;
+			if((instoffset & (0xFFFF<<16)) != 0 && (instoffset & 0xFFFF) == 0)
+				return C_TCON;
 			return C_LCON;
 
 		case D_EXTERN:
@@ -572,7 +659,7 @@ cmp(int a, int b)
 		return 1;
 	switch(a) {
 	case C_LCON:
-		if(b == C_RCON || b == C_NCON)
+		if(b == C_RCON || b == C_NCON || b == C_TCON)
 			return 1;
 		break;
 	case C_LACON:
@@ -581,6 +668,10 @@ cmp(int a, int b)
 		break;
 	case C_LECON:
 		if(b == C_RECON)
+			return 1;
+		break;
+	case C_LFCON:
+		if(b == C_ZFCON || b == C_SFCON)
 			return 1;
 		break;
 
@@ -661,6 +752,7 @@ buildop(void)
 
 	armv4 = !debug['h'];
 	vfp = debug['f'];
+//vfp = 1;
 	for(i=0; i<C_GOK; i++)
 		for(n=0; n<C_GOK; n++)
 			xcmp[i][n] = cmp(n, i);
@@ -744,6 +836,16 @@ buildop(void)
 		case ASWPW:
 			oprange[ASWPBU] = oprange[r];
 			break;
+		case ALDREX:
+			oprange[ALDREXB] = oprange[r];
+			oprange[ALDREXH] = oprange[r];
+			oprange[ALDREXD] = oprange[r];
+			break;
+		case ASTREX:
+			oprange[ASTREXB] = oprange[r];
+			oprange[ASTREXH] = oprange[r];
+			oprange[ASTREXD] = oprange[r];
+			break;
 		case AB:
 		case ABL:
 		case ABX:
@@ -755,7 +857,21 @@ buildop(void)
 		case ATEXT:
 		case ACASE:
 		case ABCASE:
+		case AERET:
+		case AWFE:
+		case AWFI:
+		case ACPS:
+		case ACPSID:
+		case ACPSIE:
+		case ACLZ:
+		case ACLREX:
 			break;
+
+		case ADMB:
+			oprange[ADSB] = oprange[r];
+			oprange[AISB] = oprange[r];
+			break;
+
 		case AADDF:
 			oprange[AADDD] = oprange[r];
 			oprange[ASUBF] = oprange[r];
@@ -767,7 +883,39 @@ buildop(void)
 			oprange[AMOVFD] = oprange[r];
 			oprange[AMOVDF] = oprange[r];
 			break;
-			
+
+		case AABSF:
+			oprange[AABSD] = oprange[r];
+			oprange[ANEGF] = oprange[r];
+			oprange[ANEGD] = oprange[r];
+			oprange[ASQRTF] = oprange[r];
+			oprange[ASQRTD] = oprange[r];
+			break;
+
+		case AMLAF:
+			oprange[AMLAD] = oprange[r];
+			oprange[AMLSF] = oprange[r];
+			oprange[AMLSD] = oprange[r];
+			oprange[ANMULF] = oprange[r];
+			oprange[ANMULD] = oprange[r];
+			oprange[ANMLAF] = oprange[r];
+			oprange[ANMLAD] = oprange[r];
+			oprange[ANMLSF] = oprange[r];
+			oprange[ANMLSD] = oprange[r];
+			break;
+
+		case AMOVMF:
+			oprange[AMOVMD] = oprange[r];
+			break;
+
+		case APUSHF:
+			oprange[APUSHD] = oprange[r];
+			break;
+
+		case APOPF:
+			oprange[APOPD] = oprange[r];
+			break;
+
 		case ACMPF:
 			oprange[ACMPD] = oprange[r];
 			break;
@@ -780,6 +928,10 @@ buildop(void)
 			oprange[AMOVWF] = oprange[r];
 			oprange[AMOVWD] = oprange[r];
 			oprange[AMOVDW] = oprange[r];
+			oprange[AMOVFWU] = oprange[r];
+			oprange[AMOVWFU] = oprange[r];
+			oprange[AMOVWDU] = oprange[r];
+			oprange[AMOVDWU] = oprange[r];
 			break;
 
 		case AMULL:

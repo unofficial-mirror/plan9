@@ -349,7 +349,7 @@ patch(void)
 	}
 }
 
-#define	LOG	5
+#define	LOG	6
 void
 mkfwd(void)
 {
