@@ -36,7 +36,7 @@ Pconv(Fmt *fp)
 			sprint(s, "	%A%C	%D,%D",
 				a, p->scond, &p->from, &p->to);
 		else
-		if(p->from.type != D_FREG)
+		if(p->from.type != D_FREG && p->from.type != D_SFREG && p->from.type != D_FCONST)
 			sprint(s, "	%A%C	%D,R%d,%D",
 				a, p->scond, &p->from, p->reg, &p->to);
 		else
@@ -46,6 +46,10 @@ Pconv(Fmt *fp)
 
 	case ASWPW:
 	case ASWPBU:
+	case ASTREX:
+	case ASTREXB:
+	case ASTREXD:
+	case ASTREXH:
 		sprint(str, "(%ld)	%A%C	R%d,%D,%D",
 			p->line, a, p->scond, p->reg, &p->from, &p->to);
 		break;
@@ -182,6 +186,18 @@ Dconv(Fmt *fp)
 			sprint(str, "%N(R%d)(REG)", a, a->reg);
 		break;
 
+	case D_SFREG:
+		sprint(str, "S%d", a->reg);
+		if(a->name != D_NONE || a->sym != S)
+			sprint(str, "%N(R%d)(REG)", a, a->reg);
+		break;
+
+	case D_QREG:
+		sprint(str, "Q%d", a->reg);
+		if(a->name != D_NONE || a->sym != S)
+			sprint(str, "%N(R%d)(REG)", a, a->reg);
+		break;
+
 	case D_PSR:
 		switch(a->reg) {
 		case 0:
@@ -205,6 +221,38 @@ Dconv(Fmt *fp)
 			break;
 		case 1:
 			sprint(str, "FPCR");
+			break;
+		default:
+			sprint(str, "FCR%d", a->reg);
+			break;
+		}
+		if(a->name != D_NONE || a->sym != S)
+			sprint(str, "%N(FCR%d)(REG)", a, a->reg);
+
+		break;
+
+	case D_VFPCR:
+		switch(a->reg){
+		case 0:
+			sprint(str, "FPSID");
+			break;
+		case 1:
+			sprint(str, "FPSCR");
+			break;
+		case 7:
+			sprint(str, "MVFR0");
+			break;
+		case 6:
+			sprint(str, "MVFR1");
+			break;
+		case 8:
+			sprint(str, "FPEXC");
+			break;
+		case 9:
+			sprint(str, "FPINST");
+			break;
+		case 10:
+			sprint(str, "FPINST2");
 			break;
 		default:
 			sprint(str, "FCR%d", a->reg);
@@ -345,7 +393,7 @@ diag(char *fmt, ...)
 	print("%s: %s\n", tn, buf);
 
 	nerrors++;
-	if(nerrors > 10) {
+	if(nerrors > 100) {
 		print("too many errors\n");
 		errorexit();
 	}

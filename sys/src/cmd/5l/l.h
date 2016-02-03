@@ -2,7 +2,7 @@
 #include	<libc.h>
 #include	<bio.h>
 #include	"../5c/5.out.h"
-#include	"../8l/elf.h"
+#include	"../ld/elf.h"
 
 #ifndef	EXTERN
 #define	EXTERN	extern
@@ -100,7 +100,7 @@ struct	Autom
 };
 struct	Optab
 {
-	char	as;
+	uchar	as;
 	char	a1;
 	char	a2;
 	char	a3;
@@ -149,12 +149,16 @@ enum
 	C_FREG,
 	C_PSR,
 	C_FCR,
+	C_VFCR,
 
 	C_RCON,		/* 0xff rotated */
 	C_NCON,		/* ~RCON */
 	C_SCON,		/* 0xffff */
 	C_LCON,
-	C_FCON,
+	C_ZFCON,
+	C_SFCON,
+	C_LFCON,
+	C_TCON,		/* top 16 */
 
 	C_RACON,
 	C_LACON,
@@ -186,6 +190,8 @@ enum
 	C_LOREG,
 
 	C_ADDR,		/* relocatable address */
+	C_SFREG,
+	C_QREG,
 
 	C_GOK,
 
@@ -350,6 +356,7 @@ int	fileexists(char*);
 int	find1(long, int);
 char*	findlib(char*);
 void	follow(void);
+int	fpconstclass(Ieee*);
 void	gethunk(void);
 void	histtoauto(void);
 double	ieeedtod(Ieee*);
@@ -408,4 +415,18 @@ void	zerosig(char*);
 void	noops(void);
 long	immrot(ulong);
 long	immaddr(long);
+int	immfloat(long);
 long	opbra(int, int);
+
+/* unconditional op */
+#define	always(p)	(((p)->scond&C_SCOND) == 14)
+
+/* return/jump by explicit move to the PC */
+#define	ismovpc(p)	((p)->as == AMOVW && (p)->to.type == D_REG && (p)->to.reg == REGPC)
+
+/* for ../ld */
+#define	isbranch(p)	((p)->as == AB)
+#define	iscall(p)	((p)->as == ABL)
+#define	isreturn(p)	(always(p) && ((p)->as == ARET || (p)->as == ARFE || ishwreturn((p))))
+#define	branchop()	AB
+#define	canfollow(a)	((a) != ATEXT && (a) != ABCASE)

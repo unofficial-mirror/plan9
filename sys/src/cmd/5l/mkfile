@@ -1,8 +1,12 @@
 </$objtype/mkfile
 
 TARG=5l
+ALLOC=\
+	qmalloc\
+#	falloc
 OFILES=\
 	asm.$O\
+	asmout.$O\
 	list.$O\
 	noop.$O\
 	obj.$O\
@@ -12,11 +16,12 @@ OFILES=\
 	enam.$O\
 	compat.$O\
 	elf.$O\
+	$ALLOC.$O\
 
 HFILES=\
 	l.h\
 	../5c/5.out.h\
-	../8l/elf.h\
+	../ld/elf.h\
 
 BIN=/$objtype/bin
 CFLAGS=$CFLAGS -. -I.
@@ -27,8 +32,15 @@ CFLAGS=$CFLAGS -. -I.
 
 enam.$O:	../5c/enam.c
 	$CC $CFLAGS ../5c/enam.c
-elf.$O:	../8l/elf.c
-	$CC $CFLAGS ../8l/elf.c
+
+elf.$O:	../ld/elf.c
+	$CC $CFLAGS ../ld/elf.c
+
+mod.$O:	../ld/mod.c
+	$CC $CFLAGS ../ld/mod.c
+
+$ALLOC.$O:	../ld/$ALLOC.c
+	$CC $CFLAGS ../ld/$ALLOC.c
 
 x:V:	$O.out
 	$O.out -la -o/dev/null x.5

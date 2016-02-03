@@ -476,8 +476,7 @@ objfile(char *file)
 			l |= (e[3] & 0xff) << 16;
 			l |= (e[4] & 0xff) << 24;
 			seek(f, l, 0);
-			/* need readn to read the dumps (at least) */
-			l = readn(f, &arhdr, SAR_HDR);
+			l = read(f, &arhdr, SAR_HDR);
 			if(l != SAR_HDR)
 				goto bad;
 			if(strncmp(arhdr.fmag, ARFMAG, sizeof(arhdr.fmag)))
@@ -537,6 +536,9 @@ zaddr(uchar *p, Adr *a, Sym *h[])
 	case D_FREG:
 	case D_PSR:
 	case D_FPCR:
+	case D_VFPCR:
+	case D_SFREG:
+	case D_QREG:
 		break;
 
 	case D_REGREG:
@@ -793,7 +795,7 @@ void
 ldobj(int f, long c, char *pn)
 {
 	long ipc;
-	Prog *p, *t;
+	Prog *p;
 	uchar *bloc, *bsize, *stop;
 	Sym *h[NSYM], *s, *di;
 	int v, o, r, skip;
@@ -1087,59 +1089,16 @@ loop:
 		if(skip)
 			goto casedef;
 
-		if(p->from.type == D_FCONST && chipfloat(p->from.ieee) < 0) {
-			/* size sb 9 max */
-			sprint(literal, "$%lux", ieeedtof(p->from.ieee));
-			s = lookup(literal, 0);
-			if(s->type == 0) {
-				s->type = SBSS;
-				s->value = 4;
-				t = prg();
-				t->as = ADATA;
-				t->line = p->line;
-				t->from.type = D_OREG;
-				t->from.sym = s;
-				t->from.name = D_EXTERN;
-				t->reg = 4;
-				t->to = p->from;
-				t->link = datap;
-				datap = t;
-			}
-			p->from.type = D_OREG;
-			p->from.sym = s;
-			p->from.name = D_EXTERN;
-			p->from.offset = 0;
-		}
+		if(p->from.type == D_FCONST)
+			p->from.reg = 4;
 		goto casedef;
 
 	case AMOVD:
 		if(skip)
 			goto casedef;
 
-		if(p->from.type == D_FCONST && chipfloat(p->from.ieee) < 0) {
-			/* size sb 18 max */
-			sprint(literal, "$%lux.%lux",
-				p->from.ieee->l, p->from.ieee->h);
-			s = lookup(literal, 0);
-			if(s->type == 0) {
-				s->type = SBSS;
-				s->value = 8;
-				t = prg();
-				t->as = ADATA;
-				t->line = p->line;
-				t->from.type = D_OREG;
-				t->from.sym = s;
-				t->from.name = D_EXTERN;
-				t->reg = 8;
-				t->to = p->from;
-				t->link = datap;
-				datap = t;
-			}
-			p->from.type = D_OREG;
-			p->from.sym = s;
-			p->from.name = D_EXTERN;
-			p->from.offset = 0;
-		}
+		if(p->from.type == D_FCONST)
+			p->from.reg = 8;
 		goto casedef;
 
 	default:
