@@ -442,7 +442,7 @@ procsetname(char *fmt, ...)
 	va_start(arg, fmt);
 	cmdname = vsmprint(fmt, arg);
 	va_end(arg);
-	if (cmdname == nil)
+	if(cmdname == nil)
 		return;
 	snprint(buf, sizeof buf, "#p/%d/args", getpid());
 	if((fd = open(buf, OWRITE)) >= 0){
@@ -495,8 +495,8 @@ slave(Fsrpc *f)
 			fatal("rfork");
 
 		case 0:
-			if (local[0] != '\0')
-				if (netdir[0] != '\0')
+			if(local[0] != '\0')
+				if(netdir[0] != '\0')
 					procsetname("%s: %s -> %s", netdir, 
 						local, remote);
 				else
