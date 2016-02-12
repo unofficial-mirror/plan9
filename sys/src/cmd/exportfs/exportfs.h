@@ -80,7 +80,6 @@ char Ebadfid[];
 char Enotdir[];
 char Edupfid[];
 char Eopen[];
-char Exmnt[];
 char Enomem[];
 char Emip[];
 char Enopsmt[];
