@@ -1,34 +1,19 @@
 #include <u.h>
 #include <libc.h>
-#include <tos.h>
 
-static uvlong order = 0x0001020304050607ULL;
-
-static void
-be2vlong(vlong *to, uchar *f)
-{
-	uchar *t, *o;
-	int i;
-
-	t = (uchar*)to;
-	o = (uchar*)&order;
-	for(i = 0; i < sizeof order; i++)
-		t[o[i]] = f[i];
-}
+#define	U32(x)	(((((((x)[0]<<8)|(x)[1])<<8)|(x)[2])<<8)|(x)[3])
 
 vlong
 nsec(void)
 {
 	uchar b[8];
-	vlong t;
 	int f, n;
 
-	t = 0;
-	if((f = open("/dev/bintime", OREAD|OCEXEC)) >= 0){
+	if((f = open("/dev/bintime", OREAD)) >= 0){
 		n = pread(f, b, sizeof(b), 0);
 		close(f);
 		if(n == sizeof(b))
-			be2vlong(&t, b);
+			return (u64int)U32(b)<<32 | U32(b+4);
 	}
-	return t;
+	return 0;
 }
