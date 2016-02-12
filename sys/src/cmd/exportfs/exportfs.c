@@ -74,7 +74,7 @@ noteconn(int fd)
 	NetConnInfo *nci;
 
 	nci = getnetconninfo(nil, fd);
-	if (nci == nil)
+	if(nci == nil)
 		return;
 	netdir = strdup(nci->dir);
 	local = strdup(nci->lsys);
@@ -290,49 +290,49 @@ main(int argc, char **argv)
 	if(srv == nil && srvfd == -1 && write(0, "OK", 2) != 2)
 		fatal("open ack write");
 
-	if (readn(netfd, &initial, sizeof(ulong)) < sizeof(ulong))
+	if(readn(netfd, &initial, sizeof(ulong)) < sizeof(ulong))
 		fatal("can't read initial string: %r\n");
 
-	if (strncmp((char *)&initial, "impo", sizeof(ulong)) == 0) {
+	if(strncmp((char *)&initial, "impo", sizeof(ulong)) == 0) {
 		char buf[128], *p, *args[3];
 
 		/* New import.  Read import's parameters... */
 		initial = 0;
 
 		p = buf;
-		while (p - buf < sizeof buf) {
-			if ((n = read(netfd, p, 1)) < 0)
+		while(p - buf < sizeof buf) {
+			if((n = read(netfd, p, 1)) < 0)
 				fatal("can't read impo arguments: %r\n");
 
-			if (n == 0)
+			if(n == 0)
 				fatal("connection closed while reading arguments\n");
 
-			if (*p == '\n') 
+			if(*p == '\n') 
 				*p = '\0';
-			if (*p++ == '\0')
+			if(*p++ == '\0')
 				break;
 		}
 		
-		if (tokenize(buf, args, nelem(args)) != 2)
+		if(tokenize(buf, args, nelem(args)) != 2)
 			fatal("impo arguments invalid: impo%s...\n", buf);
 
-		if (strcmp(args[0], "aan") == 0)
+		if(strcmp(args[0], "aan") == 0)
 			filterp = aanfilter;
-		else if (strcmp(args[0], "nofilter") != 0)
+		else if(strcmp(args[0], "nofilter") != 0)
 			fatal("import filter argument unsupported: %s\n", args[0]);
 
-		if (strcmp(args[1], "ssl") == 0)
+		if(strcmp(args[1], "ssl") == 0)
 			encproto = Encssl;
-		else if (strcmp(args[1], "tls") == 0)
+		else if(strcmp(args[1], "tls") == 0)
 			encproto = Enctls;
-		else if (strcmp(args[1], "clear") != 0)
+		else if(strcmp(args[1], "clear") != 0)
 			fatal("import encryption proto unsupported: %s\n", args[1]);
 
-		if (encproto == Enctls)
+		if(encproto == Enctls)
 			sysfatal("%s: tls has not yet been implemented", argv[0]);
 	}
 
-	if (encproto != Encnone && ealgs && ai) {
+	if(encproto != Encnone && ealgs && ai) {
 		uchar key[16];
 		uchar digest[SHA1dlen];
 		char fromclientsecret[21];
@@ -346,7 +346,7 @@ main(int argc, char **argv)
 		for(i = 0; i < 4; i++)
 			key[i+12] = rand();
 
-		if (initial) 
+		if(initial) 
 			fatal("Protocol botch: old import\n");
 		if(readn(netfd, key, 4) != 4)
 			fatal("can't read key part; %r\n");
@@ -359,10 +359,10 @@ main(int argc, char **argv)
 		mksecret(fromclientsecret, digest);
 		mksecret(fromserversecret, digest+10);
 
-		if (filterp)
+		if(filterp)
 			netfd = filter(netfd, filterp);
 
-		switch (encproto) {
+		switch(encproto) {
 		case Encssl:
 			netfd = pushssl(netfd, ealgs, fromserversecret, 
 						fromclientsecret, nil);
@@ -375,8 +375,8 @@ main(int argc, char **argv)
 		if(netfd < 0)
 			fatal("can't establish ssl connection: %r");
 	}
-	else if (filterp) {
-		if (initial) 
+	else if(filterp) {
+		if(initial) 
 			fatal("Protocol botch: don't know how to deal with this\n");
 		netfd = filter(netfd, filterp);
 	}
@@ -416,7 +416,7 @@ localread9pmsg(int fd, void *abuf, uint n, ulong *initial)
 
 	/* read count */
 	assert(BIT32SZ == sizeof(ulong));
-	if (*initial) {
+	if(*initial) {
 		memcpy(buf, initial, BIT32SZ);
 		*initial = 0;
 	}
@@ -837,7 +837,7 @@ fatal(char *s, ...)
 	va_list arg;
 	Proc *m;
 
-	if (s) {
+	if(s) {
 		va_start(arg, s);
 		vsnprint(buf, ERRMAX, s, arg);
 		va_end(arg);
@@ -848,7 +848,7 @@ fatal(char *s, ...)
 		postnote(PNPROC, m->pid, "kill");
 
 	DEBUG(DFD, "%s\n", buf);
-	if (s) 
+	if(s) 
 		sysfatal("%s", buf);	/* caution: buf could contain '%' */
 	else
 		exits(nil);
@@ -884,32 +884,32 @@ filter(int fd, char *cmd)
 	char newport[128], buf[128], devdir[40], *s, *file, *argv[16];
 
 	/* Get a free port and post it to the client. */
-	if (announce(anstring, devdir) < 0)
+	if(announce(anstring, devdir) < 0)
 		sysfatal("filter: Cannot announce %s: %r", anstring);
 
 	snprint(buf, sizeof(buf), "%s/local", devdir);
 	buf[sizeof buf - 1] = '\0';
-	if ((lfd = open(buf, OREAD)) < 0)
+	if((lfd = open(buf, OREAD)) < 0)
 		sysfatal("filter: Cannot open %s: %r", buf);
-	if ((len = read(lfd, newport, sizeof newport - 1)) < 0)
+	if((len = read(lfd, newport, sizeof newport - 1)) < 0)
 		sysfatal("filter: Cannot read %s: %r", buf);
 	close(lfd);
 	newport[len] = '\0';
 
-	if ((s = strchr(newport, '\n')) != nil)
+	if((s = strchr(newport, '\n')) != nil)
 		*s = '\0';
 
-	if ((nb = write(fd, newport, len)) < 0) 
+	if((nb = write(fd, newport, len)) < 0) 
 		sysfatal("getport; cannot write port; %r");
 	assert(nb == len);
 
 	argc = tokenize(cmd, argv, nelem(argv)-2);
-	if (argc == 0)
+	if(argc == 0)
 		sysfatal("filter: empty command");
 	argv[argc++] = buf;
 	argv[argc] = nil;
 	file = argv[0];
-	if (s = strrchr(argv[0], '/'))
+	if(s = strrchr(argv[0], '/'))
 		argv[0] = s+1;
 
 	if(pipe(p) < 0)
@@ -919,9 +919,9 @@ filter(int fd, char *cmd)
 	case -1:
 		fatal("rfork record module");
 	case 0:
-		if (dup(p[0], 1) < 0)
+		if(dup(p[0], 1) < 0)
 			fatal("filter: Cannot dup to 1; %r\n");
-		if (dup(p[0], 0) < 0)
+		if(dup(p[0], 0) < 0)
 			fatal("filter: Cannot dup to 0; %r\n");
 		close(p[0]);
 		close(p[1]);
