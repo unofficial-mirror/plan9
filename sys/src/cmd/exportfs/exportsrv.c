@@ -11,7 +11,6 @@ char Ebadfid[] = "Bad fid";
 char Enotdir[] = "Not a directory";
 char Edupfid[] = "Fid already in use";
 char Eopen[] = "Fid already opened";
-char Exmnt[] = "Cannot .. past mount point";
 char Emip[] = "Mount in progress";
 char Enopsmt[] = "Out of pseudo mount points";
 char Enomem[] = "No memory";
@@ -192,22 +191,20 @@ Xwalk(Fsrpc *t)
 		}
 
 		if(strcmp(t->work.wname[i], "..") == 0) {
-			if(f->f->parent == nil) {
-				e = Exmnt;
+			if(f->f->parent != nil)
+				wf = f->f->parent;
+			else
+				wf = f->f;
+			wf->ref++;
+		}else{
+			wf = file(f->f, t->work.wname[i]);
+			if(wf == nil){
+				errstr(err, sizeof err);
+				e = err;
 				break;
 			}
-			wf = f->f->parent;
-			wf->ref++;
-			goto Accept;
 		}
 	
-		wf = file(f->f, t->work.wname[i]);
-		if(wf == nil){
-			errstr(err, sizeof err);
-			e = err;
-			break;
-		}
-    Accept:
 		freefile(f->f);
 		rhdr.wqid[rhdr.nwqid++] = wf->qid;
 		f->f = wf;
