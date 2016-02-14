@@ -7,16 +7,16 @@
 
 extern char *netdir, *local, *remote;
 
-char Ebadfid[] = "Bad fid";
-char Enotdir[] = "Not a directory";
-char Edupfid[] = "Fid already in use";
-char Eopen[] = "Fid already opened";
-char Emip[] = "Mount in progress";
-char Enopsmt[] = "Out of pseudo mount points";
-char Enomem[] = "No memory";
-char Eversion[] = "Bad 9P2000 version";
-char Ereadonly[] = "File system read only";
-char Enoprocs[] = "Out of processes";
+char Ebadfid[] = "bad fid";
+char Enotdir[] = "not a directory";
+char Edupfid[] = "fid already in use";
+char Eopen[] = "fid already opened";
+char Emip[] = "mount in progress";
+char Enopsmt[] = "out of pseudo mount points";
+char Enomem[] = "no memory";
+char Eversion[] = "bad 9P2000 version";
+char Ereadonly[] = "file system read only";
+char Enoprocs[] = "out of processes";
 
 ulong messagesize;
 int readonly;
@@ -100,23 +100,18 @@ Xattach(Fsrpc *t)
 	}
 
 	if(srvfd >= 0){
-		if(psmpt == nil){
-		Nomount:
-			reply(&t->work, &rhdr, Enopsmt);
-			freefid(t->work.fid);
-			putsbuf(t);
-			return;
-		}
+		if(psmpt == nil)
+			goto Nomount;
 		for(i=0; i<Npsmpt; i++)
 			if(psmap[i] == 0)
 				break;
 		if(i >= Npsmpt)
 			goto Nomount;
-		sprint(buf, "%d", i);
+		snprint(buf, sizeof(buf), "%d", i);
 		f->f = file(psmpt, buf);
 		if(f->f == nil)
 			goto Nomount;
-		sprint(buf, "/mnt/exportfs/%d", i);
+		snprint(buf, sizeof(buf), "/mnt/exportfs/%d", i);
 		nfd = dup(srvfd, -1);
 		if(amount(nfd, buf, MREPL|MCREATE, t->work.aname) < 0){
 			errstr(buf, sizeof buf);
@@ -135,6 +130,12 @@ Xattach(Fsrpc *t)
 
 	rhdr.qid = f->f->qid;
 	reply(&t->work, &rhdr, 0);
+	putsbuf(t);
+	return;
+
+Nomount:
+	reply(&t->work, &rhdr, Enopsmt);
+	freefid(t->work.fid);
 	putsbuf(t);
 }
 
@@ -185,10 +186,6 @@ Xwalk(Fsrpc *t)
 	rhdr.nwqid = 0;
 	e = nil;
 	for(i=0; i<t->work.nwname; i++){
-		if(i == MAXWELEM){
-			e = "Too many path elements";
-			break;
-		}
 
 		if(strcmp(t->work.wname[i], "..") == 0) {
 			if(f->f->parent != nil)
@@ -204,7 +201,7 @@ Xwalk(Fsrpc *t)
 				break;
 			}
 		}
-	
+
 		freefile(f->f);
 		rhdr.wqid[rhdr.nwqid++] = wf->qid;
 		f->f = wf;
@@ -424,7 +421,7 @@ Xwstat(Fsrpc *t)
 	}
 	else {
 		/* wstat may really be rename */
-		if(strcmp(d.name, f->f->name)!=0 && strcmp(d.name, "")!=0){
+		if(strcmp(d.name, f->f->name)!=0 && d.name[0]!=0){
 			free(f->f->name);
 			f->f->name = estrdup(d.name);
 		}
@@ -465,6 +462,7 @@ slave(Fsrpc *f)
 	static int nproc;
 	Proc *m, **l;
 	Fcall rhdr;
+	int omode;
 	int pid;
 
 	if(readonly){
@@ -474,7 +472,8 @@ slave(Fsrpc *f)
 			putsbuf(f);
 			return;
 		case Topen:
-		  	if((f->work.mode&3) == OWRITE || (f->work.mode&(OTRUNC|ORCLOSE))){
+			omode = f->work.mode & 3;
+			if(omode != OREAD && omode != OEXEC || (f->work.mode&(OTRUNC|ORCLOSE)) != 0){
 				reply(&f->work, &rhdr, Ereadonly);
 				putsbuf(f);
 				return;
@@ -519,12 +518,12 @@ slave(Fsrpc *f)
 			return;
 
 		case 0:
-			if (local[0] != '\0')
-				if (netdir[0] != '\0')
-					procsetname("%s: %s -> %s", netdir, 
-						local, remote);
+			if(local[0] != '\0'){
+				if(netdir[0] != '\0')
+					procsetname("%s: %s -> %s", netdir, local, remote);
 				else
 					procsetname("%s -> %s", local, remote);
+			}
 			blockingslave(m);
 			_exits(0);
 
