@@ -468,6 +468,15 @@ PP = p;
 		o1 = ofsr(p->as, p->to.reg, v, r, p->scond, p) | (1<<20);
 		break;
 
+	case 18:	/* mov[fd] lfcon, fr -> mov[fd] x(pc), fr */
+		if(p->cond == nil){
+			diag("missing literal\n%P", p);
+			break;
+		}
+		v = p->cond->pc - p->pc - 8;
+		o1 = ofsr(p->as, p->to.reg, v, REGPC, p->scond, p) | (1<<20);
+		break;
+
 	case 52:	/* floating point store, long offset UGLY */
 		o1 = omvl(p, &p->to, REGTMP);
 		if(!o1)
