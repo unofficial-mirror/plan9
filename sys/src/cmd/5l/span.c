@@ -674,6 +674,10 @@ cmp(int a, int b)
 		if(b == C_ZFCON || b == C_SFCON)
 			return 1;
 		break;
+	case C_SFCON:
+		if(!vfp && b == C_ZFCON)
+			return 1;
+		break;
 
 	case C_HFEXT:
 		return b == C_HEXT || b == C_FEXT;
