@@ -1,0 +1,46 @@
+</$objtype/mkfile
+
+TARG=5l
+ALLOC=\
+	qmalloc\
+#	falloc
+OFILES=\
+	asm.$O\
+	asmout.$O\
+	list.$O\
+	noop.$O\
+	obj.$O\
+	optab.$O\
+	pass.$O\
+	span.$O\
+	enam.$O\
+	compat.$O\
+	elf.$O\
+	$ALLOC.$O\
+
+HFILES=\
+	l.h\
+	../5c/5.out.h\
+	../ld/elf.h\
+
+BIN=/$objtype/bin
+CFLAGS=$CFLAGS -. -I.
+</sys/src/cmd/mkone
+
+../5c/enam.c: ../5c/5.out.h
+	@ { cd ../5c; mk enam.c }
+
+enam.$O:	../5c/enam.c
+	$CC $CFLAGS ../5c/enam.c
+
+elf.$O:	../ld/elf.c
+	$CC $CFLAGS ../ld/elf.c
+
+mod.$O:	../ld/mod.c
+	$CC $CFLAGS ../ld/mod.c
+
+$ALLOC.$O:	../ld/$ALLOC.c
+	$CC $CFLAGS ../ld/$ALLOC.c
+
+x:V:	$O.out
+	$O.out -la -o/dev/null x.5
